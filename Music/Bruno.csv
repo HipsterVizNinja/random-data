@@ -1,0 +1,293 @@
+﻿chart_position,chart_date,song,performer,song_id,instance,time_on_chart,consecutive_weeks,previous_week,peak_position,worst_position,chart_debut
+56,6/7/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,1,,,56,56,6/7/1997
+59,6/17/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,1,,,59,59,6/17/2006
+64,12/14/2013,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,1,,,64,64,12/14/2013
+74,1/11/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,1,,,74,74,1/11/2014
+89,12/14/2013,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,1,,,89,89,12/14/2013
+96,2/7/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,1,1,,,96,96,2/7/2015
+25,6/24/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,2,1,59,25,59,6/17/2006
+40,6/14/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,2,1,56,40,56,6/7/1997
+57,12/21/2013,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,2,1,89,57,89,12/14/2013
+58,12/21/2013,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,2,1,64,58,64,12/14/2013
+71,1/18/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,2,1,74,71,74,1/11/2014
+7,7/1/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,3,2,25,7,59,6/17/2006
+36,6/21/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,3,2,40,36,56,6/7/1997
+54,12/28/2013,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,3,2,57,54,89,12/14/2013
+58,12/28/2013,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,3,2,58,58,64,12/14/2013
+65,1/25/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,3,2,71,65,74,1/11/2014
+86,5/21/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,1,,,86,86,5/21/1994
+50,5/28/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,2,1,86,50,86,5/21/1994
+28,6/4/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,3,2,50,28,86,5/21/1994
+21,6/11/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,4,3,28,21,86,5/21/1994
+18,6/18/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,5,4,21,18,86,5/21/1994
+16,6/25/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,6,5,18,16,86,5/21/1994
+11,7/2/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,7,6,16,11,86,5/21/1994
+9,7/9/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,8,7,11,9,86,5/21/1994
+8,7/16/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,9,8,9,8,86,5/21/1994
+7,7/23/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,10,9,8,7,86,5/21/1994
+5,7/30/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,11,10,7,5,86,5/21/1994
+4,8/6/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,12,11,5,4,86,5/21/1994
+5,8/13/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,13,12,4,4,86,5/21/1994
+6,8/20/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,14,13,5,4,86,5/21/1994
+6,8/27/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,15,14,6,4,86,5/21/1994
+5,9/3/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,16,15,6,4,86,5/21/1994
+7,9/10/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,17,16,5,4,86,5/21/1994
+8,9/17/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,18,17,7,4,86,5/21/1994
+8,9/24/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,19,18,8,4,86,5/21/1994
+14,10/1/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,20,19,8,4,86,5/21/1994
+15,10/8/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,21,20,14,4,86,5/21/1994
+25,10/15/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,22,21,15,4,86,5/21/1994
+34,10/22/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,23,22,25,4,86,5/21/1994
+34,10/29/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,24,23,34,4,86,5/21/1994
+39,11/5/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,25,24,34,4,86,5/21/1994
+48,11/12/1994,"Can You Feel The Love Tonight (From ""The Lion King"")",Elton John,"Can You Feel The Love Tonight (From ""The Lion King"")Elton John",1,26,25,39,4,86,5/21/1994
+1,2/12/2022,We Don't Talk About Bruno,"Carolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast","We Don't Talk About BrunoCarolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast",1,6,5,1,1,50,1/8/2022
+8,2/12/2022,Surface Pressure,Jessica Darrow,Surface PressureJessica Darrow,1,6,5,9,8,54,1/8/2022
+30,8/3/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,6,5,31,30,67,6/29/1996
+50,5/28/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,6,5,30,30,85,4/23/1960
+35,7/19/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,32,31,27,5,89,12/14/2013
+44,7/26/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,33,32,35,5,89,12/14/2013
+78,3/14/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,2,,,78,96,2/7/2015
+72,3/21/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,3,1,78,72,96,2/7/2015
+79,3/28/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,4,2,72,72,96,2/7/2015
+85,4/4/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,5,3,79,72,96,2/7/2015
+87,4/11/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,6,4,85,72,96,2/7/2015
+92,4/18/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,7,5,87,72,96,2/7/2015
+92,4/25/2015,Immortals,Fall Out Boy,ImmortalsFall Out Boy,2,8,6,92,72,96,2/7/2015
+33,8/10/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,7,6,30,30,67,6/29/1996
+47,6/4/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,7,6,50,30,85,4/23/1960
+24,8/5/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,8,7,19,7,59,6/17/2006
+26,7/26/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,8,7,31,24,56,6/7/1997
+26,2/1/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,8,7,25,25,89,12/14/2013
+57,2/1/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,8,7,52,38,64,12/14/2013
+78,3/1/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,8,7,69,57,78,1/11/2014
+21,2/8/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,9,8,26,21,89,12/14/2013
+26,8/2/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,9,8,26,24,56,6/7/1997
+38,8/12/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,9,8,24,7,59,6/17/2006
+51,2/8/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,9,8,57,38,64,12/14/2013
+82,3/8/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,9,8,78,57,82,1/11/2014
+24,2/15/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,10,9,21,21,89,12/14/2013
+33,8/9/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,10,9,26,24,56,6/7/1997
+41,8/19/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,10,9,38,7,59,6/17/2006
+54,2/15/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,10,9,51,38,64,12/14/2013
+87,3/15/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,10,9,82,57,87,1/11/2014
+18,2/22/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,11,10,24,18,89,12/14/2013
+37,8/16/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,11,10,33,24,56,6/7/1997
+50,8/26/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,11,10,41,7,59,6/17/2006
+56,2/22/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,11,10,54,38,64,12/14/2013
+74,3/22/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,11,10,87,57,87,1/11/2014
+18,3/1/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,12,11,18,18,89,12/14/2013
+35,8/23/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,12,11,37,24,56,6/7/1997
+50,9/2/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,12,11,50,7,59,6/17/2006
+55,3/1/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,12,11,56,38,64,12/14/2013
+85,3/29/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,12,11,74,57,87,1/11/2014
+18,3/8/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,13,12,18,18,89,12/14/2013
+44,8/30/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,13,12,35,24,56,6/7/1997
+54,9/9/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,13,12,50,7,59,6/17/2006
+61,3/8/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,13,12,55,38,64,12/14/2013
+65,4/5/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,13,12,85,57,87,1/11/2014
+87,2/25/2017,Beauty And The Beast,Ariana Grande & John Legend,Beauty And The BeastAriana Grande & John Legend,1,1,,,87,87,2/25/2017
+88,1/18/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,1,,,88,88,1/18/1992
+81,1/25/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,2,1,88,81,88,1/18/1992
+77,2/1/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,3,2,81,77,88,1/18/1992
+72,2/8/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,4,3,77,72,88,1/18/1992
+48,2/15/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,5,4,72,48,88,1/18/1992
+33,2/22/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,6,5,48,33,88,1/18/1992
+32,2/29/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,7,6,33,32,88,1/18/1992
+24,3/7/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,8,7,32,24,88,1/18/1992
+15,3/14/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,9,8,24,15,88,1/18/1992
+15,3/21/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,10,9,15,15,88,1/18/1992
+14,3/28/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,11,10,15,14,88,1/18/1992
+10,4/4/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,12,11,14,10,88,1/18/1992
+13,4/11/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,13,12,10,10,88,1/18/1992
+9,4/18/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,14,13,13,9,88,1/18/1992
+12,4/25/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,15,14,9,9,88,1/18/1992
+14,5/2/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,16,15,12,9,88,1/18/1992
+18,5/9/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,17,16,14,9,88,1/18/1992
+25,5/16/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,18,17,18,9,88,1/18/1992
+38,5/23/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,19,18,25,9,88,1/18/1992
+47,5/30/1992,Beauty And The Beast,Celine Dion And Peabo Bryson,Beauty And The BeastCeline Dion And Peabo Bryson,1,20,19,38,9,88,1/18/1992
+65,1/11/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,1,,,65,65,1/11/2014
+64,1/18/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,2,1,65,64,65,1/11/2014
+60,1/25/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,3,2,64,60,65,1/11/2014
+61,2/1/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,4,3,60,60,65,1/11/2014
+55,2/8/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,5,4,61,55,65,1/11/2014
+59,2/15/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,6,5,55,55,65,1/11/2014
+57,2/22/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,7,6,59,55,65,1/11/2014
+56,3/1/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,8,7,57,55,65,1/11/2014
+71,3/8/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,9,8,56,55,71,1/11/2014
+75,3/15/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,10,9,71,55,75,1/11/2014
+72,3/22/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,11,10,75,55,75,1/11/2014
+79,3/29/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,12,11,72,55,79,1/11/2014
+62,4/5/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,13,12,79,55,79,1/11/2014
+51,4/12/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,14,13,62,51,79,1/11/2014
+52,4/19/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,15,14,51,51,79,1/11/2014
+69,4/26/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,16,15,52,51,79,1/11/2014
+74,5/3/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,17,16,69,51,79,1/11/2014
+84,5/10/2014,Do You Want To Build A Snowman?,"Kristen Bell, Agatha Lee Monn & Katie Lopez","Do You Want To Build A Snowman?Kristen Bell, Agatha Lee Monn & Katie Lopez",1,18,17,74,51,84,1/11/2014
+10,7/8/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,4,3,7,7,59,6/17/2006
+33,6/28/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,4,3,36,33,56,6/7/1997
+54,1/4/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,4,3,54,54,89,12/14/2013
+61,1/4/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,4,3,58,58,64,12/14/2013
+64,2/1/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,4,3,65,64,74,1/11/2014
+13,7/15/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,5,4,10,7,59,6/17/2006
+27,7/5/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,5,4,33,27,56,6/7/1997
+32,1/11/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,5,4,54,32,89,12/14/2013
+43,1/11/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,5,4,61,43,64,12/14/2013
+57,2/8/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,5,4,64,57,74,1/11/2014
+14,7/22/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,6,5,13,7,59,6/17/2006
+24,7/12/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,6,5,27,24,56,6/7/1997
+27,1/18/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,6,5,32,27,89,12/14/2013
+38,1/18/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,6,5,43,38,64,12/14/2013
+66,2/15/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,6,5,57,57,74,1/11/2014
+19,7/29/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,7,6,14,7,59,6/17/2006
+25,1/25/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,7,6,27,25,89,12/14/2013
+31,7/19/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,7,6,24,24,56,6/7/1997
+52,1/25/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,7,6,38,38,64,12/14/2013
+69,2/22/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,7,6,66,57,74,1/11/2014
+54,12/19/1992,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,1,,,54,54,12/19/1992
+42,12/26/1992,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,2,1,54,42,54,12/19/1992
+25,1/2/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,3,2,42,25,54,12/19/1992
+18,1/9/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,4,3,25,18,54,12/19/1992
+13,1/16/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,5,4,18,13,54,12/19/1992
+9,1/23/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,6,5,13,9,54,12/19/1992
+6,1/30/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,7,6,9,6,54,12/19/1992
+3,2/6/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,8,7,6,3,54,12/19/1992
+2,2/13/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,9,8,3,2,54,12/19/1992
+2,2/20/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,10,9,2,2,54,12/19/1992
+2,2/27/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,11,10,2,2,54,12/19/1992
+1,3/6/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,12,11,2,1,54,12/19/1992
+2,3/13/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,13,12,1,1,54,12/19/1992
+4,3/20/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,14,13,2,1,54,12/19/1992
+8,3/27/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,15,14,4,1,54,12/19/1992
+12,4/3/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,16,15,8,1,54,12/19/1992
+19,4/10/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,17,16,12,1,54,12/19/1992
+20,4/17/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,18,17,19,1,54,12/19/1992
+23,4/24/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,19,18,20,1,54,12/19/1992
+32,5/1/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,20,19,23,1,54,12/19/1992
+41,5/8/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,21,20,32,1,54,12/19/1992
+47,5/15/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,22,21,41,1,54,12/19/1992
+46,5/22/1993,A Whole New World (Aladdin's Theme),Peabo Bryson & Regina Belle,A Whole New World (Aladdin's Theme)Peabo Bryson & Regina Belle,1,23,22,47,1,54,12/19/1992
+85,8/27/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,1,,,85,85,8/27/1994
+54,9/3/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,2,1,85,54,85,8/27/1994
+43,9/10/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,3,2,54,43,85,8/27/1994
+37,9/17/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,4,3,43,37,85,8/27/1994
+34,9/24/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,5,4,37,34,85,8/27/1994
+28,10/1/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,6,5,34,28,85,8/27/1994
+24,10/8/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,7,6,28,24,85,8/27/1994
+18,10/15/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,8,7,24,18,85,8/27/1994
+20,10/22/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,9,8,18,18,85,8/27/1994
+21,10/29/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,10,9,20,18,85,8/27/1994
+25,11/5/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,11,10,21,18,85,8/27/1994
+27,11/12/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,12,11,25,18,85,8/27/1994
+37,11/19/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,13,12,27,18,85,8/27/1994
+40,11/26/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,14,13,37,18,85,8/27/1994
+43,12/3/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,15,14,40,18,85,8/27/1994
+46,12/10/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,16,15,43,18,85,8/27/1994
+46,12/17/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,17,16,46,18,85,8/27/1994
+48,12/24/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,18,17,46,18,85,8/27/1994
+55,12/31/1994,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,19,18,48,18,85,8/27/1994
+56,1/7/1995,"Circle Of Life (From ""The Lion King"")",Elton John,"Circle Of Life (From ""The Lion King"")Elton John",1,20,19,55,18,85,8/27/1994
+55,6/24/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,1,,,55,55,6/24/1995
+42,7/1/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,2,1,55,42,55,6/24/1995
+25,7/8/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,3,2,42,25,55,6/24/1995
+24,7/15/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,4,3,25,24,55,6/24/1995
+15,7/22/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,5,4,24,15,55,6/24/1995
+12,7/29/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,6,5,15,12,55,6/24/1995
+9,8/5/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,7,6,12,9,55,6/24/1995
+7,8/12/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,8,7,9,7,55,6/24/1995
+5,8/19/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,9,8,7,5,55,6/24/1995
+4,8/26/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,10,9,5,4,55,6/24/1995
+7,9/2/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,11,10,4,4,55,6/24/1995
+7,9/9/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,12,11,7,4,55,6/24/1995
+10,9/16/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,13,12,7,4,55,6/24/1995
+11,9/23/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,14,13,10,4,55,6/24/1995
+15,9/30/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,15,14,11,4,55,6/24/1995
+21,10/7/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,16,15,15,4,55,6/24/1995
+36,10/14/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,17,16,21,4,55,6/24/1995
+22,10/21/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,18,17,36,4,55,6/24/1995
+27,10/28/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,19,18,22,4,55,6/24/1995
+31,11/4/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,20,19,27,4,55,6/24/1995
+34,11/11/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,21,20,31,4,55,6/24/1995
+46,11/18/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,22,21,34,4,55,6/24/1995
+50,11/25/1995,"Colors Of The Wind (From ""Pocahontas"")",Vanessa Williams,"Colors Of The Wind (From ""Pocahontas"")Vanessa Williams",1,23,22,46,4,55,6/24/1995
+2,1/29/2022,We Don't Talk About Bruno,"Carolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast","We Don't Talk About BrunoCarolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast",1,4,3,4,2,50,1/8/2022
+10,1/29/2022,Surface Pressure,Jessica Darrow,Surface PressureJessica Darrow,1,4,3,14,10,54,1/8/2022
+31,5/14/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,4,3,56,31,85,4/23/1960
+35,7/20/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,4,3,35,35,67,6/29/1996
+68,5/15/1965,Super-cali-fragil-istic-expi-ali-docious,Julie Andrews-Dick Van Dyke,Super-cali-fragil-istic-expi-ali-dociousJulie Andrews-Dick Van Dyke,1,4,3,74,68,87,4/24/1965
+1,2/5/2022,We Don't Talk About Bruno,"Carolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast","We Don't Talk About BrunoCarolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast",1,5,4,2,1,50,1/8/2022
+9,2/5/2022,Surface Pressure,Jessica Darrow,Surface PressureJessica Darrow,1,5,4,10,9,54,1/8/2022
+30,5/21/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,5,4,31,30,85,4/23/1960
+31,7/27/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,5,4,35,31,67,6/29/1996
+66,5/22/1965,Super-cali-fragil-istic-expi-ali-docious,Julie Andrews-Dick Van Dyke,Super-cali-fragil-istic-expi-ali-dociousJulie Andrews-Dick Van Dyke,1,5,4,68,66,87,4/24/1965
+69,10/21/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,19,18,64,7,69,6/17/2006
+73,10/11/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,19,18,62,24,73,6/7/1997
+98,5/17/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,19,18,82,57,98,1/11/2014
+5,4/26/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,20,19,5,5,89,12/14/2013
+70,4/26/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,20,19,61,38,71,12/14/2013
+74,10/18/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,20,19,73,24,74,6/7/1997
+77,10/28/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,20,19,69,7,77,6/17/2006
+5,5/3/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,21,20,5,5,89,12/14/2013
+6,5/10/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,22,21,5,5,89,12/14/2013
+9,5/17/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,23,22,6,5,89,12/14/2013
+9,5/24/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,24,23,9,5,89,12/14/2013
+13,5/31/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,25,24,9,5,89,12/14/2013
+22,6/7/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,26,25,13,5,89,12/14/2013
+28,6/14/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,27,26,22,5,89,12/14/2013
+19,6/21/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,28,27,28,5,89,12/14/2013
+22,6/28/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,29,28,19,5,89,12/14/2013
+29,7/5/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,30,29,22,5,89,12/14/2013
+27,7/12/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,31,30,29,5,89,12/14/2013
+54,1/8/2022,Surface Pressure,Jessica Darrow,Surface PressureJessica Darrow,1,1,,,54,54,1/8/2022
+85,4/23/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,1,,,85,85,4/23/1960
+87,4/24/1965,Super-cali-fragil-istic-expi-ali-docious,Julie Andrews-Dick Van Dyke,Super-cali-fragil-istic-expi-ali-dociousJulie Andrews-Dick Van Dyke,1,1,,,87,87,4/24/1965
+71,4/30/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,2,1,85,71,85,4/23/1960
+76,5/1/1965,Super-cali-fragil-istic-expi-ali-docious,Julie Andrews-Dick Van Dyke,Super-cali-fragil-istic-expi-ali-dociousJulie Andrews-Dick Van Dyke,1,2,1,87,76,87,4/24/1965
+4,1/22/2022,We Don't Talk About Bruno,"Carolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast","We Don't Talk About BrunoCarolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast",1,3,2,5,4,50,1/8/2022
+14,1/22/2022,Surface Pressure,Jessica Darrow,Surface PressureJessica Darrow,1,3,2,14,14,54,1/8/2022
+82,9/28/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,14,13,63,30,82,6/29/1996
+93,10/5/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,15,14,82,30,93,6/29/1996
+50,1/8/2022,We Don't Talk About Bruno,"Carolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast","We Don't Talk About BrunoCarolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast",1,1,,,50,50,1/8/2022
+67,6/29/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,1,,,67,67,6/29/1996
+5,1/15/2022,We Don't Talk About Bruno,"Carolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast","We Don't Talk About BrunoCarolina Gaitan, Mauro Castillo, Adassa, Rhenzy Feliz, Diane Guerrero, Stephanie Beatriz & Encanto Cast",1,2,1,50,5,50,1/8/2022
+14,1/15/2022,Surface Pressure,Jessica Darrow,Surface PressureJessica Darrow,1,2,1,54,14,54,1/8/2022
+36,7/6/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,2,1,67,36,67,6/29/1996
+35,7/13/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,3,2,36,35,67,6/29/1996
+56,5/7/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,3,2,71,56,85,4/23/1960
+74,5/8/1965,Super-cali-fragil-istic-expi-ali-docious,Julie Andrews-Dick Van Dyke,Super-cali-fragil-istic-expi-ali-dociousJulie Andrews-Dick Van Dyke,1,3,2,76,74,87,4/24/1965
+17,3/15/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,14,13,18,17,89,12/14/2013
+51,9/16/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,14,13,54,7,59,6/17/2006
+52,9/6/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,14,13,44,24,56,6/7/1997
+61,3/15/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,14,13,61,38,64,12/14/2013
+61,4/12/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,14,13,65,57,87,1/11/2014
+9,3/22/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,15,14,17,9,89,12/14/2013
+53,9/13/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,15,14,52,24,56,6/7/1997
+60,9/23/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,15,14,51,7,60,6/17/2006
+61,3/22/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,15,14,61,38,64,12/14/2013
+63,4/19/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,15,14,61,57,87,1/11/2014
+14,3/29/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,16,15,9,9,89,12/14/2013
+58,9/30/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,16,15,60,7,60,6/17/2006
+61,9/20/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,16,15,53,24,61,6/7/1997
+71,3/29/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,16,15,61,38,71,12/14/2013
+75,4/26/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,16,15,63,57,87,1/11/2014
+5,4/5/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,17,16,14,5,89,12/14/2013
+52,4/5/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,17,16,71,38,71,12/14/2013
+60,10/7/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,17,16,58,7,60,6/17/2006
+68,9/27/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,17,16,61,24,68,6/7/1997
+76,5/3/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,17,16,75,57,87,1/11/2014
+5,4/12/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,18,17,5,5,89,12/14/2013
+57,4/12/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,18,17,52,38,71,12/14/2013
+62,10/4/1997,"Go The Distance (From ""Hercules"")",Michael Bolton,"Go The Distance (From ""Hercules"")Michael Bolton",1,18,17,68,24,68,6/7/1997
+64,10/14/2006,Life Is A Highway,Rascal Flatts,Life Is A HighwayRascal Flatts,1,18,17,60,7,64,6/17/2006
+82,5/10/2014,For The First Time In Forever,Kristen Bell & Idina Menzel,For The First Time In ForeverKristen Bell & Idina Menzel,1,18,17,76,57,87,1/11/2014
+5,4/19/2014,Let It Go,Idina Menzel,Let It GoIdina Menzel,1,19,18,5,5,89,12/14/2013
+61,4/19/2014,Let It Go,Demi Lovato,Let It GoDemi Lovato,1,19,18,57,38,71,12/14/2013
+36,8/17/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,8,7,33,30,67,6/29/1996
+57,6/11/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,8,7,47,30,85,4/23/1960
+39,8/24/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,9,8,36,30,67,6/29/1996
+59,6/18/1960,When You Wish Upon A Star,Dion & The Belmonts,When You Wish Upon A StarDion & The Belmonts,1,9,8,57,30,85,4/23/1960
+50,8/31/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,10,9,39,30,67,6/29/1996
+57,9/7/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,11,10,50,30,67,6/29/1996
+62,9/14/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,12,11,57,30,67,6/29/1996
+63,9/21/1996,"Someday (From ""The Hunchback Of Notre Dame"")",All-4-One,"Someday (From ""The Hunchback Of Notre Dame"")All-4-One",1,13,12,62,30,67,6/29/1996
