@@ -7,7 +7,7 @@ pd.options.display.max_colwidth = 150
 pd.set_option('display.max_columns', None)
 
 # Let's bring it in
-df = pd.read_csv('/Users/sm029588/Downloads/billboard.csv', usecols=['url', 'Chart Position', 'Song', 'Performer'])
+df = pd.read_csv('/Users/sm029588/Downloads/billboard-1.csv', usecols=['url', 'Chart Position', 'Song', 'Performer'])
 df = df.rename(columns={'Chart Position':'chart_position', 'Song':'song', 'Performer':'performer',})
 
 # Create Song identifier
