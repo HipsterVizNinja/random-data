@@ -2,8 +2,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import pandas as pd
 
-cid = 'YOUR SPOTIFY CLIENT ID'
-secret = 'YOUR SPOTIFY SECRET'
+cid = 'CLIENT_ID'
+secret = 'CLIENT_SECRET'
 
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 
@@ -15,8 +15,8 @@ pd.options.display.max_colwidth = 150
 pd.set_option('display.max_columns', None)
 
 # Function to extract MetaData from a playlist thats longer than 100 songs
-def get_playlist_tracks_more_than_100_songs(username, playlist_id):
-    results = sp.user_playlist_tracks(username,playlist_id)
+def get_playlist_tracks_more_than_100_songs(user, playlist_id):
+    results = sp.user_playlist_tracks(user,playlist_id)
     tracks = results['items']
     while results['next']:
         results = sp.next(results)
@@ -96,6 +96,6 @@ def get_playlist_tracks_more_than_100_songs(username, playlist_id):
 
     return features_df
 
-y=get_playlist_tracks_more_than_100_songs('SPOTIFY PLAYLIST OWNER USERNAME', 'SPOTIFY PLAYLIST ID')
-y.to_csv('OUTPUT PATH')
+y=get_playlist_tracks_more_than_100_songs('USER_ID', 'PLAYLIST_ID')
+y.to_csv('OUTPUT FILE')
 print(y)

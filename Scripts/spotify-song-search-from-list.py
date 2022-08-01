@@ -3,11 +3,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import csv
 
 # Connect to Spotify - Create a web app at https://developer.spotify.com/dashboard/. Then paste client id & secret below
-spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='PASTE YOUR ID',client_secret='PASTE YOUR SECRET'))
+spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='CLIENT_ID',client_secret='CLIENT_SECRET'))
 
 
 # Set up the output - just paste your file path in line 10. Change nothing else
-with open('PASTE YOUR OUTPUT FILEPATH', 'w', newline='') as csv_output:
+with open('OUTPATH FILE', 'w', newline='') as csv_output:
     csv_writer = csv.writer(csv_output, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     csv_writer.writerow(
         ["Performer", "Song", "Updated_Performer", "Updated_Song", "spotify_genre", "spotify_track_id", "spotify_track_album", "spotify_track_duration_ms",
@@ -15,16 +15,16 @@ with open('PASTE YOUR OUTPUT FILEPATH', 'w', newline='') as csv_output:
 
 # Paste the input file path with the following columns in this order: SongID, Song, Performer, Updated_Perfomer, Updated_Song
     i = 0
-    with open('PASTE YOUR INPUT FILEPATH') as csv_input:
+    with open('INPUT FILE') as csv_input:
         csv_reader = csv.DictReader(csv_input, delimiter=',')
         for song in csv_reader:
             i += 1
 
-            artist_name = song["Performer"]
-            track_name = song["Song"]
+            artist_name = song["Artist"]
+            track_name = song["Song_Name"]
 
-            updated_artist_name = song["Updated_Performer"]
-            updated_track_name = song["Updated_Song"]
+            updated_artist_name = song["Updated_Artist"]
+            updated_track_name = song["Updated_Song_Name"]
 
             # Apostraphes in the titles causes problems, so strip all that stuff out for the API call
             artist_name_cleaned = updated_artist_name.replace("'", "")
