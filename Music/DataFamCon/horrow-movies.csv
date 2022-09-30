@@ -1,0 +1,173 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,68ml3Lm4GNTlpNmmUJfvUu,Main Title (A Nightmare on Elm Street),Charles Bernstein,39,1984-11-16,False,0.172,0.4,2,-10.423,1,0.000421,0.0334,0.111,0.038,111.95,212667,4
+1,7swocJUCUWTCiRUAU9oerC,Halloween Theme - Main Title,John Carpenter,55,2010-09-17,False,0.636,0.466,4,-15.534,1,0.134,0.942,0.156,0.296,136.206,175334,4
+2,5DvzxB7yVZDtQktmF0jR3q,End Credits (Stephen King's IT),Richard Bellis,29,1990-11-18,False,0.449,0.401,7,-15.433,1,0.0329,2.16e-05,0.0878,0.84,180.918,61301,3
+3,1Vya0Wd5w4HGeEvCipqg74,Hellraiser,Christopher Young,37,2017-09-15,False,0.204,0.12,8,-18.706,1,0.885,0.916,0.0965,0.0384,88.786,102000,3
+4,5Qoim8DAoAmL8KxDti0ofr,"Child's Play Theme (From ""Child's Play"")",Retrospectre,0,2016-12-01,False,0.492,0.754,11,-6.114,0,0.0497,0.971,0.102,0.62,151.992,134130,4
+5,3lIniYPvbA0PEz5ggV9qbL,The Shining (1980)-Main Title Theme (Dies Irae),Chuck Cirino,0,2009-07-20,False,0.151,0.0848,5,-27.209,0,0.606,0.447,0.124,0.0725,65.514,212000,4
+6,0RK9q7CT0F8wRKVX4hlagk,Main Titles (Trick 'r Treat),Douglas Pipes,35,2007,False,0.277,0.244,8,-13.169,1,0.849,0.855,0.129,0.0671,75.703,140452,4
+7,0kwuKfWntoGh0EWyYb7Mpf,Stranger Things,Kyle Dixon & Michael Stein,64,2016-08-12,False,0.352,0.551,4,-16.545,0,0.779,0.902,0.167,0.103,168.022,67520,4
+8,2aAbjYIg2uHBm8sBFlGdBZ,Main Titles,Charlie Clouser,42,2007,False,0.446,0.412,1,-18.063,0,0.155,0.365,0.114,0.04,125.944,176587,4
+9,4HYqEiPvJagC95cq6y7kXt,Hello Zepp,Charlie Clouser,0,2004-10-05,False,0.496,0.723,9,-10.478,0,0.0838,0.201,0.306,0.331,137.176,180507,4
+10,2cji350vUbvxQ9QwyL5Nkp,Theme from the Walking Dead,Bear McCreary,45,2017-10-20,False,0.396,0.543,0,-14.288,0,0.553,0.745,0.266,0.145,91.33,49322,4
+11,4HMKTN4ZddvohBIqXlMQ4b,Crooked Man rhyme,joseph bishara,26,2016-06-03,False,0.669,0.139,0,-18.425,1,0.994,0.855,0.0595,0.526,110.003,52713,4
+12,0CLM9K4XOnfz0l6cBRgEnm,The Exorcist (Main Theme),The Intermezzo Orchestra,0,2015-01-23,False,0.527,0.468,9,-12.7,0,0.803,0.671,0.111,0.49,149.026,212454,3
+13,3o3wH4A1bBImXFJA64qXDN,"Candyman Theme (It Was Always You, Helen) [From ""Candyman""]",Philip Glass,0,2016-12-01,False,0.523,0.391,4,-16.502,1,0.98,0.774,0.106,0.765,184.186,190467,4
+14,3UJWTHeEruyf2rWAf518hf,Epilogue - The Pennywise Dance,Benjamin Wallfisch,33,2017-09-08,False,0.11,0.65,8,-7.854,0,0.851,0.969,0.327,0.298,83.185,36400,3
+15,7zW9lt4Se4e2kvqkNyXEz3,The Buddi Song (feat. Mark Hamill),Mark Hamill,30,2019-06-14,False,0.355,0.195,2,-13.916,1,0.684,0.0884,0.211,0.463,175.82,134880,4
+16,3kOLSO0EZvDZvJh1uX3J5X,Prelude,Bernard Herrmann,31,1997-01-01,False,0.568,0.331,11,-17.416,1,0.955,0.327,0.15,0.305,75.87,116333,4
+17,01YROQCnF1AQm7SCWJmD2o,This Is Halloween,The Citizens of Halloween,66,2006-01-01,False,0.569,0.508,7,-12.823,1,0.768,0.0,0.145,0.647,167.624,196560,4
+18,0H1dKI8EEOmFMqQiVPmDmU,Beetlejuice: Main Theme,Various Artists,25,2002,False,0.446,0.624,2,-10.411,0,0.088,3.4e-06,0.121,0.494,147.555,123902,4
+19,5syPnENi9HIKVpZ6gz96TN,Gremlins- Main Theme,Geek Music,28,2017-04-20,False,0.709,0.581,0,-12.35,0,0.121,0.407,0.168,0.784,120.011,192125,4
+20,0Uvm8ZEbzHSQaNqAReVgCB,"A Nightmare On Elm Street: One, Two, Freddy's Coming For You: Freddy's Theme - Version One",Geek Music,30,2019-08-21,False,0.239,0.293,1,-16.207,1,0.314,6.96e-05,0.107,0.0617,205.794,84175,5
+21,6AavL65Dp7d2PYeE10MH6s,Children Of The Corn (Theme),Themeomatic,0,2013-05-31,False,0.337,0.417,7,-9.527,1,0.104,2.77e-05,0.201,0.0984,124.952,90331,3
+22,1g10rYqM3jJQsWRnXCFcx7,Main Title And First Victim,John Williams,43,1975-01-01,False,0.164,0.0634,9,-24.086,1,0.847,0.949,0.0927,0.0363,168.214,206507,4
+23,1bBvch0ad2VfBuPUXJTV8I,Overlay of Evil / Main Title,Harry Manfredini,35,2017-10-15,False,0.311,0.181,11,-16.076,1,0.951,0.886,0.152,0.031,75.865,212973,4
+24,6IFwYmEuLwnKB4cINzVB1g,The Texas Chainsaw Massacre (Theme),Scary Music Masters,14,2017-04-05,False,0.168,0.545,6,-8.995,1,0.97,0.13,0.106,0.077,78.085,84080,4
+25,1B90LMgXuEfUlAVLotB1AK,People Are Strange,Echo & the Bunnymen,0,1987-06-15,False,0.517,0.451,4,-11.438,0,0.041,4.21e-05,0.0936,0.574,120.735,219067,4
+26,2IBfYLzPXSejSBYKwLW8sA,Lost in the Shadows (The Lost Boys),Lou Gramm,45,1987-06-15,False,0.638,0.938,7,-6.348,0,0.133,0.0,0.0722,0.652,163.785,393733,4
+27,2ArRALfrjJlrJFSux7WOEn,Tales from the Crypt,Danny Elfman,42,1992-10-09,False,0.532,0.408,3,-19.429,0,0.926,0.944,0.129,0.349,146.328,147707,4
+28,5uGk3v4dLFzUfPpKdW1vDz,Laurie's Theme,John Carpenter,40,2010-09-17,False,0.337,0.0337,11,-18.213,1,0.961,0.879,0.101,0.0569,162.457,124944,3
+29,36muSTyh3Nl22OudkdUN13,A Halloween Nightmare on Friday the 13th - Mash-Up,Alala,12,2019-09-30,False,0.439,0.578,2,-10.183,1,0.0533,0.914,0.178,0.0472,145.003,238034,5
+30,7eIcp5Uw6w6Qd1iCmcTECM,the Conjuring,joseph bishara,36,2013-07-16,False,0.233,0.0501,2,-15.489,1,0.901,0.969,0.0915,0.0241,85.786,59467,3
+31,1BvmsJsEzgWTsigenuv6sf,Main Title,Steve Jablonsky,25,2006-10-02,False,0.371,0.406,5,-16.1,0,0.0547,0.884,0.429,0.197,151.988,178893,4
+32,3hdquxjWlgbFvT4Uh7oIF5,The Cabin In The Woods,David Julyan,32,2012-01-01,False,0.155,0.026,8,-30.307,0,0.675,0.968,0.128,0.0365,62.543,117373,3
+33,165vtrm98otIg9Q36AfuDP,Annabelle Opening,joseph bishara,26,2014-09-30,False,0.121,0.0505,1,-20.626,0,0.751,0.896,0.109,0.0347,95.485,138213,3
+34,4GhXIbXSg8aeIgfhmqPDiO,"Call Me (From ""Bride of Chucky"")",The Academy Allstars,15,2013-08-18,False,0.591,0.591,2,-12.671,1,0.00436,0.000511,0.0501,0.473,140.002,205387,4
+35,6muw8FK4t6R6Lq463261xT,Main Title (Stephen King's IT),Richard Bellis,31,1990-11-18,False,0.148,0.149,5,-19.47,1,0.774,0.738,0.208,0.0412,71.781,113627,4
+36,2oZBR0rdkFfgkyQ4lVShfd,Every 27 Years,Benjamin Wallfisch,38,2017-09-08,False,0.258,0.0706,4,-23.893,1,0.962,0.781,0.107,0.0362,117.755,156853,5
+37,4h9okWJILdiPqMIJZz42fV,Main Title (Chucky Theme),Joseph Loduca,0,2013-10-01,False,0.536,0.266,10,-19.833,0,0.447,0.934,0.171,0.0379,117.887,143693,4
+38,2FTOAJ66CUtwqDvSlxKh8b,"The Babadook Theme (From ""The Babadook"")",Retrospectre,0,2016-12-01,False,0.494,0.224,0,-17.204,1,0.986,0.98,0.0941,0.035,117.016,170256,4
+39,2eaQTcHItO5XmjT3fx11eo,Jeepers Creepers,Paul Whiteman and His Swing Wing,0,2014-04-29,False,0.51,0.212,5,-21.283,1,0.989,0.04,0.182,0.761,212.471,138027,4
+40,5Lt7AF5YTiFgtZ7vaKQKh5,Young Frankenstein - Theme,Hanny Williams,9,2014-07-02,False,0.277,0.313,6,-14.376,1,0.183,0.863,0.121,0.13,80.036,157942,4
+41,1Y7I1ngUvhdkOG37pDIuMW,Title,Disasterpeace,23,2015-02-02,False,0.477,0.368,1,-12.142,1,0.454,0.946,0.082,0.0318,119.965,137000,4
+42,7AYSt5fVyzxJEY1aJVpJOt,Hello Eric,Charlie Clouser,38,2017-11-24,False,0.539,0.697,2,-11.326,0,0.0448,0.938,0.0908,0.109,137.011,190387,4
+43,7JDINBDWfl0GmL5Wnt66zy,Annabelle Closing,joseph bishara,26,2014-09-30,False,0.549,0.0216,8,-16.583,1,0.676,0.412,0.146,0.18,83.873,47640,4
+44,3AvFNwD581FKlhUIXtlXxs,Halloween Theme,Daniel Davies,0,2018-10-19,False,0.552,0.708,6,-11.165,0,0.0266,0.817,0.151,0.482,136.001,182375,4
+45,4u7Jd44ez4x00Wt1pLL4Uk,Halloween TV Commercial,Alan Howarth,32,2007-10-31,False,0.81,0.378,7,-14.672,1,0.602,1.05e-05,0.0762,0.976,128.602,95387,4
+46,3E9yU1CNEUhVxGXtgcQn4X,God Ends Here,Abel Korzeniowski,26,2018-08-31,False,0.169,0.359,1,-17.683,1,0.442,0.967,0.109,0.21,114.012,102625,4
+47,1LeI1sw3MBBdHeofBhmUbm,Jeepers Creepers,Paul Whiteman's Swing Wing,49,2016-03-28,False,0.668,0.75,5,-4.837,1,0.97,0.0,0.0649,0.907,107.357,139560,4
+48,2sPUOqaVgShpJLl52GOuvZ,The Final Zepp,Charlie Clouser,38,2010-11-02,False,0.292,0.479,7,-12.095,0,0.0232,0.917,0.107,0.398,138.835,110715,4
+49,2HWPfgdravK3Y0wM8iEPE9,The Silence of the Lambs (Main Movie Theme),Scary Movie Soundtrack Producers,10,2017-04-05,False,0.188,0.357,2,-7.138,0,0.165,0.0218,0.0943,0.0331,142.146,185440,4
+50,2QAA6IYSnSkjs8ReU6NO3N,Theme Music from Peppa Pig,the cast of Peppa Pig,0,2016-04-01,False,0.769,0.444,0,-16.296,1,0.918,0.01,0.0745,0.619,101.471,22027,4
+51,1UGa7FRgtQGyBQIVz26Nrz,The Simpsons Treehouse of Horror - Halloween Special Theme,Cinematixx,33,2014-01-27,False,0.601,0.522,6,-12.342,1,0.777,0.741,0.0735,0.482,178.957,45175,4
+52,3662ksoTSd52DjBVdcurcB,Prologue / Welcome to Creepshow (Main Title),John Harrison,31,2014-02-09,False,0.246,0.571,0,-14.169,1,0.835,0.88,0.109,0.159,137.563,247200,4
+53,2SFncU3ODgcuXL4V2HnRCQ,Psycho Theme,Luca Riviero,45,2014-01-27,False,0.0,0.016,9,-12.057,1,0.923,0.818,0.0782,0.0,0.0,61565,0
+54,6TGjPUIJuJYRnHc4tXiQDI,Tonight You Belong To Me,Patience & Prudence,49,2012-01-01,False,0.695,0.278,8,-9.081,1,0.938,0.0,0.0858,0.742,108.355,115333,4
+55,6w8V10yvjN3cU9iqJYwXqq,Reanimator Prologue & Main Title,Richard Band,28,2011-11-30,False,0.435,0.44,7,-16.111,1,0.544,0.923,0.109,0.0695,144.643,255160,4
+56,3FOhluDgeCoJDfc7vAISSo,Halloween II Theme,Alan Howarth,34,1981-10-31,False,0.619,0.634,1,-8.365,1,0.0422,0.852,0.161,0.163,137.645,270440,4
+57,60XntNvIgulrC44Anuegbf,Halloween Theme 2009,Tyler Bates,25,2009-08-25,False,0.507,0.957,4,-8.667,1,0.542,0.964,0.151,0.126,137.032,184107,5
+58,0nT8lBl2AN4EdvujYa5GmG,Insidious,joseph bishara,30,2011-10-11,False,0.159,0.106,11,-33.767,1,0.788,0.98,0.247,0.0331,77.288,130867,3
+59,7AUCyNjckeQBBnKol7MZ59,Pink Soldiers,23,49,2021-09-17,False,0.608,0.201,5,-17.267,0,0.995,0.0277,0.106,0.0439,120.016,38487,4
+60,37AeIi2vuBSWmJdG3zXn3k,Sinister,Christopher Young,24,2012-01-01,False,0.482,0.533,5,-9.209,1,0.72,0.913,0.46,0.157,127.983,264827,4
+61,1Yckaz86fM5kXmnTbPZOUR,Krampus Karol Of The Bells - Bonus Track,Brea Olinda High School Singers,32,2015-12-04,False,0.294,0.27,7,-12.78,1,0.945,0.0499,0.0678,0.305,87.355,181384,5
+62,4v4aAaLwJ0OChdE4E6zror,The Birthday Song And Willy’s Jingle,Émoi,30,2021-02-12,False,0.84,0.64,7,-7.402,1,0.677,0.0,0.341,0.852,123.903,54147,4
+63,7eedGooQrTT7E1fBNzLuAL,Willy's Wonderland,Émoi,32,2021-02-12,False,0.518,0.828,9,-5.371,1,0.327,0.00454,0.102,0.641,150.058,182400,4
+64,1arUbkguEp9QR7e1Z4CAtd,Friday The 13th Main Theme (feat. Jason Voorhees) - From Friday The 13th,Jason Voorhees,33,2009-02-13,False,0.233,0.317,1,-15.266,1,0.245,0.849,0.0952,0.0304,161.954,221947,3
+65,5jYaqMXbUXyUk9VQgOWR4K,Freddy's Coming For You,Steve Jablonsky,35,2010-04-27,False,0.203,0.107,2,-22.716,1,0.599,0.926,0.111,0.038,90.028,268827,4
+66,6pb1tr6FC1AKy3WGgOMn8V,Trouble In Woodsboro,Marco Beltrami,24,2022-01-07,False,0.352,0.5,4,-13.127,0,0.27,0.232,0.262,0.198,179.771,111893,4
+67,7C5EBBxsaeTmXc8zraF1lH,Halloween 4 Theme,Alan Howarth,31,1988-10-21,False,0.518,0.571,11,-16.668,0,0.000564,0.805,0.155,0.258,137.985,73445,4
+68,7C0PLU09wuagiab4Ks3Yih,Myer's House,John Carpenter,33,2010-09-17,False,0.4,0.156,11,-17.666,1,0.544,0.933,0.217,0.0372,136.219,335099,4
+69,4P2NsT9LN3m8QBH7f2xfaL,Return Of The Living Dead: Main Title,The Meridian Studio Ensemble,20,2015-12-18,False,0.559,0.517,5,-12.187,1,3.3e-05,0.876,0.384,0.0389,102.536,117224,4
+70,5WN7wRJjxXDvzOOGfiB0AF,"Puppet Master Theme (From ""Puppet Master"")",Retrospectre,0,2016-12-01,False,0.249,0.171,2,-10.379,1,0.749,0.931,0.123,0.132,139.266,74508,3
+71,1hHGUdFaiJHw9hVZGJWYO2,Midnight Rider,Allman Brothers Band,73,1970-09-18,False,0.585,0.532,7,-9.673,1,0.209,0.00797,0.227,0.68,94.461,180067,4
+72,3Wzaquo8NuDUzRbkAmiNLp,27 Years Later,Benjamin Wallfisch,29,2019-08-30,False,0.144,0.183,2,-14.827,0,0.959,0.862,0.0697,0.0361,82.41,125973,4
+73,6DqY0FggMLBOxNyyQuOhxi,Dirty Little Secret,Pennywise,29,2019-08-30,False,0.284,0.57,7,-9.874,1,0.509,0.0611,0.109,0.0531,69.021,80867,4
+74,24CpnVMo4ZFcvG9a3UsfAW,"American Horror Story Theme - From ""American Horror Story""",Charlie Clouser,36,2012-01-01,False,0.483,0.373,7,-16.941,1,0.713,0.95,0.0982,0.15,131.497,186388,4
+75,5anioWMbvf89mQQGSfxcoO,Resurrection,Christopher Young,25,2017-09-15,False,0.261,0.218,8,-14.74,0,0.76,0.735,0.0883,0.11,107.588,153533,3
+76,2PN0JeaGtkHrlcmwZFWzBM,Pet Sematary,Ramones,53,1989,False,0.468,0.825,2,-12.853,0,0.00159,0.000169,0.143,0.661,148.295,210333,4
+77,3Mg2OV6ZmVFfWSklyivgl5,Prologue (A Nightmare on Elm Street),Charles Bernstein,35,1984-11-16,False,0.0,0.0339,7,-15.431,1,0.457,0.997,0.103,0.0,0.0,34093,0
+78,4wfTfMSFYhwBrTTFouAfZC,Run Nancy,Charles Bernstein,32,1984-11-16,False,0.612,0.828,2,-11.127,1,0.0,0.881,0.0773,0.0321,120.207,68160,4
+79,599XfNCDgQgeRKEixOuOOp,Time To Float,Benjamin Wallfisch,22,2017-09-08,False,0.0807,0.291,7,-15.798,1,0.00677,0.236,0.0513,0.0371,60.11,184253,4
+80,2352sykEofTS8FkMu4mBXA,Terror in the Tub,Charles Bernstein,27,1984-11-16,False,0.381,0.49,9,-12.613,1,9.43e-05,0.966,0.0875,0.109,167.048,59333,4
+81,3FygG4OdxiUoB1G6h2rmTB,"Come Join The Clown, Eds",Benjamin Wallfisch,24,2017-09-08,False,0.388,0.225,1,-18.056,1,0.00111,0.925,0.0859,0.079,120.796,80240,4
+82,1FUnS3PEjgioUMBDU7SaBc,Willy Weasel,Émoi,12,2021-02-12,False,0.144,0.299,7,-13.805,1,0.558,0.906,0.363,0.0391,139.663,191306,4
+83,54by0m2G1A6u1R87HxzaFB,Soldiers,Kyle Dixon & Michael Stein,55,2017-10-20,False,0.597,0.317,8,-13.899,0,0.219,0.909,0.0994,0.0399,97.978,129539,4
+84,5hS5ZoJZucKVibcoPnOZY9,Ash's Theme,Joseph Loduca,18,2015-12-11,False,0.469,0.577,0,-8.894,1,0.154,0.901,0.0698,0.497,127.902,95000,4
+85,4drs4Khk9JMBtKI3Rxa2R1,House Of 1000 Corpses,Rob Zombie,49,2001-01-01,False,0.36,0.793,0,-9.169,1,0.0113,0.871,0.0915,0.168,112.91,566827,4
+86,64ByydKWf67CJfIoPc8uLJ,"Main Titles - From ""Beetlejuice"" Soundtrack",Danny Elfman,46,1988-01-01,False,0.539,0.795,9,-15.091,0,0.627,0.00165,0.144,0.167,148.256,148427,4
+87,7uj8ccbkhwS2CrlBA2MLuS,"Psycho Theme (Interlude) [From ""Psycho""]",Luca Riviero,29,2016-12-01,False,0.847,0.0147,11,-11.649,1,0.925,0.721,0.0758,0.0894,75.993,60714,4
+88,2hsemfO3u14du2Pwe7r38y,Child's Play Theme (1988),Bear McCreary,25,2019-06-14,False,0.506,0.388,11,-13.477,0,0.429,0.0383,0.0701,0.277,76.006,191053,4
+89,6zXTApuJ8pCIzu5PUh3cP7,The Shining Theme (Short),Retrospectre,27,2014-10-07,False,0.436,0.0841,5,-18.986,1,0.991,0.899,0.109,0.221,111.926,83058,4
+90,0yTwdEjWAoZMEKuhb8MxmC,The Shape Lurks,John Carpenter,32,2010-09-17,False,0.548,0.309,6,-14.672,1,0.0732,0.845,0.148,0.0385,87.369,94903,4
+91,4IUHikE6PYT8CYr3xrO4JZ,Amityville Horror Main Title,Lalo Schifrin,26,2001,False,0.289,0.307,9,-15.817,1,0.918,0.464,0.165,0.142,68.703,147293,4
+92,00IoKfUR5agGVXFrLXt2iy,Main Titles,Danny Elfman,31,1999-01-01,False,0.171,0.272,10,-17.385,1,0.916,0.65,0.348,0.0745,84.514,189507,4
+93,0cjnfKuYCSS61N9ZhBLdho,It Follows Theme,Retrospectre,23,2016-10-25,False,0.412,0.463,6,-12.571,0,0.879,0.95,0.0932,0.0561,121.225,100403,4
+94,37nGzzvzTcPfU38ck0mqP2,Killer Klown March,John Massari,27,2018-05-25,False,0.611,0.542,4,-10.348,0,0.00105,0.82,0.111,0.205,106.964,372827,4
+95,1p8vKskFfoJMoMeXvjrvsy,"It Theme (From ""Stephen King's It"")",Retrospectre,15,2016-10-25,False,0.469,0.495,8,-8.769,1,0.435,0.000375,0.0882,0.877,93.011,75000,3
+96,0mt7u22d1yfLR6zna34XYk,"Samara's Song (From ""the Ring"")",Retrospectre,29,2014-10-07,False,0.63,0.192,5,-14.102,1,0.98,0.896,0.108,0.49,144.904,50056,3
+97,7oIs6mfABQ5tWgQgelhwzC,the Insidious plane,joseph bishara,25,2011-10-11,False,0.196,0.214,5,-20.091,0,0.9,0.877,0.562,0.0378,64.448,105053,5
+98,5rlY2UHQTK7TRrK3QRLZo3,The Shape Returns,Daniel Davies,36,2018-10-19,False,0.308,0.377,10,-16.199,0,0.397,0.867,0.103,0.0367,135.976,212625,3
+99,0PVBrJugi6fiGJGAcBVD6c,Saw Theme (Hello Zepp),Myuu,22,2014-10-27,False,0.596,0.164,11,-17.337,1,0.985,0.94,0.0756,0.0398,130.018,210562,4
+100,5VorYbsKtiuG2XqindyF23,The Gremlin Rag - Full Version,Jerry Goldsmith,35,1984-06-08,False,0.733,0.642,0,-11.36,0,0.0651,0.37,0.0496,0.845,120.084,214425,4
+101,2Ip9mnCQI2eBMvY8gSFfY9,March Of The Dead,Joseph Loduca,25,1992-01-01,False,0.528,0.442,0,-16.42,0,0.551,0.683,0.111,0.0673,96.92,237106,3
+102,00De7REGurYkmfrKAh6CU1,Dracula- The Beginning,Wojciech Kilar,39,1992-10-30,False,0.218,0.104,11,-22.809,0,0.51,0.692,0.0688,0.0329,114.592,400867,3
+103,6v8fNI39QJpfFFDseheo1G,Carol Anne's Theme (End Title),Jerry Goldsmith,27,1982-06-04,False,0.198,0.221,10,-16.608,1,0.73,0.896,0.717,0.113,61.378,259307,4
+104,6lME0CcSj49T7LqeBOygXQ,Prelude,National Philharmonic Orchestra,31,2017-03-03,False,0.589,0.119,11,-25.069,1,0.947,0.924,0.11,0.416,130.238,131040,4
+105,5VMfa6KO8QOShgdZzPxvMv,Children of the Corn - From the Movie Children of the Corn,Blackround Philharmonic Orchestra,21,2015,False,0.227,0.386,6,-8.532,1,0.3,0.933,0.0913,0.0356,64.289,182227,4
+106,1wvjMCfpcuMeMMxt6zyXdo,"Phantasm Theme (From ""Phantasm"")",London Piano Players,28,2016-12-01,False,0.622,0.365,4,-18.51,0,0.984,0.901,0.102,0.807,96.295,107285,4
+107,5aCQjL2brbVUqhAf8ZoOhG,Chariots of Pumpkins,Alan Howarth,32,2007-10-31,False,0.672,0.869,0,-16.675,1,0.484,0.896,0.102,0.343,107.202,205507,4
+108,2n2Uugl3wR9s2pYjIKbbL9,"Ave Satani - From ""The Omen""",Jerry Goldsmith,36,1976,False,0.23,0.154,5,-15.714,0,0.602,0.0186,0.15,0.137,144.692,155760,1
+109,4yMKHB24u3zEPKK3wzW7IY,They Live,John Carpenter,21,2017-10-20,False,0.516,0.185,4,-11.079,0,0.293,0.882,0.11,0.411,65.289,187000,4
+110,3n9DS0UNnWK7a0KfoR6yFt,"Travel Music - From The ""Beetlejuice"" Soundtrack",Danny Elfman,31,1988-01-01,False,0.803,0.181,0,-21.851,1,0.92,0.907,0.535,0.93,126.589,67600,4
+111,55xly70WJY1cx5qsoogaqs,"Main Title/John Williams/Jaws - From The ""Jaws"" Soundtrack",John Williams,40,1975-01-01,False,0.342,0.15,9,-24.134,1,0.901,0.912,0.0845,0.057,121.279,140760,4
+112,4WnuHIJTLrFkAQdpryLDe7,Main Title (The Shining),Rachel Elkind,40,1980-05-23,False,0.197,0.0843,5,-22.946,1,0.969,0.944,0.106,0.0725,134.864,204147,4
+113,4XtCVq6gFdLYojrDU48XRg,"Main Title from ""The Shining"" - Variation",Chuck Cirino,18,2019-11-08,False,0.0613,0.167,8,-22.4,1,0.586,0.537,0.105,0.0708,61.643,209766,4
+114,08ujyWxwxPk5JzZ4ePz6OT,The Haunted House,John Carpenter,30,2010-09-17,False,0.424,0.213,4,-16.443,0,0.991,0.937,0.103,0.0338,79.1,212976,4
+115,4BfZixUMNsgFdqfLlQCt3s,Nosferatu Opening Titles,Silent Orchestra,21,2009-10-15,False,0.225,0.229,7,-17.42,1,0.892,0.672,0.233,0.0364,60.969,150000,4
+116,28S7XTSGUua0aBz8AvKn69,Sh*thole,Charlie Clouser,30,2017-11-24,True,0.55,0.749,2,-12.647,1,0.00288,0.893,0.104,0.509,137.027,188960,4
+117,1uZqF4GZWk6q09vP3HJm9M,Goosebumps Theme,Retrospectre,47,2014-10-07,False,0.712,0.636,1,-8.711,0,0.0197,0.931,0.0714,0.382,104.993,65348,4
+118,7EeZh8OUiicq4XdAeA8UZG,"Theme from Friday the 13th, Pt. 3",Harry Manfredini,30,2018-02-14,False,0.721,0.66,5,-14.265,1,0.561,0.669,0.189,0.437,126.071,267653,4
+119,3XQXkyVKptDevIo18u7fH2,It's Christmas Eve,Alex Khaskin,21,2016-01-15,False,0.549,0.355,7,-12.507,0,0.434,2.49e-06,0.0771,0.103,119.93,165320,3
+120,7jNplfAAeaKzn2Oczfhdqm,Main Title,Perry Botkin,5,2020-11-13,False,0.212,0.438,10,-9.842,0,0.0789,0.0688,0.0899,0.0379,60.873,119749,4
+121,4DpaxC6SobFOeuU8ZxFVrB,Tra La La,The Banana Splits,30,2008-01-01,False,0.531,0.958,1,-4.479,0,0.00085,2.54e-05,0.536,0.718,156.53,188933,4
+122,0KszqO9pbNKXJcIPk4n65Z,Hello Zepp + Overture,Charlie Clouser,45,2017-11-24,False,0.409,0.594,0,-10.239,1,0.108,0.349,0.167,0.232,137.175,232173,4
+123,7wnTaKKRZgNEpVPBFjofF1,"End Credits (From ""Phantasm II"")",San Fernando Symphonic Assembly,9,2016-10-28,False,0.381,0.649,1,-10.357,1,0.111,0.688,0.212,0.247,130.57,210651,4
+124,1u4tWYQoCzS48RLuGv5fCy,Prologue,Joseph Loduca,21,1992-01-01,False,0.18,0.228,4,-16.899,1,0.864,0.871,0.306,0.0432,169.784,179066,3
+125,0blveAryvPbFdXQRDqbeEa,The Evil Dead Theme - Introduction,Cinematixx,22,2014-01-27,False,0.566,0.0497,7,-21.114,1,0.938,0.676,0.104,0.296,123.805,51038,3
+126,1pcpaD7T0QKZksh8NGAYyh,The Star Spangled Banner (Main Title),Jerry Goldsmith,17,1982-06-04,False,0.322,0.19,10,-8.969,1,0.724,0.858,0.276,0.741,82.971,90240,4
+127,3C84jaEdYxiq8LC4jwYqj6,This Is The New S**t,Marilyn Manson,58,2003-01-01,True,0.566,0.869,2,-6.084,1,0.000916,0.00346,0.114,0.647,178.113,259667,4
+128,2D3zzPmQEn3JYKBRa7lYmU,The Chucky Song,Simon Stokes,17,2005-08-25,False,0.854,0.385,1,-19.802,1,0.034,0.0,0.261,0.658,120.244,241720,4
+129,5tz8iyPrTFRaFoCwC31Bbi,Clown - Mono; 1999 Remaster,The Hollies,19,1966-12-09,False,0.359,0.405,9,-8.262,0,0.0036,0.0,0.0832,0.386,98.61,135493,4
+130,5bx2nNV74XMkFuT0jig4FU,Wolf Suite Pt 1,Danny Elfman,26,2010-01-01,False,0.362,0.328,1,-12.051,1,0.616,0.873,0.618,0.0713,74.768,252307,4
+131,799XxzSlWNYkuWJxUbuGnF,Master of Puppets,Metallica,71,2022-07-01,False,0.538,0.868,4,-7.357,0,0.000599,0.482,0.199,0.556,105.164,514480,4
+132,648BMGrt98kUbLo24A4vgj,Hip To Be Square,Huey Lewis & The News,67,1986-01-01,False,0.668,0.779,9,-11.089,1,0.0025,0.000347,0.139,0.963,140.873,245467,4
+133,29d0nY7TzCoi22XBqDQkiP,Running Up That Hill (A Deal With God) - 2018 Remaster,Kate Bush,88,1985-09-16,False,0.625,0.533,10,-11.903,0,0.659,0.00266,0.0546,0.139,108.296,300840,4
+134,4g3A6Nj6otgKbikVXPROr2,End Credits,Graeme Revell,17,2020-10-23,False,0.131,0.16,4,-16.285,0,0.548,0.517,0.116,0.0398,94.153,324067,4
+135,3RruZ5Ah2uB0S2JDHF8vQA,Peppyrock,BTK,4,1999-10-19,False,0.614,0.974,0,-4.933,1,0.00452,0.0,0.383,0.922,124.258,290480,4
+136,0JzY0H2yyNWTEn5igQimL4,Mr. Sandman,Chordetts,44,1981-10-31,False,0.61,0.416,2,-11.228,1,0.884,0.0,0.0819,0.655,111.677,142227,4
+137,3FmOCXB7Gj9931lGFXpWHl,Main Title (Chucky Theme),Joseph Loduca,36,2013-10-01,False,0.538,0.265,10,-19.833,0,0.423,0.927,0.191,0.0377,117.882,143693,4
+138,0Qe5T8FIGg9FjSJNEEmqA2,"Helen's Theme from ""Candyman""",L'Orchestra Cinematique,20,2017-11-03,False,0.305,0.239,0,-16.89,0,0.992,0.916,0.148,0.268,167.281,120800,4
+139,0s25jhdrA8KtjFcAmVLTSZ,The Sweet,Robert Aiki Aubrey Lowe,31,2021-08-27,False,0.201,0.429,1,-18.066,1,0.971,0.973,0.0693,0.0344,176.628,136751,4
+140,6HFpIFBzBbi1jduZSL6H5O,Music Box,Robert Aiki Aubrey Lowe,28,2021-08-27,False,0.227,0.0786,1,-24.162,0,0.967,0.888,0.0661,0.0398,78.1,144830,3
+141,5CTkMaBHclVEgmkLLOAFbX,"Music for Strings, Percussion and Celesta, Sz. 106: 3. Adagio",Herbert von Karajan,0,1973-01-01,False,0.199,0.0347,5,-28.944,0,0.833,0.574,0.23,0.0369,79.5,492000,4
+142,1YmTsBtaz3K6sazwsXkYWW,"Midnight, The Stars and You",Ray Noble & His Orchestra,48,2013-08-01,False,0.44,0.0966,2,-21.739,0,0.97,0.375,0.122,0.473,136.701,208400,4
+143,3h4EEQtx8XP8B2rdDAPvS3,Slender Man,Brandon Campbell,23,2018-08-10,False,0.22,0.563,6,-10.738,1,0.0589,0.886,0.109,0.0649,128.572,168813,4
+144,0nUMdNqSy4Xug8v5904iDz,Main Title,Jonathan Elias,6,1994-01-01,False,0.13,0.339,9,-12.565,1,0.0929,0.458,0.31,0.0806,156.328,150840,3
+145,0UDxUeFMplfJq5B3HrhL4L,Here Comes the Boogey Man,The BBC Dance Orchestra,21,2012-10-24,False,0.82,0.134,6,-26.736,1,0.853,1.74e-05,0.161,0.761,117.787,173893,4
+146,3SgGOxvBLppoD73D7pbCEZ,Jump Rope - A Nightmare On Elm Street,Steve Jablonsky,1,2010-04-27,False,0.728,0.0209,4,-23.831,1,0.937,0.0,0.0853,0.423,125.853,20520,4
+147,7dblNGnRXEBrVJunazs2U5,All I Have to Do Is Dream,The Everly Brothers,67,1964-08-01,False,0.534,0.462,4,-8.172,1,0.839,0.0,0.129,0.534,96.195,143333,4
+148,3zmnki9TP0CNRI0qHgCq8L,Main Theme,Jerry Lambert,4,2022-02-25,False,0.187,0.302,1,-11.077,1,0.39,0.668,0.356,0.0378,110.769,439849,3
+149,6MQpTK2dHSQwYfKGA3OLDP,End Credits,Harry Sukman,6,1979-11-17,False,0.56,0.398,3,-12.659,1,0.88,0.811,0.105,0.366,119.652,60347,4
+150,3rifZ7VFpt5pfayWknwfY6,Main Title (Salem's Lot) - Feature Version,Harry Sukman,17,1979-11-17,False,0.45,0.32,6,-14.133,1,0.862,0.506,0.16,0.0462,119.849,132467,4
+151,48Y7DqHug0lorD1MHDzEOO,"Viva Las Vegas - From ""Army of the Dead"" Soundtrack",Allison Crowe,34,2021-05-21,False,0.587,0.476,0,-10.52,0,0.169,0.0,0.246,0.243,120.087,355819,4
+152,4Rhue1CTPr3n1P3Zs0jPwU,Main Title,Jerry Goldsmith,37,2007-01-01,False,0.172,0.0609,5,-21.701,1,0.345,0.962,0.113,0.0335,117.835,252187,4
+153,0sgMtYd6A5McWfbeEsrqqR,The Leatherface Theme (Original Motion Picture Soundtrack),Bullet Shields,19,2022-04-04,False,0.58,0.788,0,-7.997,1,0.075,0.853,0.0989,0.279,140.004,120000,4
+154,3CU5dV3NWYbHqhoO69wpg3,Night of the Massacre,Jerry Lambert,6,2022-02-25,False,0.363,0.35,0,-3.879,1,0.82,0.88,0.118,0.0361,83.602,433084,4
+155,4wlexl1faFQejPRXESxtum,Leatherface Waltz,Jerry Lambert,7,2022-02-25,False,0.328,0.583,7,-2.555,0,0.563,0.945,0.617,0.517,63.801,253324,3
+156,4xv9B6BJJvXEnZNNmU6UhF,Saw Chant,Jerry Lambert,2,2022-02-25,False,0.309,0.969,10,-2.159,0,0.00098,0.918,0.232,0.0329,163.612,47032,4
+157,0iLFUBs7HyMolbdHvYY5lz,"Main Theme (From ""A Nightmare On Elm Street"")",Mark Ayres,26,2009-06-02,False,0.218,0.26,2,-12.986,1,0.143,0.135,0.0832,0.034,104.786,253240,4
+158,07UGEFBqFiD8T1ymHoF8vd,The Shape Stalks,John Carpenter,31,2010-09-17,False,0.422,0.393,6,-10.38,1,0.0893,0.961,0.0891,0.038,87.495,189597,4
+159,3IXUYVAWAc7gTkivrc4QTk,Friday The 13th Part VII - The New Blood: Main Theme,Fred Mollin,16,2018-10-19,False,0.347,0.393,9,-15.287,0,0.261,0.81,0.279,0.109,117.693,223333,4
+160,4sAyO9oPsG1bmjt6EF2jHT,The Shape Stalks Again,John Carpenter,22,1981-10-31,False,0.309,0.597,4,-10.852,0,0.153,0.758,0.0587,0.302,86.539,184560,4
+161,7EBGziu9VLqfJIqsTCdVIR,The Shape Burns,Daniel Davies,34,2018-10-19,False,0.417,0.441,4,-11.238,1,0.00215,0.945,0.0615,0.14,135.939,91250,4
+162,2WJUlRTyJLPsfjnvVshGkd,Theme from Child's Play (feat. Mark Hamill),Mark Hamill,29,2019-06-14,False,0.272,0.318,5,-13.749,0,0.311,0.395,0.125,0.0468,81.775,265453,4
+163,1Kv5H3hca3RZztmtdyxz2C,Stonehenge,Alan Howarth,12,2007-10-31,False,0.132,0.334,3,-14.422,1,0.135,0.00487,0.106,0.0286,68.567,209093,4
+164,585FJfu9fchajfL2yzrjp8,The Overlook,The Newton Brothers,24,2019-11-01,False,0.199,0.322,1,-17.588,1,0.229,0.858,0.12,0.0668,101.901,80253,4
+165,2kdvvPKkK7HHKmaUrjRYFV,The Exorcist Theme (Tubular Bells) [Short],Retrospectre,31,2014-10-07,False,0.509,0.527,7,-14.406,1,0.562,0.232,0.0704,0.31,149.01,80537,1
+166,00oHVAstyM08Q82e2XYvkS,Main Theme: The Addams Family - Vocal Version,Vic Mizzy and His Orchestra and Chorus,47,1991-11-12,False,0.791,0.558,5,-9.122,1,0.78,0.0,0.292,0.879,120.573,53093,4
+167,0LIc6Ktjr7XnwnRylXWSIM,The Murder,Bernard Herrmann,27,1997-01-01,False,0.68,0.08,11,-13.763,1,0.942,0.645,0.0749,0.0663,119.647,63133,4
+168,6bKvNCfoXzvsZnNqhDwmVN,13 Nights of Halloween,Elvira,29,2013,False,0.678,0.968,9,-4.456,0,0.119,0.0,0.124,0.678,122.999,236101,4
+169,5smBFUKNpCVbrMA19QjMX6,Theme From Killer Klowns From Outer Space - 2018 Recording,The Dickies,37,2018-05-25,False,0.489,0.873,2,-8.034,0,0.0225,1.32e-06,0.261,0.205,135.049,286893,4
+170,7hZyW1KnrKyVOdJy19CTBQ,H3 - Season of The Witch - Re-Mastered,Alan Howarth,28,2007-10-31,False,0.249,0.0716,9,-25.956,1,0.805,0.866,0.249,0.0335,162.662,171320,3
+171,4Nu5AWAXN177yH0Pfp4GV6,Chainsaw,Steve Jablonsky,13,2006-10-02,False,0.0605,0.208,0,-17.925,1,0.136,0.686,0.106,0.0798,205.071,105880,4
