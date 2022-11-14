@@ -3,7 +3,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import csv
 
 # Connect to Spotify - Create a web app at https://developer.spotify.com/dashboard/. Then paste client id & secret below
-spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='b8d3901151d34489a160e3cf0ab1fa94',client_secret='a9600e00b0d24812ac8eb1e610ca5021'))
+spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id='CLIENT ID',client_secret='CLIENT SECRET'))
 
 
 # Set up the output - just paste your file path in line 10. Change nothing else
