@@ -25,12 +25,20 @@ headers = {
 BASE_URL = 'https://api.spotify.com/v1/'
 
 # Track ID from the URI
-track_id = 'PASTE TRACK ID'
+track_id = 'PASTE TRACK ID' #We just need 1 song and it doesn't matter what song - you can get the id by right-clicking on a song, 
+                            #selecting share and copy song link. 
+                            #paste it here -> https://open.spotify.com/track/4f3NHOxgC8Bg21IJBg4cZ3?si=7c7fbb58e88541d5
+                            #the id is the alpha-numeric string between the last / and the first ?
+                            #grab that id string and paste in line 28
 
 # actual GET request with proper header
 r = requests.get(BASE_URL + 'audio-features/' + track_id, headers=headers)
 
-artist_id = 'PASTE ARTIST ID'
+artist_id = 'PASTE ARTIST ID' #We just need 1 song and it doesn't matter what song - you can get the id by right-clicking on a song, 
+                              #selecting share and copy song link. 
+                              #paste it here -> https://open.spotify.com/artist/0CbeG1224FS58EUx4tPevZ?si=i5GB50BfQm2D1VEB-M7uuA
+                              #the id is the alpha-numeric string between the last / and the first ?
+                              #grab that id string and paste in line 37
 
 # pull all artists albums
 r = requests.get(BASE_URL + 'artists/' + artist_id + '/albums', 
@@ -89,7 +97,14 @@ df2 = pd.DataFrame(data)
 print(df2.head)
 
 
-df2.to_csv(r'PASTE FILE PATH WITH .CSV')
+df2.to_csv(r'PASTE FILE PATH AS .CSV')  #This needs to be the full C:\\ path to a file, the file does NOT need to exist. 
+                                        #for example, if you want to save this file to your desktop, got to "home' in windows explorer
+                                        #hold SHIFT and right click on the desktop folder and select "Copy as Path"
+                                        #paste that path here then add a \ and name your file **DO NOT USE SPACES, USE - or _ in place of spaces**
+                                        #and be sure to add .csv to the end
+                                        #remember in line 46, you can specifiy what release type you will get. I like to add that to my file names
+                                        #\file-name-album or \file-name-single etc
+                                        #if you change line 46 and forget to change your filename, it will overwrite your file WITHOUT WARNING
 
 df2.shape
 
