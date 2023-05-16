@@ -96,6 +96,6 @@ def get_playlist_tracks_more_than_100_songs(user, playlist_id):
 
     return features_df
 
-y=get_playlist_tracks_more_than_100_songs('USER_ID', 'PLAYLIST_ID')
-y.to_csv('OUTPUT FILE')
+y=get_playlist_tracks_more_than_100_songs('USERID', 'PLAYLIST_URI')
+y.to_csv('FILE')
 print(y)
