@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,2qTZMq2MUC20HFGQghNpVF,No Shelter,Rage Against The Machine,52,1998-02-12,True,0.598,0.837,7,-8.852,1,0.0108,0.000228,0.136,0.467,99.42,243760,4
+1,0MOi5oWv5Y0Ea9p7BdXepF,Radar Love,White Lion,52,1989,False,0.232,0.775,4,-10.923,1,0.00028,0.0225,0.0775,0.59,206.07,359960,4
+2,6tOCLBvoCHyJmjW6tqp3qJ,Straight Line,Clear Conscience,43,2007-09-12,False,0.86,0.651,1,-5.847,0,0.15,2.99e-05,0.154,0.512,80.406,180987,4
+3,1abndWhWocqvTOR6H6eJxK,"Layla - Acoustic; Live at MTV Unplugged, Bray Film Studios, Windsor, England, UK, 1/16/1992; 2015 Remaster",Eric Clapton,0,2015-04-28,False,0.599,0.465,2,-10.559,0,0.33,0.000485,0.681,0.68,94.827,268280,4
+4,5xMQmh79osLvpqreaKroHO,Axl Rose,SR-71,35,2010-11-21,False,0.526,0.812,8,-4.526,1,0.000401,1.77e-06,0.377,0.635,136.961,191331,4
+5,2ACOWPLUe4A4KuQ5ioD2od,That's My Girl,Fifth Harmony,76,2016-05-27,False,0.596,0.851,5,-4.245,0,0.0358,3.19e-05,0.365,0.612,202.049,204013,4
+6,0oPcNTwHKpYnDZfkcdOsiA,Welcome To The Fold,Filter,52,1999-08-24,False,0.503,0.896,7,-6.228,1,2.37e-05,0.0355,0.319,0.209,93.953,460400,4
+7,4uWLJ3SVfU4KzbRTM0PDsw,Long Cool Woman,Vince Neil,22,2010-01-01,False,0.464,0.981,2,-3.988,1,6.46e-05,0.0354,0.346,0.463,140.026,206880,4
+8,49eLeZZjHUZleMjwtHAVhb,The Drugs,The Holdup,56,2011-04-26,True,0.726,0.811,11,-4.026,0,0.0341,0.00542,0.566,0.964,155.013,262339,4
+9,6IRkoSxV526waQU14HQ3cE,First We Take Manhattan - Digitally Remastered,Stevie Ray Vaughan,53,1987,False,0.756,0.647,7,-9.219,0,0.111,0.00491,0.077,0.827,130.319,226947,4
+10,3gZwj5vkxudMe01KgaehDP,Stop Drop and Roll,Foxboro Hottubs,39,2008-02-05,False,0.256,0.981,7,-3.702,1,0.000128,0.0112,0.565,0.451,144.032,143107,4
+11,0ErK6K0kYr0Ow2RkPMhmMs,Shout Out to My Ex,Little Mix,77,2016-11-18,False,0.773,0.747,5,-4.061,1,0.0242,8.99e-06,0.109,0.801,126.014,246240,4
+12,4P5ZrmZZdwvTpFT9GIFVFI,Cars,Fear Factory,43,2009-09-01,False,0.683,0.88,2,-4.88,1,0.00744,1.29e-06,0.129,0.737,128.016,207987,4
+13,0Cn4x7JH0p50y3wn5u8GPU,You Really Got Me,Metallica,46,2010-01-01,False,0.398,0.941,0,-5.341,1,0.000167,0.0,0.628,0.888,154.605,135240,4
+14,38kPL6TNtdNp871jAsVW1r,Give Thanks (feat. Stick Figure),Stick Figure,63,2017-03-17,False,0.746,0.675,0,-7.891,1,0.583,0.000155,0.107,0.652,139.979,216477,4
+15,5d4s9ZtVK61HcaxLAFoOpa,Horse To The Water,George Harrison,38,2001-11-19,False,0.631,0.911,7,-5.453,0,0.1,0.000402,0.118,0.662,119.545,301840,4
+16,0zH2JOtW6cwugaVEWaGjmU,Roshambo,The Network,43,2004-11-09,False,0.395,0.965,7,-3.621,1,0.000293,0.00229,0.494,0.637,173.979,168107,4
+17,5r0cOO77xkM5jjHk67Z2Lt,"Baby, I'm Jealous (feat. Doja Cat)",Doja Cat,64,2021-05-07,False,0.737,0.867,11,-2.259,0,0.0398,0.0,0.32,0.506,98.05,175873,4
+18,6x3MweSQv5X7EP7tjsd7yB,"Another Brick In The Wall (Part 2) (feat. Layne Staley, Tom Morello, Stephen Perkins, Martyn LeNoble & Matt Serletic)",Matt Serletic,40,1998-12-03,False,0.574,0.924,7,-6.541,1,0.00399,0.0906,0.0658,0.671,104.058,258267,4
+19,2ogWo12rGJN4OHFUKtbqFa,Rockin' In The Free World,John C. Cale and Nico Nico,39,2016-01-04,False,0.514,0.652,4,-8.711,0,0.000707,0.00223,0.106,0.601,140.082,227480,4
+20,2K4XqtDnBuwpFUR16oi7ya,Feel It,Passafire,22,2006-01-01,False,0.74,0.688,5,-7.969,0,0.0342,0.000125,0.112,0.663,135.959,243480,4
+21,3I3g0KOBdQpCE7aviLoFfH,New Country,Jean-Luc Ponty,41,1976,False,0.599,0.765,1,-13.317,0,0.135,0.92,0.097,0.972,129.924,188640,4
+22,6dXizHF3KbmdvOgvMAhnQC,Underclass Hero,Sum 41,64,2007-01-01,False,0.347,0.988,9,-2.979,1,0.000708,0.0,0.101,0.765,191.933,194133,4
+23,1byScELwcJffsdL5QWa6Yk,Why,Sabrina Carpenter,62,2017-07-07,False,0.633,0.557,11,-4.917,0,0.169,0.0,0.0671,0.623,89.672,171096,4
+24,60hCv85hFS5EwsZGNdxDCg,Get Outta My Life - Album Version (Edited),Rebel Meets Rebel,34,2006-05-02,False,0.349,0.985,1,-1.577,1,0.00663,5.37e-05,0.282,0.412,100.329,211973,4
+25,4pEXCxPawUuiA6Ouxi3nD8,One Last Soul,Black Country Communion,45,2010-09-21,False,0.552,0.855,2,-7.622,1,0.00198,0.7,0.0498,0.769,142.024,232480,4
+26,68tirm3ZAbfnDNHV7RElGZ,Are You That Somebody,Unified Highway,47,2020-04-24,False,0.769,0.44,9,-6.464,0,0.132,0.0,0.507,0.713,136.243,207305,4
+27,6g5x0JGaOiDrUMYWul6gLs,Cheer Down - 2009 Mix,George Harrison,3,2009-01-01,False,0.619,0.727,2,-5.788,1,0.131,0.00671,0.235,0.564,115.446,246133,4
+28,3W6GDvADIRf0MxznzILm8W,New World,Tom DeLonge,40,2015-04-21,False,0.366,0.978,2,-4.161,1,0.00213,0.0,0.153,0.445,190.122,214287,4
+29,4nyY8oVjbX2d4qzlpiVM5n,Ruin My Life,Zara Larsson,66,2021-03-05,True,0.608,0.71,11,-4.998,1,0.43,0.0,0.0903,0.613,124.985,190051,4

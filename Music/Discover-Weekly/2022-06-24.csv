@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3d0EH8kmmejGmBtvQHYgU6,Choctaw Bingo,James McMurtry,45,2002,False,0.311,0.777,11,-7.876,0,0.0526,0.0202,0.0955,0.711,200.508,513440,4
+1,2PUEqezcStbwVTOqosTKjW,Castaway (feat. Rome & Dirty Heads),Dirty Heads,50,2015-04-04,False,0.622,0.728,5,-4.88,1,0.0571,0.0,0.184,0.77,80.003,190600,4
+2,5eROEyEjyDkgExBkaEOZLY,Brainwash,Wookiefoot,37,2012-10-16,False,0.752,0.851,4,-6.184,1,0.0318,0.000281,0.613,0.826,94.986,230019,4
+3,22vCe1S2sOwTASSMnjydOn,Muse,Citizen Cope,33,2015-10-23,False,0.327,0.861,7,-4.698,1,0.195,2.88e-05,0.0917,0.514,177.024,219067,4
+4,6rkHkMqyOVj1b3j1nu34xY,High Times,Lukas Nelson and Promise of the Real,41,2017-08-25,False,0.635,0.7,2,-5.09,1,0.0369,0.0,0.113,0.792,144.159,209747,4
+5,6VdGDiy7V3j9LqfC5E1Uvi,Son's Gonna Rise (feat. Carlos Santana),Carlos Santana,53,2004,False,0.642,0.769,7,-3.791,1,0.193,0.0,0.0819,0.541,79.47,244120,4
+6,2XyVlq12Nc38bJA22014Ts,Jamflowman,Twiddle,50,2007-01-31,False,0.465,0.768,6,-7.939,0,0.198,0.00271,0.101,0.654,112.916,478360,4
+7,29KLzcHid0QnNVBw7x9rbi,Year Zero,Moon Taxi,37,2015-10-02,False,0.402,0.875,10,-3.328,1,0.0185,0.0046,0.114,0.47,156.25,218760,4
+8,1LnNC5LlJfLWISdy8tnZw3,Skinned,Blind Melon,52,1995-01-01,False,0.633,0.623,7,-7.895,1,0.597,0.0,0.0428,0.924,140.518,117973,4
+9,5kNG6ElHeZvaJ4MQdLQ0Fd,Forever Lost,Lafa Taylor,0,2014-06-10,False,0.807,0.741,2,-5.599,1,0.0136,0.0,0.0929,0.885,97.989,268386,4
+10,6rF4s1wwsOa2EZF5MF6D3B,Oh No,Goodbye June,53,2017-05-15,False,0.258,0.978,8,-4.208,1,0.000519,0.000363,0.218,0.28,132.862,221470,4
+11,6aSIJ3DHO1NpseR7yH89vT,The Lion The Beast The Beat,Grace Potter & The Nocturnals,40,2012-01-01,False,0.289,0.843,11,-8.108,0,0.000151,0.0452,0.421,0.28,135.028,326240,4
+12,49sLiyg8IcSEmtucGbSVdO,All in Stride,Passafire,46,2018-04-06,True,0.705,0.824,1,-4.58,0,0.00469,4.91e-06,0.128,0.85,76.01,248253,4
+13,4cgDk0IjwdG8w1ArIaqdpq,Outta My Mind,The Arcs,44,2015-08-28,False,0.519,0.737,11,-6.451,1,0.00936,7.76e-05,0.378,0.763,131.042,214693,4
+14,5zrZCsmEfd6wJrgGk80nWj,Man in the Box,Metalachi,26,2012-04-13,False,0.584,0.511,9,-7.277,0,0.0207,2.1e-05,0.0844,0.771,95.077,262520,4
+15,2TTTHdCKIWfNrLOjKhIkuV,Cleveland Rocks,The Presidents Of The United States Of America,33,1998,False,0.438,0.816,1,-7.573,1,0.0171,0.0,0.382,0.644,148.244,153093,4
+16,5MOKQJ6HMqpEoD04eqVFyB,Ruby Cumulous,Rx Bandits,39,2014-07-22,False,0.475,0.862,8,-6.955,0,0.00323,0.000795,0.112,0.704,180.257,291148,4
+17,7xOuK34nWUV6KBTXBI5gW7,California,The Delta Saints,43,2017-04-28,False,0.585,0.741,4,-6.954,0,0.00381,8.96e-06,0.3,0.676,124.678,222653,4
+18,1zoXZMg1LxCBqtodFAT1Nx,Tell Me What You Want From Me,Good Old War,36,2015-06-29,False,0.599,0.945,11,-6.293,0,0.0216,0.0,0.0994,0.515,100.006,230067,4
+19,0zQZ7GTWXrquCU0boRPQ2e,Indiana Line,Chicago Farmer,31,2020-02-07,False,0.609,0.583,8,-8.869,0,0.13,3.22e-05,0.216,0.502,92.969,231293,4
+20,1ecmyd0EYLAeY5IMPJjGde,7: 30 Am,Slothrust,43,2013,False,0.211,0.862,7,-7.935,1,7.92e-05,0.000536,0.0924,0.148,204.903,163867,4
+21,3cBza6toZzNnTbX7MoJQgA,The Deal,Charlie Patton's War,23,2015-07-24,False,0.357,0.832,8,-5.369,0,0.000231,0.000111,0.103,0.702,106.353,249323,4
+22,2JRkfugsvOPvTLmd0dVppc,It Was A Sin,The Revivalists,59,2015-07-15,False,0.428,0.603,7,-6.972,1,0.362,0.000231,0.151,0.129,155.927,294640,4
+23,0r1KWPxT8hihSCzFwHYXmo,If U C My Enemies,Rubblebucket,35,2017-01-20,False,0.531,0.937,2,-3.976,1,0.0113,0.828,0.109,0.74,90.963,228307,4
+24,6PtIXICwmoxCgLjw2zApDs,"Young Lady, You're Scaring Me",Ron Gallo,62,2017-02-03,False,0.371,0.921,9,-5.533,1,0.0113,2.7e-05,0.43,0.508,109.675,220538,4
+25,4LBbTWlrKfL92gysNnrieH,On My Way,Billy Boy On Poison,23,2010-03-02,True,0.622,0.771,9,-3.165,1,0.153,0.0,0.0467,0.573,142.009,164387,4
+26,1wjyuzlv5p3rsfHE5CN2WO,Bang Your Drum,Dead Man Fall,34,2014-05-30,False,0.726,0.727,2,-7.878,1,0.0865,0.00625,0.104,0.537,117.998,271301,4
+27,4EOeE4F9gyirz2No9aG6v4,Second Song (Feat. Keller Williams),Assembly of Dust,35,2009-07-21,False,0.79,0.599,1,-8.998,1,0.354,0.0268,0.129,0.664,103.03,251680,4
+28,5m2GbLVzyHEItJkKWpjdje,Bit By Bit,Mother Mother,54,2012-09-18,False,0.633,0.744,10,-4.616,1,0.0628,3.07e-06,0.0613,0.515,89.998,198333,4
+29,0tZHCFWiXuZZdo61XPMz22,Eye of a Hurricane,Kyle Craft,36,2016-04-29,False,0.402,0.852,0,-3.753,1,0.114,0.000648,0.274,0.385,159.374,270813,4

@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3cQmJcjPjSMbDhiZ7XvYII,Shake It Little Tina,Low Cut Connie,37,2015-04-15,False,0.736,0.763,2,-3.456,1,0.195,3.83e-05,0.251,0.969,121.967,202928,4
+1,4ypcAC6sciwGcnZo5vOZmG,St. Louis,Moon Hooch,35,2014-09-16,False,0.499,0.551,10,-9.95,0,0.00273,0.064,0.27,0.301,115.057,241280,4
+2,5j6DzUeiRFiVFcH6xZV2br,Sally Bangs,J. Roddy Walston & The Business,33,2007,False,0.557,0.93,0,-3.951,1,0.281,0.0,0.0769,0.736,86.239,196547,4
+3,6Zuah3WU2iuVZjuRTH7lk5,Strongest of Our Kind,G. Love & Special Sauce,36,2020-02-28,True,0.654,0.865,0,-4.978,1,0.0584,0.0,0.195,0.766,87.949,238733,4
+4,1yaW0E2xUegutCOM316pup,Woke Up This Morning,A3,26,1997-11-11,False,0.609,0.763,0,-9.955,0,0.147,0.00553,0.084,0.768,176.981,316600,4
+5,56SkdBKyR2zOkjk6wVFI9s,Possum Kingdom,Toadies,66,1994-01-01,False,0.643,0.726,9,-9.314,1,0.000772,0.00969,0.07,0.925,100.687,308333,4
+6,1LmeWOmDMCEFFkvwMzl8sl,Cash Machine,Handmade Moments,34,2019-11-01,False,0.875,0.439,11,-7.097,0,0.503,1.12e-05,0.174,0.741,139.972,196672,4
+7,0saU2rG6haKcvPtn1rFw6p,Knockin',Night Spins,0,2018-06-08,False,0.565,0.606,9,-4.893,1,0.142,0.000113,0.1,0.607,169.942,198720,4
+8,6hnsgL0pFkkMR5GKYWXCA6,Aberdeen,Kenny Wayne Shepherd,45,1995-09-15,False,0.341,0.917,10,-9.897,1,0.00223,0.138,0.438,0.358,124.497,255907,4
+9,4I7KvFBSALtXeZ1RiIIjkh,Tops of the Trees,The Brothers Comatose,0,2016-03-04,True,0.422,0.456,2,-8.007,1,0.128,0.0,0.376,0.522,181.725,256680,4
+10,35UT9ZB7UROy8W8JvMmzMD,My Shit's Fucked Up,Warren Zevon,50,2000-01-25,True,0.755,0.286,0,-14.017,1,0.77,0.00308,0.113,0.591,71.456,165827,4
+11,1XhzO8cuPaqsqUKw92Wbwc,Home,Marc Broussard,47,2004-08-03,False,0.628,0.804,11,-5.55,0,0.0918,1.17e-06,0.393,0.795,82.288,303027,4
+12,37Vj4sIdK9sYMOmnpk7eod,Breakthrough #Dtownhump,RC & The Gritz,29,2018-04-24,True,0.705,0.641,0,-5.226,1,0.267,0.000243,0.273,0.577,92.132,221756,4
+13,6eWaymJ7lUjfihCNeZzbwf,Gut,Geordie Kieffer,38,2021-08-20,True,0.738,0.678,7,-5.027,1,0.254,3.2e-05,0.369,0.94,80.036,196125,4
+14,22wxe2Yc9JzihICXYLGAQ7,Big Shot,Billy Joel,61,1978-10-13,False,0.52,0.737,0,-11.715,1,0.156,7.55e-06,0.0866,0.728,149.861,243493,4
+15,4RiKD76gS8huCzwWqw0EGC,Pussy Cat,The Bridge City Sinners,35,2016-11-28,False,0.586,0.702,0,-4.418,1,0.59,0.0,0.146,0.644,177.598,122874,4
+16,56OgRMEaRWJwrEyulE1Bl5,Big Salty Tears,The Ziggens,35,1998,False,0.552,0.308,2,-15.083,1,0.143,0.000177,0.312,0.383,143.389,227880,4
+17,0GiRkUiwQc2VUyVNpbthQQ,Nickel And Dime Blues,Gangstagrass,37,2020-08-14,False,0.829,0.829,9,-4.873,1,0.0461,0.0,0.0589,0.918,104.993,236857,4
+18,4gOLr8nLhVf6JxEZsjpCiC,The White Collar Holler,Stan Rogers,35,1979,False,0.541,0.503,11,-14.525,1,0.884,0.0,0.212,0.791,145.442,158560,4
+19,7shSdXO7iF0H0KeIdI4D4Z,PS GFY,Cherub,51,2016-09-23,True,0.721,0.782,11,-7.212,0,0.00209,6.74e-05,0.144,0.466,100.999,254747,4
+20,1PEFmn8Ft4xqhikDvXZiPz,"Drinkin' Problem (feat. Denny aka ""Steaknife"") (feat. Denny aka ""Steakknife"")","Denny aka ""Steakknife""",45,2000,True,0.719,0.753,10,-5.497,0,0.0583,0.0,0.169,0.772,179.857,213467,4
+21,1x9QEFgDUM9LRUrzsBTxyJ,Take Off Your Tin Foil Hat,JP Harris,30,2021-01-14,False,0.365,0.757,4,-7.134,1,0.518,0.0,0.0946,0.775,173.914,168877,4
+22,4ESUWYq4QIHmgTjKYVhSJw,Lotion,Greenskeepers,44,2006-12-31,False,0.879,0.322,9,-9.013,1,0.0999,0.00131,0.106,0.84,122.063,225827,4
+23,4KyPPjKoZVlMihGk94Fc1G,99 Problems,Hugo,61,2011-05-10,True,0.529,0.557,9,-7.762,1,0.0357,3.93e-05,0.0734,0.592,162.599,137427,4
+24,0qNS7mHnlvfRmtOTh9ytHV,Paragraph President,Blackalicious,10,2002-04-30,False,0.626,0.671,1,-8.506,1,0.0846,0.000595,0.095,0.475,90.052,309133,4
+25,7eL4Z9FlNY5u9vOsgpDUsw,Heart In A Cage,Chris Thile,48,2006-01-01,True,0.504,0.434,7,-10.201,1,0.869,0.0034,0.274,0.494,138.42,263160,4
+26,0THjXAVqAVDyIcihu1FKL8,Midnight Rider,Sharon Jones & The Dap-Kings,34,2016-06-22,False,0.676,0.918,2,-3.885,1,0.248,0.000409,0.0955,0.905,96.41,197527,4
+27,5cmT2hwMDGzNEeLq4nIp0B,Country John,Allen Toussaint,31,1991,False,0.722,0.435,9,-12.596,1,0.444,0.0428,0.143,0.875,105.852,213267,4
+28,59LpNWwrxJHcv5M8W0zxSV,You & Me & The Bottle Makes 3 Tonight (Baby),Big Bad Voodoo Daddy,42,1994,False,0.615,0.918,5,-4.982,0,0.237,1.75e-05,0.317,0.663,111.833,213867,4
+29,6S04XwYo7192oOwCNPdSI6,Joseph's Dream,John Hartford,38,1976,False,0.537,0.553,1,-14.259,0,0.79,0.00584,0.125,0.754,174.397,264240,4

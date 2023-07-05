@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3JWJiLDqawZtilIo7p0rJ9,Keep It Between the Lines,Sturgill Simpson,55,2016-04-15,False,0.595,0.756,2,-5.302,1,0.316,0.00196,0.349,0.833,87.584,241147,4
+1,3K2XoWLWdcvI0w1YuKI9dd,I Can't Complain - Live,Todd Snider,42,2003,False,0.42,0.426,2,-8.648,1,0.89,0.0,0.919,0.489,85.994,213253,4
+2,6IbnhIVO9IUb2P1BEszexw,Dance Cardia,Rubblebucket,35,2015-04-14,False,0.764,0.76,7,-5.407,1,0.0949,0.00104,0.201,0.921,121.971,238653,4
+3,5pFjXpxLqr2xJQerNiC4dy,Sweet Spot,The String Cheese Incident,38,2017-04-14,False,0.721,0.727,5,-6.716,1,0.115,2.97e-05,0.0445,0.803,95.034,304120,4
+4,7odM0g1QOO4fMZWOl6nSGT,MMMMMHMMMMM,Four Fists,0,2013-10-08,False,0.759,0.645,1,-6.585,1,0.0288,0.000303,0.18,0.639,130.046,246387,4
+5,6Sm8a7n1gksMErzewDYLal,Git Along,Fruition,41,2013-07-30,False,0.635,0.637,4,-9.229,1,0.113,3.89e-05,0.122,0.397,96.829,234720,4
+6,1bJRGgkcyQHXrnBRFCpaDb,Epic,Lera Lynn,29,2017-12-08,False,0.3,0.755,11,-7.163,0,0.0403,0.0113,0.0918,0.217,122.83,350569,4
+7,1jx6eeZr6A1SbniFvvUru7,Poor Boy,Willie and the Giant,41,2014-09-02,False,0.699,0.426,9,-10.955,1,0.718,0.402,0.315,0.679,89.887,244313,4
+8,2tCM3d15yEs5bZXq8r7Et2,Let Her Go,The Travelin' McCourys,22,2017-01-13,False,0.429,0.687,9,-7.453,1,0.646,0.000397,0.181,0.436,145.977,291827,4
+9,6hOQRjCAOfawc40XjVTsNx,Utah Maid,Pixie and The Partygrass Boys,33,2018-06-21,False,0.554,0.631,9,-6.538,1,0.102,0.000118,0.144,0.758,146.958,189907,4
+10,7iw8ixaeWkoeBoW16Lh17G,Gettin' Down on the Mountain,Corb Lund,53,2012-08-14,False,0.806,0.545,7,-6.915,1,0.151,0.00136,0.0627,0.879,106.629,208080,4
+11,22wCsAtvbeudk2a34QKwA9,Working On A Building - Live,Col. Bruce Hampton & The Aquarium Rescue Unit,26,1991-04-04,False,0.555,0.809,2,-13.029,1,0.022,0.219,0.977,0.651,108.347,285573,4
+12,3n8zCxqDKAY4GN48KGT8pm,Another Like You,Hayes Carll,42,2011,False,0.649,0.781,0,-5.72,1,0.477,0.0,0.228,0.8,111.411,199733,4
+13,1ITQbrueGLl581a25XXm9c,Rocky Raccoon - Remastered 2009,The Beatles,61,1968-11-22,False,0.599,0.363,7,-11.728,1,0.333,0.0,0.243,0.648,79.456,213107,4
+14,6YnrsGFBjVryKnhxDS4bPH,One Day I Wish to Have This Kind of Time (Live),The All Seeing I,0,2013-07-10,False,0.592,0.766,5,-10.016,1,0.0123,0.654,0.829,0.74,136.049,328073,4
+15,2vEFcBMz7yxdTGc3WFeCLa,Weed and Whiskey,Raelyn Nelson Band,25,2019-11-08,False,0.603,0.881,0,-6.91,1,0.0639,0.0,0.353,0.903,110.034,169852,4
+16,1liqxWv5Stjdtor4n3S9cZ,Born Too Late,The Clarks,41,2000-06-20,False,0.314,0.688,11,-7.524,1,6.13e-05,2.45e-05,0.146,0.536,186.348,195067,4
+17,3ijqwlD4M9SJ0PmShfhZvN,Brown Eyed Women,The Giving Tree Band,10,2012-10-02,False,0.501,0.613,5,-6.46,1,0.412,0.0014,0.087,0.53,98.753,340453,4
+18,0UULEN8LeXBFZ15CbtTHgR,After Midnight,Merl Saunders & Friends,49,1992-09-10,False,0.545,0.706,9,-11.067,1,0.453,0.737,0.107,0.897,171.672,301400,4
+19,3CWKcdJMPOwJhSN3DbymCD,(Untitled) Love Song,Romany Rye,38,2012-01-03,False,0.609,0.513,11,-12.707,1,0.0454,0.0177,0.179,0.497,140.07,323997,4
+20,4LElKf6oKNPIFBtk4utIwu,How I Roll,Charlie Mars,33,2012-12-04,False,0.673,0.641,6,-7.773,0,0.21,2.51e-05,0.0941,0.843,87.545,203190,4
+21,5EYwvVG7VJwLIFzECFLhQy,South Side Strut,Jerry Garcia & Howard Wales,35,1972,False,0.385,0.784,7,-9.471,1,0.0765,0.878,0.167,0.699,110.835,344398,4
+22,3OQMICEnoXIsMD4jYtOC7F,Meet Me at the Creek,Billy Strings,52,2017-09-22,False,0.446,0.846,11,-6.501,0,0.167,0.8,0.113,0.775,131.267,573885,4
+23,5XKiS12AZaFatDjylIl2xh,Rising Sun,Nathan Cavaleri,37,2020-08-03,False,0.727,0.543,0,-7.995,1,0.711,2.59e-06,0.101,0.684,82.982,176288,4
+24,1wbdOwwLLuiDq1MgMdVJcd,Blinded,The Bots,35,2014-10-14,False,0.573,0.762,0,-3.748,1,0.0285,0.0,0.061,0.381,89.008,175013,4
+25,0nvARiRCdtqDY3wcR2t53g,California,Tyler Lyle,41,2012-02-07,False,0.498,0.507,7,-6.262,1,0.843,0.0,0.0879,0.621,175.995,170747,4
+26,3yWDzBjajZaOWpytQTcUox,I'm Gonna Make It Alright,Paul Pena,41,1971,False,0.54,0.623,2,-11.15,1,0.0257,1.57e-06,0.0912,0.497,98.182,251540,4
+27,6DXPf7jWDsFcj9ig1DuK3m,Alabama Daydream,Doc Dailey & Magnolia Devil,33,2010-10-05,False,0.404,0.795,4,-6.301,0,0.00998,0.0382,0.161,0.273,171.471,276187,4
+28,47nvHdLEk5UkT8q7nvfPS6,Planetary Mirror,BoomBox,21,2014-01-14,False,0.845,0.598,9,-11.947,1,0.159,0.361,0.129,0.725,120.996,264707,4
+29,3zE4tVHADEiw5YxKCYGchb,Connecticut Casual,Hayze,33,2014-06-03,True,0.753,0.805,8,-7.686,1,0.0524,6.55e-06,0.788,0.654,80.977,253984,4

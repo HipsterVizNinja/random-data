@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,79Q98fkHOHOmzQxxM4gQMD,Violent Shiver,Benjamin Booker,38,2014-08-18,True,0.249,0.97,1,-5.879,1,0.0226,0.128,0.0701,0.258,165.063,166480,4
+1,4UWcRtbFWBlJsykjs6bN4o,"Cigarettes, Whiskey & Wine",Susto,19,2014-04-01,True,0.417,0.704,6,-7.713,0,0.0296,0.00131,0.268,0.323,80.979,203840,4
+2,1IpCuOY0UiD1mg0Ija7WTt,Come Home,Back Door Slam,1,2007-01-01,False,0.487,0.783,3,-4.11,0,0.127,0.000113,0.11,0.553,133.749,256120,4
+3,2GIffGVX9dLNq7DFjj1H9u,100 Little Curses,Street Sweeper Social Club,29,2009-06-16,True,0.431,0.905,9,-5.015,0,0.0105,3.36e-05,0.282,0.706,162.556,243107,4
+4,53lnLZWmQUrEPDOaT4ynlp,On Our Way,Stereoside,41,2007-09-25,False,0.553,0.633,4,-4.58,1,0.041,0.0,0.359,0.329,140.031,242253,4
+5,6zo7petcOQfFEslpaSt64w,Hangovers with You,Dirty Heads,49,2013-07-05,True,0.62,0.62,9,-6.21,1,0.16,0.0,0.122,0.535,176.153,210835,4
+6,7nUBKIFijTXrZuq0k2nsgZ,Life To Fix - Radio Edit,The Record Company,50,2018-04-20,False,0.601,0.843,9,-4.674,1,0.133,1.75e-06,0.613,0.403,114.829,197104,4
+7,7wt34YAjauHQ72eyLyCsSk,Right Hand On My Heart,The Whigs,18,2008-01-01,False,0.542,0.848,0,-4.127,1,2.82e-05,0.000306,0.107,0.381,141.91,256547,4
+8,5RFAXksYo3Odf6arMkILEv,Cherokee St,Son Volt,32,2017-02-17,False,0.54,0.707,2,-6.891,1,0.236,0.0484,0.323,0.547,114.115,179116,4
+9,4hAhyE1iL07EIUJnqw2bsV,Welcome to Your Life,GROUPLOVE,50,2017-08-17,False,0.511,0.617,10,-5.883,1,0.00223,0.0,0.201,0.404,90.951,227800,4
+10,1VguHM9ggcpJAYi2fJr8qS,Walking on the Sun - Bluegrass Rendition of Smash Mouth,Pickin' On Series,31,2016-04-15,False,0.821,0.519,1,-7.039,1,0.715,0.0,0.0652,0.847,123.311,200820,4
+11,2dmXQf9ntcrm1Gk6fNftb8,Fun in Funk,Pigeons Playing Ping Pong,31,2017-10-20,False,0.531,0.775,11,-5.171,1,0.0471,0.0,0.0581,0.856,200.184,273755,4
+12,6jCERbNkDwYl36VE9EG11c,Got You (Where I Want You) (as heard in the movie Disturbing Behavior),The Flys,37,2008-01-01,False,0.533,0.782,8,-5.147,1,0.0661,5.24e-06,0.0602,0.74,148.182,317231,4
+13,6kIUGrML374os1R2qC1jji,Subterranean Homesick Blues (feat. Andrew Bird),The Lumineers,53,2017-09-15,False,0.572,0.695,0,-5.793,0,0.0435,0.0,0.0904,0.678,99.225,182773,4
+14,6XPFgx7ShYK55VBiA45NRS,Smile,DJ Abilities,43,2009-07-21,True,0.647,0.931,9,-4.183,1,0.275,0.00251,0.114,0.337,131.028,242467,4
+15,7jO2mJtKlYsjrpn2a47Zz2,Fly,Loudmouth,36,1999-03-23,False,0.332,0.983,1,-4.349,0,7.22e-06,0.00747,0.347,0.535,165.309,242893,4
+16,3bCHzEbcw69t1KqDMmcDeI,Sun Going Down,The Tea Party,29,1993,False,0.413,0.871,5,-9.277,0,0.0235,0.0,0.229,0.389,139.437,393200,4
+17,1zRNo3O0bAxS0KBTsGqctm,Move Back To Mississippi,Anders Osborne,31,2016-03-18,False,0.66,0.455,2,-9.687,1,0.36,0.00616,0.0836,0.386,134.618,381053,4
+18,5cplIIeEuZatCmMxWOzbek,Shake Em on Down,North Mississippi Allstars,22,2000-05-29,False,0.672,0.872,7,-7.77,1,0.0113,0.000173,0.162,0.721,123.55,249000,4
+19,4EptRLpFrAIeiCrdKXs7Ef,Hell and Back,The Airborne Toxic Event,37,2015-02-20,False,0.552,0.72,5,-5.341,1,0.00303,0.0,0.172,0.386,98.02,233533,4
+20,3Qw3FbHhJYaJ57BjqGQDKi,"Lumpy, Beanpole & Dirt",Bad Livers,30,1998-01-01,False,0.506,0.743,7,-4.998,1,0.584,0.00977,0.133,0.918,93.238,320157,4
+21,6zfJGXe1zxc2csaOIwcJHs,The High Side,Sonny Landreth,29,2015-06-08,False,0.682,0.831,2,-7.712,1,0.32,2.17e-05,0.282,0.897,146.926,237347,4
+22,3NINDFPIYnyT26cWWRomOQ,Dirty Water,The Standells,49,1966-05-01,False,0.62,0.781,9,-5.938,1,0.181,0.0,0.187,0.864,144.707,167253,4
+23,6ctrwDJkilEf1mX0VxVLEG,Hiccups,WATERS,31,2017-05-19,False,0.541,0.778,10,-2.831,1,0.0802,0.0,0.784,0.761,86.027,191653,4
+24,6h0ShzvTppOfxEFnlInSGt,You Did (Bomp Shooby Dooby Bomp),Chuck Prophet,32,2004-09-07,False,0.618,0.666,9,-8.086,0,0.129,0.00106,0.0605,0.646,86.118,269573,4
+25,6Ve6bvjOIpgqn6WiSG7Q0W,Faded,Lady Midnight,35,2017-01-27,False,0.718,0.519,4,-9.945,0,0.0364,0.0096,0.0867,0.451,137.909,231480,4
+26,0Rxgdpe1zgZ6ZzHgxSaYEJ,Waiting for the Thunder,Blackberry Smoke,58,2016-10-14,False,0.582,0.805,9,-5.267,1,0.102,3.14e-06,0.271,0.895,144.047,247008,4
+27,0TSkgwKqFVzPmTzdQ6KtV1,Capital G,Nine Inch Nails,46,2007-04-17,True,0.344,0.894,7,-3.772,1,0.029,2.12e-06,0.094,0.681,163.396,229667,4
+28,4Y3OCtqeVqhabIoUJXC7xu,Smoke Baby,Hawksley Workman,30,2003-10-28,False,0.73,0.657,6,-6.881,0,0.0576,0.0,0.185,0.547,105.023,366173,4
+29,2lUDv3MKUIRMT9ls8s06NW,Give It Time,Eric Lindell,48,2006-04-04,False,0.614,0.76,7,-4.129,1,0.356,0.0,0.326,0.709,80.512,268213,4

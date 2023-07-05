@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,4hB2r4trPkpdHTVinASchh,Shake,Gary Clark Jr.,41,2015-09-11,False,0.326,0.922,11,-3.04,1,0.0091,0.0554,0.164,0.753,192.907,197813,4
+1,08yhz3ei8jgCmwcsHZTSAa,Tied Up,Rival Sons,56,2016-06-10,False,0.374,0.79,1,-8.588,0,0.00898,0.855,0.151,0.469,144.774,207359,4
+2,67jscJVhDQeH5a4Bm3a16q,Traveling Man,John Brown's Body,35,2003-01-01,False,0.554,0.73,0,-8.443,1,0.0184,0.216,0.111,0.625,157.957,344173,4
+3,2aOINeiPlx1m254Ov5QIQD,Where It's at Ain't What It Is (feat. Gary Clark Jr. & Nico Stadi),Nico Stadi,13,2018-10-11,False,0.688,0.871,11,-4.975,0,9.91e-05,0.00606,0.265,0.607,113.015,218443,4
+4,6rdsM3l1UWdlWZYUB5Jgxq,The Guitar,Guy Clark,55,2009,False,0.668,0.486,11,-11.092,0,0.795,0.0067,0.103,0.699,96.302,243280,4
+5,2WxVxmxKgXTgvQaRmAG4ub,Cream On Chrome - Single Edit,Ratatat,50,2015-04-13,False,0.79,0.692,7,-4.704,0,0.0275,0.374,0.528,0.821,100.264,235362,4
+6,23yTIWmlDPv9HHnwwzCNks,New Age Blues,Cam Cole,47,2019-11-01,False,0.294,0.781,4,-5.965,0,0.000165,0.000234,0.139,0.436,143.66,257352,4
+7,4znq6wqSKy5YdEt98d8z13,Good One Coming On,Blackberry Smoke,38,2014-07-08,False,0.315,0.816,7,-7.084,1,0.0205,6.65e-05,0.986,0.496,81.524,228565,4
+8,7Hn0bZgca6QFz6OyKkvAi6,Sometime Around Midnight,The Airborne Toxic Event,57,2009-01-01,False,0.472,0.836,8,-5.167,1,0.00229,0.00351,0.126,0.148,126.009,303587,4
+9,7v5LvfAt3VTjI51aorCCGC,Space Cadet,John Garcia,17,2017-01-27,False,0.497,0.402,6,-10.873,0,0.746,0.48,0.111,0.429,168.068,347795,4
+10,3QNSOch1GUP0m5GVZ1F2Fp,Lateralus,Break of Reality,33,2012-03-03,False,0.486,0.69,7,-6.529,0,0.0337,0.81,0.09,0.345,177.808,542776,3
+11,2eTUrr93UBSj7qcZcUOKuw,Marijuana,The Reverend Horton Heat,40,1991-11-01,False,0.471,0.937,1,-7.195,0,9.86e-05,0.806,0.0643,0.489,145.815,289760,4
+12,75oSP86mRmz6QbtlBh9wdZ,Down The Road Tonight,Hayes Carll,39,2005-01-01,False,0.581,0.822,11,-6.976,1,0.0697,2.49e-05,0.113,0.795,148.889,218314,4
+13,2926kmWHaSUoJGbIHOh1E5,True Fine Love,Steve Miller Band,56,1977-01-01,False,0.628,0.382,10,-14.783,1,0.257,0.0198,0.064,0.937,126.405,159893,4
+14,64cJ6nHhvFC8VxkdeuKfSY,Joyful Noise,The Derek Trucks Band,24,2002,False,0.549,0.859,0,-6.748,1,0.0336,0.409,0.284,0.572,102.741,345867,4
+15,6QvgyZ8xG2OFGjZsH3s8d3,World Turning,Fleetwood Mac,56,1975-07-11,False,0.676,0.379,2,-19.42,1,0.174,0.0072,0.0619,0.818,115.237,265933,4
+16,05UymXAlL1e6y4cGB6PrRU,Honest Man,Matt Andersen,37,2016-02-26,False,0.823,0.536,2,-5.793,1,0.147,7.22e-06,0.0491,0.777,93.482,212707,4
+17,2UTqmAQ0Pp5k5zsoZQFZCc,Evil Ways,Blues Saraceno,38,2012-05-15,False,0.51,0.738,9,-5.488,1,0.000326,2.43e-05,0.119,0.514,85.979,213275,4
+18,6aW1djLQg4qJVgFRUmEBlw,Johnny Coolman,Derek Trucks,37,2007-01-01,False,0.715,0.686,0,-5.547,1,0.197,0.0,0.09,0.706,100.093,196573,4
+19,38sSJ12azM6Mic7ajbHKBi,Money (That's What I Want) - From Jim Beam's Live Music Series,David Gray,50,2012-07-17,False,0.655,0.692,5,-6.217,1,0.568,2.34e-05,0.119,0.547,121.455,234270,4
+20,3a2LaHyp9JhvYz43tJzkz0,One Hand On the Buffalo,The Heavy Eyes,42,2012-12-01,False,0.278,0.835,7,-3.607,0,0.000477,0.00644,0.15,0.681,72.835,210000,4
+21,2D0rl6TnBNkiTvB3rRtm22,Such Great Heights,Streetlight Manifesto,43,2010-03-16,False,0.694,0.853,5,-5.042,1,0.0169,0.00108,0.17,0.37,124.987,210053,4
+22,6tOSS3Bjz27HHFRJQQMQ4W,Pink Chateau,In The Valley Below,18,2019-04-26,False,0.626,0.726,7,-7.44,1,0.00311,0.00568,0.098,0.281,170.035,180907,4
+23,3I50P6a8P4c9SxIYSeZUhS,Hurricane,Thrice,50,2016-05-27,False,0.281,0.814,5,-6.127,1,0.000245,6.64e-06,0.134,0.175,106.791,284997,4
+24,0ld4TBGn0G1wouqUjMFymD,Say Hello,April Wine,27,1979-01-01,False,0.549,0.441,2,-14.496,1,0.122,0.0209,0.0491,0.962,166.682,179000,3
+25,3rz0LOEhEffRx5gJK7saed,Two Cups of Tea,Star Fucking Hipsters,43,2008-09-30,True,0.81,0.434,1,-9.515,1,0.0128,0.000731,0.113,0.646,140.491,214347,4
+26,1nUTXjHCzm4tyLImKYNv7n,Dogtown,The Fratellis,22,2015-08-21,False,0.547,0.826,10,-5.065,0,0.0012,0.0,0.103,0.812,84.746,223053,4
+27,4LDzMdFEIqKo6TS6N8yQJj,Night Moves - Acoustic Version,James Otto,39,2015-07-24,False,0.544,0.407,0,-7.19,1,0.492,6.11e-05,0.0967,0.41,114.445,387115,4
+28,33xYKnhFtcxpHr5Q026kni,Ship On Fire,Zeal & Ardor,45,2018-06-08,False,0.412,0.603,5,-7.067,0,0.00338,0.0679,0.193,0.359,164.829,213027,4
+29,6wO0laD6eClRzDIVQPE9CY,Minnesoter,The Dandy Warhols,45,1997-01-01,False,0.515,0.713,0,-8.395,1,0.00017,0.646,0.0871,0.744,107.166,182427,4

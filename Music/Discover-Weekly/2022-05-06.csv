@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3edmuk8dvvORcvTEh1GWyq,Hell or high water,William Elliott Whitmore,47,2009-02-17,False,0.69,0.247,9,-10.379,1,0.894,0.0,0.107,0.614,76.989,150853,3
+1,68z5TvxM89OsImKKcsfeEc,Bread & Butter,Hugo,44,2011-05-10,True,0.726,0.741,2,-6.72,1,0.0588,0.00118,0.126,0.645,93.479,179213,4
+2,6aIqfdDHcHE3KSgyhoprdk,When I Fall,Elephant Revival,44,2016-04-01,False,0.561,0.323,2,-11.739,0,0.678,0.000801,0.333,0.401,73.017,155004,4
+3,45aBkgJ9UV2XVvWrLMOsyd,Detroit '67,Sam Roberts Band,33,2008,False,0.46,0.837,0,-5.422,1,0.384,0.0036,0.212,0.647,112.899,244867,4
+4,3yV6gF1wjYqFFGQihad0xX,Nightburn,The Cerny Brothers,22,2015-05-12,False,0.478,0.831,10,-4.554,1,0.0212,3.72e-05,0.114,0.417,151.973,220200,4
+5,2YNdNuqv01lZUITrfJZsPK,The Beach,Dr. Dog,9,2008-01-01,False,0.526,0.597,6,-6.338,0,0.414,0.302,0.145,0.547,126.564,221413,4
+6,6y3t3DYPRQBkfkHhnkOv6V,The Gunslinger,Shooter Jennings,7,2013-03-12,False,0.372,0.676,0,-7.145,1,0.000135,0.108,0.154,0.587,132.483,390880,4
+7,3Vh3TkSAPXbfCfjO23O2RS,"Oh, The Boss Is Coming!",Arkells,43,2008,True,0.429,0.941,11,-4.307,0,0.000109,0.532,0.179,0.523,77.078,220773,4
+8,6RFkVsPmrM4pzlDkFswwJl,God's Gonna Cut You Down,Johnny Cash,67,2006-01-01,False,0.617,0.485,5,-8.227,0,0.868,3.44e-05,0.115,0.845,82.228,158573,4
+9,5CAP7DiZ4UbyVGbs0c5sqI,Angry Anthem,The Forces Of Evil,31,2003,False,0.396,0.912,2,-3.134,1,0.0279,0.0,0.0456,0.663,189.716,173160,4
+10,1qf2nZSj8QJQRDQshWxA6P,Use Me - Live,Widespread Panic,34,2004-03-23,False,0.337,0.859,11,-6.454,0,0.339,0.00655,0.78,0.873,171.259,507600,4
+11,4FHoAoa0eRAewFLNaZLmRP,Prizefight,Lazerbeak,32,2008-09-23,False,0.583,0.852,11,-3.991,0,0.0211,0.0,0.319,0.529,81.937,247093,4
+12,5HiIUt26ymb8qGQdOq5LRi,Candyman,Cornershop,32,1997,False,0.747,0.894,1,-5.226,1,0.0758,0.897,0.0918,0.555,90.493,229640,4
+13,61KyJ3aQJYu4tpJEmQOHdw,Ain't A Road Too Long,Brent Cobb,47,2018-05-11,False,0.506,0.788,2,-5.935,1,0.188,7.31e-06,0.104,0.546,165.133,221467,4
+14,1BK3DmIQ3QU19F50YXhz8R,Little Silver Heart,Lucero,40,2001-05-22,False,0.342,0.811,9,-7.481,1,0.00864,0.0728,0.0561,0.84,152.768,255440,4
+15,14A2dKF4O0kQD0E5CCX3Jc,California (Cast Iron Soul),Jamestown Revival,55,2014-09-23,False,0.449,0.786,4,-5.438,1,0.152,0.0,0.0911,0.46,161.798,252960,4
+16,77gto7hYlmoVp3YcrHbPw5,Georgia Fire,The Vegabonds,47,2012-01-09,False,0.697,0.683,2,-6.117,1,0.479,0.0,0.307,0.631,122.052,236413,4
+17,6Xpw5ZIzI3TaHbM9rwm1l8,Nickel Sized Hail (feat. Colt Ford),Colt Ford,47,2013-05-01,True,0.332,0.753,7,-4.296,1,0.00654,1.22e-06,0.385,0.302,140.021,276560,4
+18,4FphdrrHaX3vXpT1eOrTHR,Roll Me Up,Jamey Johnson,55,2012-05-14,False,0.671,0.828,0,-7.535,1,0.237,0.000928,0.338,0.726,99.922,205320,4
+19,7l8CqOAvoV7gPqI94i1Fl4,Two Hangmen,Mason Proffit,36,2006-06-20,False,0.388,0.396,2,-11.459,1,0.577,0.00301,0.193,0.423,97.412,300960,4
+20,1HqrNLFV3RwpmPWC0qUk1s,Spread My Ashes on the Highway,Bob Wayne,36,2012-01-26,False,0.572,0.904,0,-5.961,1,0.214,0.00971,0.297,0.46,113.976,256147,5
+21,3YEOnijcXaAIvgv67DqDYk,Back from the Dead,People Under The Stairs,29,2016-04-20,True,0.761,0.716,1,-9.719,1,0.0783,0.000584,0.809,0.3,77.995,368859,4
+22,4WPhCSn7ZAHuiaAJWY8WSS,China Town,Folk Soul Revival,38,2010-09-15,False,0.703,0.741,9,-6.397,1,0.207,0.0,0.204,0.803,136.179,256720,4
+23,2eNGyCay6uoexlcw5pQ3lp,The YMCA Down The Street From The Clinic,The Lawrence Arms,40,2014-01-28,False,0.367,0.839,9,-9.364,1,0.00382,0.0703,0.701,0.556,104.65,229133,4
+24,1wDeS9h6SPylMiuS0NEQRT,Black Shoe,The Moondoggies,36,2016-10-07,False,0.428,0.53,4,-7.102,1,0.00569,0.109,0.303,0.662,176.872,234813,4
+25,4q3Nd9FbYuyH0ah1BFe11Z,Left My Woman,The Wild Feathers,35,2013-08-09,False,0.55,0.541,0,-6.523,1,0.076,2.85e-06,0.0975,0.273,141.595,251667,4
+26,5mry8XEOIVru9Mla0bc8dY,Liar,The Shelters,25,2016-06-10,False,0.507,0.844,11,-3.244,0,5.18e-05,4.86e-05,0.355,0.457,114.946,183547,4
+27,35G6Vd7QT20XDEjFlSddwt,Garry,Dean Ween Group,35,2016-10-16,False,0.716,0.685,4,-6.943,0,0.0667,0.911,0.0795,0.571,115.973,265097,4
+28,5qBxjS8CIBjjxy4c8cB3Lt,Time to Grow,Collective Efforts,37,2010-02-15,False,0.936,0.742,4,-7.621,0,0.697,4.58e-05,0.156,0.689,112.854,208387,4
+29,4arFkQK84KZjA7UPpunJ2y,Dice Of Life (The Battle),Andre Nickatina,42,2003-04-22,True,0.646,0.677,7,-6.519,1,0.359,0.0,0.314,0.787,100.814,223013,4

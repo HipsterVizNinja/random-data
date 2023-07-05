@@ -2,12 +2,16 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import pandas as pd
 
-cid = 'CLIENT_ID'
-secret = 'CLIENT_SECRET'
+cid = 'b8d3901151d34489a160e3cf0ab1fa94'
+secret = 'a9600e00b0d24812ac8eb1e610ca5021'
 
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 
 sp = spotipy.Spotify(client_credentials_manager = client_credentials_manager)
+user_id = 'mskm203'
+playlist_uri='5VMfiiPagYbPqcO83woBr2'
+date='2023-06-30'
+
 
 # Set settings for dataframe
 pd.set_option('display.max_rows', 1000)
@@ -96,6 +100,6 @@ def get_playlist_tracks_more_than_100_songs(user, playlist_id):
 
     return features_df
 
-y=get_playlist_tracks_more_than_100_songs('USERID', 'PLAYLIST_URI')
-y.to_csv('FILE')
+y=get_playlist_tracks_more_than_100_songs(user_id, playlist_uri)
+y.to_csv('/Users/sean.miller/Documents/Code/random-data/Music/Discover-Weekly/'+date+'.csv')
 print(y)

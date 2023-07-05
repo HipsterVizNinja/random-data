@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3iK2K8CANy7nIgA0rVVYTW,Smoking Dope n Rock n Roll,Andy Frasco & the U.N.,45,2014-06-03,False,0.802,0.737,0,-4.902,1,0.655,0.0,0.123,0.825,116.054,169680,4
+1,1dpWCuTNt2Ald7vjBES5Qe,Oogum Boogum Song,Brenton Wood,41,2012,False,0.887,0.506,7,-10.036,1,0.645,0.0,0.238,0.913,112.625,150827,4
+2,3BTjSas8phpsT63ELSCg3K,Cowboys And Chorus Girls,ALO,39,2012-01-01,False,0.673,0.712,7,-8.678,1,0.258,0.248,0.125,0.338,115.035,465147,4
+3,3IiXKqtwrXKBQKcQ0gHPt5,Power Ups,RDGLDGRN,35,2013-01-01,False,0.58,0.85,2,-4.3,1,0.0102,0.00015,0.124,0.707,90.011,187027,4
+4,7mzpnsri39waNkxFCWzbyx,Mud featuring Ivan Neville,Pimps of Joytime,35,2017-03-24,False,0.866,0.543,9,-6.973,1,0.0122,4.19e-05,0.334,0.761,139.927,260173,4
+5,5JiWVG8j9TmqwZ8zZGAtjZ,Kick Down,Long Beach Dub Allstars,47,1999-01-01,False,0.804,0.605,9,-6.213,1,0.148,0.0,0.103,0.63,89.969,283893,4
+6,2jXhm9rDyfoKKgTffUYqmw,Okayalright,moe.,0,2003-02-04,False,0.507,0.898,0,-4.586,1,0.00174,0.000172,0.0524,0.846,172.63,252027,4
+7,4eakTLMeu8UieIMyKX69EV,Screw the Government,Mountain Sprout,36,2007-01-01,False,0.43,0.676,7,-5.376,1,0.0634,3.5e-05,0.163,0.732,105.179,209213,4
+8,1NpLCZNSYEegtDYCRA5PNN,Scarlet Begonias,Sublime,63,1992-06-01,False,0.86,0.807,4,-7.945,0,0.156,0.0217,0.104,0.551,97.363,211387,4
+9,1193tpX9fUwYzwBHX9rPPb,Rona Pollona,Andrew Livingston,25,2020-08-31,True,0.613,0.894,0,-7.315,1,0.0206,0.352,0.169,0.548,95.0,190819,4
+10,0qA4oBWCqhCLiOtMfaWUte,Circles,Soul Coughing,0,1998-09-29,False,0.698,0.524,0,-7.372,1,0.11,0.0408,0.108,0.612,102.398,186640,4
+11,4wSPQ4g89qXRdlY2261eJW,Love Is Free,Gasoline Lollipops,36,2016-12-07,False,0.712,0.747,11,-6.503,0,0.284,8.26e-05,0.111,0.837,115.992,230636,4
+12,2Lk8XTulavagQOrYqFpGB8,Dust in a Baggie,Billy Strings,63,2016-06-10,False,0.519,0.776,7,-7.051,1,0.252,2.92e-05,0.157,0.653,137.29,174173,4
+13,1HyYPOyrJjgRGG18vhE54z,Dear Mr. Fantasy - Radio Edit,Big Sugar,42,2003-08-26,False,0.392,0.945,2,-5.362,1,9.71e-05,0.43,0.0823,0.705,156.249,299467,4
+14,6UzjPRT5j0abnEukKnxFVG,Don't Change for Me,Nigel Hall,41,2015-11-13,False,0.61,0.879,7,-6.98,1,0.0325,8.4e-05,0.221,0.837,164.046,225070,4
+15,73IbL1Fso2smuC8AxAYnZV,Let It Slide,Marco Benevento,36,2019-09-20,False,0.862,0.838,1,-6.491,1,0.476,0.00352,0.0777,0.936,119.512,172521,4
+16,62mpzf6JpgyUaOZC2NWFi6,Happy Days,Closure in Moscow,41,2014-05-09,False,0.235,0.905,11,-3.051,0,0.00455,0.0,0.339,0.463,80.099,338292,4
+17,5iZjpA78JDqtUW2mebflMs,Ooh La La,Redbird,28,2011,False,0.557,0.374,0,-11.568,1,0.791,2.57e-06,0.758,0.544,71.598,213733,4
+18,3kgtj0csPcN5uqPyEObXu9,"Blinded By The Light - From ""Super Troopers 2"" Soundtrack",Eagles Of Death Metal,45,2018-04-06,False,0.548,0.947,5,-4.959,1,0.0162,0.0,0.18,0.416,135.813,276013,4
+19,5EoSAgpeQZvWTb02MffawV,Kangaroo,The Big Wu,0,2001-09-01,False,0.586,0.586,2,-13.139,1,0.444,0.0705,0.0864,0.861,115.906,245880,4
+20,3ak3eMLXdtsCRw6WYzqZFd,Higher Than High (feat. Del The Funky Homosapien & Karim Israel),Karim Israel,44,2020-04-24,False,0.791,0.757,8,-5.476,0,0.148,0.0,0.0807,0.696,91.494,200179,4
+21,72AqtnpXP8n3dBQbIOA5Td,Topo Chico,Robert Ellis,44,2019-02-14,False,0.658,0.571,0,-8.876,1,0.183,0.000274,0.96,0.798,128.488,184547,4
+22,1gCteoq5Ko92R6zKXdD52g,Wicked and Weird,Buck 65,36,2003-09-08,False,0.916,0.831,10,-6.748,0,0.15,0.0,0.124,0.899,106.762,222733,4
+23,473tgEGLwcMdpWVmMWR283,Joy (Goodbye Guilty Pleasures),Michael McDonald,39,2017-06-02,False,0.843,0.483,5,-7.84,0,0.249,0.000528,0.0765,0.791,115.023,315147,4
+24,6EoSrxy5t6VyhGR7uTnqkS,You Can Call Me Al,Old Salt Union,36,2017-08-04,False,0.743,0.367,5,-9.531,1,0.737,6.64e-06,0.0842,0.967,133.046,233152,4
+25,2qdMvZhBpNOpaWXIoSK3DQ,Ebb and Flow,Larry and His Flask,42,2011-07-12,False,0.291,0.718,0,-6.493,1,0.151,0.0,0.673,0.267,153.102,303472,4
+26,6NSqBA0hkv11JgdUz0nPzF,Hurricane,Levon Helm,44,1980-01-01,False,0.696,0.767,2,-11.172,1,0.664,4.6e-06,0.0437,0.828,142.744,244933,4
+27,6XgzQ3T9pDhBujPeWeoWsR,If I Only Had A Brain,MC 900 Ft. Jesus,36,1994-01-01,False,0.817,0.663,5,-8.943,0,0.13,0.0252,0.082,0.818,102.025,226000,4
+28,1pZlO1V8RgQFHUKDLOPguT,Too Hot To Stop (Pt. 1),The Bar-Kays,45,1993-01-01,False,0.757,0.645,7,-13.641,1,0.116,0.00157,0.148,0.859,102.76,384640,4
+29,7vrGA0eO9lmhNaEO0wgNxH,Freedom - Strings & Keys,Cold War Kids,0,2020-01-24,False,0.655,0.408,5,-6.179,1,0.761,4.29e-06,0.107,0.55,91.974,339720,4

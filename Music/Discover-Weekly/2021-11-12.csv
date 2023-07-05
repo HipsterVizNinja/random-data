@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6mFRfprP5OTvr82GzGhHXJ,Mexican Radio,Authority Zero,50,2004-06-29,True,0.482,0.91,2,-4.946,1,0.0126,1.2e-06,0.131,0.488,165.97,173493,4
+1,4YFSwAQH0hnhizv570glsn,Pepper,Keller & The Keels,37,2010-05-25,False,0.511,0.424,2,-8.35,1,0.802,6.05e-05,0.0966,0.439,158.285,192720,4
+2,3AJMa8cPdI3iuELcIZX0e2,Kung Fu is My Fighting Style,Dan Reeder,33,2017-10-27,False,0.788,0.47,0,-11.403,1,0.815,0.0,0.143,0.961,114.961,113553,4
+3,5sEuesEI9TWxU4Vts3a5HT,Two Tone Cadillac,T Bird and the Breaks,35,2009-01-01,False,0.459,0.801,7,-4.903,1,0.0288,0.0,0.278,0.809,97.475,275760,4
+4,5y6qml5QEclkzVy4Z1njS6,Spooky Language,The Palmer Squares,40,2012-05-08,True,0.769,0.776,8,-6.668,1,0.18,0.0,0.337,0.703,87.814,275100,4
+5,2ZvAYAsVP9VbPDlWR1bkOS,Fuck Everything - Remastered,Hairy Soul Man,27,2019-10-11,True,0.495,0.8,4,-6.982,1,0.155,0.0,0.26,0.602,176.217,238693,4
+6,4lALu1wKGX1mNIiIlr3U7B,Rooming House On Venice Beach,Jonathan Richman,33,1992-01-01,False,0.689,0.412,9,-15.833,1,0.823,0.0,0.101,0.867,92.767,308227,4
+7,6zS9zCqx95kDhNg4JN7rV3,Coastal Shindig,King Fantastic,43,2012-05-08,False,0.78,0.55,4,-10.425,0,0.378,0.0,0.248,0.487,85.029,195857,4
+8,4asjU3sDnn3002bTJIg2vZ,Missed the Boat,Modest Mouse,62,2007-03-20,False,0.71,0.698,2,-5.797,1,0.0697,0.0,0.478,0.852,104.007,264813,4
+9,2G4yHqoxm5iZ3CxQeUJ4Ou,Telepathy,Doom Flamingo,35,2018-09-19,False,0.551,0.743,7,-8.94,0,0.11,0.00127,0.0841,0.207,97.021,264221,4
+10,3RW2wt4CsT4NCBxsZd8vp7,Gimme Back My Dog,Slobberbone,29,2000-07-25,False,0.513,0.915,5,-5.8,1,0.00121,0.000843,0.808,0.873,134.837,301307,4
+11,1sCGnVe3yQzhIyuAi5TUkk,Switchblade,Holy White Hounds,30,2016-05-06,False,0.474,0.592,6,-6.412,1,0.00217,0.000248,0.155,0.175,134.124,265853,4
+12,1BSc6cdCjzOwF8XdNDyaGP,Dark Black Makeup,Radkey,41,2016-11-11,False,0.513,0.807,9,-3.37,0,0.00323,0.00027,0.0995,0.569,74.977,229480,4
+13,5tYEvP7tgvi0gqqwPshNfC,1979 - Bonus,Darlingside,0,2015,False,0.486,0.62,4,-7.115,1,0.0517,0.00817,0.0888,0.417,141.147,245844,4
+14,2jWuNKBlgkfb3M0WDKexY8,The Sinister Minister,Béla Fleck and the Flecktones,45,1990,False,0.77,0.588,2,-9.844,0,0.192,0.803,0.0576,0.773,127.231,276987,4
+15,3MI7XYIAujsIJlj5n3bTB6,The Prettiest Waitress in Memphis,Cory Branan,14,2006-03-21,False,0.326,0.898,4,-7.767,1,0.051,2.14e-05,0.372,0.573,168.603,191813,4
+16,6PtggY8D7VI2uqsa4vEro1,Coming up Roses,The New Mastersounds,35,2016-04-22,False,0.607,0.949,8,-7.728,1,0.555,0.856,0.0938,0.972,102.362,276591,4
+17,5uXE7hPxXsKcJoMc81KRZE,One Big Holiday,My Morning Jacket,22,2003-09-09,False,0.392,0.969,9,-4.43,0,0.0235,0.0665,0.305,0.383,137.021,320787,4
+18,2dqrmCXCYcuccIR4DZbBp2,Water - Recorded at Spotify Studios NYC,Earl St. Clair,35,2017-08-11,True,0.814,0.436,6,-8.236,1,0.573,3.52e-06,0.125,0.726,74.949,168507,4
+19,6dacQ4sqYOVuQKTzSBK2de,Hayloft,Nickel Creek,37,2014-03-28,False,0.662,0.897,0,-6.874,1,0.0279,0.00206,0.0819,0.689,92.99,197533,4
+20,2sXtpY9mCTXnUTUSQqrXbX,Green Grass & High Tides,The Outlaws,58,1975,False,0.272,0.876,4,-7.135,0,4.18e-05,0.0191,0.146,0.585,102.718,591693,4
+21,1SbSX9AWecOf7v0CFTHZ4Q,I Was Drunk,Royal Bliss,40,1900,False,0.206,0.462,1,-9.165,1,0.003,0.0,0.313,0.261,187.51,243840,3
+22,2KmSnPWWCIsEomVsKnbE1a,Big Balls,AC/DC,62,1976-09-20,False,0.62,0.634,9,-6.324,1,0.432,0.0,0.604,0.415,107.066,158773,4
+23,27kR4DOCntkzEvjGOtpr46,Big Time,Deca,34,2013-09-23,False,0.558,0.79,1,-5.944,1,0.0942,0.0,0.138,0.894,177.636,195890,4
+24,68xdfhcAzKgPnU0kv1WY6s,Hot Rod Lincoln,Commander Cody And His Lost Planet Airman,42,2012-04-26,False,0.652,0.813,4,-12.297,1,0.631,7.56e-06,0.284,0.932,131.615,161640,4
+25,6UPup8gxucQXqEawLhmjyg,Give Me the Beat,Ghostland Observatory,45,2010-10-25,False,0.947,0.532,1,-6.391,1,0.0305,0.116,0.216,0.728,109.989,209880,4
+26,6fXuRqgX4geG1gtAoOT877,Ride To California,Paper Tongues,40,2010,False,0.603,0.941,4,-3.47,0,0.103,0.0,0.297,0.545,101.07,202040,4
+27,1JGY9xbWux7sogcucrz5TS,Straight To Hell,Drivin N Cryin,47,1989-01-01,False,0.436,0.46,7,-12.782,1,0.0316,0.0,0.0536,0.509,114.572,341133,4
+28,1sCuQGXy5C41Yl6JniijbZ,Fts,Sam Bush,38,2018-12-10,True,0.554,0.496,10,-6.765,0,0.113,0.0,0.134,0.573,175.923,229146,4
+29,2M4K2cYkZHN7OMJSZhPa5i,"This Must Be the Place (Naive Melody) - Live at the Pantages Theatre, December 1983",Talking Heads,33,1984-01-01,False,0.794,0.495,7,-14.054,1,0.0733,0.0125,0.41,0.952,114.073,326493,4

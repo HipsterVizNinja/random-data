@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6tBnAeYFWBBjs2c5JA1Wnk,"Your Lady, She's Shady",Mofro,12,2013,False,0.602,0.866,9,-7.157,1,0.0108,0.00298,0.0423,0.802,105.188,190493,4
+1,60xVVtffd19skQGb5MoMRO,Bottle Rocket,The Weeks,31,2017-04-07,False,0.679,0.634,9,-3.305,1,0.0286,0.0,0.0605,0.642,92.046,268467,4
+2,0NClLf7o5sp68lBQYTrXAc,Take Me Down,The Pretty Reckless,1,2016-09-09,False,0.654,0.939,2,-3.829,1,0.00581,0.0124,0.661,0.534,110.986,253213,4
+3,5SxuX9KDnDe0a5zawC4YeH,Wynona's Big Brown Beaver,Les Claypool's Duo De Twang,31,2014-02-03,False,0.771,0.678,2,-5.298,1,0.0566,0.454,0.0566,0.687,112.367,287067,4
+4,2BaGFPDjd3oh6ceYLAoVWO,Nobody,The Sheepdogs,45,2018-02-02,False,0.59,0.694,9,-8.423,1,0.0305,0.118,0.0962,0.711,159.977,270452,4
+5,1lCZCeNWATY0JHYgH19zyI,Dry Counties,Mountain Sprout,27,2007-01-01,False,0.533,0.841,2,-4.418,1,0.126,0.000212,0.184,0.97,122.132,224373,4
+6,57ySi6fWZOIefsFmOnRqIY,Fleet Foot,Black Pistol Fire,46,2016-05-20,False,0.335,0.959,7,-3.864,1,0.0117,0.0,0.157,0.207,106.685,196360,4
+7,03gsb1WnVQUuLqChBvzmoo,AM Radio,Everclear,49,2000-01-01,False,0.622,0.964,1,-4.314,1,0.0636,1.03e-05,0.235,0.609,92.973,236933,4
+8,1Ptd8aU3TI2L3PY7HZR2i8,Locked In The Trunk Of A Car,The Tragically Hip,49,1992-10-06,True,0.531,0.738,9,-10.741,1,0.004,0.137,0.274,0.512,129.32,282293,4
+9,6MhCusfYjSWXGviaGxa2Je,"Take Me Home, Country Roads",Mike Doughty,29,2012-11-06,False,0.665,0.764,4,-6.677,1,0.38,6.7e-06,0.194,0.378,96.994,194520,4
+10,7kg5bHr2RDVnEzrXEvFCT8,Street Corner Preacher,Amos Lee,36,2008-01-01,False,0.652,0.582,10,-7.001,1,0.368,0.0,0.12,0.718,155.863,194400,4
+11,2eNEuwvBePoYUEQavlcvUT,MoneyGrabber,Fitz and The Tantrums,25,2010-01-01,False,0.698,0.903,9,-3.711,0,0.068,6.29e-06,0.526,0.793,112.53,189893,4
+12,5m8EvsNN76vK3qSvt1Z4Or,Pablito,SunSquabi,36,2016-04-08,False,0.514,0.781,5,-7.439,1,0.0696,0.819,0.144,0.52,176.023,403636,4
+13,6iG2EAWFTJwIy5hKAa2QsA,Minnesota Moon,The Big Wu,38,2001-04-03,False,0.346,0.761,1,-7.073,0,0.413,2.36e-06,0.117,0.935,200.346,240067,4
+14,6Mwsdm9f17jJPoWN3Sc8Of,West Virginia and These Cigarettes,Skrizzly Adams,31,2014-04-15,False,0.536,0.725,6,-5.329,1,0.00456,0.0145,0.114,0.177,168.066,210372,4
+15,5gT6G3MfxRyJzHXnlh8ArP,Apeman (Alternate Mono Version) - 2014 Remastered Version,The Kinks,35,2014-10-20,False,0.49,0.794,9,-6.753,1,0.559,1.76e-05,0.193,0.928,160.158,220760,4
+16,0gDJgCoxaQ2PY7lzG2Z101,Land Down Under,The B Foundation,35,2009-01-01,False,0.647,0.758,11,-7.4,0,0.104,0.000152,0.0709,0.816,101.032,229333,4
+17,1CA1oIFbg1zbiIMM6T42as,A Train Robbery,Levon Helm,26,2007-01-01,False,0.494,0.413,10,-7.446,1,0.489,0.0,0.109,0.507,148.348,328720,3
+18,0EoZG0iXT9gLkQGlwReFbM,Callin' Baton Rouge,New Grass Revival,46,1994-01-01,False,0.652,0.844,4,-6.252,1,0.644,0.0,0.13,0.73,105.021,160933,4
+19,3TVM9efGCTP5ggdakAb5N4,Fast Times In Tahoe,Elemeno P,44,2003-01-01,False,0.438,0.696,1,-5.724,1,0.00331,0.0,0.101,0.34,176.021,189067,4
+20,7LTjQxvMKYPQm0mTFOiecJ,Hillbilly Music,Grandpa's Cough Medicine,32,2012-08-25,False,0.739,0.632,2,-6.87,1,0.198,2.13e-06,0.288,0.901,126.034,189267,4
+21,6RhXLgNOWJTPfFQFdMok9M,Layin' Pipe,David Wilcox,42,1987-01-01,False,0.647,0.855,6,-11.573,1,0.00678,0.000142,0.0798,0.812,131.845,257240,4
+22,06re5XslQ5PFkM3b0Yq4AC,Weatherman,Dead Sara,44,2013-01-17,False,0.381,0.918,0,-3.104,1,0.00587,0.000103,0.473,0.344,84.802,261267,4
+23,3lrSJACaJg325VjYxNvtD6,I Am a Man of Constant Sorrow,Élage Diouf,26,2010-05-26,False,0.685,0.656,10,-7.12,0,0.565,0.059,0.0879,0.835,90.019,248053,4
+24,0Mwr8ltSHxTriK5OrgycwF,Little Too Stoned,Alex Williams,39,2017-08-11,True,0.551,0.839,6,-4.14,1,0.000226,0.56,0.0981,0.765,80.001,277653,4
+25,0DHsVUhrKPAX3kpbyeb7B0,Bam Ba Lam (Here Comes Daddy),Alabama 3,32,2014-11-06,False,0.697,0.866,4,-5.951,0,0.0475,4.65e-06,0.0925,0.673,90.012,197553,4
+26,7Ap2I2cSR3AGK2pEMkLYKX,Man of Constant Sorrow,Dwight Yoakam,31,2015-04-10,False,0.4,0.969,4,-3.461,1,0.0131,0.221,0.116,0.745,164.02,256947,4
+27,7uJLdyIAaYLGT0oLw7I6b3,New Fang,Them Crooked Vultures,64,2009-11-17,False,0.278,0.961,7,-3.845,1,7.36e-06,0.000662,0.0268,0.752,189.664,228639,4
+28,61PS7u4z4JCXfN6VdVbcjT,Pinball Wizard,The HillBenders,33,2015-06-02,False,0.548,0.538,2,-7.395,1,0.82,9.63e-05,0.0878,0.258,130.099,223973,4
+29,3V1rmBGMWs3GmcM8wkxRki,I'm An Adult Now,The Pursuit Of Happiness,45,1988-01-01,False,0.582,0.672,9,-11.219,1,0.000492,0.3,0.0839,0.81,135.795,269973,4

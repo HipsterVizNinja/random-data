@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,5ZDLCdSHmpt2JKwWmotjzG,Pants,Here Come The Mummies,0,2008-01-01,False,0.663,0.851,1,-4.067,0,0.0265,0.0,0.358,0.809,123.91,203387,4
+1,3jM9wxKC0G9ocb5K8o1W7i,Blackwater,J.J. Grey,39,2001-05-22,False,0.591,0.516,2,-9.044,1,0.0521,0.692,0.196,0.226,72.209,429493,4
+2,2OlTKQu4qN8rLG9bOHx5hZ,Brother in the Night,The Weeks,14,2013-07-12,False,0.556,0.665,2,-6.114,1,0.0127,2.32e-05,0.128,0.708,118.659,234360,4
+3,0NrXrQQbhQvGsp0j1PiwbW,My Shit,Johnny Polygon,31,2012-03-07,True,0.765,0.651,7,-8.72,1,0.0314,0.0,0.202,0.67,80.988,260253,4
+4,2eB1kRYzeyvoUya6KMsIfv,I Got Stoned and I Missed It,Shel Silverstein,30,1969,False,0.369,0.784,4,-9.961,1,0.406,0.0,0.11,0.772,173.88,189240,4
+5,35cfmMnhGVy5mDeFd6PdbE,Beezlebub,Les Claypool,39,2013-10-15,False,0.804,0.811,11,-6.237,0,0.0171,0.0441,0.0945,0.624,130.023,208486,4
+6,1rFNDIT7WmsVGzO0sHJpwM,Coffee & Weed,Westpark,39,2018-04-20,True,0.675,0.602,11,-6.873,0,0.0631,0.0,0.242,0.817,169.908,181874,4
+7,3wVbmcEVNktZtyjKOu1NKT,"Man Smart, Woman Smarter",Grateful Shred,38,2019-03-01,False,0.612,0.612,4,-8.345,1,0.589,0.0555,0.209,0.963,89.135,351403,4
+8,4A4DPAyhXSTzehnBstdAnt,I Don't Know - EP Version,The Sheepdogs,52,2011-08-02,False,0.574,0.644,2,-5.13,1,0.0962,0.201,0.172,0.771,79.967,190947,4
+9,0Bbnafg5IkDi8wUac4yoEa,Get a Grip,Tony Franklin,18,2018-04-20,False,0.488,0.591,11,-11.501,0,0.0547,0.897,0.161,0.693,94.379,300000,4
+10,5oQku3D0iipSWPPX9AJoBP,I Don't Know,Pasadena,35,2012-11-07,False,0.518,0.784,0,-4.533,1,0.00689,1.99e-05,0.101,0.537,157.108,274600,4
+11,5gAt45dCnLedFHWRzHqi3X,Mendocino (feat. Duane Eddy),Jeremy Fetzer,30,2020-04-07,False,0.553,0.691,7,-7.93,1,0.000647,0.797,0.191,0.565,92.009,238600,4
+12,2VUADful3YE4AnqBKDxpiO,Ruins,Deadborns,37,2018-07-31,False,0.437,0.688,2,-5.225,1,0.000304,0.0927,0.238,0.723,123.181,211017,4
+13,6UREUidgzbsLzFa0KlL4RJ,Sophisticated Honky,Orgone,41,2007-10-23,False,0.823,0.754,11,-9.212,0,0.567,0.821,0.0913,0.602,101.397,296453,4
+14,293mKJGfaD9YQ5m9Kb99vx,Synth Driver,American Babies,24,2016-03-18,False,0.438,0.851,1,-5.847,1,0.000266,0.0492,0.259,0.29,139.974,438020,4
+15,76oi4b0o1bOvssNTwQSZ5o,Harrower,Reid Genauer,33,2004-04-06,False,0.567,0.874,1,-4.809,1,0.23,0.00296,0.209,0.641,116.846,413907,4
+16,2GZQdmE8HvruvMKKeGgY7L,Naive Melody (This Must Be the Place) [Live],Perpetual Groove,40,2016-07-12,False,0.585,0.74,2,-9.54,1,0.00692,0.0553,0.694,0.534,112.649,471072,4
+17,2ltKgfElKBcNHh2ZIq0TRv,Smokestack Lightning,Marty O'Reilly & the Old Soul Orchestra,35,2014-03-17,False,0.481,0.81,9,-7.044,1,0.286,0.0678,0.0966,0.663,105.569,411240,4
+18,1lqYs12P1wpUxBvQW139i0,Badder Than Bullets,Tommy Guerrero,35,2006,False,0.797,0.939,2,-6.62,1,0.0111,0.871,0.0416,0.961,97.5,191053,4
+19,5vh9GfhmvKwEGN7uCwtGwp,Acid Raindrops,Camel MC,42,2003-06-02,False,0.847,0.852,2,-3.203,1,0.462,0.0,0.515,0.443,91.641,295800,4
+20,63dKIIq5thNMh3j5IaQP06,Keepers - Previously Unreleased Take,Jerry Garcia,37,2012-01-01,False,0.57,0.728,7,-10.185,1,0.00173,0.798,0.937,0.697,89.385,474333,4
+21,0acztaPAVZ9byqiBUQgl3r,I'm A Ram,Gov't Mule,33,2007-10-16,False,0.497,0.668,0,-5.478,1,0.00465,0.283,0.0803,0.561,152.032,461973,4
+22,0rvmB8BZE3TF5ZSouZBqRd,Vacation Forever,Sword Beach,32,2016-11-29,True,0.657,0.71,7,-6.042,1,0.0606,0.0,0.257,0.351,168.887,330875,4
+23,2r81J2rHCVaz52UPiic6d0,Down on the River by the Sugar Plant,Mike Doughty,34,2004,False,0.88,0.442,5,-5.555,1,0.271,0.00498,0.0904,0.522,108.519,187120,4
+24,0o995gJCGebaza0LWybToU,Doesn't Remind Me,Audioslave,67,2005-01-01,False,0.457,0.768,9,-3.592,1,0.169,0.0,0.103,0.232,99.739,255000,4
+25,1YpkMQbImgDPD7FQuVTxEk,Summer Breeze,Monophonics,33,2018-02-16,False,0.476,0.532,10,-8.552,0,0.0835,0.0269,0.368,0.587,81.628,287140,4
+26,7mLOaTOS6kiJi8Anm2C1zc,My Brain Is Hanging Upside Down (Bonzo Goes to Bitburg),Ramones,41,2005-08-16,False,0.448,0.978,7,-5.078,1,0.00888,0.00811,0.372,0.385,174.679,234307,4
+27,4oZuvU3dcgthKSjGSURWWM,Putting All of My People on (feat. ProbCause),ProbCause,26,2017-04-21,False,0.641,0.815,1,-5.856,0,0.324,0.0147,0.176,0.502,77.024,241558,4
+28,1dJO1XcaKJ2qrZEsoQT3q5,Riki Tiki Tavi,Donovan,45,1970-09-07,False,0.858,0.666,0,-9.312,1,0.268,1.99e-05,0.111,0.85,96.605,175320,4
+29,7kqGCWwUTnwisFFz5d37gE,Champagne & Reefer,Muddy Waters,47,1977,False,0.362,0.609,7,-8.832,1,0.081,0.00836,0.557,0.625,67.423,275933,4

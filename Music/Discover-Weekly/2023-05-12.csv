@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6xQdo4qNzgS9RZexKRvRT1,Omission,The Magpie Salute,36,2017-06-09,False,0.327,0.959,0,-4.834,0,8.78e-05,0.000322,0.0625,0.791,164.432,181747,4
+1,3o1zAeAvQgQFKzkrZOJD6V,Follow Me Down,The Pretty Reckless,47,2014-03-18,False,0.431,0.806,3,-4.732,1,0.0028,0.00256,0.237,0.378,144.044,280093,4
+2,1atCEBZJgOcoajj0sWzn1x,Jane Says - Live,Jane's Addiction,47,1997-11-04,False,0.542,0.877,7,-6.266,1,0.0204,0.161,0.972,0.584,82.676,391067,4
+3,4K5UncnKGMum0pUbVg86wO,Where There's Smoke There's Fire,Royal Southern Brotherhood,29,2016-06-24,False,0.621,0.779,7,-4.286,0,0.0102,7.45e-06,0.148,0.559,120.068,277019,4
+4,74WwUdG6sKsTEa0WvTNF2u,There's a Riot Going On,Monophonics,31,2012-05-15,False,0.582,0.938,11,-5.192,0,0.253,9.71e-05,0.0661,0.823,96.013,234307,4
+5,3dzvG9hmrUf6SjQrPMcbxU,Can't Help Yourself,The Blackwater Fever,33,2013-02-11,False,0.288,0.7,6,-6.217,1,0.00526,0.207,0.0741,0.146,147.338,249088,4
+6,0FfGhm8Mh7MJJAHeiqmUNL,I Barely Know Her,Black Coffee,32,2017-12-31,False,0.268,0.831,4,-5.35,1,0.000305,0.00819,0.329,0.509,146.999,248764,4
+7,4BPYg883lIpUtDqCdeoELv,Livin' with Love,T Bird and the Breaks,34,2015-01-27,False,0.627,0.898,0,-4.915,0,0.273,1.75e-05,0.607,0.638,169.741,242067,4
+8,3qiXr7dKZkCElXo2Lk6ICK,(Can't You) Trip Like I Do - 2009 Remastered Version,The Crystal Method,50,1999-08-24,False,0.346,0.972,8,-4.805,1,9.06e-05,0.00832,0.665,0.174,119.585,267107,4
+9,1QL8zb5rHle1c9OM0lo4cG,Put Your Lights On (feat. Everlast),Everlast,48,1999,False,0.606,0.834,7,-6.101,1,0.0155,0.0244,0.133,0.459,143.681,287493,4
+10,0nC1xjsY8SBWL5qwA4pOnh,Let Me Out,Electric Mary,33,2008-09-05,False,0.353,0.959,8,-4.573,1,0.00197,0.00435,0.0829,0.594,175.385,196573,4
+11,0BL6zmt2BI6tp7o6d8456K,Let the Big Dog Eat,Albert Castiglia,35,2016-05-20,False,0.496,0.846,9,-4.357,0,0.00107,0.00423,0.0594,0.933,124.361,208490,4
+12,4TOIJR7F0dH2k32a70YS8F,Disconnected,Face To Face,56,1992,False,0.427,0.978,11,-6.639,1,0.0307,7.01e-06,0.335,0.747,193.707,207733,4
+13,5MknKDH6Zh81k93y7YU6w6,Congo Square,Sonny Landreth,41,1995-02-06,False,0.52,0.905,9,-7.588,0,0.105,0.0408,0.307,0.896,174.267,380267,4
+14,7oX8lGWfFioRsqTARB4vJT,In My Mind's Desert,Slomosa,45,2020-08-28,False,0.666,0.521,7,-8.674,1,0.0327,0.0466,0.0863,0.685,105.546,292731,4
+15,0R5SVuVGZdj2jj4jREKS9i,That Bastard Son,The Dead South,35,2014-04-26,False,0.576,0.627,9,-6.682,0,0.337,0.0411,0.166,0.717,134.1,234880,4
+16,11jbd1CzAhMM6RxEBghOAp,Deluxe,SunSquabi,30,2017-04-07,False,0.644,0.632,7,-7.14,0,0.264,0.0175,0.0955,0.538,105.009,381962,4
+17,5isCB2lffoftwqT4v6g7ub,Listen Close,Maylene And The Sons Of Disaster,38,2009-06-22,False,0.521,0.944,10,-3.966,1,0.000143,4.74e-05,0.0556,0.51,132.029,220267,4
+18,6G7WzFbHPoZbkfNaRbdm61,1000 Dollar Car,The Bottle Rockets,32,2013-11-19,False,0.414,0.449,7,-10.734,1,0.00327,0.693,0.373,0.275,101.073,285987,4
+19,0gmBm6Zba6vQZEsQtsOHci,Summer in the City,Butthole Surfers,35,2017-05-26,False,0.53,0.829,0,-8.902,1,0.0371,0.0,0.224,0.532,101.798,193933,4
+20,3jGXH6aPa2rriMDIaZ3Rdk,Long White Cadillac,Dwight Yoakam,45,1989,False,0.604,0.702,3,-10.743,1,0.0148,0.26,0.103,0.462,126.589,321267,4
+21,5S1qWBPGQoktlmFd6bj3JY,The Worst Day Since Yesterday,Flogging Molly,51,2000-03-07,False,0.347,0.489,2,-7.662,1,0.287,2.09e-06,0.221,0.361,136.16,218787,4
+22,6ixC9l5lf0qlKub7N3N8g9,Ain't No Grave,Davy Knowles,33,2015-03-10,False,0.441,0.584,5,-5.545,1,0.345,0.000332,0.11,0.332,78.076,248951,4
+23,2NkfqqY3ExmXglY35OXNWa,Narcissus Soaking Wet,Chris Robinson Brotherhood,35,2016-07-29,False,0.575,0.614,1,-7.077,1,0.187,4.81e-06,0.147,0.456,91.685,425960,4
+24,2JabaRDfP9xzoJMnXPafYl,A Little More Cocaine Please,Split Lip Rayfield,27,2010-04-06,False,0.618,0.798,7,-6.201,1,0.675,3.66e-05,0.0794,0.531,102.237,137240,4
+25,4pqPBrTkC6DuGCi3l7nAo5,Cut You In,Jerry Cantrell,7,1998,False,0.632,0.742,10,-6.785,1,0.225,0.00115,0.138,0.725,119.509,203000,4
+26,5WxNhWFhWB3uc59J623Fhr,Cocaine Chest Pains,Kopek,33,2012-01-16,False,0.323,0.966,9,-4.037,1,0.00134,2.37e-06,0.221,0.396,174.972,216933,4
+27,5VOllFPGffu4pigIf2px1n,The End of That,Plants and Animals,37,2010,False,0.668,0.682,5,-7.539,1,0.134,2.75e-06,0.0978,0.744,121.554,243998,4
+28,1kiEueR1jHSW2dD4LSD6X0,Smash the Funk,GRiZ,40,2013,False,0.579,0.886,6,-2.564,1,0.00178,0.655,0.19,0.399,102.993,410204,4
+29,7e5oI26aeiQQlOnqFaRGCx,Artificial Red,Mad Season,39,1995,False,0.599,0.349,9,-8.218,1,0.0757,0.131,0.0693,0.501,143.311,374920,3

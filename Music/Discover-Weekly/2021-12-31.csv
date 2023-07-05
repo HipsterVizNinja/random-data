@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,5k3PkuqyI7E2gyKkD0Psxy,Satellite Radio,Steve Earle,48,2007-09-25,False,0.508,0.819,7,-7.578,1,0.422,0.00677,0.148,0.86,180.049,249280,4
+1,7I7wVjBeVr3FcfgMCPO9uq,Hollywood Kisses,Kung Fu,33,2014-03-04,False,0.592,0.79,5,-4.484,0,0.037,0.00182,0.0787,0.655,94.765,439159,4
+2,0k20LwzvpnHsyKZTVoR2qy,Altitude Check,The Bad Tenants,29,2017-06-15,True,0.734,0.67,10,-8.681,0,0.246,0.0,0.293,0.663,77.996,260000,4
+3,4fxtYgcIOqjCq9Ix1pvrzn,No Type,New Beat Fund,49,2015-05-26,True,0.619,0.622,5,-4.751,1,0.00283,0.000133,0.108,0.21,136.978,213797,4
+4,77SZYdcEHI8Sis4FB8pbb7,Here on Out,The Magic Beans,37,2018-03-16,False,0.687,0.733,3,-7.45,1,0.0532,0.204,0.0609,0.743,129.945,416591,4
+5,4bO8c34CdaCstrES2zxF2v,Gotta Make A Living,Giant Panda Guerilla Dub Squad,44,2016-09-16,False,0.704,0.803,4,-8.37,0,0.238,0.00861,0.266,0.824,90.006,231128,4
+6,0iJimXEvd6GD8QpkBcCRJL,Illegal Smile - Live,John Prine,25,1990,False,0.419,0.187,0,-20.242,1,0.785,0.0,0.978,0.345,116.956,256640,5
+7,6bP2oUQvWS1HQ3No4J7Q78,A New Beginning,Fantastic Negrito,27,2017-06-29,False,0.673,0.689,6,-6.639,0,0.0585,1.74e-06,0.106,0.639,84.666,212627,4
+8,0mjzhofhRSYMeLowC3i66S,Winning Wrong,Grady Spencer & the Work,37,2016-04-22,False,0.439,0.88,0,-3.471,1,0.0025,0.000289,0.249,0.617,154.943,215987,4
+9,4QJrdjkseeizcvesiODpaX,Lazy Susan,Na'an Stop,36,2017-05-03,False,0.728,0.706,2,-8.973,1,0.075,0.0535,0.0954,0.804,122.053,216160,4
+10,168afNpNQ4YTff7VSih55v,"My City Was Gone - 7"" Version; 2009 Remaster",Pretenders,36,2008-09-23,False,0.761,0.77,9,-6.685,1,0.162,0.501,0.416,0.941,107.723,267187,4
+11,1UekZC5FdEgtmNoACJlZbY,Shake 'Em Loose Tonight,Rumspringa,2,2010-10-05,False,0.563,0.62,3,-10.265,0,0.137,3.31e-05,0.0885,0.638,83.629,215947,4
+12,7dZoafp6V9KjlpLNmg87qO,Goin Back to Cali,The Olés,41,2014-04-15,False,0.49,0.65,4,-8.613,1,0.0155,0.000153,0.24,0.66,149.584,302592,4
+13,3Wo3DT7hIwbp40V3UGH2PE,Lazy Daze in California,Language Arts Crew,39,2004-01-01,False,0.807,0.853,4,-9.572,0,0.331,1.42e-06,0.673,0.489,87.991,264133,4
+14,7K95NCjCNx1TwlpnbjQn6S,The Way It Was,Coast Modern,49,2017-07-28,False,0.67,0.741,4,-5.98,1,0.0833,3.71e-05,0.0926,0.579,80.037,229960,4
+15,5r9WJVe1yhJx9ZUg30XEHQ,Think I'm In Love,Beck,59,2006-01-01,False,0.873,0.609,10,-6.336,1,0.0104,0.582,0.0999,0.86,129.867,199427,4
+16,2wnjZXcAT3rCjjqxLeHjv7,Going Down,Freddie King,64,1971,False,0.565,0.526,0,-11.352,1,0.0339,0.000119,0.11,0.637,167.936,204333,4
+17,0QhqfccNmFUjJvfUlwIcev,In the Basement of the Alamo,TAUK,28,2013-05-09,False,0.358,0.817,2,-5.995,0,0.00323,0.678,0.139,0.742,99.997,318360,3
+18,5jD7uqcwZCUOG7QkfRHO0Z,Mostly,*repeat repeat,33,2015-06-09,False,0.632,0.874,4,-5.884,0,0.000233,3.61e-06,0.0778,0.79,79.951,225494,4
+19,0gJUOnzOjv52vJgkpM25XF,High Enough,Skydyed,25,2014-09-29,False,0.595,0.665,2,-7.631,0,0.00577,0.769,0.113,0.261,100.007,394467,4
+20,1dchmlPM5R4AoBL2oxM8Ae,The Wondersmith and His Sons,Astronautalis,40,2008,False,0.677,0.694,1,-7.342,1,0.469,4.36e-05,0.354,0.48,100.005,215373,4
+21,3KcIRvPVgzEMOc9iPI5Iga,Nickle Bags (Live),Digable Planets,0,2017-06-30,False,0.647,0.778,0,-4.757,1,0.211,0.000156,0.631,0.663,100.354,480752,4
+22,1Ngmwr134PMuIAToxIjoRb,Leather Jacket,Thunderbitch,34,2015-08-29,True,0.355,0.768,6,-8.124,1,0.00178,0.00646,0.0939,0.385,128.962,199987,4
+23,5Yn8WCB4Dqm8snemB5Mu4K,2 Fingers of Whiskey - Music from The American Epic Sessions,Jack White,33,2017-06-01,False,0.554,0.506,7,-5.619,1,0.987,0.0031,0.0932,0.814,140.396,172440,3
+24,7dpevdxvtqyT5IHdUQrxkz,Bad Business,little hurricane,0,2017-04-14,False,0.64,0.539,5,-7.403,1,0.0477,1.3e-05,0.353,0.569,85.132,178467,4
+25,5okwbWoTIcNS5v153qGOeW,Everything Is Bullshit,Particle Kid,0,2017-09-01,True,0.52,0.735,6,-10.252,1,0.0447,2.99e-06,0.116,0.59,111.772,228227,4
+26,01wEuGHUnDNRqvlprx5Afw,Stuck in a Dream,Marvel Years,40,2019-09-25,False,0.319,0.579,11,-6.658,1,0.0449,0.671,0.12,0.328,80.761,260241,4
+27,3LJOZalbQSkfWLb0y2kypN,Look at Miss Ohio,The Band Of Heathens,49,2009-09-15,False,0.532,0.421,4,-8.828,1,0.471,0.000494,0.113,0.504,119.998,312333,4
+28,6kWqmWTfuXGnZduyD7UZf0,Two Seconds Too Late,Welshly Arms,0,2013-10-15,False,0.493,0.811,2,-6.389,1,0.00378,0.00372,0.309,0.532,126.893,235107,4
+29,18PijSYHJcnADnaE9W5MRR,Mother Blues,Ray Wylie Hubbard,44,2012-03-26,False,0.813,0.565,11,-9.975,0,0.654,0.0182,0.114,0.88,148.055,356990,4

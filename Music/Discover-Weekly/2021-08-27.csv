@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,1t43fKlTQt96rRSYFAAGNz,Innocent Man,The B Foundation,36,2021-01-01,False,0.573,0.581,10,-12.895,0,0.00847,0.000959,0.328,0.724,147.013,237898,4
+1,54rQxr2XJZ4vf0mRyGsqAo,Sirens,The String Cheese Incident,52,2003-09-23,False,0.534,0.703,9,-5.406,0,0.114,0.011,0.0918,0.317,171.961,307507,4
+2,6xa08u8shi9EkW9GLampwL,Mercedes Benz,Dean Ween Group,29,2016-10-16,False,0.692,0.805,0,-5.402,1,0.0018,0.0543,0.164,0.737,92.267,423977,4
+3,3ItguS7bX03MBDRUCekf66,Sunriser - Diskobeistet Remix,Diskobeistet,39,2019-05-08,False,0.714,0.631,2,-7.071,1,0.0202,0.352,0.308,0.386,97.0,312000,4
+4,5LzHQ5aVYK828HIWcnralK,Everything You're Breathing For,The Parlor Mob,50,2008-04-11,False,0.557,0.815,0,-5.402,1,0.000969,0.00188,0.0932,0.445,88.929,226853,4
+5,2WGmGn0hKJ8NpBQu6hU7i7,Electric Fever,Them Vibes,38,2017-05-05,False,0.654,0.834,2,-6.036,1,0.0628,1.61e-06,0.131,0.551,178.085,227568,4
+6,4m2dPgWZfnMK8PQvTnLpcK,Nature,Madaila,32,2016-11-04,False,0.495,0.579,1,-7.583,1,0.331,0.000274,0.185,0.397,82.398,255493,4
+7,3skY6ZyQddpfn1K2DBScDk,Detroiters Theme (feat. 6aamm),6aamm,6,2017-02-09,False,0.703,0.312,8,-12.415,1,0.167,2.71e-06,0.0862,0.53,86.959,156000,4
+8,0VBtFnyokbIlOqpWW8LwAK,Freight Train,Anderson .Paak,29,2014-10-21,True,0.831,0.335,2,-10.857,1,0.0529,8.51e-05,0.209,0.617,92.003,190036,4
+9,5tE6qUPzKSdVWhTU1cNG5g,Stuck On You,Fruition,0,2018-02-02,False,0.573,0.598,1,-8.436,0,0.241,0.0,0.113,0.783,80.937,200008,4
+10,4VRy3EuT72or2i6HGkBZPz,Smoke Alarm,Carsie Blanton,40,2012-01-31,False,0.496,0.567,9,-7.071,1,0.592,1.02e-05,0.108,0.506,164.94,135920,4
+11,7a2rIBtOQwV5TR4VTyDIYQ,In the Meantime - Re-Recorded Version,Spacehog,48,2014-10-14,False,0.248,0.879,9,-5.371,1,0.463,0.00185,0.258,0.257,166.001,304876,4
+12,7tCHpjktA50ihtkLz6bAnn,Ain't No Rest For The Wicked - Original Version,Cage The Elephant,71,2008-01-01,False,0.635,0.914,0,-5.631,1,0.0597,0.0,0.601,0.922,156.014,175493,4
+13,5NUqfXepwvV808E6u9Liky,Daily Bread,The Busty Petites,32,2018-07-01,False,0.437,0.579,4,-7.915,0,0.0386,0.00126,0.123,0.283,91.631,232752,4
+14,2qFbRhAgBPSGaYX8LNQAX2,Leaving Louisiana In The Broad Daylight,Shovels & Rope,46,2015-11-20,False,0.659,0.729,5,-4.72,1,0.0266,0.0,0.0895,0.619,84.904,213960,4
+15,1e1PpCX5aC165I3eCgOUdX,Hey Mister,Poor Man's Poison,25,2014-01-28,False,0.584,0.471,9,-6.786,1,0.62,0.0,0.0916,0.442,77.165,153624,4
+16,3mlMGktVNhAatqEUrLpIWC,Beer Run,Todd Snider,45,2002,False,0.659,0.821,9,-9.696,1,0.164,0.0,0.777,0.817,109.271,162840,4
+17,0JEADYUKpzEIKmOlZA878W,Don't Wanna See Your Face,John Butler Trio,0,2010-01-01,False,0.751,0.86,11,-4.822,0,0.0715,0.00414,0.169,0.927,120.006,163040,4
+18,5XAdEKNl9g6OPPT2hClSZT,Peach Pickin',The Black Lillies,38,2011-01-22,False,0.705,0.663,4,-7.024,1,0.439,5.57e-05,0.0967,0.961,119.46,240627,4
+19,0c6dauowEeBOPddSz3fMEU,The River,Kat Wright,37,2016-11-16,False,0.707,0.672,9,-6.121,1,0.0987,4.11e-05,0.106,0.519,94.972,299395,4
+20,3JkRwocj42HtDSq8ra7Csc,Hallelujah,Jonathan Tyler,0,2015-08-07,False,0.567,0.648,0,-5.941,0,0.211,0.00215,0.233,0.608,78.988,252600,4
+21,65TxIHQ4zraVfKzMcoTVaR,Christophe Waltz,Adrian Quesada,32,2013-10-29,False,0.517,0.791,4,-4.032,0,0.153,0.874,0.157,0.702,158.172,200720,3
+22,4upb9RfRf0hfW1rTU8bozj,Mind is a Mountain,The Get Ahead,42,2017-09-15,False,0.625,0.514,2,-5.314,1,0.772,0.000254,0.109,0.606,83.99,210723,4
+23,6Svg1FizcejyhoC7uFkhyW,Selling Fun,BoomBox,20,2018-10-19,False,0.801,0.793,6,-4.795,0,0.00482,0.458,0.0567,0.508,90.503,280823,4
+24,29Hfr3JtLRquV7F3fejB4R,Kids,The HillBenders,35,2018-11-16,False,0.66,0.629,9,-8.658,1,0.333,0.00229,0.1,0.59,139.945,280331,4
+25,3veaE3NlbgiHo5SySyG2Bb,Rye Whiskey / Time to Switch to Whiskey,Corb Lund,54,2009-09-29,False,0.494,0.776,7,-8.257,1,0.411,0.0,0.973,0.645,116.241,278147,3
+26,3QypfBCWAsiidMeBb9KOGq,A Jug in the Road,Ezra Bell,33,2018-05-24,False,0.616,0.422,9,-7.989,0,0.312,0.846,0.145,0.456,172.185,179880,4
+27,2mdUkIgM2en0pEU6n4qtC8,Complicated,Poi Dog Pondering,40,1995,True,0.684,0.934,0,-7.244,1,0.00781,1.5e-05,0.0557,0.791,126.023,249093,4
+28,1MpjLfZlS1kFBxoHsEqHyg,Tucked In,Stoop Kids,34,2015-01-20,True,0.69,0.703,1,-5.278,1,0.00812,0.0,0.159,0.74,91.988,163924,4
+29,0hRK7UKSKVS5a18mxYT6pO,Hooch,Everything,49,2006-04-21,False,0.69,0.803,4,-6.549,1,0.032,2.01e-05,0.0676,0.602,95.959,219844,4

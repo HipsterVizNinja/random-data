@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6XgUGizi6BaOLFvwdPU1fO,Helicopters,Stop Light Observations,38,2015-03-10,False,0.573,0.705,9,-6.029,0,0.282,0.0,0.329,0.185,133.96,226467,4
+1,57vNFNbilns66ZcLkM47Th,Satellite Man,Satellite and the Harpoonist,41,2020-06-05,False,0.556,0.473,10,-11.486,0,0.347,0.00404,0.0979,0.739,127.409,180433,4
+2,3dCarMp6T3GsKCspJgeD0a,Travelling Riverside Blues (BBC Session) - Remastered,Led Zeppelin,59,1982-11-19,False,0.467,0.835,7,-7.084,1,0.0745,0.000184,0.26,0.639,91.603,311640,4
+3,4TMLCsvhSCdDE2U8uU1L8C,Better 4 U,The Floozies,27,2017-09-29,False,0.674,0.719,4,-4.063,1,0.142,0.0044,0.108,0.341,86.009,223256,4
+4,12FYltqpNguFpKC92M293L,Weight of This World,The Kingston Springs,37,2012-10-02,False,0.485,0.841,11,-7.223,1,0.00508,0.055,0.126,0.742,159.117,198827,4
+5,6YYljGh0nSVRQD9Tu5lb0B,I Am Steve,Hey Steve,49,2020-02-21,False,0.64,0.845,6,-5.687,0,0.118,1.19e-06,0.0582,0.924,152.052,205926,4
+6,0pUh9vL0brGUJcVwEQnz1V,Coconut Girl,Brother Noland,43,1990-12-01,False,0.796,0.544,9,-14.556,1,0.185,0.0,0.533,0.97,134.584,215267,4
+7,0IZJYPP23E45VAz7DqE1W4,My Missy,Part One Tribe,38,2009-05-11,False,0.628,0.823,2,-4.194,0,0.124,0.00915,0.0551,0.677,131.093,224040,4
+8,2344mSPPaLbvT8FLjlu1Za,We Gotta Get out of This Place,Dan Auerbach,39,2017-11-17,False,0.599,0.71,5,-7.052,1,0.188,6.9e-06,0.192,0.897,124.638,202154,4
+9,4KnZRILT9z3RSzgxk7Ogsm,The Last Sunrise,¡MAYDAY!,34,2015-09-18,True,0.746,0.738,7,-5.24,1,0.0448,8.21e-06,0.161,0.551,113.955,299826,4
+10,67m6HbC29qInoYmFGcKOMy,Clementine,Lincoln Durham,37,2012-01-31,False,0.631,0.335,0,-12.25,1,0.579,0.000379,0.266,0.844,75.574,202693,4
+11,5ZiGostQ6fbfc40IgEFDQD,"Lead Poisoning (feat. GZA, RZA & Herobust)",RZA,12,2018-10-12,True,0.559,0.975,7,-5.464,1,0.0372,7.34e-06,0.103,0.335,88.015,245454,4
+12,3HI8VyM8KCQ2Z60gusDC3a,By This Time Tomorrow (feat. Jasmin Parkin),Jasmin Parkin,25,2013-10-22,False,0.422,0.786,10,-7.275,1,0.00211,0.000166,0.343,0.34,106.552,260707,3
+13,0XcGesxAP6WXOgBKlKN8UW,Hit It Hard,John Daly,41,2010-04-26,False,0.361,0.714,0,-5.039,1,0.024,0.0,0.293,0.385,180.05,214333,4
+14,6wRZUhm9wFB71XwwxQkYnA,How High,Bad Rabbits,0,2016-07-22,True,0.544,0.961,4,-2.97,0,0.011,0.0,0.302,0.659,187.931,208787,4
+15,1jQro0FQitSukchoIE82Fd,Mr. Brown,Styles Of Beyond,39,2003-09-09,False,0.817,0.918,1,-4.604,1,0.183,0.0,0.231,0.641,93.534,213160,4
+16,35MXnoFWEQg5YkRlUyVgK4,Tennessee (feat. Doctor Rosen Rosen),Doctor Rosen Rosen,33,2013-04-19,False,0.674,0.509,11,-7.133,1,0.0472,0.0,0.238,0.517,69.949,123497,3
+17,6NwcuuA9wU6F98HI7sPWSH,Finders Keepers - Live,Jerry Garcia,34,2016-06-24,False,0.555,0.674,2,-9.114,0,0.274,0.808,0.0719,0.751,94.175,568760,4
+18,2EVIPPC6V0f5Q0zDovL6gl,Bird River Grove,Can't Hang,42,2001-01-01,False,0.628,0.699,1,-6.662,0,0.0745,1.3e-06,0.0826,0.302,174.218,256280,4
+19,5myXcfQedPNBHEpGLbrKDT,No Complaints,J. Hutton,38,2017-06-09,False,0.818,0.397,3,-6.548,1,0.23,0.0,0.135,0.532,134.044,223881,3
+20,5kuFCKfGMFsBenmPfMB3cw,"Part One - Hey, No Pressure",Ray LaMontagne,39,2016-03-04,False,0.436,0.751,8,-7.706,0,0.108,0.000282,0.102,0.706,151.652,394200,4
+21,46zKgD8f2UecI18HLeUABs,Ghengis Kahn,Tim Whybrow,29,2016-02-16,False,0.546,0.474,2,-13.7,0,0.57,0.0,0.159,0.348,94.965,140600,4
+22,49yGKPa8ZuwdHTe1rfGSc6,Black Ajax,Locksley,24,2018-08-08,False,0.641,0.915,9,-3.256,1,0.0192,0.0692,0.305,0.589,79.477,161668,4
+23,5hxJeWy1neBUL3mtl0Hh2b,Masters of the Universe,Ashes of Babylon,30,2011-07-02,True,0.636,0.866,11,-4.878,0,0.23,0.0,0.167,0.543,91.548,240453,4
+24,7kaCWJKoIz2GUB6Rslbl0p,Mama Knows,Sister Sparrow,43,2015-05-18,False,0.569,0.733,5,-3.458,1,0.444,0.0,0.0806,0.903,82.076,212320,4
+25,3hDJ0aEqeywrwGrr0Q3GZV,A Happening,hyperstory,38,2009-09-28,False,0.565,0.503,9,-8.738,0,0.0277,0.178,0.123,0.806,181.017,308933,4
+26,4L9pCM2hufez1mw1qqra80,Stackolee,Samuel L. Jackson,43,2007-01-30,False,0.433,0.764,7,-9.726,1,0.0447,0.000132,0.978,0.605,110.827,210360,4
+27,0giZpwlfUQCjtYTWkmMSyq,Got Me Feeling Good,David Shaw,41,2021-05-07,False,0.56,0.649,7,-4.801,1,0.0191,1.33e-05,0.342,0.385,87.934,252245,4
+28,6VGJj05BGPrIZQFdRLHOvp,Get Fly,Atmosphere,36,2005-10-04,True,0.704,0.874,2,-3.684,1,0.234,0.000213,0.179,0.543,102.02,285360,4
+29,6hZg9eBzZtn5SpHarPehbU,Knock Me Out,Vintage Trouble,46,2017-02-15,False,0.452,0.906,0,-4.888,0,0.0849,7.29e-05,0.753,0.635,167.088,185610,4

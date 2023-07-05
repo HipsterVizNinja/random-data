@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3HtazJXet39mz8SqZwm5NP,11:11,Dinosaur Pile-Up,53,2015-10-16,False,0.569,0.8,1,-6.539,1,0.000998,0.661,0.685,0.84,94.963,244678,4
+1,21gRGP5LdIgto8sznRZ7xz,Teen Angst (What The World Needs Now),Cracker,51,1992-01-01,False,0.398,0.947,7,-8.738,1,0.00315,1.81e-06,0.295,0.563,157.032,254400,4
+2,1LDr80fXBUO4Iqa28mMNCg,Voodoo Child,Tom Morello,42,2020-10-30,False,0.405,0.841,10,-5.023,0,6.69e-05,0.844,0.305,0.432,89.033,312263,4
+3,6NL8rMMfoTLJacdIB60xuw,Memphis Sun,Rival Sons,45,2009-06-09,False,0.343,0.66,1,-6.134,0,0.132,0.00128,0.0801,0.314,75.914,230240,4
+4,74DiLdDl1ya9R1dZpvzdaF,"Lord, I Just Can't Keep From Crying",The Barr Brothers,29,2011-09-27,False,0.265,0.917,2,-4.475,1,0.159,0.0326,0.128,0.391,181.098,266878,4
+5,3WB35Ql4qxpShvIzB3pteY,Have Love Will Travel,The Black Keys,0,1999-04-07,False,0.374,0.925,4,-2.413,0,0.0695,0.456,0.262,0.525,115.657,184720,4
+6,4VSztR5CF6N5WyDOnoFluv,Plantation,John Brown's Body,34,2013-04-16,False,0.681,0.77,1,-5.118,1,0.00908,8.62e-05,0.128,0.713,115.963,354187,4
+7,1u0GCcygM7jVfLAqcqYLq1,I Had Me a Girl,The Civil Wars,16,2013-07-30,False,0.338,0.56,10,-7.052,1,0.204,2.98e-06,0.108,0.576,82.966,225093,3
+8,3lCfyDeaEYxEvJSnhv1ek3,This Land - Single Version,Gary Clark Jr.,39,2019-01-10,True,0.505,0.911,10,-3.006,0,0.0315,1.83e-05,0.0745,0.281,81.978,236283,4
+9,0Vx453PGDgPnTCJuVMQXXY,Life On a Chain,Pete Yorn,47,2001-03-27,False,0.456,0.837,7,-7.681,1,0.112,0.017,0.396,0.357,147.825,227347,4
+10,2osb76736G5qEcWFdCEPmT,A Good Night's Sleep And A Cab Fare Home,The Strypes,7,2015-07-15,False,0.678,0.799,7,-6.528,0,0.00179,8.41e-06,0.12,0.397,105.013,176387,4
+11,0m1DJ5Jkv3kdnGrcZsJFmC,Only,Nine Inch Nails,58,2005-05-03,True,0.7,0.807,9,-5.711,0,0.000576,0.00488,0.0996,0.963,112.15,263093,4
+12,34GHyS8Jl4ArYRE4AB7No7,Battle Cry,Jack White,33,2017-04-07,False,0.418,0.438,7,-8.222,1,0.00626,0.883,0.181,0.408,134.762,151747,4
+13,2mVlstISbCfbygz89NESmp,Lost River,Murder By Death,41,2012-09-25,False,0.391,0.454,8,-10.274,1,0.24,0.488,0.109,0.111,92.717,264000,4
+14,2E4awT2B9kuIPkiVezOqsh,Keep It Close,Bones Owens,47,2021-07-23,False,0.451,0.817,11,-5.124,1,0.0144,3.49e-06,0.103,0.459,79.974,220791,4
+15,20Uw19kbKYBThkINc1sgLB,Oh Well,Mike Gordon,35,2005-06-01,False,0.618,0.739,4,-7.27,0,0.00731,0.18,0.117,0.676,98.697,202333,4
+16,0g8YcbvAqJDbuDepKoAe7G,Eyes Of A Child,The Gourds,40,2011-01-01,False,0.677,0.583,0,-5.322,1,0.271,1.43e-06,0.12,0.575,96.183,251400,4
+17,7Jt8utNSFSXBDAWksrYlYn,I Still Believe,Michael Been AKA The Call,35,1997,False,0.53,0.803,1,-7.939,1,0.00413,0.00755,0.12,0.617,101.31,332240,4
+18,6WZhyyH5Sgq2Coniznbk2B,Psychobilly Freakout,The Reverend Horton Heat,47,1991-11-01,False,0.192,0.963,4,-9.316,0,2.94e-05,0.703,0.358,0.401,161.436,159307,4
+19,5VBVIcMh6CWy8szP3U0Ttp,Defy You,The Offspring,56,2005-06-21,False,0.491,0.841,11,-3.651,0,0.000609,2.4e-06,0.131,0.669,92.297,228240,4
+20,5X7Kc5bSywACSRimcs0u0k,Tunnel Vision,Tokyo Police Club,27,2014-03-23,False,0.47,0.935,2,-3.796,1,8.39e-06,0.00652,0.0829,0.683,169.949,182446,4
+21,6uYie8PJg9m3zXbltPaYwC,Loaded Dice & Buried Money,Tyler Bryant & the Shakedown,26,2015-10-23,False,0.473,0.884,7,-3.058,1,0.0111,0.000883,0.0354,0.573,80.02,221227,4
+22,4bhspHrFFCtl1wSt74KcxL,Gimme Something Good,Ryan Adams,33,2014-09-08,False,0.395,0.825,11,-3.148,0,0.0302,0.00115,0.187,0.683,184.23,234893,4
+23,5YhrJVUDkB0ijXwRekwQW1,Gasoline,Audioslave,32,2002,False,0.379,0.716,4,-4.312,1,0.000272,0.00123,0.0786,0.239,92.721,279333,4
+24,5YF9LcLUnzyiiPul1DyZwa,Make You Better,The Decemberists,46,2015-01-20,False,0.423,0.874,2,-4.8,1,0.143,8.65e-05,0.127,0.305,119.313,307867,4
+25,5TmrrSgHWGTUrU64z27oQx,Get Down Moses,The Mescaleros,42,2003-10-21,False,0.593,0.915,4,-5.071,0,0.00975,0.000275,0.41,0.918,156.033,305280,4
+26,4cYUnvZW9GnQRtEdPRX5AP,Goshen '97,Strand of Oaks,36,2014-06-24,False,0.326,0.915,9,-2.158,1,0.000607,0.385,0.225,0.265,138.152,180387,4
+27,2HMzl1Lgj0fjfFRaC93cB2,David,Noah Gundersen,42,2011-08-06,False,0.396,0.631,4,-8.783,0,0.637,0.000471,0.186,0.495,125.988,219027,4
+28,4aRV8CBjTCCLulMHlipXuw,I Like It Like That,Rebirth Brass Band,34,2011-04-12,False,0.718,0.735,3,-5.828,0,0.0491,0.00713,0.371,0.916,114.964,278973,4
+29,14pU7Z6iy9lYl1suA27zXB,Nothin' in the World Can Stop Me Worryin' 'Bout That Girl,The Shelters,32,2016-06-10,False,0.719,0.358,9,-12.137,0,0.71,0.000384,0.0865,0.494,93.942,185773,4

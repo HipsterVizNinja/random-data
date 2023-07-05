@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,7aClLac5pVagDjMCBlYCPk,I Know,Shovels & Rope,37,2016-10-07,False,0.545,0.908,0,-6.548,1,0.115,0.0,0.0877,0.391,120.155,218778,4
+1,3Vclxo8TT9RpsdUhdJORZi,Plane Crash,moe.,33,1998-09-08,False,0.332,0.742,7,-8.735,1,0.0181,0.00709,0.31,0.451,111.471,534200,4
+2,3AzROOpI2oow3ItaP8gemF,Let's Go Outside,The String Cheese Incident,32,2014-04-29,False,0.7,0.881,0,-5.277,1,0.0614,2.58e-05,0.079,0.889,97.99,257813,4
+3,5On8V1Wi6biKnUn8yjxQHU,Rocky Mountain Way,Godsmack,37,2012-05-28,False,0.443,0.833,7,-5.084,1,9.57e-05,0.00243,0.177,0.59,139.175,241187,3
+4,26P7ax7MEpH3a3xXF41Pfi,Under the Influence,Elle King,1,2014,False,0.355,0.846,2,-3.142,0,0.00256,0.0,0.324,0.608,180.031,197720,4
+5,3ulTWXkm32Mytayd0BqPj2,Bible on the Dash,Hayes Carll,49,2012-08-14,False,0.718,0.677,11,-6.961,0,0.109,0.0,0.206,0.813,106.937,270373,4
+6,1pflhbn3DtPKmecZRd1aPT,Beer Run (Extended) - Live,Todd Snider,36,2003,False,0.606,0.626,9,-7.108,1,0.726,0.0,0.714,0.797,106.742,193613,4
+7,6MXrAgcJFpYDIeUjBKUXBq,Life of Sin,Sturgill Simpson,0,2014-05-09,False,0.49,0.702,4,-7.498,1,0.179,2.63e-06,0.14,0.833,169.277,146107,4
+8,17iXGMQXKdt5gqP09BWwK7,El Camino,Elizabeth Cook,23,2010,False,0.66,0.723,9,-5.831,1,0.0239,1.09e-06,0.0368,0.764,139.793,163480,4
+9,70PTpJAzYS18OxdNVoO5hs,Once Again,Girl Talk,42,2006-05-09,True,0.736,0.609,1,-8.529,1,0.0138,4.24e-05,0.157,0.467,89.977,160107,4
+10,5c2fsMmr0of46X1S5O1qHV,Bad Is Bad,Huey Lewis & The News,46,1983,False,0.749,0.554,2,-8.87,1,0.152,6.57e-06,0.0892,0.707,90.65,227853,4
+11,6CryGd6wVcpWf5J5qH7cvZ,Sequestered In Memphis,The Hold Steady,43,2008-06-17,False,0.242,0.964,2,-3.847,1,0.0787,0.00455,0.205,0.404,137.651,214520,4
+12,5jMvdhUBfht7Gi7FT553mX,Shakedown Street,BoomBox,28,2010-01-01,False,0.841,0.568,8,-5.479,0,0.0712,0.715,0.099,0.14,119.964,203067,4
+13,7F6S1cyEbjKz6tvO1wmhwi,Shape Shifter,Lera Lynn,32,2016-04-29,False,0.805,0.684,11,-8.304,0,0.00601,0.0781,0.12,0.962,130.042,231227,4
+14,6YT8qUjo2HeiGTnns4uJX0,Near To The Wild Heart Of Life,Japandroids,30,2017-01-27,False,0.232,0.946,7,-4.395,1,0.0122,3.34e-06,0.088,0.262,181.958,297120,4
+15,50ekLb1wXqwCalbH4onfGU,I’m a Raven (Shake Children),Hiss Golden Messenger,38,2014-09-09,False,0.502,0.504,1,-7.497,1,0.102,0.0,0.282,0.866,170.438,170773,4
+16,3q0wgJXeUkhq2jeZ9JS7KN,I'm on Fire,Whitey Morgan and the 78's,59,2008-09-12,False,0.565,0.629,9,-7.282,1,0.0943,0.388,0.208,0.346,93.967,196680,4
+17,2edqsHZm8dxqEcEbDTX0Ue,Back To The Earth,Rusted Root,40,1994-01-01,False,0.352,0.673,8,-8.889,1,0.145,1.42e-06,0.0717,0.248,84.886,327160,4
+18,54hGiCjMpgWAdehF62bQ4A,Listen to the Darkside,Charlie Mars,40,2009-06-09,False,0.816,0.434,11,-9.08,1,0.54,9.72e-06,0.0955,0.52,98.015,211962,4
+19,3gkSQbWTDBh0ZKq85WmJDz,You Don’t Get Me High Anymore,Phantogram,54,2016-10-07,False,0.504,0.945,7,-4.625,1,0.00242,0.00257,0.536,0.744,97.972,219507,4
+20,6vbFAkYLHXofMRknV1boQQ,"Treetop Flyer - Acoustic Set; Live at Shepherd's Bush, 2008",Stephen Stills,30,2009-10-27,False,0.45,0.249,0,-18.235,1,0.679,0.0,0.964,0.774,81.976,395120,3
+21,0mXqiTU1hwSAzgPMp7FY4Q,Stray Cat Strut,Stray Cats,0,1981,False,0.671,0.454,0,-14.324,0,0.169,0.00735,0.0871,0.681,132.109,195067,4
+22,6sq14vr4AgoDyzN7m5rcnv,Bag Of Money,Fly My Pretties,0,2004-10-28,False,0.784,0.543,9,-8.669,0,0.00326,0.000883,0.692,0.923,92.342,182161,4
+23,7EnWEn7BROc43QzY9g2V7O,Satellite City,Steve Kimock,38,2017-10-27,False,0.682,0.605,10,-8.965,1,0.258,0.0491,0.107,0.203,122.019,398013,4
+24,3gtJRdN3kSVPMMuiPdSQpl,Halfway To Hell,Eliot Sumner,39,2016-01-15,False,0.492,0.861,0,-5.118,1,2.23e-05,0.00266,0.113,0.277,134.108,205859,4
+25,2xRQmERrUZZVlqSuEtsiRh,I Know What I Am,Band Of Skulls,52,2010-03-12,False,0.641,0.897,9,-4.369,1,0.172,2.89e-06,0.103,0.6,100.069,198000,4
+26,1jBOUXTvTwxJlwgKo4mg2r,Nothing Personal,Night Riots,0,2017-03-07,False,0.603,0.809,10,-4.628,0,0.00588,2.87e-06,0.135,0.444,96.017,206977,4
+27,3BQgPxjaJVloaIxfqiqZmo,The Wild Life,Vacationer,34,2014-01-01,False,0.852,0.701,5,-5.308,1,0.0556,4.76e-06,0.0655,0.788,160.085,172672,4
+28,5x5mOPCNYpaBvTdPpYtDLP,Thursday,Morphine,45,1993-09-14,False,0.354,0.749,4,-12.082,0,0.0488,0.664,0.425,0.656,177.017,206200,4
+29,4BpNan8MzddCyF9JVjMvUQ,Every Little Thing She Does Is Magic,Ra,42,2005-01-01,False,0.406,0.929,2,-3.881,1,0.000162,0.0,0.227,0.596,160.086,226627,4

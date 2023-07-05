@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,7wVNlOzLvv7Y6UYsmwZqjV,In a Big Country,moe.,0,2001-02-06,False,0.648,0.846,4,-6.419,1,0.0162,6.36e-05,0.0511,0.767,125.651,216360,4
+1,7HNFphOjDJpUGiseV5YvPZ,While My Guitar Gently Weeps,Prince,47,2011-11-01,False,0.21,0.85,7,-3.694,1,0.287,0.00607,0.912,0.382,121.383,380587,4
+2,1rq6F4hcvPUk47zjREB9uZ,Everyone Looks Like Everyone,The Pack a.d.,0,2010-04-27,False,0.291,0.753,5,-3.133,1,0.237,0.0,0.23,0.496,100.126,181467,4
+3,6mMHLGR9hmCNawUtpyAlrr,Buttmachine,That 1 Guy,10,2007-06-26,False,0.865,0.862,10,-5.921,0,0.133,0.00668,0.0451,0.827,113.723,186320,4
+4,11yDV9YCkT5hyKVc0L5Vfp,Farout,Prof,42,2015-10-16,True,0.611,0.543,7,-7.687,1,0.138,0.0007,0.0886,0.673,86.113,176920,4
+5,0vblqF5R4FyCAVBasjLGdu,Meet Me in the City,The Black Keys,58,2006-05-02,False,0.482,0.754,9,-5.486,1,0.579,0.227,0.11,0.301,121.418,218467,4
+6,12v4B5KrYDhDH9EtWYi3jt,Angels in Heaven (Funk Remix),Abby The Spoon Lady,29,2018-07-07,False,0.798,0.54,6,-9.717,1,0.00203,0.0,0.685,0.602,115.53,280000,4
+7,2EF7JkFUWtuZydzPKboh2e,Change of Pace,Andy Frasco & the U.N.,14,2019-02-22,False,0.462,0.826,0,-4.531,1,0.0396,0.0,0.172,0.586,124.985,266535,4
+8,6FW2TQfZQjnbqkabaiyF3w,Mr. Someone Else,The Dudes,27,2009-06-02,False,0.435,0.79,11,-4.863,1,0.00862,0.0,0.0556,0.595,117.5,264787,4
+9,3loLDTxBVsHus9RAERxSH1,Gypsy Woman,Jonathan Tyler & The Northern Lights,43,2010-04-16,False,0.369,0.86,4,-4.167,0,0.00089,0.0,0.321,0.512,177.851,218440,4
+10,3FJzoDaMsDjHxdM4vjJJdJ,Funky Bitch,Son Seals,43,1978-05-01,False,0.507,0.64,5,-11.733,1,0.0541,0.0105,0.056,0.964,106.297,224600,4
+11,2O2nOQssXInDMFsgg7wbeH,Struttin',Thumpasaurus,0,2021-09-24,False,0.885,0.887,9,-5.366,1,0.0337,3.7e-05,0.152,0.752,130.019,228593,4
+12,33eG0IxBEVPQvErSHAIIC1,"Whorehoppin' (Shit, Goddam)",Eagles Of Death Metal,34,2004,False,0.789,0.722,9,-6.253,0,0.201,0.0137,0.47,0.552,131.938,214067,4
+13,7FXMJZBSlsXASSXzxehuCU,All Day All Night,River Whyless,0,2016-08-26,False,0.644,0.826,0,-8.38,1,0.184,0.0192,0.0683,0.886,102.975,213427,4
+14,5SSuTJmF9BiFq2ckkyPVaW,Can't Keep Waiting,Hearty Har,32,2021-02-19,False,0.601,0.86,8,-4.867,1,0.00221,0.0224,0.349,0.692,123.369,205027,4
+15,6exRrr9Jj9NUBxZmgPT8r3,Land Without Age,King Washington,23,2013-08-13,False,0.23,0.507,6,-7.4,0,0.118,0.00373,0.118,0.174,170.932,239959,3
+16,3vYpSRPpjAa6meFbsFyCv1,Can't Nobody Stop Us,Bhi Bhiman,9,2019-03-29,True,0.697,0.912,9,-5.486,0,0.133,0.0511,0.422,0.564,109.979,194093,4
+17,1L0AoWxj87dWg3jKiSpJWX,Like This,Benjy Davis,44,2014-01-21,False,0.689,0.726,10,-8.577,0,0.0926,0.0,0.106,0.652,101.964,191209,4
+18,4MzPsIGN6hukQwXgJG12ZE,Headphones,Mounties,33,2014-03-04,False,0.618,0.979,7,-3.644,1,0.0642,1.69e-05,0.494,0.8,92.973,188000,4
+19,7M9yGvYg5EikBRKIIGEITB,Never Know Why,The Muggs,36,2008-05-09,False,0.178,0.766,0,-5.428,1,0.0742,0.652,0.333,0.653,61.948,510120,4
+20,5Nr59BVUdfkVi591cj20qi,Way Out West,Marty Stuart And His Fabulous Superlatives,36,2017-03-10,False,0.615,0.216,11,-17.639,1,0.459,0.0806,0.0871,0.374,102.309,341027,4
+21,6frrTJ3gmnKF0INBlWalCv,Lost Due to Incompetence (Theme for a Big Green Van),Yesca,41,1978,False,0.719,0.713,9,-7.012,0,0.101,0.883,0.148,0.969,130.341,224200,4
+22,62k7oaajknbA5be6frZMZf,Think Twice (Version X) - Jackass Bad Grandpa Mix,LaVern Baker,32,2013-10-24,True,0.821,0.548,7,-6.646,1,0.516,0.00103,0.512,0.914,122.001,149760,4
+23,484p3rOuDLowOubA1bmzBF,Bad Bad Man,Yarn,41,2007-01-01,False,0.699,0.744,7,-7.319,1,0.536,2.2e-05,0.141,0.782,119.937,155613,4
+24,43WlgaAVgsQ7xxhyilpMF4,Once Upon A Time,Robert Bradley's Blackwater Surprise,40,1996-01-20,False,0.634,0.555,9,-7.423,1,0.112,0.0,0.288,0.422,134.907,200427,4
+25,5IWvWQhUwOtRbfiAJxiC8k,Bizness,Front Country,22,2016-05-13,False,0.803,0.51,2,-8.161,1,0.703,0.0012,0.14,0.592,108.043,277560,4
+26,40s8KCqup3JqvaqRqfR59e,Trying,Bop English,29,2015-01-01,False,0.656,0.861,0,-8.474,1,0.101,0.0233,0.273,0.604,126.5,298893,4
+27,4MI3pwa3ST16l8iR9qXhn9,Gone Wanderin',Jackie Greene,48,2002-11-19,False,0.649,0.748,9,-6.037,1,0.0504,0.0,0.0918,0.765,114.047,176733,4
+28,7sRMWeX8Y76PepIZIowsXI,"Find 'Em, Fool 'Em and Forget 'Em",Anderson East,35,2015-07-10,False,0.575,0.89,10,-6.456,0,0.0133,4.04e-06,0.225,0.706,92.045,154413,4
+29,5V54hLsu5prUN9ThbwQFQ5,Ecstasy,Rusted Root,46,1994-01-01,False,0.575,0.908,7,-8.862,1,0.0167,0.0036,0.038,0.931,135.934,302267,4

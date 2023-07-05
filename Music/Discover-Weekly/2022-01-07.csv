@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,7wfGH3RwCjxyojHKtUzqj9,Melting Lights,Pigeons Playing Ping Pong,50,2014-07-03,False,0.614,0.697,11,-6.433,0,0.0663,0.0268,0.41,0.834,92.288,304507,4
+1,1TcjyVNj42M3SVmoPzJWeN,Shake It,The Tazers,25,2016-11-08,False,0.514,0.658,0,-7.355,1,0.0136,0.204,0.0943,0.953,172.04,238762,4
+2,1QesQ27kCWYTYuXJi8SApS,Wait so Long,Trampled by Turtles,32,2010-04-13,False,0.254,0.928,9,-5.885,0,0.487,1.33e-05,0.112,0.327,189.451,206400,4
+3,7dig0MXt7MBeqExosATbAq,Meet Me In the City,North Mississippi Allstars,46,2013,False,0.867,0.503,8,-8.431,1,0.827,0.464,0.184,0.474,111.016,276760,4
+4,2r1s0Sv3ocoTW7YPoTlEvK,You Are Everything,The Low Life,31,2003-10-31,True,0.62,0.846,2,-5.655,1,0.0694,0.0,0.115,0.72,87.343,262897,4
+5,2Jo2GxwTiQ66GTAhs1TFwZ,Morning Eyes,Atlas Road Crew,46,2012-10-25,False,0.396,0.882,0,-5.815,1,0.0196,1.46e-06,0.245,0.681,205.901,195815,4
+6,2s4iEuHQs4QcTiEHeQivHv,Regulators,Barrett Baber,25,2012-04-13,False,0.65,0.562,4,-8.007,0,0.469,0.0,0.1,0.76,81.561,320280,4
+7,7MTYSchnlSeTCYo5NIuSYS,Believe - Moon Version,The Bravery,36,2008-01-01,False,0.313,0.958,8,-2.638,1,6.87e-05,0.0,0.221,0.524,180.012,199947,4
+8,1CrulxovN7Mu4VNSLbjaFa,Moonscapes,Dangermuffin,51,2010-04-01,False,0.429,0.7,0,-9.113,0,0.703,0.0081,0.106,0.751,133.903,201253,4
+9,0p9hWouI8WffCWWyYz3rjW,What Now,Waker,32,2016-08-15,False,0.616,0.76,4,-3.328,1,0.195,9.02e-06,0.104,0.727,106.009,294663,4
+10,2tvBjOPuLDq66BDXMq3G0Z,A Vision Complete,Paris Monster,27,2013-07-03,False,0.694,0.713,1,-5.083,0,0.0185,0.00317,0.0738,0.311,98.981,177493,4
+11,5KaQHZqbURQDTIl2DSnj2F,Grown Man,Fly Moon Royalty,22,2016-04-22,False,0.819,0.898,8,-3.706,0,0.634,0.0,0.276,0.968,107.53,224600,4
+12,5qIzOwRBSU7cY3Ev89ZlVS,Candice (In the Morning),The Dip,0,2015-04-14,False,0.567,0.836,0,-6.957,1,0.354,0.698,0.0981,0.927,173.165,234920,4
+13,7E5UxJ0cGdN2cKlzNBobaY,Whitehouse Road (Live),Tyler Childers,58,2018-06-29,False,0.516,0.433,0,-8.881,1,0.768,0.0,0.724,0.463,154.755,274973,4
+14,3Nu0vT6akj1O1Rgoz4VqKw,(For A While) I Couldn't Play My Guitar Like a Man,FREEMAN,36,2014-07-22,False,0.814,0.431,10,-10.145,1,0.425,0.0428,0.108,0.654,134.965,286640,4
+15,3TMUdD9vE4DoqDYi7VXStt,Fool's Gold,The Damn Quails,53,2011-08-16,False,0.68,0.729,7,-5.097,1,0.367,0.0,0.159,0.83,120.029,256183,4
+16,4Mf9q0eadEnXoijUGqHwPS,Dear Prudence (1979) - Live,Jerry Garcia,40,2006-09-26,False,0.594,0.541,5,-9.869,1,0.26,0.00422,0.697,0.404,139.101,699933,4
+17,6U2pe8utRJqXY9Q5pkE1AR,Born On Fire,Ike Reilly,29,2015-06-12,False,0.47,0.615,5,-7.632,1,0.037,0.0,0.823,0.266,128.811,243577,4
+18,4sHV7vwGGOn3JXHP8PUMv4,Waymore's Blues,Cody Jinks,46,2018-08-02,False,0.592,0.807,1,-8.722,1,0.00681,6.99e-05,0.15,0.642,91.122,191538,4
+19,2SRIIHxSjjSnUmflfFbmda,Monsters,Los Coast,32,2019-06-14,False,0.562,0.909,6,-3.024,0,0.184,0.0,0.297,0.537,136.126,232587,4
+20,1kSu0fK7CTEf1Eb3Lqt0n8,PMA,The Ballantynes,27,2015-08-07,False,0.493,0.714,5,-7.229,1,0.182,7.65e-05,0.205,0.489,142.61,247914,4
+21,1va2jzRoAJ8CwsNGlVrL3z,Oh Shit,Chali 2na,31,2016-10-14,False,0.719,0.791,1,-5.363,0,0.00246,0.0019,0.113,0.317,180.07,226909,4
+22,2WpsIjaAYHx7iwQIHj0qxe,The Chemical Worker's Song - Process Man,Great Big Sea,44,1995-10-11,False,0.83,0.452,11,-10.527,0,0.631,0.0,0.085,0.686,111.889,156267,4
+23,6kihPUxpuhTcK4NrfmluDS,Watch It Burn,Katastro,54,2011-10-11,False,0.726,0.717,7,-5.347,1,0.273,0.0,0.0824,0.77,138.178,188577,4
+24,1xpd5XqLsrQDBa81ON2kOb,Got You (Where I Want You),The Flys,58,1998,False,0.47,0.644,8,-6.721,1,0.000405,0.293,0.134,0.521,75.597,242453,4
+25,2qxEor6d5E0loHmBo5cGiS,4th of July,Carl Broemel,29,2016-08-19,False,0.445,0.408,2,-9.043,1,0.0589,0.445,0.111,0.115,127.081,601867,4
+26,2n8rFbDjbAG7txYztNdqyk,Quick Fix,Sam Morrow,39,2018-03-30,False,0.695,0.549,7,-8.318,1,0.36,0.0163,0.0829,0.913,144.059,212533,4
+27,2PT9QDg6vNIoYVhApXsbKj,You've Got to Hide Your Love Away,Eddie Vedder,56,2002-01-08,False,0.412,0.549,5,-9.51,1,0.117,6.71e-06,0.0879,0.611,92.79,129440,1
+28,0caGGPDcLQlZNYvYJ02ogD,Jimi Valentine,Band of Gringos,35,2019-12-13,False,0.692,0.259,2,-13.387,1,0.48,3.23e-06,0.0789,0.232,73.231,184110,4
+29,5lVA1bMZqTqn1OovGWThL4,Sweet Berry Wine,Fat Night,37,2013-10-08,False,0.846,0.423,0,-6.919,1,0.137,4.41e-05,0.119,0.696,79.168,179722,4

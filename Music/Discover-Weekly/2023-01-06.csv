@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,4tqeOiyXbb4yJDo1DYisKu,Midnight Train To Memphis,The Steeldrivers,59,2008-01-15,False,0.71,0.708,11,-5.548,0,0.66,0.111,0.191,0.896,101.757,183773,4
+1,3ILLqwupo1Aa6PBNXxV4ey,Suit and Jacket,Judah & the Lion,60,2016-03-04,False,0.451,0.58,10,-8.616,1,0.223,3.45e-05,0.101,0.111,164.163,222256,4
+2,3qRiuJRs7u3Aj2AXkzbmD4,Man Of The Moment,Goodbye June,47,2017-05-04,False,0.395,0.905,1,-4.078,1,0.0157,0.000935,0.141,0.351,155.929,192933,4
+3,6TFGNgCyhgHKNn046iG6fa,Victorious,Wolfmother,52,2016-02-19,False,0.396,0.933,9,-3.757,1,8.03e-05,3.17e-06,0.177,0.329,160.061,264987,4
+4,6t6cBpYT5JhuT5eYInLniv,Out On The Street,Spanish Gold,23,2014-05-27,False,0.74,0.642,1,-8.192,0,0.271,8.68e-05,0.134,0.89,118.201,188485,4
+5,3d1jLDVgiGYlD3kNg9xSze,Feeling Good,Nick Perri & The Underground Thieves,35,2020-08-14,False,0.737,0.868,10,-3.35,1,0.195,0.0108,0.119,0.721,100.031,247291,4
+6,6HxIzJEPbaKFNCeZmTKqMS,Hustle and Cuss,The Dead Weather,43,2010-05-07,False,0.483,0.89,9,-3.378,1,0.0527,0.0299,0.248,0.494,89.658,225653,4
+7,0CgJ1v2IDbrp4JAYeGhfYz,Range Rover Bitch,Taylor Hawkins,45,2016-11-11,False,0.675,0.859,1,-5.693,1,0.00672,0.000201,0.344,0.312,96.07,169853,4
+8,5BzQvpJt4C90POnaTNaToM,Fire It Up,Modest Mouse,51,2007-03-20,False,0.632,0.7,7,-5.732,1,0.000225,1.87e-05,0.395,0.686,172.02,274613,4
+9,2hUvdsUFrY6d1uBR7GJTpT,Broken Hearts Are For Assholes,Frank Zappa,42,1979-03-03,False,0.555,0.685,2,-9.661,1,0.0414,0.0,0.508,0.794,105.066,221693,4
+10,0YpmF3aZXOIuyi8itZbpkp,The Zoo,Scorpions,58,1980-03-31,False,0.462,0.704,0,-10.177,1,0.056,0.184,0.371,0.221,103.004,330533,4
+11,6mb5zn63gu4AkzWGSLlpud,Whamola,The Les Claypool Frog Brigade,42,2002-09-24,False,0.529,0.983,6,-4.285,1,4.46e-05,0.804,0.607,0.55,135.52,297040,4
+12,1kVEX9FBvKC8531ALTrNfl,Weighty Ghost,Wintersleep,44,2007-01-01,False,0.44,0.723,9,-5.489,1,0.131,5.93e-05,0.134,0.196,84.951,218973,4
+13,4IuIQ8TAYJApSHastLROfY,That's It!,Preservation Hall Jazz Band,41,2013-07-09,False,0.582,0.889,9,-8.497,0,0.259,0.81,0.384,0.34,127.557,201974,4
+14,3N02rdKYcUq6nabDpCRv7v,Heavy/Like a Witch,All Them Witches,41,2012-12-07,False,0.323,0.903,0,-6.537,1,0.00249,0.571,0.104,0.255,152.827,347875,4
+15,4Wx3fpmpkiMFT7dMKvp253,Don't You Evah,Spoon,35,2007-01-01,False,0.78,0.64,6,-6.268,1,0.0445,2.79e-06,0.197,0.946,120.981,216613,4
+16,37RCRKa0LpuR6joRsPl0sO,Come Along,Salty Dog,34,1990-03-24,False,0.328,0.9,8,-3.985,1,0.00138,6.99e-05,0.0682,0.843,149.536,299760,4
+17,0cqkujgud4p3rTT5yJ4dz3,From Can to Can't,Scott Reeder,59,2013-03-08,False,0.292,0.628,6,-5.541,0,0.00173,0.000457,0.107,0.235,135.903,290280,3
+18,4m8JqVnhu42aOHqdiLRqlJ,Cheat On The Church,Graveyard BBQ,37,2006-11-02,False,0.541,0.592,6,-11.066,1,3.73e-05,0.154,0.0977,0.764,143.013,248653,4
+19,6rr48NP00zPkamuRKcBP9r,God's Gonna Cut You Down,The Gaslight Anthem,10,2018-06-15,False,0.655,0.552,10,-7.701,0,0.777,5.6e-06,0.0568,0.819,75.912,163680,4
+20,60gcB78vhK5174cyKMkEuH,Behind The Mask,Anarchy Club,42,2005-01-01,False,0.514,0.831,2,-3.072,1,0.00154,3.66e-06,0.123,0.725,94.063,165973,4
+21,12w7q5JN7tf22TzQtQiiBN,Bullet The Blue Sky,U2,53,1987-03-03,False,0.364,0.638,8,-10.24,1,0.00735,0.399,0.133,0.451,152.509,271547,4
+22,3uJov57XkAzJUMzMFQnhmg,Fuck It,Bumpin Uglies,48,2015-10-16,True,0.709,0.449,3,-10.822,1,0.242,0.0,0.0547,0.5,165.666,208678,4
+23,3sGeefsaBqwyXbwaFybBXl,Typical,Mutemath,32,2006-09-26,False,0.341,0.971,1,-3.078,1,0.0178,0.0001,0.543,0.731,194.021,252307,4
+24,1zJDoUYkc0nEE0uCeWOphX,I Wanna Ride You,"Medeski, Martin & Wood",47,2002-01-01,False,0.498,0.708,0,-10.195,1,0.682,0.904,0.264,0.746,175.295,208800,4
+25,0fbR95FEaJUxiQYaqZZukv,Whitehouse Road,Tyler Childers,75,2017-08-04,False,0.607,0.739,0,-5.503,1,0.114,0.000234,0.192,0.875,84.467,280787,4
+26,02UFwtmJ0ogLQWMx43Okuh,Gimme Back My Bullets,Lynyrd Skynyrd,63,1976,False,0.428,0.682,1,-10.862,1,0.313,1.34e-05,0.116,0.961,168.58,209800,4
+27,6hlqk8i1Ya5mgjOxv3ut0m,Everything Is Automatic,Matthew Good Band,45,1997-01-01,True,0.351,0.795,2,-7.234,1,0.00462,0.000652,0.104,0.445,150.093,261293,4
+28,6dDdhX8byHKApki5TuOqjS,Desert Cruiser,Truckfighters,26,2005-04-02,False,0.198,0.756,1,-7.04,1,0.00229,0.715,0.16,0.246,121.924,449947,4
+29,5KiS8SFnu21xI74mHgfZ3D,Sorrow,Bad Religion,57,2002-01-22,False,0.514,0.911,7,-4.595,1,0.00191,4.78e-06,0.0736,0.848,139.971,201293,4

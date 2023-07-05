@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,1OglTDPFVueScOGgWKKr71,Don't Break the Needle,J. Roddy Walston & The Business,44,2010-07-27,False,0.591,0.893,7,-5.83,1,0.487,0.000101,0.0998,0.502,130.986,168533,4
+1,4I4KaSuqclktw7JsuIGBmc,Pimps & Preachers,Paul Thorn,35,2010-06-22,False,0.702,0.352,5,-9.563,0,0.519,0.000517,0.11,0.5,95.017,248733,4
+2,2hzMTGAHfUzU0V5TrdVUdo,Revolution Rock n Roll,Low Cut Connie,38,2017-05-19,False,0.435,0.658,1,-6.617,0,0.63,0.0183,0.218,0.357,114.706,189280,4
+3,7eA5bXQ7NhmUwE0eUAXhO1,Where's the Love,GRiZ,35,2013,False,0.462,0.9,7,-3.439,1,0.00208,0.0197,0.661,0.331,82.952,373090,4
+4,1BtOAYgTkPnv1KRcLHqyxO,Mexican Radio,Wall Of Voodoo,38,1982-01-01,False,0.505,0.701,0,-12.031,1,0.0148,0.000405,0.406,0.616,164.684,248867,4
+5,6dmD5lIILRMu4lDdwcBwF6,Carbon,Son Little,24,2015-10-16,False,0.423,0.584,9,-6.249,0,0.000794,0.000127,0.0582,0.743,149.968,156787,4
+6,14vst2Dkr7OkYyzf1fftLu,I'm A King Bee,The Stone Foxes,0,2011-04-26,False,0.451,0.532,5,-8.074,0,0.0606,0.143,0.104,0.494,76.176,199597,4
+7,3cq68LrfebgBW4sgXHtHOF,Callin' Out,Blackalicious,46,2003-08-05,True,0.855,0.673,10,-4.311,0,0.171,0.0,0.109,0.949,94.91,214347,4
+8,38wC6umxftE9TL2llqMzCV,Peace Pipe,Cry Of Love,43,1993-05-11,False,0.589,0.518,9,-11.484,1,0.0193,0.0,0.162,0.826,93.204,237960,4
+9,6lLNvSMr4WILm83yy6x8F6,Roll With The Punches,Dawes,18,2016-09-16,False,0.73,0.472,7,-6.465,1,0.0206,4.63e-05,0.0976,0.947,172.018,265120,4
+10,2i93Q7j5Pxjsy7PBV2oro2,Most Things Haven't Worked Out,Junior Kimbrough,36,1997,False,0.341,0.571,6,-7.585,1,0.122,0.758,0.16,0.665,173.709,367000,4
+11,0Pq1JcpfIB8eRvUnrGqx2V,Little Faces,Oysterhead,33,2001-10-02,False,0.475,0.897,9,-7.462,1,0.0152,0.156,0.138,0.627,135.158,295067,4
+12,4hh7NQ5Qmq1hfUG9HwI9C8,Wingless Angels,Levon Helm,37,2006,False,0.657,0.708,6,-6.531,1,0.0664,1.21e-05,0.0987,0.673,93.996,246267,4
+13,2NIO49Ukkhi41jonkeQeaK,Turn It Up,Robert Plant,24,2014-09-05,False,0.676,0.715,11,-8.665,0,0.488,0.519,0.0743,0.534,95.007,243840,4
+14,0eZ3u7kHTfEFrM6i0zptWU,World Is Spinning,The Disco Biscuits,36,2006-04-18,False,0.283,0.86,1,-7.343,0,0.0367,0.00135,0.951,0.328,90.812,232787,4
+15,7n6w5pwG3BbFJiw04MdaR6,Renegade,Shallow Side,38,2016-11-18,False,0.47,0.932,6,-4.191,0,0.00629,4.43e-06,0.305,0.291,105.996,217470,4
+16,69BMd64Zq2W84cOeCRguEp,I've Got Friends,Manchester Orchestra,48,2009-04-21,False,0.396,0.898,6,-5.428,1,0.000272,0.000708,0.287,0.352,164.727,297493,4
+17,13r31HEZ8JGQL36XTE1FMc,Country Band Man,Framing the Red,49,2012-06-10,False,0.617,0.569,1,-5.938,1,0.318,0.0,0.0985,0.383,139.947,256413,4
+18,6W1EBxpZcZpaqPoMubgHIC,Ghost In My Head,WATT,39,2015-10-30,False,0.504,0.867,1,-4.502,1,0.00012,0.0151,0.063,0.572,109.999,213987,4
+19,5lzbWsaAbXMq13ANSgIBkD,Silent Movies,Madisen Ward and the Mama Bear,0,2015-05-18,False,0.532,0.762,5,-6.358,1,0.422,1.28e-05,0.107,0.618,170.038,199773,4
+20,1R4dZWz4lfZKCkxgvXhHuv,Mojo (feat. Rahzel & Dan the Automator),Dan The Automator,38,2006,False,0.665,0.656,10,-9.438,0,0.00782,0.0162,0.101,0.721,92.034,220450,4
+21,7ybIcMrSGMNBlZk0FLkvls,Paint It Black,Gob,49,1999-01-02,True,0.427,0.977,3,-7.371,1,0.00484,0.365,0.29,0.449,170.005,196107,4
+22,3nNtspzIKxlCWI9SfZoyqX,Buckethead,Colonel Claypool's Bucket Of Bernie Brains,35,2004-09-21,False,0.456,0.964,0,-3.79,1,0.0101,0.0167,0.216,0.342,125.996,356800,4
+23,4e1zMDodG6wG2gziv929tv,She's Drunk All the Time,Tim Timebomb,41,2014-04-15,False,0.697,0.973,4,-3.347,0,0.482,1.22e-05,0.225,0.705,108.524,174958,4
+24,2RUQ4fTGseqcy8V1wFLhxw,Guess Who's Knocking,Ryan Bingham,7,2012-09-18,True,0.387,0.888,9,-4.31,1,0.0443,7.44e-05,0.23,0.387,146.026,243549,4
+25,0bd1M9tcBw0rLRqlM0MvOQ,Good Man,Devour the Day,52,2014-01-01,False,0.496,0.816,6,-5.73,0,0.000454,0.000627,0.0674,0.509,82.034,210867,4
+26,6lb5d1r1QUeNb5UmM9V5nm,Mercury Blues,Steve Miller Band,54,1976-01-01,False,0.632,0.415,6,-13.127,1,0.366,0.0896,0.072,0.674,98.18,223027,4
+27,6p3K4gqg7wk3pILbGumVbe,Hell's Kitchen,Matt King,32,2010-10-12,False,0.641,0.665,10,-7.499,0,0.0442,9.21e-06,0.126,0.488,91.966,182080,4
+28,3NihoM8GyOz9Z8B1SrdLEA,Voodoo Child,Brick + Mortar,46,2015-02-13,False,0.449,0.725,10,-6.237,0,0.00498,0.778,0.0475,0.29,160.048,195107,4
+29,6jRuCSKtxTNUzkFldlR1Az,Heavy Metal - Take a Ride; Soundtrack Version,Don Felder,48,1995-02-28,False,0.711,0.269,9,-14.626,1,0.164,0.000133,0.0827,0.823,111.667,299333,4

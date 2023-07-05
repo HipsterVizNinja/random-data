@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,5xDBeP7eDtTIh9xlWG1ZuZ,Let It All Go,Preservation Hall Jazz Band,37,2016-10-05,False,0.726,0.799,0,-5.221,1,0.0559,0.000213,0.119,0.642,105.016,242250,4
+1,5d6oq1PmYSB50H0aHj7jrH,PTP,Black Joe Lewis & The Honeybears,41,2017-02-10,False,0.652,0.88,11,-3.623,0,0.00886,0.000179,0.138,0.796,105.975,173027,4
+2,3OvV9R4RIoXwUi7UcuXwkU,Medicine,Tab Benoit,46,2011-01-01,False,0.558,0.642,9,-6.36,1,0.118,0.275,0.352,0.615,69.566,347453,4
+3,4W1WVS1RxnTofiSIE4m2C0,"Sledgehammer - Live at Mile High Music Festival, Commerce City, CO - July 2008",Dave Matthews Band,38,2008-12-16,False,0.614,0.891,8,-5.235,1,0.0679,1.83e-06,0.98,0.66,99.035,355533,4
+4,5Gk8T7WVhO6qrIekedwaEW,Welcome Home,Rehab,43,2010-01-01,False,0.611,0.864,6,-5.736,1,0.103,0.0,0.147,0.493,108.039,231213,4
+5,0iCN13QWSLePSExjUCGaNL,Watermelon,Sol Driven Train,24,2011-07-04,False,0.759,0.668,11,-7.919,0,0.557,9.64e-06,0.162,0.861,84.031,188564,4
+6,0jrmTgSl7qRXqvCE4frWVH,Sing it High,Little Stranger,36,2018-10-26,False,0.782,0.739,7,-5.665,1,0.225,0.0,0.0547,0.961,81.981,247136,4
+7,3JZteSHBgqZ8T1SWNLr56x,Dead Leaves And The Dirty Ground,Chris Thile,45,2006-01-01,False,0.612,0.531,2,-11.324,1,0.815,0.13,0.133,0.881,89.748,187385,4
+8,63rMpzqOIbG1fyXJORX7uo,I Hear the Ax Swinging,Andrew Livingston,30,2021-03-18,False,0.386,0.72,1,-7.784,1,0.0264,0.0,0.51,0.453,178.701,217240,4
+9,0zo9rrf2UJnhI16GlJzeAH,Little Too Late,Nicki Bluhm and the Gramblers,35,2013-08-27,False,0.581,0.708,4,-6.351,0,0.0151,7.02e-06,0.096,0.878,139.146,302613,4
+10,2RIPyJ5U3kbJpTAqRzZGFj,Orphan,Pete Bernhard,24,2009-09-07,False,0.632,0.527,9,-9.335,1,0.24,1.89e-06,0.113,0.679,101.663,272773,4
+11,73bFsdfGkrakb0tL9DRmY0,Work With What You Got,Socalled,27,2011-05-10,False,0.744,0.841,0,-5.186,1,0.539,0.0,0.421,0.842,103.944,180467,4
+12,0zf9xqwYkkaBsg9we31bhi,I Saw Her Standing There,Jerry Garcia,33,1982-11-15,False,0.704,0.73,4,-6.809,1,0.585,5.96e-05,0.0622,0.821,140.192,179360,4
+13,55C015UA6pxegrX7PaWn9w,The Grid,Mike Gordon,39,2005-06-01,False,0.684,0.496,9,-9.607,1,0.255,0.415,0.11,0.813,76.709,197867,4
+14,2YTPidy5POYSP1Qxx93wiZ,"Stand Proud (feat. Shana Halligan, Tahir Panton & Keznamdi)",Tahir Panton,40,2016-03-04,False,0.778,0.603,7,-5.057,0,0.0408,4.43e-06,0.399,0.719,73.963,265308,4
+15,6rpOYGursSxEYM2wyZmNOO,Plaese Haalp,Dopapod,24,2017-10-26,False,0.39,0.757,1,-6.199,0,0.0524,0.00889,0.0753,0.335,83.059,437440,4
+16,1YxE1cKYJztCvSfpPYS85G,Electric Avenue,Skindred,51,2009,False,0.654,0.947,2,-4.788,1,0.0059,0.0,0.0851,0.931,129.862,190853,4
+17,7JdQ7Civfc6VFFogcP3ynz,Long Long Time,Bones Owens,39,2017-02-14,False,0.535,0.507,2,-10.528,1,0.039,0.289,0.111,0.0381,76.054,255271,4
+18,6y36030TXZtTbUcOuo8nuD,Whiskey Bottle (feat. Junior Raimey & Junior Raimey),Junior Raimey,34,2011-08-20,True,0.81,0.591,0,-4.9,1,0.431,9.1e-06,0.1,0.678,92.955,183991,4
+19,2mfwqp4aPbuDgZLHjEskwY,Black Water (with Zac Brown Band),Zac Brown Band,49,2014-11-03,False,0.529,0.768,4,-5.923,0,0.17,0.0,0.167,0.673,171.126,259227,4
+20,59zKCp2u3Jm5zHRJnASsAp,Buster Voodoo,Rodrigo y Gabriela,12,2009-01-01,False,0.552,0.873,4,-5.688,0,0.428,0.844,0.132,0.945,120.099,262080,4
+21,2R0MySb9tgrWIv2mttYAYR,Deception,Blackalicious,47,1999-08-30,False,0.624,0.765,0,-9.492,1,0.00523,0.159,0.372,0.438,158.28,311760,4
+22,1JFdocYRMthec2BNrkOF1b,Do I Look Worried,Tedeschi Trucks Band,51,2013-08-16,False,0.432,0.603,11,-7.747,0,0.404,0.000619,0.243,0.587,81.16,273693,3
+23,66XZpAHmX4f4ce88KaDb5o,Hellbound Blues,Hellbound Glory,13,2017-10-13,True,0.591,0.732,0,-5.659,1,0.0462,0.0,0.26,0.816,123.903,150760,4
+24,4mQJJe2iWRsAUOmGhSdGKa,"Hey! Ya, You",The Elwins,24,2017-10-13,False,0.71,0.786,11,-6.103,0,0.000301,0.00771,0.205,0.727,140.031,182116,4
+25,3F1eChuMVDK2OCgPLpVTBz,Run Right To You,Hollis Brown,22,2016-11-01,False,0.584,0.92,7,-4.343,1,0.318,9.03e-05,0.0908,0.49,129.238,209397,4
+26,59FC22eN2Syt9bbv2d6393,Black Sun,Death Cab for Cutie,55,2015-03-27,False,0.608,0.642,2,-7.978,1,0.17,0.0667,0.166,0.608,87.703,289160,4
+27,4JVVfuSEJLPzmLiWlw8oo5,So Gently We Go,I Mother Earth,36,1993,False,0.617,0.573,2,-9.77,1,0.0287,0.244,0.102,0.553,110.79,424733,4
+28,6AS6xExH5qqqt6HMViLIdo,Phantom (Redux),Shirt,45,2015-04-25,True,0.832,0.565,7,-8.64,1,0.182,1.03e-05,0.172,0.834,142.01,154491,4
+29,2cK3xlFvwYYllEvP97I6nK,Buckjump,5th Ward Weebie,35,2011-01-01,False,0.703,0.849,2,-5.53,1,0.0412,0.027,0.0529,0.716,105.025,243720,4

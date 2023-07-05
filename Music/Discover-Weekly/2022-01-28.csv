@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6CeszonFOlgp7HiawTSqCu,Gin and Juice,The Gourds,55,2001-01-01,False,0.547,0.729,9,-6.801,1,0.3,1.75e-06,0.0963,0.817,120.334,383733,4
+1,4z9M9ldOG1q1PcOZh1rrXe,Ballad of a Thin Man - Recorded at Spotify Studios NYC,Brother Ali,20,2017-06-14,False,0.517,0.864,8,-7.352,0,0.118,0.275,0.121,0.705,178.034,301485,4
+2,4lXBIshfa0juWxi6odtLHt,Early Morning Shakes,Whiskey Myers,56,2014-02-04,False,0.389,0.834,9,-3.629,1,0.159,0.0,0.116,0.531,152.346,197187,4
+3,6PwMsblek47zRMEhB5qBG9,Luang Prabang,Dave Van Ronk,46,1985-01-01,False,0.69,0.12,6,-15.276,1,0.921,0.0,0.632,0.842,83.033,96640,4
+4,1Mfb4wUz54L6wW900FfWtG,46 and 2,O'keefe Music Foundation,39,2015-02-11,False,0.642,0.509,2,-9.139,1,0.000391,0.0204,0.093,0.288,159.981,363000,4
+5,6iOKAg9g8dsNMLQPVntJNp,(Stay Away From) The Cocaine Train,Johnny Paycheck,42,2014-03-28,False,0.761,0.618,0,-10.398,1,0.251,0.0,0.0572,0.661,123.017,188813,4
+6,2X9DvLn17kNZLXRYMKXL3H,Clap Your Hands,The Reverend Peyton's Big Damn Band,0,2010-01-01,False,0.488,0.794,7,-9.032,0,0.121,0.156,0.113,0.588,115.134,268800,4
+7,3vGB7pK6KJaspU73i1M30n,Can't You See,Waylon Jennings,52,1976,False,0.637,0.528,4,-11.723,1,0.112,0.00387,0.0679,0.505,90.821,225698,4
+8,6B7aI3crr9n5B2bXkrAfVN,Third Stone from the Sun / If You Love Me Like You Say,Gary Clark Jr.,37,2012-10-22,False,0.392,0.851,4,-3.486,1,0.00519,0.241,0.139,0.246,86.6,578000,4
+9,7L9CcpZEfjZQT7LsZuQFWw,My Love (Live),Humming House,31,2014-08-26,False,0.412,0.815,11,-8.788,0,0.524,7.97e-05,0.991,0.43,127.035,278854,4
+10,2YnUO4gMwlh27KbVEj2Crn,"Hell No, I Ain't Happy",Drive-By Truckers,36,2003-06-17,False,0.373,0.736,2,-5.517,0,0.256,0.00521,0.548,0.391,117.401,278640,4
+11,7HfyP1aJUmpXFPOffL4SbP,Winter,TV On The Radio,38,2014-11-17,False,0.436,0.934,10,-4.547,1,0.0382,0.0119,0.38,0.361,130.015,221198,4
+12,49WVvCYHSd4aert7dNKOQr,Rosalee,Chris Robinson Brotherhood,37,2015-06-02,False,0.31,0.418,2,-12.949,1,0.13,0.013,0.563,0.52,79.144,615480,4
+13,3WeEYZivpdmeyXupUpQxgV,Gimme Shelter (feat. Lzzy Hale),Lzzy Hale,52,2015-12-11,False,0.597,0.862,1,-5.873,0,0.0115,9.44e-05,0.137,0.635,120.015,266926,4
+14,2iGMuLTr8WiLNCj5x5ppdC,Head Over Heels,JD McPherson,44,2015-01-01,False,0.867,0.899,0,-5.334,1,0.101,0.00473,0.125,0.932,128.062,197520,4
+15,2LmI7d6MsDsJpg4nX7dXuB,"Girl, Don't Come Around",Long Miles,38,2010-11-23,False,0.764,0.616,2,-7.922,1,0.0372,0.0,0.0786,0.817,168.035,225000,4
+16,0OATXezdiuT2ynKnatIxsS,Shades Of Gray,Robert Earl Keen,34,2016-11-18,False,0.572,0.824,2,-5.626,0,0.448,0.00279,0.94,0.84,119.979,319453,4
+17,0VbOBom0Ya2zrlSpv7II1C,Heavy,Collective Soul,67,1999-02-09,False,0.553,0.872,1,-5.617,1,0.00109,0.00115,0.0988,0.543,106.927,174913,4
+18,3eFKRznCXk4wOdYq4j3RaX,Sitting On Top Of The World,Jerry Garcia,29,2016-11-11,False,0.523,0.322,9,-14.122,0,0.9,0.000104,0.306,0.537,93.796,216539,4
+19,4CsTkNvkwQLel6sxQqrXSj,Ball and Chain,Social Distortion,57,1990-03-27,False,0.435,0.911,1,-9.2,1,0.0365,0.00119,0.152,0.37,134.949,343067,4
+20,2FF8eCwJktWb5sX261j8ew,Pussy and Pizza,Murs,36,2015-05-18,True,0.697,0.697,5,-7.123,1,0.0708,4.17e-06,0.078,0.381,93.991,197307,4
+21,4HJusmphJxeodZV1vJbrvI,"7 Months, 39 Days",Hank Williams III,42,2002-01-29,False,0.656,0.879,4,-7.205,0,0.137,2.56e-05,0.25,0.823,99.799,206602,3
+22,1ru5R5iSawvuMELqKXxLjS,The Impression That I Get,The Mighty Mighty Bosstones,71,1997-01-01,False,0.418,0.945,4,-5.406,1,0.0991,0.0123,0.23,0.696,181.174,194760,4
+23,3lysV1GS4ARD9PYiNk9r0q,Bounce,Danko Jones,40,2001-03-26,False,0.594,0.901,11,-4.481,1,0.0435,0.000282,0.0466,0.685,144.367,185667,4
+24,3T76zPJz3tWL27FrjJe2ot,Lazaretto,Jack White,59,2014-06-10,False,0.381,0.838,6,-6.562,0,0.0046,3.77e-05,0.101,0.581,118.214,219400,4
+25,2qQieiApQ1TkvkZGLkbCH0,Cyclone,Dub Pistols,42,1998-01-01,False,0.808,0.869,9,-9.648,1,0.0181,0.0625,0.194,0.959,123.545,214367,4
+26,3wOR4fD3fcTtH3N7tICbOk,Willie Got Me Stoned - Live,Jack Johnson,36,2018-04-20,False,0.514,0.374,2,-12.316,1,0.834,0.0,0.942,0.496,134.665,143321,4
+27,4FjNoWFZ8YPLKavZ8WFKpM,Tornado ‘87,The Rural Alberta Advantage,35,2011-03-01,False,0.537,0.604,5,-8.579,1,0.00627,2.63e-06,0.103,0.386,134.948,228307,4
+28,5r3XCU8KfpGJBZGcrgVDD4,They Put a Body in the Bayou,The Orwells,41,2017-02-17,False,0.496,0.921,9,-5.092,1,0.00197,0.00186,0.0682,0.375,121.039,188787,4
+29,3ug7AfV5SUyqFHqEk3rtS3,Stick 'Em Up,Masked Intruder,42,2012-08-14,True,0.659,0.933,11,-5.329,0,0.00292,0.000133,0.104,0.667,102.981,109587,4

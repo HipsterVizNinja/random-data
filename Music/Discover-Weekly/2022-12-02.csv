@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,5Q1kDli74zvXpNYFhQKrxU,Tweeter And The Monkey Man,Headstones,50,1993-01-01,False,0.553,0.867,9,-9.599,1,0.000171,0.525,0.101,0.785,140.006,218093,4
+1,08wIj0oyQ2kKfmqCzX8r1m,Ain't No Easy Way,Black Rebel Motorcycle Club,51,2005-08-22,False,0.533,0.951,8,-4.294,1,0.0712,1.99e-06,0.0769,0.738,95.796,156813,4
+2,4r2vE0P8g0pLLqebekLqb5,Diner Song,Chadwick Stokes,48,2005-12-20,False,0.447,0.604,5,-6.667,1,0.339,0.0,0.131,0.482,91.085,209747,4
+3,46oKefjafNuHCI07rBCTWI,Back And Forth,The Bright Light Social Hour,37,2010-09-21,False,0.718,0.874,1,-6.835,1,0.00144,0.0822,0.0632,0.88,134.967,233667,4
+4,1N8eMiuFLz0IFy9WsZgDCH,"I Like It, I Love It",Lyrics Born,23,2008-04-19,False,0.852,0.767,7,-4.63,0,0.0509,0.0,0.0796,0.877,96.996,222680,4
+5,3lymKd9N0x0iydyfIkEALL,Shake It Out,Karl Denson,36,2009-09-15,False,0.728,0.928,4,-6.717,0,0.0708,2.07e-06,0.178,0.424,92.543,244893,4
+6,3MEMuSJekcnxAwmnjOtBDT,Domingo's Drive,Doom Flamingo,39,2018-12-21,False,0.532,0.896,0,-7.125,1,0.0195,0.0989,0.109,0.664,97.018,222173,4
+7,2BjLtzCSBATN76875i6Aga,Lost At Sea,Dawg Yawp,14,2016-10-14,False,0.471,0.799,9,-7.08,1,0.00982,0.0113,0.272,0.209,102.969,244918,4
+8,1xr89XmfXATn9dYIvNqtYz,Drenched,The Heavy Pets,40,2010-05-04,False,0.524,0.744,0,-6.084,1,0.0469,0.0,0.127,0.388,146.874,228693,4
+9,7CfirdOGKzULO5PKKdTnqS,Straight to Hell,Hard Working Americans,27,2014-01-21,False,0.437,0.338,10,-10.304,1,0.0845,0.00672,0.107,0.145,112.302,351413,4
+10,3LarBfy0JvSbcG383o7utq,Since You Been Gone,The Heavy,38,2016-04-01,False,0.639,0.931,1,-1.234,1,0.0155,0.00763,0.0675,0.639,122.103,189282,4
+11,2it4DH8fqcCkSTCmqY5gzk,Hymn 43,Jethro Tull,52,1971-03-19,False,0.491,0.791,7,-8.801,1,0.081,6.87e-06,0.447,0.88,93.116,196680,4
+12,2MJYbhJ229dazWQP5xzZTA,Blood Of Angels,Brown Bird,42,2011-10-18,False,0.549,0.702,11,-9.175,0,0.339,0.00542,0.22,0.888,137.843,204555,4
+13,53Qtyl5v6O86hfsVTJ9RnV,I Got Loaded - Live,The Wood Brothers,31,2017-01-13,False,0.513,0.657,1,-8.329,0,0.0129,0.00112,0.723,0.52,160.015,246160,4
+14,5zzWx7oJ9zBmv76uFaFeYR,Counting Cards,Rainbow Kitten Surprise,10,2015-04-25,True,0.763,0.599,9,-8.285,0,0.0856,0.00678,0.113,0.306,110.098,229653,4
+15,2bAsaZpF1UggmGAAD2bexS,I Don't Know,Mo Lowda & the Humble,33,2013-09-10,False,0.46,0.617,4,-8.107,0,0.043,2.11e-05,0.245,0.539,152.931,290933,4
+16,0q94IE56HxyHAsVnJ4bmPF,Institutionalized 2014,Body Count,48,2014-06-09,True,0.288,0.974,6,-0.849,1,0.0133,0.0,0.194,0.67,97.922,226090,3
+17,0HFVhzSLbNBjHmsi4rzdYr,Reefer Man,Big Bad Voodoo Daddy,29,2009-01-01,False,0.797,0.799,5,-4.539,0,0.196,1.07e-05,0.125,0.784,129.96,174747,4
+18,2ihAtyKtG6dPNKeDdt2RlQ,The Garden (Pt. III),Tea Leaf Green,46,2005-11-15,False,0.431,0.726,7,-7.128,1,0.133,3.39e-05,0.301,0.412,92.252,241987,4
+19,7uuiEAFGs0wHQKr7bdseNH,Changing,The Moondoggies,32,2016-10-07,False,0.24,0.784,4,-4.841,1,1.81e-05,5.11e-05,0.236,0.573,178.229,276933,4
+20,1LSZZHgOHmtwBt8twXXTqK,Circadian Rhythm (Last Dance),Silversun Pickups,7,2015,False,0.693,0.586,6,-7.416,1,0.0693,0.0121,0.367,0.425,127.981,229013,4
+21,32wghPySDJ1mNdqhwW9YMh,Dragon Attack - Remastered 2011,Queen,49,1980-06-27,False,0.7,0.867,0,-5.482,1,0.139,0.00275,0.266,0.557,88.19,258773,4
+22,7krSTpTS9yExW9zORLudiX,Palestine Texas,T Bone Burnett,36,2006-05-11,False,0.522,0.737,3,-8.158,0,0.028,0.0783,0.105,0.826,84.81,287373,4
+23,3ZwrK4djNjJCNOZknEFtmc,Say Fuck It,Buckcherry,56,2014-08-19,True,0.545,0.836,6,-4.264,1,0.000919,0.00883,0.13,0.595,126.079,175285,4
+24,2zDdpAYZmcUT26DCPjeqTj,Nothing But the Radio,Maia Sharp,36,2015-10-16,False,0.72,0.663,5,-6.044,1,0.0588,5.35e-05,0.334,0.943,132.044,199267,4
+25,1yMcvgZJ4RERujKSTRMt5U,Gotta Get To Know Ya,Seratones,41,2019-08-23,True,0.592,0.912,11,-4.362,1,0.00631,0.00258,0.179,0.687,107.1,137639,4
+26,1TlfVCDCFluWaA6NIKYAis,I Stand Alone,Jackyl,54,1992-01-01,False,0.727,0.709,1,-8.252,0,0.0013,0.0149,0.493,0.757,111.373,237293,4
+27,1pKaZZeji32tKZR5Q6PbYS,M.E.M.P.H.I.S.,The Disco Biscuits,28,2009,False,0.626,0.847,4,-7.187,1,0.106,2.85e-05,0.15,0.643,80.598,298773,4
+28,0BlYwEaERbk7ox1IqIhHhc,Immigraniada (We Comin' Rougher),Gogol Bordello,35,2010-01-01,False,0.583,0.978,7,-2.46,1,0.0175,0.0,0.187,0.617,97.682,225760,4
+29,2Sbi5moK4OwhNZxBbhkDV8,Holy Roller,Emily Wolfe,32,2019-02-15,False,0.561,0.806,9,-4.809,1,0.0237,0.00299,0.0985,0.61,140.07,208800,4

@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,25VCNz70Pq90XTq1tfdSPD,Mary Jane's Last Breakdown,Keller & The Keels,42,2006-01-02,False,0.536,0.494,7,-10.163,1,0.573,0.000292,0.131,0.469,118.092,279267,4
+1,7gfrqFrXskxVw6EuuSpebD,Blackberry Brandy,T Bird and the Breaks,41,2009-01-01,False,0.6,0.677,0,-4.488,1,0.227,4.96e-06,0.207,0.765,108.002,260240,3
+2,24Hc4CCiTVvfQu3S7YLKme,Work Song,Dan Reeder,43,2004,False,0.613,0.372,11,-8.666,1,0.703,0.0,0.419,0.376,59.284,137827,4
+3,1K7SdkWixP10R1pFJWredX,Bullshit,ProbCause,42,2012-05-08,True,0.531,0.664,8,-7.848,1,0.144,0.0,0.101,0.231,175.133,216600,4
+4,3euDGpS2R0NC2Xssqxohva,Scarlet Begonias - 2013 Remaster,Grateful Dead,62,1974,False,0.537,0.559,4,-12.224,1,0.314,0.000795,0.116,0.918,167.758,259702,4
+5,35J5fWBYFx1LTut0JwXxgh,Hellohihey,DJ Shadow,38,2003-01-01,False,0.784,0.642,6,-7.448,1,0.0891,3.37e-06,0.119,0.665,95.625,338267,4
+6,4ivYT3WJwyf64s4lv3T4HD,All We Got,Dem Atlas,42,2014-10-31,True,0.72,0.442,7,-8.07,1,0.417,0.0,0.203,0.376,94.959,225419,4
+7,6JQVyfBbxnvagi8wM2w3Qw,Scars,Ground Up,43,2011-09-20,True,0.709,0.662,5,-9.172,1,0.486,4.15e-05,0.0891,0.413,87.009,216738,4
+8,3TZXieYvqCuR40LZJbp6Ik,Lazy Eye,Silversun Pickups,49,2006-01-01,False,0.635,0.836,4,-5.044,1,0.0409,0.726,0.116,0.256,127.39,354347,4
+9,64dHj8ZxaI2Wj0brEehVMN,"Lawyers, Guns and Money",Warren Zevon,60,1978-06-01,False,0.641,0.78,9,-6.675,1,0.0671,0.00181,0.0562,0.746,94.228,210480,4
+10,0OrpW2p1jJj1qpsmevRIB2,Bonfire Sessions,King Fantastic,52,2010-06-15,True,0.548,0.64,8,-8.122,1,0.0224,0.0,0.296,0.474,113.168,164355,5
+11,090b34KGoJ1fIobomaqC4t,Rip It up Slow,Foreign Talks,30,2016-04-08,True,0.797,0.596,7,-7.142,0,0.0106,0.0,0.0744,0.769,82.001,219493,4
+12,66Exwk617LAM1nk3fJflZq,At the Helm,Hieroglyphics,45,1998-01-01,True,0.925,0.785,11,-5.164,1,0.14,5.12e-06,0.145,0.868,93.011,258440,4
+13,47VEW1aJJAkwaZc2g6Bait,Colorado,The Infamous Stringdusters,41,2014-04-01,False,0.607,0.588,9,-6.882,1,0.406,0.0,0.127,0.495,93.705,209347,4
+14,16ZatpXeth34Nygl9wzNKc,Tall Cans In The Air,Transplants,51,2002-10-22,False,0.551,0.938,7,-2.136,1,0.0131,0.0,0.355,0.595,175.078,223643,4
+15,10qUlM8qSsDUoEaw4vNFeJ,Stadium Pow Wow,Black Bear,46,2016-06-03,False,0.724,0.636,11,-2.982,1,0.00319,0.967,0.716,0.694,140.052,207563,4
+16,7a014uMHF3nlqzXCxV551C,Soulshine,Allman Brothers Band,60,1994-05-03,False,0.476,0.556,10,-6.501,1,0.125,0.0117,0.0898,0.559,135.624,403507,4
+17,4ig7OUwdk5aPtlMQVxxwe8,So High (feat. Manie),Manie,32,2011-06-21,False,0.722,0.723,1,-5.381,1,0.00835,0.0,0.106,0.424,73.974,211453,4
+18,0Fe3WxeO6lZZxj7ytvbDUh,Dashboard,Modest Mouse,66,2007-03-20,False,0.639,0.903,11,-5.013,0,0.00963,7.06e-05,0.174,0.96,135.938,246173,4
+19,1NuP4BdTdMw88S7xZuOvfS,Blow - 2015 Version,Bassnectar,28,2015-06-30,False,0.78,0.694,11,-3.523,0,0.00161,0.188,0.254,0.583,89.981,241333,4
+20,3gedyMhWrAIEENnZaMDKwf,I'm Not Waiting on the Summer,DJ Afterthought,33,2017-01-30,True,0.805,0.606,4,-5.821,1,0.088,2.98e-06,0.146,0.731,82.008,214307,4
+21,5dqWpLBecEnallSWbXlUUz,"Thanks, Bastards!",Mischief Brew,44,2006-03-26,False,0.532,0.47,7,-8.643,1,0.284,0.0,0.0725,0.768,128.99,200213,4
+22,3uanbnA8K9hLXx8NQYShrv,I Think God Smokes Weed,Echo Movement,40,2009-01-01,False,0.823,0.668,5,-3.981,0,0.337,0.00211,0.126,0.74,144.019,223920,4
+23,2V5ZTy99M1T7KxgxLS8Lyi,Ain't It The Same,Uncle Lucius,65,2009-04-10,False,0.625,0.686,4,-5.002,1,0.233,0.000115,0.0752,0.528,115.158,143333,4
+24,7aOor99o8NNLZYElOXlBG1,Highway Tune,Greta Van Fleet,75,2017-11-10,False,0.582,0.962,4,-3.037,1,0.0096,0.128,0.283,0.506,123.971,180640,4
+25,3OOyMn9wG699wYyzBmpavO,It's A Great Day To Be Alive,Darrell Scott,38,1997,False,0.655,0.338,7,-13.26,1,0.306,1.85e-05,0.0729,0.671,126.432,288670,4
+26,4UZAPR3LPM5MizZolbdcoW,We'll Be the Light,The Dirty Guv'nahs,40,2010-07-19,True,0.559,0.902,9,-3.064,1,0.113,2.84e-06,0.252,0.72,96.716,193360,4
+27,16mRSH1iBW0UQAeMEk4lv3,Sacrifice,The Expendables,53,2004-01-01,False,0.439,0.613,7,-7.223,0,0.0165,0.000206,0.133,0.407,164.515,293267,4
+28,6JlUROBrL9EdYP6lGDdBM5,digging for windows,Zack De La Rocha,40,2016-09-09,True,0.73,0.781,1,-5.822,1,0.104,0.000108,0.111,0.31,118.948,211253,4
+29,3sCTGjMtQp6UOjRq7igrug,Jockbox,The Skinny Boys,35,1986,False,0.773,0.908,11,-8.827,0,0.465,7.36e-05,0.0886,0.587,94.484,273573,4

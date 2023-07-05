@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,2OBCrm8dAxwAAmpiZlT0VS,Esmerelda,T Bird and the Breaks,33,2009-01-01,False,0.67,0.745,7,-6.734,1,0.326,0.000167,0.0506,0.884,105.474,195080,4
+1,3NSjxE9cSqhWTvvrphX7ab,Day for the Dead,Zac Brown Band,36,2013-12-10,False,0.344,0.596,8,-8.181,1,0.0188,2.78e-05,0.103,0.473,123.913,287496,4
+2,39uUVImdhfZmDdbq4xectp,Don't Fuck With Joe,The Blackwater Fever,49,2013-02-11,True,0.392,0.708,1,-6.82,1,0.0415,0.000464,0.256,0.483,157.414,204550,4
+3,3d6Vw8ilzo2lft90F2FD4Y,Dope,Beware Of Darkness,0,2016-09-16,False,0.506,0.683,3,-6.021,0,0.00132,0.000393,0.0511,0.746,204.19,207133,4
+4,5btOewkqcHVGoqWvsDMtzv,I Love It Loud - Injected Mix,Phunk Junkeez,28,1995,True,0.444,0.978,9,-4.371,1,0.000185,0.00304,0.133,0.636,105.341,183867,4
+5,3agCWO4dFftYWQBJYY1pTk,Comfortably Shagged,Head Like A Hole,34,1999-09-09,False,0.619,0.831,10,-7.079,0,0.13,0.000577,0.342,0.832,140.586,197240,4
+6,0ytomTzoKIHrmgTspdcwOA,Exercise Man,Dean Ween Group,31,2016-10-16,False,0.438,0.948,7,-5.153,1,0.298,0.0,0.759,0.76,76.976,118772,1
+7,1Dqw7cb2eqCnsTYf9HKhD6,8 Miles A Gallon,Scott Miller & The Commonwealth,50,2006-01-01,False,0.581,0.729,9,-5.223,1,0.0669,8.74e-06,0.302,0.654,99.231,170400,4
+8,0HfezdbQSlZWuy7PSg8bRE,So Many People,Neurosonic,34,2007-01-30,False,0.579,0.961,3,-3.648,1,0.0445,0.0,0.526,0.757,89.816,162320,4
+9,2VZYQKBRyGQdVMrzUhRf7J,My Way Down,Chris Duarte,40,1994-09-29,False,0.608,0.97,6,-4.944,0,0.0174,0.133,0.0933,0.617,98.305,276560,4
+10,3iag81mU7BylirRwRYXd8E,I'm Only Joking,KONGOS,52,2014-01-27,True,0.663,0.924,5,-1.656,1,0.0768,0.0731,0.0697,0.621,122.012,224760,4
+11,2SaydR5wNNSXdNc6Dw9wZW,"Fuck, I Hate the Cold",Cowboy Junkies,26,2012,True,0.645,0.657,6,-7.105,0,0.000382,0.057,0.0895,0.586,106.222,197240,4
+12,3aa1AacDhymLNdnL5CAC37,Master of Disaster,John Hiatt,45,2005-06-21,False,0.682,0.774,2,-8.269,1,0.0516,0.0521,0.301,0.817,126.731,326587,4
+13,3kJw8wpzrB5WLFcdmIvXew,One More Astronaut,I Mother Earth,44,1996,False,0.523,0.911,9,-8.101,1,0.00169,0.00288,0.39,0.497,94.526,324400,4
+14,0HHXwvWm4Dx9DSk2kr0zT8,Bang Your Mullet - Southern Style Mix,The Distillery,32,2005-01-01,False,0.71,0.945,0,-3.855,1,0.0504,0.953,0.298,0.965,126.999,199533,4
+15,7MA3vBYmWryHda8Oc1OBpf,Holy Touch,Foxy Shazam,36,2012-01-01,False,0.535,0.882,6,-2.744,1,0.0159,0.0187,0.448,0.654,135.065,179067,4
+16,6oc8dcEGbuVTbqdJIAGZHt,War Pigs,Maya Azucena,11,2019-11-15,False,0.512,0.529,5,-8.863,1,0.0217,5.36e-05,0.179,0.5,169.728,307853,4
+17,3NORT1j8JodIq57UaCJYfs,Godzilla,Fu Manchu,45,2010-08-14,False,0.298,0.77,10,-6.234,1,0.00188,0.056,0.0814,0.336,146.18,279627,4
+18,1krCklZhY9iG5wkcPrpZd2,And Fools Shine On,Brother Cane,42,1995-01-01,False,0.77,0.55,10,-7.13,1,0.25,0.000113,0.254,0.694,114.218,282000,4
+19,1lwe2JHcHEPwDYelYQbFSa,Devil Went Down to Georgia,Adrenaline Mob,45,2015-02-10,False,0.545,0.976,0,-2.243,1,0.00111,2.08e-06,0.0714,0.601,148.092,209125,4
+20,27KyxCUGHR7BLWAB7lzKmh,Pennywise Tribute,Bassnectar,48,2012-04-10,False,0.413,0.919,1,-2.047,1,3.67e-05,0.628,0.0904,0.269,175.951,275455,4
+21,4kUNPTVn6smgAfAcFdk2ux,Snortin' Whiskey,Pat Travers & Carmine Appice,37,2006-04-11,False,0.464,0.927,6,-5.136,1,0.0138,0.000332,0.294,0.693,95.932,216560,4
+22,6YP9FxiGPbXOZjWBoT5hwn,Comin' Down,Meat Puppets,34,1994-01-25,False,0.655,0.755,2,-8.919,1,0.065,0.0,0.0672,0.969,127.992,206067,4
+23,3AvMXM7A4zMHNbjRI2zGan,Steve McQueen,Sheryl Crow,43,2002-04-08,False,0.555,0.893,0,-3.521,1,0.0505,0.0,0.0688,0.762,169.966,205733,4
+24,2x1dNlTlkqqHMY2hcDcAOE,Can't Wait One Minute More,CIV,37,1995,False,0.601,0.818,7,-5.111,1,0.000827,0.00387,0.0784,0.893,98.517,152267,4
+25,01Qi2W6h7GilImRk4CIxTS,Marijuana in Your Brain - Remastered,Lords Of Acid,27,2017-08-04,True,0.65,0.935,0,-3.075,1,0.0079,3.54e-05,0.381,0.679,151.917,234587,4
+26,5m4yITM07mOi3VWLJhPnOJ,Have a Cigar,Doom Side of the Moon,24,2018-01-12,False,0.374,0.759,3,-7.072,0,0.000183,0.0219,0.533,0.249,127.367,310467,4
+27,1BAJxH2rduiJvTlqOwrBoD,Summer of 89,Butch Walker and The Black Widows,21,2011-08-30,True,0.447,0.876,9,-7.286,0,0.00193,0.0,0.839,0.606,146.254,254933,4
+28,4qCzHeR0X0zGK0oT2AOlhW,Righteously,Lucinda Williams,46,2003-01-01,False,0.681,0.484,7,-9.775,1,0.0802,0.00369,0.21,0.652,102.315,278267,4
+29,3xDzENGFlOcJArnPahlx13,For What It's Worth,Louisiana's LeRoux,50,2007-01-01,False,0.717,0.377,9,-12.173,1,0.108,0.277,0.082,0.758,100.571,317147,4

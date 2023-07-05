@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,4zVgLHNbE5xlS2iYSoFXX1,Movin' out (Anthony's Song),The Supervillains,48,2008-11-25,False,0.628,0.509,7,-14.041,1,0.0218,5.39e-05,0.173,0.787,74.918,217467,4
+1,6PHYSs95mKzXPoFej25il3,Come Together,Yellow Dubmarine,31,2011-09-27,False,0.455,0.464,9,-7.36,0,0.0124,0.0641,0.132,0.209,135.031,379773,4
+2,3ysqpXpNQNP5KKV5bZxE45,Half Crazy,The Barr Brothers,42,2014-10-06,False,0.393,0.821,5,-8.857,1,0.247,0.887,0.262,0.903,157.463,292881,3
+3,5KM0LBKrZJYQ3p39Hf8xNE,Trunk Fulla Amps,Self,33,2000-03-01,True,0.656,0.876,0,-4.541,1,0.0113,0.29,0.223,0.668,101.292,204200,4
+4,1Q7Z7PQlHkuKF1F9fK5VOd,Flawless,Dorothy,47,2018-03-09,True,0.426,0.768,0,-4.723,1,0.0489,0.0554,0.297,0.535,148.108,242307,4
+5,4YFVmlODRV6huVE40Iit4i,Highball With The Devil,Les Claypool And The Holy Mackerel,37,1996-01-01,False,0.784,0.45,6,-12.075,0,0.105,0.00191,0.232,0.769,101.882,239893,4
+6,5gJ5Rm8L1Ctful76Nrnm5I,Come Over,Stevie Starlight,35,2018-06-09,False,0.67,0.79,11,-6.783,0,0.384,0.0147,0.209,0.502,111.99,328234,4
+7,2w7O4XCRoIJrwF1NqKL9TM,Take It All Back 2.0,Judah & the Lion,17,2017-03-10,False,0.441,0.802,0,-6.411,1,0.0104,6.25e-05,0.123,0.783,148.023,218356,4
+8,3pwowKNnTXU6dLKIZHMFw3,We're Far Enough from Heaven Now We Can Freak out (Dirty Virgin),Deep Cotton,30,2012-09-30,True,0.686,0.78,6,-8.453,0,0.108,0.000229,0.246,0.719,144.016,231667,4
+9,4YCxnvumzDpYHoOCw1cNBs,Close to Me,Lake Street Dive,34,2016-02-19,False,0.584,0.441,7,-7.975,1,0.0992,7.92e-06,0.23,0.371,115.739,257907,4
+10,1AkuvvBfa2DtqM7a9O2IAy,I Feel Love (Every Million Miles),The Dead Weather,48,2015-09-25,False,0.242,0.854,4,-6.96,1,0.00209,0.0,0.15,0.325,188.68,195827,4
+11,0DwSfqdtLJgFKbmrA83PID,Bottom of the Lake,The Builders and The Butchers,35,2007,False,0.394,0.876,9,-8.542,1,0.665,0.0149,0.0989,0.521,76.694,303947,4
+12,1ntJLMwDAKD8S1FlwkIOyB,Do I Have to Talk You Into It,Spoon,43,2017-03-17,False,0.691,0.858,0,-6.414,1,0.118,5.41e-05,0.17,0.932,79.038,260080,4
+13,50MNCojhSwCd4QkJ7O80E5,Hell's Bells,Cary Ann Hearst,39,2011-03-01,False,0.666,0.956,9,-4.392,0,0.472,0.021,0.0459,0.463,72.29,216840,4
+14,4UyYS7Vjte02mASH4h7Oer,Gold Dust Woman,Halestorm,42,2013-10-15,False,0.624,0.695,7,-6.023,1,0.0767,0.0,0.194,0.621,125.949,250760,4
+15,2fjXBCquDBtY5hnmgW3BCJ,The Pusher,Left Lane Cruiser,16,2016-07-08,False,0.521,0.95,0,-6.256,1,0.105,2.4e-05,0.131,0.355,142.174,386653,4
+16,3Q4vd0wNbBe6FpKbluBrjC,Young Men Dead,The Black Angels,31,2002-04-10,False,0.457,0.745,2,-5.831,1,0.00022,0.024,0.122,0.079,129.515,332253,4
+17,2fzp6ojPHvZaz4uHXxpJVk,Bartholomew,The Silent Comedy,0,2010-04-13,False,0.421,0.885,10,-6.009,1,0.00999,4.59e-06,0.255,0.584,151.883,187558,4
+18,5SJjnyXNt2u2LMqvXcNq9g,Hope The High Road,Jason Isbell and the 400 Unit,23,2017-06-16,False,0.45,0.793,9,-8.149,1,0.034,0.000183,0.156,0.753,90.793,183164,4
+19,5pajrflzRSu55mgXcEKLUG,The Next Storm,Frank Turner,44,2015-07-31,False,0.431,0.94,0,-5.169,1,0.00208,0.0,0.0752,0.54,143.587,214027,4
+20,35wbvb0rK3b2YdJngQOeTv,Hey Hey What Can I Do,Swan Montgomery,26,2015-03-25,False,0.544,0.956,1,-2.678,1,0.324,3.09e-05,0.104,0.627,77.952,231873,4
+21,41cxe6eOzzQS6odQk6fNdp,GREAT NIGHT (feat. Shovels & Rope),Shovels & Rope,55,2016-07-15,False,0.453,0.914,1,-3.445,1,0.0018,0.0,0.349,0.504,129.841,175680,4
+22,5lHgBqh9VwAAzQma55gHRY,Elderly Woman Behind the Counter in a Small Town - Remastered,Pearl Jam,68,1993-10-19,False,0.281,0.493,7,-9.461,1,0.0519,9.15e-06,0.101,0.167,60.772,196187,4
+23,4NSZz3qzNESLWfCqglnylo,Shooting Star - 2015 Remaster,Bad Company,63,1975,False,0.39,0.589,9,-9.363,1,0.258,3.91e-05,0.069,0.599,166.093,377413,4
+24,6FR7CxgunBBN1jYJxsX8uZ,Bad Things,Rayland Baxter,51,2013-08-20,False,0.318,0.586,2,-7.606,0,0.383,0.0,0.145,0.211,80.806,313868,4
+25,2dAzuxEnwjHmYN1K5bAZDC,Capsized,Andrew Bird,49,2016-01-01,False,0.745,0.486,7,-9.79,1,0.0622,0.000825,0.117,0.518,82.505,221213,4
+26,2OvXjotV5Ro6NY1lPxXdQY,Stomping Grounds - Live Version,Béla Fleck and the Flecktones,39,1996-09-06,False,0.396,0.77,7,-8.938,1,0.232,0.844,0.918,0.733,140.832,326560,4
+27,1kX5l6hQCbYSK85YezUiUi,Didn't Know yet What I'd Know When I Was Bleedin',Dax Riggs,40,2007,False,0.46,0.599,1,-5.744,1,0.0644,0.0,0.096,0.452,74.421,159347,4
+28,76GtEGAEyxOs0t0edoV5ok,Sharon,David Bromberg,37,1972,False,0.657,0.709,9,-9.524,1,0.195,0.000309,0.066,0.787,96.82,365293,4
+29,7aQT5OB4zEgyyxfRDbOBIt,Highway,Bleeker,56,2016-10-21,False,0.457,0.941,6,-5.174,1,0.000136,3.12e-06,0.0896,0.704,154.038,201680,4

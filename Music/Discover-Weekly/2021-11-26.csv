@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6MB9kNDosalOSJjyVWAs3F,Make Peace and be Free,Perfect Confusion,42,2005-01-01,False,0.652,0.538,6,-6.943,1,0.0138,1.72e-05,0.0649,0.431,78.037,230880,4
+1,33NMbDZTBriHbB4CCGEV57,Our Special Place,The Heavy,5,2007-10-27,False,0.692,0.797,2,-5.202,1,0.334,0.00452,0.106,0.961,194.075,217507,4
+2,24obGxQaI9mRyH6WCmaLeJ,Meanwhile Back in the City,The Presidents Of The United States Of America,0,2000,False,0.587,0.813,6,-5.124,0,0.0678,0.000578,0.187,0.712,117.655,203333,4
+3,30a5lVrFAhiwLtCsCXSQhQ,longwaytoneverland,Headstones,0,2013-01-01,True,0.47,0.905,2,-5.189,1,0.00191,0.661,0.243,0.483,118.24,179080,4
+4,2cqt97QUUpQ2rkeCYha9k8,Pigs (Three Different Ones),Kitchen Dwellers,35,2020-06-26,True,0.402,0.773,4,-6.936,0,0.477,0.662,0.202,0.402,155.961,548640,4
+5,5rmtLKzoantc82TnTVdq8E,Stray (feat. David Shaw),David Shaw,45,2017-06-23,True,0.724,0.807,0,-2.445,1,0.0308,9.28e-05,0.0708,0.684,100.898,223653,4
+6,2pTyMp1KoDNsCidTg7Qm64,Easy To Be Your Lover,Tea Leaf Green,35,2011-06-07,False,0.485,0.773,0,-6.5,1,0.438,0.483,0.122,0.608,170.04,304187,4
+7,7G99zf4j08p28owEOHjmSB,The Hand of the Almighty,John R. Butler,34,2003-01-01,True,0.564,0.327,7,-13.125,1,0.88,0.0,0.0964,0.752,200.183,127533,4
+8,6w31SFqmdPSK8gUZ9zCQWa,Jameson & Ginger,Ballyhoo!,27,2017-03-24,False,0.557,0.939,0,-5.972,1,0.00118,0.000376,0.331,0.809,160.145,187796,4
+9,7wSkLQdIlCBDUPFPkwLICU,No Diggity,The Cleverlys,22,2016-08-12,False,0.742,0.66,1,-5.558,0,0.649,0.0,0.107,0.77,90.94,351419,4
+10,3Ch2Tn2kkSjnGGD5rDqbEG,Numb,OJR,28,2015-05-05,False,0.632,0.91,3,-4.532,0,0.143,5.84e-05,0.494,0.852,119.98,237621,4
+11,0r4J6R1CegP786Ux2ekW5u,Alabama Chicken,Sean Hayes,33,2003,False,0.526,0.523,9,-9.561,1,0.523,0.00067,0.324,0.45,93.827,253893,4
+12,3vxqxKLhQDG8BOu65tXi8g,Army,Ben Folds Five,48,1999-04-27,True,0.443,0.772,1,-8.277,1,0.121,2.76e-05,0.123,0.505,174.52,203160,4
+13,2eP517crFrL5ggUAEoug16,Empty Heart,Grace Potter,45,2015-01-01,False,0.688,0.824,0,-5.475,1,0.0727,2.41e-06,0.214,0.887,85.962,195547,4
+14,3CYSd3RM3VgwWIE6KJl55x,Airstream Driver,Gomez,22,2009-01-01,False,0.618,0.711,2,-5.819,1,0.131,0.079,0.173,0.648,95.025,236520,4
+15,1vN3XWnaINk3H2Ytjghqj4,Hold Me In Your Arms,The Trews,35,2008,False,0.389,0.967,9,-2.062,1,0.000436,0.0,0.0962,0.487,168.033,187267,4
+16,1NM2qI63ylqg62yxpEvTXu,Point / Counterpoint,Streetlight Manifesto,50,2003-08-26,False,0.772,0.868,9,-5.299,1,0.0637,0.0,0.0727,0.825,129.814,327920,4
+17,2f7sOkrHsyjWD04dPpXwOc,Rhubarb Jam,The Bright Light Social Hour,36,2010-09-21,False,0.336,0.834,0,-8.097,1,0.000231,0.929,0.109,0.694,92.394,213253,4
+18,4oqmV2fJzcl4rWlfiT1Quh,Ain't it Fresh (The Oregon Song),Alcyon Massive,31,2009-10-19,False,0.749,0.703,6,-7.955,0,0.00416,0.000761,0.0976,0.674,173.932,297400,4
+19,0HwCnXHhrFrTMjFMwjkT4B,Happy Boy,The Beat Farmers,37,1985,False,0.861,0.856,9,-12.82,1,0.309,0.347,0.0664,0.119,125.249,84187,4
+20,5T8Nc3nQ9EoEEgeiVfovnO,Seven Nation Army,Karl Denson,23,2014-01-28,False,0.595,0.849,4,-5.265,0,0.0366,0.861,0.104,0.637,121.8,402800,4
+21,05GTtG1ckPWfGOC0mHGJ0V,Musta Got Lost - Live,The J. Geils Band,41,1976,False,0.48,0.613,0,-10.787,1,0.211,0.0,0.942,0.598,107.992,394560,4
+22,2iLxXSM7AOzB4RCNzk4bjd,Destruction,Joywave,57,2015-04-14,False,0.66,0.638,0,-6.827,1,0.000438,0.0191,0.107,0.558,108.004,184413,4
+23,5uywMR3hTeVPoWaFDSliJb,Thank God for Girls,Weezer,51,2016-04-01,False,0.559,0.876,4,-6.479,0,0.0474,0.0,0.0734,0.4,95.07,210187,4
+24,1ojwGH0nMRMbRrQK8uAp6n,Spring Break 1899,Murder By Death,43,2008-03-04,True,0.204,0.622,0,-10.76,1,0.201,0.000106,0.615,0.0476,166.884,356440,3
+25,7rfsMduLxpnpfVs2PYZDPA,Listen My Son,The Unseen Guest,40,2005-04-11,False,0.756,0.804,9,-3.459,0,0.228,0.124,0.103,0.884,128.039,240773,4
+26,6Vxb76ybr9lmZuQxQz03yg,Grand Canyon,The Wind and The Wave,39,2016-10-28,False,0.407,0.973,7,-3.194,1,0.000322,0.225,0.271,0.535,163.97,190680,4
+27,5y1jgbDNgTfxoWXv3FhH2Q,Little One,Highly Suspect,59,2016-11-18,True,0.474,0.351,7,-7.533,1,0.0122,7.35e-06,0.112,0.104,139.827,241533,3
+28,4zhRVs7eqgdroy5E3kKEs2,Beautiful Night,Burden Brothers,35,2002-08-13,False,0.531,0.892,7,-4.54,1,0.000508,0.024,0.144,0.599,130.133,259529,4
+29,0MWH51gGmGuggIfPMpTZvw,"Wine, Women and Song",Harvey Danger,10,2006,False,0.534,0.607,9,-5.097,0,0.0685,0.0,0.147,0.586,128.392,195560,4

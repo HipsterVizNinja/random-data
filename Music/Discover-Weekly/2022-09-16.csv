@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3NoTOw5mPtf8QSEmxVCuoL,Doesn't Make You Right,Dirty Heads,0,2016-07-15,False,0.678,0.621,7,-5.903,0,0.203,7.44e-06,0.726,0.456,171.714,262000,4
+1,64qZB8xZ3u2EmH8zSqc7mU,Take Me to Lake Charles,Shinyribs,43,2013-04-16,False,0.66,0.731,0,-5.451,1,0.206,2.04e-05,0.227,0.908,113.521,196253,4
+2,6XJMqhK9979ZDIHKvF9UVu,The Idiot Kings,Soul Coughing,0,1996-09-20,False,0.605,0.673,11,-9.516,0,0.028,0.0369,0.119,0.467,108.812,237027,4
+3,2JRY69O8YFrCVwIAqI8EGP,Until We Burn in the Sun (The Kids Just Want a Love Song),Bedouin Soundclash,24,2007-08-21,False,0.631,0.909,2,-4.902,1,0.0107,0.00273,0.695,0.393,92.037,234213,4
+4,5epWP5XLsOIZ6TUxJGuIMf,Plowed,Sponge,44,2011-11-07,False,0.355,0.855,6,-8.399,1,2.8e-06,0.952,0.0897,0.349,105.365,204500,4
+5,62Cx8FoIXlP9Oaj9OuLbSU,I Burn,Toadies,50,1994-01-01,False,0.709,0.575,6,-11.589,1,0.0572,0.000161,0.11,0.642,88.53,212000,4
+6,4E8glHxSyLvhClV6tmNUYK,Reckoning Lament,Lincoln Durham,38,2012-01-31,False,0.541,0.574,0,-8.464,1,0.28,0.0,0.199,0.87,172.118,190613,4
+7,61QW3AcU1jm5ttPOn8eZhn,Add It Up,Violent Femmes,59,1983-01-01,True,0.41,0.763,4,-7.904,1,0.273,1.29e-05,0.0553,0.649,171.956,284333,4
+8,2l8LaP1IyXs6Kfuhfwd2Ex,Best Kept Secret,Ghost Light,21,2019-03-22,False,0.281,0.726,0,-7.81,1,0.0239,0.00102,0.109,0.676,172.92,320173,4
+9,2mEhT8wY4VE72wWhLQnGew,Lazerray,TV On The Radio,46,2014-11-17,False,0.474,0.955,4,-2.251,1,0.000493,0.0652,0.0442,0.522,89.99,217009,4
+10,0X6LpTaCRqlMUmjCynuo5a,Livin' Part Of Life,Eric Church,53,2006-01-01,False,0.451,0.648,1,-8.659,1,0.481,0.0,0.201,0.857,146.792,269173,4
+11,4QwZ3Sxi34kYaoGBxnFuf2,Spank (feat. Kid Rock),Kid Rock,34,2004-10-05,False,0.592,0.892,9,-3.042,1,0.191,0.000157,0.0984,0.817,162.117,181307,4
+12,0YRcnzPxVdldx4EKRgs8k5,High Is Not the Top,Chris Robinson Brotherhood,33,2017-07-21,False,0.455,0.695,2,-8.062,1,0.124,1.85e-06,0.0917,0.801,178.634,229013,4
+13,4uY5Ha1kmPqMoBiDWyHQr3,I Gotta Go,Robert Earl Keen,53,2011-01-01,False,0.754,0.781,11,-9.097,0,0.206,0.0168,0.248,0.897,102.0,185920,4
+14,0GrcPg89CPjXEkPAsAooGP,Beast,Nico Vega,47,2013-02-05,False,0.422,0.91,2,-3.669,1,0.00256,2.35e-05,0.0765,0.159,139.984,240987,4
+15,7kMTwv0ykoXVdtEZq2neGP,Undone,The Statesboro Revue,25,2015-06-19,False,0.567,0.601,2,-9.238,1,0.287,0.0,0.146,0.583,77.02,257680,4
+16,7qsBXdwpIw2helu5VJ4KIX,High Ticket Attractions,The New Pornographers,37,2017-01-27,False,0.607,0.924,11,-3.763,1,0.0439,1.67e-05,0.386,0.778,132.032,231093,4
+17,0NN11ArHB6a3R89CcHResT,"Suffer the Children, Come Unto Me",Brendan Kelly and the Wandering Birds,36,2012-03-20,False,0.47,0.724,4,-5.057,1,0.115,7.72e-06,0.157,0.668,93.37,171600,4
+18,24UAL0V1e5DrGOlnbpUzWF,Underwear Goes Inside The Pants,Lazyboy,34,2004-01-01,True,0.509,0.903,0,-5.214,1,0.0304,0.0,0.126,0.499,83.912,294547,4
+19,5PxJMuvCFAEbAGaG0J4mLr,Stepping Razor,Peter Tosh,53,1977,False,0.865,0.654,7,-8.113,1,0.00156,1.53e-06,0.0543,0.706,127.513,347053,4
+20,3g1jbNRGRb7nZcWbgpYLOQ,When It Was Wrong (Live),The California Honeydrops,0,2012-04-10,False,0.547,0.599,6,-6.39,1,0.522,0.0,0.836,0.743,108.637,462693,4
+21,0SLOiJClXkAZluClYpke95,Get Over It,OK Go,56,2002-01-01,False,0.389,0.767,2,-4.314,1,0.00127,0.0,0.435,0.544,184.926,196760,4
+22,76JBKwPnXX4SjpTrOMfTNM,Kiss Me I'm #!@'faced,Dropkick Murphys,47,2003,False,0.292,0.912,3,-2.077,1,0.00259,0.0,0.0853,0.475,79.298,334227,3
+23,54EvqHberbpzMu7nu8hs9S,Bang the Drum All Day,Todd Rundgren,54,1982,False,0.639,0.752,2,-12.454,1,0.541,0.0,0.0453,0.966,143.086,215400,4
+24,5drYpn6xtaI4LavbQXevjX,The Righteous One,The Orwells,37,2014-05-27,False,0.389,0.884,9,-4.602,1,0.00412,0.172,0.31,0.422,128.604,215560,4
+25,6cHSEvGW7g1XG6mClspREk,JukeBox Hero,Syler,40,2012-10-18,True,0.559,0.828,4,-6.989,0,0.0314,0.0,0.361,0.586,171.894,294225,4
+26,3kipE3F3ghfvZHPxDvbNQF,Turmoil & Tinfoil,Billy Strings,49,2017-09-22,False,0.372,0.744,10,-8.103,0,0.143,0.192,0.218,0.895,133.714,382999,4
+27,06e2lDPhO5wJNwgiG1oRXw,No Heaven,Champion,39,2007-01-01,False,0.651,0.696,4,-10.411,1,0.0147,0.607,0.644,0.649,120.035,206547,4
+28,5fM5nEYsj6nibcNs41wQwf,Time We Had,The Mother Hips,39,2007-04-03,False,0.533,0.834,0,-7.122,1,0.369,0.0753,0.131,0.469,106.784,186827,4
+29,2vcfImyMOQjYhnKOVkjoIR,Somebody New,Joywave,46,2015-04-14,False,0.456,0.94,3,-3.334,0,4.91e-05,0.000165,0.328,0.463,174.038,206320,4

@@ -1,0 +1,31 @@
+,id,title,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,37EJtTS7jT5WUyXGZzrwnI,Santa Monica,Everclear,74,1995-05-11,False,0.491,0.942,7,-5.333,1,0.156,0.0,0.367,0.387,100.446,191507,4
+1,3GqTbygB04NZcEihPvt8ZH,Bad Lieutenant,The Sheepdogs,33,2015-10-02,False,0.286,0.86,6,-2.797,0,0.0604,0.0338,0.15,0.522,197.99,220949,4
+2,57lOagpbrS9oL3pHcXQONR,Song for Us,Big Something,41,2017-02-24,False,0.302,0.931,1,-4.38,1,0.0658,0.00687,0.208,0.705,155.921,401333,4
+3,25cye3BAeqmpZmrIIEC5FC,99 Shades of Crazy,Mofro,15,2013,False,0.687,0.638,11,-7.451,1,0.0677,0.00112,0.133,0.819,117.313,292493,4
+4,7zPxIh1c3kJaNwmjdZ3GQX,Hello Operator,The White Stripes,57,2000-06-20,False,0.554,0.718,10,-8.942,1,0.261,0.000582,0.151,0.646,95.411,156267,4
+5,658Ng56tIu4gb5gFDuXNcY,Dead & Bloated,Stone Temple Pilots,48,1992-09-29,True,0.563,0.808,7,-7.876,1,0.000154,7.22e-05,0.0926,0.553,123.013,310267,3
+6,3iuzm4ud7VG2hfFtPBOqsW,Life In The City,Turkuaz,23,2018-09-28,False,0.615,0.732,2,-7.316,1,0.00949,0.0043,0.756,0.904,94.002,322440,4
+7,664NjRsLgSJtqX8VM0Ghh1,Train Kept a Rollin',Aerosmith,3,1974-03-15,False,0.359,0.854,11,-9.799,0,0.00194,0.00767,0.841,0.472,99.414,333227,4
+8,5iha6wXLuWdwBtlkRdsmrk,Shine - Jim Eno Sessions,Mondo Cozmo,33,2017-09-01,False,0.463,0.572,11,-9.743,1,0.117,0.0,0.116,0.409,154.884,286840,4
+9,0W7AbEauB7cP4pidLclApe,Hunger Strike,Temple Of The Dog,71,1990-01-01,False,0.373,0.567,7,-10.835,1,0.0236,3.47e-06,0.0916,0.298,137.789,246267,4
+10,0MhtJEEzjoO9XojiDyJyYl,Sticky Treez,Bikini Trill,0,2017-02-06,False,0.73,0.694,1,-7.288,0,0.286,0.081,0.0952,0.611,139.969,241968,4
+11,6u1yKoh00WaoSpNp46RzKF,Cumbersome,Seven Mary Three,68,1995-09-05,False,0.543,0.79,11,-5.932,1,0.00811,0.0,0.238,0.339,80.923,236973,4
+12,2BAZhgDGNWce30bhk3ZkNC,Get A Little,Wayland,48,2014-07-08,False,0.507,0.734,6,-5.124,1,0.00625,3.54e-06,0.677,0.632,157.066,228646,4
+13,5CslBpqXgAFxHwRMaR06gT,Total Eclipse of the Heart - Live,The Dan Band,0,2005,False,0.34,0.875,5,-3.7,1,0.576,0.0,0.982,0.529,135.236,166800,4
+14,6SzrGye4evXNbhPWtEHplW,Under the Sun,Arden Park Roots,36,2011-11-22,False,0.78,0.476,9,-10.667,1,0.221,3.55e-06,0.108,0.27,136.948,289333,4
+15,7avvBGQq0tH4nY95guF7fP,Can't You See,Black Stone Cherry,56,2011-01-01,False,0.398,0.846,11,-4.217,1,0.000469,2.46e-05,0.172,0.411,149.893,211160,4
+16,1qQudQbHnq56UGuTndqsnQ,Sullivan,Caroline's Spine,38,2006-09-20,False,0.293,0.933,4,-6.28,0,0.0127,0.0,0.104,0.333,167.618,245213,4
+17,6PIEE443qM0IS279RdW24q,The Big Rock Candy Mountain,Harry McClintock,59,2002-04-23,False,0.668,0.172,0,-13.835,1,0.871,0.0,0.095,0.573,94.51,135147,4
+18,3CtKSQyQPdzA2u7n9tjJw2,Albatross,Corrosion Of Conformity,53,1994-09-26,False,0.344,0.911,10,-5.997,1,5.05e-05,0.00166,0.0642,0.51,135.213,320333,4
+19,4N2d7hsNCkBCo1FLGAO9ll,Are You Satisfied?,Reignwolf,52,2013-08-02,False,0.295,0.832,3,-6.789,0,0.00393,0.0722,0.102,0.615,140.979,214048,4
+20,1ngRlvNWqH985o6v6TQEwJ,I Love Lamp,RDGLDGRN,30,2013-01-01,False,0.479,0.939,7,-3.085,1,0.00157,1.17e-05,0.335,0.693,159.916,161893,4
+21,7vf8kqdPc8wpKja6iqfuzi,Weed With Willie,Toby Keith,51,2003-11-04,False,0.309,0.54,7,-9.881,1,0.654,0.0,0.982,0.411,182.318,243707,3
+22,0AkiRuZdQksQGlKCfs5JxH,Be Happy,Gene Evaro Jr.,34,2020-01-17,False,0.779,0.731,10,-8.935,0,0.334,0.0114,0.0643,0.516,110.028,296455,4
+23,5rVpsYfda91PPYkuvhtOqG,Click Lang Echo,STS9,32,2015-07-10,False,0.608,0.77,5,-8.49,1,0.0192,0.703,0.102,0.25,125.015,394980,4
+24,4xDldUYTdefsMcsAo1O9v2,"Me, I Get High on Reefer",The Two Man Gentlemen Band,32,2010-08-31,False,0.605,0.48,10,-6.216,1,0.754,0.0,0.116,0.743,206.185,137413,4
+25,4TGgvK3zgteASTR7gkhAQR,Daniella,John Butler Trio,10,2007-01-01,False,0.639,0.754,10,-5.211,1,0.185,0.00206,0.176,0.963,160.134,257800,4
+26,0mEUjXUvkqrvDqKZgR7GiA,Monster Hash,The Toyes,31,1996-01-01,False,0.799,0.676,7,-9.706,1,0.168,0.0,0.31,0.963,132.991,201533,4
+27,3DhcJjPjAXbBnsjHGn6GY7,Go Back To Virginia,The Maldives,30,2012-10-16,False,0.465,0.519,1,-6.124,1,0.258,0.000798,0.0963,0.117,78.134,433613,3
+28,3KIJOLJFxd1dn7ML3PYLhI,Empty Cans (feat. No Needz),Clear Conscience and Friends,43,2010-07-13,False,0.729,0.635,10,-7.107,0,0.0119,8.94e-06,0.12,0.535,170.006,202413,4
+29,3wYhowytXoF4fxY0Cm7bHr,Folsom Prison Blues,Small Town Titans,41,2019-01-21,False,0.474,0.908,2,-4.767,1,0.00288,0.0,0.365,0.431,88.051,214152,4
