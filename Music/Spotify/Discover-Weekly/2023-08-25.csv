@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,50ZWQIqyJzbD43eGIbUA2O,Jolene,Motorcade Of Generosity,CAKE,21,1997-07-21,False,0.512,0.572,6,-9.903,1,0.271,1.02e-05,0.355,0.849,94.01,319200,4
+1,569W3UjgzkIYfV9W0BlaKD,Fuck a Bomb,Fuck a Bomb,['Hey Steve'],45,2018-04-27,True,0.655,0.744,7,-4.816,0,0.0619,0.0,0.296,0.755,80.065,196056,4
+2,0u7bpomleML1Vln9bRZVST,Character Zero,Billy Breathes,['Phish'],41,1996-10-15,False,0.332,0.701,2,-6.99,1,0.12,1.86e-05,0.252,0.537,166.223,240200,4
+3,0gv1TUgFI1H97yJ1uYcdfs,This Is The Best,Advanced Basics,['USS (Ubiquitous Synergy Seeker)'],43,2014-02-11,True,0.557,0.657,5,-7.077,0,0.00219,0.0,0.371,0.581,137.95,177148,4
+4,6OImCgd9gwIcTRuHr6s9xy,Freeze,Pink Crustaceans and Good Vibrations,['Pepper'],37,2008-07-22,False,0.803,0.599,9,-5.189,0,0.113,2.96e-05,0.285,0.68,110.066,204587,4
+5,1u7J5sEfgOVRt5bkfU2oGV,Keep The Wolves Away,And You Are Me,['Uncle Lucius'],73,2012-08-28,False,0.682,0.351,1,-10.276,0,0.52,0.00059,0.11,0.144,122.207,275520,4
+6,3cnUE6pBz4HwRYw4dOleit,The River,Had to Cry Today,['Joe Bonamassa'],29,2004-08-24,False,0.499,0.78,10,-5.595,1,0.0515,3.03e-06,0.195,0.4,76.889,330040,4
+7,3s3ciLHOXE1xVqGkdxwHPs,Love Interruption,Blunderbuss,['Jack White'],52,2012-04-20,False,0.582,0.365,9,-11.04,1,0.648,1.03e-06,0.147,0.312,93.856,157973,4
+8,19cZZRWJyEPcI2KzYtZa2c,Gracefully Facedown,Do Wrong Right,['The Devil Makes Three'],19,2009,False,0.651,0.516,2,-9.239,1,0.475,1.97e-06,0.123,0.9,157.146,251347,4
+9,5A9xSuOZGQJNdRGEWVNGeI,Falling Down (with Nick Hexum of 311),All The Colors,"['Tropidelic', '311']",50,2022-08-05,False,0.655,0.771,0,-4.606,1,0.0924,0.0,0.0825,0.703,139.989,198282,4
+10,1oo9d0JoNuXlFwlQU8YRLl,I See,I See,['Cam Cole'],41,2019-11-01,False,0.333,0.678,6,-5.594,0,8.98e-05,0.0403,0.112,0.387,131.693,246499,4
+11,6ptTxcFS0UKaFZHloukVtM,Smash The Control Machine,Smash The Control Machine,['Otep'],39,2009-08-18,False,0.445,0.987,7,-2.988,1,3.96e-05,0.0123,0.318,0.245,77.5,223547,4
+12,0hMQ7O4h9m3C3GJfXHRvAl,Ballad of 1892,Ties of Blood and Affection,['Jeremy Pinnell'],50,2017-01-27,False,0.802,0.633,2,-8.807,1,0.591,4.32e-06,0.116,0.889,124.047,185827,4
+13,0cRHZD18mp3b4JcABdgMAp,Preachin' Blues,Peach,['Larkin Poe'],5,2017-09-29,False,0.59,0.82,7,-4.755,1,0.417,0.000473,0.132,0.725,85.973,201587,4
+14,4SIX9768bAnt71SJvoLml5,I Guess I Know You Fairly Well,Himalayan,['Band Of Skulls'],22,2014-03-31,False,0.465,0.611,7,-6.546,0,0.0717,1.4e-05,0.122,0.582,79.528,215307,4
+15,3W9rTLLpDBPYOkDocgJLk5,Apple Pie,Hellbent,['Stereoside'],33,2016-08-26,False,0.386,0.803,7,-5.867,1,0.0107,3.19e-06,0.129,0.313,142.747,226613,4
+16,5QgTKvM6D8CHB5YBnKkiBh,Moonlight,Outrage! Is Now,['Death From Above 1979'],39,2017-09-08,False,0.49,0.944,0,-4.573,0,5.93e-05,0.0249,0.68,0.289,145.024,190822,4
+17,50rimSSBzAvRsLxyNKyE6f,King of New Orleans,Friction Baby,['Better Than Ezra'],38,1996-08-02,False,0.392,0.892,9,-4.969,1,0.000119,0.00286,0.0823,0.684,167.657,247880,4
+18,10GWmQuoeLjvgWazjJofOS,You’ll Never Leave Harlan Alive,You’ll Never Leave Harlan Alive,['Ruby Friedman Orchestra'],35,2021-03-29,False,0.472,0.365,7,-10.553,0,0.79,0.000759,0.113,0.287,143.829,210720,4
+19,5PhCfyPY63utZemESoB9dJ,Axis,Anesthetic,"['Mark Morton', 'Mark Lanegan']",29,2019-01-03,False,0.497,0.805,0,-6.754,1,0.000831,0.609,0.0985,0.536,154.028,253145,4
+20,4c1QKtG7VHmhlOwJcA3Zcy,"Gator (from the United Artist Movie ""Gator"")",The Essential Jerry Reed,['Jerry Reed'],38,2015-10-02,False,0.574,0.794,11,-10.264,0,0.548,2.26e-05,0.184,0.735,92.943,177107,4
+21,6qfYpsspDYgZMD8QLGCRYI,You've Been Warned,American Spiritual,['Dirty Sweet'],32,2019-06-13,False,0.611,0.867,5,-4.381,0,0.00175,0.0,0.085,0.641,100.998,223987,4
+22,1rMkhT50iT7SVQgzLs838E,Magnolia Road,Bless Your Heart,['The Allman Betts Band'],31,2020-08-28,False,0.276,0.91,0,-4.813,1,0.0566,0.0536,0.28,0.611,173.8,317173,4
+23,5zbDttGAD33uV14ZEjJaT1,Tennessee Driver,Assjack,['Assjack'],32,2009-08-04,True,0.216,0.992,7,-1.755,1,0.000731,0.36,0.37,0.131,93.237,166640,4
+24,16RFQBEOBwsN11TPcTfwD1,Train Song,Smoke On This...,['Rex Brown'],34,2017-07-28,False,0.392,0.91,5,-6.127,1,7.07e-05,0.00126,0.12,0.542,117.189,156775,4
+25,3GpRnlEUBJhbWH10QkiCIn,Hot Topic Woman,The Company Band,['The Company Band'],33,2009-11-10,False,0.56,0.91,6,-5.125,1,0.00151,3.71e-06,0.0229,0.755,172.058,211933,4
+26,5hxLWaKnaDQ2f0NdGuV0Ch,Dance Of The Manatee,Fables From a Mayfly: What I Tell You Three Times is True,['Fair To Midland'],39,2007-01-01,False,0.475,0.891,5,-5.042,0,0.00141,0.0,0.0908,0.645,107.026,250707,4
+27,0Dp3h8orfu9x9WhKumFUWN,Every 1's A Winner,More Frantic,['Gun'],29,2015-03-23,False,0.56,0.894,9,-6.186,1,0.00215,0.00206,0.124,0.606,108.005,227733,4
+28,32dkr35PNyFQ3YriV6CRHV,Home,Tales From Dirt Town,['Bobaflex'],31,2007-10-30,True,0.488,0.506,7,-5.844,0,0.0505,0.00248,0.118,0.0898,78.028,257467,4
+29,7bUrudG40BOEGglkNtU1h3,Speaking in Tongues,Peace Love Death Metal,['Eagles Of Death Metal'],36,2004,False,0.515,0.976,1,-4.178,0,0.595,0.000952,0.0835,0.64,147.693,169733,4

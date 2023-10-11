@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3kmDZdXLkYIw1uwh5peKzB,It Ain't All Flowers,Metamodern Sounds in Country Music,Sturgill Simpson,9,2014-05-09,False,0.34,0.603,4,-9.388,1,0.0421,0.00105,0.12,0.447,154.02,403760,4
+1,5dLudVlhiZpgwFAPVVHkVe,N.I.B.,Brownout Presents Brown Sabbath,"['Brownout', 'Brown Sabbath', 'Alex Marrero']",24,2014-06-24,False,0.565,0.783,2,-8.756,0,0.0175,0.325,0.08,0.903,96.51,350822,4
+2,0vQPY1VCcvZa2Mm6QM63Le,Gotta Get Away,Smash,['The Offspring'],64,1994-04-08,False,0.568,0.826,4,-7.634,0,0.00082,8.56e-06,0.0789,0.796,132.782,232160,4
+3,558wEHNg1NTj44i0BYR89d,Preachin' Blues,Out Of The Madness,['The Derek Trucks Band'],32,1998-10-06,False,0.6,0.579,9,-8.698,1,0.141,0.00213,0.386,0.76,78.075,298333,4
+4,2C5FThQz2cvGaG0qkQBG4v,"""Dearly Departed"" - Live from Spotify Sxsw 2014 (feat. Esme Patterson)",Spotify Sessions,"['Shakey Graves', 'Esmé Patterson']",32,2014-06-06,False,0.56,0.492,7,-8.812,1,0.293,1.03e-06,0.685,0.579,81.123,252798,4
+5,3g6Iv6AJddkj641ufya8h4,Nebraska,tin cans & car tires,['moe.'],34,1998-09-08,False,0.645,0.623,2,-7.836,1,0.566,0.0,0.204,0.624,95.968,229667,4
+6,3hSkRUszGBJCTVIyDysbcM,Go Fuck Yourself,Radio Silence,['Roxanne'],28,2018-10-26,True,0.531,0.903,8,-5.615,1,0.00196,4.31e-06,0.0524,0.61,94.17,294123,4
+7,02bFBxBGxy5PNm787Crmow,Comin' Home,Red of Tooth and Claw,['Murder By Death'],40,2008-03-04,False,0.348,0.94,4,-7.241,0,0.00048,0.00241,0.1,0.195,108.658,215560,4
+8,4gxB4rp8t4qw08KJR8aDkD,Shady Grove,Mudcrutch,['Mudcrutch'],35,2008-03-25,False,0.469,0.606,5,-9.387,0,0.0759,0.0358,0.503,0.717,112.216,238427,4
+9,3SvOn9uq1fkBJcDzewr0HX,"Lawyers, Guns And Money",Five-O,"['Hank Williams, Jr.']",27,1985,False,0.659,0.708,9,-9.098,1,0.0146,0.0742,0.0273,0.689,100.402,193000,4
+10,5Lhwnf8QEeC1gO7eXT7AUw,Something Different,1000hp,['Godsmack'],48,2014-08-05,False,0.499,0.882,1,-4.092,1,0.000515,0.0,0.0925,0.335,138.711,282200,4
+11,53kQ3URNSil7M4U5uTF1sV,Birmingham,O' Be Joyful,['Shovels & Rope'],33,2012-01-01,False,0.609,0.619,7,-7.135,1,0.0124,0.0,0.11,0.417,82.488,241560,4
+12,1zV3nrzYYRxUR6TqZG41Sq,Jake Leg Boogie,Jake Leg Boogie,['Five Horse Johnson'],30,2017-06-30,False,0.281,0.903,0,-6.827,1,0.00339,0.477,0.309,0.797,196.8,159893,4
+13,3d5Cnswx1dxmjUbn1Dp3JQ,Machine Gun Blues,Hard Times And Nursery Rhymes (Deluxe Edition),['Social Distortion'],51,2011-01-18,False,0.207,0.961,2,-3.913,1,0.132,0.000104,0.335,0.118,173.971,213173,4
+14,7APd0XOyxADdME6FggrkVq,"Down by the River - Live at Radio City Music Hall, New York, NY - April 2007",Live At Radio City,"['Dave Matthews', 'Tim Reynolds']",32,2007-08-14,False,0.316,0.615,2,-5.295,1,0.518,1.84e-06,0.821,0.25,153.421,345373,4
+15,6M2Lq1uKVOSqEUqhzVpdhl,For the Sun,Furiosity,['Monster Truck'],28,2013-05-28,False,0.319,0.724,9,-5.264,0,0.00022,0.0241,0.271,0.375,112.54,444220,3
+16,2U4FtN8jDqDKSzGpVC1iLf,Poppies,Marcy Playground,['Marcy Playground'],45,1997-01-01,False,0.359,0.804,4,-6.424,1,0.0161,0.000876,0.0889,0.902,182.429,169733,4
+17,6bCigdjlMVVipsoQyL53Nx,Anxiety,The Nashville Sound,['Jason Isbell and the 400 Unit'],12,2017-06-16,False,0.438,0.593,4,-8.994,0,0.011,0.000815,0.108,0.409,83.656,417721,4
+18,3mg2JmdQMTJmpFFwqUF2fw,It's Martini Time,It's Martini Time,['The Reverend Horton Heat'],31,1996-01-01,False,0.454,0.934,9,-7.175,1,5.61e-05,1.95e-05,0.0955,0.347,110.06,194867,4
+19,5ty6Z0ciDt8uQNxRcwzjSS,On the Run,On the Run,['Turkuaz'],27,2017-10-13,False,0.705,0.787,7,-4.916,0,0.00713,0.0183,0.0681,0.633,115.01,200436,4
+20,26ZnRGLAzPzvqWw9OEAdxr,Let The Band Play,Temper,['Badflower'],45,2018-11-23,True,0.461,0.511,5,-7.863,1,0.00494,0.075,0.105,0.246,143.972,269120,4
+21,2Kh2C5PbekvEilbCOTzTt1,Drinkin' Dark Whiskey,The SteelDrivers,['The Steeldrivers'],58,2008-01-15,False,0.501,0.743,2,-5.226,1,0.693,0.000215,0.0653,0.817,191.31,174907,4
+22,2hfQyhsgWBdLK3Vw5Z0B5p,Where's Popeyes,Vida Blue,['Vida Blue'],26,2002-06-25,False,0.749,0.888,0,-9.563,1,0.0165,0.907,0.115,0.792,88.668,275907,4
+23,41kg2RvdwBuIv0OPpvBS4v,Time Bomb,...And Out Come The Wolves,['Rancid'],50,1995-08-15,False,0.646,0.962,9,-4.862,1,0.138,0.0,0.471,0.961,164.79,144333,4
+24,2NYaRJqBsInCnk2cDBVnHG,Bhindi Bhagee,Global A Go-Go,"['Joe Strummer', 'The Mescaleros']",33,2001-07-24,False,0.613,0.949,8,-5.773,1,0.021,0.0122,0.37,0.656,115.213,344307,4
+25,5AZof20SHZrZ3ea7rESo1y,Stereo,Supermegafantastic,['IAMDYNAMITE'],33,2012-03-13,False,0.399,0.945,1,-5.345,1,0.000328,0.000413,0.11,0.659,85.198,204907,4
+26,7q8ma1NaWeQfmO6zdvuuT6,Her Strut,Against The Wind,['Bob Seger'],56,1980-02-25,False,0.644,0.829,8,-4.399,1,0.00269,0.00447,0.0794,0.461,115.883,233347,4
+27,3qXcnzcNx45bXlWJzD730w,Life by the Drop,Fitchburg Street,['Doyle Bramhall'],42,2003-02-25,False,0.511,0.686,1,-5.021,0,0.017,0.00256,0.119,0.309,110.509,185693,4
+28,2P7aIxPy82xwHKqJkeNVYL,Say Goodnight to the World,Say Goodnight to the World,['Dax Riggs'],30,2010,False,0.248,0.692,5,-6.337,1,0.00142,0.31,0.234,0.289,145.033,259213,4
+29,7fZDPth2IuCiUhvkN8OIWS,Morning Star,Philip Sayce Group,"['Philip Sayce Group', 'Philip Sayce']",41,1997,False,0.393,0.912,8,-5.008,1,0.00697,0.00274,0.0547,0.63,78.157,309533,4

@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,2lYTIEA8KJQWysrhXDogcD,Bomb Through the Breeze,Hannah Wicklund & The Steppin Stones,Hannah Wicklund,45,2018-01-26,False,0.401,0.591,2,-4.65,1,0.00252,0.00278,0.313,0.691,82.133,164645,4
+1,6Jub05dvpbF4Im83NqMCUg,United States Of Whatever,Fake Songs,['Liam Lynch'],52,2003-01-01,False,0.452,0.817,7,-2.27,1,0.00383,0.0,0.138,0.867,161.362,91227,4
+2,2Jud1NOCRIwd0szWQp48Ak,I Fuck Around,Working with God,['Melvins'],42,2021-02-26,True,0.353,0.86,2,-5.244,1,0.344,0.00324,0.804,0.684,149.698,141787,4
+3,7E9A1uj5JrMJn6yGbewQkH,The Wanderer,Shadows,['Shawn James'],44,2012-08-19,False,0.399,0.623,5,-4.534,0,0.631,1.09e-06,0.211,0.649,100.454,128768,4
+4,6lQ4C2lYc3mIsBtB6EfkwT,Medicine Man,ROCKISDEAD,['Dorothy'],45,2016-06-24,False,0.476,0.452,0,-7.331,1,0.0788,0.0,0.124,0.297,140.15,199360,4
+5,1PlzMAYlt0Qziq9Q1AOcv7,.CoDA.,-!- (Deluxe),['Dead Poet Society'],52,2021-12-03,True,0.557,0.622,8,-5.614,1,0.00104,0.000293,0.32,0.486,119.937,224307,4
+6,5rMJJPGNeRzouxRbeo7src,NOT MAD ENOUGH,Volume 1,['Smith & Myers'],47,2020-10-09,False,0.821,0.366,2,-6.544,0,0.804,5.53e-06,0.0973,0.498,119.931,219409,4
+7,2t2m9MmnyMg31cLaZ2iIht,Creature,Bones UK,['BONES UK'],42,2019-07-12,False,0.542,0.833,11,-2.764,0,0.00572,0.000338,0.0758,0.59,81.964,188000,4
+8,0jFVQBPBmlBSw187RYh6Ss,Sleeping with Lions,Mountain,['The Cold Stares'],19,2018-10-31,False,0.365,0.778,5,-6.117,0,6.42e-05,1.35e-06,0.299,0.712,73.93,199787,4
+9,6KKNwsCVj4Mc9WyhIqxYUT,You Can't Save Me,The Essential Richie Kotzen,['Richie Kotzen'],44,2014-09-02,True,0.608,0.478,4,-5.772,0,0.109,0.000238,0.104,0.371,135.721,257707,4
+10,79y39naVOPTUt8clHsdjBp,Covered In Chrome,Hungry Ghost,['Violent Soho'],43,2013-09-06,False,0.555,0.727,5,-5.155,1,0.00575,0.0,0.169,0.423,152.082,212547,4
+11,4MmWD6YFgKro8DR1CJUuGD,Ohio River,Ohio River,['Year of the Buffalo'],35,2020-10-31,False,0.34,0.335,9,-13.023,1,0.634,0.0126,0.092,0.244,65.046,351313,4
+12,52Y1QtsnvNQsoJj8jtBrND,Heart-Shaped Box,27,['Tribe Society'],32,2017-04-05,False,0.511,0.6,10,-7.179,1,0.355,7.61e-05,0.0907,0.114,80.004,228000,4
+13,2RvdN9vndHhe1HUqQfXI0g,Felicia,Southern Gothic,['The Constellations'],33,2010-01-01,False,0.762,0.887,9,-4.416,0,0.269,0.0,0.285,0.961,130.022,208987,4
+14,2mLYN7Hz2czFkZugFscrrb,Methhead,Off This Mountaintop,['Ian Noe'],53,2017-12-25,True,0.361,0.469,0,-9.04,0,0.681,0.0,0.353,0.577,174.942,230773,3
+15,23Zva7DuHvuXKE0b1F1XdT,Folsom Prison Blues,Welcome to the Show,['Framing the Red'],26,2012-06-10,False,0.663,0.838,4,-4.989,0,0.000917,0.00019,0.254,0.765,113.004,200840,4
+16,2yHI4FnF7NXReCv5EoPLja,Here Comes the Lightning,Fool's Gold,['Big B'],40,2013-07-05,True,0.671,0.71,2,-6.001,1,0.0937,0.0,0.54,0.759,88.005,171360,4
+17,7IJnFxTU4DkYjuPOPAoZpI,Pull It,Loud Hailer,['Jeff Beck'],27,2016-07-15,False,0.336,0.88,9,-6.169,1,0.00295,0.899,0.15,0.24,143.807,129307,4
+18,4u152W5T3yuDXSjRvZAx1h,Big Love - Live,Live at the Bass Performance Hall,['Lindsey Buckingham'],46,2008-03-24,False,0.384,0.703,1,-7.476,0,0.874,0.046,0.767,0.794,132.327,209240,4
+19,6GHSAsG90unrc5tTguNj4f,Touched,Visual Audio Sensory Theater,['Vast'],42,1998,False,0.522,0.767,1,-8.011,0,0.0241,0.122,0.101,0.133,121.057,238040,4
+20,3SXz0Ay76V9GyhbXXbG4JM,Temptation,Transmission,['The Tea Party'],42,1997-01-01,False,0.335,0.914,2,-7.962,1,0.0996,0.024,0.181,0.0764,96.847,205160,4
+21,4ElxyEI2mMVsY1oRaMqsa3,Fools Gold,"30th Century Records Compilation, Vol. 1",['The Arcs'],37,2015-12-18,False,0.465,0.726,0,-5.846,1,0.037,0.923,0.0985,0.562,77.833,242467,4
+22,2y1xs3ze76lgCXStOnI3tp,Troubled Mind,More Or Less,['Dan Mangan'],41,2018-11-02,False,0.511,0.913,11,-6.939,0,0.0132,0.373,0.173,0.767,195.042,187107,4
+23,47eTImOdtmthXkvWiQO1PE,Black Coffee,Eat It,['Humble Pie'],39,1973-01-01,False,0.441,0.388,0,-11.562,1,0.202,0.227,0.214,0.563,146.026,191333,4
+24,7nTFFSHZlbEodLWIAkZI2P,Year Of The Tiger,Year Of The Tiger,['Myles Kennedy'],21,2018-03-09,False,0.47,0.934,9,-4.565,0,0.0015,2.2e-05,0.109,0.432,83.524,220790,4
+25,0mhAqHqfL7CXrNmawlp3LA,Sex And Candy,The Ride,['Small Town Titans'],33,2020-11-13,False,0.512,0.695,11,-4.987,0,0.000147,0.0,0.121,0.316,121.901,347336,4
+26,6wLnOKIvfo783ox6YTJX0f,Big Slice,Big Slice,['Jonas & The Massive Attraction'],26,2010,False,0.602,0.942,6,-2.578,1,0.000541,0.0,0.0358,0.655,125.997,169134,4
+27,1zkV3L2TLaFuzv9GtS8Bh6,Seminole Wind,Seminole Wind,['Cody Parks and The Dirty South'],46,2019-01-17,False,0.456,0.949,1,-5.78,1,0.00655,0.0496,0.111,0.22,132.952,285840,4
+28,1edoYv7eYCeTzzQqFjvsDu,Baby,Weekend Man,['Royal Republic'],52,2016-02-26,False,0.575,0.932,7,-2.72,1,1.61e-05,0.0188,0.0476,0.659,109.989,172600,4
+29,7l2zVRsRgMug2qmacE6AKE,Tell Me How You Died,Tell Me How You Died,['Handsome as Sin'],32,2013-11-26,True,0.536,0.677,2,-4.049,0,0.00638,0.0,0.134,0.566,76.551,189173,4

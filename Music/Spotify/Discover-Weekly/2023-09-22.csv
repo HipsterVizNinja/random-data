@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,1BWNpziDWyAMfGdKC2ydS6,Feeling Good,The Sheepdogs (Deluxe),The Sheepdogs,49,2012-09-04,False,0.52,0.889,0,-5.216,0,0.00956,1.67e-06,0.268,0.385,126.238,190133,4
+1,2LN8mDsvMvG7JU69vtpLhk,Carolina Drama,Consolers of the Lonely,['The Raconteurs'],48,2008-03-25,False,0.365,0.689,9,-5.893,0,0.284,0.0,0.13,0.394,165.648,355000,4
+2,4gCSY74h2uPDbVWThLatDs,Big News I,Clutch,['Clutch'],42,1995-04-18,False,0.565,0.612,3,-9.103,0,0.0587,0.121,0.65,0.893,81.989,314827,4
+3,1J4JWWNq714qkRSEaLP4aM,Circles,Country Ghetto,"['JJ Grey & Mofro', 'Mofro']",41,2007-02-20,False,0.407,0.353,1,-8.402,0,0.722,0.357,0.107,0.291,143.155,244547,3
+4,3L1pLzSO1F0b6JIicYL3q9,Rockin' Is Ma Business,River City Revival,['Alabama Thunderpussy'],35,1999,False,0.315,0.835,0,-6.936,1,0.000143,0.0612,0.231,0.676,137.761,237200,4
+5,2oUASWffEKd5cfoqTpQK86,Eat My Brain,Good Weird Feeling,['Odds'],39,1995-01-26,False,0.538,0.62,0,-8.416,1,0.00182,0.000721,0.389,0.301,89.594,266400,4
+6,2dpmSeMBn8XcpPPHNhEs06,Make Me A Believer,Sometimes Y,"['Yelawolf', 'Shooter Jennings']",46,2022-03-11,True,0.66,0.79,7,-5.532,1,0.000363,0.171,0.172,0.228,146.004,300480,4
+7,7FB4AMETSW8jALAPNRKw7Y,Family Tree,Mechanical Bull (Expanded Edition),['Kings of Leon'],48,2013-09-24,False,0.699,0.762,9,-6.502,1,0.084,0.00068,0.089,0.79,101.815,230707,4
+8,3f3SuWXJLaSBdCevrdrbpa,Hellhound,Hellhound,['Moontricks'],36,2019-03-08,False,0.577,0.469,5,-7.181,0,0.00986,0.0289,0.316,0.166,79.958,210000,4
+9,2hVPDYGExN6ux01zQvUwyr,Back From Cali,Slash,"['Slash', 'Myles Kennedy']",34,2010,False,0.398,0.747,9,-6.434,1,0.00136,0.0,0.0917,0.677,132.629,216360,4
+10,1xTop3G2er87edKxRK2gxh,Chains of Love,Red Bird,['Jesse Roper'],29,2015-01-23,True,0.623,0.631,11,-7.27,0,0.0015,0.0,0.116,0.311,118.061,212416,4
+11,1VOcupJbPOAC4o8fl7vVNx,Voices,Voices,['The Pistolwhips'],29,2017-05-26,False,0.467,0.899,6,-4.624,0,0.000278,0.000228,0.115,0.615,161.097,224453,4
+12,4M8OfVBpn4OHeDsEgOE50w,Nobody Smokes Anymore,Texas Piano Man,['Robert Ellis'],34,2019-02-14,False,0.598,0.705,5,-7.153,1,0.16,7.67e-06,0.122,0.278,135.415,204493,4
+13,2D8z35to04Uv18QupYEYFH,Home Sweet Home,Home Sweet Home,"['Motley Crue Feat. Chester Bennington', 'Chester Bennington']",34,2005-09-27,False,0.32,0.59,5,-5.662,1,0.181,1.19e-06,0.327,0.0779,143.714,284584,4
+14,7cnEZsRXMzyiobXNURtgfk,I'm On Fire,Top of the World,['Slightly Stoopid'],33,2012-08-14,False,0.534,0.384,4,-11.615,1,0.91,0.0675,0.107,0.443,87.641,149733,4
+15,1T7bIknX3Bw1DLaPagiOXy,Bad Luck Again,The Wild,['The Rural Alberta Advantage'],24,2017-10-13,True,0.549,0.91,11,-4.884,0,0.00681,0.00843,0.0753,0.562,93.989,194998,4
+16,0mdvfIwuQmfoFJ4K54CCIG,For the Love of Money,Bulletboys,['Bulletboys'],35,1988-09-16,False,0.448,0.829,7,-7.638,1,0.105,2.3e-06,0.545,0.415,95.981,227080,4
+17,14irPxTJLePlTfUd9U5hWL,Baltimore Blues No. 1,War Elephant,['Deer Tick'],52,2007-09-04,False,0.749,0.544,5,-4.501,1,0.461,0.00129,0.22,0.369,114.972,181187,4
+18,3XHnaUAFX8PfNMW1hHC75N,Betray And Degrade,Poison The Parish (Deluxe Edition),['Seether'],51,2017-05-12,False,0.58,0.737,10,-4.795,1,9.85e-05,0.0367,0.0823,0.506,92.0,244347,4
+19,22QMzoI3O7yNnttjKq9SfF,Draggin' the Line,Celebration: The Complete Roulette Recordings 1966-1973,['Tommy James & The Shondells'],49,2021-02-05,False,0.669,0.583,1,-9.165,0,0.0521,1.52e-05,0.177,0.647,114.543,164867,4
+20,1wBtnfOFCMmr6yOy1dE5VM,Survivor,Versatile,['Pop Evil'],48,2021-05-21,False,0.606,0.749,2,-5.983,1,0.00271,4.15e-06,0.0609,0.408,90.046,242424,4
+21,3fHCdJGY9h87wStzvCrbo0,Colors Collide,I Hope You're Happy,['Blue October'],36,2018-08-17,True,0.435,0.806,7,-6.014,1,0.00237,0.00069,0.113,0.499,170.12,253192,4
+22,35t1Py2yeA03iR0VB3GkJ0,Zero,ALT,['Vanna'],41,2015-10-02,False,0.379,0.975,5,-4.918,0,7.8e-06,0.0312,0.411,0.657,127.853,160284,4
+23,2l3f1tEaoZlbGSkLoJ5sJc,Mississippi Moonshine,Miss America,['Saving Abel'],48,2010-01-01,False,0.707,0.756,5,-5.911,0,0.0113,4.49e-06,0.391,0.96,115.047,193613,4
+24,5AxGbeiWhiBoJBaS0whPQU,"Conservative, Christian, Right Wing Republican, Straight, White, American Males",East Nashville Skyline,['Todd Snider'],28,2004,False,0.567,0.572,8,-6.757,1,0.383,0.0,0.0601,0.646,79.369,197013,4
+25,4pKGBj9NARsH5QQe5mqBWu,I'm a HellRazor (feat. Crucifix),Baptized in Bourbon,"['Moonshine Bandits', 'CRUCIFIX']",43,2017-03-03,False,0.721,0.958,2,-3.434,1,0.24,2.71e-06,0.355,0.564,99.972,193613,4
+26,4QcnjybQIat20pZFqiDgbt,Acid Roulette,Acid Roulette,['Scorpion Child'],35,2016-06-10,False,0.187,0.938,0,-3.635,1,2.25e-05,0.192,0.231,0.423,133.635,349467,4
+27,6NujEiqFKnTMeQ0xURCbUD,Tall Boogie,7 Cities,['Moreland & Arbuckle'],28,2013-01-01,False,0.338,0.887,9,-5.72,1,0.00565,0.277,0.324,0.584,200.758,197253,4
+28,4q4ITrTmB4LyoNw9yjb2Ic,JACK,the mockingbird & THE CROW,['HARDY'],67,2023-01-20,True,0.551,0.6,7,-5.501,1,0.0295,2.94e-06,0.291,0.493,125.019,168630,4
+29,5tPok5QZ1zY9RmXucdrQ2v,Stomp Your Feet and Clap Your Hands,A Freak Grows in Brooklyn,['Ryan Scott'],30,2019-08-23,True,0.536,0.827,3,-4.785,1,0.00692,4.22e-05,0.133,0.475,128.198,296202,4

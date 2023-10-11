@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,0eD4uQ4gTz82vqaUoLRdsQ,Drink 'Till We're Gone,Lucero,Lucero,40,2001-05-22,False,0.648,0.326,4,-9.354,1,0.867,0.000213,0.095,0.0798,127.503,235893,3
+1,0Ed6QQ4ahbur60OfgbIn0W,My My,American Standard,['Seven Mary Three'],44,1995-09-05,False,0.571,0.899,11,-6.395,0,0.000631,1.15e-06,0.334,0.475,132.042,169533,4
+2,4TOIBp6cU31tSP8m1Pjabp,Ride My Rocket,The Jompson Brothers,['The Jompson Brothers'],40,2010-11-30,False,0.375,0.884,7,-5.907,1,0.00236,0.0434,0.129,0.399,151.857,239533,4
+3,45s7brWN56HC9xzQz8hHuR,Brick House 2003,"Past, Present & Future","['Rob Zombie', 'Lionel Richie', 'Trina']",45,2003,True,0.74,0.953,7,-3.677,1,0.0333,0.0,0.114,0.702,104.009,228693,4
+4,7bCqvyvIcsMNG287aNuKkP,I'm Eighteen,With Arms Wide Open: A Retrospective,['Creed'],44,2015-01-01,False,0.557,0.885,3,-4.214,0,5.59e-05,1.42e-06,0.363,0.486,93.026,191373,4
+5,0jlLHrrb4aR9evd3ZwNs5I,Crossfire,In Step,['Stevie Ray Vaughan'],54,1989-06-06,False,0.477,0.6,8,-11.833,1,0.134,0.00478,0.0416,0.921,115.925,248893,4
+6,4Tcx3dLbq1SNI6yNcjxLb9,No Sleep Til Cleveland - Live,No Sleep Til Cleveland (Live),['Prophets Of Rage'],29,2016-08-19,True,0.526,0.852,0,-5.996,1,0.00398,1.55e-06,0.847,0.449,103.407,314702,4
+7,0vyJfb5merhL1NtmrucJaH,Party at Ground Zero,The Essential Fishbone,['Fishbone'],33,1985,False,0.376,0.904,1,-5.061,1,0.0424,0.000369,0.0899,0.888,196.813,390067,4
+8,2tj88oEKcx7CXtqsGI8KWy,The Waltz,Shake and Bake,['Left Lane Cruiser'],34,2019-05-31,False,0.317,0.747,1,-5.743,1,0.000167,1.92e-06,0.118,0.087,151.599,328093,3
+9,4wM61bPrvM8HScuxtskTbd,Her Black Wings,Danzig II: Lucifuge,['Danzig'],48,1990-01-01,True,0.585,0.671,4,-10.897,1,0.0118,8.12e-05,0.104,0.49,146.287,287240,4
+10,0Hi0KGoYfBKUEr0Yk4FEhM,Black Flag,King's X,"[""King's X""]",31,1992-02-18,False,0.604,0.796,7,-7.531,1,0.00609,0.0,0.273,0.559,114.9,238560,4
+11,1RUiiNMhjwCdvCAj7irOB3,Keep A Lid On Things,Give Yourself A Hand,['Crash Test Dummies'],31,1999-03-20,False,0.568,0.726,9,-9.01,1,0.0614,0.000174,0.151,0.744,166.409,165600,4
+12,0wcPVFqUw4435IwsQtLLTy,Trip Like I Do,Vegas,['The Crystal Method'],43,1997-01-01,False,0.337,0.91,10,-9.149,0,0.00123,0.377,0.654,0.152,120.002,454227,4
+13,58rdbCe3SBJuJeWEJa8Htm,Modern Day Bonnie and Clyde,Down The Road I Go,['Travis Tritt'],61,2000-10-01,False,0.647,0.874,9,-5.075,0,0.101,1.79e-05,0.277,0.918,89.727,284173,4
+14,0pCpYq0UHY2pYEIFWLAfIj,Mother Freedom,Baby I'm-a Want You,['Bread'],43,1972,False,0.453,0.747,0,-10.895,1,0.46,0.0133,0.236,0.676,169.211,155533,4
+15,2tJlASUdstRCCecAN9rThS,Fall Down,Dulcinea,['Toad The Wet Sprocket'],52,1994-04-27,False,0.473,0.856,0,-6.881,1,0.146,0.000658,0.175,0.774,151.969,202427,4
+16,3dZa8hcLwrmypWmFXjlzCe,Coming For You,Silent Machine,['Twelve Foot Ninja'],42,2012-11-02,False,0.636,0.885,10,-3.147,1,0.00461,0.0,0.351,0.636,99.989,185293,4
+17,1jXwAcva0xhC09Vc1hf4pF,You'll Never Leave Harlan Alive,Part II,['Brad Paisley'],46,2001-05-29,False,0.544,0.301,2,-11.091,0,0.468,0.0,0.127,0.226,73.322,304400,4
+18,1hfaf9S8XC5RlbKO1xyFRc,Midnight Radio,Midnight Radio,['Big Head Todd and The Monsters'],32,1991,False,0.652,0.471,11,-10.216,1,0.0273,0.504,0.116,0.494,104.422,361440,4
+19,7bJZ79Od0iXR7lJjff45rK,Orca,Wintersleep,['Wintersleep'],26,2003-01-01,False,0.302,0.505,9,-6.318,0,0.537,1.2e-05,0.0858,0.157,174.301,219280,3
+20,5i305QcqbNK8ErelBTzJKH,Destroyer,Give the People What They Want,['The Kinks'],49,1981-08-15,False,0.525,0.744,7,-10.697,1,0.00778,0.0,0.0867,0.797,142.556,226967,4
+21,5zaaJzDbwAr2z4uN1kcmKC,Giants,Distraction,['Bear Hands'],47,2014-02-18,False,0.465,0.848,0,-5.497,1,0.00538,0.0132,0.0748,0.422,184.033,188267,4
+22,2FMTNWrIGms20DOHA1Fh0u,All Washed Up,Receiving The Gift Of Flavor,['The Urge'],27,1996-08-20,False,0.688,0.962,7,-4.998,1,0.0819,5.3e-06,0.588,0.728,106.29,202733,4
+23,72l70Nix3AIJ9XBAljgeR1,Jelly Roll,Blue Murder,['Blue Murder'],36,1989-04-24,False,0.57,0.746,1,-12.778,1,0.156,0.0,0.307,0.417,118.69,284093,4
+24,0o5WZONrnkuNySLOH8K6lx,Epiphany,Mammoth WVH,['Mammoth WVH'],47,2021-06-11,False,0.437,0.894,6,-4.972,0,5.25e-05,0.0123,0.115,0.438,165.064,268921,4
+25,6ymUtM7abyYOiQtv3GRzm4,The Chain,Lost In You EP,['Three Days Grace'],37,2011-03-15,False,0.483,0.821,7,-3.959,1,0.00913,1.22e-06,0.336,0.35,155.944,230253,4
+26,7HVqAkjd25IHr8rnzC3l1K,Peace Love & Dixie,Bury Me In My Boots (Big Machine Radio Release Special),['The Cadillac Three'],36,2016-08-04,False,0.637,0.869,7,-5.842,0,0.115,1.59e-05,0.297,0.668,84.012,161507,4
+27,2pGXAcDvTTryFSenu3PN5Y,Good Hard Screwing,Dirty Old Man,['Larry Pierce'],38,1997-09-28,True,0.741,0.587,0,-13.79,1,0.452,1.91e-05,0.171,0.961,149.958,188387,4
+28,1USzDjOPnivAFpWeLCyBv1,Mansion On The Hill,La Peste,['Alabama 3'],34,2000-09-01,False,0.571,0.851,11,-6.681,0,0.178,2.03e-05,0.191,0.626,86.369,180960,4
+29,696wtDyZUK2UJgu0fsVGIT,Mountain,Rise Over Run,['Crown Lands'],35,2017-09-08,False,0.395,0.581,7,-6.285,1,0.0532,0.000112,0.0929,0.4,122.822,191867,4

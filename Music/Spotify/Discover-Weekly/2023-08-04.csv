@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6lid3jWqViiowNUuMrsvqd,Thickfreakness,Thickfreakness,The Black Keys,28,2003-03-01,False,0.351,0.744,2,-4.82,1,0.569,0.902,0.344,0.518,143.019,228373,4
+1,1uCPmjV9AtfbN9tHyW55e6,After Awhile,Every Hour Is A Dollar Gone,['Patrick Sweany'],28,2007,False,0.41,0.557,4,-8.07,0,0.432,1.41e-05,0.126,0.661,112.231,278173,4
+2,0VFpukbVxjLAz1Bk7hTbdF,Where's Your Money,Erase You,['Bleeker'],20,2016-10-21,False,0.569,0.783,3,-5.191,1,0.00292,0.0383,0.117,0.888,195.088,222520,4
+3,1Hi6XYNirfRidjPo18UUq0,Welcome ’Round Here,Carolina Confessions,['The Marcus King Band'],47,2018-10-05,False,0.297,0.734,0,-7.255,1,0.00904,0.00443,0.0959,0.252,93.259,261547,4
+4,68GkZWvVSFufwWWX8jo6lv,Had My Reasons,Living Room,['Anders Osborne'],32,1999-05-18,False,0.611,0.672,2,-6.474,1,0.00956,0.000836,0.084,0.719,141.081,280333,4
+5,1vJrqNf6Px0zdoUqhMQkQA,Hot Rod Lincoln,Allroy's Revenge,['All'],28,1989,False,0.787,0.724,0,-13.601,1,0.0173,0.0,0.434,0.875,123.547,173693,4
+6,1IXepuVY6O1YPbNnpQkbgZ,Fell on Black Days,ReAniMate 3.0: The CoVeRs eP,['Halestorm'],30,2017-01-06,False,0.33,0.926,0,-3.297,1,0.000234,7.69e-05,0.297,0.533,203.938,284600,4
+7,3EhkqSCdwnuxYeF35YFqDG,Black Greese,Passover,['The Black Angels'],24,2002-04-10,False,0.409,0.873,7,-7.846,1,0.000402,0.492,0.116,0.247,138.536,272600,4
+8,3qSJD2hjnZ7YDOQx9ieQ0m,Straight To Hell / Satan Is Real - Medley,Straight To Hell,['Hank Williams III'],37,2006-02-28,True,0.567,0.956,9,-2.735,1,0.129,0.0,0.0777,0.725,139.98,187333,4
+9,3UO610iFu1pkb1casauexb,Conversations,Folk Hop n' Roll (Deluxe),['Judah & the Lion'],35,2016-03-04,False,0.504,0.819,6,-6.852,0,0.0562,0.00029,0.342,0.605,154.091,203392,4
+10,3B25A4CkO9vGow1j9lKTX1,Duke of Hazzard,Uncle Tony's Coloring Book,['Blockhead'],32,2007-08-14,False,0.612,0.844,0,-5.671,1,0.0417,0.711,0.357,0.576,100.052,242907,4
+11,1JRxOhK2heeRsBsB2Dt4Vs,Do You Right,Music,['311'],41,1993-02-09,False,0.622,0.968,9,-6.314,1,0.000425,0.000519,0.112,0.485,110.03,257827,4
+12,1BHQh2rY3KLUdMHkcC4hwC,Motherfucker,Sol Invictus,['Faith No More'],23,2015-05-15,True,0.614,0.723,3,-7.707,1,0.0118,0.386,0.0961,0.381,134.98,210827,4
+13,3O1rkVw6tpDizXzHqMZfh5,I Can't Hear You,Sea of Cowards,['The Dead Weather'],41,2010-05-07,False,0.529,0.754,0,-3.167,0,0.0482,0.00598,0.108,0.422,79.463,215093,4
+14,2gAHUkKPQSy5PFcjcGWCrJ,All I Know,Dust,['Screaming Trees'],40,1996-06-20,False,0.298,0.923,2,-5.63,1,0.00174,0.000259,0.0754,0.403,174.774,235040,4
+15,49HMe2IIZBQHVJnz5XQ11U,Sundial,Cosmic Egg,['Wolfmother'],49,2009-01-01,False,0.321,0.913,2,-4.572,1,1.09e-05,0.744,0.272,0.397,173.927,227667,4
+16,0PG8DyBehEfsuUJQIvKuzK,Change of Pace,Change of Pace,['Greyhounds'],28,2016-04-29,False,0.643,0.66,11,-9.423,1,0.00777,0.000584,0.223,0.514,92.162,188000,4
+17,1eFcrfI3cBZmhgzMTZeb5r,Monique The Freak,Shinola (Vol. 1),['Ween'],31,2005-07-15,False,0.777,0.884,9,-4.356,1,0.0761,0.113,0.0462,0.962,112.034,348360,4
+18,1kUvgaQP1mBjifqRitiYah,Low Self Opinion,End Of Silence,['Rollins Band'],35,1992,False,0.281,0.915,7,-9.57,1,0.0134,0.00916,0.1,0.463,173.055,324827,4
+19,33mgEwbxVySU2JcQcvv7Gk,Detox Mansion,Sentimental Hygiene,['Warren Zevon'],27,1987-01-01,False,0.33,0.843,0,-10.151,1,0.136,2.62e-06,0.0721,0.425,179.934,195573,4
+20,4ra32RPg6Ms8yDIyjwDwW3,Cocaine Cowboys,All American Made,['Margo Price'],28,2017-10-20,False,0.758,0.453,5,-9.254,0,0.52,0.00167,0.117,0.569,139.073,206816,4
+21,4ZmX8elKMkH0MfniNi0Adu,House of The Rising Sun,"The Wrong Side Of Heaven And The Righteous Side Of Hell, Volume 2",['Five Finger Death Punch'],63,2013-11-18,True,0.47,0.964,4,-2.839,0,0.00171,0.00112,0.107,0.264,76.969,247388,4
+22,2aZwuE05JoVQwhSIPWx4bi,The Bottom (feat. Ryan Balthrop),The Long Way Home,"['Sonny Bama', 'Ryan Balthrop']",27,2013-05-21,True,0.651,0.73,9,-7.903,0,0.261,0.0,0.338,0.462,79.983,255187,4
+23,5rRehN3N5XPcHUVnvD5cox,Who Do You Love,Electric Fever,['Them Vibes'],29,2017-05-05,False,0.607,0.728,4,-6.283,1,0.145,0.000515,0.111,0.5,87.054,219550,4
+24,4RciDYrnddwPPPI49EVzPY,Porcupine,Pizazz,['Pigeons Playing Ping Pong'],34,2017-10-20,False,0.519,0.797,0,-6.07,1,0.0412,2.63e-05,0.0882,0.641,112.111,457980,4
+25,2Uu5tdc6CUll2vQhkeC4f7,California Dreamin',Dirty Honey,['Dirty Honey'],44,2021-04-23,False,0.458,0.98,1,-3.651,1,0.000205,6.29e-05,0.127,0.4,118.964,258333,4
+26,5ZfsG6AXxJBSaiAyKuTSgy,"Love, Reign O'er Me","Love, Reign O'er Me",['Pearl Jam'],45,2019-12-09,False,0.222,0.768,7,-4.685,1,0.0133,0.00111,0.303,0.0988,114.034,332667,3
+27,48jIoVeiPA0vRVGWMbANR3,It's Your Voodoo Working,Chills & Fever,['Samantha Fish'],28,2017-03-17,False,0.599,0.917,0,-4.143,1,0.183,0.000232,0.338,0.792,133.634,219000,4
+28,7f1ofgXjVoEUfhNU4cykDh,Rocket Science,More Songs About Drugs With Curse Words,['The Good Year Pimps'],35,2000,False,0.668,0.741,1,-7.593,0,0.000821,0.000466,0.00856,0.486,93.974,208387,4
+29,5Y7usMq95yUrQllskZEZ48,Better Now,Youth,['Collective Soul'],32,2004-11-16,False,0.664,0.725,11,-8.692,0,0.00909,0.000569,0.0192,0.961,123.034,193453,4

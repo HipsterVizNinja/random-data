@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,0xmvgqYiUs1GApjTeBvu6s,Thunder,Dirty Work,Tyler Bryant & the Shakedown,43,2023-03-24,False,0.551,0.632,11,-6.537,1,0.0741,1.72e-05,0.168,0.219,80.033,174282,4
+1,0Dt5wjxCps2aaTJnQyt4lb,Between Me and the Devil,A Little Calamity,['Ghost Hounds'],49,2021-09-03,False,0.438,0.852,4,-6.206,0,0.00527,4.07e-05,0.14,0.666,179.966,188182,4
+2,5Sk1pUtpGGt4CKid1OsYjO,Sabotage (Alex Metric Lance Herbstrong Edit),Meth Breakfast,['Lance Herbstrong'],37,2013-01-14,False,0.557,0.976,1,-4.76,1,0.00137,0.926,0.542,0.29,89.983,203347,4
+3,1Eqpct9eYW7PvMyOd2DVp0,Crankin’ It Up,Drivin' It Down,['Justin Johnson'],40,2017-04-01,False,0.467,0.883,0,-9.147,1,0.0165,0.794,0.0842,0.678,126.973,258240,4
+4,6ugyqxHWS5zpfhGXp928Ef,Murder at the Bingo Hall,Born Against,['Amigo the Devil'],49,2021-04-16,False,0.776,0.641,4,-10.384,0,0.784,0.005,0.0967,0.596,92.59,201828,4
+5,6Y0O5lJ5pb3SH9BzPmk5QD,High on Weed,High on Weed,['Waylon Napadogan'],34,2023-02-22,False,0.438,0.666,4,-8.926,0,0.000387,9.89e-06,0.403,0.846,75.992,186567,4
+6,20T2Gz1PI5k5FV9Wyeek9Q,Whole Lotta Love,Whole Lotta Live. Best of Today FM Sessions.,['Hozier'],44,2018-10-26,False,0.481,0.426,0,-8.73,0,0.305,0.000261,0.188,0.471,142.126,187305,4
+7,2JXU9wKtEj55VxsNPGQRZV,Never Ending Moment,Dream Machine,['Des Rocs'],47,2023-08-25,False,0.538,0.924,0,-3.781,1,0.00335,0.000135,0.277,0.299,132.022,257947,4
+8,4AB2FyJXa6qRpq7xXIXMvM,Till the Wheels Fall Off,WHOA!,['Strung Like a Horse'],34,2020-10-30,False,0.53,0.44,2,-8.717,1,0.147,4.89e-06,0.117,0.411,83.243,232173,4
+9,6o4StsFuXCnDujB24fkzWz,Dancin' Around My Grave,"Wash, Rinse, Repeat.","['Andy Frasco & the U.N.', 'Susto', 'Doom Flamingo']",52,2022-04-08,False,0.696,0.707,7,-6.751,1,0.155,2.22e-06,0.0774,0.347,110.947,179582,4
+10,15QRTlfRG3ml7JcPBrhOv3,Blow Up,Future Lovers,['The Beaches'],41,2021-05-14,False,0.688,0.935,7,-4.744,1,0.00407,0.000766,0.538,0.185,99.994,194320,4
+11,5UwHmlHy9yYntgXoS8oURD,Mouthpiece,Club Meds,['Dan Mangan + Blacksmith'],28,2015-01-13,True,0.442,0.84,10,-7.55,0,0.363,0.00368,0.164,0.552,111.306,222507,4
+12,5xMmzCtBqP82Sxbt0Urj5E,Veins,Veins,['Whale and the Wolf'],29,2021-04-29,True,0.573,0.66,1,-4.783,0,0.00753,1.47e-06,0.233,0.409,180.237,202457,4
+13,42r1v4tT0xfteQq0pNMaf9,Sons & Daughters,Spaces,['The American Spirit'],47,2011-11-01,False,0.519,0.703,5,-4.886,0,0.0104,0.0,0.147,0.331,81.008,242267,4
+14,3vnk9AsovxewWkXdPLZQEW,Puppets,"When Life Gives You Lemons, You Paint That Shit Gold",['Atmosphere'],50,2008-04-22,True,0.724,0.444,4,-7.17,1,0.298,2.54e-06,0.104,0.369,89.006,221787,4
+15,0p8NSsesqZJvP2a0WAsQQn,Esperanza,The Devil's Child,['Moriaty'],33,2014-06-09,False,0.389,0.781,6,-5.842,0,0.000543,0.000681,0.152,0.66,185.849,214720,4
+16,5qAtkRakMXLui4cQI8TF87,Do Me Right,Ozone Park,['Hollis Brown'],27,2019-06-07,False,0.689,0.679,5,-6.735,1,0.000277,3.66e-05,0.0986,0.43,136.956,278213,4
+17,73t2Pgt4t7TCIK7Zl68uhS,Enter Sandman - triple j Like a Version,Enter Sandman (triple j Like a Version),['Art vs Science'],39,2019-07-19,False,0.493,0.691,2,-6.218,1,0.000649,0.014,0.0873,0.305,98.376,258929,4
+18,5QrzBVrQyiDd0eMhcEBrGh,Southern Boy,John The Conqueror,['John The Conqueror'],42,2012-10-16,False,0.498,0.819,9,-6.292,1,0.157,3.07e-05,0.202,0.678,137.976,204880,4
+19,2dKnaqHXM8x7lT8JNNa1X5,This Is Mongol (Warrior Souls) [feat. William DuVall of Alice In Chains],Rumble of Thunder (Deluxe),"['The HU', 'William DuVall', 'Alice In Chains']",50,2023-06-30,False,0.709,0.714,10,-7.677,0,0.00103,0.207,0.27,0.697,130.039,221104,4
+20,1R4Q6CRr8BDaPqb06pb1lj,Stobart's Blues,Neveroddoreven,['I Monster'],37,2005-01-27,False,0.665,0.632,2,-4.746,1,0.133,0.822,0.438,0.509,92.164,260213,4
+21,0vzAZYlzvMfP27F8QJGzsH,Hillbillies On Speed,Rev it up with Taz,['Hillbilly Hellcats'],33,2003,False,0.368,0.957,6,-6.317,0,0.00925,0.000271,0.294,0.695,157.891,152787,4
+22,3ey4YvqYyU7a44LCPUgLzx,I Ran (So Far Away),Drunk Enough To Dance,['Bowling For Soup'],55,2002,False,0.474,0.879,9,-4.548,0,5.73e-05,0.0,0.0987,0.587,165.014,154680,4
+23,2u7doqEqDONx9V25g5u8UB,Shoot on You,L.A.B III,['L.A.B.'],41,2019-12-06,False,0.682,0.469,11,-6.264,0,0.132,0.0187,0.106,0.622,94.946,204800,4
+24,1wXOOkKWKyo5WAoKjmASsd,That's My Jam,Big Tings,['Skindred'],41,2018-04-27,False,0.585,0.928,5,-4.939,1,0.0043,0.0,0.275,0.547,104.007,196052,4
+25,6Mb0pYlBzfKngcNuOs5UFZ,Roll On,Roll On,['The Living End'],31,2000-01-01,False,0.418,0.913,2,-4.614,1,0.00148,0.0,0.146,0.514,146.374,188128,4
+26,5BF1TNThRiA6fnfGkTxEfQ,Maestro (Tears Don't Lie),FEVER / SKY,['Wilder Woods'],47,2023-03-24,False,0.601,0.939,7,-5.33,0,0.00352,8.51e-05,0.35,0.732,120.018,202040,4
+27,50lrzYDWfMnytCiIseftJ6,Bad Thing,Brother,['Cry Of Love'],31,1993-05-11,False,0.665,0.452,0,-11.302,1,0.0229,0.0,0.325,0.691,126.277,187240,4
+28,0QiCMItV7fotSykjjha7o3,Soundman,Everything I Need,['Aynsley Lister'],35,2006-07-06,False,0.436,0.801,10,-5.257,0,0.000688,0.00406,0.0782,0.753,128.738,223640,4
+29,73qNHMPnanBGsxD1cQ2ojn,A Little Less Conversation,Watch Your Back,['Guitar Shorty'],48,2004-04-27,False,0.596,0.829,11,-4.774,0,0.0076,2.66e-05,0.299,0.762,98.86,244160,4

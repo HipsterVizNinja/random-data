@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,6lFVmakxYOXqtBtkbGXrOD,Ramon Ayala,Tejano Punk Boyz,Giovannie and the Hired Guns,60,2022-10-28,True,0.491,0.876,4,-4.105,1,0.00131,7.11e-05,0.255,0.543,182.1,168312,4
+1,1kP46fRENS8tD9khEB5yPD,Best Boy,Best Boy,['JJ Wilde'],36,2020-08-21,True,0.613,0.902,8,-3.586,0,0.0455,0.0,0.108,0.732,92.034,187829,4
+2,6oauF9V4n7tAn8ByTOe76C,Who Do You Dance For,Patrón,['Patrón'],32,2020-05-29,False,0.626,0.93,10,-5.654,1,0.047,0.00273,0.2,0.961,104.978,207420,4
+3,75bNIPy58AL7MYYp8cnj4A,Snake Song,Hawk,"['Isobel Campbell', 'Mark Lanegan']",42,2010-01-01,False,0.58,0.519,1,-12.858,1,0.546,0.867,0.0959,0.0384,97.314,168067,4
+4,6sMvUUXZSh4Ii3N0cFB6Zd,Smokies,Southern Delight/Barefoot Jerry,['Barefoot Jerry'],44,2010-03-29,False,0.675,0.468,2,-14.871,1,0.629,0.125,0.0972,0.82,98.351,136267,4
+5,7Fegy4P9imqvQHPDKAK4BY,Guilty As Charged,"Walk Hard: The Dewey Cox Story ""Original Motion Picture Soundtrack""",['John C. Reilly'],34,2007-12-04,False,0.588,0.605,8,-6.849,1,0.327,0.13,0.129,0.764,80.121,171467,4
+6,5OkKRSGDSVISuXEYQIWx6z,Cut Me Loose,Cut Me Loose,['Harm & Ease'],47,2021-07-16,False,0.538,0.785,9,-6.151,0,0.000477,1.55e-06,0.322,0.662,87.471,165215,4
+7,5XnXpQM5FR8ZQyvDY8RKQS,In Time,The Punisher: The Album,['Mark Collie'],45,2004-01-01,False,0.463,0.449,9,-9.5,0,0.475,0.00318,0.121,0.172,113.432,165133,4
+8,3ynE1xXxWbeNWON22wVqVV,Where Dirt and Water Collide,The White Buffalo EP,['The White Buffalo'],40,2005-01-01,False,0.546,0.468,0,-9.472,1,0.588,0.0368,0.13,0.0519,80.47,197640,5
+9,6QyBIZEvs11K9lKjyLYtv6,Take It Off,Spend The Night (U.S. Version),['The Donnas'],52,2003-04-01,False,0.412,0.951,11,-3.371,0,2.61e-06,0.00239,0.0958,0.333,158.78,162000,4
+10,6p8DGrcAUBuLUgDIKcUn0P,hometown,hometown,['cleopatrick'],61,2017-10-25,False,0.315,0.826,7,-4.314,0,0.00064,0.000687,0.0703,0.359,139.161,256072,4
+11,6bGStfo1wNj7QG4Dh1nH1q,California,Falling,['Betcha'],46,2019-09-13,False,0.506,0.933,11,-3.739,1,0.00744,7.38e-05,0.366,0.533,148.144,187853,4
+12,1ykpxxihAidnABXyI8hchy,Losing My Religion,Unified Highway,['Unified Highway'],38,2016-03-04,False,0.743,0.602,9,-4.613,0,0.148,0.00843,0.689,0.348,144.915,217205,4
+13,4tYceKEtQBXxRQfLxuDRYb,We Made It,Benton County Relic,['Cedric Burnside'],40,2018-09-14,False,0.725,0.746,2,-7.785,1,0.0223,0.0357,0.293,0.819,107.205,214613,4
+14,6zBqV0i0j74929CUalMx6V,Shakin' the Blues,The Screamin' Cheetah Wheelies,"[""The Screamin' Cheetah Wheelies""]",30,1993-07-27,False,0.504,0.716,1,-10.933,1,0.000294,0.856,0.0512,0.9,126.99,181427,4
+15,7mvfSh2FqzHBv2uoLgoHME,Fearless,Fearless,['Joyous Wolf'],27,2021-07-30,False,0.316,0.965,2,-3.41,1,4.92e-05,2.62e-05,0.321,0.393,192.073,188056,4
+16,7DhdZ7Tr5jS5ZVCo1cCXSq,Hard Liquor,Beast From The East,"['Bumpin Uglies', 'Ballyhoo!', 'Sun-Dried Vibes', 'Oogee Wawa']",38,2018-04-06,True,0.809,0.826,8,-4.583,0,0.00214,0.0,0.09,0.888,157.0,245440,4
+17,29ZZIIGluAfjhDrDFnpKFu,Ohio,Ohio,['Ask Carol'],35,2023-03-31,False,0.375,0.443,0,-7.468,1,0.75,0.0114,0.0994,0.656,146.172,169960,4
+18,101KS2AYeWa98ltX4ewE7h,Talk to Me,Run The Jewels 3,"['Run The Jewels', 'El-P', 'Killer Mike']",54,2016-12-25,True,0.705,0.71,11,-6.457,0,0.041,2.65e-06,0.334,0.711,127.112,151227,4
+19,4AwdUWTcTHYIxZ3oEhndht,Summer Air,Gold Fever,['little hurricane'],10,2014,False,0.675,0.846,6,-4.263,0,0.0107,0.00631,0.328,0.69,114.431,179839,4
+20,2CFtB64mDu2XCFjvGJhc9k,If You Wanna Get To Heaven,Ozark Mountain Daredevils,['The Ozark Mountain Daredevils'],55,1973-01-01,False,0.77,0.589,0,-12.556,1,0.595,0.003,0.0699,0.812,123.744,184467,4
+21,3kQRYXCxgIwtAzztgDu539,Shot Down,BRKN LOVE,['BRKN LOVE'],42,2020-02-14,False,0.518,0.845,10,-5.291,0,0.00297,1.01e-06,0.408,0.459,83.98,167680,4
+22,4Pi1gat00bwbi84xENZabP,The Tempest,WestWinds,['The Real McKenzies'],31,2012-03-13,False,0.6,0.539,10,-5.295,1,0.0553,0.0,0.288,0.69,87.187,247653,4
+23,1c0ShGrrj3m04rrOWrWFEH,The Cisco Kid,Greatest Hits,['War'],54,1976-01-01,False,0.849,0.843,9,-7.154,0,0.209,0.00292,0.0309,0.963,141.926,227720,4
+24,1c66K04Td4gFw3D9lXbro5,Must've Been High,Must've Been High,['Supersuckers'],32,1997-03-25,False,0.538,0.361,9,-11.298,0,0.0183,0.213,0.102,0.125,132.626,207773,4
+25,3PX33J7MsHibdN9kmubVTk,People Are Strange,The Violent,['The Violent'],42,2022-03-11,False,0.244,0.855,1,-5.33,1,7.48e-06,0.14,0.166,0.388,180.359,147082,4
+26,4nT7Qx5ovQ2KCII1Gq918O,Can't You Hear Me Knocking,Stoned Cold Country,['Marcus King'],30,2023-03-17,False,0.314,0.919,0,-4.862,1,0.00925,0.548,0.148,0.703,154.478,317893,4
+27,0AGPVkqRykBBzN9YYsbxK9,Walk Like A Man,All My Shades Of Blue,['Ruen Brothers'],30,2018-06-01,False,0.59,0.896,9,-3.574,0,0.179,0.0,0.122,0.519,116.352,178893,4
+28,0ZmCXhJ7oXIisB1HygOW9u,John the Revelator,Sons of Anarchy: North Country (Music from the TV Series),"['Curtis Stigers', 'The Forest Rangers']",48,2009-09-07,False,0.546,0.597,2,-6.157,1,0.637,0.000195,0.107,0.346,108.941,334747,4
+29,2sgaRQF6S9IAqePSxSts2P,I Ain't Your Man,I Ain't Your Man,['87 Nights'],30,2019-07-29,True,0.386,0.807,6,-6.719,1,0.021,0.618,0.154,0.406,129.773,299204,4

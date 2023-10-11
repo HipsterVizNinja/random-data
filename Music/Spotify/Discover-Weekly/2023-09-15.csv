@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,3yryKlZnD9rlmE8Vm2AOV1,Stone's Throw,Moment of Truth,The Red Clay Strays,53,2022-04-29,False,0.745,0.303,0,-9.309,1,0.288,1.66e-06,0.0921,0.72,76.06,200787,4
+1,4JwAsXyT9DQdnqb2yicGOn,The Stroke - Safari Riot Remix,The Stroke (Safari Riot Remix),"['Billy Squier', 'Kevin Breton', 'Safari Riot']",37,2023-02-24,False,0.631,0.892,2,-5.979,1,0.00932,0.398,0.101,0.146,91.023,155764,4
+2,70aJnKg4mCo1xwcYP1ZvPV,Break These Chains,Cowboy Up,['Raygun Cowboys'],38,2012,False,0.52,0.926,0,-4.152,1,0.000269,0.0247,0.0741,0.635,143.91,193747,4
+3,6WGaVdhY8uMWMgxiKpdLVy,Mother Mother,The Burdens Of Being Upright,['Tracy Bonham'],51,1996-03-19,False,0.368,0.626,2,-7.082,1,0.015,0.0,0.201,0.622,174.394,180733,4
+4,2ygEuuqQ3cb8fWYszogA9h,Fortunate Son,Dark End of the Street,['Cat Power'],32,2008-12-09,False,0.585,0.377,9,-13.812,1,0.93,0.0027,0.0775,0.709,84.118,256640,4
+5,6ym2fufsRInM3WzIdIqsOw,Darkwater,Darkwater,['Sam Williams'],39,2016-08-19,False,0.643,0.331,9,-10.122,1,0.772,0.000152,0.143,0.593,113.841,286329,4
+6,2SSBJhvMsujY94GK5JAtKs,Buena,Cure for Pain,['Morphine'],53,1993-09-14,False,0.566,0.494,10,-12.242,0,0.106,0.179,0.133,0.591,96.641,199667,4
+7,28ioDJo67liHA57FbbozQz,Cuddle Up The Devil,Sundancer,['The Fumes'],39,2009-05-08,False,0.427,0.926,6,-4.611,0,0.0245,0.119,0.502,0.668,96.48,238267,4
+8,5B8Yv0Bl5WgOYQpZgrE9fX,Devil In Me,Gravel & Wine,['Gin Wigmore'],35,2011,False,0.607,0.844,5,-3.45,1,0.0393,0.0124,0.18,0.544,120.005,206440,4
+9,5QIl92XoNMvtZ6kKt8jMQu,Crazy Motherfucker,How to Kill a Horse,['Brother Dege'],34,2013-11-05,True,0.81,0.731,2,-10.126,1,0.458,0.0157,0.154,0.828,121.904,322800,4
+10,3SRUwO5qUbAzhsKEMRJSgz,I'm Still Here,Way I Was Raised,['Twang and Round'],38,2018-05-25,False,0.843,0.54,2,-7.834,1,0.0267,0.0045,0.2,0.352,107.033,185560,4
+11,5hYr8yRbQLFE20oS7Mi3T2,(Rock) Superstar (feat. Chino Moreno & Everlast),Skull & Bones,"['Cypress Hill', 'Chino Moreno', 'Everlast']",64,2000-04-25,True,0.795,0.762,2,-6.972,1,0.0142,9.75e-06,0.064,0.722,94.223,276867,4
+12,4H1ttBCmT7cqvGJLqfHbED,Super Bon Bon,Irresistible Bliss,['Soul Coughing'],49,1996-09-20,False,0.689,0.723,1,-8.689,1,0.000579,0.106,0.12,0.915,98.584,211040,4
+13,2qv3ZmGmW2RsusJ6ABgTjN,Shatterday,Between The Never And The Now Album Advance,['Vendetta Red'],32,2003-04-11,False,0.472,0.787,11,-5.103,1,0.131,0.0,0.105,0.445,80.238,159840,4
+14,4jQfo7NfgtLIq3LMkEvXGd,The Hands of Time,The Hands Of Time,['The Picturebooks'],33,2019-03-08,False,0.672,0.839,2,-6.196,1,0.149,0.0,0.335,0.74,111.007,187424,4
+15,0RILico3Gbl5jxSNg3zLrJ,Dig Down,Simulation Theory (Super Deluxe),['Muse'],56,2018-11-09,False,0.428,0.429,0,-6.06,1,0.0879,0.00041,0.168,0.182,127.173,228147,4
+16,29ATJNQCJrRUANXoWlp0uI,Distant Sun,He Will Have His Way - The Songs Of Tim & Neil Finn,['Chris Cheney'],34,2010-01-01,False,0.722,0.471,2,-5.95,1,0.88,0.0112,0.238,0.679,115.047,209533,4
+17,5WLS5Fz6pW8AUwio6BGJJ2,North Side Gal,Signs & Signifiers,['JD McPherson'],48,2011-01-01,False,0.689,0.627,2,-8.01,1,0.503,1.87e-06,0.329,0.972,85.02,151493,4
+18,6jwE5S7xZ4G2CiisKz7NM1,Run On - 2014 Remastered Version,Play (2014 Remastered Version),['Moby'],50,1999-05-17,False,0.745,0.736,11,-6.258,1,0.286,1.43e-05,0.2,0.588,96.929,225507,4
+19,6LOBCrIpUtcw54KXHWCY70,Blood Red Moon,Blood Red Moon,['The Hives'],43,2015-02-23,False,0.579,0.642,9,-8.01,0,0.58,0.000191,0.155,0.428,126.341,271547,4
+20,3cYyOP1Cw3RBP0lYC5ioSR,Fire in the Sky,Believe,['The Ghost of Paul Revere'],52,2014-01-14,False,0.41,0.443,7,-7.699,1,0.407,1e-05,0.442,0.428,156.217,166800,4
+21,27S3ILmMMln0kQjmxLghjA,Daughter Of Zion [Feat. Joe Walsh],Daughter Of Zion [Feat. Joe Walsh],"['Glenn Schwartz', 'Joe Walsh']",34,2023-06-15,False,0.575,0.685,7,-6.392,1,0.0593,0.135,0.145,0.879,76.883,276264,4
+22,1fUn2ABChAzrqDgrlZdk6W,The Devil Went Down to Georgia,The Devil Went Down to Georgia,"['Korn', 'Yelawolf']",49,2020-08-28,False,0.575,0.96,2,-3.613,1,0.000343,0.0683,0.0756,0.451,127.03,231627,4
+23,0fATnWJXdt6ke5kR2klu7g,An Alternative to Freedom,Legend,['Witchcraft'],49,2012-09-21,False,0.328,0.738,11,-6.356,1,9.02e-05,0.0193,0.283,0.264,132.121,317600,4
+24,5AwZu699DOigVjp802n8Xx,Broken Bones,Universes,['Birds of Tokyo'],44,2008-07-05,False,0.504,0.872,5,-4.865,0,0.00462,0.0,0.557,0.345,102.948,225533,4
+25,1MweULEzWWg5WTlBWMZosS,Heart Of A Dog,Ash & Ice,['The Kills'],40,2016-06-03,False,0.736,0.515,1,-7.944,1,0.0249,0.00497,0.348,0.827,74.9,226527,4
+26,4ebkPNHMYbZWv5pRrdP8ZP,Whether Terrified or Unafraid,Two Parts Viper,"[""'68""]",38,2017-06-02,False,0.496,0.925,1,-5.335,1,0.00059,0.000118,0.265,0.308,107.213,181422,4
+27,14rVWDTz1FknpfBzBHEU98,Pornstar Champion (We Will Rock You),Blah...Blah...Blah...Love Songs for the New Millennium,['Scum of the Earth'],39,2004-10-26,True,0.619,0.851,4,-3.936,0,0.000164,0.00839,0.0744,0.476,81.944,237333,4
+28,5z0ALguRnGTV0H6PJIWZ7n,Jesus For The Jugular,Nux Vomica,['The Veils'],25,2006,False,0.497,0.681,11,-6.817,0,0.0123,0.0346,0.121,0.523,140.73,286613,4
+29,5Vx3Cb6AM8TNqQqkwIMDh4,Electric Feel,Turbowolf,['Turbowolf'],42,2012,False,0.44,0.845,10,-1.483,0,0.297,0.00321,0.491,0.377,93.452,266133,3

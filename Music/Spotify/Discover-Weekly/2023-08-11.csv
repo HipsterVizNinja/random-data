@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,2n6aJ6AcIkT9QGR60DmVBt,Open My Eyes,Great Western Valkyrie,Rival Sons,27,2014,False,0.367,0.896,0,-4.668,1,0.0179,0.000205,0.356,0.512,148.643,235816,4
+1,0ZbO0avCrp4z1kETBDDFGm,Hang Me Out To Dry,New Ammo,['Karl Denson'],34,2014-01-28,False,0.499,0.861,7,-4.935,0,0.0184,0.132,0.579,0.831,188.123,298427,4
+2,1FgYLUc5PeLPcd8sGCoAjl,I Wanna Get High,Side Project,['The Record Company'],35,2021-06-25,True,0.494,0.548,9,-6.753,0,0.0213,0.0294,0.183,0.129,78.028,233077,4
+3,053lg6741LYiEHUKnG8y6c,The Dam At Otter Creek,Throwing Copper,['Live'],42,1994-01-01,False,0.271,0.603,3,-8.656,1,0.0186,0.343,0.627,0.187,139.857,281187,5
+4,3ckd4YA4LcD3j50rfIVwUe,Head Like A Hole,Pretty Hate Machine,['Nine Inch Nails'],63,1989-10-20,False,0.666,0.798,9,-11.26,1,0.00848,0.00186,0.585,0.442,115.382,299680,4
+5,4zeiDZ0L3q0rW0M4AQs4cm,Fizgig,12 Bloody Spies: B-sides and Rarities,['Chevelle'],40,2018-10-26,False,0.523,0.772,5,-4.461,0,0.000795,0.0364,0.142,0.589,96.374,295173,4
+6,2PY0wVbCSN9zSBlcHUz9XF,Ain't Much Left of Me,The Whippoorwill (3 Bonus Track UK/EU Edition),['Blackberry Smoke'],37,2012,False,0.233,0.801,7,-4.632,1,0.112,0.0,0.189,0.333,149.655,298787,4
+7,7lE5HfOza4ji2gIWL7UwK1,Out Of Exile,Out of Exile,['Audioslave'],51,2005-01-01,False,0.414,0.934,0,-4.102,1,0.0593,0.0,0.181,0.797,165.614,288507,4
+8,4apfsISItA7UeoSZsw5DsB,Burn It Down,Megalithic Symphony,['AWOLNATION'],48,2011-03-15,False,0.716,0.87,7,-4.289,1,0.0143,0.0828,0.528,0.412,98.519,165107,4
+9,6D0sf3qu1UxWIYbjl7NJKK,Got Love If You Want It,Perfectamundo,"[""Billy Gibbons And The BFG's""]",31,2015-11-06,False,0.748,0.879,4,-3.225,0,0.00284,0.26,0.652,0.911,119.989,255627,4
+10,1DZYrrwLhCAOaR7WlTPpSZ,Devil Is on His Way,Piss and Vinegar,['Joe Buck Yourself'],27,2010-12-07,True,0.849,0.78,7,-7.745,1,0.255,0.0,0.232,0.517,115.104,251539,4
+11,6PIYPESBVlavhOxW90d71o,God Is A Bullet,Free,['Concrete Blonde'],35,1989-05-13,False,0.528,0.963,4,-3.689,0,0.00813,4.67e-06,0.424,0.628,131.758,262434,4
+12,1830KIyRHQsJEcCpWWETyG,Find Another Way (feat. Marcus Mumford),The Atlas Underground,"['Tom Morello', 'Marcus Mumford']",17,2018-10-11,False,0.517,0.847,4,-7.105,0,0.00296,0.00114,0.19,0.388,140.026,278084,4
+13,1KUb2V5dPs43Ol68rO3GT8,Lazy Boy Dash,Bring Your Own Stereo,"[""Jimmie's Chicken Shack""]",28,1999-01-01,False,0.445,0.823,5,-7.889,0,0.0137,0.0,0.41,0.567,174.885,193760,4
+14,5orygsZ5Ga0jEOvftsXqw2,The Seeker - Edit,"Meaty, Beaty, Big And Bouncy",['The Who'],59,1971-10-30,False,0.318,0.657,2,-11.829,1,0.101,3.01e-06,0.144,0.753,177.477,190373,4
+15,5sGCvSlXLmbZACj2cQwUY5,Rocky Mountain Way,Under Cover,['Ozzy Osbourne'],30,2005-11-01,False,0.279,0.551,2,-4.973,1,0.00706,5.05e-05,0.454,0.379,86.992,272547,4
+16,1eORFrFz6HEwXiSVLj6EdJ,Subdivisions,Proponent for Sentience,['Allegaeon'],31,2016-09-23,False,0.512,0.967,11,-4.087,0,1.43e-05,0.00765,0.104,0.419,140.039,325733,3
+17,0zwMBwxamjDA8mTvjDARCc,Long Black Road,American Hustle (Original Motion Picture Soundtrack),['Electric Light Orchestra'],43,2013-12-09,False,0.604,0.623,9,-5.539,1,0.567,0.0186,0.192,0.749,79.881,199773,4
+18,6gQCNU1QSkOjivemxKbl5n,Jesus Built My Hotrod - Red Line / White Line Version,Box,['Ministry'],27,1992,False,0.563,0.808,0,-10.715,1,3.45e-05,0.215,0.366,0.279,124.961,493293,3
+19,186893dwF2Xuv6ozvybtEx,Fuck You.......That's Why - Remastered,The Two Old Ones,['Smut Peddlers'],41,2001,False,0.5,0.777,2,-7.104,1,0.282,2.63e-05,0.413,0.491,121.623,240000,3
+20,3pHvVcToKzumdjDX9tFEA9,Sugar and Spice,Sugar and Spice,['Jocelyn & Chris Arndt'],37,2021-06-18,False,0.667,0.6,2,-4.02,1,0.3,4.37e-05,0.423,0.841,151.964,214922,4
+21,6trcErpj79HhQB57Ov4eFA,Wookiee Pussy,Rebel Flags and Whiskey,['Whiskeydick'],33,2014-12-09,True,0.392,0.398,2,-10.992,1,0.168,0.000108,0.216,0.17,180.879,191800,3
+22,6mKwBmaQwN5v4dZwPoEdXV,Would That Not Be Nice,A Thing Called Divine Fits,['Divine Fits'],14,2012-01-01,False,0.721,0.668,9,-7.299,1,0.000961,0.0324,0.0931,0.965,117.522,239937,4
+23,4lkmPKyITjQH6aOgY3KadG,Valley of Death,VII,['Blitzen Trapper'],27,2013-09-30,False,0.792,0.641,7,-6.086,1,0.187,0.000164,0.493,0.63,88.02,207413,4
+24,1VRL1PI5kBsAkobYFGwM5R,Breakout,Fish Out Of Water,['Ash Grunwald'],25,2008-08-30,False,0.65,0.813,11,-5.982,1,0.0434,0.354,0.0985,0.565,120.123,267013,4
+25,1J307YEKcn9pH7QT5fXTLt,Long Way Down,A Boy Named Goo,['The Goo Goo Dolls'],51,1995-03-10,False,0.326,0.926,11,-6.033,0,0.00105,0.0,0.15,0.462,168.49,208507,4
+26,008wcIRt1pUY3bioNm0rMc,Ride with Me,Red Harvest,['bloodsimple'],35,2007-10-29,True,0.334,0.905,8,-3.4,1,0.00153,7.56e-05,0.0818,0.312,162.794,297613,4
+27,0sRCmIxg5XlyPPrvxTlwEr,Crazy,XIII,['Mushroomhead'],45,2003-01-01,False,0.476,0.992,11,-2.75,0,0.000101,0.000219,0.103,0.23,104.972,250200,4
+28,2HmZgUErlcBwlOjS5hMuQu,My Sweet Annette,Decoration Day,['Drive-By Truckers'],52,2003-06-17,False,0.303,0.69,5,-6.166,1,0.179,0.00012,0.149,0.467,197.358,231213,4
+29,37qN0PN0WJcwee5nYeR7Bl,Whatcha Got,Sunshine,['The Black Moods'],26,2020-05-08,False,0.584,0.893,1,-2.53,1,0.0024,0.0,0.062,0.658,104.023,192791,4

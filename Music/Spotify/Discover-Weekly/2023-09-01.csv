@@ -1,0 +1,31 @@
+,id,title,album,all_artists,popularity,release_date,explicit,danceability,energy,key,loudness,mode,acousticness,instrumentalness,liveness,valence,tempo,duration_ms,time_signature
+0,2IPgxg2c1jk45Ay32Cqz33,I'm Alive,I'm Alive / Verbal Expressions,Johnny Thunder,54,2011-01-07,False,0.517,0.828,4,-10.618,1,0.229,0.00747,0.147,0.456,96.835,176920,4
+1,4NQDmvxgt5chFiy6fiSi2U,Dog Days,Dog Days,['Wild the Coyote'],34,2020-07-17,False,0.77,0.676,6,-4.888,0,0.301,2.77e-06,0.34,0.733,91.988,248478,4
+2,2omyfVhygBsVApYsyGNKha,Stand By Me,KITTY HAWK,['Ki:Theory'],43,2013-10-29,False,0.631,0.771,9,-3.973,1,0.00203,0.343,0.237,0.315,135.578,197396,4
+3,5sRyU2xqnQvCzL6L0OMD37,Uh Huh,Jade Bird,['Jade Bird'],49,2019-04-19,False,0.582,0.79,11,-4.205,1,0.0198,0.0,0.296,0.612,119.858,142444,4
+4,4WBmkMJyWubRXRLYk8t9SI,Crossroads,Battle Studies,['John Mayer'],50,2009-11-13,False,0.894,0.507,7,-6.945,1,0.221,0.0661,0.0642,0.916,114.216,149387,4
+5,17W6LUfJPmkul29z5ciiyx,Save My Soul,Outlaw Blues,['Extreme Music'],37,2015-10-06,False,0.519,0.929,5,-6.228,1,0.545,0.047,0.0793,0.189,70.016,201248,4
+6,232sENKAtmcdvZbfbjLT7C,Ten Million Slaves,Recapturing The Banjo,['Otis Taylor'],47,2008-02-05,False,0.477,0.431,0,-8.192,1,0.527,0.00667,0.211,0.572,132.393,249160,4
+7,6vX3f406IBBmI6mAHLARGa,Momma Sed,V Is For Vagina (Deluxe),['Puscifer'],54,2007-10-30,False,0.659,0.622,5,-7.796,0,0.0171,0.226,0.303,0.734,170.003,208247,4
+8,03s5inSZMzvL75LoBldjAo,Old Man (Neil Young),True Stories,['Stephen Sloan'],45,2006-08-29,False,0.612,0.245,1,-9.366,0,0.877,0.164,0.0932,0.741,147.48,193787,4
+9,7lWZSdOcPs8zmTlG60jY02,Black Leaf,No Witch,['The Cave Singers'],26,2011-02-22,False,0.624,0.85,0,-8.305,1,0.00598,0.00867,0.0618,0.792,115.855,203267,4
+10,7ef2ooGxlk0EzubPupK3ao,Long Hard Times To Come (Justified Main Title Theme) [feat. T.O.N.E-z],Justified (Music from the Original Television Series),"['Gangstagrass', 'T.o.n.e-z']",46,2013-01-08,False,0.64,0.815,4,-8.152,1,0.309,0.000222,0.0928,0.949,172.088,236077,4
+11,2p6iOK0PAAZvsnQhk9IlEM,Sitting on Top of the World - from Sons of Anarchy,Songs of Anarchy: Vol. 3 (Music from Sons of Anarchy),"['Chris Goss', 'The Forest Rangers']",40,2013-12-03,False,0.343,0.834,1,-3.875,0,0.00702,0.0458,0.104,0.298,146.579,208760,4
+12,6XoM4VzNOcZmnQUFqAHCrN,Be With Me,Hope,['Foy Vance'],32,2007-07-02,False,0.639,0.69,5,-8.441,1,0.577,0.00023,0.14,0.795,149.974,179373,4
+13,1huWqmpiYksaPppQHLDhZP,Outside Of This Town,Kingfish,"['Christone ""Kingfish"" Ingram']",52,2019-05-17,False,0.418,0.866,11,-4.033,0,0.00381,0.00159,0.581,0.643,130.192,248036,4
+14,2J9jt3JJXCt6SR7MxLcME7,Evil Ways (Justice Mix),Dark Country,['Blues Saraceno'],49,2015-02-27,False,0.247,0.63,7,-6.615,1,0.0444,0.00911,0.103,0.318,72.506,206720,4
+15,1Cf3n9o78e2faKZeM6v5Zr,Reservoir Park,"She's the Dutchess, He's the Duke",['The Dutchess & The Duke'],35,2008-07-08,False,0.659,0.618,9,-4.427,0,0.181,0.0,0.305,0.466,96.542,219547,4
+16,0hpvHzbIDYGOsAX6w9oS55,Sunroof Diesel Blues,Prehistoric Rhythm,['MY BABY'],27,2017-03-17,False,0.695,0.636,1,-9.238,1,0.453,0.000557,0.0851,0.883,104.41,224511,4
+17,66UTXtMAmhq5EpFJttD8rq,Hey I Don't Know,Lunatic,['KONGOS'],42,2014-01-27,False,0.662,0.832,9,-0.739,1,0.0787,0.000558,0.241,0.471,102.003,240960,4
+18,1081N49C6tdMTOc8vZQhrB,Fu*k*d Up,The One And Only,['Lil Wyte'],34,2007-06-05,True,0.843,0.84,2,-4.822,1,0.0623,0.0,0.116,0.364,136.006,199453,4
+19,24eRthJ3VWBI7B9cuFBdMG,Spanish Moon,Feats Don't Fail Me Now,['Little Feat'],57,1974,False,0.575,0.415,11,-15.678,1,0.421,0.614,0.0566,0.738,89.846,186267,4
+20,12idRvUav8KKGWNcOU611K,Higher Ground - from Sons of Anarchy,Higher Ground (from Sons of Anarchy),"['Franky Perez', 'The Forest Rangers']",17,2012-09-06,False,0.585,0.939,7,-2.369,1,0.0204,1.07e-05,0.0998,0.498,130.056,233880,4
+21,6yChNd9mMaO5nRp7kK94Vq,Dancing on My Grave,Robotique Majestic,['Ghostland Observatory'],30,2010-10-05,False,0.777,0.526,1,-5.276,1,0.01,0.00437,0.341,0.857,119.998,176480,4
+22,0qSTijeNE9JwdrU1HUmWhY,UnAmerican,Cascadia,['Said The Whale'],33,2019-02-08,False,0.649,0.795,5,-5.846,0,0.0591,1.88e-06,0.13,0.709,161.676,180960,4
+23,51v9GXDKc8h3hHV6XQgWHm,Hang Ten,Another Spin Around The Sun,['Edwin'],28,2000,False,0.642,0.712,1,-6.028,1,0.00434,0.00426,0.104,0.697,118.816,212760,4
+24,05pIwhbiRdGHSxy8roUv9y,My Sweet Summer,Sound Of Change,['Dirty Heads'],54,2014-07-08,False,0.66,0.785,5,-6.21,0,0.221,0.0,0.351,0.653,94.006,202632,4
+25,75kxTEh0K9IIg8sXZMdGk6,Moving Mountains,"The Alchemy Index, Vol. 3 & 4: Air & Earth",['Thrice'],35,2008-04-15,False,0.61,0.284,4,-13.158,0,0.627,0.0,0.395,0.568,99.733,175253,4
+26,3aB8QlCbW7fiudWMlqEwPD,Lay There & Hate Me,White Lies For Dark Times,['Ben Harper And Relentless7'],33,2009-01-01,False,0.719,0.764,9,-5.231,0,0.0131,0.288,0.0818,0.729,102.032,254960,4
+27,2PB8MIFW5jXF2xTOMgtb2g,Tall Trees,Terminal Romance,"['Matt Mays', 'El Torpedo']",37,2008-07-08,False,0.47,0.843,7,-4.774,1,0.000289,0.013,0.635,0.462,120.019,172493,4
+28,1h1Fp4KZzJeUqYyRnjKLB4,Pedal To The Metal,Go For Broke,"['Mark Kasprzyk', 'Brian West', 'Kazzer']",38,2002-11-12,False,0.666,0.968,7,-5.301,1,0.00274,0.00113,0.212,0.73,113.231,208933,4
+29,55vSla6QaemcnQxSanXjMh,A Common Disaster,Lay It Down,['Cowboy Junkies'],44,1996-01-01,False,0.574,0.331,0,-13.527,0,0.0634,0.256,0.333,0.413,125.644,202133,4
