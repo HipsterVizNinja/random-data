@@ -7,7 +7,7 @@ pd.options.display.max_colwidth = 150
 pd.set_option('display.max_columns', None)
 
 # Let's bring it in
-df = pd.read_csv('/Users/sean.miller/Downloads/billboard.csv', usecols=['url', 'Chart Position', 'Song', 'Performer'])
+df = pd.read_csv('/Users/sean_miller/Downloads/billboard.csv', usecols=['url', 'Chart Position', 'Song', 'Performer'])
 df = df.rename(columns={'Chart Position':'chart_position', 'Song':'song', 'Performer':'performer',})
 
 # Create Song identifier
@@ -15,13 +15,13 @@ df["song_id"] = df['song']+df['performer']
 
 # Extract Date from URL
 df['chart_date'] = pd.to_datetime(df['url'].str.extract('(\d{4}-\d{2}-\d{2})')[0])
-df = df.drop(['url'], 1)
+df = df.drop(['url'],axis= 1)
 
 # Open an existing dataframe
-df_all = pd.read_csv('/Users/sean.miller/Documents/Code/random-data/Music/hot-100/Hot 100.csv', usecols=['chart_position', 'song', 'performer', 'song_id', 'chart_date'], parse_dates=['chart_date'])
+df_master = pd.read_csv('/Users/sean_miller/Library/CloudStorage/OneDrive-Concord/Documents/Code/random-data/Music/hot-100/Hot 100.csv', usecols=['chart_position', 'song', 'performer', 'song_id', 'chart_date'], parse_dates=['chart_date'])
 
 # append each file to the "master" dataframe
-df_all = df_all.append(df)
+df_all = pd.concat([df,df_master])
 
 # Need to test new code on a subset?
 # df_all = df_all.loc[df_all['song_id'] == 'All I Want For Christmas Is YouMariah Carey']
@@ -66,5 +66,6 @@ chart_dt = df_all['chart_date'].dt.strftime('%Y-%m-%d')
 df_all['chart_url'] = 'https://www.billboard.com/charts/hot-100/'+chart_dt
 
 # Output
-df_all.to_csv('/Users/sean.miller/Documents/Code/random-data/Music/hot-100/Hot 100.csv', index=False, columns=['chart_position', 'chart_date', 'song', 'performer', 'song_id','instance', 'time_on_chart', 'consecutive_weeks', 'previous_week', 'peak_position', 'worst_position', 'chart_debut', 'chart_url'])
+df_all.to_csv('/Users/sean_miller/Library/CloudStorage/OneDrive-Concord/Documents/Code/random-data/Music/hot-100/Hot 100.csv', index=False, columns=['chart_position', 'chart_date', 'song', 'performer', 'song_id','instance', 'time_on_chart', 'consecutive_weeks', 'previous_week', 'peak_position', 'worst_position', 'chart_debut', 'chart_url'])
+
 print(df_all)
