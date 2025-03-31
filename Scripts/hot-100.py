@@ -14,7 +14,7 @@ df = df.rename(columns={'Chart Position':'chart_position', 'Song':'song', 'Perfo
 df["song_id"] = df['song']+df['performer']
 
 # Extract Date from URL
-df['chart_date'] = pd.to_datetime(df['url'].str.extract('(\d{4}-\d{2}-\d{2})')[0])
+df['chart_date'] = pd.to_datetime(df['url'].str.extract('(\\d{4}-\\d{2}-\\d{2})')[0])
 df = df.drop(['url'],axis= 1)
 
 # Open an existing dataframe
