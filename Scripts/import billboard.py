@@ -13,8 +13,8 @@ def get_weekly_dates(start_date, end_date):
     return dates
 
 # Define date range (Saturdays)
-start_date = datetime(2024, 5, 11)
-end_date = datetime(2025, 3, 29)
+start_date = datetime(2025, 7, 26)
+end_date = datetime(2025, 8, 30)
 chart_dates = get_weekly_dates(start_date, end_date)
 
 # Initialize DataFrame storage
@@ -47,5 +47,5 @@ df = pd.DataFrame(all_data, columns=['url', 'Chart Position', 'Song', 'Performer
 print(df.head())
 
 # Save to CSV
-df.to_csv('/Users/sean_miller/Downloads/billboard.csv', index=False)
+df.to_csv('/Users/seanmiller/Downloads/billboard.csv', index=False)
 print("Data saved to billboard.csv")
