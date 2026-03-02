@@ -1,0 +1,545 @@
+Team,Category,Grade,GPA
+Arizona Cardinals,Treatment of Families,D+,1.3
+Arizona Cardinals,Home Game Field,B,3.0
+Arizona Cardinals,Food/Dining Area,C-,1.7
+Arizona Cardinals,Nutritionist/Dietician,B,3.0
+Arizona Cardinals,Locker Room,F-,0.0
+Arizona Cardinals,Training Room,D+,1.3
+Arizona Cardinals,Training Staff,B-,2.7
+Arizona Cardinals,Weight Room,D+,1.3
+Arizona Cardinals,Strength Coaches,B-,2.7
+Arizona Cardinals,Position Coaches,B+,3.3
+Arizona Cardinals,Offensive Coordinator,B-,2.7
+Arizona Cardinals,Defensive Coordinator,C+,2.3
+Arizona Cardinals,Special Teams Coordinator,B,3.0
+Arizona Cardinals,Team Travel,C+,2.3
+Arizona Cardinals,Head Coach,B+,3.3
+Arizona Cardinals,General Manager,B,3.0
+Arizona Cardinals,Team Ownership,F,0.0
+Atlanta Falcons,Treatment of Families,B+,3.3
+Atlanta Falcons,Home Game Field,C-,1.7
+Atlanta Falcons,Food/Dining Area,A-,3.7
+Atlanta Falcons,Nutritionist/Dietician,A,4.0
+Atlanta Falcons,Locker Room,B,3.0
+Atlanta Falcons,Training Room,A-,3.7
+Atlanta Falcons,Training Staff,A,4.0
+Atlanta Falcons,Weight Room,A,4.0
+Atlanta Falcons,Strength Coaches,A,4.0
+Atlanta Falcons,Position Coaches,B+,3.3
+Atlanta Falcons,Offensive Coordinator,C-,1.7
+Atlanta Falcons,Defensive Coordinator,A,4.0
+Atlanta Falcons,Special Teams Coordinator,B+,3.3
+Atlanta Falcons,Team Travel,B+,3.3
+Atlanta Falcons,Head Coach,B+,3.3
+Atlanta Falcons,General Manager,B+,3.3
+Atlanta Falcons,Team Ownership,A,4.0
+Baltimore Ravens,Treatment of Families,B+,3.3
+Baltimore Ravens,Home Game Field,A,4.0
+Baltimore Ravens,Food/Dining Area,B,3.0
+Baltimore Ravens,Nutritionist/Dietician,A-,3.7
+Baltimore Ravens,Locker Room,B-,2.7
+Baltimore Ravens,Training Room,A,4.0
+Baltimore Ravens,Training Staff,B,3.0
+Baltimore Ravens,Weight Room,A,4.0
+Baltimore Ravens,Strength Coaches,A,4.0
+Baltimore Ravens,Position Coaches,B,3.0
+Baltimore Ravens,Offensive Coordinator,B-,2.7
+Baltimore Ravens,Defensive Coordinator,B+,3.3
+Baltimore Ravens,Special Teams Coordinator,B+,3.3
+Baltimore Ravens,Team Travel,B-,2.7
+Baltimore Ravens,Head Coach,B,3.0
+Baltimore Ravens,General Manager,A-,3.7
+Baltimore Ravens,Team Ownership,A+,4.3
+Buffalo Bills,Treatment of Families,B,3.0
+Buffalo Bills,Home Game Field,F,0.0
+Buffalo Bills,Food/Dining Area,B-,2.7
+Buffalo Bills,Nutritionist/Dietician,B-,2.7
+Buffalo Bills,Locker Room,B,3.0
+Buffalo Bills,Training Room,B+,3.3
+Buffalo Bills,Training Staff,B+,3.3
+Buffalo Bills,Weight Room,A,4.0
+Buffalo Bills,Strength Coaches,A,4.0
+Buffalo Bills,Position Coaches,A,4.0
+Buffalo Bills,Offensive Coordinator,A-,3.7
+Buffalo Bills,Defensive Coordinator,B,3.0
+Buffalo Bills,Special Teams Coordinator,B+,3.3
+Buffalo Bills,Team Travel,B-,2.7
+Buffalo Bills,Head Coach,A-,3.7
+Buffalo Bills,General Manager,A-,3.7
+Buffalo Bills,Team Ownership,A-,3.7
+Carolina Panthers,Treatment of Families,B,3.0
+Carolina Panthers,Home Game Field,F,0.0
+Carolina Panthers,Food/Dining Area,B+,3.3
+Carolina Panthers,Nutritionist/Dietician,A-,3.7
+Carolina Panthers,Locker Room,D+,1.3
+Carolina Panthers,Training Room,B,3.0
+Carolina Panthers,Training Staff,A-,3.7
+Carolina Panthers,Weight Room,B,3.0
+Carolina Panthers,Strength Coaches,A-,3.7
+Carolina Panthers,Position Coaches,A-,3.7
+Carolina Panthers,Offensive Coordinator,A-,3.7
+Carolina Panthers,Defensive Coordinator,B,3.0
+Carolina Panthers,Special Teams Coordinator,A-,3.7
+Carolina Panthers,Team Travel,D,1.0
+Carolina Panthers,Head Coach,A-,3.7
+Carolina Panthers,General Manager,A,4.0
+Carolina Panthers,Team Ownership,B-,2.7
+Chicago Bears,Treatment of Families,C+,2.3
+Chicago Bears,Home Game Field,C,2.0
+Chicago Bears,Food/Dining Area,B,3.0
+Chicago Bears,Nutritionist/Dietician,A,4.0
+Chicago Bears,Locker Room,B+,3.3
+Chicago Bears,Training Room,B,3.0
+Chicago Bears,Training Staff,B,3.0
+Chicago Bears,Weight Room,A,4.0
+Chicago Bears,Strength Coaches,A-,3.7
+Chicago Bears,Position Coaches,B-,2.7
+Chicago Bears,Offensive Coordinator,A-,3.7
+Chicago Bears,Defensive Coordinator,C+,2.3
+Chicago Bears,Special Teams Coordinator,B-,2.7
+Chicago Bears,Team Travel,B+,3.3
+Chicago Bears,Head Coach,A,4.0
+Chicago Bears,General Manager,A-,3.7
+Chicago Bears,Team Ownership,A-,3.7
+Cincinnati Bengals,Treatment of Families,F-,0.0
+Cincinnati Bengals,Home Game Field,D-,0.7
+Cincinnati Bengals,Food/Dining Area,F-,0.0
+Cincinnati Bengals,Nutritionist/Dietician,F,0.0
+Cincinnati Bengals,Locker Room,A-,3.7
+Cincinnati Bengals,Training Room,A-,3.7
+Cincinnati Bengals,Training Staff,A-,3.7
+Cincinnati Bengals,Weight Room,A-,3.7
+Cincinnati Bengals,Strength Coaches,A,4.0
+Cincinnati Bengals,Position Coaches,B-,2.7
+Cincinnati Bengals,Offensive Coordinator,A-,3.7
+Cincinnati Bengals,Defensive Coordinator,B+,3.3
+Cincinnati Bengals,Special Teams Coordinator,B+,3.3
+Cincinnati Bengals,Team Travel,C-,1.7
+Cincinnati Bengals,Head Coach,A-,3.7
+Cincinnati Bengals,General Manager,C,2.0
+Cincinnati Bengals,Team Ownership,D+,1.3
+Cleveland Browns,Treatment of Families,D-,0.7
+Cleveland Browns,Home Game Field,B-,2.7
+Cleveland Browns,Food/Dining Area,D+,1.3
+Cleveland Browns,Nutritionist/Dietician,C+,2.3
+Cleveland Browns,Locker Room,F,0.0
+Cleveland Browns,Training Room,C,2.0
+Cleveland Browns,Training Staff,C+,2.3
+Cleveland Browns,Weight Room,B+,3.3
+Cleveland Browns,Strength Coaches,B+,3.3
+Cleveland Browns,Position Coaches,B-,2.7
+Cleveland Browns,Offensive Coordinator,D+,1.3
+Cleveland Browns,Defensive Coordinator,A-,3.7
+Cleveland Browns,Special Teams Coordinator,D,1.0
+Cleveland Browns,Team Travel,D-,0.7
+Cleveland Browns,Head Coach,C-,1.7
+Cleveland Browns,General Manager,C,2.0
+Cleveland Browns,Team Ownership,C,2.0
+Dallas Cowboys,Treatment of Families,B,3.0
+Dallas Cowboys,Home Game Field,C,2.0
+Dallas Cowboys,Food/Dining Area,B,3.0
+Dallas Cowboys,Nutritionist/Dietician,B+,3.3
+Dallas Cowboys,Locker Room,B+,3.3
+Dallas Cowboys,Training Room,D,1.0
+Dallas Cowboys,Training Staff,C,2.0
+Dallas Cowboys,Weight Room,A-,3.7
+Dallas Cowboys,Strength Coaches,A-,3.7
+Dallas Cowboys,Position Coaches,B,3.0
+Dallas Cowboys,Offensive Coordinator,A,4.0
+Dallas Cowboys,Defensive Coordinator,C,2.0
+Dallas Cowboys,Special Teams Coordinator,B+,3.3
+Dallas Cowboys,Team Travel,C,2.0
+Dallas Cowboys,Head Coach,A-,3.7
+Dallas Cowboys,General Manager,B,3.0
+Dallas Cowboys,Team Ownership,B,3.0
+Denver Broncos,Treatment of Families,B,3.0
+Denver Broncos,Home Game Field,A,4.0
+Denver Broncos,Food/Dining Area,A,4.0
+Denver Broncos,Nutritionist/Dietician,B+,3.3
+Denver Broncos,Locker Room,D,1.0
+Denver Broncos,Training Room,A-,3.7
+Denver Broncos,Training Staff,A,4.0
+Denver Broncos,Weight Room,A,4.0
+Denver Broncos,Strength Coaches,A,4.0
+Denver Broncos,Position Coaches,B,3.0
+Denver Broncos,Offensive Coordinator,A-,3.7
+Denver Broncos,Defensive Coordinator,A,4.0
+Denver Broncos,Special Teams Coordinator,A-,3.7
+Denver Broncos,Team Travel,A-,3.7
+Denver Broncos,Head Coach,B,3.0
+Denver Broncos,General Manager,A,4.0
+Denver Broncos,Team Ownership,A+,4.3
+Detroit Lions,Treatment of Families,B+,3.3
+Detroit Lions,Home Game Field,B-,2.7
+Detroit Lions,Food/Dining Area,B,3.0
+Detroit Lions,Nutritionist/Dietician,A-,3.7
+Detroit Lions,Locker Room,A,4.0
+Detroit Lions,Training Room,A-,3.7
+Detroit Lions,Training Staff,B+,3.3
+Detroit Lions,Weight Room,A,4.0
+Detroit Lions,Strength Coaches,A,4.0
+Detroit Lions,Position Coaches,A-,3.7
+Detroit Lions,Offensive Coordinator,C-,1.7
+Detroit Lions,Defensive Coordinator,B,3.0
+Detroit Lions,Special Teams Coordinator,A,4.0
+Detroit Lions,Team Travel,B,3.0
+Detroit Lions,Head Coach,A,4.0
+Detroit Lions,General Manager,A-,3.7
+Detroit Lions,Team Ownership,A,4.0
+Green Bay Packers,Treatment of Families,C+,2.3
+Green Bay Packers,Home Game Field,C+,2.3
+Green Bay Packers,Food/Dining Area,B+,3.3
+Green Bay Packers,Nutritionist/Dietician,B,3.0
+Green Bay Packers,Locker Room,A,4.0
+Green Bay Packers,Training Room,C,2.0
+Green Bay Packers,Training Staff,C,2.0
+Green Bay Packers,Weight Room,A-,3.7
+Green Bay Packers,Strength Coaches,B,3.0
+Green Bay Packers,Position Coaches,B+,3.3
+Green Bay Packers,Offensive Coordinator,C,2.0
+Green Bay Packers,Defensive Coordinator,A-,3.7
+Green Bay Packers,Special Teams Coordinator,B+,3.3
+Green Bay Packers,Team Travel,B-,2.7
+Green Bay Packers,Head Coach,B-,2.7
+Green Bay Packers,General Manager,B+,3.3
+Green Bay Packers,Team Ownership,A-,3.7
+Houston Texans,Treatment of Families,B-,2.7
+Houston Texans,Home Game Field,C+,2.3
+Houston Texans,Food/Dining Area,A,4.0
+Houston Texans,Nutritionist/Dietician,A,4.0
+Houston Texans,Locker Room,B+,3.3
+Houston Texans,Training Room,A,4.0
+Houston Texans,Training Staff,A,4.0
+Houston Texans,Weight Room,A,4.0
+Houston Texans,Strength Coaches,A,4.0
+Houston Texans,Position Coaches,B+,3.3
+Houston Texans,Offensive Coordinator,A-,3.7
+Houston Texans,Defensive Coordinator,A,4.0
+Houston Texans,Special Teams Coordinator,A,4.0
+Houston Texans,Team Travel,B-,2.7
+Houston Texans,Head Coach,A-,3.7
+Houston Texans,General Manager,A-,3.7
+Houston Texans,Team Ownership,A,4.0
+Indianapolis Colts,Treatment of Families,B,3.0
+Indianapolis Colts,Home Game Field,D,1.0
+Indianapolis Colts,Food/Dining Area,B,3.0
+Indianapolis Colts,Nutritionist/Dietician,A-,3.7
+Indianapolis Colts,Locker Room,C+,2.3
+Indianapolis Colts,Training Room,B,3.0
+Indianapolis Colts,Training Staff,B+,3.3
+Indianapolis Colts,Weight Room,B,3.0
+Indianapolis Colts,Strength Coaches,A,4.0
+Indianapolis Colts,Position Coaches,B,3.0
+Indianapolis Colts,Offensive Coordinator,B,3.0
+Indianapolis Colts,Defensive Coordinator,B+,3.3
+Indianapolis Colts,Special Teams Coordinator,B+,3.3
+Indianapolis Colts,Team Travel,B-,2.7
+Indianapolis Colts,Head Coach,A-,3.7
+Indianapolis Colts,General Manager,A,4.0
+Indianapolis Colts,Team Ownership,A,4.0
+Jacksonville Jaguars,Treatment of Families,B+,3.3
+Jacksonville Jaguars,Home Game Field,B+,3.3
+Jacksonville Jaguars,Food/Dining Area,B+,3.3
+Jacksonville Jaguars,Nutritionist/Dietician,A-,3.7
+Jacksonville Jaguars,Locker Room,A-,3.7
+Jacksonville Jaguars,Training Room,A,4.0
+Jacksonville Jaguars,Training Staff,A-,3.7
+Jacksonville Jaguars,Weight Room,A,4.0
+Jacksonville Jaguars,Strength Coaches,A,4.0
+Jacksonville Jaguars,Position Coaches,C,2.0
+Jacksonville Jaguars,Offensive Coordinator,B+,3.3
+Jacksonville Jaguars,Defensive Coordinator,A,4.0
+Jacksonville Jaguars,Special Teams Coordinator,A+,4.3
+Jacksonville Jaguars,Team Travel,B+,3.3
+Jacksonville Jaguars,Head Coach,A-,3.7
+Jacksonville Jaguars,General Manager,A-,3.7
+Jacksonville Jaguars,Team Ownership,A,4.0
+Kansas City Chiefs,Treatment of Families,C,2.0
+Kansas City Chiefs,Home Game Field,A-,3.7
+Kansas City Chiefs,Food/Dining Area,C+,2.3
+Kansas City Chiefs,Nutritionist/Dietician,A-,3.7
+Kansas City Chiefs,Locker Room,F,0.0
+Kansas City Chiefs,Training Room,C-,1.7
+Kansas City Chiefs,Training Staff,C,2.0
+Kansas City Chiefs,Weight Room,B,3.0
+Kansas City Chiefs,Strength Coaches,B+,3.3
+Kansas City Chiefs,Position Coaches,C+,2.3
+Kansas City Chiefs,Offensive Coordinator,C+,2.3
+Kansas City Chiefs,Defensive Coordinator,A,4.0
+Kansas City Chiefs,Special Teams Coordinator,B,3.0
+Kansas City Chiefs,Team Travel,D-,0.7
+Kansas City Chiefs,Head Coach,A,4.0
+Kansas City Chiefs,General Manager,B+,3.3
+Kansas City Chiefs,Team Ownership,C+,2.3
+Las Vegas Raiders,Treatment of Families,A,4.0
+Las Vegas Raiders,Home Game Field,A-,3.7
+Las Vegas Raiders,Food/Dining Area,A,4.0
+Las Vegas Raiders,Nutritionist/Dietician,A,4.0
+Las Vegas Raiders,Locker Room,A,4.0
+Las Vegas Raiders,Training Room,A,4.0
+Las Vegas Raiders,Training Staff,A,4.0
+Las Vegas Raiders,Weight Room,A+,4.3
+Las Vegas Raiders,Strength Coaches,A,4.0
+Las Vegas Raiders,Position Coaches,C+,2.3
+Las Vegas Raiders,Offensive Coordinator,F,0.0
+Las Vegas Raiders,Defensive Coordinator,C,2.0
+Las Vegas Raiders,Special Teams Coordinator,C-,1.7
+Las Vegas Raiders,Team Travel,B,3.0
+Las Vegas Raiders,Head Coach,C+,2.3
+Las Vegas Raiders,General Manager,A-,3.7
+Las Vegas Raiders,Team Ownership,A,4.0
+Los Angeles Chargers,Treatment of Families,C+,2.3
+Los Angeles Chargers,Home Game Field,C,2.0
+Los Angeles Chargers,Food/Dining Area,B+,3.3
+Los Angeles Chargers,Nutritionist/Dietician,A-,3.7
+Los Angeles Chargers,Locker Room,A-,3.7
+Los Angeles Chargers,Training Room,A-,3.7
+Los Angeles Chargers,Training Staff,A-,3.7
+Los Angeles Chargers,Weight Room,A-,3.7
+Los Angeles Chargers,Strength Coaches,B,3.0
+Los Angeles Chargers,Position Coaches,C+,2.3
+Los Angeles Chargers,Offensive Coordinator,D-,0.7
+Los Angeles Chargers,Defensive Coordinator,A+,4.3
+Los Angeles Chargers,Special Teams Coordinator,A-,3.7
+Los Angeles Chargers,Team Travel,B-,2.7
+Los Angeles Chargers,Head Coach,C+,2.3
+Los Angeles Chargers,General Manager,B+,3.3
+Los Angeles Chargers,Team Ownership,A-,3.7
+Los Angeles Rams,Treatment of Families,C+,2.3
+Los Angeles Rams,Home Game Field,C,2.0
+Los Angeles Rams,Food/Dining Area,D,1.0
+Los Angeles Rams,Nutritionist/Dietician,B,3.0
+Los Angeles Rams,Locker Room,D,1.0
+Los Angeles Rams,Training Room,B,3.0
+Los Angeles Rams,Training Staff,A,4.0
+Los Angeles Rams,Weight Room,B,3.0
+Los Angeles Rams,Strength Coaches,A,4.0
+Los Angeles Rams,Position Coaches,A,4.0
+Los Angeles Rams,Offensive Coordinator,A,4.0
+Los Angeles Rams,Defensive Coordinator,A,4.0
+Los Angeles Rams,Special Teams Coordinator,B+,3.3
+Los Angeles Rams,Team Travel,B,3.0
+Los Angeles Rams,Head Coach,A+,4.3
+Los Angeles Rams,General Manager,A,4.0
+Los Angeles Rams,Team Ownership,B,3.0
+Miami Dolphins,Treatment of Families,B+,3.3
+Miami Dolphins,Home Game Field,A-,3.7
+Miami Dolphins,Food/Dining Area,A,4.0
+Miami Dolphins,Nutritionist/Dietician,A-,3.7
+Miami Dolphins,Locker Room,A-,3.7
+Miami Dolphins,Training Room,A,4.0
+Miami Dolphins,Training Staff,A,4.0
+Miami Dolphins,Weight Room,A+,4.3
+Miami Dolphins,Strength Coaches,A+,4.3
+Miami Dolphins,Position Coaches,A-,3.7
+Miami Dolphins,Offensive Coordinator,A-,3.7
+Miami Dolphins,Defensive Coordinator,A,4.0
+Miami Dolphins,Special Teams Coordinator,B,3.0
+Miami Dolphins,Team Travel,A,4.0
+Miami Dolphins,Head Coach,B,3.0
+Miami Dolphins,General Manager,A-,3.7
+Miami Dolphins,Team Ownership,A,4.0
+Minnesota Vikings,Treatment of Families,A,4.0
+Minnesota Vikings,Home Game Field,B,3.0
+Minnesota Vikings,Food/Dining Area,B-,2.7
+Minnesota Vikings,Nutritionist/Dietician,B+,3.3
+Minnesota Vikings,Locker Room,A,4.0
+Minnesota Vikings,Training Room,A-,3.7
+Minnesota Vikings,Training Staff,A-,3.7
+Minnesota Vikings,Weight Room,A-,3.7
+Minnesota Vikings,Strength Coaches,A,4.0
+Minnesota Vikings,Position Coaches,B+,3.3
+Minnesota Vikings,Offensive Coordinator,A-,3.7
+Minnesota Vikings,Defensive Coordinator,B+,3.3
+Minnesota Vikings,Special Teams Coordinator,A-,3.7
+Minnesota Vikings,Team Travel,B+,3.3
+Minnesota Vikings,Head Coach,A,4.0
+Minnesota Vikings,General Manager,A,4.0
+Minnesota Vikings,Team Ownership,A+,4.3
+New England Patriots,Treatment of Families,B,3.0
+New England Patriots,Home Game Field,D,1.0
+New England Patriots,Food/Dining Area,D+,1.3
+New England Patriots,Nutritionist/Dietician,B,3.0
+New England Patriots,Locker Room,C-,1.7
+New England Patriots,Training Room,C-,1.7
+New England Patriots,Training Staff,B,3.0
+New England Patriots,Weight Room,C-,1.7
+New England Patriots,Strength Coaches,A-,3.7
+New England Patriots,Position Coaches,B-,2.7
+New England Patriots,Offensive Coordinator,A,4.0
+New England Patriots,Defensive Coordinator,B,3.0
+New England Patriots,Special Teams Coordinator,B+,3.3
+New England Patriots,Team Travel,F,0.0
+New England Patriots,Head Coach,A,4.0
+New England Patriots,General Manager,B+,3.3
+New England Patriots,Team Ownership,B-,2.7
+New Orleans Saints,Treatment of Families,B,3.0
+New Orleans Saints,Home Game Field,C,2.0
+New Orleans Saints,Food/Dining Area,A-,3.7
+New Orleans Saints,Nutritionist/Dietician,B+,3.3
+New Orleans Saints,Locker Room,B,3.0
+New Orleans Saints,Training Room,A,4.0
+New Orleans Saints,Training Staff,A,4.0
+New Orleans Saints,Weight Room,A-,3.7
+New Orleans Saints,Strength Coaches,A,4.0
+New Orleans Saints,Position Coaches,B-,2.7
+New Orleans Saints,Offensive Coordinator,B-,2.7
+New Orleans Saints,Defensive Coordinator,A,4.0
+New Orleans Saints,Special Teams Coordinator,A-,3.7
+New Orleans Saints,Team Travel,A-,3.7
+New Orleans Saints,Head Coach,A-,3.7
+New Orleans Saints,General Manager,B,3.0
+New Orleans Saints,Team Ownership,A-,3.7
+New York Giants,Treatment of Families,B-,2.7
+New York Giants,Home Game Field,F-,0.0
+New York Giants,Food/Dining Area,B+,3.3
+New York Giants,Nutritionist/Dietician,A-,3.7
+New York Giants,Locker Room,D,1.0
+New York Giants,Training Room,B-,2.7
+New York Giants,Training Staff,B+,3.3
+New York Giants,Weight Room,B,3.0
+New York Giants,Strength Coaches,B+,3.3
+New York Giants,Position Coaches,B,3.0
+New York Giants,Offensive Coordinator,C+,2.3
+New York Giants,Defensive Coordinator,D+,1.3
+New York Giants,Special Teams Coordinator,B+,3.3
+New York Giants,Team Travel,C,2.0
+New York Giants,Head Coach,C,2.0
+New York Giants,General Manager,D+,1.3
+New York Giants,Team Ownership,B,3.0
+New York Jets,Treatment of Families,B+,3.3
+New York Jets,Home Game Field,F-,0.0
+New York Jets,Food/Dining Area,B,3.0
+New York Jets,Nutritionist/Dietician,A,4.0
+New York Jets,Locker Room,A-,3.7
+New York Jets,Training Room,B,3.0
+New York Jets,Training Staff,B+,3.3
+New York Jets,Weight Room,B+,3.3
+New York Jets,Strength Coaches,A,4.0
+New York Jets,Position Coaches,B,3.0
+New York Jets,Offensive Coordinator,B-,2.7
+New York Jets,Defensive Coordinator,B+,3.3
+New York Jets,Special Teams Coordinator,A,4.0
+New York Jets,Team Travel,B+,3.3
+New York Jets,Head Coach,A,4.0
+New York Jets,General Manager,A-,3.7
+New York Jets,Team Ownership,B,3.0
+Philadelphia Eagles,Treatment of Families,C+,2.3
+Philadelphia Eagles,Home Game Field,A,4.0
+Philadelphia Eagles,Food/Dining Area,A,4.0
+Philadelphia Eagles,Nutritionist/Dietician,B+,3.3
+Philadelphia Eagles,Locker Room,D,1.0
+Philadelphia Eagles,Training Room,B-,2.7
+Philadelphia Eagles,Training Staff,A,4.0
+Philadelphia Eagles,Weight Room,A-,3.7
+Philadelphia Eagles,Strength Coaches,A-,3.7
+Philadelphia Eagles,Position Coaches,A-,3.7
+Philadelphia Eagles,Offensive Coordinator,C+,2.3
+Philadelphia Eagles,Defensive Coordinator,A+,4.3
+Philadelphia Eagles,Special Teams Coordinator,A,4.0
+Philadelphia Eagles,Team Travel,F,0.0
+Philadelphia Eagles,Head Coach,A,4.0
+Philadelphia Eagles,General Manager,B,3.0
+Philadelphia Eagles,Team Ownership,B,3.0
+Pittsburgh Steelers,Treatment of Families,F,0.0
+Pittsburgh Steelers,Home Game Field,F-,0.0
+Pittsburgh Steelers,Food/Dining Area,B-,2.7
+Pittsburgh Steelers,Nutritionist/Dietician,B,3.0
+Pittsburgh Steelers,Locker Room,F-,0.0
+Pittsburgh Steelers,Training Room,C,2.0
+Pittsburgh Steelers,Training Staff,B+,3.3
+Pittsburgh Steelers,Weight Room,B,3.0
+Pittsburgh Steelers,Strength Coaches,B-,2.7
+Pittsburgh Steelers,Position Coaches,B,3.0
+Pittsburgh Steelers,Offensive Coordinator,B+,3.3
+Pittsburgh Steelers,Defensive Coordinator,C,2.0
+Pittsburgh Steelers,Special Teams Coordinator,A-,3.7
+Pittsburgh Steelers,Team Travel,F,0.0
+Pittsburgh Steelers,Head Coach,A,4.0
+Pittsburgh Steelers,General Manager,C+,2.3
+Pittsburgh Steelers,Team Ownership,D-,0.7
+San Francisco 49ers,Treatment of Families,B,3.0
+San Francisco 49ers,Home Game Field,A-,3.7
+San Francisco 49ers,Food/Dining Area,A,4.0
+San Francisco 49ers,Nutritionist/Dietician,B+,3.3
+San Francisco 49ers,Locker Room,B,3.0
+San Francisco 49ers,Training Room,C-,1.7
+San Francisco 49ers,Training Staff,C-,1.7
+San Francisco 49ers,Weight Room,A,4.0
+San Francisco 49ers,Strength Coaches,A,4.0
+San Francisco 49ers,Position Coaches,A-,3.7
+San Francisco 49ers,Offensive Coordinator,A-,3.7
+San Francisco 49ers,Defensive Coordinator,A,4.0
+San Francisco 49ers,Special Teams Coordinator,B+,3.3
+San Francisco 49ers,Team Travel,C+,2.3
+San Francisco 49ers,Head Coach,A-,3.7
+San Francisco 49ers,General Manager,A-,3.7
+San Francisco 49ers,Team Ownership,A-,3.7
+Seattle Seahawks,Treatment of Families,B+,3.3
+Seattle Seahawks,Home Game Field,F,0.0
+Seattle Seahawks,Food/Dining Area,A-,3.7
+Seattle Seahawks,Nutritionist/Dietician,A,4.0
+Seattle Seahawks,Locker Room,B+,3.3
+Seattle Seahawks,Training Room,A-,3.7
+Seattle Seahawks,Training Staff,A,4.0
+Seattle Seahawks,Weight Room,A-,3.7
+Seattle Seahawks,Strength Coaches,A,4.0
+Seattle Seahawks,Position Coaches,A-,3.7
+Seattle Seahawks,Offensive Coordinator,A,4.0
+Seattle Seahawks,Defensive Coordinator,A+,4.3
+Seattle Seahawks,Special Teams Coordinator,A,4.0
+Seattle Seahawks,Team Travel,A-,3.7
+Seattle Seahawks,Head Coach,A,4.0
+Seattle Seahawks,General Manager,A,4.0
+Seattle Seahawks,Team Ownership,A,4.0
+Tampa Bay Buccaneers,Treatment of Families,D,1.0
+Tampa Bay Buccaneers,Home Game Field,F-,0.0
+Tampa Bay Buccaneers,Food/Dining Area,D+,1.3
+Tampa Bay Buccaneers,Nutritionist/Dietician,B-,2.7
+Tampa Bay Buccaneers,Locker Room,D-,0.7
+Tampa Bay Buccaneers,Training Room,C,2.0
+Tampa Bay Buccaneers,Training Staff,C+,2.3
+Tampa Bay Buccaneers,Weight Room,A-,3.7
+Tampa Bay Buccaneers,Strength Coaches,A,4.0
+Tampa Bay Buccaneers,Position Coaches,B,3.0
+Tampa Bay Buccaneers,Offensive Coordinator,B,3.0
+Tampa Bay Buccaneers,Defensive Coordinator,A-,3.7
+Tampa Bay Buccaneers,Special Teams Coordinator,C+,2.3
+Tampa Bay Buccaneers,Team Travel,F,0.0
+Tampa Bay Buccaneers,Head Coach,B,3.0
+Tampa Bay Buccaneers,General Manager,A-,3.7
+Tampa Bay Buccaneers,Team Ownership,D,1.0
+Tennessee Titans,Treatment of Families,B+,3.3
+Tennessee Titans,Home Game Field,F-,0.0
+Tennessee Titans,Food/Dining Area,B,3.0
+Tennessee Titans,Nutritionist/Dietician,B,3.0
+Tennessee Titans,Locker Room,D+,1.3
+Tennessee Titans,Training Room,B-,2.7
+Tennessee Titans,Training Staff,B+,3.3
+Tennessee Titans,Weight Room,B,3.0
+Tennessee Titans,Strength Coaches,B,3.0
+Tennessee Titans,Position Coaches,B,3.0
+Tennessee Titans,Offensive Coordinator,C,2.0
+Tennessee Titans,Defensive Coordinator,B-,2.7
+Tennessee Titans,Special Teams Coordinator,A+,4.3
+Tennessee Titans,Team Travel,C+,2.3
+Tennessee Titans,Head Coach,B-,2.7
+Tennessee Titans,General Manager,B+,3.3
+Tennessee Titans,Team Ownership,C,2.0
+Washington Commanders,Treatment of Families,B+,3.3
+Washington Commanders,Home Game Field,B+,3.3
+Washington Commanders,Food/Dining Area,A-,3.7
+Washington Commanders,Nutritionist/Dietician,A-,3.7
+Washington Commanders,Locker Room,B,3.0
+Washington Commanders,Training Room,A-,3.7
+Washington Commanders,Training Staff,A,4.0
+Washington Commanders,Weight Room,A,4.0
+Washington Commanders,Strength Coaches,A+,4.3
+Washington Commanders,Position Coaches,B+,3.3
+Washington Commanders,Offensive Coordinator,B+,3.3
+Washington Commanders,Defensive Coordinator,B-,2.7
+Washington Commanders,Special Teams Coordinator,A-,3.7
+Washington Commanders,Team Travel,B-,2.7
+Washington Commanders,Head Coach,A+,4.3
+Washington Commanders,General Manager,A,4.0
+Washington Commanders,Team Ownership,A+,4.3
