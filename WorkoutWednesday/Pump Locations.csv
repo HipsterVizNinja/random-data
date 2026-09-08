@@ -1,0 +1,9 @@
+ID,name,COORD_X,COORD_Y,Latitude,Longitude,geom_source
+1,Broad St Pump,529396.5394,181025.063,51.51334111,-0.13666784,point_from_csv_bng
+2,Little Marlborough St Pump,529192.5379,181079.3914,51.51387598,-0.13958613,point_from_csv_bng
+3,Marlborough Mews Pump,529183.7398,181193.735,51.51490557,-0.13967098,point_from_csv_bng
+5,Rupert St Pump,529613.2052,180896.8041,51.51213887,-0.13359437,point_from_csv_bng
+6,Bridle St Pump,529453.586,180826.3532,51.51154231,-0.13591911,point_from_csv_bng
+8,Warwick St Pump,529296.1044,180794.849,51.51129522,-0.13819873,point_from_csv_bng
+4,Dean St Pump,529402.7,180878.3,51.51202079,-0.13663293,point_from_csv_bng
+7,Tighborne St Pump,529539.2,180883.6,51.51203717,-0.13466507,point_from_csv_bng
