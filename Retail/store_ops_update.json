@@ -1,0 +1,2063 @@
+{
+  "schemaVersion": 1,
+  "kind": "data-model",
+  "name": "Retail Store Operations",
+  "pages": [
+    {
+      "id": "page_sources",
+      "name": "Sources",
+      "elements": [
+        {
+          "id": "src_f_labor",
+          "name": "SRC F_LABOR",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "jU63b1LbRX"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[F_LABOR.csv/Store Key]"
+            },
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[F_LABOR.csv/Date Key]"
+            },
+            {
+              "id": "hour",
+              "name": "Hour",
+              "formula": "[F_LABOR.csv/Hour]"
+            },
+            {
+              "id": "scheduled_staff_count",
+              "name": "Scheduled Staff Count",
+              "formula": "[F_LABOR.csv/Scheduled Staff Count]"
+            },
+            {
+              "id": "actual_staff_count",
+              "name": "Actual Staff Count",
+              "formula": "[F_LABOR.csv/Actual Staff Count]"
+            },
+            {
+              "id": "labor_cost",
+              "name": "Labor Cost",
+              "formula": "[F_LABOR.csv/Labor Cost]"
+            }
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "src_f_store_traffic",
+          "name": "SRC F_STORE_TRAFFIC",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "qE363PAKVb"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[F_STORE_TRAFFIC.csv/Store Key]"
+            },
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[F_STORE_TRAFFIC.csv/Date Key]"
+            },
+            {
+              "id": "hour",
+              "name": "Hour",
+              "formula": "[F_STORE_TRAFFIC.csv/Hour]"
+            },
+            {
+              "id": "store_visits",
+              "name": "Store Visits",
+              "formula": "[F_STORE_TRAFFIC.csv/Store Visits]"
+            }
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "src_f_sales",
+          "name": "SRC F_SALES",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "TOhPY4-KGV"
+          },
+          "columns": [
+            {
+              "id": "order_number",
+              "name": "Order Number",
+              "formula": "[F_SALES.csv/Order Number]"
+            },
+            {
+              "id": "cust_key",
+              "name": "Cust Key",
+              "formula": "[F_SALES.csv/Cust Key]"
+            },
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[F_SALES.csv/Store Key]"
+            },
+            {
+              "id": "transaction_type",
+              "name": "Transaction Type",
+              "formula": "[F_SALES.csv/Transaction Type]"
+            },
+            {
+              "id": "date",
+              "name": "Date",
+              "formula": "[F_SALES.csv/Date]"
+            },
+            {
+              "id": "purchase_method",
+              "name": "Purchase Method",
+              "formula": "[F_SALES.csv/Purchase Method]"
+            },
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[F_SALES.csv/Date Key]"
+            },
+            {
+              "id": "salesperson_key",
+              "name": "Salesperson Key",
+              "formula": "[F_SALES.csv/Salesperson Key]"
+            },
+            {
+              "id": "channel_type",
+              "name": "Channel Type",
+              "formula": "[F_SALES.csv/Channel Type]"
+            },
+            {
+              "id": "transaction_location_key",
+              "name": "Transaction Location Key",
+              "formula": "[F_SALES.csv/Transaction Location Key]"
+            },
+            {
+              "id": "fulfillment_location_key",
+              "name": "Fulfillment Location Key",
+              "formula": "[F_SALES.csv/Fulfillment Location Key]"
+            }
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "src_d_time",
+          "name": "SRC D_TIME",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "6d0QSJNwQ2"
+          },
+          "columns": [
+            {
+              "id": "hour",
+              "name": "Hour",
+              "formula": "[D_TIME.csv/Hour]"
+            },
+            {
+              "id": "hour_label",
+              "name": "Hour Label",
+              "formula": "[D_TIME.csv/Hour Label]"
+            },
+            {
+              "id": "daypart",
+              "name": "Daypart",
+              "formula": "[D_TIME.csv/Daypart]"
+            },
+            {
+              "id": "is_typical_business_hour",
+              "name": "Is Typical Business Hour",
+              "formula": "[D_TIME.csv/Is Typical Business Hour]"
+            }
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "src_d_store_leadership",
+          "name": "SRC D_STORE_LEADERSHIP",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "O-JjreO6D0"
+          },
+          "columns": [
+            {
+              "id": "leadership_key",
+              "name": "Leadership Key",
+              "formula": "[D_STORE_LEADERSHIP.csv/Leadership Key]"
+            },
+            {
+              "id": "employee_name",
+              "name": "Employee Name",
+              "formula": "[D_STORE_LEADERSHIP.csv/Employee Name]"
+            },
+            {
+              "id": "role",
+              "name": "Role",
+              "formula": "[D_STORE_LEADERSHIP.csv/Role]"
+            },
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[D_STORE_LEADERSHIP.csv/Store Key]"
+            },
+            {
+              "id": "store_area",
+              "name": "Store Area",
+              "formula": "[D_STORE_LEADERSHIP.csv/Store Area]"
+            },
+            {
+              "id": "store_region",
+              "name": "Store Region",
+              "formula": "[D_STORE_LEADERSHIP.csv/Store Region]"
+            },
+            {
+              "id": "reports_to_key",
+              "name": "Reports To Key",
+              "formula": "[D_STORE_LEADERSHIP.csv/Reports To Key]"
+            },
+            {
+              "id": "hire_date",
+              "name": "Hire Date",
+              "formula": "[D_STORE_LEADERSHIP.csv/Hire Date]"
+            },
+            {
+              "id": "tenure_years",
+              "name": "Tenure Years",
+              "formula": "[D_STORE_LEADERSHIP.csv/Tenure Years]"
+            },
+            {
+              "id": "annual_salary",
+              "name": "Annual Salary",
+              "formula": "[D_STORE_LEADERSHIP.csv/Annual Salary]"
+            },
+            {
+              "id": "performance_tier",
+              "name": "Performance Tier",
+              "formula": "[D_STORE_LEADERSHIP.csv/Performance Tier]"
+            },
+            {
+              "id": "bonus_rate",
+              "name": "Bonus Rate",
+              "formula": "[D_STORE_LEADERSHIP.csv/Bonus Rate]"
+            }
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "src_f_budget",
+          "name": "SRC F_BUDGET",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "xQ5dfXHoWm"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[F_BUDGET.csv/Store Key]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[F_BUDGET.csv/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[F_BUDGET.csv/Fiscal Period]"
+            },
+            {
+              "id": "budget_sales_amount",
+              "name": "Budget Sales Amount",
+              "formula": "[F_BUDGET.csv/Budget Sales Amount]"
+            },
+            {
+              "id": "budget_units",
+              "name": "Budget Units",
+              "formula": "[F_BUDGET.csv/Budget Units]"
+            }
+          ],
+          "visibleAsSource": false
+        },
+        {
+          "id": "src_store",
+          "name": "SRC Store",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "dim_store"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[Store/Store Key]"
+            },
+            {
+              "id": "store_name",
+              "name": "Store Name",
+              "formula": "[Store/Store Name]"
+            },
+            {
+              "id": "store_city",
+              "name": "Store City",
+              "formula": "[Store/Store City]"
+            },
+            {
+              "id": "store_state",
+              "name": "Store State",
+              "formula": "[Store/Store State]"
+            },
+            {
+              "id": "store_region",
+              "name": "Store Region",
+              "formula": "[Store/Store Region]"
+            },
+            {
+              "id": "store_area",
+              "name": "Store Area",
+              "formula": "[Store/Store Area]"
+            },
+            {
+              "id": "store_type",
+              "name": "Store Type",
+              "formula": "[Store/Store Type]"
+            },
+            {
+              "id": "store_size",
+              "name": "Store Size",
+              "formula": "[Store/Store Size]"
+            },
+            {
+              "id": "store_open_date",
+              "name": "Store Open Date",
+              "formula": "[Store/Store Open Date]"
+            },
+            {
+              "id": "selling_square_footage",
+              "name": "Selling Square Footage",
+              "formula": "[Store/Selling Square Footage]"
+            },
+            {
+              "id": "total_square_footage",
+              "name": "Total Square Footage",
+              "formula": "[Store/Total Square Footage]"
+            },
+            {
+              "id": "number_of_employees",
+              "name": "Number of Employees",
+              "formula": "[Store/Number of Employees]"
+            },
+            {
+              "id": "online_ordering",
+              "name": "Online Ordering",
+              "formula": "[Store/Online Ordering]"
+            },
+            {
+              "id": "latitude",
+              "name": "Latitude",
+              "formula": "[Store/Latitude]"
+            },
+            {
+              "id": "longitude",
+              "name": "Longitude",
+              "formula": "[Store/Longitude]"
+            },
+            {
+              "id": "weekday_open_hour",
+              "name": "Weekday Open Hour",
+              "formula": "[Store/Weekday Open Hour]"
+            },
+            {
+              "id": "weekday_close_hour",
+              "name": "Weekday Close Hour",
+              "formula": "[Store/Weekday Close Hour]"
+            },
+            {
+              "id": "sunday_open_hour",
+              "name": "Sunday Open Hour",
+              "formula": "[Store/Sunday Open Hour]"
+            },
+            {
+              "id": "sunday_close_hour",
+              "name": "Sunday Close Hour",
+              "formula": "[Store/Sunday Close Hour]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Conformed Store dimension referenced from the Retail Sales Activity model."
+        },
+        {
+          "id": "src_date",
+          "name": "SRC Date",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "dim_date"
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[Date/Date Key]"
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[Date/Day of Week Name]"
+            },
+            {
+              "id": "day_of_week_number",
+              "name": "Day of Week Number",
+              "formula": "[Date/Day of Week Number]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[Date/Week Start Date]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month",
+              "name": "Calendar Month",
+              "formula": "[Date/Calendar Month]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[Date/Calendar Month Name]"
+            },
+            {
+              "id": "calendar_quarter",
+              "name": "Calendar Quarter",
+              "formula": "[Date/Calendar Quarter]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[Date/Fiscal Season]"
+            },
+            {
+              "id": "prior_year_date",
+              "name": "Prior Year Date",
+              "formula": "[Date/Prior Year Date]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Conformed Date dimension (4-5-4 fiscal) referenced from the Retail Sales Activity model."
+        },
+        {
+          "id": "src_sales_activity",
+          "name": "SRC Sales Activity",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "sales_activity"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[Sales Activity/Store Key]"
+            },
+            {
+              "id": "sale_date",
+              "name": "Sale Date",
+              "formula": "[Sales Activity/Sale Date]"
+            },
+            {
+              "id": "sale_timestamp",
+              "name": "Sale Timestamp",
+              "formula": "[Sales Activity/Sale Timestamp]"
+            },
+            {
+              "id": "activity_type",
+              "name": "Activity Type",
+              "formula": "[Sales Activity/Activity Type]"
+            },
+            {
+              "id": "channel_type",
+              "name": "Channel Type",
+              "formula": "[Sales Activity/Channel Type]"
+            },
+            {
+              "id": "quantity",
+              "name": "Quantity",
+              "formula": "[Sales Activity/Quantity]"
+            },
+            {
+              "id": "amount",
+              "name": "Amount",
+              "formula": "[Sales Activity/Amount]"
+            },
+            {
+              "id": "cost",
+              "name": "Cost",
+              "formula": "[Sales Activity/Cost]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Sales + returns fact referenced from the Retail Sales Activity model, projected to the columns needed for hourly dollars."
+        }
+      ]
+    },
+    {
+      "id": "page_dims",
+      "name": "Conformed Dimensions",
+      "elements": [
+        {
+          "id": "dim_time",
+          "name": "Time",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "Hour-of-day dimension. Hours 9-20 are the only hours present in store traffic and labor.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_d_time"
+          },
+          "columns": [
+            {
+              "id": "hour",
+              "name": "Hour",
+              "formula": "[SRC D_TIME/Hour]",
+              "description": "Hour of day, 0-23. Store facts only populate 9-20."
+            },
+            {
+              "id": "hour_label",
+              "name": "Hour Label",
+              "formula": "[SRC D_TIME/Hour Label]"
+            },
+            {
+              "id": "daypart",
+              "name": "Daypart",
+              "formula": "[SRC D_TIME/Daypart]",
+              "description": "Morning / Afternoon / Evening grouping of the hour."
+            },
+            {
+              "id": "is_typical_business_hour",
+              "name": "Is Typical Business Hour",
+              "formula": "[SRC D_TIME/Is Typical Business Hour]"
+            }
+          ]
+        },
+        {
+          "id": "dim_store",
+          "name": "Store",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "200 selling stores plus the Central Warehouse (Store Key 9999). Note the warehouse has NO labor or traffic rows, so Store Operations facts cover 200 stores only.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_store"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[SRC Store/Store Key]"
+            },
+            {
+              "id": "store_name",
+              "name": "Store Name",
+              "formula": "[SRC Store/Store Name]"
+            },
+            {
+              "id": "store_city",
+              "name": "Store City",
+              "formula": "[SRC Store/Store City]"
+            },
+            {
+              "id": "store_state",
+              "name": "Store State",
+              "formula": "[SRC Store/Store State]"
+            },
+            {
+              "id": "store_region",
+              "name": "Store Region",
+              "formula": "[SRC Store/Store Region]"
+            },
+            {
+              "id": "store_area",
+              "name": "Store Area",
+              "formula": "[SRC Store/Store Area]"
+            },
+            {
+              "id": "store_type",
+              "name": "Store Type",
+              "formula": "[SRC Store/Store Type]"
+            },
+            {
+              "id": "store_size",
+              "name": "Store Size",
+              "formula": "[SRC Store/Store Size]"
+            },
+            {
+              "id": "store_open_date",
+              "name": "Store Open Date",
+              "formula": "[SRC Store/Store Open Date]"
+            },
+            {
+              "id": "selling_square_footage",
+              "name": "Selling Square Footage",
+              "formula": "[SRC Store/Selling Square Footage]"
+            },
+            {
+              "id": "total_square_footage",
+              "name": "Total Square Footage",
+              "formula": "[SRC Store/Total Square Footage]"
+            },
+            {
+              "id": "number_of_employees",
+              "name": "Number of Employees",
+              "formula": "[SRC Store/Number of Employees]"
+            },
+            {
+              "id": "online_ordering",
+              "name": "Online Ordering",
+              "formula": "[SRC Store/Online Ordering]"
+            },
+            {
+              "id": "latitude",
+              "name": "Latitude",
+              "formula": "[SRC Store/Latitude]"
+            },
+            {
+              "id": "longitude",
+              "name": "Longitude",
+              "formula": "[SRC Store/Longitude]"
+            },
+            {
+              "id": "weekday_open_hour",
+              "name": "Weekday Open Hour",
+              "formula": "[SRC Store/Weekday Open Hour]"
+            },
+            {
+              "id": "weekday_close_hour",
+              "name": "Weekday Close Hour",
+              "formula": "[SRC Store/Weekday Close Hour]"
+            },
+            {
+              "id": "sunday_open_hour",
+              "name": "Sunday Open Hour",
+              "formula": "[SRC Store/Sunday Open Hour]"
+            },
+            {
+              "id": "sunday_close_hour",
+              "name": "Sunday Close Hour",
+              "formula": "[SRC Store/Sunday Close Hour]"
+            }
+          ]
+        },
+        {
+          "id": "dim_date",
+          "name": "Date",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "Retail 4-5-4 fiscal calendar. Sigma's built-in period-over-period and DateLookback are CALENDAR-based and will not align to 4-5-4 week boundaries; use Prior Year Date for fiscal-correct comps.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_date"
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[SRC Date/Date Key]"
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[SRC Date/Day of Week Name]"
+            },
+            {
+              "id": "day_of_week_number",
+              "name": "Day of Week Number",
+              "formula": "[SRC Date/Day of Week Number]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[SRC Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[SRC Date/Week Start Date]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[SRC Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month",
+              "name": "Calendar Month",
+              "formula": "[SRC Date/Calendar Month]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[SRC Date/Calendar Month Name]"
+            },
+            {
+              "id": "calendar_quarter",
+              "name": "Calendar Quarter",
+              "formula": "[SRC Date/Calendar Quarter]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[SRC Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[SRC Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[SRC Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[SRC Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[SRC Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[SRC Date/Fiscal Season]"
+            },
+            {
+              "id": "prior_year_date",
+              "name": "Prior Year Date",
+              "formula": "[SRC Date/Prior Year Date]"
+            }
+          ]
+        },
+        {
+          "id": "dim_leadership",
+          "name": "Store Leadership",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "Field leadership roster: 200 Store Managers (one per store) -> 18 AVPs -> 5 RVPs. Only Store Managers carry a Store Key; AVP and RVP rows have none. Reports To Key chains upward and is null for RVPs.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_d_store_leadership"
+          },
+          "columns": [
+            {
+              "id": "leadership_key",
+              "name": "Leadership Key",
+              "formula": "[SRC D_STORE_LEADERSHIP/Leadership Key]"
+            },
+            {
+              "id": "employee_name",
+              "name": "Employee Name",
+              "formula": "[SRC D_STORE_LEADERSHIP/Employee Name]"
+            },
+            {
+              "id": "role",
+              "name": "Role",
+              "formula": "[SRC D_STORE_LEADERSHIP/Role]"
+            },
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[SRC D_STORE_LEADERSHIP/Store Key]"
+            },
+            {
+              "id": "store_area",
+              "name": "Store Area",
+              "formula": "[SRC D_STORE_LEADERSHIP/Store Area]"
+            },
+            {
+              "id": "store_region",
+              "name": "Store Region",
+              "formula": "[SRC D_STORE_LEADERSHIP/Store Region]"
+            },
+            {
+              "id": "reports_to_key",
+              "name": "Reports To Key",
+              "formula": "[SRC D_STORE_LEADERSHIP/Reports To Key]"
+            },
+            {
+              "id": "hire_date",
+              "name": "Hire Date",
+              "formula": "[SRC D_STORE_LEADERSHIP/Hire Date]"
+            },
+            {
+              "id": "tenure_years",
+              "name": "Tenure Years",
+              "formula": "[SRC D_STORE_LEADERSHIP/Tenure Years]"
+            },
+            {
+              "id": "annual_salary",
+              "name": "Annual Salary",
+              "formula": "[SRC D_STORE_LEADERSHIP/Annual Salary]"
+            },
+            {
+              "id": "performance_tier",
+              "name": "Performance Tier",
+              "formula": "[SRC D_STORE_LEADERSHIP/Performance Tier]"
+            },
+            {
+              "id": "bonus_rate",
+              "name": "Bonus Rate",
+              "formula": "[SRC D_STORE_LEADERSHIP/Bonus Rate]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page_build",
+      "name": "Hourly Build",
+      "elements": [
+        {
+          "id": "hourly_orders",
+          "name": "Hourly Orders",
+          "kind": "table",
+          "visibleAsSource": false,
+          "description": "F_SALES collapsed to Store Key x Date Key x Hour. MANDATORY pre-aggregation: joining raw F_SALES to the hourly fact would fan it out. Retail Orders isolates in-store transactions, which is the correct numerator for conversion against door traffic.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_f_sales"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[SRC F_SALES/Store Key]"
+            },
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[SRC F_SALES/Date Key]"
+            },
+            {
+              "id": "sale_hour",
+              "name": "Sale Hour",
+              "formula": "Hour([SRC F_SALES/Date])",
+              "description": "Hour of day the order was placed, parsed from the order timestamp. Retail orders span hours 9-20, matching store labor and traffic exactly."
+            },
+            {
+              "id": "orders",
+              "name": "Orders",
+              "formula": "CountDistinct([SRC F_SALES/Order Number])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "retail_orders",
+              "name": "Retail Orders",
+              "formula": "CountDistinct(If([SRC F_SALES/Channel Type] = \"Retail\", [SRC F_SALES/Order Number], Null))",
+              "description": "In-store orders only. Web, BOPIS and BOSS orders are credited to a store but did not walk through its door, so they must be excluded from conversion.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "customers",
+              "name": "Customers",
+              "formula": "CountDistinct([SRC F_SALES/Cust Key])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_orders",
+              "groupBy": [
+                "store_key",
+                "date_key",
+                "sale_hour"
+              ],
+              "calculations": [
+                "orders",
+                "retail_orders",
+                "customers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hourly_sales",
+          "name": "Hourly Sales",
+          "kind": "table",
+          "visibleAsSource": false,
+          "description": "Sales Activity collapsed to Store Key x Sale Date x Hour, dated by SALE Timestamp so returns net back against the hour that originally sold the item. MANDATORY pre-aggregation before joining to the hourly fact.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_sales_activity"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[SRC Sales Activity/Store Key]"
+            },
+            {
+              "id": "sale_date",
+              "name": "Sale Date",
+              "formula": "[SRC Sales Activity/Sale Date]"
+            },
+            {
+              "id": "sale_hour",
+              "name": "Sale Hour",
+              "formula": "Hour([SRC Sales Activity/Sale Timestamp])"
+            },
+            {
+              "id": "net_sales",
+              "name": "Net Sales",
+              "formula": "Sum([SRC Sales Activity/Amount])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "net_cost",
+              "name": "Net Cost",
+              "formula": "Sum([SRC Sales Activity/Cost])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "net_units",
+              "name": "Net Units",
+              "formula": "Sum([SRC Sales Activity/Quantity])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "gross_sales",
+              "name": "Gross Sales",
+              "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\", [SRC Sales Activity/Amount], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_sales",
+              "name": "Retail Net Sales",
+              "formula": "Sum(If([SRC Sales Activity/Channel Type] = \"Retail\", [SRC Sales Activity/Amount], 0))",
+              "description": "In-store sales only. This is the correct numerator for any ratio measured against door traffic.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_cost",
+              "name": "Retail Net Cost",
+              "formula": "Sum(If([SRC Sales Activity/Channel Type] = \"Retail\", [SRC Sales Activity/Cost], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_units",
+              "name": "Retail Net Units",
+              "formula": "Sum(If([SRC Sales Activity/Channel Type] = \"Retail\", [SRC Sales Activity/Quantity], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_sales",
+              "groupBy": [
+                "store_key",
+                "sale_date",
+                "sale_hour"
+              ],
+              "calculations": [
+                "net_sales",
+                "net_cost",
+                "net_units",
+                "gross_sales",
+                "retail_net_sales",
+                "retail_net_cost",
+                "retail_net_units"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page_ops",
+      "name": "Store Operations",
+      "elements": [
+        {
+          "id": "store_hour",
+          "name": "Store Hour",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "One row per Store x Date x Hour (3,332,953). Store traffic and labor are exactly co-grained and join 1:1; orders and dollars are LEFT JOINed from pre-aggregated elements. Covers 200 selling stores - the Central Warehouse (9999) has no labor or traffic. Labor carries STAFF COUNTS, not hours, so 'per staffed hour' means per staffed store-hour. Dollar ratios use Retail Net Sales (in-store only) because they are measured against door traffic; the all-channel columns are partial by design and must not be divided by traffic. All ratios are metrics so they recompute correctly at every rollup.",
+          "source": {
+            "kind": "join",
+            "primarySource": {
+              "kind": "table",
+              "elementId": "src_f_store_traffic"
+            },
+            "joins": [
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_store_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "src_f_labor"
+                },
+                "columns": [
+                  {
+                    "left": "[Store Key]",
+                    "right": "[Store Key]"
+                  },
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  },
+                  {
+                    "left": "[Hour]",
+                    "right": "[Hour]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_store_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "hourly_orders",
+                  "groupingId": "g_orders"
+                },
+                "columns": [
+                  {
+                    "left": "[Store Key]",
+                    "right": "[Store Key]"
+                  },
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  },
+                  {
+                    "left": "[Hour]",
+                    "right": "[Sale Hour]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_store_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "hourly_sales",
+                  "groupingId": "g_sales"
+                },
+                "columns": [
+                  {
+                    "left": "[Store Key]",
+                    "right": "[Store Key]"
+                  },
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Sale Date]"
+                  },
+                  {
+                    "left": "[Hour]",
+                    "right": "[Sale Hour]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_store_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_store"
+                },
+                "columns": [
+                  {
+                    "left": "[Store Key]",
+                    "right": "[Store Key]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_store_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_date"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_store_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_time"
+                },
+                "columns": [
+                  {
+                    "left": "[Hour]",
+                    "right": "[Hour]"
+                  }
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[SRC F_STORE_TRAFFIC/Store Key]"
+            },
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[SRC F_STORE_TRAFFIC/Date Key]"
+            },
+            {
+              "id": "hour",
+              "name": "Hour",
+              "formula": "[SRC F_STORE_TRAFFIC/Hour]",
+              "description": "Hour of day, 9-20."
+            },
+            {
+              "id": "store_visits",
+              "name": "Store Visits",
+              "formula": "[SRC F_STORE_TRAFFIC/Store Visits]",
+              "description": "Door counter traffic for this store-hour.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "scheduled_staff_count",
+              "name": "Scheduled Staff Count",
+              "formula": "[SRC F_LABOR/Scheduled Staff Count]",
+              "description": "Headcount the schedule called for. NOT hours.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "actual_staff_count",
+              "name": "Actual Staff Count",
+              "formula": "[SRC F_LABOR/Actual Staff Count]",
+              "description": "Headcount actually on the floor. NOT hours.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "staffing_variance",
+              "name": "Staffing Variance",
+              "formula": "[SRC F_LABOR/Actual Staff Count] - [SRC F_LABOR/Scheduled Staff Count]",
+              "description": "Actual minus scheduled headcount. Scheduled and actual net out almost exactly company-wide, so only per-store-hour variance carries signal.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "labor_cost",
+              "name": "Labor Cost",
+              "formula": "[SRC F_LABOR/Labor Cost]",
+              "description": "Wage cost for this store-hour.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "orders",
+              "name": "Orders",
+              "formula": "[Hourly Orders/Orders]",
+              "description": "All orders credited to this store in this hour, every channel.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "retail_orders",
+              "name": "Retail Orders",
+              "formula": "[Hourly Orders/Retail Orders]",
+              "description": "In-store orders only - the correct numerator for conversion against door traffic.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "customers",
+              "name": "Customers",
+              "formula": "[Hourly Orders/Customers]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "retail_net_sales",
+              "name": "Retail Net Sales",
+              "formula": "[Hourly Sales/Retail Net Sales]",
+              "description": "In-store sales net of returns, dated by the hour of the original sale. COMPLETE: every in-store order falls inside a staffed store-hour. Use this for all traffic-based ratios.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_cost",
+              "name": "Retail Net Cost",
+              "formula": "[Hourly Sales/Retail Net Cost]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_units",
+              "name": "Retail Net Units",
+              "formula": "[Hourly Sales/Retail Net Units]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "retail_gross_margin",
+              "name": "Retail Gross Margin",
+              "formula": "[Hourly Sales/Retail Net Sales] - [Hourly Sales/Retail Net Cost]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "net_sales",
+              "name": "Net Sales (All Channels, In-Hours)",
+              "formula": "[Hourly Sales/Net Sales]",
+              "description": "All-channel sales credited to this store that transacted during a staffed store-hour. PARTIAL BY DESIGN: digital orders placed outside trading hours have no store-hour to land on, so this runs about 9% below company net sales. Never use it as a company sales total - use the Retail Sales Activity model for that - and never divide it by door traffic.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "net_cost",
+              "name": "Net Cost (All Channels, In-Hours)",
+              "formula": "[Hourly Sales/Net Cost]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "net_units",
+              "name": "Net Units (All Channels, In-Hours)",
+              "formula": "[Hourly Sales/Net Units]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "gross_sales",
+              "name": "Gross Sales (All Channels, In-Hours)",
+              "formula": "[Hourly Sales/Gross Sales]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "is_open_hour",
+              "name": "Is Open Hour",
+              "formula": "If([Date/Day of Week Name] = \"Sunday\", [SRC F_STORE_TRAFFIC/Hour] >= [Store/Sunday Open Hour] and [SRC F_STORE_TRAFFIC/Hour] < [Store/Sunday Close Hour], [SRC F_STORE_TRAFFIC/Hour] >= [Store/Weekday Open Hour] and [SRC F_STORE_TRAFFIC/Hour] < [Store/Weekday Close Hour])",
+              "description": "True when the store was trading this hour, per its weekday/Sunday opening hours. Currently TRUE for every row: traffic and labor are only recorded for hours a store actually trades, so the shoulder hours simply have fewer store-hours rather than closed rows. Retained as a guard in case closed-hour rows are ever loaded."
+            },
+            {
+              "id": "daypart",
+              "name": "Daypart",
+              "formula": "[Time/Daypart]"
+            },
+            {
+              "id": "hour_label",
+              "name": "Hour Label",
+              "formula": "[Time/Hour Label]"
+            },
+            {
+              "id": "store_name",
+              "name": "Store Name",
+              "formula": "[Store/Store Name]"
+            },
+            {
+              "id": "store_city",
+              "name": "Store City",
+              "formula": "[Store/Store City]"
+            },
+            {
+              "id": "store_state",
+              "name": "Store State",
+              "formula": "[Store/Store State]"
+            },
+            {
+              "id": "store_region",
+              "name": "Store Region",
+              "formula": "[Store/Store Region]"
+            },
+            {
+              "id": "store_area",
+              "name": "Store Area",
+              "formula": "[Store/Store Area]"
+            },
+            {
+              "id": "store_type",
+              "name": "Store Type",
+              "formula": "[Store/Store Type]"
+            },
+            {
+              "id": "store_size",
+              "name": "Store Size",
+              "formula": "[Store/Store Size]"
+            },
+            {
+              "id": "selling_square_footage",
+              "name": "Selling Square Footage",
+              "formula": "[Store/Selling Square Footage]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[Date/Day of Week Name]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[Date/Week Start Date]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[Date/Fiscal Season]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[Date/Calendar Month Name]"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "m_store_visits",
+              "name": "Store Visits",
+              "formula": "Sum([Store Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_retail_orders",
+              "name": "Retail Orders",
+              "formula": "Sum([Retail Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_orders",
+              "name": "Orders",
+              "formula": "Sum([Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_conversion_rate",
+              "name": "Conversion Rate %",
+              "formula": "[Metrics/Retail Orders] / [Metrics/Store Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              }
+            },
+            {
+              "id": "m_retail_net_sales",
+              "name": "Retail Net Sales",
+              "formula": "Sum([Retail Net Sales])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_retail_net_units",
+              "name": "Retail Net Units",
+              "formula": "Sum([Retail Net Units])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_retail_gross_margin",
+              "name": "Retail Gross Margin",
+              "formula": "Sum([Retail Gross Margin])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_net_sales",
+              "name": "Net Sales (All Channels, In-Hours)",
+              "formula": "Sum([Net Sales (All Channels, In-Hours)])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_labor_cost",
+              "name": "Labor Cost",
+              "formula": "Sum([Labor Cost])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_scheduled_staff",
+              "name": "Scheduled Staff",
+              "formula": "Sum([Scheduled Staff Count])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_actual_staff",
+              "name": "Actual Staff",
+              "formula": "Sum([Actual Staff Count])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_staffing_variance",
+              "name": "Staffing Variance",
+              "formula": "[Metrics/Actual Staff] - [Metrics/Scheduled Staff]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_traffic_per_staff",
+              "name": "Traffic per Staff",
+              "formula": "[Metrics/Store Visits] / [Metrics/Actual Staff]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.2f"
+              }
+            },
+            {
+              "id": "m_sales_per_visit",
+              "name": "Sales per Visit",
+              "formula": "[Metrics/Retail Net Sales] / [Metrics/Store Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_sales_per_staffed_hour",
+              "name": "Sales per Staffed Hour",
+              "formula": "[Metrics/Retail Net Sales] / [Metrics/Actual Staff]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_labor_cost_pct",
+              "name": "Labor Cost %",
+              "formula": "[Metrics/Labor Cost] / [Metrics/Retail Net Sales]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              }
+            },
+            {
+              "id": "m_atv",
+              "name": "Avg Transaction Value",
+              "formula": "[Metrics/Retail Net Sales] / [Metrics/Retail Orders]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            }
+          ]
+        },
+        {
+          "id": "store_day",
+          "name": "Store Day",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "Store Hour rolled up to one row per Store x Date (365,400 potential store-days). Use this for trend and period reporting so dashboards do not scan 3.3M hourly rows. Same metric definitions as Store Hour.",
+          "source": {
+            "kind": "table",
+            "elementId": "store_hour"
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[Store Hour/Store Key]"
+            },
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[Store Hour/Date Key]"
+            },
+            {
+              "id": "store_name",
+              "name": "Store Name",
+              "formula": "[Store Hour/Store Name]"
+            },
+            {
+              "id": "store_region",
+              "name": "Store Region",
+              "formula": "[Store Hour/Store Region]"
+            },
+            {
+              "id": "store_area",
+              "name": "Store Area",
+              "formula": "[Store Hour/Store Area]"
+            },
+            {
+              "id": "store_type",
+              "name": "Store Type",
+              "formula": "[Store Hour/Store Type]"
+            },
+            {
+              "id": "store_state",
+              "name": "Store State",
+              "formula": "[Store Hour/Store State]"
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[Store Hour/Day of Week Name]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[Store Hour/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[Store Hour/Week Start Date]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[Store Hour/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[Store Hour/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[Store Hour/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[Store Hour/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[Store Hour/Fiscal Season]"
+            },
+            {
+              "id": "store_visits",
+              "name": "Store Visits",
+              "formula": "Sum([Store Hour/Store Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "retail_orders",
+              "name": "Retail Orders",
+              "formula": "Sum([Store Hour/Retail Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "orders",
+              "name": "Orders",
+              "formula": "Sum([Store Hour/Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "retail_net_sales",
+              "name": "Retail Net Sales",
+              "formula": "Sum([Store Hour/Retail Net Sales])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_cost",
+              "name": "Retail Net Cost",
+              "formula": "Sum([Store Hour/Retail Net Cost])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "retail_net_units",
+              "name": "Retail Net Units",
+              "formula": "Sum([Store Hour/Retail Net Units])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "net_sales",
+              "name": "Net Sales (All Channels, In-Hours)",
+              "formula": "Sum([Store Hour/Net Sales (All Channels, In-Hours)])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "labor_cost",
+              "name": "Labor Cost",
+              "formula": "Sum([Store Hour/Labor Cost])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "scheduled_staff_count",
+              "name": "Scheduled Staff Count",
+              "formula": "Sum([Store Hour/Scheduled Staff Count])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "actual_staff_count",
+              "name": "Actual Staff Count",
+              "formula": "Sum([Store Hour/Actual Staff Count])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "open_hours",
+              "name": "Open Hours",
+              "formula": "Sum(If([Store Hour/Is Open Hour], 1, 0))",
+              "description": "Number of trading hours this store-day.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_day",
+              "groupBy": [
+                "store_key",
+                "date_key",
+                "store_name",
+                "store_region",
+                "store_area",
+                "store_type",
+                "store_state",
+                "day_of_week_name",
+                "is_weekend",
+                "week_start_date",
+                "fiscal_year",
+                "fiscal_quarter",
+                "fiscal_period",
+                "fiscal_week_of_year",
+                "fiscal_season"
+              ],
+              "calculations": [
+                "store_visits",
+                "retail_orders",
+                "orders",
+                "retail_net_sales",
+                "retail_net_cost",
+                "retail_net_units",
+                "net_sales",
+                "labor_cost",
+                "scheduled_staff_count",
+                "actual_staff_count",
+                "open_hours"
+              ]
+            }
+          ],
+          "metrics": [
+            {
+              "id": "m_d_store_visits",
+              "name": "Store Visits",
+              "formula": "Sum([Store Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_d_retail_orders",
+              "name": "Retail Orders",
+              "formula": "Sum([Retail Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "m_d_conversion_rate",
+              "name": "Conversion Rate %",
+              "formula": "[Metrics/Retail Orders] / [Metrics/Store Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              }
+            },
+            {
+              "id": "m_d_retail_net_sales",
+              "name": "Retail Net Sales",
+              "formula": "Sum([Retail Net Sales])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_d_net_sales",
+              "name": "Net Sales (All Channels, In-Hours)",
+              "formula": "Sum([Net Sales (All Channels, In-Hours)])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_d_labor_cost",
+              "name": "Labor Cost",
+              "formula": "Sum([Labor Cost])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_d_labor_cost_pct",
+              "name": "Labor Cost %",
+              "formula": "[Metrics/Labor Cost] / [Metrics/Retail Net Sales]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              }
+            },
+            {
+              "id": "m_d_sales_per_visit",
+              "name": "Sales per Visit",
+              "formula": "[Metrics/Retail Net Sales] / [Metrics/Store Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_d_atv",
+              "name": "Avg Transaction Value",
+              "formula": "[Metrics/Retail Net Sales] / [Metrics/Retail Orders]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page_support",
+      "name": "Supporting Facts",
+      "elements": [
+        {
+          "id": "budget",
+          "name": "Budget",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "Sales plan per store per fiscal period. COARSER grain than Store Day - join on Store Key + Fiscal Year + Fiscal Period, never on date.",
+          "source": {
+            "kind": "join",
+            "primarySource": {
+              "kind": "table",
+              "elementId": "src_f_budget"
+            },
+            "joins": [
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_budget"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_store"
+                },
+                "columns": [
+                  {
+                    "left": "[Store Key]",
+                    "right": "[Store Key]"
+                  }
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "id": "store_key",
+              "name": "Store Key",
+              "formula": "[SRC F_BUDGET/Store Key]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[SRC F_BUDGET/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[SRC F_BUDGET/Fiscal Period]"
+            },
+            {
+              "id": "budget_sales_amount",
+              "name": "Budget Sales Amount",
+              "formula": "[SRC F_BUDGET/Budget Sales Amount]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "budget_units",
+              "name": "Budget Units",
+              "formula": "[SRC F_BUDGET/Budget Units]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "budget_store_name",
+              "name": "Store Name",
+              "formula": "[Store/Store Name]"
+            },
+            {
+              "id": "budget_store_region",
+              "name": "Store Region",
+              "formula": "[Store/Store Region]"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "m_budget_sales",
+              "name": "Budget Sales",
+              "formula": "Sum([Budget Sales Amount])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "m_budget_units",
+              "name": "Budget Units",
+              "formula": "Sum([Budget Units])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
