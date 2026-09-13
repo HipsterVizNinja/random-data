@@ -821,13 +821,16 @@ customer_category_mix = {
         {"id": "m_mix_net_sales", "name": "Net Sales", "formula": "Sum([Net Sales])", "format": USD},
         {"id": "m_mix_gross_sales", "name": "Gross Sales", "formula": "Sum([Gross Sales])", "format": USD},
         {"id": "m_mix_returns", "name": "Returns", "formula": "Sum([Returns])", "format": USD},
+        # customer_category_mix is a GROUPED element, and [Metrics/...] references do not resolve
+        # inside one - they bind to the like-named column instead and the query dies. Ratio metrics
+        # on grouped elements must aggregate the columns directly.
         {"id": "m_mix_return_rate", "name": "Return Rate %",
-         "formula": "[Metrics/Returns] / [Metrics/Gross Sales]", "format": PCT},
+         "formula": "Sum([Returns]) / Sum([Gross Sales])", "format": PCT},
         {"id": "m_mix_orders", "name": "Orders", "formula": "Sum([Orders])", "format": NUM0},
         {"id": "m_mix_units", "name": "Net Units", "formula": "Sum([Net Units])", "format": NUM0},
         {"id": "m_mix_customers", "name": "Customers", "formula": "CountDistinct([Cust Key])", "format": NUM0},
         {"id": "m_mix_spend_per_customer", "name": "Spend per Customer",
-         "formula": "[Metrics/Net Sales] / [Metrics/Customers]", "format": USD},
+         "formula": "Sum([Net Sales]) / CountDistinct([Cust Key])", "format": USD},
     ],
 }
 

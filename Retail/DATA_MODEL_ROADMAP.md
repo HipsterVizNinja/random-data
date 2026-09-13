@@ -20,7 +20,7 @@ This plan ranks what to build next. Every claim below was verified by querying t
 | **Sales, labor, and traffic share an exact hourly grain.** | Retail sale timestamps span hours **9–20**; `F_LABOR` and `F_STORE_TRAFFIC` span hours **9–20**. Both facts are 3,332,953 rows, Store × Date × Hour, co-grained 1:1. A test join produced clean hourly conversion: **8.16% overall**, peaking **8.56% at noon** and 8.45% at 5pm, troughing 6.7% at 9am. |
 | **All facts align on one window.** | Sales, labor, traffic all run **2021-08-19 → 2025-10-18/19**. Inventory runs 2021-08-15 → 2025-10-12. `D_DATE` is wider (2021-01-03 →) but that's just calendar padding. |
 | **Omnichannel routing is fully encoded and completely unexploited.** | `Transaction Location Key` / `Fulfillment Location Key` are carried in `sales_orders` but never interpreted. Retail (536,065): store = txn = fulfillment. Web (122,713): txn always 9999 (warehouse); fulfillment = warehouse for 85,761 but **a store for 36,952 → ship-from-store**. BOPIS (38,148) and BOSS (20,821): txn 9999, fulfillment = a store. |
-| **Inventory is a sparse change-log over a full assortment.** | 220,296 store-product pairs = exactly 201 × 1,096 (every store carries every SKU). 5.95M rows over 218 weekly dates ≈ **27 changes per pair**, so a dense weekly position requires last-value-carried-forward. **23.5% of rows sit at zero on hand; 25.4% at or below reorder point.** |
+| **Inventory is a sparse change-log over a full assortment.** | 220,296 store-product pairs = exactly 201 × 1,096 (every store carries every SKU). 5.95M rows over 218 weekly dates ≈ **27 changes per pair**, so a dense weekly position requires last-value-carried-forward. ~~23.5% of rows sit at zero on hand; 25.4% at or below reorder point.~~ **Corrected during the Model 2 build: those row-weighted figures are artefacts. Time-weighted, stockout is 3.19% and below-reorder-point 6.57% — see the build log.** |
 | **Purchasing is clean but store-blind.** | 53,137 received PO lines + 452 in transit, **$979.8M**, one line per PO number, avg **−0.02 days** vs expected (on time in aggregate; the distribution is where the vendor signal lives). No `Store Key` — vendor/product grain only. |
 | **The org hierarchy is a tidy 3 levels.** | 200 Store Managers (one per store) → 18 AVPs → 5 RVPs. No store assignment above SM. 1,840 employees, **406 terminated (22% attrition)**. No recursion needed — a double self-join flattens it. |
 | **Marketing is day × source, sales are not attributed.** | `F_WEB_TRAFFIC` and `F_MARKETING_SPEND` are co-grained (1,522 days × 6 sources): Organic Search, Social, Paid Search, Direct, Referral, Email. **4.83M web visits → 122,713 web orders ≈ 2.54%.** No traffic source on any order, so ROAS is blended at day level, never per-source. |
@@ -55,7 +55,7 @@ This is the highest-value model in the mart and the only one that answers questi
 
 ---
 
-### 2. Retail Inventory & Replenishment
+### 2. Retail Inventory & Replenishment — ✅ BUILT 2026-09-13
 
 **Grain:** Store × Product × Week (5,954,664 change-log rows → ~48M dense weeks)
 **Sources:** `F_INVENTORY_SNAPSHOT`, `F_INVENTORY_ADJUSTMENT`, `F_PURCHASE_ORDER`, `D_VENDOR`, `D_PRODUCT`, `D_STORE`
@@ -93,7 +93,7 @@ The data is already in the published model; nobody has given it meaning. This is
 
 ---
 
-### 4. Retail Customer 360
+### 4. Retail Customer 360 — ✅ BUILT 2026-09-13
 
 **Grain:** Customer (4,971)
 **Sources:** `dim_customer`, `sales_orders`, `sales_activity`, `F_RETURNS`, `F_PRODUCT_REVIEW`
@@ -109,7 +109,7 @@ The data is already in the published model; nobody has given it meaning. This is
 
 ---
 
-### 5. Retail Marketing & Digital Funnel
+### 5. Retail Marketing & Digital Funnel — ✅ BUILT 2026-09-13
 
 **Grain:** Date × Traffic Source (9,132)
 **Sources:** `F_WEB_TRAFFIC`, `F_MARKETING_SPEND`, `dim_promotion`, `markdowns`, digital orders from `sales_orders`
@@ -177,9 +177,9 @@ These were settled yesterday and should hold across every new model:
 |---|---|---|
 | 1 | ~~**Store Operations**~~ ✅ | Built and verified 2026-09-13 — `07c9d946-3ccc-477d-8dd6-0ce4ebdf00bb` |
 | 2 | ~~**Omnichannel Fulfillment**~~ ✅ | Built and verified 2026-09-13 — `0fae0207-760c-45ff-838c-f9beff22c894` |
-| 3 | **Inventory & Replenishment** | Highest value of what remains, but the carry-forward problem needs real design time |
-| 4 | **Customer 360** | Unblocks the clienteling plan |
-| 5 | **Marketing Funnel** | Small, self-contained |
+| 3 | ~~**Inventory & Replenishment**~~ ✅ | Built and verified 2026-09-13 — `7a80315d-8faa-44cc-a5d0-18483bb3707e`. Built ahead of Omnichannel at request. |
+| 4 | ~~**Customer 360**~~ ✅ | Built and verified 2026-09-13 — `14327edf-2fe7-4263-9444-8330a0668117` |
+| 5 | ~~**Marketing Funnel**~~ ✅ | Built and verified 2026-09-13 — `ef97b1ac-88e6-471b-9aad-145b82b43a27` |
 | 6 | ~~**Workforce & Org**~~ ✅ | Built and verified 2026-09-13 — `273cce13-d3be-489c-9adf-20d69ef975fe` |
 
 ---
@@ -404,3 +404,209 @@ The second-order finding: **Ship-from-Store Rate has been dead flat at ~30.1% fo
 
 - **`folderId` goes in the request BODY, not the query string.** The OpenAPI schema lists it as required alongside `name` in `CreateDataModelSpec`. Passing it via `--params` puts it in the URL and returns the same misleading `"Unknown error in data model spec"` as omitting it entirely.
 - The Sigma CLI splits `--params` (path/query) from `--body` (request body). Passing a whole create payload to `--params` URL-encodes the entire spec into the query string and fails with a `builder error for url`.
+
+---
+
+## Build log — Model 5 shipped
+
+**Retail Marketing & Digital Funnel** — `ef97b1ac-88e6-471b-9aad-145b82b43a27`
+<https://app.sigmacomputing.com/playground-sean-miller/data-model/Retail-Marketing-and-Digital-Funnel-7i6upyuRpmhUANApeRwjt5>
+
+15 elements across 4 pages. Exposed as sources: `Date`, `Traffic Source`, `Promotion`, `funnel_source` (7 metrics), `funnel_day` (22 metrics). Hidden: 6 `SRC` references and 4 pre-aggregations (`web_daily`, `digital_daily`, `promo_day`, `markdown_day`). Spec generator committed as `gen_marketing_funnel.py`.
+
+### Verified against every pre-build benchmark
+
+| Check | Expected | Actual |
+|---|---|---|
+| `funnel_source` rows | 9,132 = 1,522 days × 6 sources | **9,132 / 1,522 / 6** ✅ |
+| `funnel_day` rows | 1,522 (no fan-out) | **1,522** ✅ |
+| Web visits | 4,834,940 | **exact** ✅ |
+| Marketing spend | $1,564,043.87 | **exact** ✅ |
+| Web orders / conversion | 122,713 / 2.54% | **122,713 / 2.5380%** ✅ |
+| Digital orders / conversion | 181,682 / 3.76% | **181,682 / 3.7577%** ✅ |
+| Digital gross / returns / net | $297,012,840.24 / $26,766,803.85 / $270,246,036.39 | **exact on all three** ✅ |
+| Total gross sales (all channels) | $1,178,971,663.73 | **exact** ✅ |
+| Digital return rate | 9.01% vs 5.44% company | **9.012%** ✅ |
+| Revenue per visit / Blended ROAS | $61.43 / 189.90 | **exact** ✅ |
+| Markdowns vs price resets | 1,118 / 4,933 | **exact** ✅ |
+| Promotional days | 288 of 1,522 | **288** ✅ |
+| Cross-model tie to `sales_activity` | all five digital aggregates | **exact** ✅ |
+| Null audit on every join key | 0 | **0** ✅ |
+
+### Three findings that changed the design mid-build
+
+1. **Two of the six sources are free, and blending them destroys every efficiency metric.** Direct and Organic Search record **$0 spend on all 1,522 days** — not missing data, genuinely unpaid — yet they supply 2,148,437 visits, **44.4% of all sessions**. A blended cost per visit ($0.3235) is therefore ~1.8× understated against paid media. `Is Paid Source` and `Source Group` ship on the Traffic Source dimension so every efficiency figure can be restricted to traffic that actually cost something.
+
+2. **The roadmap's 2.54% baseline understates conversion, because BOPIS and BOSS are also web sessions.** All three digital channels transact at location 9999 — they are placed online and are outcomes of the same traffic. Web-only conversion is 2.5380%; **Web + BOPIS + BOSS is 3.7577%**, half again as high. Both ship (`Web Conversion Rate %` and `Digital Conversion Rate %`) rather than picking one, since 2.54% is the published baseline and 3.76% is the honest funnel number.
+
+3. **Returns are dated by the SALE date, not the refund date — a deliberate break from Sales Activity.** A ROAS denominator has to face the revenue that the spend actually bought. `digital_daily` groups on `Sale Date`, so a refund lands on the day of the order that produced it and each day is one cohort. All-time totals are unaffected and tie exactly to `sales_activity` ($26,766,803.85); only the day-by-day distribution differs, and the element description says so.
+
+Also encoded: **4,933 of the 6,051 `F_MARKDOWN` rows carry `Discount Percent = 0`** — they are price *resets* back to full price, not markdowns. Counting the ledger raw overstates promotional pressure five-fold, so `Markdowns` and `Price Resets` ship as separate columns.
+
+### First insight off the model — the promotion calendar does nothing
+
+288 promotional days against 1,234 clean ones, and the promotions are invisible in the demand data:
+
+| | Promo days | Non-promo days | Δ |
+|---|---|---|---|
+| Days | 288 | 1,234 | |
+| Visits / day | 3,102 | 3,194 | **−2.9%** |
+| Digital orders / day | 117.5 | 119.8 | **−1.9%** |
+| Digital revenue / day | $192,434 | $195,779 | **−1.7%** |
+| Conversion | 3.7868% | 3.7511% | +1.0% rel. |
+| Revenue per visit | $62.03 | $61.29 | +1.2% |
+
+Promotions run 10–34% off, yet promotional days draw *fewer* visits and book *less* revenue than ordinary days. The conversion and revenue-per-visit edges are under 1.2% relative — noise at this sample. Whatever the promotion calendar is doing, it is not moving digital demand, and any "Promo Lift" metric built on this data would report roughly zero.
+
+The paid-media picture is the actionable one: **Paid Search costs $1.0041 per visit and Social $0.3976 — 2.5× cheaper — yet Paid Search absorbs $1,061,418 of the $1,564,044 total spend (67.9%) to deliver *fewer* visits than Social** (1,057,068 vs 1,105,799). Email is cheapest of all at $0.0301. Shifting budget from Paid Search toward Social and Email is the obvious first test, with the caveat below.
+
+**Do not plan against ROAS from this model.** Blended ROAS reads 189.90× because total recorded spend ($1.56M) is 0.53% of digital revenue ($297M). That is a property of the synthetic dataset, not a business result. Cost per visit, spend mix and conversion are sound; ROAS is retained only for completeness.
+
+### API gotchas worth remembering
+
+- **`in (...)` is not a valid Sigma formula operator.** `[Col] in ("A", "B")` is rejected as a *schema* error, with no hint that a formula is at fault — the same trap as `And()` / `Or()`. Use an infix `or` chain: `[Col] = "A" or [Col] = "B"`. This alone produced all 33 errors on the first submission, cascading from 5 source columns into every element that referenced them, which badly overstates how localised the fault is. Bisect by page, then by element, then by formula.
+- **Non-equi joins DO work** and are undocumented in the obvious places: `columns: [{left, right, op: ">="}]` accepts `<`, `<=`, `=`, `!=`, `>=`, `>`. That is what explodes the 52 promotions onto the calendar (`Date Key >= Start Date and Date Key <= End Date`) without a cross join, which the spec has no way to express. Verified in the generated SQL.
+
+---
+
+## Build log — Model 4 shipped
+
+**Retail Customer 360** — `14327edf-2fe7-4263-9444-8330a0668117`
+<https://app.sigmacomputing.com/playground-sean-miller/data-model/Retail-Customer-360-C6VemfRKjSrdXE0y9n4Ld>
+
+27 elements across 4 pages. Visible: `Customer` (dim, extended with the birthday block), `Date`, `Product`, `Store`, `Salesperson`, plus `customer_profile` (71 columns, 27 metrics), `customer_reviews` (26 columns, 8 metrics) and `customer_category_mix` (9 columns, 8 metrics). 19 hidden source and build elements. Spec generator committed as `gen_customer_360.py`; regenerate and re-publish with `api data-models spec update`.
+
+### Verified against every pre-build benchmark
+
+| Check | Expected | Actual |
+|---|---|---|
+| `customer_profile` rows | 4,972 (one per customer, no fan-out) | **4,972** ✅ |
+| Purchasing customers | 4,867 | **4,867** ✅ |
+| Never-transacted customers retained | 105 | **105** ✅ |
+| Orders | 717,747 | **717,747** ✅ |
+| Gross Sales | $1,178,971,663.73 | **exact** ✅ |
+| Returns / Return Rate % | $64,116,011.81 / 5.44% | **exact / 5.438%** ✅ |
+| Net Sales | $1,114,855,651.92 | **exact** ✅ |
+| `customer_reviews` rows / reviewers / avg rating | 137,944 / 4,442 / 4.014 | **exact** ✅ |
+| `customer_category_mix` net sales | ties to company net sales | **ties exactly** ✅ |
+| Digital order mix | 25.31% | **25.31%** ✅ |
+| Null audit on every join key | 0 | **0** ✅ |
+
+### Four decisions that departed from the plan
+
+1. **The grain is the customer dimension, not the fact.** 4,972 customers exist; only 4,867 have ever transacted. Building off `sales_activity` would have silently dropped 105 people and understated the base. Everything LEFT JOINs onto the dimension, `Has Purchased` marks the difference, and the metric layer carries **both** `Customers` (4,972) and `Purchasing Customers` (4,867) so a rate can never quietly pick the wrong denominator.
+
+2. **RFM ships as three continuous columns, not as 1–5 scores.** This base is extraordinarily dense — median **140 orders** per customer, and 80% of customers bought within **38 days** of the As Of Date. Quintile cut points computed on it (recency 2/4/7/38 days) are meaningless and would rot the moment the data moved. Recency Days, Orders and Lifetime Net Sales ship raw; workbooks cut their own quintiles.
+
+3. **Churn is cadence-relative, not calendar-relative.** A fixed 90-day-inactive rule flags almost nobody here. `Cadence Ratio` divides each customer's recency by *their own* average gap between orders, and `Churn Risk` bands it: **Lapsed 657, Stretching 306, On Cadence 3,903, Unknown 106**. This is the design decision the model turns on — see the insight below for why absolute recency gets the answer backwards.
+
+4. **No "favourite category" column.** A single winner hides the mix, so category affinity ships as its own `customer_category_mix` element at Customer × Type × Family; sorting it by Net Sales recovers the favourite when that is genuinely what is wanted.
+
+### Two traps found and encoded in element descriptions
+
+- **`customer_category_mix` adds up in dollars but not in orders.** Net Sales over the whole element reconciles exactly to company net sales, because every order line belongs to one family. Orders does not: a basket spanning three families is counted in each, so summing gives **3,270,599 against a true 717,747 — 4.6× high**. Use Orders only within a family.
+- **Birthday is null for 2,559 of 4,972 customers (51%).** The clienteling plan is written against birthday campaigns; at best they reach half the base. `Has Birthday` ships as the denominator guard.
+
+Also confirmed: `Verified Purchase` is not merely constant `'Y'` but *redundant* — all 137,944 reviews were independently matched to a real purchase of that product by that customer. It is dropped, and the description now records that a review here genuinely does imply a purchase.
+
+### First insight off the model — losing the associate loses the customer
+
+Customers whose primary salesperson has been **terminated lapse at 29.4%, against 12.5% for those whose associate is still active — 2.4× the rate**, with average recency of 131 days against 52.
+
+| Primary associate | Customers | Lapsed | Lapsed % | Avg recency | Lifetime value |
+|---|---|---|---|---|---|
+| Active | 4,571 | 570 | 12.5% | 52 days | $1,054.3M |
+| **Terminated** | **296** | **87** | **29.4%** | **131 days** | **$60.6M** |
+
+That is a named, finite reassignment queue — 296 customers worth $60.6M, of whom 209 have not lapsed yet — and it is exactly what `clienteling-app-plan.md` needs. `Primary Salesperson Status` ships on the profile for this reason.
+
+The loyalty data makes the case for cadence-relative churn better than any argument could. The vendor-supplied `at_risk` tier carries by far the **worst absolute recency (118–125 days versus 5–6 for platinum)** — yet those customers lapse *less* than untiered ones (12.0–13.6% vs 14.6–17.7%). They are not at risk; they are slow-and-steady buyers with long natural cadences, and a recency-threshold churn model would have chased all 750 of them while missing the untiered group that is actually leaving.
+
+### API gotchas worth remembering
+
+- **Sigma has no arg-max aggregate**, so "the store/associate this customer uses most" takes the explicit three-element shape: count per customer-per-key, take the per-customer max, rejoin and keep the key sitting at that max with `Min(If(count = max, key, Null))`. `Min` breaks ties deterministically on the lowest key. Resolved cleanly for all 4,867 purchasers, and never exceeded each customer's total orders.
+- **Column formulas resolve against source elements, not sibling columns of the same element.** `Churn Risk` could not reference `[Cadence Ratio]` next to it; the cadence arithmetic has to be composed in the generator and inlined at every use. Build long formulas from shared Python fragments so the definition still lives in one place.
+- **A model-wide scalar reaches every row via a constant join key.** The single-row `As Of` element (`Max(Sale Date)` grouped by a literal `1`) joins to a matching constant on the spine. That constant lives on a hidden `Customer Spine` element rather than on the conformed `Customer` dimension, so the dimension stays clean for downstream models.
+- **The grouped-element `[Metrics/…]` trap bit here too, and only showed up on query.** `customer_category_mix` carries a `groupings` block, so its `Return Rate %` and `Spend per Customer` metrics — written as `[Metrics/Returns] / [Metrics/Gross Sales]` — bound to the like-named *columns* and failed with `Column "…--metric-["activity_type"]" does not exist`. The spec published clean and the sum metrics all worked; only the ratios broke. On grouped elements aggregate columns directly (`Sum([Returns]) / Sum([Gross Sales])`), and **query every ratio metric after publishing** — a successful write proves nothing about them.
+
+---
+
+## Build log — Model 2 shipped
+
+**Retail Inventory & Replenishment** — `7a80315d-8faa-44cc-a5d0-18483bb3707e`
+<https://app.sigmacomputing.com/playground-sean-miller/data-model/Retail-Inventory-and-Replenishment-3J9EbBJ9tkvi6KYgk3iHvM>
+
+9 exposed elements across 5 pages: `Product`, `Store`, `Date`, `Vendor`, `Inventory Weekly` (21 metrics), `Inventory Current` (15 metrics), `Inventory Changes` (8 metrics), `Inventory Adjustments` (8 metrics), `Purchase Orders` (10 metrics), plus 6 hidden build elements. Spec generator committed as `gen_inventory.py`; regenerate and re-publish with `api data-models spec update`.
+
+### The carry-forward problem, solved
+
+The plan above left the central decision open — carry last value forward, or accept a point-in-time-only element. **We built the dense position**, and it cost less than expected: a full aggregate over all 48M rows returns in ~21 seconds.
+
+The mechanism, in two hidden elements:
+
+1. `inv_changes_base` sorts by Store Key, Product Key, Effective Start Date and calls `Lead()` to find each row's successor. **Sigma's `Lead()` takes no partition argument** — it orders by the element's `sort` and nothing else, and passing group-by arguments fails with `Argument 3 invalid for function 'Lead'`. The partition is therefore enforced in the formula, by guarding that the next row belongs to the same pair: `If(Lead([Store Key]) = [Store Key] and Lead([Product Key]) = [Product Key], Lead([Effective Start Date]), Null)`. That yields `Weeks In Force` per change.
+2. `inv_weekly_base` cross-joins those changes to a 218-row week spine on a constant key, then an element-level `filters` entry keeps only the weeks each change was actually in force. That filter is not cosmetic — it is what compiles the cross join into a range join. Without it the element is 1.3 billion rows.
+
+Two facts made this tractable, both verified before any spec was written: the week spine is perfectly regular (218 Sundays, every gap exactly 7 days), so `Week Index` is pure arithmetic rather than a `RowNumber()`; and **every one of the 220,296 pairs has a row on the first date**, so the carry-forward has no leading nulls to handle.
+
+The windowed computation lands in an inner subquery, so downstream filters cannot silently recompute it over a filtered row set — which would have made any date-filtered query quietly wrong.
+
+### The finding that changes the headline number
+
+**Row-weighted stockout is 23.46%. Time-weighted stockout is 3.19%.** A factor of 7.4.
+
+The change log over-represents stockouts massively, because a stockout is resolved quickly — average duration **1.10 weeks** — and therefore generates a change row almost immediately, while a healthy position can sit unchanged for months and generate none. Counting rows counts *events*; counting weeks counts *time*. Only the second is a stockout rate.
+
+The plan's pre-build figure of "23.5% of rows at zero on hand" was this artefact. Both weightings are now published side by side as metrics on `Inventory Changes`, the misleading one named `Stockout % (Row-Weighted - MISLEADING)`, so the trap is visible rather than merely avoided.
+
+### Verified against every benchmark
+
+| Check | Expected | Actual |
+|---|---|---|
+| `Inventory Weekly` rows | 220,296 × 218 = 48,024,528 | **48,024,528** ✅ |
+| Stores / products / weeks | 201 / 1,096 / 218 | **201 / 1,096 / 218** ✅ |
+| On-hand unit-weeks | 262,103,096 | **262,103,096** ✅ |
+| Time-weighted stockout | 3.19% | **3.1861%** ✅ |
+| Time-weighted below reorder point | 6.57% | **6.5709%** ✅ |
+| Avg on hand per store-SKU | 5.458 | **5.4577** ✅ |
+| Net units vs Sales Activity | 8,584,150 | **8,584,150** ✅ |
+| Net sales vs Sales Activity | $1,114,855,651.92 | **$1,114,855,651.92** ✅ |
+| Net COGS vs Sales Activity | $895,884,767.32 | **$895,884,767.32** ✅ |
+| `Inventory Current` rows | 220,296 (one per pair) | **220,296** ✅ |
+| Current on hand / at cost | 1,194,313 u / $260,485,156.88 | **exact** ✅ |
+| Current stocked out / below ROP | 7,239 / 14,178 | **7,239 / 14,178** ✅ |
+| `Inventory Changes` weeks covered | 48,024,528 | **48,024,528** ✅ |
+| Stockout events / weeks | 1,396,947 / 1,530,108 | **exact** ✅ |
+| PO lines / value / on-time | 53,589 / $987,898,638.38 / 65.84% | **exact** ✅ |
+| PO avg days vs expected | −0.018 | **−0.01754** ✅ |
+| Adjustments / net units | 66,088 / −416,623 | **exact** ✅ |
+| Null audit on join keys | 0 | **0 on product, store, date, cost, vendor** ✅ |
+
+`Weeks Covered` on the change log equalling the dense row count exactly is the strongest single check: it proves the carry-forward accounts for every store-product-week once and only once, with no gap and no double count.
+
+### A bug caught in verification, worth generalising
+
+The first publish had `Inventory Turns`, `GMROI` and `Sell-Through %` dividing a **total** (Net COGS, Net Units Sold) by a **per-pair average** (Avg Inventory at Cost per store-SKU). The metrics resolved, returned numbers, and were nonsense — turns of 179,807 and sell-through of 99.99993%.
+
+Nothing about that fails validation. It only surfaced because the values were checked against what they ought to mean. **Ratio metrics must have numerator and denominator at the same aggregation level**, and on a fact whose grain is finer than the business entity, "average" is ambiguous until you say average *over what*. The model now publishes both explicitly: `Avg Inventory at Cost` (total position, the denominator for turns and GMROI) and `Avg Inventory at Cost per Store-SKU` (unit economics), each with a description saying which is which. Corrected: **0.82 turns a year, GMROI 0.84**.
+
+### First insight off the model
+
+Inventory capital and replenishment attention are pointed in opposite directions. Across the 200 selling stores:
+
+| Segment | Pairs | Units | At cost | Below reorder point |
+|---|---|---|---|---|
+| Never sold a unit on net, 4 years | 77,103 | 769,381 | **$184.8M** | **1** |
+| Sold historically, nothing in 13 weeks | 49,303 | 103,002 | $34.8M | 66 |
+| Currently selling | 92,794 | 203,017 | **$28.8M** | **13,546** |
+
+**71% of store inventory value sits in store-SKU combinations that have never sold a single unit**, and the reorder-point logic has essentially nothing to say about it — one flagged pair out of 77,103. Meanwhile all the replenishment pressure, 13,546 of 13,613 flagged pairs, lands on the 11% of capital that is actually moving.
+
+Reorder points are calibrated to velocity, so dead stock never trips them; it simply sits. The obvious first test is a carrying-cost review of the never-sold tail, which is a far larger sum than anything the replenishment queue is currently arguing about.
+
+### API notes to carry forward
+
+- `schemaVersion: 1` is required on **update** as well as create. Omitting it returns `"Syntax error in data model spec"` — the same message as a malformed body, which sends you looking in the wrong place.
+- Element-level `filters` use `{kind, mode: "include"|"exclude", values: [...]}`. An `include:` key is silently accepted and **does nothing** — the predicate renders as a projected column instead of a `WHERE`, and the element quietly returns every row. Always confirm the filter compiled by grepping the generated SQL for `where`.
+- `RunningSum` is not a Sigma function (`Unknown function RunningSum`), and there is no cumulative max. `Lead`, `Lag`, `RowNumber` and `Rank` all work but order by the element's `sort` only.
+- `api data-models elements query get` returning the generated SQL remains the fastest correctness check — unresolved references appear as string literals in the SELECT rather than as errors.

@@ -348,6 +348,117 @@ funnel_day = {
  ],
 }
 
+# ------------------------------------------------------------------ Metric descriptions
+# Keyed by metric id. All-time values quoted here were verified against the published
+# model on 2026-09-13 and against the source CSVs before the build.
+MET_DESC = {
+ # ---- Funnel by Source (Date x Traffic Source) ----
+ "m_s_visits":
+   "Web sessions from this source on these days. 4,834,940 all-time across the six sources. "
+   "This is the only volume measure in the model that is genuinely attributable to a source.",
+ "m_s_spend":
+   "Media spend booked against this source. $1,564,043.87 all-time. "
+   "Always $0 for Direct and Organic Search - those are free traffic, not missing data - so a total "
+   "across all six sources is a paid-media total even though it looks like a total for everything.",
+ "m_s_paid_visits":
+   "Sessions from the four sources that record spend (Paid Search, Social, Email, Referral). "
+   "2,686,503 all-time, 55.6% of traffic.",
+ "m_s_free_visits":
+   "Sessions from Direct and Organic Search, which cost nothing on all 1,522 days. "
+   "2,148,437 all-time - 44.4% of all traffic arrives free.",
+ "m_s_cpv":
+   "Spend divided by ALL visits, paid and free together. $0.3235 all-time. "
+   "Diluted by construction: 44.4% of the denominator cost nothing. Use Cost per Paid Visit to judge "
+   "media efficiency, and this only when you deliberately want blended cost of all traffic.",
+ "m_s_paid_cpv":
+   "Spend divided by visits from spending sources only. $0.5822 all-time - about 1.8x the blended figure. "
+   "This is the honest media efficiency number. Per source: Paid Search $1.0041, Social $0.3976, "
+   "Referral $0.2022, Email $0.0301.",
+ "m_s_paid_share":
+   "Share of sessions that came from a source with spend against it. 55.6% all-time. "
+   "Falling share means growing free traffic, not falling media performance - read it alongside Spend.",
+
+ # ---- Funnel Day (Date) ----
+ "m_d_visits":
+   "Web sessions this day, summed across all six sources. 4,834,940 all-time. "
+   "The denominator for every conversion and per-visit metric on this element.",
+ "m_d_paid_visits":
+   "Sessions from Paid Search, Social, Email and Referral. 2,686,503 all-time (55.6%).",
+ "m_d_spend":
+   "Total media spend this day. $1,564,043.87 all-time - only 0.53% of digital revenue, which is why "
+   "every ROAS metric here reads implausibly high. See Blended ROAS.",
+ "m_d_paid_media_spend":
+   "Paid Search + Social only. $1,501,129.55 all-time, 96.0% of total spend. "
+   "Excludes Email and Referral, which record spend but behave as owned/earned channels.",
+ "m_d_cpv":
+   "Marketing Spend divided by Web Visits. $0.3235 all-time. Blended across paid and free traffic - "
+   "for media efficiency use Cost per Paid Visit on Funnel by Source instead.",
+ "m_d_web_orders":
+   "Distinct orders on the pure-play Web channel, excluding BOPIS and BOSS. 122,713 all-time. "
+   "Numerator of the published 2.54% baseline conversion rate.",
+ "m_d_digital_orders":
+   "Distinct Web + BOPIS + BOSS orders. 181,682 all-time. All three transact at location 9999, so all "
+   "three are outcomes of the same web sessions - this, not Web Orders, is the true funnel outcome.",
+ "m_d_web_conv":
+   "Web Orders / Web Visits. 2.5380% all-time. This is the roadmap's published baseline, kept for "
+   "continuity, but it understates the funnel by excluding BOPIS and BOSS. Prefer Digital Conversion Rate %.",
+ "m_d_digital_conv":
+   "Digital Orders / Web Visits. 3.7577% all-time - half again the web-only rate. "
+   "The honest measure of what a web session is worth, because BOPIS and BOSS orders are placed online too. "
+   "BLENDED ACROSS SOURCES: no order carries a traffic source, so this can never be split by channel.",
+ "m_d_gross":
+   "Web + BOPIS + BOSS gross sales for orders PLACED this day. $297,012,840.24 all-time. "
+   "Ties exactly to the Retail Sales Activity model.",
+ "m_d_returns":
+   "Refunds against digital orders placed this day, wherever the refund later landed (cohort-dated, not "
+   "refund-dated), so returns face the spend that bought the revenue. $26,766,803.85 all-time - identical "
+   "to Sales Activity; only the day-by-day distribution differs.",
+ "m_d_net":
+   "Digital Gross Sales less cohort returns. $270,246,036.39 all-time.",
+ "m_d_return_rate":
+   "Digital Returns / Digital Gross Sales. 9.01% all-time, against 5.44% company-wide and 4.23% in-store. "
+   "Digital returns run more than 2x the in-store rate - the single largest cost of digital growth.",
+ "m_d_margin":
+   "Digital Net Sales less digital cost of goods. $52,668,135.12 all-time. Struck AFTER returns, not before - "
+   "the pre-returns figure is $57.9M, so returns cost roughly $5.2M of digital margin.",
+ "m_d_margin_pct":
+   "Digital Gross Margin / Digital Net Sales. 19.49% all-time.",
+ "m_d_rpv":
+   "Digital Gross Sales / Web Visits. $61.43 all-time. The clearest single measure of session value, and "
+   "the right yardstick for judging whether a traffic push paid off. Blended across sources by construction.",
+ "m_d_aov":
+   "Digital Gross Sales / Digital Orders. $1,634.80 all-time, effectively identical to the in-store basket "
+   "($1,645.25) - digital in this business is not a lower-value channel, only a higher-returning one.",
+ "m_d_cac":
+   "Marketing Spend / Digital Orders. $8.61 all-time. An acquisition cost only in the loosest sense: "
+   "44.4% of traffic is free and no order is attributed to a source, so this is cost per order across all "
+   "demand, not cost of a media-acquired order.",
+ "m_d_roas":
+   "Digital Gross Sales / Marketing Spend. 189.90x all-time. DO NOT PLAN AGAINST THIS. Recorded spend is "
+   "0.53% of digital revenue, a property of the dataset rather than a business result, and the revenue is "
+   "blended across paid and free traffic. Retained for completeness; use Cost per Visit and Revenue per "
+   "Visit for real decisions.",
+ "m_d_net_roas":
+   "Digital Net Sales / Marketing Spend. 172.79x all-time. Same caveat as Blended ROAS - it is the "
+   "17-point gap against the gross figure, not the level, that carries the return-rate signal.",
+ "m_d_total_gross":
+   "Gross sales across ALL channels including in-store. $1,178,971,663.73 all-time, tying exactly to the "
+   "Retail Sales Activity model. Present only as the denominator for Digital Mix % - this model has no "
+   "traffic or funnel data for in-store demand.",
+ "m_d_digital_mix":
+   "Digital Gross Sales / Total Gross Sales (All Channels). 25.19% all-time. "
+   "Rising mix is the mechanism behind the company return rate worsening while every individual channel's "
+   "return rate improves - see the Retail Omnichannel Fulfillment model.",
+}
+
+for _el in (funnel_source, funnel_day):
+    for _m in _el["metrics"]:
+        _d = MET_DESC.get(_m["id"])
+        if _d is None:
+            raise SystemExit(f"metric without description: {_el['id']}.{_m['id']}")
+        _m["description"] = _d
+
+
 spec = {
  "name":"Retail Marketing & Digital Funnel",
  "description":"Date x Traffic Source acquisition and daily digital conversion. The only view of demand before it becomes a transaction. KNOWN LIMIT, BY DESIGN: no order in this dataset carries a traffic source, so per-source ROAS is not derivable - spend and visits are modelled per source, revenue only per day and explicitly blended. Sources conformed dimensions from the Retail Sales Activity model.",

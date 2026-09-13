@@ -469,6 +469,63 @@ employee_period = {
  ],
 }
 
+# ---------------------------------------------------------------- Metric documentation
+# Every published metric carries a description. The assertion below fails the build if a
+# metric is ever added without one, so the published model cannot drift out of documentation.
+METRIC_DESCRIPTIONS = {
+ # --- Org
+ "m_o_employees":"Distinct headcount on the org roster: 1,840, being 1,617 commissioned selling associates plus 223 salaried leaders.",
+ "m_o_terminated":"Employees whose Employment Status is Terminated. 406 company-wide, every one of them a commissioned associate.",
+ "m_o_attrition":"Terminated as a share of headcount. 22.07% company-wide, but that blends 25.11% associate attrition with exactly 0% leadership attrition - not one Store Manager, AVP or RVP has ever left. Split by Compensation Type before quoting this.",
+ "m_o_span":"Average number of direct reports across people who actually manage someone; individual contributors are excluded from the denominator rather than dragging it toward zero. 8.09 for Store Managers, 11.11 for AVPs, 3.60 for RVPs.",
+ "m_o_tenure":"Mean corrected tenure - hire-to-today for active employees, hire-to-termination for leavers. Built on the corrected Tenure Years column, never the as-reported one, which keeps accruing after someone has left.",
+ "m_o_tenure_exit":"Mean years actually served by employees who have left, hire to termination. 2.64 years. Null for active employees, so this is a leaver-only statistic and will not move when headcount grows.",
+ "m_o_salary":"Total annual salary. Only the 223 salaried leaders carry a salary; commissioned associates are null and contribute nothing, so this is a leadership payroll figure, not a company one.",
+ # --- Employee Performance
+ "m_p_employees":"Distinct employees on the roster, 1,840. Includes the 223 salaried leaders, who can never be attributed a sale - use Associates as the denominator for anything sales-related.",
+ "m_p_associates":"Commissioned selling associates only, 1,617 of 1,840. Leadership is salaried and sells nothing.",
+ "m_p_selling":"Associates with at least one attributed order, 1,522. The other 95 are almost all leavers who exited before the fact window opened and so have no sales to attribute.",
+ "m_p_net_sales":"Attributed sales net of returns. $1,114,855,651.92 all-time, tying exactly to the Retail Sales Activity model: every order line carries a Salesperson Key, so 100% of company sales attribute here with no unallocated residual.",
+ "m_p_gross_sales":"Attributed sales before returns. $1,178,971,663.73 all-time.",
+ "m_p_returns":"Refund value attributed to the associate who SOLD the item, expressed positive. $64,116,011.81 all-time. Not the associate who processed the return - this is a selling-quality measure, not a service-desk workload.",
+ "m_p_return_rate":"Returns as a share of gross sales, 5.44% company-wide. A genuine associate-quality signal, since over-promising at the point of sale surfaces here rather than in the sales number.",
+ "m_p_margin":"Net sales less net cost of the goods attributed to this associate. Mix-sensitive: an associate selling higher-margin lines will lead on this while trailing on Net Sales.",
+ "m_p_orders":"Distinct orders attributed, 717,747 all-time. Counted once per associate across the entire window, so unlike Employee Period's Orders Touched this is safe to aggregate at any grouping.",
+ "m_p_units":"Units sold net of units returned.",
+ "m_p_commission":"Each employee's net sales times their OWN commission rate, then summed. $30,839,726.62 all-time. Computed per employee before summing because the rate varies within tier - applying an average rate to total sales gives a different, wrong answer.",
+ "m_p_eff_rate":"Blended commission cost per dollar of net sales, 2.77%. Differs from the average of Commission Rate because rate varies within tier and higher-rate tiers do not sell proportionally more.",
+ "m_p_sales_per_assoc":"Net sales per associate who actually sold. Divides by Selling Associates rather than Associates so the 95 with no attributed sales do not deflate it. NOT comparable across tenure bands - it scales with time present, so use Net Sales per Active Day for any performance comparison.",
+ "m_p_active_days":"Days employed inside the sales-fact window, summed across ALL employees including salaried leadership. Exposure, not effort. For productivity denominators use Associate Active Days instead.",
+ "m_p_assoc_active_days":"Active days for commissioned associates only, 1,613,138 of 1,881,434. The correct denominator for productivity: leadership accrues active days but can never be attributed a sale, so including them silently deflates any rate.",
+ "m_p_sales_per_day":"THE productivity metric, $691.11 company-wide. Divides by time actually worked inside the fact window and by commissioned associates only, so it is undistorted by tenure, by mid-window hires and leavers, and by leadership headcount. This is what shows the tenure-to-productivity curve to be flat (721/day under 1 year vs 648/day past 8), where all-time Net Sales makes it look like an 8x ramp.",
+ "m_p_aov":"Net sales per attributed order, $1,553.27 company-wide. Basket size - pair with Orders per Active Day, which is transaction velocity, to see which of the two an associate actually drives.",
+ "m_p_orders_per_day":"Attributed orders per commissioned associate-day, 0.44 company-wide. Transaction velocity, independent of basket size.",
+ "m_p_terminated":"Employees who have left, 406 - all of them commissioned associates.",
+ "m_p_attrition":"22.07% company-wide, but that blends two very different populations: associate attrition is 25.11% and leadership attrition is exactly 0%. Always split by Compensation Type before quoting this.",
+ "m_p_span":"Average direct reports across people who actually manage someone, 8.23 pooled - 8.09 for Store Managers, 11.11 for AVPs, 3.60 for RVPs. Individual contributors are excluded from the denominator.",
+ "m_p_tenure":"Mean corrected tenure - hire-to-today for actives, hire-to-termination for leavers. Never built on Tenure Years (As Reported), which keeps accruing after termination and overstates leaver tenure by 2.53 years.",
+ "m_p_tenure_exit":"Mean years actually served by leavers, hire to termination, 2.64 years. Null for actives, so this is a leaver-only statistic.",
+ "m_p_salary":"Total annual salary. Only the 223 salaried leaders carry one; associates are null and contribute nothing.",
+ # --- Employee Period
+ "m_pp_net_sales":"Attributed sales net of returns for the fiscal period. Sums across periods to $1,114,855,651.92. A refund lands as a negative amount in the period the RETURN happened, not the period of the original sale, which is the correct accounting treatment but means a heavy return period can show negative net sales for an associate.",
+ "m_pp_gross_sales":"Attributed sales before returns, within the fiscal period.",
+ "m_pp_returns":"Refund value landing in this fiscal period, expressed positive. Belongs to the period of the RETURN; the sale being refunded may sit in an earlier period.",
+ "m_pp_return_rate":"Returns as a share of gross sales within the period. Noisy at this grain because a return can lag its sale by a period or more, so the numerator and denominator are not describing the same transactions - prefer a trailing multi-period window, or use the Employee Performance version for an all-time read.",
+ "m_pp_orders":"Distinct orders PLACED in the period. Additive across every grouping and ties to 717,747 company-wide, unlike Orders Touched.",
+ "m_pp_commission":"Period net sales times the associate's commission rate. Sums to $30,839,726.62 all-time.",
+ "m_pp_assoc":"Distinct associates with attributed activity in the grouping. Only associates who actually sold appear in this element - there are no zero rows for idle periods - so this is an activity count, not a headcount. For headcount use Employee Performance.",
+ "m_pp_sales_per_assoc":"Net sales divided by the associates who sold in the period. A period-local average, not a per-head productivity measure comparable across time; for that use Employee Performance's Net Sales per Active Day.",
+ "m_pp_aov":"Net sales per order placed in the period, $1,553.27 company-wide. Divides by Orders Sold; dividing by Orders Touched would inflate the denominator with later-period returns and understate the value.",
+}
+
+for _el in (dim_org, employee_performance, employee_period):
+    for _m in _el["metrics"]:
+        if _m["id"] in METRIC_DESCRIPTIONS:
+            _m["description"] = METRIC_DESCRIPTIONS[_m["id"]]
+    _missing = [_m["name"] for _m in _el["metrics"] if not _m.get("description")]
+    assert not _missing, f'{_el["id"]}: metrics missing a description: {_missing}'
+
+
 spec = {
  "name":"Retail Workforce & Org",
  "description":("Employee-grain workforce model: the three-level field hierarchy flattened, plus attributed sales, commission "
