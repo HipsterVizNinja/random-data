@@ -1,0 +1,115 @@
+# Healthcare Data Hub - validation expectations
+#
+# The design point that makes this suite useful: planted anomalies assert as
+# EXPECTED with a magnitude, not as failures. A suite that goes red on purpose
+# teaches nothing. One that reads "orphan servicing providers: expected 1,312,
+# actual 1,312, $2.9M exposure - CONTROLLED" is the artifact that wins a room
+# of data leaders.
+#
+# Severities
+#   ERROR    a genuine defect. validate.py exits non-zero. Never expected.
+#   WARN     worth a look, does not fail the build.
+#   INFO     reported for context, no pass/fail.
+#   EXPECTED a planted anomaly, asserted to be present at its stated size.
+
+meta:
+  dataset: Healthcare Data Hub
+  owner: Sean Miller
+  classification: SYNTHETIC
+
+# ---------------------------------------------------------------- reconciliation
+reconciliation:
+  money_identity_tolerance: 0.005      # allowed = paid+ded+copay+coins+cob
+  header_line_tie_tolerance: 0.011     # header total = SUM(line paid)
+  netting_tolerance: 1.00              # the two sanctioned nettings must agree
+  billed_ge_allowed_tolerance: 0.011
+
+# ------------------------------------------------------------ distribution bands
+distributions:
+  pmpm_commercial: [480.0, 620.0]
+  pmpm_medicare_advantage: [900.0, 1150.0]
+  # Design target was 0.55-0.60, which reflects an all-payer or Medicare
+  # weighted book. This population is ~94% commercial, where the published
+  # figure is nearer 0.50. Band widened rather than distorting the cost model.
+  top_1pct_cost_share: [0.22, 0.30]
+  top_5pct_cost_share: [0.50, 0.62]
+  admits_per_1000_commercial: [55.0, 70.0]
+  admits_per_1000_ma: [200.0, 260.0]
+  ed_per_1000_commercial: [150.0, 190.0]
+  ed_per_1000_ma: [400.0, 520.0]
+  alos_days: [3.9, 4.6]
+  paid_lag_median_days: [20, 26]
+  chronic_prevalence_tolerance_pp: 0.5
+  dm_given_htn: [0.18, 0.26]
+
+# --------------------------------------------------------- planted anomaly sizes
+# Each of these asserts EXPECTED. A value of null means "measure and report,
+# do not assert a band" - used where the magnitude is an emergent property.
+anomalies:
+  A1_autoclose:
+    day30_share_post_rule: [0.55, 0.72]
+    day30_share_other_sites: [0.00, 0.08]
+    confirmation_rate_at_site: [0.30, 0.46]
+    confirmation_rate_other_sites: [0.66, 0.78]
+  A2_leakage:
+    apparent_oon_at_site: [0.03, 0.10]
+    true_oon_at_site: [0.48, 0.60]
+    rank_by_apparent_best_is_1: 1
+    rank_by_true_worst_is_12: 12
+  A3_stale_directory:
+    site_code: ASC-SUMMIT
+    directory_status: PAR
+    contract_status_after_term: NONPAR
+  A4_undermatch:
+    unmatched_share: [0.025, 0.038]
+    skew_factor_at_site: [1.8, 3.0]
+  A5_overmatch:
+    master_persons_with_multiple_people: [30, 48]
+    detectable_by_sex_mismatch_min: 10
+  A6_roster_churn:
+    retro_terminated_members_min: 120
+    pmpm_improvement_pp: [2.0, 8.0]
+  A7_runout:
+    incomplete_months: ["2025-10", "2025-11", "2025-12"]
+    completeness_tolerance: 0.10
+  A8_overlap:
+    overlap_member_share: [0.030, 0.040]
+    acquired_group_overstatement_pct: [6.0, 16.0]
+  A9_duplicates:
+    duplicate_lines_min: 2000
+    surrogate_key_still_unique: true
+  A10_reversals:
+    naive_positive_only_overstatement_pct: [2.0, 12.0]
+    two_formulas_must_agree: true
+  A11_encoding:
+    unmapped_encounter_type_value: AMB
+    unmapped_share_of_ambulatory: [0.02, 0.05]
+    renumbered_site_dept_ids: 2
+  A12_orphan_providers:
+    orphan_lines_min: 1000
+    concentration_at_site: [0.55, 0.80]
+
+# ------------------------------------------------------- question-ladder targets
+# The build's definition of done. If these are absent the dataset failed even
+# if every row is internally consistent.
+question_ladder:
+  # Thresholds are floors that prove the finding is MATERIAL, not attempts to
+  # pin an exact figure. The realized dollar amounts are measured on every
+  # build and published in Deliverables/anomaly-manifest.json; the narrative
+  # points at those rather than quoting numbers that would drift.
+  #
+  # An earlier design quoted $2.7M for the headline leakage. That figure
+  # implied roughly ten times the real-world rate of musculoskeletal surgery
+  # per 1,000 lives, because it treated every confirmed specialty referral as
+  # an operation. Referrals are now split into consults and procedures at a
+  # realistic ratio, and the leakage lands in the high six figures for one
+  # clinic group over eighteen months - which is still a number that stops a
+  # board meeting.
+  leakage_dollars_min: 400000
+  summit_point_dollars_min: 400000
+  ortho_nr_rank_inverts: true
+  # Recapturability is REPORTED, not asserted. See the note in validate.py:
+  # at this panel size Northlake's in-network surgical capacity comfortably
+  # exceeds the leaked volume, so capacity is not the binding constraint and
+  # claiming otherwise would mean fabricating one.
+  recapturable_share: [0.25, 1.00]

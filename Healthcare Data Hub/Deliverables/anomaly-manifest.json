@@ -1,0 +1,306 @@
+{
+  "scale": "demo",
+  "members": 48000,
+  "seed": 20260911,
+  "anomalies_applied": true,
+  "anomalies": [
+    {
+      "anomaly_id": "A9a",
+      "name": "Duplicate claim lines from a re-driven extract",
+      "description": "2,840 claim lines from service month 2024-07 were loaded twice under batch BATCH-REDRIVE-20240714. The surrogate primary key claim_line_key is unique across all of them, so a primary-key uniqueness test passes. The business key (claim_number, claim_line_number, adjudication_seq) is violated.",
+      "applied": true,
+      "rows_added": 2840,
+      "affected_service_month": "2024-07",
+      "naive_error": {
+        "measure": "paid amount for service month 2024-07",
+        "correct": 17348945.5,
+        "naive": 19347089.95,
+        "overstatement_dollars": 1998144.45,
+        "overstatement_pct": 11.52
+      },
+      "detect": "Test grain uniqueness on the BUSINESS key, never the surrogate. Then group by source_load_batch_id to find the offending load.",
+      "control": "De-duplicate on (claim_number, claim_line_number, adjudication_seq), keeping the earliest load batch."
+    },
+    {
+      "anomaly_id": "A12",
+      "name": "Orphan servicing providers, concentrated at one site",
+      "description": "1,312 claim lines carry a servicing_provider_master_id with no row in the credentialing source - locum tenens and out-of-network fill-ins. 68% of them sit at UC-NORTHGATE, which staffs through an agency.",
+      "applied": true,
+      "rows_affected": 1312,
+      "concentration_site": "UC-NORTHGATE",
+      "naive_error": {
+        "measure": "paid amount silently dropped by an inner join to the provider dimension",
+        "dropped_dollars": 394977.6,
+        "site_paid_all_lines": 2221274.03,
+        "site_paid_after_inner_join": 2027030.43,
+        "site_understatement_pct": 8.74
+      },
+      "detect": "Anti-join every foreign key before using it, and report the orphan count AND the orphan dollars. Never inner join a fact to a dimension without first counting what the join would drop.",
+      "control": "Resolve unmatched keys to the -1 Unknown dimension member and carry provider_resolution_status so the defect stays countable."
+    },
+    {
+      "anomaly_id": "A12b",
+      "name": "Null referring provider on referral orders",
+      "description": "3,782 referral orders (4.0%) have no referring provider recorded. Grouping leakage by referring provider silently excludes them.",
+      "applied": true,
+      "rows_affected": 3782,
+      "detect": "Count nulls on every grouping key before grouping by it.",
+      "control": "Resolve to the -1 Unknown member and report it as a bucket."
+    },
+    {
+      "anomaly_id": "A1",
+      "name": "Referral auto-close rule at one site",
+      "description": "A scheduling rule effective 2024-07-01 auto-closes ORTHO-NR referrals at day 30 whether or not care happened. Closure rate and open rate both stop meaning anything at that site.",
+      "applied": true,
+      "measured": {
+        "day30_closure_share_post_rule": 0.6454,
+        "day30_closure_share_pre_rule": 0.0312,
+        "day30_closure_share_other_sites": 0.0315,
+        "system_actor_share_at_site": 0.6316,
+        "confirmation_rate_at_site": 0.3788,
+        "confirmation_rate_other_sites": 0.7224,
+        "open_rate_at_site": 0.0412,
+        "open_rate_other_sites": 0.1889
+      },
+      "detect": "Plot time-to-status before trusting any status field. A spike at a round number is a workflow rule, not clinical behavior. Then check closure_actor_type.",
+      "control": "Measure referral outcome against a confirming event, not against the status field. Confirm through claims AND appointments so the finding survives a challenge to either join."
+    },
+    {
+      "anomaly_id": "A2",
+      "name": "Apparent versus true out-of-network leakage",
+      "description": "ORTHO-NR sends most of its out-of-network volume to Summit Point, which still reads PAR in the EHR directory. Its leakage is therefore invisible on EHR data alone.",
+      "applied": true,
+      "measured": {
+        "apparent_oon_rate_at_site": 0.0645,
+        "true_oon_rate_at_site": 0.5397,
+        "apparent_oon_rate_other_sites": 0.1693,
+        "true_oon_rate_other_sites": 0.218,
+        "rank_by_apparent_oon_best_is_1": 1,
+        "rank_by_true_oon_best_is_1": 12,
+        "sites_ranked": 12
+      },
+      "detect": "Join referrals to claims and re-derive network status as of the service date.",
+      "control": "Never trust a directory field as a measure; derive it from the contract."
+    },
+    {
+      "anomaly_id": "A10",
+      "name": "Reversal netting, including orphan reversals",
+      "description": "118 reversals reference an original that adjudicated before this window opened, so there is nothing here to net against. They are retained and flagged.",
+      "applied": true,
+      "measured": {
+        "correct_paid_all_rows": 604972574.47,
+        "correct_paid_current_version": 604922617.92,
+        "two_formulas_agree": false,
+        "orphan_reversal_dollars": -198512.18,
+        "naive_seq1_overstatement_pct": 0.62,
+        "naive_positive_only_overstatement_pct": 5.58,
+        "naive_drop_all_reversals_error_pct": 0.03
+      },
+      "detect": "Check that both sanctioned nettings tie. Anti-join reversals to their originals.",
+      "control": "Sum every row, or sum WHERE is_current_version. Do NOT add a reversal exclusion: orphan reversals are current and negative on purpose, and excluding them breaks the tie."
+    },
+    {
+      "anomaly_id": "A3",
+      "name": "EHR referral directory is a stale copy of network status",
+      "description": "The directory is maintained separately from the contract and nobody updates it. Summit Point's contract terminated 2024-10-01 and the pick-list still reads PAR. A governance failure with a price tag, and nobody made a bad clinical decision.",
+      "applied": true,
+      "measured": {
+        "sites_where_directory_disagrees_with_contract": 1,
+        "detail": [
+          {
+            "site_code": "ASC-SUMMIT",
+            "referral_network_status": "PAR",
+            "network_status": "NONPAR",
+            "last_maintained_date": "2024-08-15"
+          }
+        ],
+        "referrals_sent_to_those_sites": 9743
+      },
+      "detect": "Join the directory to the contract and diff the status columns. Then check last_maintained_date - a stale date on a field that drives routing is a finding on its own.",
+      "control": "Never treat a directory field as a measure. Derive network status from the contract with an as-of-service-date join."
+    },
+    {
+      "anomaly_id": "A4",
+      "name": "Crosswalk under-match, and it is NOT random",
+      "description": "A share of EHR records never resolve to a member. The loss skews toward ORTHO-NR patients, whose registration workflow does not capture the subscriber ID. So a naive inner join deletes part of the headline finding and UNDERSTATES the leakage - the careless analyst gets a wrong answer that still looks plausible, which is the worst kind.",
+      "applied": true,
+      "measured": {
+        "match_tier_shares": {
+          "EXACT": 0.8169,
+          "DETERMINISTIC_NAME_DOB_ZIP": 0.1329,
+          "UNMATCHED": 0.0311,
+          "PROBABILISTIC": 0.0191
+        },
+        "skew": {
+          "unmatched_rate_at_site": 0.0557,
+          "unmatched_rate_elsewhere": 0.0271,
+          "skew_factor": 2.05
+        }
+      },
+      "detect": "Profile the unmatched population against the matched on several attributes before reporting ANY cross-source rate. If it is skewed, every rate built on an inner join is biased in a direction you have not measured.",
+      "control": "Left join, resolve unmatched to the -1 Unknown member, and report that bucket rather than dropping it."
+    },
+    {
+      "anomaly_id": "A5",
+      "name": "Crosswalk over-match: two people wearing one identity",
+      "description": "Twins and Jr/Sr pairs matched on name, date of birth and address. They surface as artificial super-utilizers at the very top of the cost distribution, contaminating precisely the top-1% figure the demo quotes. Over-matching is the more interesting failure and is almost never demonstrated.",
+      "applied": true,
+      "measured": {
+        "master_persons_collapsing_multiple_people": 38,
+        "found_by_sex_mismatch_alone": 22,
+        "found_only_by_date_of_birth": 16
+      },
+      "detect": "Within each master_person_id, count distinct sex and distinct date of birth. Sex mismatch is the cheapest detector but it only catches mixed-sex pairs; same-sex twins need the date-of-birth check.",
+      "control": "Exclude or split PROBABILISTIC matches below a score threshold, and report counts at both thresholds so the sensitivity is visible rather than hidden."
+    },
+    {
+      "anomaly_id": "A6",
+      "name": "Retroactive attribution restatement",
+      "description": "High-cost members are retro-terminated from attribution in exactly the months containing an inpatient stay at a non-affiliated hospital. Their cost leaves the numerator and their member-months leave the denominator, so PMPM improves without any care changing.",
+      "applied": true,
+      "measured": {
+        "restated_member_months": 1665,
+        "retro_terminated_members": 167,
+        "retro_terminated_member_months": 224,
+        "ordinary_churn_member_months": 1441
+      },
+      "detect": "Compare roster VERSIONS, not just the current roster. Hold a cohort fixed and re-run the measure.",
+      "control": "Report PMPM on a fixed cohort alongside the open-panel figure, and state the as-of date of the roster used."
+    },
+    {
+      "anomaly_id": "A8",
+      "name": "Overlapping coverage spans, concentrated in one group",
+      "description": "COBRA running alongside active coverage, and an acquisition where the prior group span was never terminated. Summing span lengths double counts every overlap, and because the overlap concentrates in one employer group the error is UNEVEN: that group's PMPM reads better than truth. A number that is wrong unevenly is the kind that survives review.",
+      "applied": true,
+      "measured": {
+        "members_with_overlap": 1680,
+        "overlap_share_of_members": 0.035,
+        "reasons": {
+          "COBRA overlapping active coverage": 1310,
+          "Prior group span never terminated at acquisition": 370
+        }
+      },
+      "detect": "Test member-month grain uniqueness, and compare the de-duplicated union against the naive span sum BY GROUP, not just in total. The total hides it.",
+      "control": "Build the denominator as a gaps-and-islands union of coverage. Never compute member-months from raw spans."
+    },
+    {
+      "anomaly_id": "A9b",
+      "name": "Legitimate lines that look like duplicates",
+      "description": "Bilateral procedures and same-day repeats produce near-identical rows distinguished ONLY by modifier. De-duplicating on 'the obvious business columns' destroys them and UNDERSTATES paid. This runs in the opposite direction to A9a, and the naive fix for one creates the other.",
+      "applied": true,
+      "measured": {
+        "lines_distinguished_only_by_modifier": 30061,
+        "paid_at_risk_if_wrongly_deduplicated": 25236063.53,
+        "modifier_mix": {
+          "50": 8858,
+          "RT": 7130,
+          "LT": 7054,
+          "76": 7019
+        }
+      },
+      "detect": "Before de-duplicating, check whether the candidate rows differ on modifier. If they do, they are distinct services.",
+      "control": "Modifiers are part of line identity. Include them in the key."
+    },
+    {
+      "anomaly_id": "A11a",
+      "name": "Encounter type encoded differently by site, one value unmapped",
+      "description": "Most sites emit OFFICE, four emit OFFICE VISIT, and one emits AMB - which has no row in the crosswalk seed at all. It lands as UNKNOWN and gets filtered out as junk unless someone profiles distinct values by source.",
+      "applied": true,
+      "measured": {
+        "value_counts": {
+          "OFFICE": 316337,
+          "OFFICE VISIT": 164214,
+          "URGENT": 36880,
+          "ED": 23782,
+          "AMB": 16755,
+          "INPATIENT": 8609
+        },
+        "unmapped_value": "AMB",
+        "unmapped_share_of_ambulatory": 0.0337
+      },
+      "detect": "Profile distinct values of every low-cardinality column BY SOURCE and BY MONTH. The month cut is what turns a mystery into a visible step change.",
+      "control": "Assert conformance COVERAGE: every distinct source value must have a mapping. That one check catches this class of defect everywhere it occurs."
+    },
+    {
+      "anomaly_id": "A11c",
+      "name": "One hospital renumbered mid-window by an EMR upgrade",
+      "description": "HOSP-EGR emits a different department identifier from 2024-05-01 onward. Without the crosswalk, volume by facility splits one physical hospital into two as a step change in the middle of the year.",
+      "applied": true,
+      "measured": {
+        "department_identifiers": [
+          "RB-EGR-030",
+          "RB-EAST-141"
+        ],
+        "effective_windows": [
+          {
+            "ehr_dept_id": "RB-EGR-030",
+            "effective_date": "2023-01-01",
+            "expiration_date": "2024-04-30"
+          },
+          {
+            "ehr_dept_id": "RB-EAST-141",
+            "effective_date": "2024-05-01",
+            "expiration_date": "9999-12-31"
+          }
+        ]
+      },
+      "detect": "Count distinct facility identifiers by month, not just in total.",
+      "control": "Resolve through the versioned facility crosswalk, as-of the service date."
+    },
+    {
+      "anomaly_id": "A11b",
+      "name": "Sex encoded differently in every source system",
+      "description": "Eligibility emits M/F/U, the EHR emits HL7 table 0001 values 1/2/9, and the attribution feed emits Male/Female/Unknown. Conforming them is a prerequisite for any demographic cut.",
+      "applied": true,
+      "measured": {
+        "encodings": {
+          "MERIDIAN_ELIG": [
+            "M",
+            "F",
+            "U"
+          ],
+          "CARELINE_EHR": [
+            "1",
+            "2",
+            "9"
+          ],
+          "NORTHLAKE_VBC": [
+            "Male",
+            "Female",
+            "Unknown"
+          ]
+        }
+      },
+      "detect": "Profile distinct values of every low-cardinality column BY SOURCE.",
+      "control": "One conformed dimension with a documented source-of-truth per attribute."
+    },
+    {
+      "anomaly_id": "A7",
+      "name": "Claims runout on the most recent service months",
+      "description": "Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-02-28 - the slowest-paying, not a random sample. Retention below is measured against each month's own natural volume, which is the only denominator that makes the designed and realized figures comparable.",
+      "applied": true,
+      "measured": {
+        "2025-10": {
+          "natural_lines": 29903,
+          "retained_lines": 23324,
+          "retained_share": 0.78,
+          "designed_share": 0.78
+        },
+        "2025-11": {
+          "natural_lines": 29413,
+          "retained_lines": 15883,
+          "retained_share": 0.54,
+          "designed_share": 0.54
+        },
+        "2025-12": {
+          "natural_lines": 41207,
+          "retained_lines": 12774,
+          "retained_share": 0.31,
+          "designed_share": 0.31
+        }
+      },
+      "detect": "Build the lag triangle, comparing each month against the SAME calendar month in prior years and de-trending. Comparing against an annual average measures seasonality and calls it completeness - December alone carries a 1.45x elective factor.",
+      "control": "Filter service-date trends on dim_date.claims_runout_complete_flag, or trend on paid date, which IS complete. Mixing the two is the error."
+    }
+  ]
+}

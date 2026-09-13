@@ -1,0 +1,57 @@
+# Healthcare Data Hub - output manifest
+#
+# Hashes are of the UNCOMPRESSED CSV bytes, so they are stable across
+# gzip implementations. Re-run build.py --verify to confirm the dataset
+# regenerates identically.
+#
+# generated_utc      2026-09-11T18:17:38+00:00
+# scale              demo (48,000 members)
+# master_seed        20260911
+# anomalies_applied  True
+# python             3.13.7
+# pandas             2.3.2
+# numpy              2.3.2
+# platform           macOS-26.6.2-arm64-arm-64bit-Mach-O
+# tables             38
+# total_rows         8,727,225
+# total_bytes_gzip   122,379,461
+#
+# sha256  rows  file
+c0aa59e893c636c92f5f5fd5bb1a5cc528d4cec19d823a64bebbfcfee571f478  48000  Mart/dim_master_person.csv.gz
+83ed1888d6491a6bec909b85be7d26ad39abe82282535c2080602ac174b650ad  1501125  Mart/fct_member_month.csv.gz
+53fa95849206d90e12617631f97229d57e15dde89a63e938682377a65a468dc8  144000  Mart/xwalk_patient.csv.gz
+a115a552913ab7bef357c1d6e286d3d573b0f378f702d9fe02782141c751b09d  7998  Mart/xwalk_provider.csv.gz
+a788cd7aa9e0e76c3805dec5ad9a8a3842d0f2067fbd5478ee5a4d0e20def4dc  1252451  Source Data/raw_clm/clm_claim_diagnosis.csv.gz
+977309ac59a194defde9fac3b46859163638cf72a8f47a92bd7468e16c02f464  388869  Source Data/raw_clm/clm_claim_header.csv.gz
+968ede0d8b427a5931d96764d3610a8db48b854df1fc839cee373b4f8767cd38  1138208  Source Data/raw_clm/clm_claim_line.csv.gz
+b2d56ab860233d85a1fad294bfc477e1ce79fdb3b6f207eba20b11769f222b39  566577  Source Data/raw_ehr/ehr_encounter.csv.gz
+539624c2bf325d5432638b06ee59e2b2b123e8758b069a4a38613ed8eed14c2c  1840469  Source Data/raw_ehr/ehr_encounter_diagnosis.csv.gz
+6074ec576918bb27558116d25378855e1d3897288fe7b4dc296eca5fc7671fe6  309540  Source Data/raw_ehr/ehr_lab_result.csv.gz
+785a5cb3ceb518c1c19a54226dfb29d7315af626a98a44fa85e0675d82b5b7cf  48000  Source Data/raw_ehr/ehr_patient.csv.gz
+36838ca4355667d8bfa50c10a927caa2c6f3255df79bdd88c70f8167628c58e3  52  Source Data/raw_ehr/ehr_provider_directory.csv.gz
+6a41850daf09f4c9cd8d7e650ee384db4b47057ea08273161ccbadccefe9016e  94544  Source Data/raw_ehr/ehr_referral_order.csv.gz
+c371b7f7739ad76f7c4a91479e7a949c70c3a005182b8806aba9ffa9557611a5  15  Source Data/raw_elig/elig_coverage_plan.csv.gz
+ade5bcec44c67c06d8268970d9d5be44a02a8542ea7828076df46cfb4c709f26  133054  Source Data/raw_elig/elig_eligibility_span.csv.gz
+6005241521c1be118379d53178b722db11b7cea3dc870e63234dd3eb80810109  18  Source Data/raw_elig/elig_employer_group.csv.gz
+e8e59cd4f5b4a9bd5968a8d91773628354a5d10986e50ef13796cc1d86762c45  48000  Source Data/raw_elig/elig_member.csv.gz
+a7726fea0c5e51c78ddfac5bc97051037eaff5eb52dc71c7e82df359431f15f3  351148  Source Data/raw_pm/pm_appointment.csv.gz
+0d5e3e37159fba2230bd7ed91f9e7b73beb9d600b899e5be9a5a51e3f640410e  33436  Source Data/raw_pm/pm_authorization.csv.gz
+03ae5e823d6d9d8a8723138fa870b2a3523fa01c22ea61253c479997c7da61ca  2  Source Data/raw_pm/pm_referral_workflow_config.csv.gz
+2616b436e010f9d2a3900cc8a5e2cdb6b9239378d30bec24f20a15fc3efbbe28  10  Source Data/raw_ref/ref_claim_status.csv.gz
+6ded625df533d5bd9f6e6727ba53091241ad542c372fa05544dfa2cb53b32494  1826  Source Data/raw_ref/ref_date.csv.gz
+4fcf4ba7999f452d03a49897a6c3d637056902e18822ec713e28d66b0f2b7b76  63  Source Data/raw_ref/ref_diagnosis.csv.gz
+aa15dc903b4851614b76006e0cbcac7ee865fb77d05e54cbc09eacd8e002fde0  20  Source Data/raw_ref/ref_drg.csv.gz
+1389ba4843ecad1d3e22d195b466cebb3cd111d79cf689e7e553b62c7a33ef96  52  Source Data/raw_ref/ref_facility.csv.gz
+1ceb9f02870d9dffd2e01bcc6b1f62f483abfe8601c69310afe517ce916ec319  53  Source Data/raw_ref/ref_facility_crosswalk.csv.gz
+ff74718c2418cfa3dcc07bd1189e4537bb80a03c21eb32ade908b8afe14037b8  53  Source Data/raw_ref/ref_network_contract.csv.gz
+6d1a79894b47cbeab0e5b3941d2d3f8cbc3aede46b10f9153f8baf291183692c  2666  Source Data/raw_ref/ref_npi_registry.csv.gz
+48ee67fb2f775daca55b20567a7797df3316f07502492211d81094d06a48bc40  59  Source Data/raw_ref/ref_procedure.csv.gz
+7a8664ccb4a3135f0795fa0387a1657f5f4b6ff12b4189b4b406085f8037b5fc  2667  Source Data/raw_ref/ref_provider.csv.gz
+313e4291c69a5fa7c74236797635b0738bad7621bf17e03bcb455b26cbeb96bb  3442  Source Data/raw_ref/ref_provider_affiliation.csv.gz
+bd6c4aee68f226a5fb66baf0a9b9fc05ed67bc3c160053872cc045f289d9037c  16  Source Data/raw_ref/ref_revenue_code.csv.gz
+c57469c96c086607bb029b16d7772e170a4a4e85997937cfef82b424ccad2f81  28  Source Data/raw_ref/ref_service_line.csv.gz
+a08e7d7a69d44a9ad61cf86ecb265a94881820c3998e6e65af7fc5482ad761e1  43  Source Data/raw_ref/ref_service_line_crosswalk.csv.gz
+912cfd5978914c70f83a25b81a2e39617d8e88b751cd13182dbe0035d01cdb6e  13  Source Data/raw_ref/ref_service_place.csv.gz
+8db604126b0c34adba38155e9df31eb2e09963352a6b357ffda2bf1871b1d8d3  808971  Source Data/raw_vbc/vbc_attribution_month.csv.gz
+0c0cc317169d5873f31c6a457effae96703425ccf8bc9fea62d4897e565b080b  1665  Source Data/raw_vbc/vbc_attribution_restatement.csv.gz
+23957e3ee31b20de16f0588ec9199833636a91d63ae0a236488c1caac1820dc3  72  Source Data/raw_vbc/vbc_benchmark.csv.gz

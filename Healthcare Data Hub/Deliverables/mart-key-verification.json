@@ -1,0 +1,1164 @@
+{
+  "tables": {
+    "dim_date": {
+      "rows": 1826,
+      "columns": 22,
+      "sentinel_rows": 0,
+      "grain": "one calendar day",
+      "note": "Role-played as service, incurred and paid date. Carries claims_runout_complete_flag, the guardrail for any service-date trend.",
+      "pk": {
+        "column": "date_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "full_date"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_member": {
+      "rows": 48002,
+      "columns": 17,
+      "sentinel_rows": 2,
+      "grain": "one member",
+      "note": "Carries the -1 Unknown and -2 Not Applicable members. Type 1 on demographics.",
+      "pk": {
+        "column": "member_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "member_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_durable_key",
+          "references": "dim_master_person.master_person_id",
+          "note": "the resolved person behind this member",
+          "nulls": 2,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "dim_master_person": {
+      "rows": 48000,
+      "columns": 12,
+      "sentinel_rows": 0,
+      "grain": "one resolved person",
+      "note": "Resolution quality on every row. ehr_records_resolved > 1 means an over-match: two real people on one identity.",
+      "pk": {
+        "column": "master_person_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "master_person_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_provider": {
+      "rows": 2669,
+      "columns": 20,
+      "sentinel_rows": 2,
+      "grain": "one provider per tracked-attribute change (type 2)",
+      "note": "Type 2. provider_master_id is the durable key; provider_key is point-in-time correct. Role-played four ways: referring, performing, billing, attributed PCP.",
+      "pk": {
+        "column": "provider_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "provider_master_id",
+          "row_effective_date"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "facility_id",
+          "references": "dim_facility.facility_id",
+          "note": null,
+          "nulls": 2,
+          "null_pct": 0.07,
+          "float_coerced": true,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "service_line_code",
+          "references": "dim_service_line.service_line_code",
+          "note": null,
+          "nulls": 2,
+          "null_pct": 0.07,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "dim_provider_current": {
+      "rows": 2666,
+      "columns": 20,
+      "sentinel_rows": 0,
+      "grain": "one provider (current row only)",
+      "note": "The convenience view. Using it reassigns a provider's whole history to their current facility - which is the point of the as-of-join lesson.",
+      "pk": {
+        "column": "provider_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "provider_master_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "facility_id",
+          "references": "dim_facility.facility_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "dim_facility": {
+      "rows": 52,
+      "columns": 17,
+      "sentinel_rows": 0,
+      "grain": "one site of care",
+      "note": "site_code is the join key used throughout the facts. Carries performs_msk_surgery and annual_msk_case_capacity.",
+      "pk": {
+        "column": "facility_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "facility_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_coverage_plan": {
+      "rows": 15,
+      "columns": 14,
+      "sentinel_rows": 0,
+      "grain": "one payer x product x plan x benefit year",
+      "note": "Payer is an ATTRIBUTE here, not its own dimension: every attribute analysts slice by lives at plan grain.",
+      "pk": {
+        "column": "coverage_plan_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "plan_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_diagnosis": {
+      "rows": 63,
+      "columns": 12,
+      "sentinel_rows": 0,
+      "grain": "one ICD-10-CM code",
+      "note": "sex_restriction and max_age drive the clinical plausibility assertions.",
+      "pk": {
+        "column": "diagnosis_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "icd10_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_procedure": {
+      "rows": 59,
+      "columns": 11,
+      "sentinel_rows": 0,
+      "grain": "one procedure code, all code systems",
+      "note": "One dimension with code_system as discriminator. Splitting CPT from ICD-10-PCS would force a UNION on every procedure query.",
+      "pk": {
+        "column": "procedure_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "code_system",
+          "procedure_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_service_place": {
+      "rows": 13,
+      "columns": 5,
+      "sentinel_rows": 0,
+      "grain": "one place-of-service code",
+      "note": null,
+      "pk": {
+        "column": "service_place_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "pos_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_drg": {
+      "rows": 20,
+      "columns": 7,
+      "sentinel_rows": 0,
+      "grain": "one MS-DRG",
+      "note": "Joins to the claim HEADER only. DRG is a header attribute.",
+      "pk": {
+        "column": "drg_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "drg_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_claim_status": {
+      "rows": 10,
+      "columns": 8,
+      "sentinel_rows": 0,
+      "grain": "one adjudication status",
+      "note": "CO-45 is deliberately absent: the contractual write-off is an AMOUNT on the line, not a denial status.",
+      "pk": {
+        "column": "claim_status_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "status_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "dim_service_line": {
+      "rows": 28,
+      "columns": 5,
+      "sentinel_rows": 0,
+      "grain": "one service line",
+      "note": null,
+      "pk": {
+        "column": "service_line_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "service_line_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "fct_claim_header": {
+      "rows": 388869,
+      "columns": 39,
+      "sentinel_rows": 0,
+      "grain": "one claim x one adjudication version",
+      "note": "DRG, admit/discharge, length of stay, disposition and the claim total live ONLY here, so a DRG-by-procedure question is forced through the header-to-line join.",
+      "pk": {
+        "column": "claim_header_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "claim_number",
+          "adjudication_seq",
+          "net_sign"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_key",
+          "references": "dim_member.member_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "encounter_id",
+          "references": "fct_encounter.encounter_id",
+          "note": "NULLABLE by design: ~24% of claims have no Northlake encounter",
+          "nulls": 118536,
+          "null_pct": 30.48,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "service_site_code",
+          "references": "dim_facility.site_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "drg_code",
+          "references": "dim_drg.drg_code",
+          "note": "inpatient facility claims only",
+          "nulls": 379832,
+          "null_pct": 97.68,
+          "float_coerced": true,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "claim_status_code",
+          "references": "dim_claim_status.status_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_claim_line": {
+      "rows": 1135368,
+      "columns": 53,
+      "sentinel_rows": 0,
+      "grain": "one claim x one line x one adjudication version",
+      "note": "The de-duplication target. The SURROGATE claim_line_key is unique even on the raw file, so a primary-key uniqueness test passes while the business key is violated.",
+      "pk": {
+        "column": "claim_line_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "claim_number",
+          "claim_line_number",
+          "adjudication_seq",
+          "net_sign"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_key",
+          "references": "dim_member.member_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "member_durable_key",
+          "references": "dim_master_person.master_person_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "servicing_provider_key",
+          "references": "dim_provider.provider_key",
+          "note": "resolves to -1 where credentialing has no record",
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "service_date_key",
+          "references": "dim_date.date_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "paid_date_key",
+          "references": "dim_date.date_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "claim_number",
+          "references": "fct_claim_header.claim_number",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "encounter_id",
+          "references": "fct_encounter.encounter_id",
+          "note": "nullable",
+          "nulls": 309674,
+          "null_pct": 27.28,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "referral_id",
+          "references": "fct_referral.referral_id",
+          "note": "populated on referral episodes and consults only",
+          "nulls": 825694,
+          "null_pct": 72.72,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "service_site_code",
+          "references": "dim_facility.site_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "procedure_code",
+          "references": "dim_procedure.procedure_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "pos_code",
+          "references": "dim_service_place.pos_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "br_claim_diagnosis": {
+      "rows": 1252451,
+      "columns": 5,
+      "sentinel_rows": 0,
+      "grain": "one claim header x one diagnosis position (1-12)",
+      "note": "HEADER grain, exactly like an 837. Claim LINES carry pointers into this list rather than their own codes. Joining a line to this bridge FANS OUT - that is correct behavior, not a bug.",
+      "pk": {
+        "column": null,
+        "status": "none - bridge keyed on its business key"
+      },
+      "business": {
+        "columns": [
+          "claim_number",
+          "diagnosis_position"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "claim_number",
+          "references": "fct_claim_header.claim_number",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "icd10_code",
+          "references": "dim_diagnosis.icd10_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_encounter": {
+      "rows": 566577,
+      "columns": 24,
+      "sentinel_rows": 0,
+      "grain": "one EHR encounter",
+      "note": "The three-hop join to claims lives here, and it loses the unmatched share NON-randomly.",
+      "pk": {
+        "column": "encounter_id",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "encounter_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_key",
+          "references": "dim_member.member_key",
+          "note": "resolves to -1 where the crosswalk failed",
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "member_durable_key",
+          "references": "dim_master_person.master_person_id",
+          "note": null,
+          "nulls": 17421,
+          "null_pct": 3.07,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "encounter_date_key",
+          "references": "dim_date.date_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "facility_id",
+          "references": "dim_facility.facility_id",
+          "note": "resolved through the facility crosswalk",
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "attending_provider_master_id",
+          "references": "dim_provider.provider_master_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "br_encounter_diagnosis": {
+      "rows": 1840469,
+      "columns": 5,
+      "sentinel_rows": 0,
+      "grain": "one encounter x one diagnosis x position",
+      "note": "Mean ~3.25 diagnoses per encounter. No pre-built cost allocation ships: deciding how to allocate is the lesson.",
+      "pk": {
+        "column": null,
+        "status": "none - bridge keyed on its business key"
+      },
+      "business": {
+        "columns": [
+          "encounter_id",
+          "diagnosis_position"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "encounter_id",
+          "references": "fct_encounter.encounter_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "icd10_code",
+          "references": "dim_diagnosis.icd10_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_lab_result": {
+      "rows": 309540,
+      "columns": 12,
+      "sentinel_rows": 0,
+      "grain": "one resulted lab component per encounter",
+      "note": "result_status = NO_STRUCTURED_RESULT where an external lab returned nothing parseable - one half of the HbA1c gap.",
+      "pk": {
+        "column": null,
+        "status": "none - bridge keyed on its business key"
+      },
+      "business": {
+        "columns": [
+          "encounter_id",
+          "lab_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "encounter_id",
+          "references": "fct_encounter.encounter_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_referral": {
+      "rows": 94544,
+      "columns": 17,
+      "sentinel_rows": 0,
+      "grain": "one referral order",
+      "note": "days_to_closure and closure_actor_type are the fingerprints of the auto-close rule. destination_status_per_ehr_directory is the STALE belief, never the fact.",
+      "pk": {
+        "column": "referral_id",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "referral_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_durable_key",
+          "references": "dim_master_person.master_person_id",
+          "note": null,
+          "nulls": 3025,
+          "null_pct": 3.2,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "referring_site_code",
+          "references": "dim_facility.site_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "destination_site_code",
+          "references": "dim_facility.site_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "referring_provider_master_id",
+          "references": "dim_provider.provider_master_id",
+          "note": "nullable: ~4% carry no referring provider",
+          "nulls": 3782,
+          "null_pct": 4.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "source_encounter_id",
+          "references": "fct_encounter.encounter_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_referral_outcome": {
+      "rows": 94544,
+      "columns": 13,
+      "sentinel_rows": 0,
+      "grain": "one referral, evaluated against confirming events",
+      "note": "An auditable bridge with match_rule_version on every row. confirm_source records whether a CLAIM, an APPOINTMENT, BOTH or NONE confirmed the referral - two independent paths, so the finding survives a challenge to either join.",
+      "pk": {
+        "column": null,
+        "status": "none - bridge keyed on its business key"
+      },
+      "business": {
+        "columns": [
+          "referral_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "referral_id",
+          "references": "fct_referral.referral_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_eligibility_span": {
+      "rows": 133054,
+      "columns": 14,
+      "sentinel_rows": 0,
+      "grain": "one member x plan x contiguous coverage span",
+      "note": "NOT a denominator. Contains deliberate overlaps; summing span lengths double counts every one of them. coverage_type is part of the grain: a COBRA span legitimately starts on the same day as the active coverage it runs alongside.",
+      "pk": {
+        "column": "eligibility_span_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "member_id",
+          "plan_code",
+          "span_start_date",
+          "coverage_type"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_id",
+          "references": "dim_member.member_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "plan_code",
+          "references": "dim_coverage_plan.plan_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_member_month": {
+      "rows": 1501125,
+      "columns": 16,
+      "sentinel_rows": 0,
+      "grain": "one member x one year-month with any coverage",
+      "note": "The ONLY sanctioned PMPM denominator. Built as the gaps-and-islands UNION of coverage, not the sum of spans.",
+      "pk": {
+        "column": "member_month_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "member_id",
+          "year_month"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_id",
+          "references": "dim_member.member_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "year_month",
+          "references": "dim_date.year_month",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "plan_code",
+          "references": "dim_coverage_plan.plan_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "vbc_attribution_month": {
+      "rows": 808971,
+      "columns": 12,
+      "sentinel_rows": 0,
+      "grain": "one member x one month, current roster version",
+      "note": "Restated retroactively. Compare roster VERSIONS, not just the current roster, or a denominator change reads as performance.",
+      "pk": {
+        "column": "attribution_month_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "member_id",
+          "year_month"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_id",
+          "references": "dim_member.member_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "attributed_site_code",
+          "references": "dim_facility.site_code",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "br_provider_affiliation": {
+      "rows": 3442,
+      "columns": 11,
+      "sentinel_rows": 0,
+      "grain": "one provider x facility x effective span",
+      "note": "22% of providers hold two or more concurrent affiliations, so an unweighted join FANS OUT and overstates facility totals. allocation_pct sums to exactly 1.0 per provider-span.",
+      "pk": {
+        "column": "affiliation_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "provider_master_id",
+          "facility_id",
+          "effective_date"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "provider_master_id",
+          "references": "dim_provider.provider_master_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "facility_id",
+          "references": "dim_facility.facility_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "xwalk_patient": {
+      "rows": 144000,
+      "columns": 9,
+      "sentinel_rows": 0,
+      "grain": "one source system x one source patient identifier",
+      "note": "Three patient key spaces. Imperfect in BOTH directions: under-match loses records non-randomly, over-match collapses two real people onto one identity.",
+      "pk": {
+        "column": "xwalk_patient_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "source_system",
+          "source_patient_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "master_person_id",
+          "references": "dim_master_person.master_person_id",
+          "note": "NULL where the record never matched",
+          "nulls": 2988,
+          "null_pct": 2.08,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "xwalk_provider": {
+      "rows": 7998,
+      "columns": 10,
+      "sentinel_rows": 0,
+      "grain": "one source system x one source provider identifier",
+      "note": "Three provider key spaces: credentialed NPI, EHR internal id, and claim-side NPI.",
+      "pk": {
+        "column": "xwalk_provider_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "source_system",
+          "source_provider_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "provider_master_id",
+          "references": "dim_provider.provider_master_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "vw_claim_line_enriched": {
+      "rows": 1135368,
+      "columns": 48,
+      "sentinel_rows": 0,
+      "grain": "one claim line (denormalized)",
+      "note": "Claim line joined to every type-1 dimension, NO bridges, one row per line, safe to sum. It is only safe BECAUSE the diagnosis bridges were kept out of it.",
+      "pk": {
+        "column": "claim_line_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "claim_number",
+          "claim_line_number",
+          "adjudication_seq",
+          "net_sign"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_key",
+          "references": "dim_member.member_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "servicing_provider_key",
+          "references": "dim_provider.provider_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    }
+  },
+  "problems": []
+}
