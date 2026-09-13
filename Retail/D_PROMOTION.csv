@@ -1,0 +1,53 @@
+Promotion Key,Promotion Name,Promotion Type,Start Date,End Date,Discount Percent,Channel
+1,Flash Sale Aug 2021,Flash Sale,2021-08-29,2021-09-01,21,Web
+2,Labor Day Sale 2021,Seasonal,2021-09-01,2021-09-05,15,All
+3,Black Friday 2021,Seasonal,2021-11-24,2021-11-29,30,All
+4,Cyber Monday 2021,Seasonal,2021-11-27,2021-12-06,25,Web
+5,Holiday Savings 2021,Seasonal,2021-12-10,2021-12-17,20,All
+6,New Year Clearance 2022,Seasonal,2022-01-02,2022-01-07,15,All
+7,Flash Sale Feb 2022,Flash Sale,2022-02-05,2022-02-07,13,All
+8,Spring Refresh Sale 2022,Seasonal,2022-03-15,2022-03-20,10,All
+9,Flash Sale Apr 2022,Flash Sale,2022-04-22,2022-04-24,32,All
+10,Flash Sale Apr 2022,Flash Sale,2022-04-25,2022-04-27,32,All
+11,Memorial Day Sale 2022,Seasonal,2022-05-24,2022-05-31,15,All
+12,Summer Clearance 2022,Seasonal,2022-07-01,2022-07-07,20,All
+13,Back to School 2022,Seasonal,2022-08-10,2022-08-17,12,All
+14,Labor Day Sale 2022,Seasonal,2022-09-01,2022-09-08,15,All
+15,Flash Sale Sep 2022,Flash Sale,2022-09-18,2022-09-19,26,Web
+16,Black Friday 2022,Seasonal,2022-11-24,2022-11-28,30,All
+17,Cyber Monday 2022,Seasonal,2022-11-27,2022-12-05,25,Web
+18,Holiday Savings 2022,Seasonal,2022-12-10,2022-12-18,20,All
+19,New Year Clearance 2023,Seasonal,2023-01-02,2023-01-08,15,All
+20,Spring Refresh Sale 2023,Seasonal,2023-03-15,2023-03-21,10,All
+21,Flash Sale May 2023,Flash Sale,2023-05-03,2023-05-05,33,Web
+22,Memorial Day Sale 2023,Seasonal,2023-05-24,2023-05-27,15,All
+23,Summer Clearance 2023,Seasonal,2023-07-01,2023-07-08,20,All
+24,Back to School 2023,Seasonal,2023-08-10,2023-08-14,12,All
+25,Labor Day Sale 2023,Seasonal,2023-09-01,2023-09-09,15,All
+26,Flash Sale Oct 2023,Flash Sale,2023-10-02,2023-10-04,22,Web
+27,Black Friday 2023,Seasonal,2023-11-24,2023-12-03,30,All
+28,Cyber Monday 2023,Seasonal,2023-11-27,2023-12-02,25,Web
+29,Holiday Savings 2023,Seasonal,2023-12-10,2023-12-15,20,All
+30,New Year Clearance 2024,Seasonal,2024-01-02,2024-01-10,15,All
+31,Spring Refresh Sale 2024,Seasonal,2024-03-15,2024-03-24,10,All
+32,Flash Sale Apr 2024,Flash Sale,2024-04-14,2024-04-15,26,Web
+33,Memorial Day Sale 2024,Seasonal,2024-05-24,2024-05-31,15,All
+34,Summer Clearance 2024,Seasonal,2024-07-01,2024-07-08,20,All
+35,Flash Sale Aug 2024,Flash Sale,2024-08-04,2024-08-07,33,Web
+36,Back to School 2024,Seasonal,2024-08-10,2024-08-14,12,All
+37,Labor Day Sale 2024,Seasonal,2024-09-01,2024-09-05,15,All
+38,Flash Sale Oct 2024,Flash Sale,2024-10-14,2024-10-15,15,All
+39,Black Friday 2024,Seasonal,2024-11-24,2024-12-02,30,All
+40,Cyber Monday 2024,Seasonal,2024-11-27,2024-11-30,25,Web
+41,Flash Sale Dec 2024,Flash Sale,2024-12-03,2024-12-05,14,All
+42,Holiday Savings 2024,Seasonal,2024-12-10,2024-12-14,20,All
+43,New Year Clearance 2025,Seasonal,2025-01-02,2025-01-10,15,All
+44,Flash Sale Feb 2025,Flash Sale,2025-02-24,2025-02-26,34,All
+45,Spring Refresh Sale 2025,Seasonal,2025-03-15,2025-03-21,10,All
+46,Memorial Day Sale 2025,Seasonal,2025-05-24,2025-05-27,15,All
+47,Summer Clearance 2025,Seasonal,2025-07-01,2025-07-05,20,All
+48,Flash Sale Jul 2025,Flash Sale,2025-07-12,2025-07-15,27,Web
+49,Back to School 2025,Seasonal,2025-08-10,2025-08-17,12,All
+50,Labor Day Sale 2025,Seasonal,2025-09-01,2025-09-05,15,All
+51,Flash Sale Sep 2025,Flash Sale,2025-09-30,2025-10-02,12,All
+52,Flash Sale Oct 2025,Flash Sale,2025-10-14,2025-10-17,24,Web

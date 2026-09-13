@@ -1,0 +1,224 @@
+Leadership Key,Employee Name,Role,Store Key,Store Area,Store Region,Reports To Key,Hire Date,Tenure Years,Annual Salary,Performance Tier,Bonus Rate
+1,Angela Turner,RVP,,,East,,2013-08-18 00:00:00,12.16,165000,Middle,0.006
+2,Brenda Kelly,RVP,,,Midwest,,2014-03-21 00:00:00,11.57,165000,Bottom,0.0025
+3,Dorothy Murphy,RVP,,,South,,2019-09-23 00:00:00,6.06,165000,Middle,0.006
+4,Jennifer Flores,RVP,,,Southwest,,2012-08-10 00:00:00,13.18,165000,Bottom,0.0025
+5,Deborah Carter,RVP,,,West,,2016-12-06 00:00:00,8.86,165000,Top,0.01
+6,Timothy Cook,AVP,,East-1,East,1,2025-03-09 00:00:00,0.61,85000,Middle,0.006
+7,Rebecca Moore,AVP,,East-2,East,1,2021-08-25 00:00:00,4.14,100000,Top,0.01
+8,Shirley Thompson,AVP,,East-3,East,1,2021-02-06 00:00:00,4.69,100000,Top,0.01
+9,Eric Martin,AVP,,Midwest-1,Midwest,2,2017-08-09 00:00:00,8.19,110000,Bottom,0.0025
+10,Kimberly Rodriguez,AVP,,Midwest-2,Midwest,2,2017-02-25 00:00:00,8.64,110000,Bottom,0.0025
+11,Sandra Anderson,AVP,,Midwest-3,Midwest,2,2017-04-21 00:00:00,8.49,110000,Bottom,0.0025
+12,Joseph Adams,AVP,,Midwest-4,Midwest,2,2015-05-01 00:00:00,10.46,110000,Bottom,0.0025
+13,David Turner,AVP,,South-1,South,3,2016-02-14 00:00:00,9.67,110000,Top,0.01
+14,Jennifer Morgan,AVP,,South-2,South,3,2020-01-23 00:00:00,5.73,110000,Top,0.01
+15,Emma Ramirez,AVP,,South-3,South,3,2017-02-18 00:00:00,8.66,110000,Top,0.01
+16,Emma Morris,AVP,,Southwest-1,Southwest,4,2016-04-14 00:00:00,9.51,110000,Middle,0.006
+17,David Phillips,AVP,,Southwest-2,Southwest,4,2019-09-10 00:00:00,6.1,110000,Bottom,0.0025
+18,Mary Rivera,AVP,,Southwest-3,Southwest,4,2013-09-15 00:00:00,12.09,110000,Bottom,0.0025
+19,Timothy Young,AVP,,West-1,West,5,2020-08-23 00:00:00,5.15,110000,Top,0.01
+20,William Lopez,AVP,,West-2,West,5,2014-07-12 00:00:00,11.26,110000,Middle,0.006
+21,Timothy Martin,AVP,,West-3,West,5,2011-10-17 00:00:00,14.0,110000,Middle,0.006
+22,Shirley Gonzalez,AVP,,West-4,West,5,2024-08-03 00:00:00,1.2,92000,Middle,0.006
+23,Pamela Hill,AVP,,West-5,West,5,2024-08-18 00:00:00,1.16,92000,Middle,0.006
+24,Stephanie Campbell,Store Manager,84,East-1,East,6,2022-09-11 00:00:00,3.1,60000,Top,0.01
+25,Karen Garcia,Store Manager,122,Southwest-1,Southwest,16,2021-06-24 00:00:00,4.31,60000,Middle,0.006
+26,Laura Baker,Store Manager,725,West-4,West,22,2023-11-04 00:00:00,1.95,56000,Middle,0.006
+27,Rebecca Harris,Store Manager,6,West-1,West,19,2017-07-27 00:00:00,8.22,65000,Middle,0.006
+28,Kimberly Mitchell,Store Manager,192,South-1,South,13,2024-03-22 00:00:00,1.57,56000,Top,0.01
+29,Karen Jones,Store Manager,178,West-1,West,19,2022-12-17 00:00:00,2.83,56000,Top,0.01
+30,Donald Moore,Store Manager,498,Southwest-2,Southwest,17,2021-08-23 00:00:00,4.15,60000,Bottom,0.0025
+31,Ronald Sanchez,Store Manager,589,Southwest-2,Southwest,17,2024-12-12 00:00:00,0.84,52000,Bottom,0.0025
+32,Joseph Parker,Store Manager,36,South-1,South,13,2024-11-03 00:00:00,0.95,52000,Top,0.01
+33,Stephanie Parker,Store Manager,318,Midwest-2,Midwest,10,2023-07-12 00:00:00,2.26,56000,Bottom,0.0025
+34,Sarah Morales,Store Manager,269,Southwest-1,Southwest,16,2021-11-18 00:00:00,3.91,60000,Middle,0.006
+35,Amanda Williams,Store Manager,375,West-2,West,20,2017-11-08 00:00:00,7.94,65000,Middle,0.006
+36,Linda Hill,Store Manager,758,East-3,East,8,2023-07-05 00:00:00,2.28,56000,Top,0.01
+37,Jonathan Carter,Store Manager,831,East-3,East,8,2025-06-20 00:00:00,0.32,52000,Top,0.01
+38,Amy Diaz,Store Manager,508,East-2,East,7,2022-12-16 00:00:00,2.83,56000,Bottom,0.0025
+39,Laura Flores,Store Manager,118,Midwest-1,Midwest,9,2017-02-09 00:00:00,8.68,65000,Middle,0.006
+40,Sharon Miller,Store Manager,184,Midwest-1,Midwest,9,2018-05-22 00:00:00,7.4,65000,Middle,0.006
+41,Mark Robinson,Store Manager,544,West-3,West,21,2019-05-28 00:00:00,6.39,65000,Middle,0.006
+42,Kathleen Smith,Store Manager,942,South-3,South,15,2023-03-28 00:00:00,2.55,56000,Top,0.01
+43,Richard Wright,Store Manager,870,Midwest-4,Midwest,12,2016-12-17 00:00:00,8.83,65000,Middle,0.006
+44,Rebecca Morris,Store Manager,250,South-1,South,13,2021-05-11 00:00:00,4.43,60000,Middle,0.006
+45,Larry Howard,Store Manager,852,Midwest-4,Midwest,12,2022-07-04 00:00:00,3.29,60000,Bottom,0.0025
+46,Patricia Jones,Store Manager,270,Midwest-2,Midwest,10,2025-08-19 00:00:00,0.16,52000,Top,0.01
+47,William Roberts,Store Manager,902,Midwest-4,Midwest,12,2023-06-26 00:00:00,2.31,56000,Bottom,0.0025
+48,Betty Williams,Store Manager,649,South-2,South,14,2021-07-15 00:00:00,4.26,60000,Top,0.01
+49,Susan Nguyen,Store Manager,303,South-1,South,13,2024-05-26 00:00:00,1.39,56000,Top,0.01
+50,John Roberts,Store Manager,953,West-5,West,23,2014-09-07 00:00:00,11.11,65000,Middle,0.006
+51,Jennifer Ortiz,Store Manager,625,Southwest-2,Southwest,17,2024-03-13 00:00:00,1.59,56000,Middle,0.006
+52,Michelle Thompson,Store Manager,267,West-1,West,19,2021-09-07 00:00:00,4.11,60000,Middle,0.006
+53,Scott Hill,Store Manager,768,South-2,South,14,2025-09-19 00:00:00,0.07,52000,Top,0.01
+54,Pamela Bailey,Store Manager,383,West-2,West,20,2025-05-09 00:00:00,0.44,52000,Top,0.01
+55,Donald Howard,Store Manager,491,Southwest-2,Southwest,17,2025-07-22 00:00:00,0.24,52000,Bottom,0.0025
+56,Sandra Morales,Store Manager,858,Southwest-3,Southwest,18,2017-04-26 00:00:00,8.47,65000,Bottom,0.0025
+57,Kimberly Cruz,Store Manager,795,South-2,South,14,2021-05-25 00:00:00,4.39,60000,Top,0.01
+58,Jason Young,Store Manager,417,West-2,West,20,2023-03-01 00:00:00,2.63,56000,Bottom,0.0025
+59,Kevin Ward,Store Manager,425,East-2,East,7,2024-05-09 00:00:00,1.44,56000,Top,0.01
+60,Donna Cook,Store Manager,450,West-3,West,21,2023-05-22 00:00:00,2.4,56000,Bottom,0.0025
+61,Margaret Moore,Store Manager,96,East-1,East,6,2017-03-29 00:00:00,8.55,65000,Middle,0.006
+62,Kathleen Sanchez,Store Manager,404,Southwest-2,Southwest,17,2017-02-19 00:00:00,8.65,65000,Bottom,0.0025
+63,Pamela Hall,Store Manager,285,West-2,West,20,2013-10-08 00:00:00,12.02,65000,Bottom,0.0025
+64,Charles Walker,Store Manager,882,West-5,West,23,2015-08-21 00:00:00,10.16,65000,Top,0.01
+65,James Rodriguez,Store Manager,394,Midwest-2,Midwest,10,2020-08-05 00:00:00,5.2,65000,Middle,0.006
+66,Thomas Flores,Store Manager,149,Midwest-1,Midwest,9,2020-01-19 00:00:00,5.74,65000,Middle,0.006
+67,John Hill,Store Manager,33,East-1,East,6,2016-04-25 00:00:00,9.48,65000,Bottom,0.0025
+68,Michael Campbell,Store Manager,888,East-3,East,8,2019-01-03 00:00:00,6.78,65000,Top,0.01
+69,Margaret Rodriguez,Store Manager,719,West-4,West,22,2014-03-31 00:00:00,11.55,65000,Bottom,0.0025
+70,Matthew Campbell,Store Manager,799,South-2,South,14,2021-09-06 00:00:00,4.11,60000,Top,0.01
+71,John Martinez,Store Manager,818,West-4,West,22,2022-02-05 00:00:00,3.69,60000,Top,0.01
+72,Mark Gutierrez,Store Manager,170,West-1,West,19,2015-12-21 00:00:00,9.82,65000,Middle,0.006
+73,Nicole Anderson,Store Manager,630,East-2,East,7,2022-03-10 00:00:00,3.6,60000,Middle,0.006
+74,Scott Anderson,Store Manager,8,Southwest-1,Southwest,16,2019-01-26 00:00:00,6.72,65000,Bottom,0.0025
+75,Timothy Mitchell,Store Manager,341,West-2,West,20,2017-12-10 00:00:00,7.85,65000,Middle,0.006
+76,Richard Richardson,Store Manager,332,Southwest-1,Southwest,16,2020-11-26 00:00:00,4.89,60000,Bottom,0.0025
+77,Ashley Clark,Store Manager,525,South-1,South,13,2021-10-09 00:00:00,4.02,60000,Top,0.01
+78,Mark Howard,Store Manager,909,West-5,West,23,2023-02-28 00:00:00,2.63,56000,Middle,0.006
+79,Joseph Kim,Store Manager,784,Southwest-3,Southwest,18,2021-01-24 00:00:00,4.73,60000,Middle,0.006
+80,Donna Miller,Store Manager,27,West-1,West,19,2018-07-03 00:00:00,7.29,65000,Middle,0.006
+81,Dorothy Jones,Store Manager,847,South-3,South,15,2022-02-25 00:00:00,3.64,60000,Top,0.01
+82,Jason Garcia,Store Manager,400,Southwest-2,Southwest,17,2016-11-01 00:00:00,8.96,65000,Middle,0.006
+83,David Collins,Store Manager,34,West-1,West,19,2023-09-25 00:00:00,2.06,56000,Middle,0.006
+84,Robert Robinson,Store Manager,617,South-2,South,14,2013-02-16 00:00:00,12.66,65000,Top,0.01
+85,Elizabeth Sanchez,Store Manager,845,Midwest-4,Midwest,12,2022-10-03 00:00:00,3.04,60000,Middle,0.006
+86,Nicole Taylor,Store Manager,641,Midwest-3,Midwest,11,2021-03-07 00:00:00,4.61,60000,Middle,0.006
+87,Linda Campbell,Store Manager,763,Midwest-3,Midwest,11,2024-07-17 00:00:00,1.25,56000,Middle,0.006
+88,Jason Davis,Store Manager,500,Southwest-2,Southwest,17,2014-07-14 00:00:00,11.26,65000,Middle,0.006
+89,Jacob Baker,Store Manager,966,West-5,West,23,2022-04-28 00:00:00,3.47,60000,Bottom,0.0025
+90,Patricia Jackson,Store Manager,241,South-1,South,13,2012-06-30 00:00:00,13.3,65000,Top,0.01
+91,Eric Richardson,Store Manager,177,Southwest-1,Southwest,16,2021-08-19 00:00:00,4.16,60000,Middle,0.006
+92,Betty Ortiz,Store Manager,305,West-2,West,20,2020-05-21 00:00:00,5.4,65000,Bottom,0.0025
+93,John Flores,Store Manager,537,East-2,East,7,2020-07-22 00:00:00,5.24,65000,Bottom,0.0025
+94,Susan Gonzalez,Store Manager,657,West-4,West,22,2025-07-10 00:00:00,0.27,52000,Middle,0.006
+95,Michael Cruz,Store Manager,584,Midwest-3,Midwest,11,2020-05-13 00:00:00,5.43,65000,Bottom,0.0025
+96,Christopher Edwards,Store Manager,302,West-2,West,20,2017-06-30 00:00:00,8.3,65000,Middle,0.006
+97,William Torres,Store Manager,115,Midwest-1,Midwest,9,2022-04-23 00:00:00,3.48,60000,Middle,0.006
+98,Brian Moore,Store Manager,443,West-3,West,21,2018-12-19 00:00:00,6.83,65000,Top,0.01
+99,Mary Torres,Store Manager,734,Midwest-3,Midwest,11,2017-01-16 00:00:00,8.75,65000,Bottom,0.0025
+100,Thomas Lopez,Store Manager,895,Midwest-4,Midwest,12,2025-01-18 00:00:00,0.74,52000,Bottom,0.0025
+101,Lisa Turner,Store Manager,201,South-1,South,13,2016-03-22 00:00:00,9.57,65000,Top,0.01
+102,Barbara Morris,Store Manager,741,Southwest-3,Southwest,18,2023-03-09 00:00:00,2.61,56000,Bottom,0.0025
+103,Emma Brown,Store Manager,664,Midwest-3,Midwest,11,2025-03-01 00:00:00,0.63,52000,Bottom,0.0025
+104,Brandon Diaz,Store Manager,326,East-2,East,7,2019-03-28 00:00:00,6.55,65000,Top,0.01
+105,Andrew Davis,Store Manager,561,South-2,South,14,2015-07-20 00:00:00,10.24,65000,Top,0.01
+106,Anthony Peterson,Store Manager,889,Midwest-4,Midwest,12,2013-09-14 00:00:00,12.09,65000,Bottom,0.0025
+107,Donald Turner,Store Manager,83,West-1,West,19,2025-04-09 00:00:00,0.52,52000,Top,0.01
+108,Emily Cruz,Store Manager,182,Midwest-1,Midwest,9,2018-11-16 00:00:00,6.92,65000,Bottom,0.0025
+109,George Thompson,Store Manager,972,Southwest-3,Southwest,18,2018-02-20 00:00:00,7.65,65000,Middle,0.006
+110,William Kim,Store Manager,12,East-1,East,6,2025-06-03 00:00:00,0.37,52000,Middle,0.006
+111,Patricia Wilson,Store Manager,973,Southwest-3,Southwest,18,2019-02-18 00:00:00,6.66,65000,Bottom,0.0025
+112,Jennifer Anderson,Store Manager,932,East-3,East,8,2024-01-02 00:00:00,1.79,56000,Middle,0.006
+113,Brandon Ortiz,Store Manager,687,East-3,East,8,2021-02-03 00:00:00,4.7,60000,Top,0.01
+114,Nicole Garcia,Store Manager,613,South-2,South,14,2020-06-06 00:00:00,5.36,65000,Top,0.01
+115,James Smith,Store Manager,359,West-2,West,20,2021-12-22 00:00:00,3.82,60000,Top,0.01
+116,Sharon Richardson,Store Manager,527,Midwest-3,Midwest,11,2016-10-02 00:00:00,9.04,65000,Middle,0.006
+117,Kathleen Richardson,Store Manager,670,East-2,East,7,2022-12-22 00:00:00,2.82,56000,Top,0.01
+118,Barbara Smith,Store Manager,874,South-3,South,15,2017-06-12 00:00:00,8.35,65000,Top,0.01
+119,Jason Baker,Store Manager,912,Southwest-3,Southwest,18,2016-01-31 00:00:00,9.71,65000,Middle,0.006
+120,Elizabeth Rodriguez,Store Manager,200,Midwest-2,Midwest,10,2019-10-31 00:00:00,5.96,65000,Bottom,0.0025
+121,Kimberly Brown,Store Manager,567,South-2,South,14,2016-09-07 00:00:00,9.11,65000,Middle,0.006
+122,Brenda Johnson,Store Manager,108,East-1,East,6,2024-04-29 00:00:00,1.47,56000,Top,0.01
+123,Kenneth Adams,Store Manager,801,Midwest-4,Midwest,12,2021-12-17 00:00:00,3.83,60000,Bottom,0.0025
+124,Jeffrey Harris,Store Manager,247,South-1,South,13,2021-08-24 00:00:00,4.15,60000,Top,0.01
+125,Nicole Campbell,Store Manager,367,Midwest-2,Midwest,10,2022-05-03 00:00:00,3.46,60000,Bottom,0.0025
+126,Melissa Martinez,Store Manager,897,Midwest-4,Midwest,12,2023-11-20 00:00:00,1.91,56000,Bottom,0.0025
+127,Stephanie Hernandez,Store Manager,981,East-3,East,8,2013-10-21 00:00:00,11.99,65000,Middle,0.006
+128,Thomas Murphy,Store Manager,885,Southwest-3,Southwest,18,2023-04-22 00:00:00,2.49,56000,Bottom,0.0025
+129,Ryan Kelly,Store Manager,557,South-1,South,13,2022-07-12 00:00:00,3.26,60000,Top,0.01
+130,Nicholas Morales,Store Manager,24,East-1,East,6,2018-12-14 00:00:00,6.84,65000,Middle,0.006
+131,Melissa Phillips,Store Manager,576,Midwest-3,Midwest,11,2023-10-13 00:00:00,2.01,56000,Bottom,0.0025
+132,Daniel Baker,Store Manager,925,South-3,South,15,2015-10-28 00:00:00,9.97,65000,Middle,0.006
+133,Christopher Torres,Store Manager,575,West-3,West,21,2012-06-11 00:00:00,13.35,65000,Top,0.01
+134,Jonathan Cruz,Store Manager,866,West-5,West,23,2025-05-12 00:00:00,0.43,52000,Middle,0.006
+135,Rebecca Green,Store Manager,321,West-2,West,20,2016-07-16 00:00:00,9.25,65000,Middle,0.006
+136,Stephanie Williams,Store Manager,647,West-4,West,22,2022-01-08 00:00:00,3.77,60000,Bottom,0.0025
+137,Thomas Jackson,Store Manager,974,South-3,South,15,2012-09-13 00:00:00,13.09,65000,Top,0.01
+138,Kimberly Williams,Store Manager,992,West-5,West,23,2016-07-17 00:00:00,9.25,65000,Middle,0.006
+139,Deborah Brown,Store Manager,809,West-4,West,22,2020-12-02 00:00:00,4.87,60000,Top,0.01
+140,Amy Cruz,Store Manager,39,Southwest-1,Southwest,16,2020-09-27 00:00:00,5.05,65000,Top,0.01
+141,Anna Lewis,Store Manager,571,West-3,West,21,2021-07-18 00:00:00,4.25,60000,Top,0.01
+142,Amy Adams,Store Manager,502,West-3,West,21,2023-09-14 00:00:00,2.09,56000,Bottom,0.0025
+143,Sarah Miller,Store Manager,204,East-1,East,6,2020-06-07 00:00:00,5.36,65000,Middle,0.006
+144,Ashley Baker,Store Manager,821,West-5,West,23,2023-07-06 00:00:00,2.28,56000,Top,0.01
+145,Larry Lopez,Store Manager,324,West-2,West,20,2023-03-05 00:00:00,2.62,56000,Top,0.01
+146,Timothy Morris,Store Manager,674,West-4,West,22,2020-01-23 00:00:00,5.73,65000,Middle,0.006
+147,Angela Thompson,Store Manager,591,South-2,South,14,2014-09-11 00:00:00,11.1,65000,Top,0.01
+148,James Bailey,Store Manager,281,Midwest-2,Midwest,10,2025-10-12 00:00:00,0.01,52000,Bottom,0.0025
+149,Stephanie Johnson,Store Manager,790,Midwest-4,Midwest,12,2020-04-10 00:00:00,5.52,65000,Bottom,0.0025
+150,Ryan Miller,Store Manager,815,South-3,South,15,2020-12-23 00:00:00,4.81,60000,Middle,0.006
+151,Sandra Ramirez,Store Manager,254,West-1,West,19,2020-07-05 00:00:00,5.28,65000,Bottom,0.0025
+152,Jeffrey Evans,Store Manager,911,Southwest-3,Southwest,18,2025-03-24 00:00:00,0.56,52000,Top,0.01
+153,Stephen Green,Store Manager,806,Midwest-4,Midwest,12,2017-01-23 00:00:00,8.73,65000,Bottom,0.0025
+154,Kevin Ramos,Store Manager,56,Midwest-1,Midwest,9,2025-05-11 00:00:00,0.43,52000,Bottom,0.0025
+155,Laura Jackson,Store Manager,979,South-3,South,15,2023-03-23 00:00:00,2.57,56000,Middle,0.006
+156,George Stewart,Store Manager,550,South-1,South,13,2023-03-06 00:00:00,2.62,56000,Top,0.01
+157,Elizabeth Turner,Store Manager,402,Midwest-3,Midwest,11,2015-10-21 00:00:00,9.99,65000,Middle,0.006
+158,Kevin Morgan,Store Manager,473,South-1,South,13,2025-05-04 00:00:00,0.45,52000,Top,0.01
+159,Christopher Jackson,Store Manager,288,Midwest-2,Midwest,10,2025-01-06 00:00:00,0.78,52000,Bottom,0.0025
+160,Anna Lee,Store Manager,610,Midwest-3,Midwest,11,2019-03-11 00:00:00,6.6,65000,Bottom,0.0025
+161,Emma Morales,Store Manager,67,West-1,West,19,2020-02-10 00:00:00,5.68,65000,Middle,0.006
+162,Dorothy Walker,Store Manager,89,Midwest-1,Midwest,9,2024-01-29 00:00:00,1.71,56000,Bottom,0.0025
+163,Ryan Diaz,Store Manager,898,East-3,East,8,2021-04-13 00:00:00,4.51,60000,Top,0.01
+164,Donald Robinson,Store Manager,21,Midwest-1,Midwest,9,2021-10-09 00:00:00,4.02,60000,Bottom,0.0025
+165,Brian Jackson,Store Manager,594,West-3,West,21,2018-11-29 00:00:00,6.88,65000,Top,0.01
+166,Emma Reyes,Store Manager,71,Midwest-1,Midwest,9,2024-08-14 00:00:00,1.17,56000,Bottom,0.0025
+167,Linda Perez,Store Manager,222,Midwest-2,Midwest,10,2021-10-23 00:00:00,3.98,60000,Bottom,0.0025
+168,Mary Richardson,Store Manager,770,West-4,West,22,2021-10-14 00:00:00,4.01,60000,Middle,0.006
+169,Richard Scott,Store Manager,199,West-1,West,19,2024-10-02 00:00:00,1.04,56000,Middle,0.006
+170,Stephen Baker,Store Manager,464,West-3,West,21,2021-06-15 00:00:00,4.34,60000,Bottom,0.0025
+171,Rebecca Smith,Store Manager,578,East-2,East,7,2020-09-19 00:00:00,5.07,65000,Top,0.01
+172,Steven Allen,Store Manager,603,Southwest-2,Southwest,17,2018-09-14 00:00:00,7.09,65000,Bottom,0.0025
+173,Stephanie Morales,Store Manager,642,West-4,West,22,2020-07-22 00:00:00,5.24,65000,Top,0.01
+174,Sharon Jackson,Store Manager,164,Southwest-1,Southwest,16,2016-01-20 00:00:00,9.74,65000,Middle,0.006
+175,Christopher Roberts,Store Manager,538,West-3,West,21,2022-06-14 00:00:00,3.34,60000,Middle,0.006
+176,Shirley Cox,Store Manager,949,East-3,East,8,2021-09-13 00:00:00,4.09,60000,Top,0.01
+177,Steven Thompson,Store Manager,717,Southwest-3,Southwest,18,2025-01-13 00:00:00,0.76,52000,Bottom,0.0025
+178,Barbara Roberts,Store Manager,713,West-4,West,22,2021-01-23 00:00:00,4.73,60000,Top,0.01
+179,Paul Kim,Store Manager,16,East-1,East,6,2020-12-06 00:00:00,4.86,60000,Top,0.01
+180,Anthony Gonzalez,Store Manager,19,Midwest-1,Midwest,9,2018-10-31 00:00:00,6.96,65000,Middle,0.006
+181,Kenneth Reyes,Store Manager,869,East-3,East,8,2017-11-12 00:00:00,7.93,65000,Top,0.01
+182,Steven Lopez,Store Manager,669,South-2,South,14,2017-04-18 00:00:00,8.5,65000,Bottom,0.0025
+183,Barbara Perez,Store Manager,314,Midwest-2,Midwest,10,2015-03-22 00:00:00,10.57,65000,Bottom,0.0025
+184,Anthony Wilson,Store Manager,440,West-3,West,21,2024-09-09 00:00:00,1.1,56000,Top,0.01
+185,Robert Kelly,Store Manager,455,Midwest-3,Midwest,11,2022-03-03 00:00:00,3.62,60000,Middle,0.006
+186,Sharon Young,Store Manager,661,South-2,South,14,2019-10-30 00:00:00,5.96,65000,Bottom,0.0025
+187,Timothy Brown,Store Manager,922,South-3,South,15,2024-03-16 00:00:00,1.59,56000,Top,0.01
+188,Larry Hernandez,Store Manager,659,Southwest-2,Southwest,17,2019-11-04 00:00:00,5.95,65000,Bottom,0.0025
+189,Nancy Murphy,Store Manager,58,Midwest-1,Midwest,9,2025-01-15 00:00:00,0.75,52000,Bottom,0.0025
+190,Jacob Murphy,Store Manager,327,Midwest-2,Midwest,10,2019-06-07 00:00:00,6.36,65000,Bottom,0.0025
+191,Carol Anderson,Store Manager,958,West-5,West,23,2020-09-12 00:00:00,5.09,65000,Middle,0.006
+192,Shirley Reyes,Store Manager,129,East-1,East,6,2019-09-29 00:00:00,6.05,65000,Top,0.01
+193,Jennifer Campbell,Store Manager,960,West-5,West,23,2014-01-08 00:00:00,11.77,65000,Bottom,0.0025
+194,Laura Torres,Store Manager,893,Southwest-3,Southwest,18,2023-02-09 00:00:00,2.68,56000,Middle,0.006
+195,Amy Thompson,Store Manager,436,Southwest-2,Southwest,17,2018-06-09 00:00:00,7.35,65000,Bottom,0.0025
+196,Jessica Lopez,Store Manager,296,Southwest-1,Southwest,16,2021-03-01 00:00:00,4.63,60000,Bottom,0.0025
+197,Ronald Jones,Store Manager,611,Southwest-2,Southwest,17,2024-07-15 00:00:00,1.25,56000,Middle,0.006
+198,Helen Kelly,Store Manager,438,South-1,South,13,2023-01-28 00:00:00,2.72,56000,Top,0.01
+199,Jeffrey Kelly,Store Manager,355,Southwest-1,Southwest,16,2017-04-17 00:00:00,8.5,65000,Top,0.01
+200,Nicole Lee,Store Manager,819,South-3,South,15,2015-07-20 00:00:00,10.24,65000,Middle,0.006
+201,Sharon Gonzalez,Store Manager,813,East-3,East,8,2021-01-24 00:00:00,4.73,60000,Top,0.01
+202,Christopher Ramos,Store Manager,705,Southwest-3,Southwest,18,2021-09-15 00:00:00,4.09,60000,Middle,0.006
+203,Brandon Scott,Store Manager,555,East-2,East,7,2023-10-07 00:00:00,2.03,56000,Top,0.01
+204,Kathleen Flores,Store Manager,70,Southwest-1,Southwest,16,2015-09-08 00:00:00,10.11,65000,Top,0.01
+205,Brian Miller,Store Manager,945,West-5,West,23,2020-04-01 00:00:00,5.54,65000,Top,0.01
+206,David Morales,Store Manager,908,South-3,South,15,2022-03-22 00:00:00,3.57,60000,Bottom,0.0025
+207,Paul Lewis,Store Manager,102,East-1,East,6,2017-12-04 00:00:00,7.87,65000,Top,0.01
+208,Barbara Lee,Store Manager,409,West-2,West,20,2019-08-25 00:00:00,6.14,65000,Middle,0.006
+209,Emily Sanchez,Store Manager,523,Southwest-2,Southwest,17,2019-01-10 00:00:00,6.77,65000,Middle,0.006
+210,Pamela White,Store Manager,212,West-1,West,19,2022-02-14 00:00:00,3.67,60000,Bottom,0.0025
+211,Lisa Brown,Store Manager,531,East-2,East,7,2020-04-29 00:00:00,5.47,65000,Middle,0.006
+212,Barbara Ward,Store Manager,50,Southwest-1,Southwest,16,2018-11-05 00:00:00,6.95,65000,Bottom,0.0025
+213,Joseph Ortiz,Store Manager,984,West-5,West,23,2024-03-01 00:00:00,1.63,56000,Bottom,0.0025
+214,Karen Gonzalez,Store Manager,360,West-2,West,20,2023-05-31 00:00:00,2.38,56000,Middle,0.006
+215,Larry Scott,Store Manager,926,Midwest-4,Midwest,12,2023-02-19 00:00:00,2.66,56000,Middle,0.006
+216,Helen Mitchell,Store Manager,316,East-2,East,7,2022-10-03 00:00:00,3.04,60000,Top,0.01
+217,Robert Cook,Store Manager,814,South-3,South,15,2022-09-19 00:00:00,3.08,60000,Top,0.01
+218,Dorothy Thompson,Store Manager,615,West-3,West,21,2020-05-14 00:00:00,5.42,65000,Bottom,0.0025
+219,Shirley Brown,Store Manager,227,Midwest-2,Midwest,10,2024-06-20 00:00:00,1.32,56000,Bottom,0.0025
+220,Helen Wilson,Store Manager,209,West-1,West,19,2024-06-28 00:00:00,1.3,56000,Middle,0.006
+221,Andrew Nguyen,Store Manager,334,Southwest-1,Southwest,16,2022-09-19 00:00:00,3.08,60000,Bottom,0.0025
+222,Pamela King,Store Manager,788,West-4,West,22,2025-07-20 00:00:00,0.24,52000,Bottom,0.0025
+223,Jonathan Hernandez,Store Manager,766,Midwest-3,Midwest,11,2024-06-20 00:00:00,1.32,56000,Bottom,0.0025

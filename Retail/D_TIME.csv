@@ -1,0 +1,25 @@
+Hour,Hour Label,Daypart,Is Typical Business Hour
+0,12:00 AM,Overnight,N
+1,1:00 AM,Overnight,N
+2,2:00 AM,Overnight,N
+3,3:00 AM,Overnight,N
+4,4:00 AM,Overnight,N
+5,5:00 AM,Early Morning,N
+6,6:00 AM,Early Morning,N
+7,7:00 AM,Early Morning,N
+8,8:00 AM,Early Morning,N
+9,9:00 AM,Morning,Y
+10,10:00 AM,Morning,Y
+11,11:00 AM,Morning,Y
+12,12:00 PM,Midday,Y
+13,1:00 PM,Midday,Y
+14,2:00 PM,Afternoon,Y
+15,3:00 PM,Afternoon,Y
+16,4:00 PM,Afternoon,Y
+17,5:00 PM,Evening,Y
+18,6:00 PM,Evening,Y
+19,7:00 PM,Evening,Y
+20,8:00 PM,Evening,Y
+21,9:00 PM,Night,N
+22,10:00 PM,Night,N
+23,11:00 PM,Night,N

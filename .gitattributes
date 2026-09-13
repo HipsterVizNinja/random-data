@@ -1,0 +1,2 @@
+Retail/F_INVENTORY_SNAPSHOT.csv filter=lfs diff=lfs merge=lfs -text
+Retail/F_POINT_OF_SALE_master.csv filter=lfs diff=lfs merge=lfs -text

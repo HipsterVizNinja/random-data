@@ -1,0 +1,1618 @@
+Salesperson Key,Salesperson Name,Store Key,Tier,Hire Date,Employment Status,Termination Date,Tenure Years,Commission Rate
+1,Donald Parker,84,Ambassador,2022-12-24 00:00:00,Active,,2.81,0.025
+2,Ryan Morales,84,Cashier,2023-01-04 00:00:00,Active,,2.78,0.0125
+3,Brenda Nelson,84,Ambassador,2023-02-13 00:00:00,Active,,2.67,0.025
+4,Daniel Adams,84,Cashier,2021-11-15 00:00:00,Active,,3.92,0.015
+5,Larry Lewis,84,Cashier,2018-09-10 00:00:00,Active,,7.1,0.0175
+6,Melissa Cruz,84,Cashier,2019-02-18 00:00:00,Active,,6.66,0.0175
+7,Dorothy Jackson,84,Ambassador,2019-01-28 00:00:00,Active,,6.72,0.035
+8,Helen Clark,84,Cashier,2024-05-24 00:00:00,Active,,1.4,0.0125
+9,Stephanie Edwards,84,Cashier,2018-09-17 00:00:00,Active,,7.08,0.0175
+10,Ryan Ward,84,Ambassador,2016-05-08 00:00:00,Active,,9.44,0.035
+11,Stephen Rivera,122,Ambassador,2020-08-17 00:00:00,Active,,5.16,0.035
+12,Donald Green,122,Senior Ambassador,2017-05-15 00:00:00,Active,,8.42,0.045
+13,Jessica Sanchez,122,Cashier,2025-08-11 00:00:00,Active,,0.18,0.01
+14,George Scott,122,Senior Ambassador,2017-05-16 00:00:00,Terminated,2020-10-19 00:00:00,8.42,0.045
+15,Scott Hall,122,Senior Ambassador,2022-12-07 00:00:00,Active,,2.86,0.035
+16,Kimberly Garcia,122,Senior Ambassador,2020-11-19 00:00:00,Active,,4.91,0.04
+17,Amanda Green,122,Ambassador,2024-08-13 00:00:00,Active,,1.18,0.025
+18,Jason Lewis,725,Cashier,2021-07-03 00:00:00,Active,,4.29,0.015
+19,William Martinez,725,Cashier,2023-05-12 00:00:00,Active,,2.43,0.0125
+20,Carol Hill,725,Lead,2018-08-27 00:00:00,Terminated,2023-09-22 00:00:00,7.14,0.06
+21,Jeffrey Hernandez,725,Ambassador,2017-07-15 00:00:00,Active,,8.26,0.035
+22,Anthony White,725,Cashier,2011-08-07 00:00:00,Active,,14.19,0.0175
+23,Nicole Martin,725,Cashier,2024-09-30 00:00:00,Active,,1.04,0.0125
+24,Pamela Cox,725,Lead,2020-01-09 00:00:00,Active,,5.77,0.06
+25,Anna Davis,725,Ambassador,2023-04-22 00:00:00,Active,,2.49,0.025
+26,Brenda Moore,725,Lead,2013-05-25 00:00:00,Active,,12.39,0.06
+27,Barbara Baker,6,Ambassador,2014-04-29 00:00:00,Active,,11.47,0.035
+28,Stephanie Allen,6,Senior Ambassador,2023-09-07 00:00:00,Terminated,2025-06-26 00:00:00,2.11,0.035
+29,Betty Cox,6,Cashier,2024-02-06 00:00:00,Terminated,2025-03-11 00:00:00,1.69,0.0125
+30,Jonathan Anderson,6,Ambassador,2017-07-22 00:00:00,Terminated,2024-02-16 00:00:00,8.24,0.035
+31,Scott Campbell,6,Cashier,2013-07-28 00:00:00,Active,,12.22,0.0175
+32,Helen Williams,6,Cashier,2012-11-30 00:00:00,Active,,12.88,0.0175
+33,Ronald Garcia,6,Cashier,2013-06-21 00:00:00,Active,,12.32,0.0175
+34,Cynthia Edwards,6,Senior Ambassador,2020-10-03 00:00:00,Active,,5.04,0.045
+35,Cynthia Allen,6,Ambassador,2020-07-14 00:00:00,Active,,5.26,0.035
+36,Carol Gonzalez,6,Ambassador,2023-03-30 00:00:00,Active,,2.55,0.025
+37,Eric Miller,192,Cashier,2021-05-07 00:00:00,Active,,4.44,0.015
+38,Matthew Perez,192,Cashier,2025-06-15 00:00:00,Active,,0.34,0.01
+39,John Sanchez,192,Ambassador,2021-07-15 00:00:00,Active,,4.26,0.03
+40,Kimberly Rogers,192,Senior Ambassador,2024-04-12 00:00:00,Active,,1.51,0.035
+41,Eric Walker,192,Ambassador,2023-04-29 00:00:00,Active,,2.47,0.025
+42,Margaret Robinson,192,Cashier,2022-04-29 00:00:00,Active,,3.47,0.015
+43,Linda Bailey,192,Ambassador,2021-11-11 00:00:00,Active,,3.93,0.03
+44,Laura Lopez,178,Cashier,2023-04-12 00:00:00,Active,,2.51,0.0125
+45,Timothy Rivera,178,Ambassador,2018-11-20 00:00:00,Terminated,2020-06-05 00:00:00,6.91,0.035
+46,Amanda Kim,178,Cashier,2024-12-25 00:00:00,Active,,0.81,0.01
+47,Amanda Murphy,178,Senior Ambassador,2019-07-06 00:00:00,Active,,6.28,0.045
+48,Melissa Reyes,178,Ambassador,2025-09-20 00:00:00,Terminated,2025-10-06 00:00:00,0.07,0.02
+49,Nicholas Richardson,498,Cashier,2018-10-01 00:00:00,Active,,7.04,0.0175
+50,Ashley Roberts,498,Cashier,2017-02-08 00:00:00,Terminated,2025-10-07 00:00:00,8.68,0.0175
+51,Jennifer Clark,498,Ambassador,2024-02-07 00:00:00,Active,,1.69,0.025
+52,Kimberly Hill,498,Ambassador,2020-04-14 00:00:00,Terminated,2025-06-23 00:00:00,5.51,0.035
+53,Brian Roberts,498,Lead,2020-06-11 00:00:00,Active,,5.35,0.06
+54,Emma Williams,498,Ambassador,2021-03-27 00:00:00,Terminated,2025-08-04 00:00:00,4.56,0.03
+55,Donna Phillips,498,Ambassador,2024-10-05 00:00:00,Active,,1.03,0.025
+56,Nancy Gomez,498,Senior Ambassador,2015-07-13 00:00:00,Active,,10.26,0.045
+57,Susan Taylor,498,Cashier,2025-10-02 00:00:00,Terminated,2025-10-14 00:00:00,0.04,0.01
+58,Donald Thompson,498,Cashier,2018-06-15 00:00:00,Active,,7.34,0.0175
+59,Jonathan Nelson,589,Cashier,2017-02-02 00:00:00,Terminated,2022-06-26 00:00:00,8.7,0.0175
+60,Mary Cox,589,Senior Ambassador,2018-09-18 00:00:00,Terminated,2024-04-13 00:00:00,7.08,0.045
+61,David Rogers,589,Ambassador,2012-08-19 00:00:00,Active,,13.16,0.035
+62,Lisa Anderson,589,Cashier,2015-03-23 00:00:00,Active,,10.57,0.0175
+63,Jennifer Parker,589,Ambassador,2012-02-28 00:00:00,Active,,13.63,0.035
+64,Brenda Adams,589,Ambassador,2017-03-06 00:00:00,Terminated,2023-05-24 00:00:00,8.61,0.035
+65,Nicholas Ramos,589,Cashier,2021-09-23 00:00:00,Active,,4.06,0.015
+66,Andrew Collins,589,Cashier,2020-09-29 00:00:00,Active,,5.05,0.0175
+67,James Flores,589,Ambassador,2015-03-08 00:00:00,Active,,10.61,0.035
+68,Nancy Thomas,589,Ambassador,2021-07-11 00:00:00,Active,,4.27,0.03
+69,Mark Miller,589,Senior Ambassador,2019-11-22 00:00:00,Active,,5.9,0.045
+70,Ronald Wilson,36,Ambassador,2023-12-31 00:00:00,Active,,1.79,0.025
+71,Stephanie Ramirez,36,Lead,2015-06-27 00:00:00,Active,,10.31,0.06
+72,Eric Ramirez,36,Cashier,2025-08-19 00:00:00,Active,,0.16,0.01
+73,George Ward,36,Ambassador,2014-11-10 00:00:00,Active,,10.93,0.035
+74,Kevin Cox,36,Senior Ambassador,2013-11-03 00:00:00,Terminated,2024-08-27 00:00:00,11.95,0.045
+75,Joshua Campbell,36,Cashier,2014-02-25 00:00:00,Terminated,2015-04-12 00:00:00,11.64,0.0175
+76,Scott Johnson,318,Cashier,2022-06-26 00:00:00,Active,,3.31,0.015
+77,Thomas Green,318,Ambassador,2022-11-01 00:00:00,Active,,2.96,0.025
+78,Jeffrey Campbell,318,Ambassador,2021-03-11 00:00:00,Active,,4.6,0.03
+79,Jonathan Green,318,Ambassador,2024-06-08 00:00:00,Active,,1.36,0.025
+80,Jennifer Martinez,318,Ambassador,2022-09-06 00:00:00,Active,,3.11,0.03
+81,John Cooper,269,Cashier,2022-08-31 00:00:00,Terminated,2024-08-20 00:00:00,3.13,0.015
+82,Amanda Morales,269,Senior Ambassador,2022-07-11 00:00:00,Active,,3.27,0.04
+83,Lisa Morgan,269,Ambassador,2021-05-09 00:00:00,Terminated,2024-02-07 00:00:00,4.44,0.03
+84,Eric Campbell,269,Cashier,2025-07-13 00:00:00,Terminated,2025-09-13 00:00:00,0.26,0.01
+85,Andrew Taylor,269,Cashier,2022-06-05 00:00:00,Active,,3.37,0.015
+86,Michelle Gutierrez,269,Cashier,2022-06-21 00:00:00,Terminated,2023-12-20 00:00:00,3.32,0.015
+87,Kathleen Garcia,269,Ambassador,2021-11-11 00:00:00,Active,,3.93,0.03
+88,Nicholas Smith,269,Lead,2022-04-16 00:00:00,Active,,3.5,0.05
+89,Jason Lee,269,Cashier,2025-05-04 00:00:00,Active,,0.45,0.01
+90,Joshua Perez,269,Cashier,2024-10-16 00:00:00,Active,,1.0,0.0125
+91,Pamela Wright,375,Senior Ambassador,2022-01-14 00:00:00,Active,,3.75,0.04
+92,Karen Stewart,375,Cashier,2024-03-19 00:00:00,Active,,1.58,0.0125
+93,Patricia Cook,375,Cashier,2025-09-25 00:00:00,Active,,0.06,0.01
+94,Scott Collins,375,Senior Ambassador,2022-08-25 00:00:00,Active,,3.14,0.04
+95,Helen Evans,375,Ambassador,2020-01-07 00:00:00,Active,,5.77,0.035
+96,Deborah Howard,375,Cashier,2020-08-07 00:00:00,Active,,5.19,0.0175
+97,Scott Lee,375,Cashier,2023-01-20 00:00:00,Terminated,2025-03-03 00:00:00,2.74,0.0125
+98,Sandra Johnson,375,Cashier,2019-10-04 00:00:00,Active,,6.03,0.0175
+99,Karen Torres,375,Cashier,2024-12-03 00:00:00,Active,,0.87,0.01
+100,Susan Lopez,375,Ambassador,2021-06-28 00:00:00,Terminated,2022-02-09 00:00:00,4.3,0.03
+101,James Miller,758,Cashier,2013-05-30 00:00:00,Active,,12.38,0.0175
+102,Carol Miller,758,Cashier,2021-12-08 00:00:00,Active,,3.86,0.015
+103,Shirley Hill,758,Cashier,2024-07-02 00:00:00,Active,,1.29,0.0125
+104,Cynthia Brown,758,Cashier,2023-07-13 00:00:00,Active,,2.26,0.0125
+105,Donald Rogers,758,Senior Ambassador,2016-07-05 00:00:00,Active,,9.28,0.045
+106,Jessica Howard,758,Cashier,2023-09-06 00:00:00,Active,,2.11,0.0125
+107,Matthew Ramos,758,Cashier,2018-04-23 00:00:00,Active,,7.48,0.0175
+108,Jonathan Lee,758,Lead,2017-07-26 00:00:00,Active,,8.22,0.06
+109,Thomas Phillips,831,Cashier,2018-12-28 00:00:00,Active,,6.8,0.0175
+110,James Peterson,831,Ambassador,2023-08-07 00:00:00,Active,,2.19,0.025
+111,Robert Reyes,831,Cashier,2018-10-28 00:00:00,Active,,6.97,0.0175
+112,Brenda Cox,831,Ambassador,2019-07-03 00:00:00,Active,,6.29,0.035
+113,Christopher Brown,831,Cashier,2022-10-23 00:00:00,Active,,2.98,0.0125
+114,Christopher Moore,831,Senior Ambassador,2020-09-08 00:00:00,Active,,5.1,0.045
+115,Karen Kim,831,Ambassador,2018-12-03 00:00:00,Terminated,2025-01-31 00:00:00,6.87,0.035
+116,Deborah Williams,831,Ambassador,2018-01-30 00:00:00,Active,,7.71,0.035
+117,Carol Harris,831,Cashier,2018-01-04 00:00:00,Active,,7.78,0.0175
+118,Jennifer Jones,508,Cashier,2017-04-23 00:00:00,Active,,8.48,0.0175
+119,Sharon Carter,508,Cashier,2019-12-20 00:00:00,Active,,5.82,0.0175
+120,Pamela Wilson,508,Cashier,2023-01-27 00:00:00,Terminated,2024-03-26 00:00:00,2.72,0.0125
+121,Anna Hill,508,Cashier,2023-04-09 00:00:00,Active,,2.52,0.0125
+122,Richard Rivera,508,Lead,2017-07-17 00:00:00,Active,,8.25,0.06
+123,Jeffrey Adams,508,Lead,2020-01-27 00:00:00,Terminated,2022-04-28 00:00:00,5.72,0.06
+124,Brian Wright,508,Ambassador,2022-05-07 00:00:00,Active,,3.44,0.03
+125,Ronald White,508,Ambassador,2015-11-26 00:00:00,Active,,9.89,0.035
+126,Ronald Reed,508,Cashier,2024-12-29 00:00:00,Active,,0.8,0.01
+127,Shirley Anderson,508,Ambassador,2024-07-21 00:00:00,Active,,1.24,0.025
+128,Melissa Scott,508,Cashier,2024-06-10 00:00:00,Active,,1.35,0.0125
+129,Ronald Reyes,118,Ambassador,2023-09-13 00:00:00,Terminated,2024-09-13 00:00:00,2.09,0.025
+130,Paul Gutierrez,118,Ambassador,2018-03-13 00:00:00,Active,,7.6,0.035
+131,Carol Baker,118,Ambassador,2024-04-19 00:00:00,Terminated,2024-05-30 00:00:00,1.49,0.025
+132,Stephanie Reyes,118,Ambassador,2025-09-06 00:00:00,Active,,0.11,0.02
+133,Charles Miller,118,Cashier,2021-03-31 00:00:00,Active,,4.55,0.015
+134,Stephen Garcia,118,Lead,2022-05-15 00:00:00,Active,,3.42,0.05
+135,Andrew Torres,184,Ambassador,2024-03-26 00:00:00,Active,,1.56,0.025
+136,Stephanie Young,184,Cashier,2019-06-10 00:00:00,Active,,6.35,0.0175
+137,Kevin Adams,184,Cashier,2025-04-13 00:00:00,Terminated,2025-09-05 00:00:00,0.51,0.01
+138,Charles Ward,184,Senior Ambassador,2024-08-10 00:00:00,Terminated,2024-12-01 00:00:00,1.18,0.035
+139,Margaret Turner,184,Cashier,2025-09-02 00:00:00,Active,,0.12,0.01
+140,Emily Miller,184,Senior Ambassador,2024-09-25 00:00:00,Active,,1.06,0.035
+141,Sandra Ortiz,184,Ambassador,2020-08-05 00:00:00,Active,,5.2,0.035
+142,Nancy Robinson,544,Cashier,2017-05-02 00:00:00,Terminated,2024-01-24 00:00:00,8.46,0.0175
+143,Jennifer Williams,544,Cashier,2024-01-11 00:00:00,Active,,1.76,0.0125
+144,Anthony Green,544,Cashier,2018-10-03 00:00:00,Terminated,2022-04-06 00:00:00,7.04,0.0175
+145,Shirley Stewart,544,Senior Ambassador,2019-09-19 00:00:00,Active,,6.08,0.045
+146,Larry Williams,544,Cashier,2019-03-28 00:00:00,Active,,6.55,0.0175
+147,Nicholas Rivera,942,Cashier,2018-08-08 00:00:00,Terminated,2018-08-19 00:00:00,7.19,0.0175
+148,Jennifer Nelson,942,Cashier,2017-10-28 00:00:00,Terminated,2020-08-27 00:00:00,7.97,0.0175
+149,Anthony Davis,942,Cashier,2015-05-29 00:00:00,Active,,10.39,0.0175
+150,Karen Morris,942,Cashier,2015-10-25 00:00:00,Active,,9.98,0.0175
+151,Donna Hall,942,Cashier,2015-09-11 00:00:00,Active,,10.1,0.0175
+152,Pamela Phillips,942,Lead,2019-12-02 00:00:00,Active,,5.87,0.06
+153,Joseph Phillips,942,Ambassador,2018-12-02 00:00:00,Active,,6.87,0.035
+154,Justin Murphy,942,Cashier,2023-03-20 00:00:00,Active,,2.58,0.0125
+155,Patricia Cox,870,Ambassador,2021-08-04 00:00:00,Active,,4.2,0.03
+156,Daniel Mitchell,870,Cashier,2017-08-29 00:00:00,Active,,8.13,0.0175
+157,Anthony Brown,870,Ambassador,2022-05-17 00:00:00,Terminated,2024-05-16 00:00:00,3.42,0.03
+158,Amy Garcia,870,Lead,2021-07-31 00:00:00,Active,,4.21,0.05
+159,Thomas Mitchell,870,Senior Ambassador,2020-06-15 00:00:00,Active,,5.34,0.045
+160,Pamela Murphy,870,Lead,2016-08-27 00:00:00,Active,,9.14,0.06
+161,Ashley Howard,870,Senior Ambassador,2016-06-19 00:00:00,Active,,9.33,0.045
+162,Larry Cook,870,Ambassador,2019-11-06 00:00:00,Active,,5.94,0.035
+163,Emily Martinez,870,Ambassador,2023-11-08 00:00:00,Active,,1.94,0.025
+164,Laura Hernandez,870,Ambassador,2021-04-15 00:00:00,Active,,4.5,0.03
+165,Linda Torres,250,Ambassador,2015-10-24 00:00:00,Active,,9.98,0.035
+166,Nancy Collins,250,Cashier,2018-08-07 00:00:00,Terminated,2020-01-18 00:00:00,7.19,0.0175
+167,Nancy Morris,250,Cashier,2018-03-31 00:00:00,Active,,7.55,0.0175
+168,Patricia Ramos,250,Ambassador,2017-03-15 00:00:00,Active,,8.59,0.035
+169,Stephen Thomas,250,Senior Ambassador,2024-05-31 00:00:00,Active,,1.38,0.035
+170,Christopher Rivera,250,Cashier,2022-07-30 00:00:00,Active,,3.21,0.015
+171,Michelle Mitchell,250,Cashier,2022-11-22 00:00:00,Terminated,2024-05-15 00:00:00,2.9,0.0125
+172,Eric Wright,250,Cashier,2017-01-10 00:00:00,Active,,8.76,0.0175
+173,John Lopez,250,Ambassador,2014-04-06 00:00:00,Terminated,2019-05-08 00:00:00,11.53,0.035
+174,Lisa Davis,852,Cashier,2023-11-23 00:00:00,Active,,1.9,0.0125
+175,Nancy Reyes,852,Senior Ambassador,2020-03-15 00:00:00,Active,,5.59,0.045
+176,Kimberly Taylor,852,Cashier,2018-11-08 00:00:00,Active,,6.94,0.0175
+177,Deborah Peterson,852,Ambassador,2023-04-06 00:00:00,Active,,2.53,0.025
+178,George Lee,852,Cashier,2019-05-25 00:00:00,Terminated,2022-04-23 00:00:00,6.4,0.0175
+179,Gary Edwards,270,Ambassador,2023-10-26 00:00:00,Active,,1.97,0.025
+180,Daniel Phillips,270,Cashier,2021-06-25 00:00:00,Active,,4.31,0.015
+181,Eric Kim,270,Lead,2022-02-02 00:00:00,Active,,3.7,0.05
+182,Eric Wilson,270,Ambassador,2021-05-05 00:00:00,Active,,4.45,0.03
+183,Lisa White,270,Cashier,2024-03-15 00:00:00,Active,,1.59,0.0125
+184,Sarah Torres,270,Ambassador,2025-08-23 00:00:00,Active,,0.15,0.02
+185,Sharon Wright,270,Ambassador,2023-11-08 00:00:00,Active,,1.94,0.025
+186,Sarah King,270,Ambassador,2024-05-13 00:00:00,Terminated,2025-07-12 00:00:00,1.43,0.025
+187,Jennifer Johnson,270,Cashier,2025-01-08 00:00:00,Active,,0.77,0.01
+188,Brenda Reed,270,Cashier,2023-01-11 00:00:00,Active,,2.76,0.0125
+189,Edward Clark,270,Cashier,2025-09-12 00:00:00,Active,,0.09,0.01
+190,David Anderson,902,Cashier,2024-12-15 00:00:00,Active,,0.84,0.01
+191,Sharon Robinson,902,Ambassador,2024-07-18 00:00:00,Active,,1.25,0.025
+192,Mary Hill,902,Cashier,2024-06-23 00:00:00,Active,,1.31,0.0125
+193,Ryan Robinson,902,Cashier,2023-08-06 00:00:00,Active,,2.2,0.0125
+194,Stephen Martin,902,Cashier,2022-09-05 00:00:00,Terminated,2025-01-31 00:00:00,3.11,0.015
+195,Rebecca Nelson,649,Cashier,2014-04-09 00:00:00,Terminated,2015-07-12 00:00:00,11.52,0.0175
+196,George Murphy,649,Cashier,2014-04-22 00:00:00,Active,,11.49,0.0175
+197,David Cooper,649,Cashier,2014-08-10 00:00:00,Active,,11.18,0.0175
+198,Timothy Cruz,649,Senior Ambassador,2024-02-24 00:00:00,Active,,1.64,0.035
+199,Ashley Gomez,649,Ambassador,2022-06-21 00:00:00,Active,,3.32,0.03
+200,Laura King,649,Ambassador,2016-02-10 00:00:00,Active,,9.68,0.035
+201,Deborah Clark,649,Ambassador,2014-04-05 00:00:00,Active,,11.53,0.035
+202,Sharon Cruz,649,Lead,2017-03-24 00:00:00,Terminated,2019-05-16 00:00:00,8.56,0.06
+203,Ryan Wilson,649,Lead,2018-07-12 00:00:00,Active,,7.26,0.06
+204,Jonathan Reyes,303,Ambassador,2021-07-05 00:00:00,Terminated,2022-11-13 00:00:00,4.28,0.03
+205,Emily Carter,303,Ambassador,2024-08-10 00:00:00,Active,,1.18,0.025
+206,Brandon Hernandez,303,Senior Ambassador,2019-10-03 00:00:00,Active,,6.04,0.045
+207,Anna Miller,303,Cashier,2016-04-19 00:00:00,Active,,9.49,0.0175
+208,Kimberly Green,303,Cashier,2016-10-12 00:00:00,Active,,9.01,0.0175
+209,George Davis,303,Cashier,2025-06-16 00:00:00,Active,,0.33,0.01
+210,Christopher Adams,303,Senior Ambassador,2015-03-23 00:00:00,Active,,10.57,0.045
+211,Jennifer Green,953,Senior Ambassador,2013-10-31 00:00:00,Active,,11.96,0.045
+212,Jason Turner,953,Ambassador,2021-03-18 00:00:00,Active,,4.58,0.03
+213,Edward Jones,953,Cashier,2016-10-15 00:00:00,Active,,9.0,0.0175
+214,Jonathan White,953,Cashier,2019-03-18 00:00:00,Active,,6.58,0.0175
+215,Jason Wilson,953,Ambassador,2013-04-20 00:00:00,Terminated,2019-11-25 00:00:00,12.49,0.035
+216,Carol Stewart,625,Ambassador,2019-02-11 00:00:00,Terminated,2019-12-22 00:00:00,6.68,0.035
+217,Barbara Stewart,625,Ambassador,2020-12-16 00:00:00,Active,,4.83,0.03
+218,Paul Ortiz,625,Cashier,2021-03-22 00:00:00,Terminated,2024-05-31 00:00:00,4.57,0.015
+219,David Garcia,625,Ambassador,2020-08-03 00:00:00,Terminated,2023-05-25 00:00:00,5.2,0.035
+220,Laura Williams,625,Ambassador,2023-10-02 00:00:00,Active,,2.04,0.025
+221,Nancy Jones,625,Cashier,2024-08-28 00:00:00,Active,,1.13,0.0125
+222,Paul Martinez,625,Cashier,2022-12-16 00:00:00,Active,,2.83,0.0125
+223,Jonathan Ortiz,625,Cashier,2024-01-11 00:00:00,Active,,1.76,0.0125
+224,Karen Rivera,267,Cashier,2021-12-16 00:00:00,Terminated,2024-07-22 00:00:00,3.83,0.015
+225,Jonathan Rivera,267,Cashier,2023-12-26 00:00:00,Active,,1.81,0.0125
+226,Christopher Thomas,267,Ambassador,2022-05-14 00:00:00,Active,,3.43,0.03
+227,Ryan Gonzalez,267,Ambassador,2024-11-13 00:00:00,Terminated,2025-04-09 00:00:00,0.92,0.02
+228,Brandon Nguyen,267,Cashier,2025-07-06 00:00:00,Active,,0.28,0.01
+229,Brenda Martinez,267,Cashier,2022-02-28 00:00:00,Active,,3.63,0.015
+230,Kevin Collins,267,Senior Ambassador,2023-04-21 00:00:00,Terminated,2024-08-08 00:00:00,2.49,0.035
+231,Jason Green,267,Cashier,2020-12-30 00:00:00,Active,,4.79,0.015
+232,Jason Gonzalez,267,Senior Ambassador,2020-09-21 00:00:00,Terminated,2021-11-01 00:00:00,5.07,0.045
+233,Susan Martin,267,Cashier,2024-11-25 00:00:00,Active,,0.89,0.01
+234,Nancy Wilson,768,Ambassador,2021-02-25 00:00:00,Terminated,2023-05-24 00:00:00,4.64,0.03
+235,Anna Gutierrez,768,Cashier,2019-05-06 00:00:00,Active,,6.45,0.0175
+236,Daniel Reed,768,Cashier,2020-09-17 00:00:00,Active,,5.08,0.0175
+237,Patricia Robinson,768,Ambassador,2020-02-29 00:00:00,Active,,5.63,0.035
+238,Eric Gonzalez,768,Ambassador,2020-05-04 00:00:00,Active,,5.45,0.035
+239,William Gutierrez,768,Senior Ambassador,2021-05-06 00:00:00,Active,,4.45,0.04
+240,Larry Morales,768,Cashier,2019-05-12 00:00:00,Terminated,2020-02-10 00:00:00,6.43,0.0175
+241,Cynthia King,768,Ambassador,2021-12-04 00:00:00,Active,,3.87,0.03
+242,Amy Miller,768,Cashier,2024-12-30 00:00:00,Active,,0.79,0.01
+243,Nicholas King,768,Cashier,2015-10-02 00:00:00,Active,,10.04,0.0175
+244,Jason Peterson,768,Senior Ambassador,2016-11-11 00:00:00,Active,,8.93,0.045
+245,Kathleen Morales,383,Cashier,2023-10-30 00:00:00,Terminated,2025-05-14 00:00:00,1.96,0.0125
+246,Ashley Richardson,383,Ambassador,2017-02-15 00:00:00,Active,,8.67,0.035
+247,Donna Gutierrez,383,Senior Ambassador,2016-11-22 00:00:00,Active,,8.9,0.045
+248,Stephanie Clark,383,Cashier,2015-10-03 00:00:00,Terminated,2017-05-12 00:00:00,10.04,0.0175
+249,Andrew Kim,383,Ambassador,2015-06-15 00:00:00,Active,,10.34,0.035
+250,Richard Kim,383,Senior Ambassador,2017-04-09 00:00:00,Terminated,2024-07-11 00:00:00,8.52,0.045
+251,Jennifer Edwards,383,Ambassador,2015-06-14 00:00:00,Active,,10.34,0.035
+252,Shirley Collins,383,Senior Ambassador,2016-08-15 00:00:00,Terminated,2016-10-31 00:00:00,9.17,0.045
+253,Brenda Robinson,383,Senior Ambassador,2022-04-10 00:00:00,Active,,3.52,0.04
+254,Linda Kim,491,Ambassador,2021-11-09 00:00:00,Active,,3.93,0.03
+255,Rebecca White,491,Cashier,2023-09-30 00:00:00,Active,,2.05,0.0125
+256,Donald Harris,491,Ambassador,2023-04-30 00:00:00,Active,,2.46,0.025
+257,Jason Anderson,491,Ambassador,2023-06-10 00:00:00,Active,,2.35,0.025
+258,John Reed,491,Cashier,2021-03-02 00:00:00,Active,,4.62,0.015
+259,Ashley Ward,491,Senior Ambassador,2022-09-24 00:00:00,Terminated,2024-07-19 00:00:00,3.06,0.04
+260,Barbara Nguyen,491,Cashier,2025-02-07 00:00:00,Terminated,2025-10-06 00:00:00,0.69,0.01
+261,Jonathan Taylor,491,Cashier,2024-06-29 00:00:00,Active,,1.3,0.0125
+262,Jennifer White,858,Cashier,2020-03-07 00:00:00,Active,,5.61,0.0175
+263,Kenneth Baker,858,Cashier,2012-02-21 00:00:00,Active,,13.65,0.0175
+264,Eric Lopez,858,Cashier,2014-04-22 00:00:00,Active,,11.49,0.0175
+265,Kenneth Lewis,858,Ambassador,2025-06-24 00:00:00,Active,,0.31,0.02
+266,Sandra Phillips,858,Cashier,2011-01-17 00:00:00,Active,,14.75,0.0175
+267,Gary Ward,795,Ambassador,2019-05-09 00:00:00,Active,,6.44,0.035
+268,Sandra Baker,795,Ambassador,2016-01-09 00:00:00,Terminated,2021-07-20 00:00:00,9.77,0.035
+269,Barbara Young,795,Cashier,2023-03-03 00:00:00,Active,,2.62,0.0125
+270,Matthew Nguyen,795,Senior Ambassador,2022-03-31 00:00:00,Active,,3.55,0.04
+271,John Cox,795,Ambassador,2021-11-20 00:00:00,Terminated,2025-07-15 00:00:00,3.9,0.03
+272,Deborah Miller,795,Cashier,2019-09-20 00:00:00,Active,,6.07,0.0175
+273,Linda Gomez,417,Ambassador,2022-05-18 00:00:00,Active,,3.41,0.03
+274,Amanda Johnson,417,Ambassador,2019-02-03 00:00:00,Active,,6.7,0.035
+275,Charles Allen,417,Ambassador,2018-04-25 00:00:00,Active,,7.48,0.035
+276,Joshua Murphy,417,Cashier,2024-01-28 00:00:00,Terminated,2024-07-16 00:00:00,1.72,0.0125
+277,Charles Mitchell,417,Senior Ambassador,2023-10-29 00:00:00,Active,,1.97,0.035
+278,Margaret Mitchell,417,Cashier,2023-08-13 00:00:00,Active,,2.18,0.0125
+279,Christopher Cruz,417,Senior Ambassador,2024-06-01 00:00:00,Active,,1.37,0.035
+280,Timothy Lopez,417,Cashier,2020-03-30 00:00:00,Active,,5.55,0.0175
+281,Linda Anderson,425,Ambassador,2016-11-29 00:00:00,Terminated,2025-01-18 00:00:00,8.88,0.035
+282,Nicole Jackson,425,Lead,2022-09-09 00:00:00,Active,,3.1,0.05
+283,Jason Mitchell,425,Cashier,2024-04-02 00:00:00,Terminated,2024-04-28 00:00:00,1.54,0.0125
+284,Richard Lopez,425,Ambassador,2021-04-16 00:00:00,Active,,4.5,0.03
+285,Ryan Cox,425,Senior Ambassador,2023-11-23 00:00:00,Active,,1.9,0.035
+286,Gary Williams,450,Cashier,2016-07-16 00:00:00,Active,,9.25,0.0175
+287,Kathleen Rodriguez,450,Cashier,2022-08-26 00:00:00,Active,,3.14,0.015
+288,Susan Reyes,450,Senior Ambassador,2014-10-13 00:00:00,Terminated,2024-12-15 00:00:00,11.01,0.045
+289,Angela Cox,450,Ambassador,2024-03-30 00:00:00,Active,,1.55,0.025
+290,Kimberly Torres,450,Ambassador,2014-03-02 00:00:00,Terminated,2016-03-10 00:00:00,11.63,0.035
+291,Melissa Rivera,450,Cashier,2019-06-14 00:00:00,Terminated,2021-02-23 00:00:00,6.34,0.0175
+292,George Johnson,450,Cashier,2020-10-06 00:00:00,Active,,5.03,0.0175
+293,Brandon Gonzalez,96,Cashier,2020-08-03 00:00:00,Active,,5.2,0.0175
+294,Joshua Robinson,96,Senior Ambassador,2019-02-20 00:00:00,Active,,6.65,0.045
+295,Laura Campbell,96,Cashier,2022-07-07 00:00:00,Active,,3.28,0.015
+296,Shirley Diaz,96,Cashier,2017-07-29 00:00:00,Terminated,2024-04-04 00:00:00,8.22,0.0175
+297,Ashley Morgan,96,Cashier,2016-06-29 00:00:00,Terminated,2017-03-10 00:00:00,9.3,0.0175
+298,Mary Anderson,96,Cashier,2018-12-04 00:00:00,Terminated,2019-10-08 00:00:00,6.87,0.0175
+299,Barbara Mitchell,96,Senior Ambassador,2023-10-10 00:00:00,Active,,2.02,0.035
+300,Patricia Gonzalez,96,Cashier,2020-07-30 00:00:00,Active,,5.21,0.0175
+301,Ryan Thompson,96,Lead,2020-01-27 00:00:00,Terminated,2022-01-10 00:00:00,5.72,0.06
+302,Joshua Gomez,96,Cashier,2019-04-18 00:00:00,Active,,6.5,0.0175
+303,Joseph Perez,96,Senior Ambassador,2023-01-06 00:00:00,Active,,2.78,0.035
+304,Daniel Hall,404,Ambassador,2022-10-31 00:00:00,Terminated,2023-05-06 00:00:00,2.96,0.025
+305,Eric Brown,404,Cashier,2021-09-28 00:00:00,Active,,4.05,0.015
+306,Kevin Brown,404,Lead,2022-04-24 00:00:00,Active,,3.48,0.05
+307,Sarah Green,404,Cashier,2024-05-18 00:00:00,Terminated,2025-02-23 00:00:00,1.41,0.0125
+308,Larry Morgan,404,Ambassador,2023-10-14 00:00:00,Active,,2.01,0.025
+309,Emma Kim,404,Senior Ambassador,2021-06-29 00:00:00,Terminated,2025-01-23 00:00:00,4.3,0.04
+310,Helen Miller,404,Ambassador,2024-03-18 00:00:00,Terminated,2025-08-26 00:00:00,1.58,0.025
+311,Thomas Roberts,404,Lead,2020-11-18 00:00:00,Terminated,2025-05-23 00:00:00,4.91,0.05
+312,Richard Bailey,404,Ambassador,2021-04-25 00:00:00,Active,,4.48,0.03
+313,Jeffrey Ortiz,404,Cashier,2017-10-22 00:00:00,Active,,7.98,0.0175
+314,Emily Kelly,285,Senior Ambassador,2021-11-15 00:00:00,Terminated,2023-04-17 00:00:00,3.92,0.04
+315,Patricia Evans,285,Cashier,2024-08-12 00:00:00,Active,,1.18,0.0125
+316,Thomas King,285,Cashier,2020-05-01 00:00:00,Active,,5.46,0.0175
+317,Angela Collins,285,Lead,2014-03-30 00:00:00,Active,,11.55,0.06
+318,Eric Hall,285,Ambassador,2019-01-18 00:00:00,Active,,6.74,0.035
+319,Jacob Young,285,Ambassador,2021-05-29 00:00:00,Terminated,2024-05-18 00:00:00,4.38,0.03
+320,Robert Richardson,285,Cashier,2015-07-29 00:00:00,Active,,10.22,0.0175
+321,Stephanie Adams,285,Senior Ambassador,2021-03-05 00:00:00,Active,,4.62,0.04
+322,Matthew Ward,882,Ambassador,2021-06-25 00:00:00,Active,,4.31,0.03
+323,Carol Perez,882,Cashier,2017-08-09 00:00:00,Active,,8.19,0.0175
+324,Brenda Ramos,882,Lead,2015-10-25 00:00:00,Active,,9.98,0.06
+325,William Morris,882,Cashier,2018-10-17 00:00:00,Active,,7.0,0.0175
+326,Elizabeth Martin,882,Cashier,2016-06-12 00:00:00,Active,,9.34,0.0175
+327,Matthew Kelly,882,Ambassador,2023-10-31 00:00:00,Active,,1.96,0.025
+328,Nancy Torres,882,Cashier,2021-10-20 00:00:00,Active,,3.99,0.015
+329,Linda Nguyen,882,Cashier,2023-10-28 00:00:00,Active,,1.97,0.0125
+330,Justin Roberts,882,Ambassador,2020-09-11 00:00:00,Active,,5.1,0.035
+331,Elizabeth Ward,882,Ambassador,2018-06-20 00:00:00,Active,,7.32,0.035
+332,Karen Scott,882,Ambassador,2017-04-01 00:00:00,Active,,8.54,0.035
+333,Paul Martin,394,Ambassador,2021-04-02 00:00:00,Active,,4.54,0.03
+334,Gary Stewart,394,Cashier,2024-09-10 00:00:00,Active,,1.1,0.0125
+335,Susan Cook,394,Cashier,2017-01-21 00:00:00,Active,,8.73,0.0175
+336,Richard Roberts,394,Cashier,2025-01-21 00:00:00,Active,,0.73,0.01
+337,Jessica White,394,Cashier,2024-07-28 00:00:00,Active,,1.22,0.0125
+338,Andrew Wright,394,Cashier,2021-11-26 00:00:00,Active,,3.89,0.015
+339,William Cox,394,Cashier,2012-11-04 00:00:00,Active,,12.95,0.0175
+340,George Howard,394,Cashier,2017-01-09 00:00:00,Active,,8.77,0.0175
+341,Shirley Campbell,149,Cashier,2025-06-09 00:00:00,Active,,0.35,0.01
+342,Brenda Torres,149,Cashier,2022-08-15 00:00:00,Active,,3.17,0.015
+343,Joseph Taylor,149,Ambassador,2020-09-16 00:00:00,Active,,5.08,0.035
+344,Ronald Ramos,149,Ambassador,2022-10-18 00:00:00,Active,,3.0,0.03
+345,Ronald Stewart,149,Ambassador,2022-06-19 00:00:00,Terminated,2025-01-08 00:00:00,3.33,0.03
+346,Deborah Wright,33,Ambassador,2023-04-14 00:00:00,Active,,2.51,0.025
+347,Edward Miller,33,Cashier,2018-06-19 00:00:00,Active,,7.33,0.0175
+348,William Cooper,33,Cashier,2015-12-19 00:00:00,Active,,9.83,0.0175
+349,Sarah Nelson,33,Cashier,2019-12-03 00:00:00,Active,,5.87,0.0175
+350,James Stewart,33,Senior Ambassador,2014-11-28 00:00:00,Terminated,2021-01-10 00:00:00,10.88,0.045
+351,Mark Lee,33,Cashier,2018-05-14 00:00:00,Terminated,2024-09-03 00:00:00,7.43,0.0175
+352,Jessica Rodriguez,33,Ambassador,2024-11-25 00:00:00,Terminated,2025-09-03 00:00:00,0.89,0.02
+353,Linda Garcia,33,Ambassador,2016-07-19 00:00:00,Active,,9.24,0.035
+354,Emma Martin,33,Cashier,2021-02-27 00:00:00,Active,,4.63,0.015
+355,Susan King,888,Cashier,2016-10-12 00:00:00,Active,,9.01,0.0175
+356,Kimberly King,888,Cashier,2019-04-28 00:00:00,Active,,6.47,0.0175
+357,Linda Carter,888,Cashier,2020-07-21 00:00:00,Active,,5.24,0.0175
+358,Elizabeth Miller,888,Cashier,2024-02-24 00:00:00,Active,,1.64,0.0125
+359,Emily Smith,888,Cashier,2024-10-30 00:00:00,Active,,0.96,0.01
+360,Jonathan Reed,888,Ambassador,2016-08-29 00:00:00,Active,,9.13,0.035
+361,Karen Martin,719,Cashier,2015-05-18 00:00:00,Active,,10.42,0.0175
+362,Susan Hill,719,Ambassador,2016-07-14 00:00:00,Terminated,2024-06-02 00:00:00,9.26,0.035
+363,Amanda Phillips,719,Cashier,2017-07-29 00:00:00,Active,,8.22,0.0175
+364,Gary Diaz,719,Cashier,2019-11-17 00:00:00,Active,,5.91,0.0175
+365,Shirley Martin,719,Ambassador,2021-03-05 00:00:00,Active,,4.62,0.03
+366,James Green,719,Cashier,2015-09-19 00:00:00,Active,,10.08,0.0175
+367,Sharon Walker,719,Cashier,2013-02-05 00:00:00,Active,,12.69,0.0175
+368,Jessica Kim,719,Ambassador,2020-04-24 00:00:00,Terminated,2021-07-22 00:00:00,5.48,0.035
+369,Lisa Lewis,719,Ambassador,2012-09-08 00:00:00,Terminated,2012-09-24 00:00:00,13.1,0.035
+370,Steven Flores,719,Cashier,2023-01-16 00:00:00,Active,,2.75,0.0125
+371,Barbara Rodriguez,719,Lead,2013-01-17 00:00:00,Terminated,2023-10-14 00:00:00,12.75,0.06
+372,Brian Carter,799,Cashier,2014-11-28 00:00:00,Active,,10.88,0.0175
+373,Joseph Flores,799,Cashier,2021-01-02 00:00:00,Terminated,2022-05-03 00:00:00,4.79,0.015
+374,Gary Ramos,799,Ambassador,2024-05-07 00:00:00,Terminated,2025-05-11 00:00:00,1.44,0.025
+375,Sharon Kim,799,Ambassador,2022-09-28 00:00:00,Active,,3.05,0.03
+376,Amy Johnson,799,Ambassador,2015-10-15 00:00:00,Active,,10.0,0.035
+377,Helen Allen,799,Cashier,2024-12-25 00:00:00,Active,,0.81,0.01
+378,Joseph Cox,799,Cashier,2020-04-20 00:00:00,Active,,5.49,0.0175
+379,Joshua Rogers,799,Cashier,2013-12-07 00:00:00,Active,,11.86,0.0175
+380,Betty Murphy,818,Cashier,2022-04-20 00:00:00,Terminated,2022-11-26 00:00:00,3.49,0.015
+381,Sharon Taylor,818,Ambassador,2021-01-27 00:00:00,Active,,4.72,0.03
+382,Sarah Smith,818,Cashier,2021-08-30 00:00:00,Active,,4.13,0.015
+383,Shirley Cook,818,Ambassador,2022-07-15 00:00:00,Active,,3.26,0.03
+384,Jason Nelson,818,Cashier,2023-12-27 00:00:00,Terminated,2024-08-15 00:00:00,1.8,0.0125
+385,Matthew Martinez,818,Ambassador,2020-12-23 00:00:00,Active,,4.81,0.03
+386,Cynthia Gutierrez,170,Cashier,2021-10-19 00:00:00,Active,,3.99,0.015
+387,Rebecca Ward,170,Cashier,2025-10-03 00:00:00,Terminated,2025-10-06 00:00:00,0.04,0.01
+388,Joshua Carter,170,Cashier,2020-08-01 00:00:00,Active,,5.21,0.0175
+389,Michelle Thomas,170,Ambassador,2018-07-29 00:00:00,Active,,7.22,0.035
+390,Nicole Perez,170,Ambassador,2022-01-07 00:00:00,Active,,3.77,0.03
+391,Sarah Edwards,170,Ambassador,2024-01-05 00:00:00,Active,,1.78,0.025
+392,Timothy Wright,170,Cashier,2023-08-11 00:00:00,Active,,2.18,0.0125
+393,Cynthia Robinson,170,Lead,2021-11-30 00:00:00,Terminated,2025-06-04 00:00:00,3.88,0.05
+394,Richard White,630,Cashier,2017-11-01 00:00:00,Terminated,2023-03-26 00:00:00,7.96,0.0175
+395,Nicole Robinson,630,Lead,2018-09-20 00:00:00,Active,,7.07,0.06
+396,Brenda Brown,630,Ambassador,2018-02-26 00:00:00,Active,,7.64,0.035
+397,Barbara Martinez,630,Cashier,2023-11-20 00:00:00,Active,,1.91,0.0125
+398,James Jackson,630,Ambassador,2020-12-15 00:00:00,Terminated,2024-01-01 00:00:00,4.84,0.03
+399,Ashley Allen,8,Cashier,2024-12-02 00:00:00,Active,,0.87,0.01
+400,Matthew Thomas,8,Ambassador,2020-10-20 00:00:00,Active,,4.99,0.03
+401,Emily Kim,8,Cashier,2017-08-23 00:00:00,Active,,8.15,0.0175
+402,Joshua Hall,8,Ambassador,2017-08-06 00:00:00,Active,,8.19,0.035
+403,Patricia Hall,8,Ambassador,2019-02-16 00:00:00,Active,,6.66,0.035
+404,Angela Ward,8,Senior Ambassador,2016-09-17 00:00:00,Active,,9.08,0.045
+405,Paul Hall,8,Lead,2016-11-08 00:00:00,Active,,8.94,0.06
+406,Brenda Cook,8,Cashier,2017-08-28 00:00:00,Active,,8.13,0.0175
+407,Dorothy Adams,8,Cashier,2019-10-31 00:00:00,Active,,5.96,0.0175
+408,David Smith,8,Cashier,2024-09-04 00:00:00,Active,,1.11,0.0125
+409,Steven Garcia,341,Cashier,2017-02-26 00:00:00,Active,,8.64,0.0175
+410,Andrew Reyes,341,Cashier,2015-03-12 00:00:00,Terminated,2015-05-20 00:00:00,10.6,0.0175
+411,Michelle King,341,Cashier,2015-10-11 00:00:00,Active,,10.02,0.0175
+412,Sandra Green,341,Ambassador,2018-09-12 00:00:00,Active,,7.09,0.035
+413,Justin Brown,341,Ambassador,2024-05-20 00:00:00,Active,,1.41,0.025
+414,Steven Kim,341,Cashier,2016-07-10 00:00:00,Active,,9.27,0.0175
+415,David Reed,341,Ambassador,2023-07-03 00:00:00,Terminated,2025-03-02 00:00:00,2.29,0.025
+416,Nancy Garcia,341,Cashier,2020-11-16 00:00:00,Active,,4.91,0.015
+417,Jacob Phillips,341,Cashier,2024-10-06 00:00:00,Active,,1.03,0.0125
+418,Amanda Smith,341,Cashier,2023-08-23 00:00:00,Terminated,2024-09-30 00:00:00,2.15,0.0125
+419,Paul Richardson,341,Senior Ambassador,2022-01-29 00:00:00,Terminated,2022-10-30 00:00:00,3.71,0.04
+420,Nancy Sanchez,332,Ambassador,2017-03-29 00:00:00,Active,,8.55,0.035
+421,Nicholas Cook,332,Cashier,2022-11-24 00:00:00,Active,,2.89,0.0125
+422,Emma Nelson,332,Ambassador,2016-05-27 00:00:00,Terminated,2023-05-14 00:00:00,9.39,0.035
+423,Gary Flores,332,Cashier,2023-03-17 00:00:00,Terminated,2024-12-10 00:00:00,2.59,0.0125
+424,Paul Williams,332,Cashier,2021-05-08 00:00:00,Terminated,2023-02-03 00:00:00,4.44,0.015
+425,Brenda Martin,332,Ambassador,2020-03-08 00:00:00,Terminated,2020-07-01 00:00:00,5.61,0.035
+426,Timothy Ward,332,Ambassador,2024-02-11 00:00:00,Terminated,2025-09-24 00:00:00,1.68,0.025
+427,Ashley King,332,Cashier,2020-07-22 00:00:00,Terminated,2021-07-14 00:00:00,5.24,0.0175
+428,Stephanie Cooper,332,Cashier,2014-09-15 00:00:00,Terminated,2024-10-31 00:00:00,11.09,0.0175
+429,Paul Kelly,332,Cashier,2015-07-25 00:00:00,Active,,10.23,0.0175
+430,Margaret Thompson,332,Cashier,2024-05-19 00:00:00,Active,,1.41,0.0125
+431,Lisa Rogers,525,Ambassador,2018-04-08 00:00:00,Active,,7.52,0.035
+432,Christopher Reyes,525,Cashier,2018-10-20 00:00:00,Active,,6.99,0.0175
+433,Karen Phillips,525,Ambassador,2016-06-25 00:00:00,Active,,9.31,0.035
+434,Thomas Evans,525,Senior Ambassador,2022-02-13 00:00:00,Active,,3.67,0.04
+435,Linda Lee,525,Cashier,2022-02-07 00:00:00,Active,,3.69,0.015
+436,Timothy Jackson,525,Cashier,2023-09-06 00:00:00,Terminated,2024-08-01 00:00:00,2.11,0.0125
+437,Jonathan Thomas,525,Cashier,2021-03-10 00:00:00,Active,,4.6,0.015
+438,Deborah Kim,909,Cashier,2023-02-08 00:00:00,Active,,2.69,0.0125
+439,Dorothy Morales,909,Cashier,2024-10-16 00:00:00,Active,,1.0,0.0125
+440,Dorothy Rogers,909,Ambassador,2021-05-29 00:00:00,Active,,4.38,0.03
+441,Donna Edwards,909,Cashier,2025-02-20 00:00:00,Terminated,2025-03-16 00:00:00,0.65,0.01
+442,Edward Lewis,909,Ambassador,2019-09-05 00:00:00,Terminated,2023-10-02 00:00:00,6.11,0.035
+443,Brandon Phillips,909,Cashier,2022-09-09 00:00:00,Active,,3.1,0.015
+444,Timothy Anderson,909,Cashier,2025-08-25 00:00:00,Active,,0.14,0.01
+445,Larry Carter,909,Ambassador,2020-12-13 00:00:00,Active,,4.84,0.03
+446,Matthew Ramirez,909,Cashier,2023-08-09 00:00:00,Terminated,2025-02-23 00:00:00,2.19,0.0125
+447,James Thomas,909,Cashier,2022-02-12 00:00:00,Active,,3.67,0.015
+448,Jeffrey Gonzalez,784,Cashier,2019-11-18 00:00:00,Active,,5.91,0.0175
+449,Stephanie Rogers,784,Ambassador,2022-03-15 00:00:00,Active,,3.59,0.03
+450,Jessica Lee,784,Ambassador,2021-07-29 00:00:00,Terminated,2022-04-17 00:00:00,4.22,0.03
+451,Carol Murphy,784,Senior Ambassador,2023-06-21 00:00:00,Active,,2.32,0.035
+452,Nancy Richardson,784,Cashier,2024-10-29 00:00:00,Active,,0.96,0.01
+453,Amy Bailey,784,Cashier,2025-03-10 00:00:00,Active,,0.6,0.01
+454,Justin Collins,784,Cashier,2023-11-24 00:00:00,Active,,1.9,0.0125
+455,Michael Ortiz,784,Senior Ambassador,2019-09-29 00:00:00,Active,,6.05,0.045
+456,Daniel Torres,784,Cashier,2020-09-17 00:00:00,Active,,5.08,0.0175
+457,Kenneth Howard,784,Ambassador,2021-12-09 00:00:00,Active,,3.85,0.03
+458,Barbara Martin,784,Ambassador,2021-05-31 00:00:00,Active,,4.38,0.03
+459,Sandra Reed,27,Ambassador,2024-11-09 00:00:00,Active,,0.93,0.02
+460,Anna Rodriguez,27,Cashier,2014-02-23 00:00:00,Active,,11.64,0.0175
+461,Donald Hernandez,27,Ambassador,2012-09-04 00:00:00,Active,,13.11,0.035
+462,Brian Anderson,27,Senior Ambassador,2017-04-25 00:00:00,Active,,8.48,0.045
+463,Andrew Gonzalez,27,Senior Ambassador,2012-09-07 00:00:00,Active,,13.11,0.045
+464,Kenneth Thompson,27,Cashier,2015-09-09 00:00:00,Active,,10.1,0.0175
+465,James Parker,27,Ambassador,2020-02-25 00:00:00,Active,,5.64,0.035
+466,Kevin Campbell,847,Lead,2020-09-04 00:00:00,Active,,5.11,0.06
+467,Brandon Johnson,847,Cashier,2020-08-08 00:00:00,Active,,5.19,0.0175
+468,Cynthia Smith,847,Ambassador,2019-12-09 00:00:00,Active,,5.85,0.035
+469,Thomas Nguyen,847,Cashier,2023-06-02 00:00:00,Terminated,2025-04-13 00:00:00,2.37,0.0125
+470,Rebecca Morales,847,Cashier,2023-08-15 00:00:00,Active,,2.17,0.0125
+471,Mary Hernandez,847,Cashier,2023-03-02 00:00:00,Active,,2.63,0.0125
+472,Mary Johnson,400,Ambassador,2016-05-04 00:00:00,Active,,9.45,0.035
+473,Nicholas Taylor,400,Cashier,2021-04-03 00:00:00,Active,,4.54,0.015
+474,Emma Green,400,Senior Ambassador,2021-07-24 00:00:00,Active,,4.23,0.04
+475,Joshua Nguyen,400,Cashier,2024-03-22 00:00:00,Active,,1.57,0.0125
+476,Anna Mitchell,400,Cashier,2024-01-18 00:00:00,Active,,1.74,0.0125
+477,Patricia Garcia,400,Ambassador,2019-11-16 00:00:00,Active,,5.92,0.035
+478,Mark Brown,400,Cashier,2022-10-09 00:00:00,Terminated,2023-02-17 00:00:00,3.02,0.015
+479,Sarah Campbell,400,Cashier,2023-09-07 00:00:00,Active,,2.11,0.0125
+480,Jonathan Wilson,34,Cashier,2015-02-11 00:00:00,Active,,10.68,0.0175
+481,Robert Lee,34,Lead,2015-08-21 00:00:00,Active,,10.16,0.06
+482,Thomas Young,34,Cashier,2015-12-24 00:00:00,Terminated,2017-05-04 00:00:00,9.81,0.0175
+483,Dorothy Anderson,34,Ambassador,2024-04-24 00:00:00,Active,,1.48,0.025
+484,Donna Sanchez,34,Ambassador,2021-07-11 00:00:00,Active,,4.27,0.03
+485,Joshua Thomas,34,Senior Ambassador,2022-09-19 00:00:00,Active,,3.08,0.04
+486,Andrew Howard,617,Senior Ambassador,2017-12-18 00:00:00,Terminated,2022-05-03 00:00:00,7.83,0.045
+487,William Perez,617,Senior Ambassador,2014-10-12 00:00:00,Terminated,2019-06-22 00:00:00,11.01,0.045
+488,Matthew Robinson,617,Ambassador,2021-01-14 00:00:00,Terminated,2023-03-26 00:00:00,4.75,0.03
+489,Cynthia Ramirez,617,Cashier,2025-10-07 00:00:00,Terminated,2025-10-11 00:00:00,0.03,0.01
+490,Steven Walker,617,Lead,2021-10-20 00:00:00,Active,,3.99,0.05
+491,Matthew Rogers,617,Ambassador,2020-10-13 00:00:00,Active,,5.01,0.035
+492,Matthew Rodriguez,617,Ambassador,2014-01-01 00:00:00,Terminated,2018-12-28 00:00:00,11.79,0.035
+493,Angela Carter,617,Cashier,2020-06-18 00:00:00,Active,,5.33,0.0175
+494,Karen Cook,617,Ambassador,2022-11-19 00:00:00,Active,,2.91,0.025
+495,Joshua Lopez,617,Cashier,2023-05-29 00:00:00,Terminated,2023-11-22 00:00:00,2.39,0.0125
+496,Andrew White,845,Cashier,2025-06-25 00:00:00,Active,,0.31,0.01
+497,Stephen Miller,845,Cashier,2019-02-11 00:00:00,Active,,6.68,0.0175
+498,Charles Reyes,845,Ambassador,2019-03-14 00:00:00,Active,,6.59,0.035
+499,Elizabeth Johnson,845,Ambassador,2019-10-04 00:00:00,Active,,6.03,0.035
+500,Andrew Lee,845,Cashier,2024-12-15 00:00:00,Terminated,2025-09-28 00:00:00,0.84,0.01
+501,Larry Parker,845,Cashier,2020-03-16 00:00:00,Active,,5.59,0.0175
+502,Cynthia Ramos,845,Cashier,2018-03-29 00:00:00,Terminated,2021-07-11 00:00:00,7.55,0.0175
+503,Laura Diaz,845,Ambassador,2022-12-17 00:00:00,Terminated,2024-10-10 00:00:00,2.83,0.025
+504,Scott Taylor,641,Ambassador,2020-09-17 00:00:00,Active,,5.08,0.035
+505,Daniel Cooper,641,Cashier,2016-11-18 00:00:00,Active,,8.91,0.0175
+506,Richard Ward,641,Lead,2022-02-27 00:00:00,Active,,3.63,0.05
+507,Ashley Jackson,641,Senior Ambassador,2016-03-01 00:00:00,Active,,9.63,0.045
+508,Larry Sanchez,641,Cashier,2025-06-17 00:00:00,Active,,0.33,0.01
+509,Justin Wilson,641,Ambassador,2021-06-24 00:00:00,Active,,4.31,0.03
+510,Joshua Cooper,641,Ambassador,2023-02-11 00:00:00,Terminated,2023-09-29 00:00:00,2.68,0.025
+511,Andrew Garcia,641,Ambassador,2018-03-31 00:00:00,Active,,7.55,0.035
+512,Susan Smith,641,Cashier,2016-10-18 00:00:00,Active,,8.99,0.0175
+513,Rebecca Gutierrez,641,Ambassador,2017-05-04 00:00:00,Active,,8.45,0.035
+514,Joseph Smith,763,Cashier,2022-12-04 00:00:00,Active,,2.87,0.0125
+515,Susan Jackson,763,Ambassador,2022-06-20 00:00:00,Active,,3.32,0.03
+516,Mary Campbell,763,Cashier,2024-12-12 00:00:00,Active,,0.84,0.01
+517,Donna Collins,763,Cashier,2019-03-23 00:00:00,Active,,6.57,0.0175
+518,Richard Perez,763,Ambassador,2022-12-04 00:00:00,Active,,2.87,0.025
+519,Robert Green,763,Ambassador,2015-06-23 00:00:00,Active,,10.32,0.035
+520,Ryan Perez,763,Ambassador,2018-04-22 00:00:00,Active,,7.49,0.035
+521,Stephanie Harris,763,Cashier,2018-07-08 00:00:00,Active,,7.27,0.0175
+522,Elizabeth Thomas,763,Cashier,2025-04-01 00:00:00,Active,,0.54,0.01
+523,Donald Cooper,763,Cashier,2022-10-16 00:00:00,Terminated,2023-02-16 00:00:00,3.0,0.015
+524,James Wright,500,Cashier,2019-09-03 00:00:00,Terminated,2022-01-31 00:00:00,6.12,0.0175
+525,Michelle Martin,500,Ambassador,2014-02-19 00:00:00,Active,,11.66,0.035
+526,Michelle Flores,500,Senior Ambassador,2018-06-17 00:00:00,Active,,7.33,0.045
+527,Deborah Nelson,500,Ambassador,2022-08-01 00:00:00,Active,,3.21,0.03
+528,Michael Thompson,500,Ambassador,2016-12-05 00:00:00,Active,,8.86,0.035
+529,Larry Gutierrez,500,Cashier,2023-04-26 00:00:00,Active,,2.48,0.0125
+530,Emily Wilson,966,Ambassador,2022-06-30 00:00:00,Active,,3.3,0.03
+531,Amanda Jackson,966,Cashier,2022-04-11 00:00:00,Active,,3.52,0.015
+532,Christopher Cox,966,Cashier,2023-05-31 00:00:00,Terminated,2023-10-06 00:00:00,2.38,0.0125
+533,Jacob King,966,Cashier,2020-07-15 00:00:00,Terminated,2022-11-27 00:00:00,5.25,0.0175
+534,Kathleen Hernandez,966,Cashier,2023-11-29 00:00:00,Active,,1.88,0.0125
+535,Richard Walker,966,Cashier,2025-02-23 00:00:00,Terminated,2025-02-25 00:00:00,0.64,0.01
+536,Kathleen Lewis,966,Cashier,2020-07-14 00:00:00,Terminated,2024-03-28 00:00:00,5.26,0.0175
+537,Brandon Davis,241,Cashier,2017-04-26 00:00:00,Terminated,2021-04-10 00:00:00,8.47,0.0175
+538,Susan Hall,241,Ambassador,2023-04-23 00:00:00,Active,,2.48,0.025
+539,Pamela Howard,241,Ambassador,2023-07-30 00:00:00,Active,,2.22,0.025
+540,Angela Bailey,241,Ambassador,2013-03-09 00:00:00,Active,,12.61,0.035
+541,Gary Turner,241,Ambassador,2019-05-23 00:00:00,Active,,6.4,0.035
+542,Brian Cruz,177,Ambassador,2018-07-20 00:00:00,Active,,7.24,0.035
+543,Jennifer Wilson,177,Ambassador,2017-07-26 00:00:00,Terminated,2024-07-21 00:00:00,8.22,0.035
+544,Emily Rivera,177,Ambassador,2017-08-06 00:00:00,Active,,8.19,0.035
+545,Christopher Green,177,Cashier,2023-09-23 00:00:00,Active,,2.06,0.0125
+546,Larry Rodriguez,177,Senior Ambassador,2018-10-05 00:00:00,Terminated,2025-08-23 00:00:00,7.03,0.045
+547,Cynthia Rodriguez,177,Senior Ambassador,2021-09-15 00:00:00,Active,,4.09,0.04
+548,Justin Wright,177,Cashier,2020-12-11 00:00:00,Active,,4.85,0.015
+549,Anthony Nelson,177,Lead,2021-01-21 00:00:00,Active,,4.73,0.05
+550,Laura Morris,177,Lead,2018-08-24 00:00:00,Terminated,2018-10-26 00:00:00,7.15,0.06
+551,Jessica Thomas,177,Ambassador,2024-05-22 00:00:00,Active,,1.4,0.025
+552,Jonathan Peterson,177,Senior Ambassador,2018-05-07 00:00:00,Active,,7.44,0.045
+553,Amy White,305,Ambassador,2024-09-04 00:00:00,Active,,1.11,0.025
+554,Nicole Thompson,305,Cashier,2016-10-17 00:00:00,Active,,9.0,0.0175
+555,Kevin King,305,Cashier,2016-10-08 00:00:00,Terminated,2025-02-19 00:00:00,9.02,0.0175
+556,Angela Lee,305,Cashier,2022-04-10 00:00:00,Active,,3.52,0.015
+557,John Bailey,305,Ambassador,2019-09-04 00:00:00,Active,,6.12,0.035
+558,Brian King,305,Senior Ambassador,2012-10-24 00:00:00,Active,,12.98,0.045
+559,Robert Martin,305,Senior Ambassador,2023-06-08 00:00:00,Active,,2.36,0.035
+560,Cynthia Rivera,305,Lead,2017-05-29 00:00:00,Active,,8.38,0.06
+561,Stephen Reyes,537,Lead,2018-03-06 00:00:00,Active,,7.61,0.06
+562,Carol Davis,537,Cashier,2024-06-22 00:00:00,Active,,1.32,0.0125
+563,Dorothy Rodriguez,537,Cashier,2019-09-20 00:00:00,Active,,6.07,0.0175
+564,Nancy Moore,537,Cashier,2018-09-14 00:00:00,Active,,7.09,0.0175
+565,Karen Turner,537,Cashier,2022-11-14 00:00:00,Active,,2.92,0.0125
+566,Amy Harris,537,Cashier,2019-04-05 00:00:00,Terminated,2022-05-25 00:00:00,6.53,0.0175
+567,Eric Young,537,Cashier,2024-08-14 00:00:00,Active,,1.17,0.0125
+568,Paul Nguyen,537,Cashier,2025-01-27 00:00:00,Active,,0.72,0.01
+569,Deborah Morales,537,Cashier,2019-11-20 00:00:00,Active,,5.91,0.0175
+570,Andrew Kelly,657,Ambassador,2022-02-03 00:00:00,Active,,3.7,0.03
+571,Emma Edwards,657,Cashier,2025-02-15 00:00:00,Active,,0.67,0.01
+572,Brenda Richardson,657,Ambassador,2023-03-12 00:00:00,Active,,2.6,0.025
+573,Laura Lee,657,Senior Ambassador,2021-03-17 00:00:00,Active,,4.58,0.04
+574,Lisa Baker,657,Cashier,2020-02-23 00:00:00,Terminated,2021-01-30 00:00:00,5.65,0.0175
+575,Christopher Taylor,657,Lead,2020-05-07 00:00:00,Active,,5.44,0.06
+576,Mark Thompson,657,Cashier,2025-05-11 00:00:00,Active,,0.43,0.01
+577,Joshua Stewart,657,Ambassador,2020-06-09 00:00:00,Active,,5.35,0.035
+578,Cynthia Adams,657,Cashier,2024-03-09 00:00:00,Active,,1.6,0.0125
+579,Ryan Jackson,584,Cashier,2014-07-22 00:00:00,Active,,11.24,0.0175
+580,Kenneth Smith,584,Cashier,2023-02-17 00:00:00,Active,,2.66,0.0125
+581,Mark Hall,584,Lead,2015-11-16 00:00:00,Active,,9.92,0.06
+582,Michelle Brown,584,Ambassador,2025-07-29 00:00:00,Active,,0.22,0.02
+583,Dorothy Moore,584,Cashier,2014-02-17 00:00:00,Active,,11.66,0.0175
+584,Ronald Ramirez,584,Ambassador,2019-03-13 00:00:00,Active,,6.6,0.035
+585,James Anderson,584,Cashier,2024-05-14 00:00:00,Terminated,2025-05-08 00:00:00,1.42,0.0125
+586,Stephen Stewart,584,Ambassador,2024-03-21 00:00:00,Active,,1.57,0.025
+587,Kenneth Bailey,584,Ambassador,2023-05-14 00:00:00,Active,,2.43,0.025
+588,Ashley Sanchez,584,Ambassador,2019-10-05 00:00:00,Active,,6.03,0.035
+589,Elizabeth Cooper,302,Ambassador,2017-07-01 00:00:00,Active,,8.29,0.035
+590,Elizabeth Flores,302,Cashier,2024-11-28 00:00:00,Active,,0.88,0.01
+591,Lisa Sanchez,302,Cashier,2017-09-20 00:00:00,Active,,8.07,0.0175
+592,Amanda Rogers,302,Senior Ambassador,2021-01-10 00:00:00,Active,,4.76,0.04
+593,Anthony Jackson,302,Cashier,2022-01-12 00:00:00,Active,,3.76,0.015
+594,Helen Rogers,302,Ambassador,2019-01-11 00:00:00,Active,,6.76,0.035
+595,John Clark,302,Cashier,2023-08-19 00:00:00,Terminated,2024-06-27 00:00:00,2.16,0.0125
+596,James Davis,302,Cashier,2018-09-02 00:00:00,Active,,7.12,0.0175
+597,Linda Collins,302,Ambassador,2023-02-14 00:00:00,Active,,2.67,0.025
+598,Barbara Davis,302,Lead,2017-06-06 00:00:00,Active,,8.36,0.06
+599,Margaret Hall,115,Ambassador,2020-03-07 00:00:00,Terminated,2025-07-29 00:00:00,5.61,0.035
+600,Gary Davis,115,Cashier,2021-09-06 00:00:00,Active,,4.11,0.015
+601,Timothy Cox,115,Cashier,2023-02-26 00:00:00,Active,,2.64,0.0125
+602,William Hill,115,Cashier,2018-04-09 00:00:00,Active,,7.52,0.0175
+603,Sharon Morales,115,Cashier,2024-10-28 00:00:00,Active,,0.97,0.01
+604,Helen Perez,115,Ambassador,2023-05-11 00:00:00,Active,,2.43,0.025
+605,Kenneth Cox,115,Cashier,2024-09-10 00:00:00,Active,,1.1,0.0125
+606,Donna Howard,443,Cashier,2021-05-03 00:00:00,Terminated,2022-04-22 00:00:00,4.45,0.015
+607,Larry Clark,443,Cashier,2022-05-30 00:00:00,Active,,3.38,0.015
+608,Kimberly Ward,443,Cashier,2025-03-12 00:00:00,Terminated,2025-08-10 00:00:00,0.6,0.01
+609,Shirley Adams,443,Cashier,2023-11-28 00:00:00,Active,,1.88,0.0125
+610,Jeffrey Baker,443,Ambassador,2021-10-14 00:00:00,Active,,4.01,0.03
+611,Deborah Ramos,443,Senior Ambassador,2023-12-25 00:00:00,Active,,1.81,0.035
+612,Paul Lee,443,Cashier,2019-09-09 00:00:00,Terminated,2024-10-13 00:00:00,6.1,0.0175
+613,Jessica Smith,734,Ambassador,2022-11-30 00:00:00,Terminated,2023-02-11 00:00:00,2.88,0.025
+614,Kenneth Young,734,Ambassador,2024-06-07 00:00:00,Active,,1.36,0.025
+615,Shirley Kim,734,Cashier,2014-11-11 00:00:00,Active,,10.93,0.0175
+616,Jonathan Bailey,734,Cashier,2022-08-01 00:00:00,Active,,3.21,0.015
+617,Melissa Walker,734,Cashier,2021-08-11 00:00:00,Terminated,2023-04-07 00:00:00,4.18,0.015
+618,Jason Taylor,734,Ambassador,2023-09-05 00:00:00,Active,,2.11,0.025
+619,Sandra Murphy,734,Ambassador,2023-12-02 00:00:00,Active,,1.87,0.025
+620,Mary Edwards,734,Senior Ambassador,2022-11-28 00:00:00,Terminated,2024-02-28 00:00:00,2.88,0.035
+621,Jeffrey Cruz,734,Ambassador,2024-08-08 00:00:00,Active,,1.19,0.025
+622,Patricia Nguyen,734,Cashier,2019-09-13 00:00:00,Terminated,2023-04-23 00:00:00,6.09,0.0175
+623,Jennifer Harris,895,Ambassador,2019-05-04 00:00:00,Active,,6.45,0.035
+624,Brandon White,895,Ambassador,2018-02-05 00:00:00,Active,,7.69,0.035
+625,Karen Ramos,895,Cashier,2020-06-17 00:00:00,Active,,5.33,0.0175
+626,Elizabeth Lee,895,Cashier,2025-03-18 00:00:00,Terminated,2025-07-06 00:00:00,0.58,0.01
+627,David Carter,895,Cashier,2015-12-19 00:00:00,Terminated,2025-08-29 00:00:00,9.83,0.0175
+628,George Walker,895,Ambassador,2021-01-20 00:00:00,Terminated,2022-07-10 00:00:00,4.74,0.03
+629,Elizabeth Mitchell,895,Cashier,2017-10-24 00:00:00,Active,,7.98,0.0175
+630,Nicole Roberts,895,Cashier,2021-10-30 00:00:00,Active,,3.96,0.015
+631,Amanda Allen,895,Cashier,2019-02-28 00:00:00,Terminated,2025-09-06 00:00:00,6.63,0.0175
+632,Steven Sanchez,895,Lead,2017-12-24 00:00:00,Terminated,2022-04-15 00:00:00,7.81,0.06
+633,Mary Morales,895,Cashier,2016-05-21 00:00:00,Active,,9.4,0.0175
+634,Sharon Morgan,201,Cashier,2018-07-07 00:00:00,Active,,7.28,0.0175
+635,Donald Ramirez,201,Cashier,2025-03-18 00:00:00,Terminated,2025-03-30 00:00:00,0.58,0.01
+636,Brenda Edwards,201,Lead,2012-11-14 00:00:00,Active,,12.92,0.06
+637,Anna Clark,201,Cashier,2023-02-03 00:00:00,Active,,2.7,0.0125
+638,Deborah Taylor,201,Senior Ambassador,2022-11-25 00:00:00,Active,,2.89,0.035
+639,Stephen Murphy,201,Cashier,2024-06-18 00:00:00,Terminated,2024-10-19 00:00:00,1.33,0.0125
+640,Dorothy Clark,741,Senior Ambassador,2020-10-14 00:00:00,Active,,5.01,0.045
+641,Emma Thompson,741,Cashier,2021-01-28 00:00:00,Active,,4.72,0.015
+642,Joseph Brown,741,Cashier,2023-04-23 00:00:00,Terminated,2024-01-24 00:00:00,2.48,0.0125
+643,Angela Davis,741,Ambassador,2020-10-10 00:00:00,Terminated,2025-06-09 00:00:00,5.02,0.035
+644,Jessica Williams,741,Ambassador,2020-10-14 00:00:00,Active,,5.01,0.035
+645,Kimberly Roberts,741,Lead,2019-11-13 00:00:00,Active,,5.93,0.06
+646,Scott Ward,741,Ambassador,2025-04-13 00:00:00,Active,,0.51,0.02
+647,William Thomas,741,Ambassador,2024-01-23 00:00:00,Active,,1.73,0.025
+648,Jessica Baker,664,Senior Ambassador,2021-03-18 00:00:00,Active,,4.58,0.04
+649,Kenneth Morgan,664,Cashier,2021-11-03 00:00:00,Active,,3.95,0.015
+650,Nancy Stewart,664,Cashier,2024-05-13 00:00:00,Terminated,2025-10-02 00:00:00,1.43,0.0125
+651,Paul Rogers,664,Ambassador,2025-07-15 00:00:00,Active,,0.26,0.02
+652,Pamela Perez,664,Ambassador,2023-07-14 00:00:00,Active,,2.26,0.025
+653,Joseph Ramos,664,Senior Ambassador,2024-09-01 00:00:00,Active,,1.12,0.035
+654,Elizabeth Richardson,664,Senior Ambassador,2024-02-03 00:00:00,Active,,1.7,0.035
+655,Sharon Wilson,664,Cashier,2019-09-09 00:00:00,Terminated,2021-11-01 00:00:00,6.1,0.0175
+656,Jacob Flores,664,Senior Ambassador,2021-04-01 00:00:00,Active,,4.54,0.04
+657,Michael Jones,664,Lead,2020-08-04 00:00:00,Terminated,2022-12-08 00:00:00,5.2,0.06
+658,Margaret Lee,326,Ambassador,2017-06-23 00:00:00,Active,,8.32,0.035
+659,Kenneth Gonzalez,326,Lead,2022-03-21 00:00:00,Terminated,2025-07-26 00:00:00,3.57,0.05
+660,Kenneth Robinson,326,Ambassador,2021-09-03 00:00:00,Active,,4.12,0.03
+661,Helen Flores,326,Cashier,2025-09-04 00:00:00,Active,,0.12,0.01
+662,Matthew Thompson,326,Ambassador,2018-08-10 00:00:00,Active,,7.18,0.035
+663,Joseph Wright,326,Cashier,2022-07-13 00:00:00,Active,,3.26,0.015
+664,Cynthia Hernandez,561,Ambassador,2016-11-07 00:00:00,Terminated,2024-09-26 00:00:00,8.94,0.035
+665,Charles Moore,561,Senior Ambassador,2021-02-19 00:00:00,Terminated,2023-12-02 00:00:00,4.65,0.04
+666,Kenneth Morris,561,Cashier,2024-10-24 00:00:00,Active,,0.98,0.01
+667,Sandra Ramos,561,Ambassador,2011-09-02 00:00:00,Active,,14.12,0.035
+668,Daniel Martinez,561,Ambassador,2017-01-14 00:00:00,Active,,8.75,0.035
+669,Justin Martinez,889,Ambassador,2017-03-07 00:00:00,Terminated,2017-05-30 00:00:00,8.61,0.035
+670,Emily Walker,889,Cashier,2021-11-14 00:00:00,Active,,3.92,0.015
+671,Elizabeth King,889,Ambassador,2025-07-29 00:00:00,Active,,0.22,0.02
+672,Sarah Davis,889,Cashier,2014-10-31 00:00:00,Active,,10.96,0.0175
+673,Deborah Mitchell,889,Ambassador,2015-01-21 00:00:00,Terminated,2023-04-16 00:00:00,10.74,0.035
+674,James Williams,889,Cashier,2024-09-24 00:00:00,Active,,1.06,0.0125
+675,Ashley Stewart,889,Cashier,2018-04-15 00:00:00,Active,,7.5,0.0175
+676,Brenda Howard,83,Ambassador,2020-07-30 00:00:00,Active,,5.21,0.035
+677,Stephen Cook,83,Ambassador,2023-03-03 00:00:00,Terminated,2025-01-31 00:00:00,2.62,0.025
+678,Pamela Richardson,83,Ambassador,2020-11-22 00:00:00,Active,,4.9,0.03
+679,Andrew Hall,83,Ambassador,2020-06-25 00:00:00,Terminated,2022-02-22 00:00:00,5.31,0.035
+680,Jeffrey Taylor,83,Cashier,2023-08-17 00:00:00,Active,,2.17,0.0125
+681,Linda Johnson,83,Cashier,2024-09-22 00:00:00,Active,,1.07,0.0125
+682,Melissa Lewis,83,Ambassador,2021-09-27 00:00:00,Active,,4.05,0.03
+683,David Diaz,83,Ambassador,2025-05-28 00:00:00,Active,,0.39,0.02
+684,Melissa Turner,182,Ambassador,2016-03-03 00:00:00,Active,,9.62,0.035
+685,Timothy Reed,182,Cashier,2015-09-17 00:00:00,Active,,10.08,0.0175
+686,Jason Ramos,182,Ambassador,2018-08-12 00:00:00,Active,,7.18,0.035
+687,Jonathan Parker,182,Cashier,2020-09-06 00:00:00,Active,,5.11,0.0175
+688,Michael Hernandez,182,Cashier,2020-06-01 00:00:00,Active,,5.37,0.0175
+689,Jessica Adams,972,Ambassador,2023-06-13 00:00:00,Terminated,2025-09-26 00:00:00,2.34,0.025
+690,Michelle Morgan,972,Cashier,2022-02-14 00:00:00,Active,,3.67,0.015
+691,Kimberly Wilson,972,Ambassador,2024-08-02 00:00:00,Active,,1.21,0.025
+692,James Walker,972,Ambassador,2020-08-17 00:00:00,Terminated,2022-04-25 00:00:00,5.16,0.035
+693,Nicole King,972,Senior Ambassador,2022-09-02 00:00:00,Active,,3.12,0.04
+694,Eric Smith,12,Cashier,2025-02-19 00:00:00,Active,,0.65,0.01
+695,Jacob Walker,12,Cashier,2025-07-12 00:00:00,Active,,0.26,0.01
+696,Amy Davis,12,Cashier,2024-04-27 00:00:00,Active,,1.47,0.0125
+697,Nicole Davis,12,Ambassador,2017-05-03 00:00:00,Active,,8.45,0.035
+698,Nancy Turner,12,Ambassador,2017-08-27 00:00:00,Terminated,2025-04-19 00:00:00,8.14,0.035
+699,Brenda Flores,12,Ambassador,2021-04-01 00:00:00,Active,,4.54,0.03
+700,Donald Scott,973,Ambassador,2018-06-08 00:00:00,Active,,7.36,0.035
+701,Jacob Taylor,973,Ambassador,2014-11-25 00:00:00,Active,,10.89,0.035
+702,Charles Phillips,973,Cashier,2015-11-21 00:00:00,Active,,9.9,0.0175
+703,George Hill,973,Senior Ambassador,2021-04-23 00:00:00,Active,,4.48,0.04
+704,Patricia Nelson,973,Lead,2016-07-26 00:00:00,Active,,9.22,0.06
+705,Ashley Morales,973,Cashier,2025-01-07 00:00:00,Active,,0.77,0.01
+706,Kenneth Evans,973,Ambassador,2018-12-01 00:00:00,Active,,6.88,0.035
+707,James Gonzalez,973,Ambassador,2025-06-20 00:00:00,Active,,0.32,0.02
+708,Barbara Ramos,973,Ambassador,2020-05-12 00:00:00,Active,,5.43,0.035
+709,Amanda Nguyen,973,Lead,2018-07-19 00:00:00,Active,,7.24,0.06
+710,Amanda Moore,973,Cashier,2022-06-09 00:00:00,Active,,3.35,0.015
+711,Lisa Howard,973,Senior Ambassador,2024-09-17 00:00:00,Active,,1.08,0.035
+712,Deborah Flores,932,Senior Ambassador,2023-12-20 00:00:00,Active,,1.82,0.035
+713,William Lee,932,Ambassador,2023-10-20 00:00:00,Active,,1.99,0.025
+714,Jennifer Morris,932,Lead,2019-11-26 00:00:00,Terminated,2021-04-02 00:00:00,5.89,0.06
+715,Jeffrey Stewart,932,Ambassador,2025-05-25 00:00:00,Terminated,2025-10-13 00:00:00,0.39,0.02
+716,Eric Ramos,932,Cashier,2024-10-22 00:00:00,Active,,0.98,0.01
+717,Edward Edwards,932,Cashier,2024-11-27 00:00:00,Terminated,2025-01-15 00:00:00,0.88,0.01
+718,Robert Garcia,932,Cashier,2019-12-28 00:00:00,Active,,5.8,0.0175
+719,Mary Martin,932,Lead,2019-11-21 00:00:00,Active,,5.9,0.06
+720,Mary Gonzalez,932,Cashier,2025-01-25 00:00:00,Active,,0.72,0.01
+721,Betty Lee,932,Lead,2022-04-09 00:00:00,Active,,3.52,0.05
+722,Donna Hill,687,Cashier,2024-06-06 00:00:00,Active,,1.36,0.0125
+723,Joseph Carter,687,Ambassador,2023-05-30 00:00:00,Active,,2.38,0.025
+724,Margaret Nelson,687,Senior Ambassador,2019-03-15 00:00:00,Active,,6.59,0.045
+725,Amy Cox,687,Ambassador,2025-03-14 00:00:00,Terminated,2025-05-22 00:00:00,0.59,0.02
+726,Angela Lewis,687,Ambassador,2020-06-16 00:00:00,Active,,5.33,0.035
+727,Patricia White,687,Ambassador,2022-03-26 00:00:00,Terminated,2024-11-01 00:00:00,3.56,0.03
+728,Kevin Smith,687,Cashier,2023-07-20 00:00:00,Terminated,2025-01-10 00:00:00,2.24,0.0125
+729,Timothy Rogers,687,Ambassador,2022-01-01 00:00:00,Active,,3.79,0.03
+730,Thomas Taylor,613,Senior Ambassador,2023-07-20 00:00:00,Terminated,2025-02-17 00:00:00,2.24,0.035
+731,Michelle Hall,613,Cashier,2020-01-08 00:00:00,Active,,5.77,0.0175
+732,Jeffrey Scott,613,Ambassador,2022-12-06 00:00:00,Active,,2.86,0.025
+733,Ashley Diaz,613,Ambassador,2019-11-16 00:00:00,Terminated,2022-11-29 00:00:00,5.92,0.035
+734,Margaret Miller,613,Cashier,2023-06-12 00:00:00,Active,,2.35,0.0125
+735,Linda Walker,613,Ambassador,2025-07-28 00:00:00,Terminated,2025-09-02 00:00:00,0.22,0.02
+736,Robert Taylor,613,Cashier,2023-11-04 00:00:00,Terminated,2025-08-09 00:00:00,1.95,0.0125
+737,Amy Scott,613,Cashier,2020-09-14 00:00:00,Active,,5.09,0.0175
+738,Larry Bailey,613,Cashier,2025-03-26 00:00:00,Active,,0.56,0.01
+739,Scott Torres,613,Cashier,2024-09-07 00:00:00,Terminated,2025-09-27 00:00:00,1.11,0.0125
+740,Ryan Cruz,359,Cashier,2018-11-10 00:00:00,Terminated,2021-09-26 00:00:00,6.93,0.0175
+741,Jason Flores,359,Ambassador,2013-08-02 00:00:00,Active,,12.21,0.035
+742,Christopher Nelson,359,Cashier,2013-07-07 00:00:00,Terminated,2018-09-09 00:00:00,12.28,0.0175
+743,Rebecca Thomas,359,Cashier,2012-07-03 00:00:00,Active,,13.29,0.0175
+744,Mark Garcia,359,Cashier,2015-04-16 00:00:00,Terminated,2024-02-22 00:00:00,10.5,0.0175
+745,Daniel Moore,359,Cashier,2012-03-03 00:00:00,Active,,13.62,0.0175
+746,Kimberly Jones,527,Cashier,2017-11-23 00:00:00,Active,,7.9,0.0175
+747,Angela Hernandez,527,Cashier,2024-09-13 00:00:00,Active,,1.09,0.0125
+748,Donald Hill,527,Cashier,2022-09-27 00:00:00,Terminated,2023-08-25 00:00:00,3.05,0.015
+749,Ronald Scott,527,Senior Ambassador,2018-09-24 00:00:00,Active,,7.06,0.045
+750,Edward Allen,527,Senior Ambassador,2021-04-12 00:00:00,Active,,4.51,0.04
+751,Linda Stewart,527,Ambassador,2017-10-03 00:00:00,Active,,8.04,0.035
+752,Eric Taylor,527,Cashier,2021-01-27 00:00:00,Active,,4.72,0.015
+753,Timothy Garcia,527,Cashier,2024-03-19 00:00:00,Active,,1.58,0.0125
+754,Kimberly Reyes,527,Lead,2019-07-24 00:00:00,Terminated,2022-01-11 00:00:00,6.23,0.06
+755,Ryan Sanchez,527,Ambassador,2018-11-18 00:00:00,Active,,6.91,0.035
+756,Laura Morales,670,Ambassador,2024-03-06 00:00:00,Active,,1.61,0.025
+757,Pamela Flores,670,Ambassador,2015-02-12 00:00:00,Active,,10.68,0.035
+758,Cynthia Morgan,670,Cashier,2018-01-28 00:00:00,Active,,7.72,0.0175
+759,Jason Gutierrez,670,Ambassador,2018-07-23 00:00:00,Active,,7.23,0.035
+760,Joshua Ramos,670,Senior Ambassador,2021-05-12 00:00:00,Active,,4.43,0.04
+761,Susan Mitchell,874,Cashier,2015-03-15 00:00:00,Terminated,2018-11-15 00:00:00,10.59,0.0175
+762,Margaret Scott,874,Senior Ambassador,2022-06-03 00:00:00,Terminated,2023-11-28 00:00:00,3.37,0.04
+763,Edward Anderson,874,Cashier,2017-12-10 00:00:00,Active,,7.85,0.0175
+764,Brandon Murphy,874,Senior Ambassador,2023-06-03 00:00:00,Active,,2.37,0.035
+765,Cynthia Reed,874,Lead,2015-02-13 00:00:00,Active,,10.67,0.06
+766,Lisa Peterson,874,Cashier,2016-11-18 00:00:00,Active,,8.91,0.0175
+767,Joseph Reyes,874,Ambassador,2015-10-22 00:00:00,Terminated,2018-05-02 00:00:00,9.99,0.035
+768,Kathleen Campbell,874,Senior Ambassador,2023-03-25 00:00:00,Active,,2.56,0.035
+769,Daniel Richardson,874,Cashier,2016-11-07 00:00:00,Terminated,2023-11-06 00:00:00,8.94,0.0175
+770,James Nguyen,912,Ambassador,2020-09-16 00:00:00,Active,,5.08,0.035
+771,Jeffrey Thomas,912,Ambassador,2025-06-06 00:00:00,Terminated,2025-07-23 00:00:00,0.36,0.02
+772,Joshua Moore,912,Ambassador,2025-02-22 00:00:00,Terminated,2025-06-07 00:00:00,0.65,0.02
+773,Michael Brown,912,Ambassador,2020-10-18 00:00:00,Active,,4.99,0.03
+774,Jessica Richardson,912,Lead,2017-12-17 00:00:00,Active,,7.83,0.06
+775,Matthew Garcia,912,Ambassador,2019-12-21 00:00:00,Active,,5.82,0.035
+776,Edward Flores,912,Cashier,2017-11-15 00:00:00,Terminated,2019-08-22 00:00:00,7.92,0.0175
+777,Ronald Howard,912,Ambassador,2017-12-27 00:00:00,Terminated,2021-10-22 00:00:00,7.8,0.035
+778,Betty Ramos,912,Cashier,2024-09-06 00:00:00,Terminated,2025-09-05 00:00:00,1.11,0.0125
+779,Amy Sanchez,912,Senior Ambassador,2019-08-03 00:00:00,Active,,6.2,0.045
+780,Stephen Mitchell,200,Lead,2020-12-06 00:00:00,Active,,4.86,0.05
+781,Kathleen King,200,Cashier,2013-09-20 00:00:00,Terminated,2019-03-11 00:00:00,12.07,0.0175
+782,Jeffrey Lopez,200,Cashier,2025-06-04 00:00:00,Terminated,2025-09-30 00:00:00,0.37,0.01
+783,Stephen Hernandez,200,Senior Ambassador,2015-03-06 00:00:00,Terminated,2023-01-17 00:00:00,10.62,0.045
+784,Timothy Gonzalez,200,Cashier,2017-05-05 00:00:00,Active,,8.45,0.0175
+785,Sarah Lee,200,Ambassador,2014-02-14 00:00:00,Active,,11.67,0.035
+786,Jennifer Ramirez,200,Ambassador,2012-10-05 00:00:00,Active,,13.03,0.035
+787,Edward Brown,200,Senior Ambassador,2017-08-17 00:00:00,Active,,8.16,0.045
+788,Deborah Campbell,200,Ambassador,2019-07-07 00:00:00,Active,,6.28,0.035
+789,Kimberly Hall,200,Cashier,2019-03-05 00:00:00,Terminated,2023-01-17 00:00:00,6.62,0.0175
+790,Ryan Hernandez,200,Cashier,2023-01-05 00:00:00,Active,,2.78,0.0125
+791,Margaret Morris,567,Lead,2015-04-13 00:00:00,Terminated,2024-03-11 00:00:00,10.51,0.06
+792,Kenneth Taylor,567,Ambassador,2012-06-16 00:00:00,Active,,13.33,0.035
+793,Gary Thomas,567,Senior Ambassador,2012-04-11 00:00:00,Active,,13.51,0.045
+794,Melissa Thompson,567,Ambassador,2016-10-08 00:00:00,Active,,9.02,0.035
+795,James Carter,567,Ambassador,2014-07-10 00:00:00,Active,,11.27,0.035
+796,Anna Evans,567,Ambassador,2019-07-12 00:00:00,Active,,6.26,0.035
+797,Kevin Peterson,567,Cashier,2022-10-24 00:00:00,Active,,2.98,0.0125
+798,Anna Rogers,567,Ambassador,2018-11-05 00:00:00,Terminated,2023-04-14 00:00:00,6.95,0.035
+799,Brian Nelson,108,Cashier,2016-06-14 00:00:00,Terminated,2022-05-08 00:00:00,9.34,0.0175
+800,Nancy Ortiz,108,Ambassador,2017-11-12 00:00:00,Terminated,2019-09-09 00:00:00,7.93,0.035
+801,Emma Martinez,108,Lead,2018-06-26 00:00:00,Active,,7.31,0.06
+802,Michelle Ortiz,108,Lead,2022-02-22 00:00:00,Active,,3.65,0.05
+803,James Sanchez,108,Cashier,2018-03-14 00:00:00,Active,,7.59,0.0175
+804,Betty Morgan,801,Ambassador,2023-06-09 00:00:00,Active,,2.36,0.025
+805,Kenneth Jackson,801,Cashier,2020-01-15 00:00:00,Active,,5.75,0.0175
+806,Angela Walker,801,Senior Ambassador,2021-04-05 00:00:00,Active,,4.53,0.04
+807,Christopher Richardson,801,Ambassador,2019-03-24 00:00:00,Active,,6.57,0.035
+808,Robert Perez,801,Cashier,2022-06-18 00:00:00,Active,,3.33,0.015
+809,Anna Moore,801,Ambassador,2020-07-14 00:00:00,Active,,5.26,0.035
+810,Joseph Thompson,801,Cashier,2020-08-31 00:00:00,Active,,5.13,0.0175
+811,Melissa Peterson,801,Cashier,2021-10-01 00:00:00,Active,,4.04,0.015
+812,Cynthia Thomas,247,Cashier,2022-10-09 00:00:00,Active,,3.02,0.015
+813,Helen Roberts,247,Cashier,2023-06-18 00:00:00,Active,,2.33,0.0125
+814,Susan Williams,247,Cashier,2019-07-14 00:00:00,Active,,6.26,0.0175
+815,William Martin,247,Cashier,2021-02-22 00:00:00,Active,,4.65,0.015
+816,Mark Morgan,247,Senior Ambassador,2024-02-28 00:00:00,Active,,1.63,0.035
+817,Betty Jones,247,Cashier,2022-12-18 00:00:00,Active,,2.83,0.0125
+818,John Ramirez,247,Ambassador,2022-10-26 00:00:00,Active,,2.97,0.025
+819,Steven Anderson,247,Ambassador,2022-03-23 00:00:00,Terminated,2024-09-07 00:00:00,3.57,0.03
+820,Carol Clark,247,Cashier,2025-07-28 00:00:00,Terminated,2025-09-07 00:00:00,0.22,0.01
+821,Michael Green,247,Cashier,2025-07-15 00:00:00,Terminated,2025-09-02 00:00:00,0.26,0.01
+822,Ronald Peterson,367,Ambassador,2021-02-02 00:00:00,Terminated,2024-01-05 00:00:00,4.7,0.03
+823,Ronald Campbell,367,Cashier,2021-01-14 00:00:00,Terminated,2024-12-18 00:00:00,4.75,0.015
+824,Anna Wilson,367,Cashier,2022-12-07 00:00:00,Terminated,2024-08-25 00:00:00,2.86,0.0125
+825,Joshua Davis,367,Cashier,2024-04-05 00:00:00,Terminated,2024-10-10 00:00:00,1.53,0.0125
+826,Ronald Lewis,367,Cashier,2024-08-21 00:00:00,Active,,1.15,0.0125
+827,Kimberly Cooper,367,Cashier,2023-08-01 00:00:00,Terminated,2025-09-23 00:00:00,2.21,0.0125
+828,Matthew Rivera,367,Cashier,2023-05-30 00:00:00,Active,,2.38,0.0125
+829,Margaret Richardson,367,Cashier,2021-04-16 00:00:00,Terminated,2025-05-15 00:00:00,4.5,0.015
+830,Brenda Nguyen,367,Cashier,2023-06-23 00:00:00,Active,,2.32,0.0125
+831,Jason Hernandez,367,Cashier,2023-08-06 00:00:00,Active,,2.2,0.0125
+832,Mary Lee,367,Cashier,2022-04-03 00:00:00,Active,,3.54,0.015
+833,James Morales,897,Ambassador,2025-09-30 00:00:00,Terminated,2025-10-12 00:00:00,0.04,0.02
+834,Jacob Anderson,897,Senior Ambassador,2021-09-08 00:00:00,Active,,4.1,0.04
+835,Carol Walker,897,Cashier,2021-07-03 00:00:00,Active,,4.29,0.015
+836,Karen Ward,897,Cashier,2021-11-27 00:00:00,Active,,3.89,0.015
+837,Jacob Morris,897,Ambassador,2020-10-05 00:00:00,Active,,5.03,0.035
+838,Donna Cox,897,Cashier,2022-04-10 00:00:00,Active,,3.52,0.015
+839,Joseph Martinez,897,Cashier,2021-01-20 00:00:00,Active,,4.74,0.015
+840,Justin Reed,897,Cashier,2020-01-26 00:00:00,Terminated,2021-04-07 00:00:00,5.72,0.0175
+841,Jonathan Gonzalez,897,Cashier,2022-11-19 00:00:00,Active,,2.91,0.0125
+842,Christopher Lee,897,Ambassador,2024-03-03 00:00:00,Terminated,2025-08-20 00:00:00,1.62,0.025
+843,Jessica Hill,981,Cashier,2025-04-16 00:00:00,Active,,0.5,0.01
+844,Emily King,981,Cashier,2013-07-10 00:00:00,Active,,12.27,0.0175
+845,Sarah Phillips,981,Cashier,2015-11-19 00:00:00,Terminated,2019-04-15 00:00:00,9.91,0.0175
+846,Margaret Cox,981,Ambassador,2024-02-20 00:00:00,Terminated,2025-01-07 00:00:00,1.65,0.025
+847,Anna Cruz,981,Cashier,2016-11-20 00:00:00,Active,,8.9,0.0175
+848,Cynthia Ortiz,981,Senior Ambassador,2018-09-16 00:00:00,Terminated,2019-11-21 00:00:00,7.08,0.045
+849,Jessica Hall,981,Cashier,2012-11-16 00:00:00,Active,,12.91,0.0175
+850,Timothy Campbell,981,Lead,2022-02-02 00:00:00,Active,,3.7,0.05
+851,Michelle Lee,981,Ambassador,2013-09-03 00:00:00,Active,,12.12,0.035
+852,Carol Kim,981,Ambassador,2014-11-29 00:00:00,Terminated,2015-10-03 00:00:00,10.88,0.035
+853,Jacob Ward,981,Cashier,2017-04-22 00:00:00,Active,,8.49,0.0175
+854,Eric Perez,885,Ambassador,2021-06-14 00:00:00,Terminated,2021-07-17 00:00:00,4.34,0.03
+855,Paul Johnson,885,Senior Ambassador,2015-01-29 00:00:00,Active,,10.71,0.045
+856,Nicole Adams,885,Lead,2020-06-13 00:00:00,Active,,5.34,0.06
+857,Jonathan Howard,885,Ambassador,2021-04-17 00:00:00,Active,,4.5,0.03
+858,Laura Martinez,885,Ambassador,2021-11-19 00:00:00,Terminated,2022-06-13 00:00:00,3.91,0.03
+859,Mary Davis,885,Senior Ambassador,2018-11-14 00:00:00,Active,,6.92,0.045
+860,Elizabeth Harris,885,Cashier,2022-12-20 00:00:00,Terminated,2025-03-10 00:00:00,2.82,0.0125
+861,George Morales,885,Senior Ambassador,2016-08-17 00:00:00,Terminated,2017-08-01 00:00:00,9.16,0.045
+862,Angela Wright,885,Ambassador,2017-09-26 00:00:00,Active,,8.06,0.035
+863,Robert Nguyen,885,Cashier,2018-07-23 00:00:00,Terminated,2024-04-11 00:00:00,7.23,0.0175
+864,Susan Campbell,885,Ambassador,2022-06-22 00:00:00,Active,,3.32,0.03
+865,Susan Kelly,885,Cashier,2018-04-12 00:00:00,Active,,7.51,0.0175
+866,Emily Howard,557,Ambassador,2024-07-16 00:00:00,Active,,1.25,0.025
+867,Kevin Flores,557,Cashier,2025-08-26 00:00:00,Active,,0.14,0.01
+868,Anna Kim,557,Cashier,2020-07-27 00:00:00,Active,,5.22,0.0175
+869,Jacob Cooper,557,Ambassador,2023-06-09 00:00:00,Active,,2.36,0.025
+870,Ryan Harris,557,Lead,2020-11-21 00:00:00,Active,,4.9,0.05
+871,Nicholas Reyes,557,Ambassador,2023-02-14 00:00:00,Active,,2.67,0.025
+872,Sarah Cook,557,Lead,2022-05-07 00:00:00,Active,,3.44,0.05
+873,Larry Moore,557,Senior Ambassador,2021-01-01 00:00:00,Terminated,2025-09-14 00:00:00,4.79,0.04
+874,Richard Rodriguez,557,Cashier,2023-07-10 00:00:00,Active,,2.27,0.0125
+875,Christopher Morales,557,Ambassador,2020-02-20 00:00:00,Active,,5.65,0.035
+876,Mark Wilson,24,Senior Ambassador,2015-12-24 00:00:00,Active,,9.81,0.045
+877,Paul Scott,24,Lead,2019-05-09 00:00:00,Active,,6.44,0.06
+878,Donald Johnson,24,Ambassador,2022-12-11 00:00:00,Active,,2.85,0.025
+879,Kevin Thomas,24,Ambassador,2016-11-30 00:00:00,Active,,8.88,0.035
+880,Angela Martin,24,Cashier,2018-05-26 00:00:00,Active,,7.39,0.0175
+881,Robert Cox,24,Cashier,2023-10-09 00:00:00,Active,,2.02,0.0125
+882,Jennifer Reed,24,Cashier,2019-08-05 00:00:00,Active,,6.2,0.0175
+883,Ryan Rogers,24,Cashier,2024-11-19 00:00:00,Terminated,2025-02-11 00:00:00,0.91,0.01
+884,Amanda Ramos,24,Ambassador,2015-02-15 00:00:00,Active,,10.67,0.035
+885,Jonathan Ramos,24,Senior Ambassador,2014-03-23 00:00:00,Terminated,2017-06-26 00:00:00,11.57,0.045
+886,Barbara Cox,24,Senior Ambassador,2018-03-17 00:00:00,Active,,7.58,0.045
+887,Lisa Robinson,576,Ambassador,2023-02-15 00:00:00,Active,,2.67,0.025
+888,Anna Young,576,Cashier,2024-09-10 00:00:00,Active,,1.1,0.0125
+889,Elizabeth Garcia,576,Cashier,2022-09-17 00:00:00,Active,,3.08,0.015
+890,Cynthia Roberts,576,Cashier,2022-10-10 00:00:00,Active,,3.02,0.015
+891,Scott Clark,576,Cashier,2020-02-22 00:00:00,Active,,5.65,0.0175
+892,Stephen Brown,576,Cashier,2019-06-08 00:00:00,Active,,6.36,0.0175
+893,Nicholas Ramirez,576,Ambassador,2024-01-01 00:00:00,Terminated,2025-03-03 00:00:00,1.79,0.025
+894,Michelle Martinez,576,Ambassador,2025-07-27 00:00:00,Active,,0.22,0.02
+895,Justin Turner,576,Senior Ambassador,2024-01-03 00:00:00,Terminated,2024-09-26 00:00:00,1.79,0.035
+896,Jennifer Lee,576,Cashier,2024-06-13 00:00:00,Active,,1.34,0.0125
+897,Scott Brown,925,Senior Ambassador,2015-06-18 00:00:00,Active,,10.33,0.045
+898,Betty Gutierrez,925,Ambassador,2020-05-06 00:00:00,Active,,5.45,0.035
+899,Richard Morales,925,Cashier,2021-07-27 00:00:00,Active,,4.22,0.015
+900,Linda Jones,925,Cashier,2022-11-08 00:00:00,Active,,2.94,0.0125
+901,Brandon Sanchez,925,Ambassador,2023-04-22 00:00:00,Active,,2.49,0.025
+902,Matthew King,925,Cashier,2025-08-20 00:00:00,Active,,0.16,0.01
+903,Donald Young,925,Cashier,2019-07-14 00:00:00,Active,,6.26,0.0175
+904,Lisa Johnson,925,Cashier,2018-06-18 00:00:00,Terminated,2022-12-13 00:00:00,7.33,0.0175
+905,Laura Thomas,925,Cashier,2013-11-14 00:00:00,Active,,11.92,0.0175
+906,Edward Adams,925,Ambassador,2012-10-18 00:00:00,Terminated,2023-09-01 00:00:00,12.99,0.035
+907,Larry Morris,575,Cashier,2022-09-01 00:00:00,Active,,3.12,0.015
+908,Brandon Wright,575,Cashier,2013-04-24 00:00:00,Active,,12.48,0.0175
+909,Joshua Williams,575,Senior Ambassador,2020-04-26 00:00:00,Active,,5.47,0.045
+910,Ronald Thompson,575,Cashier,2021-10-16 00:00:00,Active,,4.0,0.015
+911,Joshua Martin,575,Senior Ambassador,2012-07-03 00:00:00,Active,,13.29,0.045
+912,Elizabeth Ramirez,575,Cashier,2012-08-09 00:00:00,Terminated,2014-12-21 00:00:00,13.19,0.0175
+913,Jonathan Baker,575,Cashier,2024-11-17 00:00:00,Active,,0.91,0.01
+914,Kenneth King,866,Ambassador,2017-03-07 00:00:00,Active,,8.61,0.035
+915,Michael Rodriguez,866,Ambassador,2016-05-10 00:00:00,Active,,9.44,0.035
+916,Amanda Jones,866,Ambassador,2025-07-09 00:00:00,Active,,0.27,0.02
+917,Sandra Lopez,866,Cashier,2019-02-20 00:00:00,Active,,6.65,0.0175
+918,Deborah Reed,866,Cashier,2025-05-18 00:00:00,Active,,0.41,0.01
+919,Laura Kim,866,Cashier,2017-07-03 00:00:00,Terminated,2021-01-24 00:00:00,8.29,0.0175
+920,Brian Smith,866,Ambassador,2016-10-05 00:00:00,Active,,9.03,0.035
+921,Amy Lopez,866,Ambassador,2019-08-05 00:00:00,Terminated,2020-05-06 00:00:00,6.2,0.035
+922,Sandra Nguyen,866,Senior Ambassador,2022-06-02 00:00:00,Active,,3.37,0.04
+923,Jessica Cruz,866,Lead,2017-03-26 00:00:00,Active,,8.56,0.06
+924,Jacob Wright,321,Ambassador,2015-08-15 00:00:00,Active,,10.17,0.035
+925,Angela Garcia,321,Ambassador,2014-12-21 00:00:00,Terminated,2020-09-07 00:00:00,10.82,0.035
+926,Donna Ortiz,321,Lead,2015-08-03 00:00:00,Terminated,2015-08-19 00:00:00,10.2,0.06
+927,Betty Diaz,321,Ambassador,2025-09-25 00:00:00,Active,,0.06,0.02
+928,Andrew Thomas,321,Lead,2017-04-02 00:00:00,Active,,8.54,0.06
+929,Jason Gomez,321,Ambassador,2022-02-20 00:00:00,Terminated,2024-04-25 00:00:00,3.65,0.03
+930,Daniel Martin,321,Ambassador,2013-03-18 00:00:00,Active,,12.58,0.035
+931,Jennifer Evans,321,Lead,2017-06-20 00:00:00,Active,,8.32,0.06
+932,Sandra Kelly,321,Cashier,2020-03-17 00:00:00,Active,,5.58,0.0175
+933,Paul Stewart,321,Senior Ambassador,2021-01-21 00:00:00,Active,,4.73,0.04
+934,Helen Garcia,321,Lead,2013-02-09 00:00:00,Active,,12.68,0.06
+935,James Martinez,647,Cashier,2020-08-20 00:00:00,Active,,5.16,0.0175
+936,Barbara Taylor,647,Cashier,2022-04-17 00:00:00,Terminated,2024-05-15 00:00:00,3.5,0.015
+937,Gary Ramirez,647,Ambassador,2017-10-29 00:00:00,Active,,7.96,0.035
+938,Nicholas Hill,647,Ambassador,2022-12-25 00:00:00,Active,,2.81,0.025
+939,Deborah Allen,647,Senior Ambassador,2022-12-23 00:00:00,Active,,2.81,0.035
+940,Sarah Collins,647,Cashier,2019-12-14 00:00:00,Active,,5.84,0.0175
+941,Joseph Mitchell,647,Ambassador,2022-10-25 00:00:00,Active,,2.98,0.025
+942,Mary Hall,974,Ambassador,2020-06-09 00:00:00,Terminated,2023-02-10 00:00:00,5.35,0.035
+943,Edward Ramirez,974,Cashier,2022-04-17 00:00:00,Terminated,2025-08-26 00:00:00,3.5,0.015
+944,Nicholas Murphy,974,Ambassador,2019-05-03 00:00:00,Terminated,2021-04-02 00:00:00,6.46,0.035
+945,Sharon Turner,974,Cashier,2025-07-05 00:00:00,Active,,0.28,0.01
+946,Shirley Morgan,974,Cashier,2012-08-23 00:00:00,Terminated,2025-04-08 00:00:00,13.15,0.0175
+947,Cynthia Baker,992,Senior Ambassador,2015-01-03 00:00:00,Active,,10.78,0.045
+948,Sharon Peterson,992,Senior Ambassador,2018-07-15 00:00:00,Active,,7.26,0.045
+949,Donald Baker,992,Senior Ambassador,2021-03-22 00:00:00,Active,,4.57,0.04
+950,Jason Phillips,992,Cashier,2020-10-24 00:00:00,Active,,4.98,0.015
+951,Scott Davis,992,Cashier,2021-08-12 00:00:00,Active,,4.18,0.015
+952,Edward Williams,809,Cashier,2017-01-29 00:00:00,Active,,8.71,0.0175
+953,Nicholas Kelly,809,Ambassador,2014-02-04 00:00:00,Active,,11.7,0.035
+954,Ashley Perez,809,Cashier,2014-08-09 00:00:00,Terminated,2015-06-22 00:00:00,11.19,0.0175
+955,Eric Flores,809,Cashier,2024-03-17 00:00:00,Active,,1.58,0.0125
+956,Mary Roberts,809,Lead,2019-04-07 00:00:00,Active,,6.53,0.06
+957,Stephen Williams,39,Cashier,2025-01-13 00:00:00,Active,,0.76,0.01
+958,Brian Edwards,39,Ambassador,2023-04-02 00:00:00,Active,,2.54,0.025
+959,Helen Reed,39,Ambassador,2014-10-03 00:00:00,Active,,11.04,0.035
+960,Christopher Robinson,39,Ambassador,2013-07-19 00:00:00,Active,,12.24,0.035
+961,Amanda Wilson,39,Ambassador,2024-11-04 00:00:00,Active,,0.95,0.02
+962,Robert Phillips,39,Senior Ambassador,2017-05-10 00:00:00,Terminated,2021-05-28 00:00:00,8.44,0.045
+963,Christopher Perez,39,Senior Ambassador,2023-07-14 00:00:00,Active,,2.26,0.035
+964,Joseph Moore,571,Ambassador,2023-07-15 00:00:00,Terminated,2025-05-26 00:00:00,2.26,0.025
+965,Daniel White,571,Cashier,2023-05-31 00:00:00,Active,,2.38,0.0125
+966,Carol Bailey,571,Cashier,2023-07-20 00:00:00,Active,,2.24,0.0125
+967,John Nelson,571,Cashier,2025-07-18 00:00:00,Active,,0.25,0.01
+968,Nicole Clark,571,Cashier,2023-01-12 00:00:00,Active,,2.76,0.0125
+969,Rebecca Ortiz,502,Cashier,2021-10-19 00:00:00,Active,,3.99,0.015
+970,Shirley Young,502,Cashier,2021-08-19 00:00:00,Active,,4.16,0.015
+971,Emma Hernandez,502,Ambassador,2021-05-15 00:00:00,Active,,4.42,0.03
+972,Mark Walker,502,Ambassador,2023-08-21 00:00:00,Active,,2.16,0.025
+973,Kevin Cooper,502,Senior Ambassador,2022-05-22 00:00:00,Terminated,2024-09-07 00:00:00,3.4,0.04
+974,Mark Carter,502,Ambassador,2024-04-03 00:00:00,Terminated,2025-03-14 00:00:00,1.54,0.025
+975,Jessica Diaz,204,Ambassador,2023-10-16 00:00:00,Active,,2.0,0.025
+976,Anna Thompson,204,Cashier,2017-08-03 00:00:00,Terminated,2019-11-17 00:00:00,8.2,0.0175
+977,Lisa Hernandez,204,Cashier,2019-02-20 00:00:00,Active,,6.65,0.0175
+978,Karen Lewis,204,Ambassador,2022-08-11 00:00:00,Active,,3.18,0.03
+979,Patricia Allen,204,Cashier,2018-02-28 00:00:00,Active,,7.63,0.0175
+980,Christopher Turner,204,Senior Ambassador,2020-05-07 00:00:00,Active,,5.44,0.045
+981,Ronald Ward,204,Ambassador,2014-03-01 00:00:00,Terminated,2015-03-31 00:00:00,11.63,0.035
+982,Donald Phillips,204,Cashier,2018-07-25 00:00:00,Active,,7.23,0.0175
+983,John Ramos,204,Cashier,2021-07-09 00:00:00,Terminated,2021-09-16 00:00:00,4.27,0.015
+984,Andrew Reed,821,Ambassador,2021-09-06 00:00:00,Active,,4.11,0.03
+985,Gary Rivera,821,Cashier,2020-11-28 00:00:00,Active,,4.88,0.015
+986,Stephen Lee,821,Cashier,2024-01-31 00:00:00,Active,,1.71,0.0125
+987,Rebecca Morgan,821,Ambassador,2020-12-16 00:00:00,Active,,4.83,0.03
+988,Shirley Lewis,821,Cashier,2022-03-30 00:00:00,Active,,3.55,0.015
+989,Anna Turner,324,Cashier,2019-05-06 00:00:00,Active,,6.45,0.0175
+990,Nicole Lopez,324,Ambassador,2019-12-07 00:00:00,Terminated,2020-09-05 00:00:00,5.86,0.035
+991,Charles Diaz,324,Ambassador,2023-03-01 00:00:00,Terminated,2025-03-01 00:00:00,2.63,0.025
+992,Barbara Murphy,324,Ambassador,2025-07-12 00:00:00,Active,,0.26,0.02
+993,Sarah Sanchez,324,Cashier,2025-05-29 00:00:00,Active,,0.38,0.01
+994,Deborah Lopez,324,Cashier,2024-09-06 00:00:00,Terminated,2025-07-03 00:00:00,1.11,0.0125
+995,Amy Mitchell,674,Ambassador,2016-01-02 00:00:00,Active,,9.79,0.035
+996,Brian Adams,674,Senior Ambassador,2023-01-17 00:00:00,Active,,2.75,0.035
+997,Barbara Gomez,674,Ambassador,2025-05-12 00:00:00,Active,,0.43,0.02
+998,Eric Hernandez,674,Ambassador,2023-10-28 00:00:00,Active,,1.97,0.025
+999,Ronald Nelson,674,Cashier,2014-12-27 00:00:00,Active,,10.8,0.0175
+1000,Thomas Ward,674,Ambassador,2021-02-16 00:00:00,Active,,4.66,0.03
+1001,Joshua Lewis,674,Ambassador,2021-12-21 00:00:00,Active,,3.82,0.03
+1002,Deborah Ward,674,Cashier,2024-01-28 00:00:00,Active,,1.72,0.0125
+1003,Brandon Ramos,674,Lead,2019-11-23 00:00:00,Active,,5.9,0.06
+1004,Jennifer Smith,674,Senior Ambassador,2020-01-09 00:00:00,Active,,5.77,0.045
+1005,Anthony Morgan,674,Ambassador,2018-05-27 00:00:00,Terminated,2023-06-13 00:00:00,7.39,0.035
+1006,Paul Torres,674,Cashier,2020-02-01 00:00:00,Active,,5.71,0.0175
+1007,Nicole Miller,591,Senior Ambassador,2011-08-12 00:00:00,Active,,14.18,0.045
+1008,Nicole Johnson,591,Lead,2011-11-29 00:00:00,Active,,13.88,0.06
+1009,Matthew Morgan,591,Senior Ambassador,2016-11-19 00:00:00,Terminated,2023-04-22 00:00:00,8.91,0.045
+1010,Nancy Peterson,591,Cashier,2020-07-25 00:00:00,Active,,5.23,0.0175
+1011,Betty Jackson,591,Cashier,2019-05-30 00:00:00,Active,,6.38,0.0175
+1012,Elizabeth Carter,591,Senior Ambassador,2024-03-25 00:00:00,Terminated,2025-01-09 00:00:00,1.56,0.035
+1013,Jason Smith,591,Ambassador,2013-09-01 00:00:00,Terminated,2021-11-01 00:00:00,12.12,0.035
+1014,James Rogers,591,Lead,2020-01-22 00:00:00,Active,,5.73,0.06
+1015,Cynthia Taylor,591,Cashier,2025-08-16 00:00:00,Active,,0.17,0.01
+1016,Eric Green,591,Cashier,2014-04-23 00:00:00,Terminated,2021-03-26 00:00:00,11.48,0.0175
+1017,Steven Morris,281,Cashier,2024-11-04 00:00:00,Active,,0.95,0.01
+1018,Michael Wright,281,Cashier,2021-10-21 00:00:00,Active,,3.99,0.015
+1019,Pamela Smith,281,Cashier,2022-08-15 00:00:00,Active,,3.17,0.015
+1020,Donna White,281,Lead,2022-07-21 00:00:00,Active,,3.24,0.05
+1021,Scott Perez,281,Cashier,2020-11-04 00:00:00,Active,,4.95,0.015
+1022,Ashley Anderson,281,Cashier,2024-02-10 00:00:00,Active,,1.68,0.0125
+1023,Jennifer Turner,281,Cashier,2020-08-18 00:00:00,Active,,5.16,0.0175
+1024,Joshua Hill,281,Cashier,2022-06-07 00:00:00,Terminated,2025-08-12 00:00:00,3.36,0.015
+1025,Timothy Edwards,281,Ambassador,2024-05-20 00:00:00,Active,,1.41,0.025
+1026,Justin Garcia,281,Ambassador,2021-07-21 00:00:00,Active,,4.24,0.03
+1027,Brian Gonzalez,790,Senior Ambassador,2019-02-17 00:00:00,Terminated,2022-08-26 00:00:00,6.66,0.045
+1028,Thomas Clark,790,Lead,2017-06-30 00:00:00,Active,,8.3,0.06
+1029,Richard Robinson,790,Senior Ambassador,2017-09-02 00:00:00,Active,,8.12,0.045
+1030,Michelle Evans,790,Ambassador,2022-04-13 00:00:00,Active,,3.51,0.03
+1031,Amy Hall,790,Senior Ambassador,2016-09-13 00:00:00,Active,,9.09,0.045
+1032,Kathleen Walker,815,Ambassador,2023-02-02 00:00:00,Active,,2.7,0.025
+1033,Edward Cruz,815,Cashier,2024-05-15 00:00:00,Terminated,2024-05-19 00:00:00,1.42,0.0125
+1034,Daniel Cruz,815,Ambassador,2018-08-15 00:00:00,Active,,7.17,0.035
+1035,Betty Martin,815,Ambassador,2020-06-04 00:00:00,Active,,5.37,0.035
+1036,Andrew Roberts,815,Cashier,2022-05-15 00:00:00,Active,,3.42,0.015
+1037,Jonathan Thompson,815,Senior Ambassador,2021-02-01 00:00:00,Terminated,2023-06-04 00:00:00,4.7,0.04
+1038,Barbara Williams,815,Lead,2021-11-01 00:00:00,Active,,3.96,0.05
+1039,Jessica Martinez,815,Lead,2019-08-08 00:00:00,Active,,6.19,0.06
+1040,Mark Kelly,254,Cashier,2024-03-08 00:00:00,Active,,1.61,0.0125
+1041,Rebecca Parker,254,Cashier,2024-04-25 00:00:00,Active,,1.48,0.0125
+1042,Kimberly Young,254,Cashier,2019-11-16 00:00:00,Active,,5.92,0.0175
+1043,Angela Phillips,254,Cashier,2025-06-07 00:00:00,Active,,0.36,0.01
+1044,Cynthia Kelly,254,Ambassador,2018-11-22 00:00:00,Active,,6.9,0.035
+1045,Cynthia Evans,254,Ambassador,2022-05-14 00:00:00,Active,,3.43,0.03
+1046,Shirley Ramos,254,Cashier,2019-06-22 00:00:00,Active,,6.32,0.0175
+1047,Melissa Richardson,254,Cashier,2021-04-13 00:00:00,Active,,4.51,0.015
+1048,Elizabeth Lewis,911,Cashier,2023-07-12 00:00:00,Active,,2.26,0.0125
+1049,Carol Wilson,911,Ambassador,2025-07-21 00:00:00,Active,,0.24,0.02
+1050,George Flores,911,Cashier,2024-08-18 00:00:00,Terminated,2025-03-17 00:00:00,1.16,0.0125
+1051,Kevin Rodriguez,911,Ambassador,2024-03-18 00:00:00,Active,,1.58,0.025
+1052,Joseph Walker,911,Senior Ambassador,2023-10-30 00:00:00,Active,,1.96,0.035
+1053,Jason King,911,Cashier,2019-09-24 00:00:00,Terminated,2022-09-12 00:00:00,6.06,0.0175
+1054,Timothy Thompson,911,Cashier,2021-04-26 00:00:00,Active,,4.47,0.015
+1055,Michelle Morales,911,Ambassador,2020-03-27 00:00:00,Active,,5.56,0.035
+1056,Richard Edwards,911,Ambassador,2025-05-11 00:00:00,Active,,0.43,0.02
+1057,Sarah Richardson,911,Senior Ambassador,2023-06-26 00:00:00,Active,,2.31,0.035
+1058,Cynthia Anderson,911,Cashier,2023-05-20 00:00:00,Active,,2.41,0.0125
+1059,Brandon Ramirez,806,Ambassador,2021-04-09 00:00:00,Active,,4.52,0.03
+1060,Larry Adams,806,Ambassador,2020-12-25 00:00:00,Active,,4.81,0.03
+1061,Jeffrey Edwards,806,Cashier,2019-04-26 00:00:00,Terminated,2025-06-26 00:00:00,6.48,0.0175
+1062,Karen Baker,806,Ambassador,2022-02-01 00:00:00,Active,,3.7,0.03
+1063,Kimberly Martin,806,Ambassador,2019-07-13 00:00:00,Active,,6.26,0.035
+1064,Susan Johnson,806,Cashier,2023-09-29 00:00:00,Terminated,2023-12-07 00:00:00,2.05,0.0125
+1065,George Ortiz,806,Ambassador,2018-02-07 00:00:00,Active,,7.69,0.035
+1066,Paul Young,806,Senior Ambassador,2015-10-04 00:00:00,Active,,10.03,0.045
+1067,Emma Rodriguez,806,Cashier,2016-10-06 00:00:00,Terminated,2019-11-10 00:00:00,9.03,0.0175
+1068,Sandra White,806,Senior Ambassador,2016-11-15 00:00:00,Active,,8.92,0.045
+1069,Kathleen Thompson,806,Ambassador,2017-08-12 00:00:00,Active,,8.18,0.035
+1070,Anna Richardson,56,Cashier,2019-06-17 00:00:00,Active,,6.33,0.0175
+1071,Jessica Scott,56,Lead,2020-04-27 00:00:00,Active,,5.47,0.06
+1072,Lisa Mitchell,56,Ambassador,2024-01-18 00:00:00,Active,,1.74,0.025
+1073,William Campbell,56,Ambassador,2024-04-05 00:00:00,Active,,1.53,0.025
+1074,Richard Parker,56,Cashier,2019-08-29 00:00:00,Active,,6.13,0.0175
+1075,Jacob Thomas,979,Cashier,2015-04-27 00:00:00,Active,,10.47,0.0175
+1076,Pamela Ramirez,979,Lead,2022-01-12 00:00:00,Terminated,2023-07-02 00:00:00,3.76,0.05
+1077,Laura Ortiz,979,Lead,2021-09-12 00:00:00,Terminated,2025-03-18 00:00:00,4.09,0.05
+1078,Joshua Wright,979,Senior Ambassador,2018-08-25 00:00:00,Terminated,2018-11-10 00:00:00,7.14,0.045
+1079,Joshua Taylor,979,Cashier,2014-08-23 00:00:00,Active,,11.15,0.0175
+1080,Laura Johnson,979,Cashier,2018-05-09 00:00:00,Active,,7.44,0.0175
+1081,Helen Green,979,Senior Ambassador,2023-07-19 00:00:00,Terminated,2024-10-22 00:00:00,2.25,0.035
+1082,Deborah Bailey,979,Cashier,2014-05-10 00:00:00,Active,,11.44,0.0175
+1083,Nicholas Evans,979,Ambassador,2020-09-01 00:00:00,Active,,5.12,0.035
+1084,Kathleen Lee,979,Ambassador,2020-04-29 00:00:00,Active,,5.47,0.035
+1085,Carol Reed,550,Cashier,2014-02-07 00:00:00,Terminated,2021-10-03 00:00:00,11.69,0.0175
+1086,Jacob Mitchell,550,Cashier,2014-07-26 00:00:00,Active,,11.23,0.0175
+1087,Andrew Richardson,550,Cashier,2018-04-19 00:00:00,Active,,7.49,0.0175
+1088,Scott Allen,550,Ambassador,2023-11-12 00:00:00,Active,,1.93,0.025
+1089,Susan Richardson,550,Cashier,2014-03-31 00:00:00,Active,,11.55,0.0175
+1090,Brian Morales,550,Senior Ambassador,2024-09-15 00:00:00,Terminated,2025-02-04 00:00:00,1.08,0.035
+1091,John Morgan,550,Ambassador,2025-07-03 00:00:00,Active,,0.29,0.02
+1092,Donald White,550,Ambassador,2025-04-08 00:00:00,Active,,0.52,0.02
+1093,Charles Richardson,402,Cashier,2013-06-14 00:00:00,Terminated,2019-05-16 00:00:00,12.34,0.0175
+1094,Linda Ortiz,402,Cashier,2023-03-13 00:00:00,Active,,2.6,0.0125
+1095,Sandra Bailey,402,Ambassador,2017-08-05 00:00:00,Active,,8.2,0.035
+1096,Joseph Murphy,402,Cashier,2021-09-09 00:00:00,Terminated,2025-10-15 00:00:00,4.1,0.015
+1097,Kimberly Ramos,402,Cashier,2017-12-28 00:00:00,Terminated,2024-10-22 00:00:00,7.8,0.0175
+1098,Brandon Thompson,473,Ambassador,2013-07-14 00:00:00,Active,,12.26,0.035
+1099,Joseph Cruz,473,Cashier,2021-03-14 00:00:00,Active,,4.59,0.015
+1100,Kathleen Rogers,473,Ambassador,2023-12-19 00:00:00,Active,,1.83,0.025
+1101,Kevin Perez,473,Cashier,2013-12-15 00:00:00,Terminated,2020-07-10 00:00:00,11.84,0.0175
+1102,Joseph Lee,473,Cashier,2014-12-24 00:00:00,Active,,10.81,0.0175
+1103,Joshua White,473,Cashier,2015-02-08 00:00:00,Terminated,2023-04-18 00:00:00,10.69,0.0175
+1104,Dorothy Gutierrez,473,Cashier,2023-01-22 00:00:00,Active,,2.73,0.0125
+1105,Jennifer Cooper,473,Cashier,2014-04-30 00:00:00,Terminated,2024-03-01 00:00:00,11.46,0.0175
+1106,Anna Ortiz,473,Ambassador,2017-11-09 00:00:00,Active,,7.93,0.035
+1107,Thomas Hernandez,473,Cashier,2013-11-12 00:00:00,Active,,11.93,0.0175
+1108,Nancy Cruz,288,Cashier,2022-01-03 00:00:00,Active,,3.78,0.015
+1109,Brian Collins,288,Ambassador,2020-12-20 00:00:00,Active,,4.82,0.03
+1110,Kathleen Scott,288,Cashier,2025-10-10 00:00:00,Active,,0.02,0.01
+1111,Jennifer Hernandez,288,Cashier,2017-11-15 00:00:00,Active,,7.92,0.0175
+1112,Shirley Harris,288,Senior Ambassador,2024-08-20 00:00:00,Active,,1.16,0.035
+1113,Paul Howard,610,Ambassador,2023-03-08 00:00:00,Active,,2.61,0.025
+1114,Nicholas Jackson,610,Ambassador,2018-07-17 00:00:00,Active,,7.25,0.035
+1115,Melissa Jones,610,Cashier,2022-08-21 00:00:00,Active,,3.15,0.015
+1116,Steven Ramos,610,Cashier,2017-01-13 00:00:00,Terminated,2020-12-04 00:00:00,8.76,0.0175
+1117,Thomas Lewis,610,Ambassador,2021-06-26 00:00:00,Terminated,2024-03-16 00:00:00,4.31,0.03
+1118,Daniel Gonzalez,67,Senior Ambassador,2021-05-10 00:00:00,Active,,4.44,0.04
+1119,Margaret Clark,67,Ambassador,2020-09-17 00:00:00,Active,,5.08,0.035
+1120,Amanda Harris,67,Cashier,2018-11-04 00:00:00,Active,,6.95,0.0175
+1121,Michelle Lewis,67,Ambassador,2022-05-01 00:00:00,Active,,3.46,0.03
+1122,Edward Kim,67,Cashier,2024-07-14 00:00:00,Active,,1.26,0.0125
+1123,Scott Cook,67,Lead,2019-09-24 00:00:00,Active,,6.06,0.06
+1124,Ryan Williams,67,Lead,2020-09-02 00:00:00,Terminated,2024-04-26 00:00:00,5.12,0.06
+1125,Mark Perez,67,Cashier,2018-09-02 00:00:00,Terminated,2024-06-28 00:00:00,7.12,0.0175
+1126,Mark Martinez,89,Lead,2017-04-29 00:00:00,Active,,8.47,0.06
+1127,Sarah Flores,89,Cashier,2023-08-12 00:00:00,Terminated,2024-10-17 00:00:00,2.18,0.0125
+1128,Ronald Moore,89,Ambassador,2017-07-30 00:00:00,Active,,8.21,0.035
+1129,David Cook,89,Cashier,2017-08-22 00:00:00,Active,,8.15,0.0175
+1130,Justin Richardson,89,Cashier,2024-04-22 00:00:00,Active,,1.48,0.0125
+1131,Elizabeth Morgan,89,Senior Ambassador,2017-09-18 00:00:00,Active,,8.08,0.045
+1132,Deborah Morgan,89,Cashier,2019-01-24 00:00:00,Terminated,2019-10-31 00:00:00,6.73,0.0175
+1133,Cynthia Peterson,89,Cashier,2025-08-23 00:00:00,Active,,0.15,0.01
+1134,George Phillips,89,Cashier,2017-09-25 00:00:00,Active,,8.06,0.0175
+1135,Michael King,89,Cashier,2025-05-24 00:00:00,Terminated,2025-08-20 00:00:00,0.4,0.01
+1136,Sandra Collins,89,Cashier,2016-03-01 00:00:00,Active,,9.63,0.0175
+1137,Jennifer Rodriguez,898,Cashier,2019-09-08 00:00:00,Active,,6.11,0.0175
+1138,Stephanie White,898,Cashier,2020-02-03 00:00:00,Terminated,2025-10-13 00:00:00,5.7,0.0175
+1139,Timothy King,898,Ambassador,2025-10-02 00:00:00,Active,,0.04,0.02
+1140,Rebecca Jackson,898,Cashier,2025-08-28 00:00:00,Active,,0.13,0.01
+1141,Emily Morales,898,Cashier,2020-11-26 00:00:00,Active,,4.89,0.015
+1142,Laura Smith,21,Cashier,2021-04-24 00:00:00,Active,,4.48,0.015
+1143,Justin Carter,21,Senior Ambassador,2022-02-06 00:00:00,Active,,3.69,0.04
+1144,James Lewis,21,Cashier,2024-12-22 00:00:00,Terminated,2025-07-18 00:00:00,0.82,0.01
+1145,Pamela Martin,21,Senior Ambassador,2021-04-30 00:00:00,Active,,4.46,0.04
+1146,Larry Ramos,21,Cashier,2019-01-08 00:00:00,Active,,6.77,0.0175
+1147,Nicole Allen,594,Cashier,2019-04-19 00:00:00,Active,,6.49,0.0175
+1148,Scott Gonzalez,594,Ambassador,2023-10-22 00:00:00,Terminated,2025-06-15 00:00:00,1.99,0.025
+1149,Jennifer Phillips,594,Cashier,2021-12-03 00:00:00,Terminated,2023-02-14 00:00:00,3.87,0.015
+1150,Karen Roberts,594,Senior Ambassador,2020-05-18 00:00:00,Terminated,2021-05-16 00:00:00,5.41,0.045
+1151,Ryan Cooper,594,Cashier,2019-04-14 00:00:00,Active,,6.51,0.0175
+1152,Nancy Martin,594,Cashier,2022-09-04 00:00:00,Active,,3.12,0.015
+1153,Brandon Martin,594,Cashier,2024-11-28 00:00:00,Active,,0.88,0.01
+1154,Karen Allen,594,Cashier,2021-12-27 00:00:00,Active,,3.8,0.015
+1155,Emma Cruz,594,Lead,2018-01-19 00:00:00,Active,,7.74,0.06
+1156,George Hernandez,71,Cashier,2024-05-16 00:00:00,Terminated,2025-03-03 00:00:00,1.42,0.0125
+1157,Angela Stewart,71,Senior Ambassador,2018-12-05 00:00:00,Active,,6.86,0.045
+1158,Anna King,71,Cashier,2017-06-19 00:00:00,Terminated,2019-07-19 00:00:00,8.33,0.0175
+1159,Brandon Jones,71,Ambassador,2021-06-12 00:00:00,Terminated,2024-01-06 00:00:00,4.35,0.03
+1160,Emma Diaz,71,Lead,2012-06-19 00:00:00,Active,,13.33,0.06
+1161,Emily Murphy,71,Cashier,2015-01-01 00:00:00,Terminated,2016-10-18 00:00:00,10.79,0.0175
+1162,Lisa Ramos,71,Ambassador,2016-11-05 00:00:00,Terminated,2022-07-01 00:00:00,8.95,0.035
+1163,Kenneth Gomez,71,Senior Ambassador,2013-10-22 00:00:00,Terminated,2017-12-15 00:00:00,11.98,0.045
+1164,Anthony Hernandez,71,Ambassador,2015-09-09 00:00:00,Terminated,2018-01-21 00:00:00,10.1,0.035
+1165,Mark Rodriguez,71,Cashier,2021-10-21 00:00:00,Active,,3.99,0.015
+1166,Paul Evans,71,Cashier,2023-09-09 00:00:00,Active,,2.1,0.0125
+1167,Larry Robinson,222,Ambassador,2022-02-10 00:00:00,Active,,3.68,0.03
+1168,William Ramirez,222,Cashier,2020-06-19 00:00:00,Active,,5.33,0.0175
+1169,Susan Robinson,222,Ambassador,2022-05-26 00:00:00,Active,,3.39,0.03
+1170,Jason Roberts,222,Cashier,2021-05-03 00:00:00,Active,,4.45,0.015
+1171,Michelle Morris,222,Cashier,2022-11-27 00:00:00,Terminated,2024-05-16 00:00:00,2.89,0.0125
+1172,George Kim,222,Ambassador,2023-07-12 00:00:00,Terminated,2025-06-11 00:00:00,2.26,0.025
+1173,David Campbell,222,Cashier,2021-04-01 00:00:00,Active,,4.54,0.015
+1174,Ashley Flores,222,Ambassador,2021-09-24 00:00:00,Terminated,2024-11-10 00:00:00,4.06,0.03
+1175,Carol Flores,222,Cashier,2020-06-28 00:00:00,Active,,5.3,0.0175
+1176,Stephen White,222,Cashier,2024-12-02 00:00:00,Active,,0.87,0.01
+1177,Stephanie Green,770,Senior Ambassador,2021-03-05 00:00:00,Terminated,2021-07-05 00:00:00,4.62,0.04
+1178,Stephen Martinez,770,Ambassador,2022-11-04 00:00:00,Terminated,2025-01-19 00:00:00,2.95,0.025
+1179,Betty Parker,770,Cashier,2020-07-03 00:00:00,Active,,5.29,0.0175
+1180,Anthony Richardson,770,Ambassador,2024-08-02 00:00:00,Active,,1.21,0.025
+1181,Emma Perez,770,Cashier,2025-08-24 00:00:00,Terminated,2025-10-10 00:00:00,0.15,0.01
+1182,Mark Scott,770,Cashier,2020-11-08 00:00:00,Terminated,2025-06-25 00:00:00,4.94,0.015
+1183,Patricia Thomas,770,Cashier,2024-07-16 00:00:00,Active,,1.25,0.0125
+1184,Anthony Hill,770,Ambassador,2023-11-28 00:00:00,Active,,1.88,0.025
+1185,Edward Hall,770,Ambassador,2022-06-27 00:00:00,Active,,3.31,0.03
+1186,Karen Moore,770,Ambassador,2023-01-23 00:00:00,Active,,2.73,0.025
+1187,Sandra Hernandez,199,Cashier,2020-05-26 00:00:00,Active,,5.39,0.0175
+1188,Jason Hill,199,Cashier,2019-06-11 00:00:00,Active,,6.35,0.0175
+1189,Elizabeth Lopez,199,Senior Ambassador,2022-05-13 00:00:00,Active,,3.43,0.04
+1190,Larry Campbell,199,Ambassador,2020-11-08 00:00:00,Active,,4.94,0.03
+1191,Elizabeth Hall,199,Cashier,2025-04-22 00:00:00,Active,,0.49,0.01
+1192,Timothy Sanchez,199,Cashier,2025-06-20 00:00:00,Active,,0.32,0.01
+1193,Margaret Lewis,199,Cashier,2019-04-20 00:00:00,Active,,6.49,0.0175
+1194,Brenda Smith,199,Cashier,2018-12-25 00:00:00,Terminated,2020-04-18 00:00:00,6.81,0.0175
+1195,Sandra Lewis,199,Lead,2019-09-03 00:00:00,Active,,6.12,0.06
+1196,Stephanie Jackson,199,Cashier,2025-08-13 00:00:00,Active,,0.18,0.01
+1197,Emma Walker,464,Cashier,2018-10-15 00:00:00,Active,,7.0,0.0175
+1198,Dorothy Reyes,464,Senior Ambassador,2018-12-26 00:00:00,Active,,6.81,0.045
+1199,Michelle Cooper,464,Senior Ambassador,2023-10-27 00:00:00,Active,,1.97,0.035
+1200,Matthew Ortiz,464,Ambassador,2023-11-25 00:00:00,Active,,1.89,0.025
+1201,Stephen Jones,464,Cashier,2025-09-20 00:00:00,Active,,0.07,0.01
+1202,Nicole Ramos,464,Ambassador,2019-11-15 00:00:00,Terminated,2021-01-23 00:00:00,5.92,0.035
+1203,James Richardson,578,Lead,2020-02-08 00:00:00,Terminated,2021-07-16 00:00:00,5.69,0.06
+1204,Rebecca Gomez,578,Cashier,2025-03-09 00:00:00,Terminated,2025-06-04 00:00:00,0.61,0.01
+1205,Joseph Ward,578,Ambassador,2023-10-17 00:00:00,Active,,2.0,0.025
+1206,Ronald Gutierrez,578,Ambassador,2021-06-08 00:00:00,Active,,4.36,0.03
+1207,Paul Jackson,578,Cashier,2017-09-03 00:00:00,Active,,8.12,0.0175
+1208,Cynthia Garcia,578,Cashier,2018-07-18 00:00:00,Active,,7.25,0.0175
+1209,Gary Howard,578,Cashier,2025-10-10 00:00:00,Active,,0.02,0.01
+1210,David Peterson,578,Ambassador,2022-11-12 00:00:00,Active,,2.93,0.025
+1211,Susan Jones,603,Cashier,2016-03-07 00:00:00,Active,,9.61,0.0175
+1212,Margaret Garcia,603,Cashier,2017-10-12 00:00:00,Active,,8.01,0.0175
+1213,Steven Miller,603,Cashier,2024-09-25 00:00:00,Active,,1.06,0.0125
+1214,Jacob Diaz,603,Ambassador,2020-09-10 00:00:00,Terminated,2024-11-28 00:00:00,5.1,0.035
+1215,Ryan Anderson,603,Cashier,2022-04-16 00:00:00,Active,,3.5,0.015
+1216,Eric Lewis,603,Senior Ambassador,2017-01-02 00:00:00,Active,,8.79,0.045
+1217,Justin Cruz,603,Ambassador,2020-11-04 00:00:00,Active,,4.95,0.03
+1218,Helen Hall,642,Cashier,2019-07-19 00:00:00,Active,,6.25,0.0175
+1219,Matthew Torres,642,Cashier,2021-05-08 00:00:00,Active,,4.44,0.015
+1220,Betty White,642,Cashier,2017-08-15 00:00:00,Terminated,2022-09-18 00:00:00,8.17,0.0175
+1221,Nancy Ward,642,Cashier,2024-11-25 00:00:00,Active,,0.89,0.01
+1222,Elizabeth Campbell,642,Ambassador,2021-08-09 00:00:00,Terminated,2023-04-12 00:00:00,4.19,0.03
+1223,Susan Morris,642,Cashier,2016-12-27 00:00:00,Active,,8.8,0.0175
+1224,Edward Nguyen,642,Cashier,2021-03-23 00:00:00,Active,,4.57,0.015
+1225,Anna Parker,164,Cashier,2019-02-03 00:00:00,Terminated,2020-09-28 00:00:00,6.7,0.0175
+1226,Deborah Rogers,164,Cashier,2025-05-27 00:00:00,Active,,0.39,0.01
+1227,Larry Allen,164,Senior Ambassador,2016-12-16 00:00:00,Terminated,2022-08-21 00:00:00,8.83,0.045
+1228,Lisa Phillips,164,Cashier,2025-01-06 00:00:00,Active,,0.78,0.01
+1229,Brandon Flores,164,Ambassador,2022-05-10 00:00:00,Active,,3.44,0.03
+1230,Emma Taylor,164,Ambassador,2021-06-21 00:00:00,Terminated,2025-03-04 00:00:00,4.32,0.03
+1231,Susan Allen,164,Cashier,2024-11-13 00:00:00,Active,,0.92,0.01
+1232,Helen Gutierrez,164,Senior Ambassador,2017-07-26 00:00:00,Active,,8.22,0.045
+1233,Emma King,164,Ambassador,2023-10-27 00:00:00,Active,,1.97,0.025
+1234,Brandon Smith,164,Ambassador,2013-04-08 00:00:00,Terminated,2015-05-18 00:00:00,12.52,0.035
+1235,Andrew Stewart,538,Cashier,2017-04-15 00:00:00,Active,,8.5,0.0175
+1236,Jessica Turner,538,Cashier,2016-07-03 00:00:00,Active,,9.29,0.0175
+1237,Robert Walker,538,Cashier,2020-06-09 00:00:00,Active,,5.35,0.0175
+1238,Jennifer Davis,538,Cashier,2023-11-03 00:00:00,Active,,1.95,0.0125
+1239,Sarah Walker,538,Senior Ambassador,2020-01-02 00:00:00,Active,,5.79,0.045
+1240,Emma Smith,538,Cashier,2021-05-22 00:00:00,Active,,4.4,0.015
+1241,Pamela Evans,538,Senior Ambassador,2024-04-06 00:00:00,Active,,1.53,0.035
+1242,Emily Brown,538,Cashier,2020-04-23 00:00:00,Active,,5.48,0.0175
+1243,Dorothy Cruz,949,Cashier,2024-08-04 00:00:00,Active,,1.2,0.0125
+1244,James White,949,Cashier,2025-04-16 00:00:00,Active,,0.5,0.01
+1245,Kenneth Moore,949,Cashier,2022-01-07 00:00:00,Active,,3.77,0.015
+1246,Jonathan Turner,949,Cashier,2018-06-13 00:00:00,Active,,7.34,0.0175
+1247,Jason Morales,949,Ambassador,2024-03-31 00:00:00,Active,,1.54,0.025
+1248,Patricia Flores,949,Ambassador,2023-06-30 00:00:00,Active,,2.3,0.025
+1249,Nancy Rivera,949,Senior Ambassador,2017-11-02 00:00:00,Terminated,2017-12-04 00:00:00,7.95,0.045
+1250,Carol Rogers,949,Ambassador,2023-05-11 00:00:00,Active,,2.43,0.025
+1251,Edward Bailey,717,Cashier,2015-09-20 00:00:00,Active,,10.07,0.0175
+1252,Elizabeth Peterson,717,Ambassador,2019-10-12 00:00:00,Terminated,2025-03-10 00:00:00,6.01,0.035
+1253,Daniel Green,717,Lead,2016-06-24 00:00:00,Active,,9.31,0.06
+1254,Stephanie Stewart,717,Ambassador,2024-03-23 00:00:00,Active,,1.57,0.025
+1255,Christopher Wright,717,Senior Ambassador,2020-07-14 00:00:00,Terminated,2022-03-09 00:00:00,5.26,0.045
+1256,Brandon Clark,713,Senior Ambassador,2022-02-10 00:00:00,Active,,3.68,0.04
+1257,Margaret Morales,713,Cashier,2021-03-03 00:00:00,Active,,4.62,0.015
+1258,Mark Mitchell,713,Senior Ambassador,2024-08-09 00:00:00,Terminated,2025-10-17 00:00:00,1.19,0.035
+1259,David Ramos,713,Cashier,2025-05-19 00:00:00,Terminated,2025-08-11 00:00:00,0.41,0.01
+1260,Angela Williams,713,Ambassador,2023-09-25 00:00:00,Active,,2.06,0.025
+1261,Patricia Anderson,713,Cashier,2023-05-19 00:00:00,Terminated,2024-01-18 00:00:00,2.41,0.0125
+1262,Cynthia Thompson,16,Cashier,2024-11-03 00:00:00,Active,,0.95,0.01
+1263,John Gutierrez,16,Cashier,2025-06-09 00:00:00,Active,,0.35,0.01
+1264,William Rivera,16,Ambassador,2025-03-09 00:00:00,Active,,0.61,0.02
+1265,Charles Nguyen,16,Cashier,2022-11-26 00:00:00,Active,,2.89,0.0125
+1266,Joshua Jones,16,Cashier,2022-10-01 00:00:00,Active,,3.04,0.015
+1267,Eric Hill,16,Cashier,2021-06-18 00:00:00,Terminated,2025-03-24 00:00:00,4.33,0.015
+1268,Stephen Campbell,16,Cashier,2020-09-07 00:00:00,Terminated,2024-12-04 00:00:00,5.11,0.0175
+1269,Brandon Nelson,16,Cashier,2023-08-04 00:00:00,Active,,2.2,0.0125
+1270,Daniel Nguyen,19,Cashier,2018-12-01 00:00:00,Active,,6.88,0.0175
+1271,Donald Hall,19,Ambassador,2019-02-02 00:00:00,Active,,6.7,0.035
+1272,Eric Scott,19,Cashier,2012-07-21 00:00:00,Active,,13.24,0.0175
+1273,Melissa Gutierrez,19,Cashier,2020-03-14 00:00:00,Active,,5.59,0.0175
+1274,Carol Jackson,19,Cashier,2017-02-26 00:00:00,Active,,8.64,0.0175
+1275,Michael Ward,19,Ambassador,2014-04-13 00:00:00,Active,,11.51,0.035
+1276,Gary Adams,19,Cashier,2020-02-08 00:00:00,Active,,5.69,0.0175
+1277,Susan Wright,869,Ambassador,2025-06-04 00:00:00,Terminated,2025-06-27 00:00:00,0.37,0.02
+1278,Susan Lewis,869,Ambassador,2024-04-11 00:00:00,Active,,1.51,0.025
+1279,Kimberly Nelson,869,Ambassador,2014-08-02 00:00:00,Active,,11.21,0.035
+1280,Gary Robinson,869,Cashier,2017-02-09 00:00:00,Active,,8.68,0.0175
+1281,George Wilson,869,Cashier,2019-08-27 00:00:00,Terminated,2020-06-17 00:00:00,6.14,0.0175
+1282,John Kelly,869,Cashier,2018-04-19 00:00:00,Active,,7.49,0.0175
+1283,Joshua Harris,869,Ambassador,2019-08-21 00:00:00,Active,,6.16,0.035
+1284,Cynthia Flores,669,Cashier,2016-07-10 00:00:00,Active,,9.27,0.0175
+1285,Amanda King,669,Cashier,2017-11-24 00:00:00,Active,,7.89,0.0175
+1286,Angela Morris,669,Senior Ambassador,2021-04-19 00:00:00,Active,,4.49,0.04
+1287,Larry Davis,669,Cashier,2015-11-11 00:00:00,Terminated,2025-01-08 00:00:00,9.93,0.0175
+1288,Amanda Hernandez,669,Ambassador,2022-06-22 00:00:00,Active,,3.32,0.03
+1289,Rebecca Flores,669,Ambassador,2022-04-22 00:00:00,Active,,3.49,0.03
+1290,Sharon Lopez,669,Cashier,2018-10-06 00:00:00,Active,,7.03,0.0175
+1291,Nicholas Reed,669,Senior Ambassador,2014-11-04 00:00:00,Active,,10.95,0.045
+1292,Margaret Wright,669,Cashier,2016-12-05 00:00:00,Active,,8.86,0.0175
+1293,Amy Morris,669,Cashier,2017-01-12 00:00:00,Active,,8.76,0.0175
+1294,Amanda Martinez,314,Cashier,2018-03-27 00:00:00,Active,,7.56,0.0175
+1295,Mark Baker,314,Ambassador,2016-04-22 00:00:00,Terminated,2025-08-12 00:00:00,9.48,0.035
+1296,Thomas Davis,314,Ambassador,2020-07-10 00:00:00,Active,,5.27,0.035
+1297,Sarah Gomez,314,Ambassador,2019-12-20 00:00:00,Active,,5.82,0.035
+1298,Jennifer Martin,314,Ambassador,2021-12-01 00:00:00,Active,,3.87,0.03
+1299,Jonathan Miller,314,Ambassador,2016-06-03 00:00:00,Terminated,2025-07-05 00:00:00,9.37,0.035
+1300,Michael Diaz,314,Cashier,2019-03-12 00:00:00,Active,,6.6,0.0175
+1301,Shirley Allen,314,Senior Ambassador,2016-03-05 00:00:00,Active,,9.62,0.045
+1302,Nicole Gomez,314,Cashier,2019-08-25 00:00:00,Active,,6.14,0.0175
+1303,Scott Cooper,314,Senior Ambassador,2023-10-09 00:00:00,Active,,2.02,0.035
+1304,Larry Ortiz,440,Ambassador,2022-04-22 00:00:00,Active,,3.49,0.03
+1305,Melissa Howard,440,Senior Ambassador,2021-08-15 00:00:00,Active,,4.17,0.04
+1306,Laura Martin,440,Cashier,2022-09-30 00:00:00,Active,,3.04,0.015
+1307,Charles Peterson,440,Ambassador,2021-03-16 00:00:00,Terminated,2023-12-20 00:00:00,4.59,0.03
+1308,Mark Kim,440,Ambassador,2024-01-01 00:00:00,Active,,1.79,0.025
+1309,Anna Stewart,440,Ambassador,2020-05-02 00:00:00,Active,,5.46,0.035
+1310,Linda Lewis,440,Lead,2018-11-15 00:00:00,Terminated,2024-02-19 00:00:00,6.92,0.06
+1311,Richard Rogers,440,Cashier,2018-09-26 00:00:00,Active,,7.06,0.0175
+1312,Jacob Smith,440,Cashier,2022-11-13 00:00:00,Active,,2.92,0.0125
+1313,Jason Morgan,440,Cashier,2023-07-21 00:00:00,Terminated,2024-01-28 00:00:00,2.24,0.0125
+1314,Kenneth Rivera,440,Cashier,2024-03-15 00:00:00,Terminated,2025-04-06 00:00:00,1.59,0.0125
+1315,Ashley Hernandez,440,Cashier,2023-12-27 00:00:00,Active,,1.8,0.0125
+1316,Pamela Torres,455,Cashier,2021-07-24 00:00:00,Active,,4.23,0.015
+1317,Nancy Davis,455,Cashier,2023-08-31 00:00:00,Active,,2.13,0.0125
+1318,Linda Phillips,455,Senior Ambassador,2020-06-26 00:00:00,Active,,5.31,0.045
+1319,Laura Gonzalez,455,Ambassador,2022-04-29 00:00:00,Terminated,2025-02-10 00:00:00,3.47,0.03
+1320,Betty Brown,455,Cashier,2025-01-02 00:00:00,Active,,0.79,0.01
+1321,Nicole Scott,455,Cashier,2021-05-02 00:00:00,Terminated,2022-06-22 00:00:00,4.46,0.015
+1322,Margaret Evans,455,Ambassador,2022-01-21 00:00:00,Terminated,2023-07-27 00:00:00,3.73,0.03
+1323,Donna Campbell,455,Ambassador,2025-02-02 00:00:00,Active,,0.7,0.02
+1324,Justin Cooper,455,Cashier,2020-10-09 00:00:00,Active,,5.02,0.0175
+1325,Stephen Turner,455,Ambassador,2023-06-29 00:00:00,Active,,2.3,0.025
+1326,Kevin Cook,661,Cashier,2025-07-29 00:00:00,Active,,0.22,0.01
+1327,Nicole Gonzalez,661,Cashier,2020-07-14 00:00:00,Active,,5.26,0.0175
+1328,Stephen Harris,661,Ambassador,2021-04-01 00:00:00,Active,,4.54,0.03
+1329,Deborah Scott,661,Cashier,2018-07-25 00:00:00,Active,,7.23,0.0175
+1330,Eric Phillips,661,Cashier,2025-05-12 00:00:00,Active,,0.43,0.01
+1331,Charles Green,661,Cashier,2022-02-01 00:00:00,Active,,3.7,0.015
+1332,Kevin Scott,922,Cashier,2020-11-27 00:00:00,Active,,4.88,0.015
+1333,Jacob Lewis,922,Cashier,2021-07-06 00:00:00,Active,,4.28,0.015
+1334,John Rodriguez,922,Ambassador,2021-08-28 00:00:00,Active,,4.13,0.03
+1335,Kenneth Kim,922,Ambassador,2020-09-19 00:00:00,Terminated,2023-01-19 00:00:00,5.07,0.035
+1336,Joseph Cooper,922,Senior Ambassador,2017-06-17 00:00:00,Terminated,2024-10-31 00:00:00,8.33,0.045
+1337,Gary Reyes,922,Ambassador,2025-01-12 00:00:00,Terminated,2025-09-20 00:00:00,0.76,0.02
+1338,Sharon Mitchell,922,Ambassador,2020-11-30 00:00:00,Active,,4.88,0.03
+1339,Robert Peterson,922,Lead,2017-03-28 00:00:00,Terminated,2025-07-11 00:00:00,8.55,0.06
+1340,Karen Wright,659,Ambassador,2021-06-16 00:00:00,Active,,4.33,0.03
+1341,James Campbell,659,Cashier,2025-09-07 00:00:00,Active,,0.11,0.01
+1342,Donald Torres,659,Lead,2022-06-20 00:00:00,Active,,3.32,0.05
+1343,Sharon Harris,659,Senior Ambassador,2022-09-21 00:00:00,Active,,3.07,0.04
+1344,Patricia Sanchez,659,Cashier,2024-03-03 00:00:00,Active,,1.62,0.0125
+1345,Larry Garcia,659,Cashier,2024-04-10 00:00:00,Terminated,2024-06-28 00:00:00,1.52,0.0125
+1346,Anna Harris,659,Cashier,2025-03-14 00:00:00,Active,,0.59,0.01
+1347,Brandon Stewart,58,Ambassador,2021-11-15 00:00:00,Terminated,2024-06-05 00:00:00,3.92,0.03
+1348,Charles Smith,58,Ambassador,2024-09-23 00:00:00,Active,,1.06,0.025
+1349,Amanda Thomas,58,Ambassador,2023-08-15 00:00:00,Active,,2.17,0.025
+1350,Christopher Martin,58,Ambassador,2025-02-18 00:00:00,Active,,0.66,0.02
+1351,Michael Lee,58,Cashier,2023-12-28 00:00:00,Terminated,2025-07-27 00:00:00,1.8,0.0125
+1352,Andrew Hill,58,Ambassador,2023-05-17 00:00:00,Active,,2.42,0.025
+1353,Scott Cox,327,Senior Ambassador,2019-12-15 00:00:00,Terminated,2021-07-23 00:00:00,5.84,0.045
+1354,Ronald Torres,327,Cashier,2023-03-24 00:00:00,Active,,2.57,0.0125
+1355,Barbara Torres,327,Ambassador,2023-01-04 00:00:00,Active,,2.78,0.025
+1356,Ryan Mitchell,327,Cashier,2018-07-11 00:00:00,Active,,7.27,0.0175
+1357,Nancy Ramos,327,Cashier,2023-09-24 00:00:00,Terminated,2025-04-04 00:00:00,2.06,0.0125
+1358,Kimberly Nguyen,327,Ambassador,2018-09-13 00:00:00,Active,,7.09,0.035
+1359,Timothy Nelson,327,Cashier,2019-11-17 00:00:00,Active,,5.91,0.0175
+1360,Mark Reed,958,Cashier,2020-08-16 00:00:00,Active,,5.17,0.0175
+1361,Christopher Collins,958,Ambassador,2018-03-15 00:00:00,Active,,7.59,0.035
+1362,Barbara Reed,958,Ambassador,2020-11-26 00:00:00,Terminated,2021-02-18 00:00:00,4.89,0.03
+1363,Mary Evans,958,Ambassador,2018-08-14 00:00:00,Terminated,2019-09-22 00:00:00,7.17,0.035
+1364,Emma Carter,958,Ambassador,2025-05-19 00:00:00,Active,,0.41,0.02
+1365,Emily Ward,958,Cashier,2024-04-28 00:00:00,Active,,1.47,0.0125
+1366,James Kim,958,Ambassador,2020-02-08 00:00:00,Active,,5.69,0.035
+1367,Pamela Ortiz,958,Lead,2018-07-30 00:00:00,Active,,7.21,0.06
+1368,Karen Flores,958,Lead,2020-10-05 00:00:00,Active,,5.03,0.06
+1369,Jeffrey King,129,Cashier,2022-05-25 00:00:00,Active,,3.4,0.015
+1370,Nicole Evans,129,Ambassador,2018-12-21 00:00:00,Active,,6.82,0.035
+1371,Elizabeth Rogers,129,Lead,2015-08-26 00:00:00,Active,,10.14,0.06
+1372,Gary Harris,129,Ambassador,2019-07-20 00:00:00,Terminated,2025-01-30 00:00:00,6.24,0.035
+1373,Carol Scott,129,Ambassador,2021-06-30 00:00:00,Active,,4.3,0.03
+1374,Pamela Anderson,129,Ambassador,2022-10-11 00:00:00,Active,,3.01,0.03
+1375,Jonathan Johnson,129,Ambassador,2016-07-09 00:00:00,Terminated,2018-07-14 00:00:00,9.27,0.035
+1376,Betty King,129,Senior Ambassador,2016-01-28 00:00:00,Active,,9.72,0.045
+1377,John Parker,129,Ambassador,2016-06-10 00:00:00,Terminated,2017-03-21 00:00:00,9.35,0.035
+1378,Joseph Roberts,960,Lead,2019-05-05 00:00:00,Active,,6.45,0.06
+1379,Helen Gonzalez,960,Ambassador,2023-03-10 00:00:00,Terminated,2024-04-04 00:00:00,2.6,0.025
+1380,Melissa Hill,960,Cashier,2022-03-16 00:00:00,Active,,3.59,0.015
+1381,Daniel Lee,960,Lead,2017-02-02 00:00:00,Active,,8.7,0.06
+1382,Kimberly Hernandez,960,Ambassador,2020-03-12 00:00:00,Active,,5.6,0.035
+1383,Paul Sanchez,960,Cashier,2013-06-01 00:00:00,Active,,12.38,0.0175
+1384,Rebecca Brown,960,Ambassador,2016-12-06 00:00:00,Active,,8.86,0.035
+1385,Dorothy Ward,960,Cashier,2025-02-28 00:00:00,Terminated,2025-07-24 00:00:00,0.63,0.01
+1386,Scott Peterson,960,Cashier,2021-12-12 00:00:00,Active,,3.84,0.015
+1387,Jonathan Brown,893,Cashier,2025-03-20 00:00:00,Terminated,2025-07-03 00:00:00,0.58,0.01
+1388,Betty Green,893,Cashier,2019-04-08 00:00:00,Active,,6.52,0.0175
+1389,Joshua Gutierrez,893,Ambassador,2020-08-27 00:00:00,Terminated,2025-08-08 00:00:00,5.14,0.035
+1390,Amy Carter,893,Cashier,2019-10-29 00:00:00,Active,,5.97,0.0175
+1391,Amy Campbell,893,Cashier,2023-07-31 00:00:00,Terminated,2025-04-01 00:00:00,2.21,0.0125
+1392,Anna Garcia,893,Senior Ambassador,2016-06-13 00:00:00,Active,,9.34,0.045
+1393,Kimberly Diaz,893,Cashier,2025-04-22 00:00:00,Active,,0.49,0.01
+1394,Stephanie Scott,893,Cashier,2018-07-25 00:00:00,Active,,7.23,0.0175
+1395,Margaret Martin,893,Cashier,2015-02-14 00:00:00,Active,,10.67,0.0175
+1396,Thomas Rodriguez,436,Cashier,2021-12-19 00:00:00,Active,,3.83,0.015
+1397,Stephen King,436,Cashier,2018-11-22 00:00:00,Active,,6.9,0.0175
+1398,Emily Perez,436,Ambassador,2023-04-05 00:00:00,Active,,2.53,0.025
+1399,Stephen Thompson,436,Cashier,2023-03-28 00:00:00,Terminated,2025-02-15 00:00:00,2.55,0.0125
+1400,Deborah Diaz,436,Cashier,2020-05-22 00:00:00,Terminated,2021-09-15 00:00:00,5.4,0.0175
+1401,Matthew Miller,436,Ambassador,2017-07-17 00:00:00,Terminated,2021-04-23 00:00:00,8.25,0.035
+1402,John Turner,296,Cashier,2017-04-15 00:00:00,Active,,8.5,0.0175
+1403,Kathleen Gomez,296,Lead,2019-10-30 00:00:00,Active,,5.96,0.06
+1404,Kimberly Lee,296,Cashier,2016-09-01 00:00:00,Terminated,2022-11-10 00:00:00,9.12,0.0175
+1405,Daniel Diaz,296,Cashier,2018-02-02 00:00:00,Active,,7.7,0.0175
+1406,Donald Davis,296,Ambassador,2018-05-13 00:00:00,Active,,7.43,0.035
+1407,Joseph Anderson,296,Ambassador,2018-08-08 00:00:00,Terminated,2022-04-23 00:00:00,7.19,0.035
+1408,Shirley Bailey,296,Cashier,2019-07-02 00:00:00,Active,,6.29,0.0175
+1409,Donald Morales,296,Cashier,2018-09-27 00:00:00,Active,,7.05,0.0175
+1410,James Baker,296,Cashier,2023-09-09 00:00:00,Active,,2.1,0.0125
+1411,Carol Evans,611,Senior Ambassador,2014-02-01 00:00:00,Active,,11.7,0.045
+1412,Joseph Cook,611,Cashier,2022-12-07 00:00:00,Active,,2.86,0.0125
+1413,Brenda Parker,611,Senior Ambassador,2023-06-22 00:00:00,Terminated,2024-09-05 00:00:00,2.32,0.035
+1414,Anthony Evans,611,Cashier,2018-03-22 00:00:00,Terminated,2025-07-26 00:00:00,7.57,0.0175
+1415,Angela Cooper,611,Ambassador,2023-03-21 00:00:00,Terminated,2024-01-08 00:00:00,2.57,0.025
+1416,Barbara Lopez,611,Ambassador,2014-06-22 00:00:00,Active,,11.32,0.035
+1417,Andrew Jackson,611,Cashier,2017-10-16 00:00:00,Active,,8.0,0.0175
+1418,Nicholas Peterson,611,Ambassador,2019-08-10 00:00:00,Active,,6.19,0.035
+1419,Christopher Anderson,611,Cashier,2017-10-31 00:00:00,Active,,7.96,0.0175
+1420,Nicholas Ortiz,438,Cashier,2024-02-23 00:00:00,Active,,1.65,0.0125
+1421,Carol Allen,438,Cashier,2024-11-23 00:00:00,Terminated,2025-03-28 00:00:00,0.9,0.01
+1422,Sarah Wilson,438,Ambassador,2025-07-26 00:00:00,Active,,0.22,0.02
+1423,Jennifer Brown,438,Cashier,2025-03-12 00:00:00,Terminated,2025-05-01 00:00:00,0.6,0.01
+1424,Jason Rogers,438,Lead,2020-10-11 00:00:00,Active,,5.01,0.06
+1425,Patricia Clark,438,Cashier,2023-08-09 00:00:00,Terminated,2025-05-21 00:00:00,2.19,0.0125
+1426,Margaret Phillips,438,Ambassador,2018-08-02 00:00:00,Active,,7.21,0.035
+1427,Brandon Young,438,Cashier,2022-07-20 00:00:00,Active,,3.24,0.015
+1428,Ryan Turner,438,Cashier,2023-06-09 00:00:00,Terminated,2025-05-14 00:00:00,2.36,0.0125
+1429,Mary Ramirez,355,Cashier,2021-06-10 00:00:00,Active,,4.35,0.015
+1430,Laura Roberts,355,Ambassador,2016-01-10 00:00:00,Active,,9.77,0.035
+1431,Kimberly Gonzalez,355,Cashier,2017-05-26 00:00:00,Active,,8.39,0.0175
+1432,Amy Williams,355,Senior Ambassador,2019-08-27 00:00:00,Active,,6.14,0.045
+1433,Patricia Stewart,355,Senior Ambassador,2013-09-11 00:00:00,Active,,12.1,0.045
+1434,Thomas Johnson,355,Cashier,2014-04-05 00:00:00,Active,,11.53,0.0175
+1435,Kenneth Johnson,355,Ambassador,2021-07-13 00:00:00,Active,,4.26,0.03
+1436,Linda Howard,355,Ambassador,2015-12-03 00:00:00,Terminated,2018-05-26 00:00:00,9.87,0.035
+1437,Stephanie Wilson,819,Ambassador,2025-01-09 00:00:00,Terminated,2025-05-26 00:00:00,0.77,0.02
+1438,Amanda Reyes,819,Ambassador,2021-10-27 00:00:00,Active,,3.97,0.03
+1439,Helen Edwards,819,Cashier,2023-01-17 00:00:00,Active,,2.75,0.0125
+1440,Patricia Campbell,819,Ambassador,2015-10-18 00:00:00,Active,,10.0,0.035
+1441,Brandon King,819,Ambassador,2023-09-16 00:00:00,Active,,2.08,0.025
+1442,Brandon Reed,813,Cashier,2022-04-28 00:00:00,Terminated,2024-09-13 00:00:00,3.47,0.015
+1443,John Garcia,813,Cashier,2022-01-06 00:00:00,Active,,3.78,0.015
+1444,Emily Anderson,813,Cashier,2022-05-30 00:00:00,Active,,3.38,0.015
+1445,Timothy Jones,813,Cashier,2019-01-02 00:00:00,Active,,6.79,0.0175
+1446,Margaret Thomas,813,Ambassador,2023-04-14 00:00:00,Active,,2.51,0.025
+1447,Mark Evans,813,Ambassador,2021-05-15 00:00:00,Active,,4.42,0.03
+1448,Eric Evans,705,Cashier,2025-01-05 00:00:00,Active,,0.78,0.01
+1449,Pamela Sanchez,705,Ambassador,2020-10-17 00:00:00,Terminated,2022-10-30 00:00:00,5.0,0.035
+1450,Mark Morris,705,Lead,2021-07-26 00:00:00,Active,,4.22,0.05
+1451,Emma Richardson,705,Cashier,2020-11-13 00:00:00,Active,,4.92,0.015
+1452,Michelle Cruz,705,Ambassador,2022-07-15 00:00:00,Terminated,2023-04-28 00:00:00,3.26,0.03
+1453,Rebecca Wright,705,Ambassador,2022-08-22 00:00:00,Active,,3.15,0.03
+1454,Jason Lopez,555,Cashier,2025-06-26 00:00:00,Active,,0.31,0.01
+1455,Donald Clark,555,Cashier,2016-01-12 00:00:00,Active,,9.76,0.0175
+1456,Charles Young,555,Cashier,2020-11-07 00:00:00,Terminated,2024-10-09 00:00:00,4.94,0.015
+1457,Donna Turner,555,Senior Ambassador,2016-11-18 00:00:00,Active,,8.91,0.045
+1458,Sandra Gutierrez,555,Cashier,2025-02-03 00:00:00,Terminated,2025-08-27 00:00:00,0.7,0.01
+1459,Helen Morgan,555,Cashier,2022-04-14 00:00:00,Active,,3.51,0.015
+1460,Ashley Hill,555,Cashier,2018-09-12 00:00:00,Active,,7.09,0.0175
+1461,Ryan Adams,555,Ambassador,2021-04-21 00:00:00,Active,,4.49,0.03
+1462,Carol Cooper,70,Cashier,2022-07-19 00:00:00,Terminated,2023-03-11 00:00:00,3.24,0.015
+1463,Brian Green,70,Cashier,2023-06-03 00:00:00,Active,,2.37,0.0125
+1464,Mark Morales,70,Senior Ambassador,2016-09-19 00:00:00,Active,,9.07,0.045
+1465,Kimberly Anderson,70,Lead,2017-02-24 00:00:00,Active,,8.64,0.06
+1466,Amy Jones,70,Senior Ambassador,2013-05-21 00:00:00,Active,,12.41,0.045
+1467,Jason Sanchez,70,Ambassador,2015-05-20 00:00:00,Terminated,2022-07-14 00:00:00,10.41,0.035
+1468,Amy Young,70,Senior Ambassador,2015-12-02 00:00:00,Active,,9.87,0.045
+1469,Matthew Gomez,70,Cashier,2021-04-21 00:00:00,Active,,4.49,0.015
+1470,Edward Reyes,70,Cashier,2018-07-21 00:00:00,Terminated,2023-03-25 00:00:00,7.24,0.0175
+1471,Kathleen Reyes,70,Ambassador,2021-02-05 00:00:00,Active,,4.69,0.03
+1472,Nicole Wilson,945,Senior Ambassador,2018-10-21 00:00:00,Active,,6.99,0.045
+1473,Nicholas Williams,945,Ambassador,2021-07-21 00:00:00,Active,,4.24,0.03
+1474,Jeffrey Allen,945,Ambassador,2021-09-16 00:00:00,Active,,4.08,0.03
+1475,Justin Peterson,945,Cashier,2020-01-23 00:00:00,Active,,5.73,0.0175
+1476,Ronald Gonzalez,945,Senior Ambassador,2021-10-28 00:00:00,Terminated,2023-04-21 00:00:00,3.97,0.04
+1477,Timothy White,945,Cashier,2022-11-13 00:00:00,Terminated,2024-12-10 00:00:00,2.92,0.0125
+1478,Linda Wright,945,Senior Ambassador,2024-05-18 00:00:00,Active,,1.41,0.035
+1479,Mary Gutierrez,945,Cashier,2022-09-06 00:00:00,Active,,3.11,0.015
+1480,Stephanie Sanchez,945,Senior Ambassador,2024-02-15 00:00:00,Active,,1.67,0.035
+1481,Patricia Richardson,945,Cashier,2022-10-09 00:00:00,Active,,3.02,0.015
+1482,Daniel Allen,945,Ambassador,2020-10-04 00:00:00,Active,,5.03,0.035
+1483,Stephanie Roberts,908,Lead,2020-11-12 00:00:00,Active,,4.93,0.05
+1484,Patricia Turner,908,Cashier,2020-12-26 00:00:00,Active,,4.81,0.015
+1485,Susan Garcia,908,Ambassador,2022-08-28 00:00:00,Active,,3.14,0.03
+1486,Betty Bailey,908,Cashier,2021-11-12 00:00:00,Active,,3.93,0.015
+1487,Eric Morgan,908,Cashier,2025-01-26 00:00:00,Active,,0.72,0.01
+1488,Emma Nguyen,102,Ambassador,2021-07-16 00:00:00,Active,,4.25,0.03
+1489,Matthew Lopez,102,Ambassador,2024-01-25 00:00:00,Terminated,2024-03-01 00:00:00,1.73,0.025
+1490,Mary Jackson,102,Ambassador,2022-12-22 00:00:00,Active,,2.82,0.025
+1491,Angela Roberts,102,Senior Ambassador,2022-06-17 00:00:00,Active,,3.33,0.04
+1492,Lisa Kim,102,Cashier,2025-07-10 00:00:00,Active,,0.27,0.01
+1493,Sharon Martinez,102,Cashier,2016-09-05 00:00:00,Active,,9.11,0.0175
+1494,Linda Wilson,102,Ambassador,2020-06-16 00:00:00,Terminated,2023-09-04 00:00:00,5.33,0.035
+1495,David Scott,409,Cashier,2025-01-11 00:00:00,Terminated,2025-01-11 00:00:00,0.76,0.01
+1496,Edward Ward,409,Ambassador,2021-05-26 00:00:00,Terminated,2022-07-18 00:00:00,4.39,0.03
+1497,Richard Hill,409,Cashier,2024-01-10 00:00:00,Active,,1.77,0.0125
+1498,Elizabeth Jones,409,Ambassador,2020-08-29 00:00:00,Active,,5.13,0.035
+1499,Jonathan Cooper,409,Ambassador,2025-01-15 00:00:00,Active,,0.75,0.02
+1500,Michael Allen,409,Ambassador,2024-08-12 00:00:00,Active,,1.18,0.025
+1501,Scott Harris,523,Cashier,2017-07-04 00:00:00,Active,,8.29,0.0175
+1502,Helen Young,523,Ambassador,2021-01-28 00:00:00,Active,,4.72,0.03
+1503,Sharon Baker,523,Lead,2018-12-01 00:00:00,Active,,6.88,0.06
+1504,Donald Reed,523,Ambassador,2016-07-02 00:00:00,Active,,9.29,0.035
+1505,Margaret Cooper,523,Senior Ambassador,2023-03-04 00:00:00,Active,,2.62,0.035
+1506,Ryan Edwards,523,Senior Ambassador,2018-03-08 00:00:00,Active,,7.61,0.045
+1507,Mark Peterson,523,Cashier,2021-08-23 00:00:00,Active,,4.15,0.015
+1508,Daniel Howard,523,Cashier,2023-03-12 00:00:00,Terminated,2023-05-05 00:00:00,2.6,0.0125
+1509,Mary Ward,212,Ambassador,2021-11-28 00:00:00,Active,,3.88,0.03
+1510,Emma Rogers,212,Cashier,2023-02-16 00:00:00,Terminated,2023-09-18 00:00:00,2.66,0.0125
+1511,Steven Young,212,Cashier,2025-09-18 00:00:00,Active,,0.08,0.01
+1512,Amanda Robinson,212,Cashier,2021-11-07 00:00:00,Active,,3.94,0.015
+1513,Richard Phillips,212,Cashier,2024-10-17 00:00:00,Active,,1.0,0.0125
+1514,Linda Turner,212,Cashier,2025-04-06 00:00:00,Active,,0.53,0.01
+1515,William Thompson,212,Cashier,2025-08-11 00:00:00,Active,,0.18,0.01
+1516,Richard Davis,212,Ambassador,2020-02-18 00:00:00,Active,,5.66,0.035
+1517,Paul Morgan,212,Cashier,2022-01-27 00:00:00,Active,,3.72,0.015
+1518,Eric Rogers,212,Cashier,2025-02-06 00:00:00,Active,,0.69,0.01
+1519,Jennifer Bailey,212,Ambassador,2024-07-27 00:00:00,Active,,1.22,0.025
+1520,Emily Stewart,531,Ambassador,2020-08-12 00:00:00,Active,,5.18,0.035
+1521,Cynthia Green,531,Cashier,2017-03-23 00:00:00,Active,,8.57,0.0175
+1522,Christopher Ortiz,531,Cashier,2021-03-05 00:00:00,Active,,4.62,0.015
+1523,Amy Kelly,531,Senior Ambassador,2020-06-23 00:00:00,Terminated,2021-06-09 00:00:00,5.31,0.045
+1524,Ryan Davis,531,Ambassador,2024-10-31 00:00:00,Active,,0.96,0.02
+1525,Stephen Allen,531,Ambassador,2024-11-23 00:00:00,Terminated,2025-04-03 00:00:00,0.9,0.02
+1526,William Lewis,50,Cashier,2021-07-02 00:00:00,Active,,4.29,0.015
+1527,Dorothy Ramirez,50,Lead,2014-03-08 00:00:00,Active,,11.61,0.06
+1528,Anthony Thompson,50,Senior Ambassador,2021-09-24 00:00:00,Active,,4.06,0.04
+1529,Anthony Kelly,50,Ambassador,2021-10-29 00:00:00,Active,,3.96,0.03
+1530,Emily Thomas,50,Cashier,2015-07-29 00:00:00,Active,,10.22,0.0175
+1531,Edward Gomez,50,Cashier,2025-02-13 00:00:00,Terminated,2025-05-15 00:00:00,0.67,0.01
+1532,Jennifer Collins,50,Ambassador,2022-10-17 00:00:00,Terminated,2024-02-19 00:00:00,3.0,0.03
+1533,Ronald Bailey,50,Cashier,2024-04-02 00:00:00,Active,,1.54,0.0125
+1534,Mary Collins,50,Lead,2018-10-03 00:00:00,Active,,7.04,0.06
+1535,Gary Collins,50,Ambassador,2018-04-24 00:00:00,Active,,7.48,0.035
+1536,Susan Clark,50,Cashier,2021-09-03 00:00:00,Terminated,2025-01-16 00:00:00,4.12,0.015
+1537,Pamela Lewis,984,Ambassador,2023-08-26 00:00:00,Active,,2.14,0.025
+1538,Stephanie Howard,984,Cashier,2022-08-06 00:00:00,Terminated,2023-05-10 00:00:00,3.2,0.015
+1539,Jacob Garcia,984,Ambassador,2021-09-18 00:00:00,Active,,4.08,0.03
+1540,Donna Ward,984,Cashier,2024-01-03 00:00:00,Terminated,2025-03-30 00:00:00,1.79,0.0125
+1541,Amanda White,984,Ambassador,2024-07-26 00:00:00,Active,,1.22,0.025
+1542,Barbara Jackson,360,Senior Ambassador,2022-12-06 00:00:00,Active,,2.86,0.035
+1543,Justin Flores,360,Ambassador,2015-08-12 00:00:00,Terminated,2017-10-02 00:00:00,10.18,0.035
+1544,Michelle Parker,360,Cashier,2020-09-23 00:00:00,Active,,5.06,0.0175
+1545,Jessica Johnson,360,Cashier,2024-09-13 00:00:00,Active,,1.09,0.0125
+1546,Kevin Robinson,360,Lead,2018-07-01 00:00:00,Active,,7.29,0.06
+1547,Jessica Allen,360,Senior Ambassador,2017-02-15 00:00:00,Terminated,2024-04-11 00:00:00,8.67,0.045
+1548,Linda Smith,360,Ambassador,2021-07-21 00:00:00,Active,,4.24,0.03
+1549,Stephanie Taylor,360,Cashier,2025-07-27 00:00:00,Active,,0.22,0.01
+1550,David White,360,Ambassador,2022-05-17 00:00:00,Active,,3.42,0.03
+1551,Emily Nguyen,360,Senior Ambassador,2017-06-12 00:00:00,Active,,8.35,0.045
+1552,Jessica Stewart,360,Cashier,2024-01-20 00:00:00,Active,,1.74,0.0125
+1553,Amanda Davis,926,Cashier,2022-02-15 00:00:00,Terminated,2022-10-31 00:00:00,3.67,0.015
+1554,Charles Gutierrez,926,Senior Ambassador,2022-02-27 00:00:00,Terminated,2025-04-24 00:00:00,3.63,0.04
+1555,Dorothy Mitchell,926,Cashier,2016-07-03 00:00:00,Active,,9.29,0.0175
+1556,Jacob Kim,926,Ambassador,2015-09-23 00:00:00,Active,,10.06,0.035
+1557,Brandon Parker,926,Cashier,2017-06-08 00:00:00,Active,,8.36,0.0175
+1558,Elizabeth Scott,926,Senior Ambassador,2024-08-03 00:00:00,Active,,1.2,0.035
+1559,Steven Collins,316,Cashier,2020-04-21 00:00:00,Active,,5.49,0.0175
+1560,Laura Rodriguez,316,Cashier,2021-01-31 00:00:00,Active,,4.71,0.015
+1561,Pamela Nguyen,316,Cashier,2021-11-29 00:00:00,Terminated,2023-03-29 00:00:00,3.88,0.015
+1562,William Hernandez,316,Cashier,2022-06-14 00:00:00,Active,,3.34,0.015
+1563,Ronald Cox,316,Senior Ambassador,2024-05-21 00:00:00,Active,,1.4,0.035
+1564,Jason Cox,316,Cashier,2025-02-02 00:00:00,Terminated,2025-04-10 00:00:00,0.7,0.01
+1565,Brenda Bailey,814,Ambassador,2024-07-31 00:00:00,Active,,1.21,0.025
+1566,James Gutierrez,814,Cashier,2023-05-02 00:00:00,Active,,2.46,0.0125
+1567,Matthew Evans,814,Cashier,2024-01-22 00:00:00,Active,,1.73,0.0125
+1568,Jason Reyes,814,Cashier,2022-04-07 00:00:00,Active,,3.53,0.015
+1569,Edward Peterson,814,Cashier,2022-07-27 00:00:00,Terminated,2024-02-15 00:00:00,3.22,0.015
+1570,Larry Gonzalez,814,Cashier,2024-10-16 00:00:00,Active,,1.0,0.0125
+1571,Jennifer Richardson,814,Senior Ambassador,2023-11-08 00:00:00,Active,,1.94,0.035
+1572,Dorothy King,814,Ambassador,2024-10-08 00:00:00,Active,,1.02,0.025
+1573,Helen Collins,814,Ambassador,2025-01-05 00:00:00,Terminated,2025-08-24 00:00:00,0.78,0.02
+1574,Laura Garcia,615,Cashier,2025-06-26 00:00:00,Active,,0.31,0.01
+1575,Joseph Richardson,615,Cashier,2019-05-17 00:00:00,Terminated,2020-01-13 00:00:00,6.42,0.0175
+1576,Shirley Jackson,615,Cashier,2024-03-11 00:00:00,Active,,1.6,0.0125
+1577,Emily Cox,615,Ambassador,2020-12-06 00:00:00,Active,,4.86,0.03
+1578,Patricia Roberts,615,Cashier,2018-12-21 00:00:00,Terminated,2025-02-21 00:00:00,6.82,0.0175
+1579,Timothy Bailey,615,Senior Ambassador,2019-07-10 00:00:00,Terminated,2019-09-07 00:00:00,6.27,0.045
+1580,Anna Morris,227,Ambassador,2018-12-22 00:00:00,Active,,6.82,0.035
+1581,Jason Martin,227,Senior Ambassador,2021-03-20 00:00:00,Active,,4.58,0.04
+1582,Michelle Taylor,227,Ambassador,2021-12-12 00:00:00,Active,,3.84,0.03
+1583,Rebecca Sanchez,227,Cashier,2023-12-01 00:00:00,Active,,1.88,0.0125
+1584,Karen Reyes,227,Cashier,2022-08-28 00:00:00,Active,,3.14,0.015
+1585,Anthony Collins,209,Ambassador,2023-06-11 00:00:00,Active,,2.35,0.025
+1586,Mary Diaz,209,Cashier,2020-09-09 00:00:00,Active,,5.1,0.0175
+1587,Eric Ortiz,209,Cashier,2020-04-19 00:00:00,Terminated,2021-01-23 00:00:00,5.49,0.0175
+1588,Emma Davis,209,Senior Ambassador,2016-10-23 00:00:00,Active,,8.98,0.045
+1589,Robert Roberts,209,Ambassador,2015-08-01 00:00:00,Active,,10.21,0.035
+1590,Steven Perez,209,Cashier,2025-02-10 00:00:00,Active,,0.68,0.01
+1591,Helen Nguyen,209,Cashier,2024-11-12 00:00:00,Active,,0.93,0.01
+1592,Dorothy Peterson,209,Ambassador,2023-12-15 00:00:00,Active,,1.84,0.025
+1593,Deborah Reyes,209,Cashier,2015-04-27 00:00:00,Active,,10.47,0.0175
+1594,Rebecca Lopez,209,Lead,2015-04-10 00:00:00,Active,,10.52,0.06
+1595,Robert King,334,Senior Ambassador,2021-06-11 00:00:00,Active,,4.35,0.04
+1596,Jacob Cox,334,Cashier,2021-08-20 00:00:00,Active,,4.16,0.015
+1597,Eric Cox,334,Ambassador,2020-04-23 00:00:00,Active,,5.48,0.035
+1598,Christopher Hernandez,334,Cashier,2024-03-13 00:00:00,Terminated,2025-03-17 00:00:00,1.59,0.0125
+1599,David Baker,334,Cashier,2021-08-19 00:00:00,Active,,4.16,0.015
+1600,Gary Morris,788,Cashier,2021-02-28 00:00:00,Active,,4.63,0.015
+1601,Stephanie Gonzalez,788,Ambassador,2021-05-16 00:00:00,Active,,4.42,0.03
+1602,Patricia Morris,788,Senior Ambassador,2024-10-13 00:00:00,Active,,1.01,0.035
+1603,Mark Rivera,788,Cashier,2024-07-03 00:00:00,Active,,1.29,0.0125
+1604,Brian Taylor,788,Cashier,2025-08-20 00:00:00,Active,,0.16,0.01
+1605,Margaret Perez,788,Cashier,2019-08-16 00:00:00,Active,,6.17,0.0175
+1606,Charles Morris,788,Cashier,2025-05-03 00:00:00,Active,,0.45,0.01
+1607,Nancy Johnson,788,Ambassador,2022-11-12 00:00:00,Active,,2.93,0.025
+1608,Laura Evans,788,Ambassador,2023-03-09 00:00:00,Terminated,2024-09-18 00:00:00,2.61,0.025
+1609,Karen Green,788,Cashier,2025-03-12 00:00:00,Active,,0.6,0.01
+1610,Anthony Scott,766,Lead,2022-09-28 00:00:00,Active,,3.05,0.05
+1611,Joshua Smith,766,Cashier,2020-01-04 00:00:00,Terminated,2022-07-19 00:00:00,5.78,0.0175
+1612,Christopher Hall,766,Senior Ambassador,2023-08-19 00:00:00,Active,,2.16,0.035
+1613,Dorothy Taylor,766,Cashier,2023-01-21 00:00:00,Active,,2.74,0.0125
+1614,Kenneth Harris,766,Cashier,2022-10-12 00:00:00,Active,,3.01,0.015
+1615,Anthony Ortiz,766,Senior Ambassador,2020-12-31 00:00:00,Active,,4.79,0.04
+1616,Eric King,766,Ambassador,2022-06-11 00:00:00,Terminated,2025-05-06 00:00:00,3.35,0.03
+1617,Nancy King,766,Cashier,2025-02-06 00:00:00,Active,,0.69,0.01
