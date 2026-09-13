@@ -4,3 +4,6 @@
 # Large duplicate snapshot files — kept locally, excluded from git
 *_original_backup.csv
 *_pre_hourly_backup.csv
+
+# Third-party tool cloned locally, not part of this data repo
+tableau-public-mcp/
