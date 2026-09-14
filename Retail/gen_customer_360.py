@@ -23,6 +23,12 @@ def col(cid, name, formula, desc=None, fmt=None):
     return c
 
 
+def met(mid, name, formula, fmt, desc):
+    """A model-level metric. Every metric carries a description: the formula says what it
+    computes, the description has to say what it MEANS and where it misleads."""
+    return {"id": mid, "name": name, "formula": formula, "format": fmt, "description": desc}
+
+
 USD = {"kind": "number", "formatString": "$,.2f"}
 NUM0 = {"kind": "number", "formatString": ",.0f"}
 NUM2 = {"kind": "number", "formatString": ",.2f"}
@@ -444,48 +450,100 @@ CADENCE = f'({SPAN} / ({ORDERS} - 1))'
 HAS_CADENCE = f'({ORDERS} > 1 and {SPAN} > 0)'
 
 profile_metrics = [
-    {"id": "m_customers", "name": "Customers", "formula": "CountDistinct([Cust Key])", "format": NUM0},
-    {"id": "m_purchasing_customers", "name": "Purchasing Customers",
-     "formula": "CountDistinct(If([Orders] > 0, [Cust Key], Null))", "format": NUM0},
-    {"id": "m_lifetime_value", "name": "Lifetime Value", "formula": "Sum([Lifetime Net Sales])", "format": USD},
-    {"id": "m_avg_ltv", "name": "Avg Lifetime Value",
-     "formula": "[Metrics/Lifetime Value] / [Metrics/Purchasing Customers]", "format": USD},
-    {"id": "m_gross_sales", "name": "Gross Sales", "formula": "Sum([Lifetime Gross Sales])", "format": USD},
-    {"id": "m_returns", "name": "Returns", "formula": "Sum([Lifetime Returns])", "format": USD},
-    {"id": "m_return_rate", "name": "Return Rate %",
-     "formula": "[Metrics/Returns] / [Metrics/Gross Sales]", "format": PCT},
-    {"id": "m_orders", "name": "Orders", "formula": "Sum([Orders])", "format": NUM0},
-    {"id": "m_net_units", "name": "Net Units", "formula": "Sum([Lifetime Net Units])", "format": NUM0},
-    {"id": "m_net_cost", "name": "Net Cost", "formula": "Sum([Lifetime Net Cost])", "format": USD},
-    {"id": "m_gross_margin", "name": "Gross Margin",
-     "formula": "Sum([Lifetime Net Sales]) - Sum([Lifetime Net Cost])", "format": USD},
-    {"id": "m_margin_pct", "name": "Margin %",
-     "formula": "[Metrics/Gross Margin] / [Metrics/Lifetime Value]", "format": PCT},
-    {"id": "m_aov", "name": "AOV", "formula": "[Metrics/Lifetime Value] / [Metrics/Orders]", "format": USD},
-    {"id": "m_upt", "name": "UPT", "formula": "[Metrics/Net Units] / [Metrics/Orders]", "format": NUM2},
-    {"id": "m_frequency", "name": "Frequency",
-     "formula": "[Metrics/Orders] / [Metrics/Purchasing Customers]", "format": NUM2},
-    {"id": "m_repeat_customers", "name": "Repeat Customers",
-     "formula": "CountDistinct(If([Orders] > 1, [Cust Key], Null))", "format": NUM0},
-    {"id": "m_repeat_rate", "name": "Repeat Rate %",
-     "formula": "[Metrics/Repeat Customers] / [Metrics/Purchasing Customers]", "format": PCT},
-    {"id": "m_avg_recency", "name": "Avg Recency Days", "formula": "Avg([Recency Days])", "format": NUM2},
-    {"id": "m_avg_cadence", "name": "Avg Order Cadence Days",
-     "formula": "Avg([Order Cadence Days])", "format": NUM2},
-    {"id": "m_lapsed_customers", "name": "Lapsed Customers",
-     "formula": "CountDistinct(If([Churn Risk] = \"Lapsed\", [Cust Key], Null))", "format": NUM0},
-    {"id": "m_lapsed_rate", "name": "Lapsed Rate %",
-     "formula": "[Metrics/Lapsed Customers] / [Metrics/Purchasing Customers]", "format": PCT},
-    {"id": "m_digital_orders", "name": "Digital Orders", "formula": "Sum([Digital Orders])", "format": NUM0},
-    {"id": "m_digital_mix", "name": "Digital Order Mix %",
-     "formula": "[Metrics/Digital Orders] / [Metrics/Orders]", "format": PCT},
-    {"id": "m_reviews", "name": "Reviews", "formula": "Sum([Reviews])", "format": NUM0},
-    {"id": "m_reviewing_customers", "name": "Reviewing Customers",
-     "formula": "CountDistinct(If([Reviews] > 0, [Cust Key], Null))", "format": NUM0},
-    {"id": "m_avg_rating", "name": "Avg Rating Given",
-     "formula": "Sum([Rating Points]) / Sum([Reviews])", "format": NUM2},
-    {"id": "m_spend_per_customer", "name": "Spend per Customer",
-     "formula": "[Metrics/Lifetime Value] / [Metrics/Purchasing Customers]", "format": USD},
+    met("m_customers", "Customers", "CountDistinct([Cust Key])", NUM0,
+        "Every customer on file (4,972), including the 105 who have never transacted. This is the "
+        "base for penetration and coverage rates. For anything measured per buyer, use Purchasing "
+        "Customers instead - the two differ by design and silently swapping them understates every "
+        "per-customer average by 2.1%."),
+    met("m_purchasing_customers", "Purchasing Customers",
+        "CountDistinct(If([Orders] > 0, [Cust Key], Null))", NUM0,
+        "Customers with at least one order (4,867). The correct denominator for every per-customer "
+        "average in this model."),
+    met("m_lifetime_value", "Lifetime Value", "Sum([Lifetime Net Sales])", USD,
+        "Total customer spend net of refunds ($1,114,855,651.92 all-time). Ties exactly to Net Sales "
+        "in Retail Sales Activity, which is the cross-model reconciliation check for this element."),
+    met("m_avg_ltv", "Avg Lifetime Value",
+        "[Metrics/Lifetime Value] / [Metrics/Purchasing Customers]", USD,
+        "Lifetime Value per purchasing customer ($229,064.24 all-time). Divides by buyers, not by the "
+        "full base, so it is not diluted by the 105 customers who have never bought."),
+    met("m_gross_sales", "Gross Sales", "Sum([Lifetime Gross Sales])", USD,
+        "Customer spend before refunds ($1,178,971,663.73 all-time) - the published company benchmark."),
+    met("m_returns", "Returns", "Sum([Lifetime Returns])", USD,
+        "Refund dollars, expressed positive ($64,116,011.81 all-time). Add this to Lifetime Value to "
+        "recover Gross Sales."),
+    met("m_return_rate", "Return Rate %", "[Metrics/Returns] / [Metrics/Gross Sales]", PCT,
+        "Returns as a share of Gross Sales (5.44% all-time, matching the company figure). Built from "
+        "summed totals so it stays correct at every rollup - averaging the per-row Customer Return "
+        "Rate % column instead would weight a two-order customer the same as a 442-order one."),
+    met("m_orders", "Orders", "Sum([Orders])", NUM0,
+        "Distinct purchase orders (717,747 all-time, tying exactly to Retail Sales Activity). Return "
+        "rows are excluded upstream, so an order that was partly returned is still counted once."),
+    met("m_net_units", "Net Units", "Sum([Lifetime Net Units])", NUM0,
+        "Units sold less units returned (8,584,150 all-time)."),
+    met("m_net_cost", "Net Cost", "Sum([Lifetime Net Cost])", USD,
+        "Cost of goods net of returns. On return rows cost is DERIVED - the matched sale line's unit "
+        "cost times the returned quantity - because the returns ledger carries a refund but no cost."),
+    met("m_gross_margin", "Gross Margin",
+        "Sum([Lifetime Net Sales]) - Sum([Lifetime Net Cost])", USD,
+        "Lifetime Value less Net Cost ($218,970,884.60 all-time). Merchandise margin only: it carries "
+        "no labour, occupancy or fulfilment cost, so it is not a contribution figure."),
+    met("m_margin_pct", "Margin %", "[Metrics/Gross Margin] / [Metrics/Lifetime Value]", PCT,
+        "Gross Margin over Lifetime Value (19.64% all-time)."),
+    met("m_aov", "AOV", "[Metrics/Lifetime Value] / [Metrics/Orders]", USD,
+        "Average order value across the selected population ($1,553.27 all-time): total net sales "
+        "over total orders. Deliberately not the average of the per-row Customer AOV column, which "
+        "would give every customer equal weight regardless of how much they buy."),
+    met("m_upt", "UPT", "[Metrics/Net Units] / [Metrics/Orders]", NUM2,
+        "Units per transaction (11.96 all-time): basket size, the units counterpart to AOV. Built "
+        "on NET units, so returns shrink it - a category bought in bulk and sent back in bulk will "
+        "read lower here than its gross basket size."),
+    met("m_frequency", "Frequency", "[Metrics/Orders] / [Metrics/Purchasing Customers]", NUM2,
+        "Orders per purchasing customer (147.47 all-time). Read this as a property of the dataset "
+        "rather than a retail benchmark - this synthetic base buys far more often than a real one."),
+    met("m_repeat_customers", "Repeat Customers",
+        "CountDistinct(If([Orders] > 1, [Cust Key], Null))", NUM0,
+        "Customers with more than one order. Equals Purchasing Customers (4,867) across the whole "
+        "base, because the fewest orders any customer here has is two."),
+    met("m_repeat_rate", "Repeat Rate %",
+        "[Metrics/Repeat Customers] / [Metrics/Purchasing Customers]", PCT,
+        "Repeat Customers over Purchasing Customers. Reads exactly 100% across the full base and is "
+        "therefore uninformative there; it only carries signal on a filtered slice, such as a single "
+        "fiscal year or a newly acquired cohort."),
+    met("m_avg_recency", "Avg Recency Days", "Avg([Recency Days])", NUM2,
+        "Mean days since last purchase, measured against As Of Date, never Today() (57.09 all-time). "
+        "Badly skewed - the median is 4 days against this mean of 57 - so a small lapsed tail drags "
+        "it a long way. For targeting use Churn Risk, which normalises by each customer's own rhythm."),
+    met("m_avg_cadence", "Avg Order Cadence Days", "Avg([Order Cadence Days])", NUM2,
+        "Mean of each customer's own average gap between orders (21.85 days all-time). Customers with "
+        "no measurable cadence are excluded from the average rather than counted as zero."),
+    met("m_lapsed_customers", "Lapsed Customers",
+        "CountDistinct(If([Churn Risk] = \"Lapsed\", [Cust Key], Null))", NUM0,
+        "Customers who have gone more than 3x their own normal gap without buying (657 all-time)."),
+    met("m_lapsed_rate", "Lapsed Rate %",
+        "[Metrics/Lapsed Customers] / [Metrics/Purchasing Customers]", PCT,
+        "Lapsed Customers over Purchasing Customers (13.50% all-time). Because the test is relative to "
+        "each customer's own cadence, this does not drift upward simply because the extract ages."),
+    met("m_digital_orders", "Digital Orders", "Sum([Digital Orders])", NUM0,
+        "Web, BOPIS and BOSS orders combined (181,682 all-time). Excludes in-store."),
+    met("m_digital_mix", "Digital Order Mix %", "[Metrics/Digital Orders] / [Metrics/Orders]", PCT,
+        "Digital Orders over Orders (25.31% all-time). Order-weighted, not dollar-weighted - digital "
+        "baskets differ in size, so this will not match a revenue-based channel mix."),
+    met("m_reviews", "Reviews", "Sum([Reviews])", NUM0,
+        "Product reviews written by the selected customers (137,944 all-time). Ties to the Reviews "
+        "metric on Customer Reviews."),
+    met("m_reviewing_customers", "Reviewing Customers",
+        "CountDistinct(If([Reviews] > 0, [Cust Key], Null))", NUM0,
+        "Customers who have written at least one review (4,442 of 4,867 buyers). Use it as the "
+        "denominator when reporting review behaviour, so the 425 silent buyers do not distort it."),
+    met("m_avg_rating", "Avg Rating Given", "Sum([Rating Points]) / Sum([Reviews])", NUM2,
+        "Stars per review across the selected customers (4.01 all-time): total Rating Points over "
+        "total Reviews. The volume weighting is the whole point - averaging the per-row Avg Rating "
+        "Given column would give a one-review customer the same say as a hundred-review one."),
+    met("m_spend_per_customer", "Spend per Customer",
+        "[Metrics/Lifetime Value] / [Metrics/Purchasing Customers]", USD,
+        "Lifetime Value per purchasing customer. A deliberate alias of Avg Lifetime Value, kept "
+        "because Retail Sales Activity publishes a metric of this name and conformance across the "
+        "two models is worth more than removing the duplicate."),
 ]
 
 customer_profile = {
@@ -766,36 +824,48 @@ customer_reviews = {
         col("week_start_date", "Week Start Date", "[Date/Week Start Date]"),
     ],
     "metrics": [
-        {"id": "m_r_reviews", "name": "Reviews", "formula": "Count([Review ID])", "format": NUM0},
-        {"id": "m_r_avg_rating", "name": "Avg Rating", "formula": "Avg([Rating])", "format": NUM2},
-        {"id": "m_r_reviewers", "name": "Reviewers", "formula": "CountDistinct([Cust Key])", "format": NUM0},
-        {"id": "m_r_promoters", "name": "Promoter Reviews",
-         "formula": "Sum(If([Rating] >= 4, 1, 0))", "format": NUM0},
-        {"id": "m_r_detractors", "name": "Detractor Reviews",
-         "formula": "Sum(If([Rating] <= 2, 1, 0))", "format": NUM0},
-        {"id": "m_r_promoter_pct", "name": "Promoter %",
-         "formula": "[Metrics/Promoter Reviews] / [Metrics/Reviews]", "format": PCT},
-        {"id": "m_r_detractor_pct", "name": "Detractor %",
-         "formula": "[Metrics/Detractor Reviews] / [Metrics/Reviews]", "format": PCT},
-        {"id": "m_r_nps_like", "name": "Promoter Less Detractor %",
-         "formula": "[Metrics/Promoter %] - [Metrics/Detractor %]", "format": PCT},
+        met("m_r_reviews", "Reviews", "Count([Review ID])", NUM0,
+            "Reviews in the selected slice (137,944 all-time). This element is one row per review, "
+            "so it is a straight row count."),
+        met("m_r_avg_rating", "Avg Rating", "Avg([Rating])", NUM2,
+            "Mean stars, 1-5 (4.01 all-time). A plain average is correct HERE because every row is "
+            "one review and so already carries equal weight; the same measure on Customer Profile "
+            "has to be built from Rating Points over Reviews instead."),
+        met("m_r_reviewers", "Reviewers", "CountDistinct([Cust Key])", NUM0,
+            "Distinct customers behind the selected reviews (4,442 all-time). Always well below the "
+            "review count - customers average 31 reviews each - so never read it as a review total."),
+        met("m_r_promoters", "Promoter Reviews", "Sum(If([Rating] >= 4, 1, 0))", NUM0,
+            "Reviews rated 4 or 5 (103,600 all-time)."),
+        met("m_r_detractors", "Detractor Reviews", "Sum(If([Rating] <= 2, 1, 0))", NUM0,
+            "Reviews rated 1 or 2 (13,555 all-time). Ratings of 3 are counted in neither band."),
+        met("m_r_promoter_pct", "Promoter %",
+            "[Metrics/Promoter Reviews] / [Metrics/Reviews]", PCT,
+            "Share of reviews rated 4-5 (75.10% all-time)."),
+        met("m_r_detractor_pct", "Detractor %",
+            "[Metrics/Detractor Reviews] / [Metrics/Reviews]", PCT,
+            "Share of reviews rated 1-2 (9.83% all-time)."),
+        met("m_r_nps_like", "Promoter Less Detractor %",
+            "[Metrics/Promoter %] - [Metrics/Detractor %]", PCT,
+            "Promoter % minus Detractor % (65.28% all-time). NPS-SHAPED BUT NOT NPS: it is built "
+            "from 1-5 product star ratings, not an 0-10 'would you recommend' question, and the "
+            "bands are 4-5 and 1-2 rather than 9-10 and 0-6. Do not publish it as a Net Promoter "
+            "Score or benchmark it against one - it is a product-sentiment spread, nothing more."),
     ],
 }
 
-customer_category_mix = {
-    "id": "customer_category_mix", "name": "Customer Category Mix", "kind": "table", "visibleAsSource": True,
+# The aggregate is built in a hidden element and the VISIBLE element is anchored on the
+# metric-free Customer dimension. Elements inherit their primary source's metrics, so sourcing
+# the visible element straight off SRC Sales Activity published 18 inherited Sales Activity
+# metrics here - all of them broken, because the grouping collapses away the columns they
+# reference. Inheritance flows from the primary source only, never across a join, so an inner
+# join onto Customer keeps the grain and drops the inherited metrics.
+cat_mix_agg = {
+    "id": "cat_mix_agg", "name": "Category Mix Agg", "kind": "table", "visibleAsSource": False,
     "description": (
-        "Customer x Product Type x Product Family spend (55,588 rows, 4,867 customers, 6 types, "
-        "13 families), for affinity and next-best-product work. Deliberately NOT collapsed to a "
-        "single 'favourite category' column on Customer Profile: a single winner hides the mix, and "
-        "sorting this element by Net Sales recovers the favourite whenever it is actually wanted. "
-        "DOLLARS AND UNITS ADD UP; ORDER AND CUSTOMER COUNTS DO NOT. Net Sales summed over the whole "
-        "element reconciles exactly to company net sales ($1,114,855,651.92), because every order "
-        "line belongs to exactly one family. Orders does not: a basket spanning three families is "
-        "counted once in each, so summing Orders here gives 3,270,599 against a true 717,747 - a 4.6x "
-        "overstatement. Use Orders only WITHIN a single family, and take company or customer order "
-        "counts from Customer Profile. "
-        "Customer attributes are deliberately not carried here; join to Customer Profile for those."
+        "Sales Activity collapsed to Customer x Product Type x Product Family (55,588 rows). Hidden "
+        "because it sources SRC Sales Activity directly and therefore inherits that model's 18 "
+        "metrics, which do not survive this grouping; the visible Customer Category Mix re-anchors "
+        "on the Customer dimension to shed them."
     ),
     "source": {"kind": "table", "elementId": "src_sales_activity"},
     "columns": [
@@ -817,22 +887,87 @@ customer_category_mix = {
         "id": "g_mix", "groupBy": ["cust_key", "product_type", "product_family"],
         "calculations": ["net_sales", "gross_sales", "returns", "net_units", "orders", "distinct_products"],
     }],
+}
+
+customer_category_mix = {
+    "id": "customer_category_mix", "name": "Customer Category Mix", "kind": "table", "visibleAsSource": True,
+    "description": (
+        "Customer x Product Type x Product Family spend (55,588 rows, 4,867 customers, 6 types, "
+        "13 families), for affinity and next-best-product work. Deliberately NOT collapsed to a "
+        "single 'favourite category' column on Customer Profile: a single winner hides the mix, and "
+        "sorting this element by Category Net Sales recovers the favourite whenever it is actually "
+        "wanted. "
+        "DOLLARS AND UNITS ADD UP; ORDER AND CUSTOMER COUNTS DO NOT. Category Net Sales summed over "
+        "the whole element reconciles exactly to company net sales ($1,114,855,651.92), because every "
+        "order line belongs to exactly one family. Category Orders does not: a basket spanning three "
+        "families is counted once in each, so summing gives 3,270,599 against a true 717,747 - a 4.6x "
+        "overstatement. Use it only WITHIN a single family, and take company or customer order counts "
+        "from Customer Profile. "
+        "INNER JOINed to Customer, so the 105 customers who have never transacted are absent by "
+        "design - they have no category rows to carry. Customer attributes beyond the key are "
+        "deliberately not carried; join to Customer Profile for those."
+    ),
+    "source": {
+        "kind": "join",
+        "primarySource": {"kind": "table", "elementId": "dim_customer"},
+        "joins": [{
+            "joinType": "inner",
+            "left": {"kind": "table", "elementId": "dim_customer"},
+            "right": {"kind": "table", "elementId": "cat_mix_agg", "groupingId": "g_mix"},
+            "columns": [{"left": "[Cust Key]", "right": "[Cust Key]"}],
+        }],
+    },
+    "columns": [
+        col("cust_key", "Cust Key", "[Customer/Cust Key]"),
+        col("product_type", "Product Type", "[Category Mix Agg/Product Type]"),
+        col("product_family", "Product Family", "[Category Mix Agg/Product Family]"),
+        col("net_sales", "Net Sales", "[Category Mix Agg/Net Sales]", None, USD),
+        col("gross_sales", "Gross Sales", "[Category Mix Agg/Gross Sales]", None, USD),
+        col("returns", "Returns", "[Category Mix Agg/Returns]", None, USD),
+        col("net_units", "Net Units", "[Category Mix Agg/Net Units]", None, NUM0),
+        col("orders", "Orders", "[Category Mix Agg/Orders]", None, NUM0),
+        col("distinct_products", "Distinct Products", "[Category Mix Agg/Distinct Products]", None, NUM0),
+    ],
     "metrics": [
-        {"id": "m_mix_net_sales", "name": "Net Sales", "formula": "Sum([Net Sales])", "format": USD},
-        {"id": "m_mix_gross_sales", "name": "Gross Sales", "formula": "Sum([Gross Sales])", "format": USD},
-        {"id": "m_mix_returns", "name": "Returns", "formula": "Sum([Returns])", "format": USD},
-        # customer_category_mix is a GROUPED element, and [Metrics/...] references do not resolve
-        # inside one - they bind to the like-named column instead and the query dies. Ratio metrics
-        # on grouped elements must aggregate the columns directly.
-        {"id": "m_mix_return_rate", "name": "Return Rate %",
-         "formula": "Sum([Returns]) / Sum([Gross Sales])", "format": PCT},
-        {"id": "m_mix_orders", "name": "Orders", "formula": "Sum([Orders])", "format": NUM0},
-        {"id": "m_mix_units", "name": "Net Units", "formula": "Sum([Net Units])", "format": NUM0},
-        {"id": "m_mix_customers", "name": "Customers", "formula": "CountDistinct([Cust Key])", "format": NUM0},
-        {"id": "m_mix_spend_per_customer", "name": "Spend per Customer",
-         "formula": "Sum([Net Sales]) / CountDistinct([Cust Key])", "format": USD},
+        # NOTE: every name here is prefixed "Category". This element inherits 18 metrics from its
+        # upstream Sales Activity source, and unprefixed names (Net Sales, Returns, ...) collided
+        # with them - Sigma silently renamed ours to "Net Sales (1)" and so on.
+        met("m_mix_net_sales", "Category Net Sales", "Sum([Net Sales])", USD,
+            "Net sales within the selected category slice. Summed over the whole element this "
+            "reconciles exactly to company net sales ($1,114,855,651.92), because every order line "
+            "belongs to exactly one product family."),
+        met("m_mix_gross_sales", "Category Gross Sales", "Sum([Gross Sales])", USD,
+            "Spend before refunds within the slice ($1,178,971,663.73 over the whole element)."),
+        met("m_mix_returns", "Category Returns", "Sum([Returns])", USD,
+            "Refund dollars within the slice, expressed positive. Reveals which categories are "
+            "bought and sent back rather than simply bought."),
+        met("m_mix_return_rate", "Category Return Rate %",
+            "Sum([Returns]) / Sum([Gross Sales])", PCT,
+            "Returns over Gross Sales within the slice (5.44% over the whole element). Built by "
+            "aggregating the columns directly rather than by referencing sibling metrics, which is "
+            "correct at every rollup and stays valid if this element is ever re-grouped."),
+        met("m_mix_orders", "Category Orders", "Sum([Orders])", NUM0,
+            "Distinct orders touching this category. DOES NOT ADD UP ACROSS CATEGORIES: a basket "
+            "spanning three families is counted once in each, so summing across the element gives "
+            "3,270,599 against a true 717,747 - 4.6x high. Use it only within a single family, and "
+            "take real order counts from Customer Profile."),
+        met("m_mix_units", "Category Net Units", "Sum([Net Units])", NUM0,
+            "Units net of returns within the slice. Unlike orders and customers, units DO add up "
+            "cleanly across categories (8,584,150 over the whole element)."),
+        met("m_mix_customers", "Category Customers", "CountDistinct([Cust Key])", NUM0,
+            "Distinct customers buying in this slice. Does not add up across categories - a customer "
+            "shopping four families counts in all four - but it is exact within any one slice."),
+        met("m_mix_spend_per_customer", "Category Spend per Customer",
+            "Sum([Net Sales]) / CountDistinct([Cust Key])", USD,
+            "Category Net Sales over Category Customers - what a buyer of this category spends in "
+            "it. Meaningful within a slice; across the whole element it simply collapses to overall "
+            "spend per customer ($229,064.24), because the denominator deduplicates customers while "
+            "the numerator does not deduplicate anything."),
     ],
 }
+
+# defined further down, alongside the visible element it feeds
+build.append(cat_mix_agg)
 
 PAGES = [
     {"id": "page_sources", "name": "Sources", "elements": sources},

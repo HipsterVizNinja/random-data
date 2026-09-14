@@ -1,1 +1,2020 @@
-{"schemaVersion": 1, "folderId": "0883a1b1-700d-4ee8-878f-db648d4e51fa", "name": "Retail Marketing & Digital Funnel", "description": "Date x Traffic Source acquisition and daily digital conversion. The only view of demand before it becomes a transaction. KNOWN LIMIT, BY DESIGN: no order in this dataset carries a traffic source, so per-source ROAS is not derivable - spend and visits are modelled per source, revenue only per day and explicitly blended. Sources conformed dimensions from the Retail Sales Activity model.", "pages": [{"id": "page_sources", "name": "Sources", "elements": [{"id": "src_f_web_traffic", "name": "SRC F_WEB_TRAFFIC", "kind": "table", "source": {"kind": "data-model", "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c", "elementId": "lXFXBVuiME"}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[F_WEB_TRAFFIC.csv/Date Key]"}, {"id": "traffic_source", "name": "Traffic Source", "formula": "[F_WEB_TRAFFIC.csv/Traffic Source]"}, {"id": "web_visits", "name": "Web Visits", "formula": "[F_WEB_TRAFFIC.csv/Web Visits]"}], "visibleAsSource": false, "description": "Daily web sessions by acquisition source. 9,132 rows = 1,522 days x 6 sources, exactly co-grained with F_MARKETING_SPEND."}, {"id": "src_f_marketing_spend", "name": "SRC F_MARKETING_SPEND", "kind": "table", "source": {"kind": "data-model", "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c", "elementId": "sHQCXTMbCb"}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[F_MARKETING_SPEND.csv/Date Key]"}, {"id": "traffic_source", "name": "Traffic Source", "formula": "[F_MARKETING_SPEND.csv/Traffic Source]"}, {"id": "spend", "name": "Spend", "formula": "[F_MARKETING_SPEND.csv/Spend]"}], "visibleAsSource": false, "description": "Daily media spend by source. Same 9,132 keys as F_WEB_TRAFFIC, so the two join 1:1 with no orphans on either side."}, {"id": "src_date", "name": "SRC Date", "kind": "table", "source": {"kind": "data-model", "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2", "elementId": "dim_date"}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[Date/Date Key]"}, {"id": "day_of_week_name", "name": "Day of Week Name", "formula": "[Date/Day of Week Name]"}, {"id": "day_of_week_number", "name": "Day of Week Number", "formula": "[Date/Day of Week Number]"}, {"id": "is_weekend", "name": "Is Weekend", "formula": "[Date/Is Weekend]"}, {"id": "week_start_date", "name": "Week Start Date", "formula": "[Date/Week Start Date]"}, {"id": "calendar_year", "name": "Calendar Year", "formula": "[Date/Calendar Year]"}, {"id": "calendar_month", "name": "Calendar Month", "formula": "[Date/Calendar Month]"}, {"id": "calendar_month_name", "name": "Calendar Month Name", "formula": "[Date/Calendar Month Name]"}, {"id": "calendar_quarter", "name": "Calendar Quarter", "formula": "[Date/Calendar Quarter]"}, {"id": "fiscal_year", "name": "Fiscal Year", "formula": "[Date/Fiscal Year]"}, {"id": "fiscal_quarter", "name": "Fiscal Quarter", "formula": "[Date/Fiscal Quarter]"}, {"id": "fiscal_period", "name": "Fiscal Period", "formula": "[Date/Fiscal Period]"}, {"id": "fiscal_period_name", "name": "Fiscal Period Name", "formula": "[Date/Fiscal Period Name]"}, {"id": "fiscal_week_of_year", "name": "Fiscal Week of Year", "formula": "[Date/Fiscal Week of Year]"}, {"id": "fiscal_season", "name": "Fiscal Season", "formula": "[Date/Fiscal Season]"}, {"id": "prior_year_date", "name": "Prior Year Date", "formula": "[Date/Prior Year Date]"}], "visibleAsSource": false, "description": "Conformed Date dimension (4-5-4 fiscal) referenced from the Retail Sales Activity model."}, {"id": "src_promotion", "name": "SRC Promotion", "kind": "table", "source": {"kind": "data-model", "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2", "elementId": "dim_promotion"}, "columns": [{"id": "promotion_key", "name": "Promotion Key", "formula": "[Promotion/Promotion Key]"}, {"id": "promotion_name", "name": "Promotion Name", "formula": "[Promotion/Promotion Name]"}, {"id": "promotion_type", "name": "Promotion Type", "formula": "[Promotion/Promotion Type]"}, {"id": "start_date", "name": "Start Date", "formula": "[Promotion/Start Date]"}, {"id": "end_date", "name": "End Date", "formula": "[Promotion/End Date]"}, {"id": "discount_percent", "name": "Discount Percent", "formula": "[Promotion/Discount Percent]"}, {"id": "channel", "name": "Channel", "formula": "[Promotion/Channel]"}], "visibleAsSource": false, "description": "52 promotions with start/end dates, referenced from the Retail Sales Activity model."}, {"id": "src_markdowns", "name": "SRC Markdowns", "kind": "table", "source": {"kind": "data-model", "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2", "elementId": "markdowns"}, "columns": [{"id": "product_key", "name": "Product Key", "formula": "[Markdowns/Product Key]"}, {"id": "effective_start_date", "name": "Effective Start Date", "formula": "[Markdowns/Effective Start Date]"}, {"id": "price", "name": "Price", "formula": "[Markdowns/Price]"}, {"id": "discount_percent", "name": "Discount Percent", "formula": "[Markdowns/Discount Percent]"}, {"id": "promotion_key", "name": "Promotion Key", "formula": "[Markdowns/Promotion Key]"}, {"id": "product_name", "name": "Product Name", "formula": "[Markdowns/Product Name]"}, {"id": "product_family", "name": "Product Family", "formula": "[Markdowns/Product Family]"}, {"id": "promotion_name", "name": "Promotion Name", "formula": "[Markdowns/Promotion Name]"}, {"id": "promotion_type", "name": "Promotion Type", "formula": "[Markdowns/Promotion Type]"}], "visibleAsSource": false, "description": "Product price-change ledger referenced from the Retail Sales Activity model."}, {"id": "src_sales_activity", "name": "SRC Sales Activity", "kind": "table", "source": {"kind": "data-model", "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2", "elementId": "sales_activity"}, "columns": [{"id": "sale_date", "name": "Sale Date", "formula": "[Sales Activity/Sale Date]"}, {"id": "activity_type", "name": "Activity Type", "formula": "[Sales Activity/Activity Type]"}, {"id": "channel_type", "name": "Channel Type", "formula": "[Sales Activity/Channel Type]"}, {"id": "order_number", "name": "Order Number", "formula": "[Sales Activity/Order Number]"}, {"id": "cust_key", "name": "Cust Key", "formula": "[Sales Activity/Cust Key]"}, {"id": "quantity", "name": "Quantity", "formula": "[Sales Activity/Quantity]"}, {"id": "amount", "name": "Amount", "formula": "[Sales Activity/Amount]"}, {"id": "cost", "name": "Cost", "formula": "[Sales Activity/Cost]"}], "visibleAsSource": false, "description": "Sales + returns fact referenced from the Retail Sales Activity model, projected to the columns needed for daily digital revenue."}]}, {"id": "page_dims", "name": "Conformed Dimensions", "elements": [{"id": "dim_date", "name": "Date", "kind": "table", "visibleAsSource": true, "description": "Retail 4-5-4 fiscal calendar. Sigma's built-in period-over-period and DateLookback are CALENDAR-based and will not align to 4-5-4 week boundaries; use Prior Year Date for fiscal-correct comps. Wider than the funnel window (web traffic runs 2021-08-19 to 2025-10-18).", "source": {"kind": "table", "elementId": "src_date"}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[SRC Date/Date Key]"}, {"id": "day_of_week_name", "name": "Day of Week Name", "formula": "[SRC Date/Day of Week Name]"}, {"id": "day_of_week_number", "name": "Day of Week Number", "formula": "[SRC Date/Day of Week Number]"}, {"id": "is_weekend", "name": "Is Weekend", "formula": "[SRC Date/Is Weekend]"}, {"id": "week_start_date", "name": "Week Start Date", "formula": "[SRC Date/Week Start Date]"}, {"id": "calendar_year", "name": "Calendar Year", "formula": "[SRC Date/Calendar Year]"}, {"id": "calendar_month", "name": "Calendar Month", "formula": "[SRC Date/Calendar Month]"}, {"id": "calendar_month_name", "name": "Calendar Month Name", "formula": "[SRC Date/Calendar Month Name]"}, {"id": "calendar_quarter", "name": "Calendar Quarter", "formula": "[SRC Date/Calendar Quarter]"}, {"id": "fiscal_year", "name": "Fiscal Year", "formula": "[SRC Date/Fiscal Year]"}, {"id": "fiscal_quarter", "name": "Fiscal Quarter", "formula": "[SRC Date/Fiscal Quarter]"}, {"id": "fiscal_period", "name": "Fiscal Period", "formula": "[SRC Date/Fiscal Period]"}, {"id": "fiscal_period_name", "name": "Fiscal Period Name", "formula": "[SRC Date/Fiscal Period Name]"}, {"id": "fiscal_week_of_year", "name": "Fiscal Week of Year", "formula": "[SRC Date/Fiscal Week of Year]"}, {"id": "fiscal_season", "name": "Fiscal Season", "formula": "[SRC Date/Fiscal Season]"}, {"id": "prior_year_date", "name": "Prior Year Date", "formula": "[SRC Date/Prior Year Date]"}]}, {"id": "dim_traffic_source", "name": "Traffic Source", "kind": "table", "visibleAsSource": true, "description": "The six web acquisition sources. Direct and Organic Search carry ZERO spend on all 1,522 days - they are free traffic and together supply 2,148,437 visits (44.4% of all sessions). Any cost-per-visit or ROAS figure that averages them in with paid media is diluted by design; slice by Is Paid Source or Source Group to avoid it.", "source": {"kind": "table", "elementId": "src_f_web_traffic"}, "columns": [{"id": "traffic_source", "name": "Traffic Source", "formula": "[SRC F_WEB_TRAFFIC/Traffic Source]"}, {"id": "is_paid_source", "name": "Is Paid Source", "formula": "If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", True, False)", "description": "True for Paid Search, Social, Email and Referral, all of which record spend on every day. False for Direct and Organic Search, which record $0 on every day."}, {"id": "source_group", "name": "Source Group", "formula": "If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", \"Paid Media\", If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", \"Owned & Earned\", \"Free\"))", "description": "Paid Media (Paid Search, Social - $1.50M of the $1.56M total spend), Owned & Earned (Email, Referral), Free (Direct, Organic Search)."}, {"id": "lifetime_visits", "name": "Lifetime Visits", "formula": "Sum([SRC F_WEB_TRAFFIC/Web Visits])", "description": "All-time sessions from this source, for sizing only.", "format": {"kind": "number", "formatString": ",.0f"}}], "groupings": [{"id": "g_source", "groupBy": ["traffic_source", "is_paid_source", "source_group"], "calculations": ["lifetime_visits"]}]}, {"id": "dim_promotion", "name": "Promotion", "kind": "table", "visibleAsSource": true, "description": "52 promotions: 37 Seasonal, 15 Flash Sale; 40 tagged Channel = All and 12 Web-only. Discounts run 10-34%. They cover 288 of the 1,522 funnel days and overlap two-deep on 16 of those days - which is why Promo Day rolls promotions up to one row per date before they reach any fact.", "source": {"kind": "table", "elementId": "src_promotion"}, "columns": [{"id": "promotion_key", "name": "Promotion Key", "formula": "[SRC Promotion/Promotion Key]"}, {"id": "promotion_name", "name": "Promotion Name", "formula": "[SRC Promotion/Promotion Name]"}, {"id": "promotion_type", "name": "Promotion Type", "formula": "[SRC Promotion/Promotion Type]"}, {"id": "start_date", "name": "Start Date", "formula": "[SRC Promotion/Start Date]"}, {"id": "end_date", "name": "End Date", "formula": "[SRC Promotion/End Date]"}, {"id": "discount_percent", "name": "Discount Percent", "formula": "[SRC Promotion/Discount Percent]"}, {"id": "channel", "name": "Channel", "formula": "[SRC Promotion/Channel]"}]}]}, {"id": "page_build", "name": "Daily Build", "elements": [{"id": "web_daily", "name": "Web Daily", "kind": "table", "visibleAsSource": false, "description": "F_WEB_TRAFFIC and F_MARKETING_SPEND collapsed from Date x Source to one row per date, carrying the paid/free split that the day grain would otherwise lose.", "source": {"kind": "join", "primarySource": {"kind": "table", "elementId": "src_f_web_traffic"}, "joins": [{"joinType": "inner", "left": {"kind": "table", "elementId": "src_f_web_traffic"}, "right": {"kind": "table", "elementId": "src_f_marketing_spend"}, "columns": [{"left": "[Date Key]", "right": "[Date Key]"}, {"left": "[Traffic Source]", "right": "[Traffic Source]"}]}]}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[SRC F_WEB_TRAFFIC/Date Key]"}, {"id": "web_visits", "name": "Web Visits", "formula": "Sum([SRC F_WEB_TRAFFIC/Web Visits])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "paid_visits", "name": "Paid Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "free_visits", "name": "Free Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", 0, [SRC F_WEB_TRAFFIC/Web Visits]))", "description": "Direct + Organic Search sessions - 44.4% of all traffic, acquired at zero recorded cost.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "marketing_spend", "name": "Marketing Spend", "formula": "Sum([SRC F_MARKETING_SPEND/Spend])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "paid_media_spend", "name": "Paid Media Spend", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", [SRC F_MARKETING_SPEND/Spend], 0))", "description": "Paid Search + Social only.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "paid_search_spend", "name": "Paid Search Spend", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\", [SRC F_MARKETING_SPEND/Spend], 0))", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "social_spend", "name": "Social Spend", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", [SRC F_MARKETING_SPEND/Spend], 0))", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "paid_search_visits", "name": "Paid Search Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "social_visits", "name": "Social Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "organic_visits", "name": "Organic Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Organic Search\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "direct_visits", "name": "Direct Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Direct\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "email_visits", "name": "Email Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "referral_visits", "name": "Referral Visits", "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", [SRC F_WEB_TRAFFIC/Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}], "groupings": [{"id": "g_web_day", "groupBy": ["date_key"], "calculations": ["web_visits", "paid_visits", "free_visits", "marketing_spend", "paid_media_spend", "paid_search_spend", "social_spend", "paid_search_visits", "social_visits", "organic_visits", "direct_visits", "email_visits", "referral_visits"]}]}, {"id": "digital_daily", "name": "Digital Daily", "kind": "table", "visibleAsSource": false, "description": "Sales Activity collapsed to one row per SALE DATE. MANDATORY pre-aggregation - joining line-grain Sales Activity to a day spine would fan the funnel out 4.9M ways. Dated by Sale Date, not Activity Date, so a return lands on the day of the order that produced it: revenue and returns on a given day are one cohort, which is what a spend-driven ROAS needs. All-time totals still tie exactly to the Retail Sales Activity model; only the day-by-day distribution of returns differs.", "source": {"kind": "table", "elementId": "src_sales_activity"}, "columns": [{"id": "sale_date", "name": "Sale Date", "formula": "[SRC Sales Activity/Sale Date]"}, {"id": "digital_gross_sales", "name": "Digital Gross Sales", "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Amount], 0))", "description": "Web + BOPIS + BOSS gross sales for orders placed this day.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_returns", "name": "Digital Returns", "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Return\" and [SRC Sales Activity/Channel Type] <> \"Retail\", -[SRC Sales Activity/Amount], 0))", "description": "Refunds against digital orders placed this day, whenever the refund was actually processed.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_net_sales", "name": "Digital Net Sales", "formula": "Sum(If([SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Amount], 0))", "description": "Digital gross sales less cohort returns.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_cost", "name": "Digital Cost", "formula": "Sum(If([SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Cost], 0))", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_units", "name": "Digital Units", "formula": "Sum(If([SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Quantity], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "web_gross_sales", "name": "Web Gross Sales", "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] = \"Web\", [SRC Sales Activity/Amount], 0))", "description": "Pure-play Web channel only, excluding BOPIS and BOSS.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "total_gross_sales", "name": "Total Gross Sales", "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\", [SRC Sales Activity/Amount], 0))", "description": "All channels including Retail. Present only as the denominator for Digital Mix %.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_orders", "name": "Digital Orders", "formula": "CountDistinct(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Order Number], Null))", "description": "Distinct Web + BOPIS + BOSS orders placed this day.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "web_orders", "name": "Web Orders", "formula": "CountDistinct(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] = \"Web\", [SRC Sales Activity/Order Number], Null))", "description": "Distinct pure-play Web orders placed this day. This is the numerator behind the 2.54% baseline web conversion rate.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "digital_customers", "name": "Digital Customers", "formula": "CountDistinct(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Cust Key], Null))", "format": {"kind": "number", "formatString": ",.0f"}}], "groupings": [{"id": "g_digital", "groupBy": ["sale_date"], "calculations": ["digital_gross_sales", "digital_returns", "digital_net_sales", "digital_cost", "digital_units", "web_gross_sales", "total_gross_sales", "digital_orders", "web_orders", "digital_customers"]}]}, {"id": "promo_day", "name": "Promo Day", "kind": "table", "visibleAsSource": false, "description": "Promotions exploded onto the calendar by a RANGE join (Date Key between Start Date and End Date), then collapsed to one row per date. The collapse is mandatory: 16 dates have two promotions running at once, so joining Promotion straight onto a day-grain fact would double those days' visits, spend and revenue.", "source": {"kind": "join", "primarySource": {"kind": "table", "elementId": "dim_date"}, "joins": [{"joinType": "left-outer", "left": {"kind": "table", "elementId": "dim_date"}, "right": {"kind": "table", "elementId": "dim_promotion"}, "columns": [{"left": "[Date Key]", "right": "[Start Date]", "op": ">="}, {"left": "[Date Key]", "right": "[End Date]", "op": "<="}]}]}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[Date/Date Key]"}, {"id": "active_promotions", "name": "Active Promotions", "formula": "CountDistinct([Promotion/Promotion Key])", "description": "0, 1 or 2. Two promotions overlap on 16 of the 288 promotional days.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "max_discount_percent", "name": "Max Discount Percent", "formula": "Max([Promotion/Discount Percent])", "description": "Deepest discount advertised this day, 10-34%.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "promotion_name", "name": "Promotion Name", "formula": "Max([Promotion/Promotion Name])", "description": "The promotion running this day. On the 16 dates where Active Promotions = 2 this shows only one of them - check Active Promotions before reading it as the whole story."}, {"id": "promotion_type", "name": "Promotion Type", "formula": "Max([Promotion/Promotion Type])", "description": "Flash Sale or Seasonal, with the same one-of-two caveat as Promotion Name."}, {"id": "promotion_channel", "name": "Promotion Channel", "formula": "Max([Promotion/Channel])", "description": "All or Web."}], "groupings": [{"id": "g_promo_day", "groupBy": ["date_key"], "calculations": ["active_promotions", "max_discount_percent", "promotion_name", "promotion_type", "promotion_channel"]}]}, {"id": "markdown_day", "name": "Markdown Day", "kind": "table", "visibleAsSource": false, "description": "The product price-change ledger collapsed to one row per effective date. 6,051 rows across 1,490 dates, but only 1,118 are genuine markdowns: the other 4,933 carry Discount Percent = 0 and are price RESETS back to full price. Counting all 6,051 as markdowns overstates promotional pressure five-fold.", "source": {"kind": "table", "elementId": "src_markdowns"}, "columns": [{"id": "effective_start_date", "name": "Effective Start Date", "formula": "[SRC Markdowns/Effective Start Date]"}, {"id": "price_changes", "name": "Price Changes", "formula": "Count([SRC Markdowns/Product Key])", "description": "Every price change effective this day, markdowns and resets alike.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "markdowns", "name": "Markdowns", "formula": "Sum(If([SRC Markdowns/Discount Percent] > 0, 1, 0))", "description": "Price changes that actually cut price. Exactly the rows carrying a Promotion Key.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "price_resets", "name": "Price Resets", "formula": "Sum(If([SRC Markdowns/Discount Percent] = 0, 1, 0))", "description": "Returns to full price. 4,933 of the 6,051 ledger rows.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "max_markdown_percent", "name": "Max Markdown Percent", "formula": "Max([SRC Markdowns/Discount Percent])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "products_marked_down", "name": "Products Marked Down", "formula": "CountDistinct(If([SRC Markdowns/Discount Percent] > 0, [SRC Markdowns/Product Key], Null))", "format": {"kind": "number", "formatString": ",.0f"}}], "groupings": [{"id": "g_markdown_day", "groupBy": ["effective_start_date"], "calculations": ["price_changes", "markdowns", "price_resets", "max_markdown_percent", "products_marked_down"]}]}]}, {"id": "page_funnel", "name": "Marketing Funnel", "elements": [{"id": "funnel_source", "name": "Funnel by Source", "kind": "table", "visibleAsSource": true, "description": "One row per Date x Traffic Source (9,132 = 1,522 days x 6 sources). Visits and spend join 1:1 with no orphans on either side. THERE IS DELIBERATELY NO REVENUE, ORDER COUNT OR CONVERSION RATE ON THIS ELEMENT. Orders in this dataset carry no traffic source, so per-source attribution is not derivable; allocating day revenue across sources by visit share would look like attribution while being an assumption. Use this element for acquisition volume, spend and efficiency-to-visit; use Funnel Day for anything that touches revenue.", "source": {"kind": "join", "primarySource": {"kind": "table", "elementId": "src_f_web_traffic"}, "joins": [{"joinType": "inner", "left": {"kind": "table", "elementId": "src_f_web_traffic"}, "right": {"kind": "table", "elementId": "src_f_marketing_spend"}, "columns": [{"left": "[Date Key]", "right": "[Date Key]"}, {"left": "[Traffic Source]", "right": "[Traffic Source]"}]}, {"joinType": "left-outer", "left": {"kind": "table", "elementId": "src_f_web_traffic"}, "right": {"kind": "table", "elementId": "dim_traffic_source", "groupingId": "g_source"}, "columns": [{"left": "[Traffic Source]", "right": "[Traffic Source]"}]}, {"joinType": "left-outer", "left": {"kind": "table", "elementId": "src_f_web_traffic"}, "right": {"kind": "table", "elementId": "dim_date"}, "columns": [{"left": "[Date Key]", "right": "[Date Key]"}]}, {"joinType": "left-outer", "left": {"kind": "table", "elementId": "src_f_web_traffic"}, "right": {"kind": "table", "elementId": "promo_day", "groupingId": "g_promo_day"}, "columns": [{"left": "[Date Key]", "right": "[Date Key]"}]}]}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[SRC F_WEB_TRAFFIC/Date Key]"}, {"id": "traffic_source", "name": "Traffic Source", "formula": "[SRC F_WEB_TRAFFIC/Traffic Source]"}, {"id": "web_visits", "name": "Web Visits", "formula": "[SRC F_WEB_TRAFFIC/Web Visits]", "description": "Sessions from this source on this day.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "spend", "name": "Spend", "formula": "[SRC F_MARKETING_SPEND/Spend]", "description": "Media spend against this source on this day. Always $0 for Direct and Organic Search - free traffic, not missing data.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "is_paid_source", "name": "Is Paid Source", "formula": "[Traffic Source/Is Paid Source]"}, {"id": "source_group", "name": "Source Group", "formula": "[Traffic Source/Source Group]"}, {"id": "active_promotions", "name": "Active Promotions", "formula": "Coalesce([Promo Day/Active Promotions], 0)", "description": "Promotions running company-wide this day. Lets acquisition volume be sliced by promotional pressure.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "has_promotion", "name": "Has Promotion", "formula": "Coalesce([Promo Day/Active Promotions], 0) > 0"}, {"id": "max_discount_percent", "name": "Max Discount Percent", "formula": "[Promo Day/Max Discount Percent]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "day_of_week_name", "name": "Day of Week Name", "formula": "[Date/Day of Week Name]"}, {"id": "is_weekend", "name": "Is Weekend", "formula": "[Date/Is Weekend]"}, {"id": "week_start_date", "name": "Week Start Date", "formula": "[Date/Week Start Date]"}, {"id": "calendar_year", "name": "Calendar Year", "formula": "[Date/Calendar Year]"}, {"id": "calendar_month_name", "name": "Calendar Month Name", "formula": "[Date/Calendar Month Name]"}, {"id": "calendar_quarter", "name": "Calendar Quarter", "formula": "[Date/Calendar Quarter]"}, {"id": "fiscal_year", "name": "Fiscal Year", "formula": "[Date/Fiscal Year]"}, {"id": "fiscal_quarter", "name": "Fiscal Quarter", "formula": "[Date/Fiscal Quarter]"}, {"id": "fiscal_period", "name": "Fiscal Period", "formula": "[Date/Fiscal Period]"}, {"id": "fiscal_period_name", "name": "Fiscal Period Name", "formula": "[Date/Fiscal Period Name]"}, {"id": "fiscal_week_of_year", "name": "Fiscal Week of Year", "formula": "[Date/Fiscal Week of Year]"}, {"id": "fiscal_season", "name": "Fiscal Season", "formula": "[Date/Fiscal Season]"}, {"id": "prior_year_date", "name": "Prior Year Date", "formula": "[Date/Prior Year Date]"}], "metrics": [{"id": "m_s_visits", "name": "Web Visits", "formula": "Sum([Web Visits])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_s_spend", "name": "Spend", "formula": "Sum([Spend])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_s_paid_visits", "name": "Paid Visits", "formula": "Sum(If([Is Paid Source], [Web Visits], 0))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_s_free_visits", "name": "Free Visits", "formula": "Sum(If([Is Paid Source], 0, [Web Visits]))", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_s_cpv", "name": "Cost per Visit", "formula": "[Metrics/Spend] / [Metrics/Web Visits]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_s_paid_cpv", "name": "Cost per Paid Visit", "formula": "[Metrics/Spend] / [Metrics/Paid Visits]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_s_paid_share", "name": "Paid Visit Share %", "formula": "[Metrics/Paid Visits] / [Metrics/Web Visits]", "format": {"kind": "number", "formatString": ".2%"}}]}, {"id": "funnel_day", "name": "Funnel Day", "kind": "table", "visibleAsSource": true, "description": "One row per date (1,522: 2021-08-19 to 2025-10-18). The only element in this model where demand meets revenue. Visits and spend are rolled up from all six sources; digital orders and dollars are LEFT JOINed from pre-aggregated Sales Activity and are BLENDED ACROSS SOURCES BY CONSTRUCTION - no order in this dataset carries a traffic source, so every conversion, ROAS and revenue-per-visit figure here is a day-level blend and must never be read as the performance of any one channel. Every digital order date has a matching traffic row, so there are zero orphans in either direction (one traffic day, with no digital order, is genuine).", "source": {"kind": "join", "primarySource": {"kind": "table", "elementId": "web_daily", "groupingId": "g_web_day"}, "joins": [{"joinType": "left-outer", "left": {"kind": "table", "elementId": "web_daily", "groupingId": "g_web_day"}, "right": {"kind": "table", "elementId": "digital_daily", "groupingId": "g_digital"}, "columns": [{"left": "[Date Key]", "right": "[Sale Date]"}]}, {"joinType": "left-outer", "left": {"kind": "table", "elementId": "web_daily", "groupingId": "g_web_day"}, "right": {"kind": "table", "elementId": "promo_day", "groupingId": "g_promo_day"}, "columns": [{"left": "[Date Key]", "right": "[Date Key]"}]}, {"joinType": "left-outer", "left": {"kind": "table", "elementId": "web_daily", "groupingId": "g_web_day"}, "right": {"kind": "table", "elementId": "markdown_day", "groupingId": "g_markdown_day"}, "columns": [{"left": "[Date Key]", "right": "[Effective Start Date]"}]}, {"joinType": "left-outer", "left": {"kind": "table", "elementId": "web_daily", "groupingId": "g_web_day"}, "right": {"kind": "table", "elementId": "dim_date"}, "columns": [{"left": "[Date Key]", "right": "[Date Key]"}]}]}, "columns": [{"id": "date_key", "name": "Date Key", "formula": "[Web Daily/Date Key]"}, {"id": "web_visits", "name": "Web Visits", "formula": "[Web Daily/Web Visits]", "description": "All sessions this day, every source.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "paid_visits", "name": "Paid Visits", "formula": "[Web Daily/Paid Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "free_visits", "name": "Free Visits", "formula": "[Web Daily/Free Visits]", "description": "Direct + Organic Search - 44.4% of all sessions at zero recorded cost.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "marketing_spend", "name": "Marketing Spend", "formula": "[Web Daily/Marketing Spend]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "paid_media_spend", "name": "Paid Media Spend", "formula": "[Web Daily/Paid Media Spend]", "description": "Paid Search + Social.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "paid_search_spend", "name": "Paid Search Spend", "formula": "[Web Daily/Paid Search Spend]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "social_spend", "name": "Social Spend", "formula": "[Web Daily/Social Spend]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "paid_search_visits", "name": "Paid Search Visits", "formula": "[Web Daily/Paid Search Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "social_visits", "name": "Social Visits", "formula": "[Web Daily/Social Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "organic_visits", "name": "Organic Visits", "formula": "[Web Daily/Organic Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "direct_visits", "name": "Direct Visits", "formula": "[Web Daily/Direct Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "email_visits", "name": "Email Visits", "formula": "[Web Daily/Email Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "referral_visits", "name": "Referral Visits", "formula": "[Web Daily/Referral Visits]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "web_orders", "name": "Web Orders", "formula": "Coalesce([Digital Daily/Web Orders], 0)", "description": "Pure-play Web channel orders. Pairs with Web Visits for the 2.54% baseline conversion rate.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "digital_orders", "name": "Digital Orders", "formula": "Coalesce([Digital Daily/Digital Orders], 0)", "description": "Web + BOPIS + BOSS. All three are placed online (transaction location 9999) and so all three are outcomes of the same web sessions - 3.76% of visits, not 2.54%.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "digital_customers", "name": "Digital Customers", "formula": "Coalesce([Digital Daily/Digital Customers], 0)", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "web_gross_sales", "name": "Web Gross Sales", "formula": "Coalesce([Digital Daily/Web Gross Sales], 0)", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_gross_sales", "name": "Digital Gross Sales", "formula": "Coalesce([Digital Daily/Digital Gross Sales], 0)", "description": "Web + BOPIS + BOSS gross sales for orders placed this day.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_returns", "name": "Digital Returns", "formula": "Coalesce([Digital Daily/Digital Returns], 0)", "description": "Refunds against orders placed this day (cohort-dated, not refund-dated), so they line up with the spend that drove them.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_net_sales", "name": "Digital Net Sales", "formula": "Coalesce([Digital Daily/Digital Net Sales], 0)", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_cost", "name": "Digital Cost", "formula": "Coalesce([Digital Daily/Digital Cost], 0)", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "digital_units", "name": "Digital Units", "formula": "Coalesce([Digital Daily/Digital Units], 0)", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "digital_gross_margin", "name": "Digital Gross Margin", "formula": "Coalesce([Digital Daily/Digital Net Sales], 0) - Coalesce([Digital Daily/Digital Cost], 0)", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "total_gross_sales", "name": "Total Gross Sales", "formula": "Coalesce([Digital Daily/Total Gross Sales], 0)", "description": "All channels including in-store. Present only as the denominator for Digital Mix %.", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "active_promotions", "name": "Active Promotions", "formula": "Coalesce([Promo Day/Active Promotions], 0)", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "has_promotion", "name": "Has Promotion", "formula": "Coalesce([Promo Day/Active Promotions], 0) > 0", "description": "True on 288 of 1,522 days. Slicing this model by it shows promotional days converting at 3.79% vs 3.75% and generating 1.7% LESS revenue per day - the promotion calendar has no measurable lift in this dataset."}, {"id": "promotion_name", "name": "Promotion Name", "formula": "[Promo Day/Promotion Name]"}, {"id": "promotion_type", "name": "Promotion Type", "formula": "[Promo Day/Promotion Type]"}, {"id": "promotion_channel", "name": "Promotion Channel", "formula": "[Promo Day/Promotion Channel]"}, {"id": "max_discount_percent", "name": "Max Discount Percent", "formula": "[Promo Day/Max Discount Percent]", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "price_changes", "name": "Price Changes", "formula": "Coalesce([Markdown Day/Price Changes], 0)", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "markdowns", "name": "Markdowns", "formula": "Coalesce([Markdown Day/Markdowns], 0)", "description": "Genuine price cuts effective this day.", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "price_resets", "name": "Price Resets", "formula": "Coalesce([Markdown Day/Price Resets], 0)", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "products_marked_down", "name": "Products Marked Down", "formula": "Coalesce([Markdown Day/Products Marked Down], 0)", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "day_of_week_name", "name": "Day of Week Name", "formula": "[Date/Day of Week Name]"}, {"id": "is_weekend", "name": "Is Weekend", "formula": "[Date/Is Weekend]"}, {"id": "week_start_date", "name": "Week Start Date", "formula": "[Date/Week Start Date]"}, {"id": "calendar_year", "name": "Calendar Year", "formula": "[Date/Calendar Year]"}, {"id": "calendar_month_name", "name": "Calendar Month Name", "formula": "[Date/Calendar Month Name]"}, {"id": "calendar_quarter", "name": "Calendar Quarter", "formula": "[Date/Calendar Quarter]"}, {"id": "fiscal_year", "name": "Fiscal Year", "formula": "[Date/Fiscal Year]"}, {"id": "fiscal_quarter", "name": "Fiscal Quarter", "formula": "[Date/Fiscal Quarter]"}, {"id": "fiscal_period", "name": "Fiscal Period", "formula": "[Date/Fiscal Period]"}, {"id": "fiscal_period_name", "name": "Fiscal Period Name", "formula": "[Date/Fiscal Period Name]"}, {"id": "fiscal_week_of_year", "name": "Fiscal Week of Year", "formula": "[Date/Fiscal Week of Year]"}, {"id": "fiscal_season", "name": "Fiscal Season", "formula": "[Date/Fiscal Season]"}, {"id": "prior_year_date", "name": "Prior Year Date", "formula": "[Date/Prior Year Date]"}], "metrics": [{"id": "m_d_visits", "name": "Web Visits", "formula": "Sum([Web Visits])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_d_paid_visits", "name": "Paid Visits", "formula": "Sum([Paid Visits])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_d_spend", "name": "Marketing Spend", "formula": "Sum([Marketing Spend])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_paid_media_spend", "name": "Paid Media Spend", "formula": "Sum([Paid Media Spend])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_cpv", "name": "Cost per Visit", "formula": "[Metrics/Marketing Spend] / [Metrics/Web Visits]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_web_orders", "name": "Web Orders", "formula": "Sum([Web Orders])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_d_digital_orders", "name": "Digital Orders", "formula": "Sum([Digital Orders])", "format": {"kind": "number", "formatString": ",.0f"}}, {"id": "m_d_web_conv", "name": "Web Conversion Rate %", "formula": "[Metrics/Web Orders] / [Metrics/Web Visits]", "format": {"kind": "number", "formatString": ".2%"}}, {"id": "m_d_digital_conv", "name": "Digital Conversion Rate %", "formula": "[Metrics/Digital Orders] / [Metrics/Web Visits]", "format": {"kind": "number", "formatString": ".2%"}}, {"id": "m_d_gross", "name": "Digital Gross Sales", "formula": "Sum([Digital Gross Sales])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_returns", "name": "Digital Returns", "formula": "Sum([Digital Returns])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_net", "name": "Digital Net Sales", "formula": "Sum([Digital Net Sales])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_return_rate", "name": "Digital Return Rate %", "formula": "[Metrics/Digital Returns] / [Metrics/Digital Gross Sales]", "format": {"kind": "number", "formatString": ".2%"}}, {"id": "m_d_margin", "name": "Digital Gross Margin", "formula": "Sum([Digital Gross Margin])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_margin_pct", "name": "Digital Margin %", "formula": "[Metrics/Digital Gross Margin] / [Metrics/Digital Net Sales]", "format": {"kind": "number", "formatString": ".2%"}}, {"id": "m_d_rpv", "name": "Revenue per Visit", "formula": "[Metrics/Digital Gross Sales] / [Metrics/Web Visits]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_aov", "name": "Digital AOV", "formula": "[Metrics/Digital Gross Sales] / [Metrics/Digital Orders]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_cac", "name": "Cost per Digital Order", "formula": "[Metrics/Marketing Spend] / [Metrics/Digital Orders]", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_roas", "name": "Blended ROAS", "formula": "[Metrics/Digital Gross Sales] / [Metrics/Marketing Spend]", "format": {"kind": "number", "formatString": ",.2f"}}, {"id": "m_d_net_roas", "name": "Blended Net ROAS", "formula": "[Metrics/Digital Net Sales] / [Metrics/Marketing Spend]", "format": {"kind": "number", "formatString": ",.2f"}}, {"id": "m_d_total_gross", "name": "Total Gross Sales (All Channels)", "formula": "Sum([Total Gross Sales])", "format": {"kind": "number", "formatString": "$,.2f"}}, {"id": "m_d_digital_mix", "name": "Digital Mix %", "formula": "[Metrics/Digital Gross Sales] / [Metrics/Total Gross Sales (All Channels)]", "format": {"kind": "number", "formatString": ".2%"}}]}]}]}
+{
+  "schemaVersion": 1,
+  "folderId": "0883a1b1-700d-4ee8-878f-db648d4e51fa",
+  "name": "Retail Marketing & Digital Funnel",
+  "description": "Date x Traffic Source acquisition and daily digital conversion. The only view of demand before it becomes a transaction. KNOWN LIMIT, BY DESIGN: no order in this dataset carries a traffic source, so per-source ROAS is not derivable - spend and visits are modelled per source, revenue only per day and explicitly blended. Sources conformed dimensions from the Retail Sales Activity model.",
+  "pages": [
+    {
+      "id": "page_sources",
+      "name": "Sources",
+      "elements": [
+        {
+          "id": "src_f_web_traffic",
+          "name": "SRC F_WEB_TRAFFIC",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "lXFXBVuiME"
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[F_WEB_TRAFFIC.csv/Date Key]"
+            },
+            {
+              "id": "traffic_source",
+              "name": "Traffic Source",
+              "formula": "[F_WEB_TRAFFIC.csv/Traffic Source]"
+            },
+            {
+              "id": "web_visits",
+              "name": "Web Visits",
+              "formula": "[F_WEB_TRAFFIC.csv/Web Visits]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Daily web sessions by acquisition source. 9,132 rows = 1,522 days x 6 sources, exactly co-grained with F_MARKETING_SPEND."
+        },
+        {
+          "id": "src_f_marketing_spend",
+          "name": "SRC F_MARKETING_SPEND",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "b765b086-4e7e-426b-ac82-7d6e0cf5a71c",
+            "elementId": "sHQCXTMbCb"
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[F_MARKETING_SPEND.csv/Date Key]"
+            },
+            {
+              "id": "traffic_source",
+              "name": "Traffic Source",
+              "formula": "[F_MARKETING_SPEND.csv/Traffic Source]"
+            },
+            {
+              "id": "spend",
+              "name": "Spend",
+              "formula": "[F_MARKETING_SPEND.csv/Spend]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Daily media spend by source. Same 9,132 keys as F_WEB_TRAFFIC, so the two join 1:1 with no orphans on either side."
+        },
+        {
+          "id": "src_date",
+          "name": "SRC Date",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "dim_date"
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[Date/Date Key]"
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[Date/Day of Week Name]"
+            },
+            {
+              "id": "day_of_week_number",
+              "name": "Day of Week Number",
+              "formula": "[Date/Day of Week Number]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[Date/Week Start Date]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month",
+              "name": "Calendar Month",
+              "formula": "[Date/Calendar Month]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[Date/Calendar Month Name]"
+            },
+            {
+              "id": "calendar_quarter",
+              "name": "Calendar Quarter",
+              "formula": "[Date/Calendar Quarter]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[Date/Fiscal Season]"
+            },
+            {
+              "id": "prior_year_date",
+              "name": "Prior Year Date",
+              "formula": "[Date/Prior Year Date]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Conformed Date dimension (4-5-4 fiscal) referenced from the Retail Sales Activity model."
+        },
+        {
+          "id": "src_promotion",
+          "name": "SRC Promotion",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "dim_promotion"
+          },
+          "columns": [
+            {
+              "id": "promotion_key",
+              "name": "Promotion Key",
+              "formula": "[Promotion/Promotion Key]"
+            },
+            {
+              "id": "promotion_name",
+              "name": "Promotion Name",
+              "formula": "[Promotion/Promotion Name]"
+            },
+            {
+              "id": "promotion_type",
+              "name": "Promotion Type",
+              "formula": "[Promotion/Promotion Type]"
+            },
+            {
+              "id": "start_date",
+              "name": "Start Date",
+              "formula": "[Promotion/Start Date]"
+            },
+            {
+              "id": "end_date",
+              "name": "End Date",
+              "formula": "[Promotion/End Date]"
+            },
+            {
+              "id": "discount_percent",
+              "name": "Discount Percent",
+              "formula": "[Promotion/Discount Percent]"
+            },
+            {
+              "id": "channel",
+              "name": "Channel",
+              "formula": "[Promotion/Channel]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "52 promotions with start/end dates, referenced from the Retail Sales Activity model."
+        },
+        {
+          "id": "src_markdowns",
+          "name": "SRC Markdowns",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "markdowns"
+          },
+          "columns": [
+            {
+              "id": "product_key",
+              "name": "Product Key",
+              "formula": "[Markdowns/Product Key]"
+            },
+            {
+              "id": "effective_start_date",
+              "name": "Effective Start Date",
+              "formula": "[Markdowns/Effective Start Date]"
+            },
+            {
+              "id": "price",
+              "name": "Price",
+              "formula": "[Markdowns/Price]"
+            },
+            {
+              "id": "discount_percent",
+              "name": "Discount Percent",
+              "formula": "[Markdowns/Discount Percent]"
+            },
+            {
+              "id": "promotion_key",
+              "name": "Promotion Key",
+              "formula": "[Markdowns/Promotion Key]"
+            },
+            {
+              "id": "product_name",
+              "name": "Product Name",
+              "formula": "[Markdowns/Product Name]"
+            },
+            {
+              "id": "product_family",
+              "name": "Product Family",
+              "formula": "[Markdowns/Product Family]"
+            },
+            {
+              "id": "promotion_name",
+              "name": "Promotion Name",
+              "formula": "[Markdowns/Promotion Name]"
+            },
+            {
+              "id": "promotion_type",
+              "name": "Promotion Type",
+              "formula": "[Markdowns/Promotion Type]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Product price-change ledger referenced from the Retail Sales Activity model."
+        },
+        {
+          "id": "src_sales_activity",
+          "name": "SRC Sales Activity",
+          "kind": "table",
+          "source": {
+            "kind": "data-model",
+            "dataModelId": "8c548776-acb2-46ac-b60d-dd5a70781bd2",
+            "elementId": "sales_activity"
+          },
+          "columns": [
+            {
+              "id": "sale_date",
+              "name": "Sale Date",
+              "formula": "[Sales Activity/Sale Date]"
+            },
+            {
+              "id": "activity_type",
+              "name": "Activity Type",
+              "formula": "[Sales Activity/Activity Type]"
+            },
+            {
+              "id": "channel_type",
+              "name": "Channel Type",
+              "formula": "[Sales Activity/Channel Type]"
+            },
+            {
+              "id": "order_number",
+              "name": "Order Number",
+              "formula": "[Sales Activity/Order Number]"
+            },
+            {
+              "id": "cust_key",
+              "name": "Cust Key",
+              "formula": "[Sales Activity/Cust Key]"
+            },
+            {
+              "id": "quantity",
+              "name": "Quantity",
+              "formula": "[Sales Activity/Quantity]"
+            },
+            {
+              "id": "amount",
+              "name": "Amount",
+              "formula": "[Sales Activity/Amount]"
+            },
+            {
+              "id": "cost",
+              "name": "Cost",
+              "formula": "[Sales Activity/Cost]"
+            }
+          ],
+          "visibleAsSource": false,
+          "description": "Sales + returns fact referenced from the Retail Sales Activity model, projected to the columns needed for daily digital revenue."
+        }
+      ]
+    },
+    {
+      "id": "page_dims",
+      "name": "Conformed Dimensions",
+      "elements": [
+        {
+          "id": "dim_date",
+          "name": "Date",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "Retail 4-5-4 fiscal calendar. Sigma's built-in period-over-period and DateLookback are CALENDAR-based and will not align to 4-5-4 week boundaries; use Prior Year Date for fiscal-correct comps. Wider than the funnel window (web traffic runs 2021-08-19 to 2025-10-18).",
+          "source": {
+            "kind": "table",
+            "elementId": "src_date"
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[SRC Date/Date Key]"
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[SRC Date/Day of Week Name]"
+            },
+            {
+              "id": "day_of_week_number",
+              "name": "Day of Week Number",
+              "formula": "[SRC Date/Day of Week Number]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[SRC Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[SRC Date/Week Start Date]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[SRC Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month",
+              "name": "Calendar Month",
+              "formula": "[SRC Date/Calendar Month]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[SRC Date/Calendar Month Name]"
+            },
+            {
+              "id": "calendar_quarter",
+              "name": "Calendar Quarter",
+              "formula": "[SRC Date/Calendar Quarter]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[SRC Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[SRC Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[SRC Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[SRC Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[SRC Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[SRC Date/Fiscal Season]"
+            },
+            {
+              "id": "prior_year_date",
+              "name": "Prior Year Date",
+              "formula": "[SRC Date/Prior Year Date]"
+            }
+          ]
+        },
+        {
+          "id": "dim_traffic_source",
+          "name": "Traffic Source",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "The six web acquisition sources. Direct and Organic Search carry ZERO spend on all 1,522 days - they are free traffic and together supply 2,148,437 visits (44.4% of all sessions). Any cost-per-visit or ROAS figure that averages them in with paid media is diluted by design; slice by Is Paid Source or Source Group to avoid it.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_f_web_traffic"
+          },
+          "columns": [
+            {
+              "id": "traffic_source",
+              "name": "Traffic Source",
+              "formula": "[SRC F_WEB_TRAFFIC/Traffic Source]"
+            },
+            {
+              "id": "is_paid_source",
+              "name": "Is Paid Source",
+              "formula": "If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", True, False)",
+              "description": "True for Paid Search, Social, Email and Referral, all of which record spend on every day. False for Direct and Organic Search, which record $0 on every day."
+            },
+            {
+              "id": "source_group",
+              "name": "Source Group",
+              "formula": "If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", \"Paid Media\", If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", \"Owned & Earned\", \"Free\"))",
+              "description": "Paid Media (Paid Search, Social - $1.50M of the $1.56M total spend), Owned & Earned (Email, Referral), Free (Direct, Organic Search)."
+            },
+            {
+              "id": "lifetime_visits",
+              "name": "Lifetime Visits",
+              "formula": "Sum([SRC F_WEB_TRAFFIC/Web Visits])",
+              "description": "All-time sessions from this source, for sizing only.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_source",
+              "groupBy": [
+                "traffic_source",
+                "is_paid_source",
+                "source_group"
+              ],
+              "calculations": [
+                "lifetime_visits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dim_promotion",
+          "name": "Promotion",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "52 promotions: 37 Seasonal, 15 Flash Sale; 40 tagged Channel = All and 12 Web-only. Discounts run 10-34%. They cover 288 of the 1,522 funnel days and overlap two-deep on 16 of those days - which is why Promo Day rolls promotions up to one row per date before they reach any fact.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_promotion"
+          },
+          "columns": [
+            {
+              "id": "promotion_key",
+              "name": "Promotion Key",
+              "formula": "[SRC Promotion/Promotion Key]"
+            },
+            {
+              "id": "promotion_name",
+              "name": "Promotion Name",
+              "formula": "[SRC Promotion/Promotion Name]"
+            },
+            {
+              "id": "promotion_type",
+              "name": "Promotion Type",
+              "formula": "[SRC Promotion/Promotion Type]"
+            },
+            {
+              "id": "start_date",
+              "name": "Start Date",
+              "formula": "[SRC Promotion/Start Date]"
+            },
+            {
+              "id": "end_date",
+              "name": "End Date",
+              "formula": "[SRC Promotion/End Date]"
+            },
+            {
+              "id": "discount_percent",
+              "name": "Discount Percent",
+              "formula": "[SRC Promotion/Discount Percent]"
+            },
+            {
+              "id": "channel",
+              "name": "Channel",
+              "formula": "[SRC Promotion/Channel]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page_build",
+      "name": "Daily Build",
+      "elements": [
+        {
+          "id": "web_daily",
+          "name": "Web Daily",
+          "kind": "table",
+          "visibleAsSource": false,
+          "description": "F_WEB_TRAFFIC and F_MARKETING_SPEND collapsed from Date x Source to one row per date, carrying the paid/free split that the day grain would otherwise lose.",
+          "source": {
+            "kind": "join",
+            "primarySource": {
+              "kind": "table",
+              "elementId": "src_f_web_traffic"
+            },
+            "joins": [
+              {
+                "joinType": "inner",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_web_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "src_f_marketing_spend"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  },
+                  {
+                    "left": "[Traffic Source]",
+                    "right": "[Traffic Source]"
+                  }
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[SRC F_WEB_TRAFFIC/Date Key]"
+            },
+            {
+              "id": "web_visits",
+              "name": "Web Visits",
+              "formula": "Sum([SRC F_WEB_TRAFFIC/Web Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "paid_visits",
+              "name": "Paid Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "free_visits",
+              "name": "Free Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", 0, [SRC F_WEB_TRAFFIC/Web Visits]))",
+              "description": "Direct + Organic Search sessions - 44.4% of all traffic, acquired at zero recorded cost.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "marketing_spend",
+              "name": "Marketing Spend",
+              "formula": "Sum([SRC F_MARKETING_SPEND/Spend])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "paid_media_spend",
+              "name": "Paid Media Spend",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\" or [SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", [SRC F_MARKETING_SPEND/Spend], 0))",
+              "description": "Paid Search + Social only.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "paid_search_spend",
+              "name": "Paid Search Spend",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\", [SRC F_MARKETING_SPEND/Spend], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "social_spend",
+              "name": "Social Spend",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", [SRC F_MARKETING_SPEND/Spend], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "paid_search_visits",
+              "name": "Paid Search Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Paid Search\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "social_visits",
+              "name": "Social Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Social\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "organic_visits",
+              "name": "Organic Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Organic Search\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "direct_visits",
+              "name": "Direct Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Direct\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "email_visits",
+              "name": "Email Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Email\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "referral_visits",
+              "name": "Referral Visits",
+              "formula": "Sum(If([SRC F_WEB_TRAFFIC/Traffic Source] = \"Referral\", [SRC F_WEB_TRAFFIC/Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_web_day",
+              "groupBy": [
+                "date_key"
+              ],
+              "calculations": [
+                "web_visits",
+                "paid_visits",
+                "free_visits",
+                "marketing_spend",
+                "paid_media_spend",
+                "paid_search_spend",
+                "social_spend",
+                "paid_search_visits",
+                "social_visits",
+                "organic_visits",
+                "direct_visits",
+                "email_visits",
+                "referral_visits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "digital_daily",
+          "name": "Digital Daily",
+          "kind": "table",
+          "visibleAsSource": false,
+          "description": "Sales Activity collapsed to one row per SALE DATE. MANDATORY pre-aggregation - joining line-grain Sales Activity to a day spine would fan the funnel out 4.9M ways. Dated by Sale Date, not Activity Date, so a return lands on the day of the order that produced it: revenue and returns on a given day are one cohort, which is what a spend-driven ROAS needs. All-time totals still tie exactly to the Retail Sales Activity model; only the day-by-day distribution of returns differs.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_sales_activity"
+          },
+          "columns": [
+            {
+              "id": "sale_date",
+              "name": "Sale Date",
+              "formula": "[SRC Sales Activity/Sale Date]"
+            },
+            {
+              "id": "digital_gross_sales",
+              "name": "Digital Gross Sales",
+              "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Amount], 0))",
+              "description": "Web + BOPIS + BOSS gross sales for orders placed this day.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_returns",
+              "name": "Digital Returns",
+              "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Return\" and [SRC Sales Activity/Channel Type] <> \"Retail\", -[SRC Sales Activity/Amount], 0))",
+              "description": "Refunds against digital orders placed this day, whenever the refund was actually processed.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_net_sales",
+              "name": "Digital Net Sales",
+              "formula": "Sum(If([SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Amount], 0))",
+              "description": "Digital gross sales less cohort returns.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_cost",
+              "name": "Digital Cost",
+              "formula": "Sum(If([SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Cost], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_units",
+              "name": "Digital Units",
+              "formula": "Sum(If([SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Quantity], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "web_gross_sales",
+              "name": "Web Gross Sales",
+              "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] = \"Web\", [SRC Sales Activity/Amount], 0))",
+              "description": "Pure-play Web channel only, excluding BOPIS and BOSS.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "total_gross_sales",
+              "name": "Total Gross Sales",
+              "formula": "Sum(If([SRC Sales Activity/Activity Type] = \"Sale\", [SRC Sales Activity/Amount], 0))",
+              "description": "All channels including Retail. Present only as the denominator for Digital Mix %.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_orders",
+              "name": "Digital Orders",
+              "formula": "CountDistinct(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Order Number], Null))",
+              "description": "Distinct Web + BOPIS + BOSS orders placed this day.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "web_orders",
+              "name": "Web Orders",
+              "formula": "CountDistinct(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] = \"Web\", [SRC Sales Activity/Order Number], Null))",
+              "description": "Distinct pure-play Web orders placed this day. This is the numerator behind the 2.54% baseline web conversion rate.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "digital_customers",
+              "name": "Digital Customers",
+              "formula": "CountDistinct(If([SRC Sales Activity/Activity Type] = \"Sale\" and [SRC Sales Activity/Channel Type] <> \"Retail\", [SRC Sales Activity/Cust Key], Null))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_digital",
+              "groupBy": [
+                "sale_date"
+              ],
+              "calculations": [
+                "digital_gross_sales",
+                "digital_returns",
+                "digital_net_sales",
+                "digital_cost",
+                "digital_units",
+                "web_gross_sales",
+                "total_gross_sales",
+                "digital_orders",
+                "web_orders",
+                "digital_customers"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "promo_day",
+          "name": "Promo Day",
+          "kind": "table",
+          "visibleAsSource": false,
+          "description": "Promotions exploded onto the calendar by a RANGE join (Date Key between Start Date and End Date), then collapsed to one row per date. The collapse is mandatory: 16 dates have two promotions running at once, so joining Promotion straight onto a day-grain fact would double those days' visits, spend and revenue.",
+          "source": {
+            "kind": "join",
+            "primarySource": {
+              "kind": "table",
+              "elementId": "dim_date"
+            },
+            "joins": [
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "dim_date"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_promotion"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Start Date]",
+                    "op": ">="
+                  },
+                  {
+                    "left": "[Date Key]",
+                    "right": "[End Date]",
+                    "op": "<="
+                  }
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[Date/Date Key]"
+            },
+            {
+              "id": "active_promotions",
+              "name": "Active Promotions",
+              "formula": "CountDistinct([Promotion/Promotion Key])",
+              "description": "0, 1 or 2. Two promotions overlap on 16 of the 288 promotional days.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "max_discount_percent",
+              "name": "Max Discount Percent",
+              "formula": "Max([Promotion/Discount Percent])",
+              "description": "Deepest discount advertised this day, 10-34%.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "promotion_name",
+              "name": "Promotion Name",
+              "formula": "Max([Promotion/Promotion Name])",
+              "description": "The promotion running this day. On the 16 dates where Active Promotions = 2 this shows only one of them - check Active Promotions before reading it as the whole story."
+            },
+            {
+              "id": "promotion_type",
+              "name": "Promotion Type",
+              "formula": "Max([Promotion/Promotion Type])",
+              "description": "Flash Sale or Seasonal, with the same one-of-two caveat as Promotion Name."
+            },
+            {
+              "id": "promotion_channel",
+              "name": "Promotion Channel",
+              "formula": "Max([Promotion/Channel])",
+              "description": "All or Web."
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_promo_day",
+              "groupBy": [
+                "date_key"
+              ],
+              "calculations": [
+                "active_promotions",
+                "max_discount_percent",
+                "promotion_name",
+                "promotion_type",
+                "promotion_channel"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "markdown_day",
+          "name": "Markdown Day",
+          "kind": "table",
+          "visibleAsSource": false,
+          "description": "The product price-change ledger collapsed to one row per effective date. 6,051 rows across 1,490 dates, but only 1,118 are genuine markdowns: the other 4,933 carry Discount Percent = 0 and are price RESETS back to full price. Counting all 6,051 as markdowns overstates promotional pressure five-fold.",
+          "source": {
+            "kind": "table",
+            "elementId": "src_markdowns"
+          },
+          "columns": [
+            {
+              "id": "effective_start_date",
+              "name": "Effective Start Date",
+              "formula": "[SRC Markdowns/Effective Start Date]"
+            },
+            {
+              "id": "price_changes",
+              "name": "Price Changes",
+              "formula": "Count([SRC Markdowns/Product Key])",
+              "description": "Every price change effective this day, markdowns and resets alike.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "markdowns",
+              "name": "Markdowns",
+              "formula": "Sum(If([SRC Markdowns/Discount Percent] > 0, 1, 0))",
+              "description": "Price changes that actually cut price. Exactly the rows carrying a Promotion Key.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "price_resets",
+              "name": "Price Resets",
+              "formula": "Sum(If([SRC Markdowns/Discount Percent] = 0, 1, 0))",
+              "description": "Returns to full price. 4,933 of the 6,051 ledger rows.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "max_markdown_percent",
+              "name": "Max Markdown Percent",
+              "formula": "Max([SRC Markdowns/Discount Percent])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "products_marked_down",
+              "name": "Products Marked Down",
+              "formula": "CountDistinct(If([SRC Markdowns/Discount Percent] > 0, [SRC Markdowns/Product Key], Null))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            }
+          ],
+          "groupings": [
+            {
+              "id": "g_markdown_day",
+              "groupBy": [
+                "effective_start_date"
+              ],
+              "calculations": [
+                "price_changes",
+                "markdowns",
+                "price_resets",
+                "max_markdown_percent",
+                "products_marked_down"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "page_funnel",
+      "name": "Marketing Funnel",
+      "elements": [
+        {
+          "id": "funnel_source",
+          "name": "Funnel by Source",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "One row per Date x Traffic Source (9,132 = 1,522 days x 6 sources). Visits and spend join 1:1 with no orphans on either side. THERE IS DELIBERATELY NO REVENUE, ORDER COUNT OR CONVERSION RATE ON THIS ELEMENT. Orders in this dataset carry no traffic source, so per-source attribution is not derivable; allocating day revenue across sources by visit share would look like attribution while being an assumption. Use this element for acquisition volume, spend and efficiency-to-visit; use Funnel Day for anything that touches revenue.",
+          "source": {
+            "kind": "join",
+            "primarySource": {
+              "kind": "table",
+              "elementId": "src_f_web_traffic"
+            },
+            "joins": [
+              {
+                "joinType": "inner",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_web_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "src_f_marketing_spend"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  },
+                  {
+                    "left": "[Traffic Source]",
+                    "right": "[Traffic Source]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_web_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_traffic_source",
+                  "groupingId": "g_source"
+                },
+                "columns": [
+                  {
+                    "left": "[Traffic Source]",
+                    "right": "[Traffic Source]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_web_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_date"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "src_f_web_traffic"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "promo_day",
+                  "groupingId": "g_promo_day"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  }
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[SRC F_WEB_TRAFFIC/Date Key]"
+            },
+            {
+              "id": "traffic_source",
+              "name": "Traffic Source",
+              "formula": "[SRC F_WEB_TRAFFIC/Traffic Source]"
+            },
+            {
+              "id": "web_visits",
+              "name": "Web Visits",
+              "formula": "[SRC F_WEB_TRAFFIC/Web Visits]",
+              "description": "Sessions from this source on this day.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "spend",
+              "name": "Spend",
+              "formula": "[SRC F_MARKETING_SPEND/Spend]",
+              "description": "Media spend against this source on this day. Always $0 for Direct and Organic Search - free traffic, not missing data.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "is_paid_source",
+              "name": "Is Paid Source",
+              "formula": "[Traffic Source/Is Paid Source]"
+            },
+            {
+              "id": "source_group",
+              "name": "Source Group",
+              "formula": "[Traffic Source/Source Group]"
+            },
+            {
+              "id": "active_promotions",
+              "name": "Active Promotions",
+              "formula": "Coalesce([Promo Day/Active Promotions], 0)",
+              "description": "Promotions running company-wide this day. Lets acquisition volume be sliced by promotional pressure.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "has_promotion",
+              "name": "Has Promotion",
+              "formula": "Coalesce([Promo Day/Active Promotions], 0) > 0"
+            },
+            {
+              "id": "max_discount_percent",
+              "name": "Max Discount Percent",
+              "formula": "[Promo Day/Max Discount Percent]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[Date/Day of Week Name]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[Date/Week Start Date]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[Date/Calendar Month Name]"
+            },
+            {
+              "id": "calendar_quarter",
+              "name": "Calendar Quarter",
+              "formula": "[Date/Calendar Quarter]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[Date/Fiscal Season]"
+            },
+            {
+              "id": "prior_year_date",
+              "name": "Prior Year Date",
+              "formula": "[Date/Prior Year Date]"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "m_s_visits",
+              "name": "Web Visits",
+              "formula": "Sum([Web Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Web sessions from this source on these days. 4,834,940 all-time across the six sources. This is the only volume measure in the model that is genuinely attributable to a source."
+            },
+            {
+              "id": "m_s_spend",
+              "name": "Spend",
+              "formula": "Sum([Spend])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Media spend booked against this source. $1,564,043.87 all-time. Always $0 for Direct and Organic Search - those are free traffic, not missing data - so a total across all six sources is a paid-media total even though it looks like a total for everything."
+            },
+            {
+              "id": "m_s_paid_visits",
+              "name": "Paid Visits",
+              "formula": "Sum(If([Is Paid Source], [Web Visits], 0))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Sessions from the four sources that record spend (Paid Search, Social, Email, Referral). 2,686,503 all-time, 55.6% of traffic."
+            },
+            {
+              "id": "m_s_free_visits",
+              "name": "Free Visits",
+              "formula": "Sum(If([Is Paid Source], 0, [Web Visits]))",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Sessions from Direct and Organic Search, which cost nothing on all 1,522 days. 2,148,437 all-time - 44.4% of all traffic arrives free."
+            },
+            {
+              "id": "m_s_cpv",
+              "name": "Cost per Visit",
+              "formula": "[Metrics/Spend] / [Metrics/Web Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Spend divided by ALL visits, paid and free together. $0.3235 all-time. Diluted by construction: 44.4% of the denominator cost nothing. Use Cost per Paid Visit to judge media efficiency, and this only when you deliberately want blended cost of all traffic."
+            },
+            {
+              "id": "m_s_paid_cpv",
+              "name": "Cost per Paid Visit",
+              "formula": "[Metrics/Spend] / [Metrics/Paid Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Spend divided by visits from spending sources only. $0.5822 all-time - about 1.8x the blended figure. This is the honest media efficiency number. Per source: Paid Search $1.0041, Social $0.3976, Referral $0.2022, Email $0.0301."
+            },
+            {
+              "id": "m_s_paid_share",
+              "name": "Paid Visit Share %",
+              "formula": "[Metrics/Paid Visits] / [Metrics/Web Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              },
+              "description": "Share of sessions that came from a source with spend against it. 55.6% all-time. Falling share means growing free traffic, not falling media performance - read it alongside Spend."
+            }
+          ]
+        },
+        {
+          "id": "funnel_day",
+          "name": "Funnel Day",
+          "kind": "table",
+          "visibleAsSource": true,
+          "description": "One row per date (1,522: 2021-08-19 to 2025-10-18). The only element in this model where demand meets revenue. Visits and spend are rolled up from all six sources; digital orders and dollars are LEFT JOINed from pre-aggregated Sales Activity and are BLENDED ACROSS SOURCES BY CONSTRUCTION - no order in this dataset carries a traffic source, so every conversion, ROAS and revenue-per-visit figure here is a day-level blend and must never be read as the performance of any one channel. Every digital order date has a matching traffic row, so there are zero orphans in either direction (one traffic day, with no digital order, is genuine).",
+          "source": {
+            "kind": "join",
+            "primarySource": {
+              "kind": "table",
+              "elementId": "web_daily",
+              "groupingId": "g_web_day"
+            },
+            "joins": [
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "web_daily",
+                  "groupingId": "g_web_day"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "digital_daily",
+                  "groupingId": "g_digital"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Sale Date]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "web_daily",
+                  "groupingId": "g_web_day"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "promo_day",
+                  "groupingId": "g_promo_day"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "web_daily",
+                  "groupingId": "g_web_day"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "markdown_day",
+                  "groupingId": "g_markdown_day"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Effective Start Date]"
+                  }
+                ]
+              },
+              {
+                "joinType": "left-outer",
+                "left": {
+                  "kind": "table",
+                  "elementId": "web_daily",
+                  "groupingId": "g_web_day"
+                },
+                "right": {
+                  "kind": "table",
+                  "elementId": "dim_date"
+                },
+                "columns": [
+                  {
+                    "left": "[Date Key]",
+                    "right": "[Date Key]"
+                  }
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "id": "date_key",
+              "name": "Date Key",
+              "formula": "[Web Daily/Date Key]"
+            },
+            {
+              "id": "web_visits",
+              "name": "Web Visits",
+              "formula": "[Web Daily/Web Visits]",
+              "description": "All sessions this day, every source.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "paid_visits",
+              "name": "Paid Visits",
+              "formula": "[Web Daily/Paid Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "free_visits",
+              "name": "Free Visits",
+              "formula": "[Web Daily/Free Visits]",
+              "description": "Direct + Organic Search - 44.4% of all sessions at zero recorded cost.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "marketing_spend",
+              "name": "Marketing Spend",
+              "formula": "[Web Daily/Marketing Spend]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "paid_media_spend",
+              "name": "Paid Media Spend",
+              "formula": "[Web Daily/Paid Media Spend]",
+              "description": "Paid Search + Social.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "paid_search_spend",
+              "name": "Paid Search Spend",
+              "formula": "[Web Daily/Paid Search Spend]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "social_spend",
+              "name": "Social Spend",
+              "formula": "[Web Daily/Social Spend]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "paid_search_visits",
+              "name": "Paid Search Visits",
+              "formula": "[Web Daily/Paid Search Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "social_visits",
+              "name": "Social Visits",
+              "formula": "[Web Daily/Social Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "organic_visits",
+              "name": "Organic Visits",
+              "formula": "[Web Daily/Organic Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "direct_visits",
+              "name": "Direct Visits",
+              "formula": "[Web Daily/Direct Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "email_visits",
+              "name": "Email Visits",
+              "formula": "[Web Daily/Email Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "referral_visits",
+              "name": "Referral Visits",
+              "formula": "[Web Daily/Referral Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "web_orders",
+              "name": "Web Orders",
+              "formula": "Coalesce([Digital Daily/Web Orders], 0)",
+              "description": "Pure-play Web channel orders. Pairs with Web Visits for the 2.54% baseline conversion rate.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "digital_orders",
+              "name": "Digital Orders",
+              "formula": "Coalesce([Digital Daily/Digital Orders], 0)",
+              "description": "Web + BOPIS + BOSS. All three are placed online (transaction location 9999) and so all three are outcomes of the same web sessions - 3.76% of visits, not 2.54%.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "digital_customers",
+              "name": "Digital Customers",
+              "formula": "Coalesce([Digital Daily/Digital Customers], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "web_gross_sales",
+              "name": "Web Gross Sales",
+              "formula": "Coalesce([Digital Daily/Web Gross Sales], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_gross_sales",
+              "name": "Digital Gross Sales",
+              "formula": "Coalesce([Digital Daily/Digital Gross Sales], 0)",
+              "description": "Web + BOPIS + BOSS gross sales for orders placed this day.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_returns",
+              "name": "Digital Returns",
+              "formula": "Coalesce([Digital Daily/Digital Returns], 0)",
+              "description": "Refunds against orders placed this day (cohort-dated, not refund-dated), so they line up with the spend that drove them.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_net_sales",
+              "name": "Digital Net Sales",
+              "formula": "Coalesce([Digital Daily/Digital Net Sales], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_cost",
+              "name": "Digital Cost",
+              "formula": "Coalesce([Digital Daily/Digital Cost], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "digital_units",
+              "name": "Digital Units",
+              "formula": "Coalesce([Digital Daily/Digital Units], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "digital_gross_margin",
+              "name": "Digital Gross Margin",
+              "formula": "Coalesce([Digital Daily/Digital Net Sales], 0) - Coalesce([Digital Daily/Digital Cost], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "total_gross_sales",
+              "name": "Total Gross Sales",
+              "formula": "Coalesce([Digital Daily/Total Gross Sales], 0)",
+              "description": "All channels including in-store. Present only as the denominator for Digital Mix %.",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              }
+            },
+            {
+              "id": "active_promotions",
+              "name": "Active Promotions",
+              "formula": "Coalesce([Promo Day/Active Promotions], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "has_promotion",
+              "name": "Has Promotion",
+              "formula": "Coalesce([Promo Day/Active Promotions], 0) > 0",
+              "description": "True on 288 of 1,522 days. Slicing this model by it shows promotional days converting at 3.79% vs 3.75% and generating 1.7% LESS revenue per day - the promotion calendar has no measurable lift in this dataset."
+            },
+            {
+              "id": "promotion_name",
+              "name": "Promotion Name",
+              "formula": "[Promo Day/Promotion Name]"
+            },
+            {
+              "id": "promotion_type",
+              "name": "Promotion Type",
+              "formula": "[Promo Day/Promotion Type]"
+            },
+            {
+              "id": "promotion_channel",
+              "name": "Promotion Channel",
+              "formula": "[Promo Day/Promotion Channel]"
+            },
+            {
+              "id": "max_discount_percent",
+              "name": "Max Discount Percent",
+              "formula": "[Promo Day/Max Discount Percent]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "price_changes",
+              "name": "Price Changes",
+              "formula": "Coalesce([Markdown Day/Price Changes], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "markdowns",
+              "name": "Markdowns",
+              "formula": "Coalesce([Markdown Day/Markdowns], 0)",
+              "description": "Genuine price cuts effective this day.",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "price_resets",
+              "name": "Price Resets",
+              "formula": "Coalesce([Markdown Day/Price Resets], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "products_marked_down",
+              "name": "Products Marked Down",
+              "formula": "Coalesce([Markdown Day/Products Marked Down], 0)",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              }
+            },
+            {
+              "id": "day_of_week_name",
+              "name": "Day of Week Name",
+              "formula": "[Date/Day of Week Name]"
+            },
+            {
+              "id": "is_weekend",
+              "name": "Is Weekend",
+              "formula": "[Date/Is Weekend]"
+            },
+            {
+              "id": "week_start_date",
+              "name": "Week Start Date",
+              "formula": "[Date/Week Start Date]"
+            },
+            {
+              "id": "calendar_year",
+              "name": "Calendar Year",
+              "formula": "[Date/Calendar Year]"
+            },
+            {
+              "id": "calendar_month_name",
+              "name": "Calendar Month Name",
+              "formula": "[Date/Calendar Month Name]"
+            },
+            {
+              "id": "calendar_quarter",
+              "name": "Calendar Quarter",
+              "formula": "[Date/Calendar Quarter]"
+            },
+            {
+              "id": "fiscal_year",
+              "name": "Fiscal Year",
+              "formula": "[Date/Fiscal Year]"
+            },
+            {
+              "id": "fiscal_quarter",
+              "name": "Fiscal Quarter",
+              "formula": "[Date/Fiscal Quarter]"
+            },
+            {
+              "id": "fiscal_period",
+              "name": "Fiscal Period",
+              "formula": "[Date/Fiscal Period]"
+            },
+            {
+              "id": "fiscal_period_name",
+              "name": "Fiscal Period Name",
+              "formula": "[Date/Fiscal Period Name]"
+            },
+            {
+              "id": "fiscal_week_of_year",
+              "name": "Fiscal Week of Year",
+              "formula": "[Date/Fiscal Week of Year]"
+            },
+            {
+              "id": "fiscal_season",
+              "name": "Fiscal Season",
+              "formula": "[Date/Fiscal Season]"
+            },
+            {
+              "id": "prior_year_date",
+              "name": "Prior Year Date",
+              "formula": "[Date/Prior Year Date]"
+            }
+          ],
+          "metrics": [
+            {
+              "id": "m_d_visits",
+              "name": "Web Visits",
+              "formula": "Sum([Web Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Web sessions this day, summed across all six sources. 4,834,940 all-time. The denominator for every conversion and per-visit metric on this element."
+            },
+            {
+              "id": "m_d_paid_visits",
+              "name": "Paid Visits",
+              "formula": "Sum([Paid Visits])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Sessions from Paid Search, Social, Email and Referral. 2,686,503 all-time (55.6%)."
+            },
+            {
+              "id": "m_d_spend",
+              "name": "Marketing Spend",
+              "formula": "Sum([Marketing Spend])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Total media spend this day. $1,564,043.87 all-time - only 0.53% of digital revenue, which is why every ROAS metric here reads implausibly high. See Blended ROAS."
+            },
+            {
+              "id": "m_d_paid_media_spend",
+              "name": "Paid Media Spend",
+              "formula": "Sum([Paid Media Spend])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Paid Search + Social only. $1,501,129.55 all-time, 96.0% of total spend. Excludes Email and Referral, which record spend but behave as owned/earned channels."
+            },
+            {
+              "id": "m_d_cpv",
+              "name": "Cost per Visit",
+              "formula": "[Metrics/Marketing Spend] / [Metrics/Web Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Marketing Spend divided by Web Visits. $0.3235 all-time. Blended across paid and free traffic - for media efficiency use Cost per Paid Visit on Funnel by Source instead."
+            },
+            {
+              "id": "m_d_web_orders",
+              "name": "Web Orders",
+              "formula": "Sum([Web Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Distinct orders on the pure-play Web channel, excluding BOPIS and BOSS. 122,713 all-time. Numerator of the published 2.54% baseline conversion rate."
+            },
+            {
+              "id": "m_d_digital_orders",
+              "name": "Digital Orders",
+              "formula": "Sum([Digital Orders])",
+              "format": {
+                "kind": "number",
+                "formatString": ",.0f"
+              },
+              "description": "Distinct Web + BOPIS + BOSS orders. 181,682 all-time. All three transact at location 9999, so all three are outcomes of the same web sessions - this, not Web Orders, is the true funnel outcome."
+            },
+            {
+              "id": "m_d_web_conv",
+              "name": "Web Conversion Rate %",
+              "formula": "[Metrics/Web Orders] / [Metrics/Web Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              },
+              "description": "Web Orders / Web Visits. 2.5380% all-time. This is the roadmap's published baseline, kept for continuity, but it understates the funnel by excluding BOPIS and BOSS. Prefer Digital Conversion Rate %."
+            },
+            {
+              "id": "m_d_digital_conv",
+              "name": "Digital Conversion Rate %",
+              "formula": "[Metrics/Digital Orders] / [Metrics/Web Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              },
+              "description": "Digital Orders / Web Visits. 3.7577% all-time - half again the web-only rate. The honest measure of what a web session is worth, because BOPIS and BOSS orders are placed online too. BLENDED ACROSS SOURCES: no order carries a traffic source, so this can never be split by channel."
+            },
+            {
+              "id": "m_d_gross",
+              "name": "Digital Gross Sales",
+              "formula": "Sum([Digital Gross Sales])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Web + BOPIS + BOSS gross sales for orders PLACED this day. $297,012,840.24 all-time. Ties exactly to the Retail Sales Activity model."
+            },
+            {
+              "id": "m_d_returns",
+              "name": "Digital Returns",
+              "formula": "Sum([Digital Returns])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Refunds against digital orders placed this day, wherever the refund later landed (cohort-dated, not refund-dated), so returns face the spend that bought the revenue. $26,766,803.85 all-time - identical to Sales Activity; only the day-by-day distribution differs."
+            },
+            {
+              "id": "m_d_net",
+              "name": "Digital Net Sales",
+              "formula": "Sum([Digital Net Sales])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Digital Gross Sales less cohort returns. $270,246,036.39 all-time."
+            },
+            {
+              "id": "m_d_return_rate",
+              "name": "Digital Return Rate %",
+              "formula": "[Metrics/Digital Returns] / [Metrics/Digital Gross Sales]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              },
+              "description": "Digital Returns / Digital Gross Sales. 9.01% all-time, against 5.44% company-wide and 4.23% in-store. Digital returns run more than 2x the in-store rate - the single largest cost of digital growth."
+            },
+            {
+              "id": "m_d_margin",
+              "name": "Digital Gross Margin",
+              "formula": "Sum([Digital Gross Margin])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Digital Net Sales less digital cost of goods. $52,668,135.12 all-time. Struck AFTER returns, not before - the pre-returns figure is $57.9M, so returns cost roughly $5.2M of digital margin."
+            },
+            {
+              "id": "m_d_margin_pct",
+              "name": "Digital Margin %",
+              "formula": "[Metrics/Digital Gross Margin] / [Metrics/Digital Net Sales]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              },
+              "description": "Digital Gross Margin / Digital Net Sales. 19.49% all-time."
+            },
+            {
+              "id": "m_d_rpv",
+              "name": "Revenue per Visit",
+              "formula": "[Metrics/Digital Gross Sales] / [Metrics/Web Visits]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Digital Gross Sales / Web Visits. $61.43 all-time. The clearest single measure of session value, and the right yardstick for judging whether a traffic push paid off. Blended across sources by construction."
+            },
+            {
+              "id": "m_d_aov",
+              "name": "Digital AOV",
+              "formula": "[Metrics/Digital Gross Sales] / [Metrics/Digital Orders]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Digital Gross Sales / Digital Orders. $1,634.80 all-time, effectively identical to the in-store basket ($1,645.25) - digital in this business is not a lower-value channel, only a higher-returning one."
+            },
+            {
+              "id": "m_d_cac",
+              "name": "Cost per Digital Order",
+              "formula": "[Metrics/Marketing Spend] / [Metrics/Digital Orders]",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Marketing Spend / Digital Orders. $8.61 all-time. An acquisition cost only in the loosest sense: 44.4% of traffic is free and no order is attributed to a source, so this is cost per order across all demand, not cost of a media-acquired order."
+            },
+            {
+              "id": "m_d_roas",
+              "name": "Blended ROAS",
+              "formula": "[Metrics/Digital Gross Sales] / [Metrics/Marketing Spend]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.2f"
+              },
+              "description": "Digital Gross Sales / Marketing Spend. 189.90x all-time. DO NOT PLAN AGAINST THIS. Recorded spend is 0.53% of digital revenue, a property of the dataset rather than a business result, and the revenue is blended across paid and free traffic. Retained for completeness; use Cost per Visit and Revenue per Visit for real decisions."
+            },
+            {
+              "id": "m_d_net_roas",
+              "name": "Blended Net ROAS",
+              "formula": "[Metrics/Digital Net Sales] / [Metrics/Marketing Spend]",
+              "format": {
+                "kind": "number",
+                "formatString": ",.2f"
+              },
+              "description": "Digital Net Sales / Marketing Spend. 172.79x all-time. Same caveat as Blended ROAS - it is the 17-point gap against the gross figure, not the level, that carries the return-rate signal."
+            },
+            {
+              "id": "m_d_total_gross",
+              "name": "Total Gross Sales (All Channels)",
+              "formula": "Sum([Total Gross Sales])",
+              "format": {
+                "kind": "number",
+                "formatString": "$,.2f"
+              },
+              "description": "Gross sales across ALL channels including in-store. $1,178,971,663.73 all-time, tying exactly to the Retail Sales Activity model. Present only as the denominator for Digital Mix % - this model has no traffic or funnel data for in-store demand."
+            },
+            {
+              "id": "m_d_digital_mix",
+              "name": "Digital Mix %",
+              "formula": "[Metrics/Digital Gross Sales] / [Metrics/Total Gross Sales (All Channels)]",
+              "format": {
+                "kind": "number",
+                "formatString": ".2%"
+              },
+              "description": "Digital Gross Sales / Total Gross Sales (All Channels). 25.19% all-time. Rising mix is the mechanism behind the company return rate worsening while every individual channel's return rate improves - see the Retail Omnichannel Fulfillment model."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

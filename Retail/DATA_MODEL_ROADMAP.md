@@ -168,6 +168,7 @@ These were settled yesterday and should hold across every new model:
 4. **Document the traps in element descriptions**, as `sales_activity` does for the `Transaction Type = 'Return'` gotcha.
 5. **Fiscal-first.** The 4-5-4 calendar is the reporting calendar; Sigma's built-in PoP and `DateLookback` are calendar-based and will not respect 4-5-4 boundaries. Use `Prior Year Date` for explicit fiscal-correct comps.
 6. **As Of Date control** defaulting to `Max(Date)` wherever a rolling window is involved.
+7. **Every published metric carries a description**, and a bare figure is not one. State what the metric measures, its unfiltered value as a benchmark, and the way it is most likely to be misread — the aggregation level it is valid at, what it excludes, what a null means. Inventory & Replenishment enforces this by making `desc` a required argument of its `met()` helper, so a metric without one fails at generation rather than shipping silently.
 
 ---
 
@@ -347,6 +348,10 @@ The blended number worsened purely because digital mix **doubled**, 15.0% → 31
 
 The second-order finding: **Ship-from-Store Rate has been dead flat at ~30.1% for all five years** (30.07 / 29.81 / 30.28 / 30.19 / 30.11) while digital volume more than quintupled. The routing policy has never changed. Since ship-from-store carries the *worst* return rate of any pattern (10.09%) and BOPIS the best of the digital routes (7.12%), shifting web demand toward BOPIS — currently only 21.0% of digital orders — is the obvious first test.
 
+### All 42 published metrics carry descriptions
+
+Every metric on both exposed elements (`fulfillment_orders` 31, `fulfillment_day` 11) has a description stating what it measures, the **denominator** where it is a ratio, its verified all-time value, and any trap. Metric `description` is undocumented — the cached OpenAPI defines no metric schema whatsoever — but it round-trips through `spec get` and renders in MCP `describe` beside the formula, which is the surface a consumer or agent actually reads when choosing a metric. Worth making a convention across the mart: a ratio's denominator is the one thing its name can never convey, and three of this model's ratios (Ship-from-Store Rate %, In-Region %, In-State %) have deliberately non-obvious denominators.
+
 ### API gotchas worth remembering
 
 - `sigma api data-models spec create --params @file` puts the whole spec in the **query string** and fails with `414 Request-URI Too Large`. The spec must go in `--body`; `--params` is only for path/query parameters. (Model 1 hit this too and is why `spec update` takes both flags.)
@@ -412,7 +417,9 @@ The second-order finding: **Ship-from-Store Rate has been dead flat at ~30.1% fo
 **Retail Marketing & Digital Funnel** — `ef97b1ac-88e6-471b-9aad-145b82b43a27`
 <https://app.sigmacomputing.com/playground-sean-miller/data-model/Retail-Marketing-and-Digital-Funnel-7i6upyuRpmhUANApeRwjt5>
 
-15 elements across 4 pages. Exposed as sources: `Date`, `Traffic Source`, `Promotion`, `funnel_source` (7 metrics), `funnel_day` (22 metrics). Hidden: 6 `SRC` references and 4 pre-aggregations (`web_daily`, `digital_daily`, `promo_day`, `markdown_day`). Spec generator committed as `gen_marketing_funnel.py`.
+15 elements across 4 pages. Exposed as sources: `Date`, `Traffic Source`, `Promotion`, `funnel_source` (7 metrics), `funnel_day` (22 metrics). Hidden: 6 `SRC` references and 4 pre-aggregations (`web_daily`, `digital_daily`, `promo_day`, `markdown_day`). Spec generator committed as `gen_marketing_funnel.py`, rendered spec as `marketing_funnel_spec.json`.
+
+All **29 published metrics carry descriptions** (`MET_DESC` in the generator), each stating what the metric measures, its verified all-time value, and the trap that applies to it — which ratios are blended across sources, which denominators include free traffic, and which figures (ROAS above all) must not be planned against.
 
 ### Verified against every pre-build benchmark
 
@@ -465,6 +472,8 @@ The paid-media picture is the actionable one: **Paid Search costs $1.0041 per vi
 ### API gotchas worth remembering
 
 - **`in (...)` is not a valid Sigma formula operator.** `[Col] in ("A", "B")` is rejected as a *schema* error, with no hint that a formula is at fault — the same trap as `And()` / `Or()`. Use an infix `or` chain: `[Col] = "A" or [Col] = "B"`. This alone produced all 33 errors on the first submission, cascading from 5 source columns into every element that referenced them, which badly overstates how localised the fault is. Bisect by page, then by element, then by formula.
+- **`spec update` needs `schemaVersion: 1` in the body but NOT `folderId`** (the reverse of create, which needs both). Omitting `schemaVersion` returns `Syntax error in data model spec`; omitting `folderId` on create returns `Unknown error in data model spec`. The two messages are the fastest way to tell which one you dropped. The `dataModelId` goes in `--params`, the spec in `--body`.
+- **`visibleAsSource` does not survive the `spec get` round-trip** — every element reads back with the flag absent, so a spec copied from `get` republishes with nothing exposed. Verify exposure with the MCP `describe` (type `datamodel`), which lists only the visible elements, not with the spec JSON.
 - **Non-equi joins DO work** and are undocumented in the obvious places: `columns: [{left, right, op: ">="}]` accepts `<`, `<=`, `=`, `!=`, `>=`, `>`. That is what explodes the 52 promotions onto the calendar (`Date Key >= Start Date and Date Key <= End Date`) without a cross join, which the spec has no way to express. Verified in the generated SQL.
 
 ---
@@ -604,9 +613,39 @@ Inventory capital and replenishment attention are pointed in opposite directions
 
 Reorder points are calibrated to velocity, so dead stock never trips them; it simply sits. The obvious first test is a carrying-cost review of the never-sold tail, which is a far larger sum than anything the replenishment queue is currently arguing about.
 
+### Metric documentation
+
+All 64 published metrics carry descriptions, verified by reading the spec back from the server rather than trusting the write. Each one states what it measures, its unfiltered value as a benchmark, and its most likely misreading — which aggregation level it is valid at (`Avg Inventory at Cost` vs `Avg Inventory at Cost per Store-SKU`), what it silently excludes (in-transit lines from on-time %), what a null means (`Weeks of Supply` is undefined for no velocity, not for no stock), and where an average hides its distribution (`Avg Lead Time Variance Days` is −0.018 over an 18,536/16,450/18,151 early-exact-late split). The generator's `met()` helper takes `desc` as a required positional argument, so an undocumented metric cannot be added without the build failing.
+
 ### API notes to carry forward
 
 - `schemaVersion: 1` is required on **update** as well as create. Omitting it returns `"Syntax error in data model spec"` — the same message as a malformed body, which sends you looking in the wrong place.
 - Element-level `filters` use `{kind, mode: "include"|"exclude", values: [...]}`. An `include:` key is silently accepted and **does nothing** — the predicate renders as a projected column instead of a `WHERE`, and the element quietly returns every row. Always confirm the filter compiled by grepping the generated SQL for `where`.
 - `RunningSum` is not a Sigma function (`Unknown function RunningSum`), and there is no cumulative max. `Lead`, `Lag`, `RowNumber` and `Rank` all work but order by the element's `sort` only.
 - `api data-models elements query get` returning the generated SQL remains the fastest correctness check — unresolved references appear as string literals in the SELECT rather than as errors.
+
+### Metric descriptions added (2026-09-13)
+
+All **43** metrics the model defines now carry descriptions — 27 on `customer_profile`, 8 on `customer_reviews`, 8 on `customer_category_mix`. Each says what the metric means and where it misleads, not what the formula already shows: which denominator it uses, whether it survives a rollup, and the verified all-time value to check against. They round-trip through `spec get` and surface in the `AVAILABLE METRICS` catalog that `describe` returns, so they reach MCP and agent consumers, not just the Sigma UI.
+
+Two things surfaced while doing it:
+
+- **`description` is not in the cached OpenAPI's metric schema** (which declares only `formula` and `id`) yet is accepted, persisted and returned. The schema's metric property list is incomplete — it omits `name` and `format` too, both of which every real spec uses. Probe the server rather than trusting it.
+- **Elements inherit their primary source's metrics, and colliding names get silently suffixed.** `customer_category_mix` sources `SRC Sales Activity` directly, so it publishes **18 inherited metrics from Retail Sales Activity on top of its own 8** — and because six of my names collided, Sigma renamed mine to `Net Sales (1)`, `Returns (1)`, `Spend per Customer (1)` and so on. All eight are now prefixed `Category …`, which ends the collision. Inheritance flows from the **primary source only**, not from joined elements — which is why `customer_profile` (anchored on the metric-free `Customer Spine`) and `customer_reviews` (anchored on the raw review upload) are clean.
+
+**Fixed: the 18 inherited metrics are gone.** They referenced columns the grouping collapsed away — `metric('m_net_sales')` on `customer_category_mix` failed with `Could not resolve metric column t.amount` — so the element has been re-anchored. The aggregation moved to a hidden `cat_mix_agg`, and the visible element is now `Customer` **INNER JOIN** that aggregate. Because inheritance follows the primary source only, anchoring on the metric-free `Customer` dimension sheds all 18; `metric('m_net_sales')` there now returns `not found in catalog`, and the element publishes exactly its own 8.
+
+Re-verified after the restructure — every figure identical to before:
+
+| Check | Before | After |
+|---|---|---|
+| Rows / customers / families / types | 55,588 / 4,867 / 13 / 6 | **identical** ✅ |
+| Category Net Sales | $1,114,855,651.92 | **identical** ✅ |
+| Category Gross Sales / Returns | $1,178,971,663.73 / $64,116,011.81 | **identical** ✅ |
+| Category Net Units / Orders | 8,584,150 / 3,270,599 | **identical** ✅ |
+| Inherited `m_net_sales` | broken, published | **not in catalog** ✅ |
+| `customer_profile` rows / orders / lapsed | 4,972 / 717,747 / 657 | **identical** ✅ |
+
+The INNER join also drops the 105 never-transacted customers from this element, which is correct — they have no category rows to carry — and the element description now says so.
+
+**Deliberately not done:** the other five models still have no metric descriptions, Retail Sales Activity's 22 included. Scoped out on 2026-09-13; the pattern to copy is in `gen_customer_360.py`'s `met()` helper, which makes a description mandatory rather than optional.

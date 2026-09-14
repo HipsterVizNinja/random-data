@@ -55,10 +55,10 @@ def col(cid, name, formula, desc=None, fmt=None):
     return c
 
 
-def met(mid, name, formula, desc=None, fmt=None):
-    m = {"id": mid, "name": name, "formula": formula}
-    if desc:
-        m["description"] = desc
+def met(mid, name, formula, desc, fmt=None):
+    """Every published metric carries a description - `desc` is deliberately required."""
+    assert desc, f"metric {mid} has no description"
+    m = {"id": mid, "name": name, "formula": formula, "description": desc}
     if fmt:
         m["format"] = fmt
     return m
@@ -378,9 +378,14 @@ WEEKLY_METRICS = [
         "Store-Product-Weeks to get an average position. 262,103,096 unfiltered.", NUM0),
     met("m_w_avg_on_hand", "Avg On Hand Units",
         "[Metrics/On Hand Unit-Weeks] / [Metrics/Store-Product-Weeks]",
-        "Average units on hand per store-product at any moment. 5.458 unfiltered.", NUM2),
+        "Units on hand for one store and one product at any moment, averaged over the weeks in "
+        "selection. 5.458 unfiltered. A per-SKU figure - for a company position use Avg Inventory "
+        "Units.", NUM2),
     met("m_w_avg_in_transit", "Avg In Transit Units",
-        "Sum([Qty In Transit]) / [Metrics/Store-Product-Weeks]", fmt=NUM2),
+        "Sum([Qty In Transit]) / [Metrics/Store-Product-Weeks]",
+        "Units inbound to a store for a product at any moment, averaged per store-SKU. 0.46 "
+        "unfiltered, against 5.46 on hand - inbound stock is a twelfth of standing stock. In transit "
+        "is NOT included in on hand; add the two for a total owned position.", NUM2),
     met("m_w_avg_inv_units", "Avg Inventory Units",
         "[Metrics/On Hand Unit-Weeks] / [Metrics/Weeks in Selection]",
         "Total units standing in inventory at any moment across the whole selection - a "
@@ -418,13 +423,25 @@ WEEKLY_METRICS = [
         "Units sold net of returns in this store-product-week. Null weeks are genuine zero-sales "
         "weeks.", NUM0),
     met("m_w_retail_units", "Retail Net Units Sold", "Sum([Retail Net Units])",
-        "In-store units only, excluding digital orders credited to the store.", NUM0),
-    met("m_w_net_sales", "Net Sales", "Sum([Net Sales])", fmt=USD),
-    met("m_w_net_cogs", "Net COGS", "Sum([Net COGS])", fmt=USD),
-    met("m_w_gross_margin", "Gross Margin", "[Metrics/Net Sales] - [Metrics/Net COGS]", fmt=USD),
+        "Units sold in store, net of returns, excluding web, BOPIS and BOSS orders credited to the "
+        "store. 6,473,369 of 8,584,150 unfiltered - 75.4% of demand walks in. The remaining quarter "
+        "still depletes physical stock when a store fulfils it, which this fact cannot see: "
+        "fulfilment location lives on Sales Orders, not on the activity line.", NUM0),
+    met("m_w_net_sales", "Net Sales", "Sum([Net Sales])",
+        "Sales net of returns for this store-product-week, every channel. $1,114,855,651.92 "
+        "unfiltered, which ties exactly to the Retail Sales Activity model - this fact neither "
+        "duplicates nor drops a dollar.", USD),
+    met("m_w_net_cogs", "Net COGS", "Sum([Net COGS])",
+        "Cost of the units sold, net of returns. $895,884,767.32 unfiltered. This is cost of goods "
+        "SOLD - for the cost of goods HELD use Avg Inventory at Cost.", USD),
+    met("m_w_gross_margin", "Gross Margin", "[Metrics/Net Sales] - [Metrics/Net COGS]",
+        "Net sales less net COGS. $218,970,884.60 unfiltered, a 19.64% margin rate.", USD),
     met("m_w_avg_weekly_units", "Avg Weekly Units Sold",
         "[Metrics/Net Units Sold] / [Metrics/Store-Product-Weeks]",
-        "Units sold per store-product per week - the demand rate.", NUM2),
+        "Units sold per store-product per week - the demand rate behind Weeks of Supply. 0.179 "
+        "unfiltered, i.e. an average store sells a given SKU about once every 5.6 weeks. Counts "
+        "zero-sales weeks in the denominator, which is what makes it a rate rather than an average "
+        "of the weeks that happened to sell.", NUM2),
     met("m_w_wos", "Weeks of Supply",
         "[Metrics/Avg On Hand Units] / [Metrics/Avg Weekly Units Sold]",
         "How many weeks the average position would last at the average demand rate. Undefined where "
@@ -616,31 +633,60 @@ inventory_current = {
             "220,296 unfiltered - every one of 201 locations carries every one of 1,096 products.",
             NUM0),
         met("m_c_on_hand", "On Hand Units", "Sum([Qty On Hand])",
-            "1,194,313 units unfiltered.", NUM0),
+            "Units standing in inventory at 2025-10-12, summed across pairs. 1,194,313 unfiltered. "
+            "A point-in-time position, so it does not respond to a date filter - for a position over "
+            "time use Avg Inventory Units on Inventory Weekly.", NUM0),
         met("m_c_on_hand_cost", "On Hand at Cost", "Sum([On Hand At Cost])",
-            "$260,485,156.88 unfiltered.", USD),
-        met("m_c_on_hand_retail", "On Hand at Retail", "Sum([On Hand At Retail])", fmt=USD),
-        met("m_c_in_transit", "In Transit Units", "Sum([Qty In Transit])", fmt=NUM0),
-        met("m_c_stockouts", "Stocked Out Pairs", "Sum([Is Stockout])", fmt=NUM0),
+            "Standing inventory valued at quantity-weighted PO unit cost. $260,485,156.88 unfiltered, "
+            "within 0.5% of the $261.8M four-year average on Inventory Weekly - the position has "
+            "been remarkably flat.", USD),
+        met("m_c_on_hand_retail", "On Hand at Retail", "Sum([On Hand At Retail])",
+            "Standing inventory valued at D_PRODUCT list price rather than cost. $557,028,794.50 "
+            "unfiltered. Sticker value of stock on the floor, not expected revenue - it takes no "
+            "account of markdowns, and a third of it will never sell.", USD),
+        met("m_c_in_transit", "In Transit Units", "Sum([Qty In Transit])",
+            "Units on their way to a store as of 2025-10-12. 110,366 unfiltered, about 9% of the "
+            "1,194,313 already on hand. Not counted in On Hand Units.", NUM0),
+        met("m_c_stockouts", "Stocked Out Pairs", "Sum([Is Stockout])",
+            "Store-product pairs sitting at zero on hand right now. 7,239 unfiltered. A count of "
+            "pairs, not of lost units - a stockout on a dead SKU costs nothing and one on a mover "
+            "costs a sale every week, so read it beside Units L13W.", NUM0),
         met("m_c_stockout_rate", "Stockout Rate %",
             "[Metrics/Stocked Out Pairs] / [Metrics/Store-Product Pairs]",
             "3.29% unfiltered - a point-in-time reading, close to the 3.19% time-weighted rate over "
             "the full horizon.", PCT),
-        met("m_c_below_rop", "Pairs Below Reorder Point", "Sum([Is Below Reorder Point])", fmt=NUM0),
+        met("m_c_below_rop", "Pairs Below Reorder Point", "Sum([Is Below Reorder Point])",
+            "Pairs at or under their reorder point, the 7,239 already at zero INCLUDED. 14,178 "
+            "unfiltered, so roughly half the replenishment queue has already run out rather than "
+            "merely running low.", NUM0),
         met("m_c_reorder_now", "Reorder Now %",
             "[Metrics/Pairs Below Reorder Point] / [Metrics/Store-Product Pairs]",
-            "6.44% unfiltered.", PCT),
+            "Share of store-product pairs at or under their reorder point right now, stockouts "
+            "included. 6.44% unfiltered. This is the replenishment queue as a rate; it says nothing "
+            "about urgency, since a flagged pair with no demand will never sell through.", PCT),
         met("m_c_replen_gap", "Replenishment Gap Units", "Sum([Replenishment Gap Units])",
             "Units required to bring every below-reorder-point pair back to its reorder point.", NUM0),
-        met("m_c_never_sold", "Never Sold Pairs", "Sum([Is Never Sold])", fmt=NUM0),
+        met("m_c_never_sold", "Never Sold Pairs", "Sum([Is Never Sold])",
+            "Pairs with no net units sold across the whole four years: 77,941 with no sales activity "
+            "at all plus 258 whose sales were entirely returned. 78,199 unfiltered, holding $184.8M "
+            "at cost in the 200 selling stores - and reorder points, being velocity-based, flag "
+            "almost none of it.", NUM0),
         met("m_c_never_sold_pct", "Never Sold %",
             "[Metrics/Never Sold Pairs] / [Metrics/Store-Product Pairs]",
             "35.50% unfiltered. Stock carried in stores that has not moved on net in four years.", PCT),
-        met("m_c_units_l13w", "Units L13W", "Sum([Units L13W])", fmt=NUM0),
-        met("m_c_avg_weekly_units", "Avg Weekly Units L13W", "Sum([Units L13W]) / 13", fmt=NUM2),
+        met("m_c_units_l13w", "Units L13W", "Sum([Units L13W])",
+            "Net units sold in the trailing 13 weeks (spine weeks 205-217, ending 2025-10-18). "
+            "681,262 unfiltered. The demand signal behind Weeks of Supply; a fixed window, so it does "
+            "not respond to a date filter.", NUM0),
+        met("m_c_avg_weekly_units", "Avg Weekly Units L13W", "Sum([Units L13W]) / 13",
+            "Units L13W spread over 13 weeks - the current run rate. 52,404.77 a week unfiltered. "
+            "Divides by a constant 13, so it stays a weekly rate at every grouping level.", NUM2),
         met("m_c_wos", "Weeks of Supply",
             "[Metrics/On Hand Units] / [Metrics/Avg Weekly Units L13W]",
-            "Current stock divided by trailing-13-week demand. Undefined where nothing sold.", NUM2),
+            "Current stock divided by the trailing-13-week weekly run rate. 22.79 weeks unfiltered. "
+            "Undefined wherever recent demand is zero - the Central Warehouse and the 78,199 "
+            "never-sold pairs - so a null here means no velocity, not no stock. Grouping by store or "
+            "product recomputes it from that group's totals, which is the correct behaviour.", NUM2),
     ],
 }
 
@@ -695,17 +741,23 @@ inventory_changes = {
     ],
     "metrics": [
         met("m_ch_changes", "Position Changes", "Count([Store Key])",
-            "5,954,664 unfiltered.", NUM0),
+            "Rows in the change log - the number of times a position moved. 5,954,664 unfiltered. An "
+            "event count, never a stock measure: use it as a denominator only for questions about "
+            "movement frequency.", NUM0),
         met("m_ch_weeks", "Weeks Covered", "Sum([Weeks In Force])",
             "48,024,528 unfiltered - the change log accounts for every store-product-week exactly "
             "once.", NUM0),
         met("m_ch_avg_gap", "Avg Weeks Between Changes",
             "[Metrics/Weeks Covered] / [Metrics/Position Changes]",
-            "8.07 unfiltered. A pair changes roughly every 8 weeks on average.", NUM2),
+            "Weeks covered divided by changes - how long a position typically holds before it moves. "
+            "8.07 unfiltered. The gap between this and the 1.10-week stockout duration is exactly why "
+            "row-weighted and time-weighted rates diverge so far.", NUM2),
         met("m_ch_stockout_events", "Stockout Events", "Sum([Is Stockout])",
-            "1,396,947 unfiltered.", NUM0),
+            "Change-log rows that landed on zero on hand - the number of times a stockout STARTED. "
+            "1,396,947 unfiltered. Not the number of weeks spent stocked out, which is 1,530,108.", NUM0),
         met("m_ch_stockout_weeks", "Stockout Weeks", "Sum([Stockout Weeks])",
-            "1,530,108 unfiltered.", NUM0),
+            "Total weeks spent at zero on hand, each change weighted by how long it held. 1,530,108 "
+            "unfiltered. This is the numerator of the honest stockout rate.", NUM0),
         met("m_ch_stockout_duration", "Avg Stockout Duration (Weeks)",
             "[Metrics/Stockout Weeks] / [Metrics/Stockout Events]",
             "How long a stockout lasts once it starts - about 1.1 weeks. Short duration is exactly "
@@ -777,16 +829,36 @@ inventory_adjustments = {
         col("week_start_date", "Week Start Date", "[Date/Week Start Date]"),
     ],
     "metrics": [
-        met("m_a_events", "Adjustment Events", "Count([Store Key])", fmt=NUM0),
+        met("m_a_events", "Adjustment Events", "Count([Store Key])",
+            "Manual adjustment records. 66,088 unfiltered. Counts events, not units - one large "
+            "write-off and one single-unit correction weigh the same here.", NUM0),
         met("m_a_net_units", "Net Adjustment Units", "Sum([Adjustment Quantity])",
-            "-416,623 unfiltered.", NUM0),
-        met("m_a_shrink_events", "Shrink Events", "Sum([Is Shrink])", fmt=NUM0),
-        met("m_a_shrink_units", "Shrink Units", "Sum([Shrink Units])", fmt=NUM0),
-        met("m_a_shrink_cost", "Shrink at Cost", "Sum([Shrink At Cost])", fmt=USD),
-        met("m_a_shrink_retail", "Shrink at Retail", "Sum([Shrink At Retail])", fmt=USD),
-        met("m_a_adj_cost", "Net Adjustment at Cost", "Sum([Adjustment At Cost])", fmt=USD),
+            "Signed sum of every adjustment, shrink and count correction together. -416,623 units "
+            "unfiltered - inventory written down on net. Positive adjustments exist (5,264 rows) but "
+            "are far outweighed.", NUM0),
+        met("m_a_shrink_events", "Shrink Events", "Sum([Is Shrink])",
+            "Adjustments attributed to Theft, Damage or Expiration. 49,608 of 66,088 unfiltered. "
+            "Cycle Count Correction is deliberately excluded - a count correction is bookkeeping, and "
+            "folding it into shrink would inflate loss with clerical noise.", NUM0),
+        met("m_a_shrink_units", "Shrink Units", "Sum([Shrink Units])",
+            "Units lost to theft, damage or expiration, sign-flipped so shrink reads POSITIVE while "
+            "the underlying Adjustment Quantity is negative. 371,906 unfiltered.", NUM0),
+        met("m_a_shrink_cost", "Shrink at Cost", "Sum([Shrink At Cost])",
+            "Shrink units valued at quantity-weighted PO unit cost - what the loss actually cost to "
+            "buy. $84,589,765.07 unfiltered. The figure to use for a P&L view of shrink.", USD),
+        met("m_a_shrink_retail", "Shrink at Retail", "Sum([Shrink At Retail])",
+            "Shrink units valued at list price. $181,863,249 unfiltered, 2.15x the cost figure. This "
+            "is forgone sticker value, not forgone profit, and it assumes every lost unit would have "
+            "sold at full price - so treat it as an upper bound.", USD),
+        met("m_a_adj_cost", "Net Adjustment at Cost", "Sum([Adjustment At Cost])",
+            "Every adjustment at cost, shrink and count corrections together, signed. "
+            "-$94,696,118.03 unfiltered. It runs $10.1M below Shrink at Cost because the excluded "
+            "reasons also net negative: Cycle Count Correction -19,907 units and Other -24,810.", USD),
         met("m_a_shrink_share", "Shrink Share of Events",
-            "[Metrics/Shrink Events] / [Metrics/Adjustment Events]", fmt=PCT),
+            "[Metrics/Shrink Events] / [Metrics/Adjustment Events]",
+            "Share of adjustment EVENTS that are shrink. 75.06% unfiltered. An event share, not a "
+            "unit or dollar share - do not read it as 'three quarters of adjusted value is shrink'.",
+            PCT),
     ],
 }
 
@@ -849,12 +921,21 @@ purchase_orders = {
         col("sku_number", "Sku Number", "[Product/Sku Number]"),
     ],
     "metrics": [
-        met("m_po_lines", "PO Lines", "Count([PO Number])", "53,589 unfiltered.", NUM0),
-        met("m_po_units", "PO Units", "Sum([Order Quantity])", fmt=NUM0),
-        met("m_po_value", "PO Value", "Sum([PO Value])", "$987,898,638 ordered unfiltered.", USD),
-        met("m_po_received", "Received Lines", "Sum([Is Received])", "53,137 unfiltered.", NUM0),
+        met("m_po_lines", "PO Lines", "Count([PO Number])", "Purchase order lines, one per PO number at Vendor x Product grain. 53,589 unfiltered. "
+            "Counts orders, not stores - a PO has no Store Key.", NUM0),
+        met("m_po_units", "PO Units", "Sum([Order Quantity])",
+            "Units ordered across all PO lines, received and in transit. 9,289,094 unfiltered. "
+            "Company-wide inbound volume only - purchase orders carry no Store Key, so this can never "
+            "be broken out by store.", NUM0),
+        met("m_po_value", "PO Value", "Sum([PO Value])", "Order quantity times unit cost across all lines. $987,898,638.38 ordered unfiltered, of "
+            "which $979,771,036.77 has actually been received; the $8.1M difference is the 452 lines "
+            "still in transit.", USD),
+        met("m_po_received", "Received Lines", "Sum([Is Received])", "Lines with PO Status 'Received'. 53,137 unfiltered. The correct denominator for every "
+            "timing metric here, since in-transit lines have no receipt date yet.", NUM0),
         met("m_po_in_transit", "In Transit Lines",
-            "[Metrics/PO Lines] - [Metrics/Received Lines]", "452 unfiltered.", NUM0),
+            "[Metrics/PO Lines] - [Metrics/Received Lines]", "Lines ordered but not yet received as of 2025-10-17. 452 unfiltered, under 1% of all "
+            "lines. They carry no Actual Receipt Date, so they are excluded from on-time and lead "
+            "time rather than counted as late.", NUM0),
         met("m_po_on_time", "On-Time %", "Sum([Is On Time]) / [Metrics/Received Lines]",
             "Share of received lines that arrived on or before the expected date. 65.84% unfiltered.",
             PCT),
@@ -863,13 +944,19 @@ purchase_orders = {
             "-0.018 days unfiltered. Punctual on average and wildly variable underneath - always pair "
             "it with the early/late split.", NUM2),
         met("m_po_avg_lead", "Avg Actual Lead Time Days",
-            "Sum([Actual Lead Time Days]) / [Metrics/Received Lines]", "13.55 unfiltered.", NUM2),
+            "Sum([Actual Lead Time Days]) / [Metrics/Received Lines]", "Order date to actual receipt date, averaged over received lines. 13.55 days unfiltered. "
+            "Measures what the supply chain actually did, independent of what was promised.", NUM2),
         met("m_po_avg_quoted", "Avg Quoted Lead Time Days",
-            "Sum([Quoted Lead Time Days]) / [Metrics/PO Lines]", "13.57 unfiltered.", NUM2),
+            "Sum([Quoted Lead Time Days]) / [Metrics/PO Lines]", "D_VENDOR's promised lead time, averaged across all PO lines. 13.57 days unfiltered. A "
+            "vendor attribute repeated per line, so it is weighted by order count, not by value.",
+            NUM2),
         met("m_po_lead_variance", "Avg Lead Time Variance Days",
             "[Metrics/Avg Actual Lead Time Days] - "
             "(Sum(If([Is Received] = 1, [Quoted Lead Time Days], 0)) / [Metrics/Received Lines])",
-            "Actual minus quoted lead time across received lines.", NUM2),
+            "Actual minus quoted lead time across received lines. -0.018 days unfiltered: vendors "
+            "hit their quoted lead time almost exactly on average. That average is close to "
+            "worthless on its own - the receipts split 18,536 early, 16,450 exact and 18,151 late, so "
+            "look at the distribution before concluding a vendor is reliable.", NUM2),
     ],
 }
 
