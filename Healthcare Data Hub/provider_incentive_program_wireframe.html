@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Provider Incentive Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#EDEFF2; --surface:#FFFFFF; --panel:#F5F7F9; --sunken:#E5E9ED;
+  --rule:#D6DCE3; --rule-strong:#B7C1CC;
+  --ink:#0D1319; --ink-2:#55616D; --ink-3:#7D8996;
+  --accent:#12557F; --accent-ink:#FFFFFF; --accent-soft:#DDEAF3;
+  /* data series - validated reference palette, light steps */
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+  --gain:#2a78d6; --loss:#e34948; --mid:#f0efec;
+  --good:#0ca30c; --warn:#fab219; --crit:#d03b3b;
+  --grid:#E1E5EA; --axis:#C3CAD2;
+  --shadow:0 1px 2px rgba(13,19,25,.05), 0 10px 28px -16px rgba(13,19,25,.28);
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ui:"Archivo","IBM Plex Sans",-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A0E12; --surface:#141A18; --panel:#181F23; --sunken:#0F1417;
+    --rule:#262F36; --rule-strong:#3A4750;
+    --ink:#E7EDF2; --ink-2:#9AA6B2; --ink-3:#78848F;
+    --accent:#59A8DA; --accent-ink:#06202E; --accent-soft:#16303F;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+    --gain:#3987e5; --loss:#e66767; --mid:#383835;
+    --grid:#232B31; --axis:#38434B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A0E12; --surface:#141A18; --panel:#181F23; --sunken:#0F1417;
+  --rule:#262F36; --rule-strong:#3A4750;
+  --ink:#E7EDF2; --ink-2:#9AA6B2; --ink-3:#78848F;
+  --accent:#59A8DA; --accent-ink:#06202E; --accent-soft:#16303F;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+  --gain:#3987e5; --loss:#e66767; --mid:#383835;
+  --grid:#232B31; --axis:#38434B;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--ui);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0}
+
+/* ---------- chrome ---------- */
+.app{display:grid;grid-template-columns:216px minmax(0,1fr) 340px;grid-template-rows:auto auto auto 1fr;min-height:100vh;
+     grid-template-areas:"brand topbar topbar" "rail ctrl ctrl" "rail trust trust" "rail main dock"}
+.brand{grid-area:brand;display:flex;align-items:center;gap:9px;padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface)}
+.mark{width:22px;height:22px;flex:none;border-radius:4px;background:var(--accent);position:relative}
+.mark::before{content:"";position:absolute;left:5px;top:10px;width:12px;height:2px;background:var(--accent-ink)}
+.mark::after{content:"";position:absolute;left:10px;top:5px;width:2px;height:12px;background:var(--accent-ink)}
+.brand b{font-family:var(--ui);font-size:12.5px;font-weight:700;letter-spacing:-.01em;line-height:1.15;display:block}
+.brand span span{font-size:10px;color:var(--ink-3);letter-spacing:.04em}
+.topbar{grid-area:topbar;display:flex;align-items:center;gap:12px;padding:10px 18px;background:var(--surface);border-bottom:1px solid var(--rule)}
+.viewer{display:flex;align-items:center;gap:9px;margin-right:auto;min-width:0}
+.avatar{width:26px;height:26px;flex:none;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--ui);font-size:10.5px;font-weight:700}
+.viewer-txt b{font-family:var(--ui);font-size:12.5px;font-weight:600;display:block;line-height:1.25}
+.viewer-txt span{font-size:10.5px;color:var(--ink-3)}
+.rls{font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-soft);padding:1px 5px;border-radius:3px;white-space:nowrap}
+.tbtn{display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--rule);border-radius:5px;font-family:var(--ui);font-size:11.5px;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.tbtn:hover{border-color:var(--rule-strong);color:var(--ink)}
+.tbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.dot-sm{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
+.tbtn[aria-pressed="true"] .dot-sm{opacity:1}
+.rail{grid-area:rail;background:var(--surface);border-right:1px solid var(--rule);padding:14px 10px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto}
+.rail .eyebrow{padding:0 8px 7px}
+.navitem{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:7px 9px;border-radius:6px;font-family:var(--ui);font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.navitem:hover{background:var(--panel);color:var(--ink)}
+.navitem[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.navnum{font-family:var(--mono);font-size:10px;color:var(--ink-3);width:14px;flex:none}
+.navitem[aria-current="page"] .navnum{color:var(--accent)}
+.railfoot{margin-top:auto;padding:11px 9px 0;border-top:1px solid var(--rule);font-size:10.5px;color:var(--ink-3);line-height:1.5}
+.railfoot code{font-family:var(--mono);font-size:9.5px;color:var(--ink-2);display:inline-block;margin:2px 4px 0 0;background:var(--sunken);padding:1px 4px;border-radius:3px}
+.ctrl{grid-area:ctrl;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:9px 18px;background:var(--panel);border-bottom:1px solid var(--rule)}
+.ctrl-lab{font-family:var(--ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ctl{display:flex;align-items:center;gap:7px;padding:4px 9px;background:var(--surface);border:1px solid var(--rule);border-radius:5px;font-size:12px;white-space:nowrap}
+.ctl em{font-style:normal;font-size:10px;color:var(--ink-3);font-family:var(--ui);letter-spacing:.03em;text-transform:uppercase}
+.ctl b{font-weight:500;font-family:var(--mono);font-size:11.5px}
+.ctl::after{content:"";width:0;height:0;border:3.5px solid transparent;border-top-color:var(--ink-3);margin-top:3px}
+.ctl:hover{border-color:var(--rule-strong)}
+.ctl.on{border-color:var(--accent);background:var(--accent-soft)}
+.ctl.on b,.ctl.on em{color:var(--accent)}
+
+/* the definition toggle - the demo beat */
+.deftog{display:flex;align-items:stretch;border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;margin-left:auto;background:var(--surface)}
+.deftog>span{display:flex;align-items:center;padding:0 9px;font-family:var(--ui);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);background:var(--sunken);border-right:1px solid var(--rule)}
+.deftog button{padding:5px 11px;font-family:var(--ui);font-size:11.5px;font-weight:500;color:var(--ink-2)}
+.deftog button+button{border-left:1px solid var(--rule)}
+.deftog button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+
+/* trust header */
+.trust{grid-area:trust;display:flex;flex-wrap:wrap;gap:0;padding:0;background:var(--surface);border-bottom:1px solid var(--rule);font-size:11px}
+.tcell{padding:7px 14px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:1px;min-width:0}
+.tcell i{font-style:normal;font-family:var(--ui);font-size:9px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.tcell b{font-family:var(--mono);font-size:11.5px;font-weight:500;white-space:nowrap}
+.tcell.flag b{color:var(--crit)}
+.main{grid-area:main;padding:18px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.dock{grid-area:dock;background:var(--surface);border-left:1px solid var(--rule);display:flex;flex-direction:column;position:sticky;top:0;align-self:start;height:100vh;min-height:0}
+
+/* ---------- panels ---------- */
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.panel-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px 10px}
+.panel-hd h3{font-size:13.5px}
+.panel-hd .sub{font-size:11.5px;color:var(--ink-3);margin-right:auto}
+.panel-bd{padding:0 14px 14px}
+.page-hd{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.crumb{font-size:11.5px;color:var(--ink-3);margin:0 0 3px}
+.crumb b{color:var(--ink-2);font-weight:500}
+.page-hd h2{font-size:19px}
+.page-hd p{margin:4px 0 0;font-size:12.5px;color:var(--ink-2);max-width:66ch}
+.note,.note-top{font-size:11px;line-height:1.55;color:var(--ink-3);margin:0;padding:9px 14px;border-top:1px solid var(--rule);background:var(--panel)}
+.note b{color:var(--ink-2);font-weight:600}
+.note-top{border:1px solid var(--rule);border-left:2px solid var(--accent);border-radius:6px;padding:9px 12px;background:var(--panel)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:10.5px;color:var(--ink-2)}
+.legend span{display:flex;align-items:center;gap:5px}
+.swatch{width:9px;height:9px;border-radius:2px;flex:none}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:11px 13px}
+.kpi .eyebrow{margin-bottom:5px}
+.kpi .v{font-family:var(--ui);font-size:23px;font-weight:600;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:proportional-nums}
+.kpi .d{font-size:11px;color:var(--ink-3);margin-top:3px}
+.kpi .d b{font-weight:600}
+.kpi.hero{border-color:var(--accent);background:var(--accent-soft)}
+.kpi.hero .v{color:var(--accent);font-size:26px}
+.kpi.alarm{border-left:2px solid var(--crit)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:6px 8px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule)}
+th{font-family:var(--ui);font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:right;position:sticky;top:0;background:var(--surface);z-index:1}
+th:first-child,td:first-child{text-align:left}
+#scoreTbl th:nth-child(2),#scoreTbl td:nth-child(2){text-align:left}
+#scoreTbl th,#scoreTbl td{padding:6px 5px}
+#scoreTbl td:nth-child(2){max-width:180px;overflow:hidden;text-overflow:ellipsis}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--panel)}
+tbody tr.hl{background:var(--accent-soft)}
+tbody tr.hl td{font-weight:600}
+tr.clickable{cursor:pointer}
+.tag{font-family:var(--mono);font-size:9.5px;padding:1px 5px;border-radius:3px;background:var(--sunken);color:var(--ink-2)}
+.tag.bad{background:color-mix(in srgb,var(--crit) 16%,transparent);color:var(--crit)}
+.tag.ok{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.tag.warn{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--ink-2)}
+.mv{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:11px}
+.mv.up{color:var(--good)} .mv.dn{color:var(--crit)}
+
+/* stacked domain bar */
+.stk{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--sunken);min-width:92px}
+.stk i{display:block;height:100%;box-shadow:2px 0 0 var(--surface)}
+.stk i:last-child{box-shadow:none}
+
+/* dot plot */
+.dotrow{display:grid;grid-template-columns:132px 1fr 62px;align-items:center;gap:10px;padding:5px 0}
+.dotrow>.lab{font-size:11.5px;color:var(--ink-2)}
+.dotband{position:relative;height:22px;border-radius:4px;background:var(--panel)}
+.dotband .ax{position:absolute;inset:auto 0 50% 0;height:1px;background:var(--grid)}
+.dotband .pd{position:absolute;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--ink-3);opacity:.45}
+.dotband .me{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;box-shadow:0 0 0 2px var(--surface)}
+.dotband .mean{position:absolute;top:3px;bottom:3px;width:1px;background:var(--axis)}
+.dotrow>.val{font-family:var(--mono);font-size:11.5px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* diverging bars */
+.dvg{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:center;padding:3px 0}
+.dvg>.lab{font-size:11.5px;color:var(--ink-2);text-align:right}
+.dvbar{position:relative;height:18px}
+.dvbar .zero{position:absolute;top:0;bottom:0;width:1px;background:var(--axis)}
+.dvbar i{position:absolute;top:3px;height:12px;border-radius:0}
+.dvbar i.pos{border-radius:0 4px 4px 0;background:var(--gain)}
+.dvbar i.neg{border-radius:4px 0 0 4px;background:var(--loss)}
+.dvbar span:not(.zero){position:absolute;top:1px;font-family:var(--mono);font-size:10.5px;color:var(--ink-2);line-height:16px;white-space:nowrap}
+
+/* grouped column chart */
+.cols{display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:14px}
+.colgrp{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:2px;height:100%;position:relative}
+.colgrp i{width:11px;border-radius:4px 4px 0 0;display:block}
+.colax{display:flex;gap:6px;margin-top:5px}
+.colax span{flex:1;text-align:center;font-family:var(--mono);font-size:9.5px;color:var(--ink-3)}
+.collab{position:absolute;top:-13px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-2)}
+
+.chart{position:relative}
+svg{display:block;width:100%;overflow:visible}
+.tip{position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .08s;background:var(--surface);border:1px solid var(--rule-strong);border-radius:6px;box-shadow:var(--shadow);padding:8px 10px;font-size:11.5px;min-width:150px}
+.tip.on{opacity:1}
+.tip h5{font-family:var(--ui);font-size:11.5px;font-weight:600;margin:0 0 5px}
+.tip .row{display:flex;justify-content:space-between;gap:14px;padding:1px 0}
+.tip .row i{font-style:normal;color:var(--ink-3);display:flex;align-items:center;gap:5px}
+.tip .row span{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* dock */
+.dock-hd{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
+.dock-hd h4{font-size:12.5px;margin-right:auto}
+.dock-bd{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:11px;min-height:0}
+.msg{font-size:12px;line-height:1.55}
+.msg.q{background:var(--accent-soft);color:var(--accent);padding:7px 10px;border-radius:8px 8px 2px 8px;align-self:flex-end;max-width:88%;font-weight:500}
+.msg.a{background:var(--panel);border:1px solid var(--rule);padding:9px 11px;border-radius:8px 8px 8px 2px}
+.msg.a b{font-weight:600}
+.msg.a code{font-family:var(--mono);font-size:10.5px;background:var(--sunken);padding:1px 4px;border-radius:3px}
+.lineage{margin-top:7px;padding-top:7px;border-top:1px dashed var(--rule-strong);font-size:10.5px;color:var(--ink-3);line-height:1.6}
+.lineage code{font-family:var(--mono);font-size:9.5px;overflow-wrap:anywhere}
+.msg.a code{overflow-wrap:anywhere}
+.dock-ft{padding:11px 14px;border-top:1px solid var(--rule)}
+.ask{width:100%;padding:7px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--panel);font-size:12px;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.chip{font-size:10.5px;padding:3px 8px;border:1px solid var(--rule);border-radius:20px;color:var(--ink-2)}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* build notes */
+body.notes .note,body.notes .note-top{display:block}
+.note,.note-top{display:none}
+.callout{border:1px solid var(--rule);border-left:2px solid var(--crit);border-radius:6px;background:var(--panel);padding:11px 13px;font-size:12px;line-height:1.6;color:var(--ink-2)}
+.callout b{color:var(--ink);font-weight:600}
+.callout h4{font-size:12.5px;margin-bottom:5px;color:var(--ink)}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--sunken);color:var(--ink-2);margin-right:4px}
+.sup{font-size:11px;color:var(--ink-3);padding:7px 0 0}
+@media (max-width:1240px){
+  .app{grid-template-columns:216px minmax(0,1fr);grid-template-areas:"brand topbar" "rail ctrl" "rail trust" "rail main";}
+  .dock{display:none}
+}
+@media (max-width:760px){
+  .app{grid-template-columns:minmax(0,1fr);grid-template-areas:"brand" "topbar" "ctrl" "trust" "rail" "main"}
+  .rail{position:static;max-height:none;flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--rule)}
+  .rail .eyebrow,.railfoot{display:none}
+  .main{padding:14px}
+  .deftog{margin-left:0;width:100%}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <span><b>Incentive Program</b><span>Northlake Health · Sigma</span></span>
+  </div>
+
+  <header class="topbar">
+    <div class="viewer">
+      <span class="avatar">KA</span>
+      <span class="viewer-txt">
+        <b>Ken Alvarez</b>
+        <span>Director, Enterprise Data &nbsp;·&nbsp; certifying reviewer</span>
+      </span>
+      <span class="rls">RLS: all 12 groups</span>
+    </div>
+    <button class="tbtn" id="notesBtn" aria-pressed="false"><span class="dot-sm"></span>Build notes</button>
+    <button class="tbtn" id="themeBtn">Theme</button>
+    <button class="tbtn" id="dockBtn" aria-pressed="true"><span class="dot-sm"></span>Assistant</button>
+  </header>
+
+  <nav class="rail" aria-label="Workbook pages">
+    <p class="eyebrow">Workbook pages</p>
+    <button class="navitem" data-page="pool" aria-current="page"><span class="navnum">01</span>Pool &amp; Contract</button>
+    <button class="navitem" data-page="score"><span class="navnum">02</span>Scorecard &amp; Payout</button>
+    <button class="navitem" data-page="group"><span class="navnum">03</span>Group Detail</button>
+    <button class="navitem" data-page="stew"><span class="navnum">04</span>Referral Stewardship</button>
+    <button class="navitem" data-page="ledger"><span class="navnum">05</span>Payout Ledger</button>
+    <div class="railfoot">
+      Wireframe · PY2025 YTD<br>
+      Model <code>Northlake VBC</code><br>
+      <code>vbc_attribution_month</code> <code>vw_claim_line_enriched</code> <code>fct_referral</code> <code>ref_network_contract</code>
+    </div>
+  </nav>
+
+  <div class="ctrl">
+    <span class="ctrl-lab">Controls</span>
+    <button class="ctl on"><em>Perf year</em><b>PY2025 YTD</b></button>
+    <button class="ctl"><em>Window</em><b>2025-01 → 2025-09</b></button>
+    <button class="ctl"><em>Line of bus.</em><b>All</b></button>
+    <button class="ctl"><em>Group</em><b id="ctlGroup">All (12)</b></button>
+    <button class="ctl"><em>Pool</em><b>$4,200,000</b></button>
+    <button class="ctl" id="cohortBtn"><em>Cohort</em><b>Open panel</b></button>
+    <div class="deftog" role="group" aria-label="Network status definition">
+      <span>Network definition</span>
+      <button id="defNaive" aria-pressed="false">EHR directory</button>
+      <button id="defGov" aria-pressed="true">As-of contract</button>
+    </div>
+  </div>
+
+  <div class="trust" id="trustHdr"></div>
+
+  <main class="main">
+
+    <!-- 01 POOL & CONTRACT -->
+    <section class="pageview" id="page-pool">
+      <div class="page-hd"><div>
+        <p class="crumb">Meridian Health Plan <b>· two risk contracts · PY2025 in flight</b></p>
+        <h2>Pool &amp; Contract Position</h2>
+        <p>The contract-level question: is there savings to distribute, and how much of the
+        apparent improvement is real? This is the only page where the external benchmark appears.</p>
+      </div></div>
+      <p class="note-top"><b>Page 1 of 5.</b> Grain: one row per attributed group × month, from
+      <b>Group Performance Month</b>. Denominator is <code>vbc_attribution_month</code> at
+      <code>as_of_version = 2</code> — the payer's roster — never <code>fct_member_month</code>,
+      which carries an <code>attributed_site_code</code> for all 48,000 members and disagrees with
+      the payer on 7.03% of the member-months they share.</p>
+      <div class="kpis" id="poolKpis"></div>
+      <div class="panel">
+        <div class="panel-hd">
+          <h3>Allowed PMPM by service month</h3>
+          <span class="sub">Attributed roster · 2024-01 → 2025-12</span>
+          <div class="legend">
+            <span><i class="swatch" style="background:var(--s1)"></i>Allowed PMPM, as reported</span>
+            <span><i class="swatch" style="background:var(--s2)"></i>Completion-adjusted (not scored)</span>
+          </div>
+        </div>
+        <div class="panel-bd"><div class="chart" id="trendChart"></div></div>
+        <p class="note"><b>The whole reason this app exists.</b> Read naively, PMPM falls from
+        $1,035 in March 2025 to $444 in December — a 53% "improvement". Three things cause it and
+        only one is care: <b>runout</b> (Oct–Dec are 78% / 54% / 31% complete), <b>roster
+        restatement</b> (5–11 points of monthly improvement, §8 of the plan), and real
+        performance. Months right of the shaded edge are <b>displayed and never scored</b>. The
+        completion factor is for this chart and the accrual view only — grossing up an incomplete
+        month and paying on it pays on a forecast.</p>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Benchmark reconciliation</h3><span class="sub">PY2024, allowed PMPM</span></div>
+          <div class="panel-bd tbl-wrap"><table id="benchTbl"></table></div>
+          <p class="note"><b>Why the scorecard is peer-relative.</b> <code>vbc_benchmark</code> is
+          calibrated against the <b>whole book</b> and tracks it closely. The attributed
+          sub-population runs far richer, because attribution selects for care-seekers. Scored
+          against <code>risk_adjusted_benchmark_pmpm</code> (avg $266 commercial) all twelve groups
+          fail cost and nobody earns. The benchmark stays here as contract context and supplies the
+          <b>risk and seasonality shape</b> for Expected Allowed; its level cancels out of a
+          peer-relative comparison.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Roster reconciliation</h3><span class="sub">The denominator trap</span></div>
+          <div class="panel-bd tbl-wrap"><table id="rosterTbl"></table></div>
+          <p class="note"><b>Two rosters that disagree.</b> A program built off
+          <code>fct_member_month</code> pays on 692,154 member-months Meridian is not paying
+          Northlake for. The data model makes the payer roster the only path to a denominator, and
+          the workbook must not expose <code>fct_member_month.attributed_site_code</code> as a
+          grouping field at all.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 SCORECARD -->
+    <section class="pageview" id="page-score" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">PY2025 YTD · 9 of 9 months complete <b>· $4,200,000 pool</b></p>
+        <h2>Scorecard &amp; Payout</h2>
+        <p>Twelve clinic groups, five measures, 100 points, weighted by attributed member-months.
+        The <b>Network definition</b> toggle in the control strip changes one join and recomputes
+        every figure on this page.</p>
+      </div></div>
+      <div class="callout" id="invCallout"></div>
+      <div class="kpis" id="scoreKpis"></div>
+      <div class="panel">
+        <div class="panel-hd">
+          <h3>Group scorecard</h3>
+          <span class="sub">Click a row for group detail · sorted by composite score</span>
+          <div class="legend" id="domLegend"></div>
+        </div>
+        <div class="panel-bd tbl-wrap"><table id="scoreTbl"></table></div>
+        <p class="note"><b>Domain weights</b> Cost 25 · Utilization 10 · Quality 30 · Network 25 ·
+        Access 10. Each measure scores on a three-tier gate against the peer distribution: 0 at the
+        25th percentile of performance, 60% of points at the peer mean, full points at the 75th.
+        Every point value is printed in the table as well as drawn, because three of the five
+        light-mode series colours sit below 3:1 against the surface — colour never carries a value
+        on its own here.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-hd">
+          <h3>Payout redistribution</h3>
+          <span class="sub">As-of contract join vs EHR directory · same claims, same care</span>
+          <div class="legend">
+            <span><i class="swatch" style="background:var(--gain)"></i>Gains under as-of join</span>
+            <span><i class="swatch" style="background:var(--loss)"></i>Loses under as-of join</span>
+          </div>
+        </div>
+        <div class="panel-bd"><div id="deltaChart"></div></div>
+        <p class="note"><b>$488,705 — 11.6% of the pool — moves when one join is corrected.</b>
+        Nothing about the care changed. The EHR referral directory still lists Summit Point Surgery
+        Center as <code>PAR</code>; <code>ref_network_contract</code> has it <code>NONPAR</code>
+        from 2024-10-01. This panel is the answer to "what does the absence of an as-of join
+        actually cost", denominated in dollars someone was about to be paid.</p>
+      </div>
+    </section>
+
+    <!-- 03 GROUP DETAIL -->
+    <section class="pageview" id="page-group" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Scorecard <b>› North Ridge Orthopedics</b> · North region · 2,524 attributed members</p>
+        <h2>Group Detail</h2>
+        <p>Each domain against the peer distribution, then the referral destinations that explain
+        the network score.</p>
+      </div></div>
+      <div class="kpis" id="grpKpis"></div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Domains vs peer distribution</h3><span class="sub">Each dot is a clinic group</span>
+            <div class="legend"><span><i class="swatch" style="background:var(--ink-3);opacity:.45;border-radius:50%"></i>Peer group</span>
+            <span><i class="swatch" style="background:var(--s2);border-radius:50%"></i>North Ridge</span>
+            <span><i class="swatch" style="width:1px;height:10px;border-radius:0;background:var(--axis)"></i>Peer mean</span></div>
+          </div>
+          <div class="panel-bd" id="dotPlots"></div>
+          <p class="note"><b>Form choice:</b> a dot plot, not twelve bars. The question is "where
+          does this group sit among its peers", which is a position-on-a-scale question. Peer dots
+          are one shade of ink at 45% so the highlighted group reads first; the mean is a hairline
+          rule, not a third colour.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Referral destinations</h3><span class="sub">PY2025 YTD · placed by North Ridge</span></div>
+          <div class="panel-bd tbl-wrap"><table id="destTbl"></table></div>
+          <p class="note"><b>The finding, as a table.</b> <code>EHR status</code> and
+          <code>True status as of placed date</code> are adjacent columns on purpose — the gap is a
+          field in the model, not an argument in a meeting. 2,010 of 4,379 referrals route to one
+          terminated contract.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-hd"><h3>Out-of-network allowed by destination</h3><span class="sub">All groups · PY2025 YTD · $12,996,664 total</span></div>
+        <div class="panel-bd" id="oonChart"></div>
+        <p class="note"><b>The recapture number.</b> Per <a href="docs/narrative.md">Q8</a> of the
+        narrative, neither geography nor capacity binds at this panel size — Northlake's in-network
+        block time comfortably exceeds the leaked case volume, so nearly all of it is winnable.
+        That is the opposite of what the dataset's design expected and it is left as the data has
+        it. At a larger panel or a thinner service line the same test binds hard.</p>
+      </div>
+    </section>
+
+    <!-- 04 STEWARDSHIP -->
+    <section class="pageview" id="page-stew" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Group detail <b>› Referral stewardship</b> · coaching view, not a payment view</p>
+        <h2>Referral Stewardship</h2>
+        <p>The one place clinician-level reporting is defensible, because referrals run a median of
+        48 per referring provider. Cost and quality do not, and are not shown here.</p>
+      </div></div>
+      <p class="note-top"><b>Page 4 of 5.</b> Payment happens at group level — see §4 of the plan.
+      Derived clinician panels here run a <b>median of 10 members</b>, where one open care gap moves
+      a quality rate ten points. This page exists to direct a conversation, and it is labelled that
+      way in the workbook so it cannot be quoted as a payout input.</p>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd">
+            <h3>Days from referral to closure</h3><span class="sub">2024-07 onward · closed-complete only</span>
+            <div class="legend">
+              <span><i class="swatch" style="background:var(--s2)"></i>North Ridge</span>
+              <span><i class="swatch" style="background:var(--s1)"></i>All other groups</span>
+            </div>
+          </div>
+          <div class="panel-bd" id="closureChart"></div>
+          <p class="note"><b>The fingerprint.</b> 69.0% of North Ridge closures land in days 25–31
+          against 9.0% for everyone else, spiking exactly at day 30. A spike at a round number is a
+          workflow rule, not clinical behaviour. <code>days_to_closure</code> is a stored column, so
+          this histogram is one drag from the leakage view — which is what makes the finding earned
+          rather than lucky.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-hd">
+            <h3>Onset — North Ridge, 2024</h3><span class="sub">The rule turns on 2024-07-01</span>
+            <div class="legend">
+              <span><i class="swatch" style="background:var(--s1)"></i>Closure rate</span>
+              <span><i class="swatch" style="background:var(--s2)"></i>Confirmed-event rate</span>
+              <span><i class="swatch" style="background:var(--s3)"></i>Closed by SYSTEM</span>
+            </div>
+          </div>
+          <div class="panel-bd"><div class="chart" id="onsetChart"></div></div>
+          <p class="note"><b>Three series, one 0–100% scale — never a dual axis.</b> The month the
+          rule turns on, closure steps 82.5% → 96.9% while the confirmed-event rate drops 80.5% →
+          56.5% and <code>closure_actor_type = 'SYSTEM'</code> goes 0% → 65.2%. Two independent
+          confirmations exist — no appointment <i>and</i> no professional claim — which is what
+          kills the first skeptic's "your match rate is bad" objection.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-hd"><h3>Referring providers — North Ridge</h3><span class="sub">n ≥ 30 referrals · PY2025 YTD</span></div>
+        <div class="panel-bd tbl-wrap"><table id="stewTbl"></table></div>
+        <p class="note"><b>Read this as exoneration, not indictment.</b> All 30 scoreable referrers
+        sit between 54.8% and 66.7% true out-of-network. That is not a few bad actors — it is one
+        pick-list nobody owned, and the auto-close rule was a reasonable local fix by someone trying
+        to clear a worklist. <b>The villain is the absence of architecture, never the client's
+        staff</b> — and in an incentive app, where the output is a cheque, getting that framing
+        backwards is the one thing here that damages a relationship.</p>
+      </div>
+    </section>
+
+    <!-- 05 LEDGER -->
+    <section class="pageview" id="page-ledger" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">PY2025 YTD <b>· 12 groups · 3 approved, 2 in review, 7 open</b></p>
+        <h2>Payout Ledger</h2>
+        <p>Sigma input tables. The modelled figure is frozen at submit time with the roster version,
+        paid-through date and active network definition stamped alongside it.</p>
+      </div></div>
+      <div class="panel">
+        <div class="panel-hd"><h3><code>INPUT_PAYOUT_DECISION</code></h3><span class="sub">Editable · adjustment reason required when approved ≠ modelled</span></div>
+        <div class="panel-bd tbl-wrap"><table id="ledgerTbl"></table></div>
+        <p class="note"><b>Why the definition is a stored column.</b>
+        <code>Network Definition Used</code> makes the difference between the two scorecards
+        auditable after the fact. Without it, a payout approved in March and a payout approved in
+        June can differ by $259,141 for reasons nobody can reconstruct — which is the failure this
+        whole dataset is about, arriving in the ledger instead of the dashboard.</p>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3><code>INPUT_MEASURE_EXCLUSION</code></h3><span class="sub">The appeals mechanism</span></div>
+          <div class="panel-bd tbl-wrap"><table id="exclTbl"></table></div>
+          <p class="note"><b>This is what keeps Priya at the table.</b> She will torpedo any metric
+          that makes her physicians look bad for reasons outside their control — and on the adult
+          HbA1c measure with a paediatric panel, she is right. A documented exclusion path is
+          cheaper than an undocumented argument, and it leaves a record of which measures the
+          program could not defend.</p>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Open items before this is a real payout</h3></div>
+          <div class="panel-bd"><div id="openItems"></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dock">
+    <div class="dock-hd">
+      <h4>Payout defence</h4>
+      <span class="tag">agent</span>
+    </div>
+    <div class="dock-bd" id="dockBd"></div>
+    <div class="dock-ft">
+      <div class="ask">Ask about a group, a measure, or a number…</div>
+      <div class="chips">
+        <button class="chip">Why did North Ridge drop?</button>
+        <button class="chip">What would earn the next tier?</button>
+        <button class="chip">Is this number payable?</button>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+<script>
+(function(){
+"use strict";
+const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const money=v=>"$"+Math.round(v).toLocaleString("en-US");
+const k$=v=>"$"+(v/1000).toFixed(0)+"K";
+const sgn=v=>(v>0?"+":"")+v;
+const ymLab=y=>{const m=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];return m[(y%100)-1]+" "+String(y/100|0).slice(2);};
+
+/* ================= measured data =================
+   Every figure below is measured from the shipping `demo` build (seed 20260911).
+   Nothing here is invented. See PROVIDER_INCENTIVE_PROGRAM_PLAN.md §18. */
+const POOL=4200000;
+const GROUPS=[{"code":"ONC-NLK","name":"Northlake Cancer","full":"Northlake Cancer Center","region":"North","members":1109,"mm":9598,"risk":0.435,"pmpm":790,"ae":1.25,"ed":217.5,"adm":82.5,"dmDen":273,"a1c":50.2,"refs":1013,"ehrOon":17.4,"trueOon":22.9,"confirm":75.7,"nullRef":4.4,"noshow":5.8,"gPts":{"cost":24.5,"ed":5.4,"a1c":29.7,"net":21.0,"acc":5.9},"nPts":{"cost":24.5,"ed":5.4,"a1c":29.7,"net":1.7,"acc":5.9},"gTot":86.4,"nTot":67.1,"gRank":1,"nRank":2,"gPay":274944,"nPay":248803},
+{"code":"PRIM-CTR","name":"Centerline Primary","full":"Centerline Primary Care","region":"Central","members":3293,"mm":28460,"risk":0.471,"pmpm":864,"ae":1.275,"ed":232.7,"adm":87.7,"dmDen":957,"a1c":49.5,"refs":2660,"ehrOon":15.7,"trueOon":20.9,"confirm":77.2,"nullRef":4.1,"noshow":5.2,"gPts":{"cost":21.6,"ed":1.2,"a1c":27.1,"net":25.0,"acc":10.0},"nPts":{"cost":21.6,"ed":1.2,"a1c":27.1,"net":25.0,"acc":10.0},"gTot":84.9,"nTot":84.9,"gRank":2,"nRank":1,"gPay":801282,"nPay":933690},
+{"code":"SPIN-MRD","name":"Meridian Spine","full":"Meridian Spine and Pain","region":"Central","members":1190,"mm":10336,"risk":0.445,"pmpm":1192,"ae":1.792,"ed":189.2,"adm":81.3,"dmDen":293,"a1c":50.5,"refs":2519,"ehrOon":16.8,"trueOon":21.8,"confirm":78.5,"nullRef":4.0,"noshow":5.0,"gPts":{"cost":0.0,"ed":10.0,"a1c":30.0,"net":25.0,"acc":10.0},"nPts":{"cost":0.0,"ed":10.0,"a1c":30.0,"net":7.2,"acc":10.0},"gTot":75.0,"nTot":57.2,"gRank":3,"nRank":5,"gPay":257112,"nPay":228530},
+{"code":"PRIM-EGR","name":"Eastgate Family","full":"Eastgate Family Health","region":"East","members":2587,"mm":22395,"risk":0.469,"pmpm":884,"ae":1.311,"ed":249.7,"adm":84.7,"dmDen":735,"a1c":47.5,"refs":2071,"ehrOon":16.9,"trueOon":21.9,"confirm":75.9,"nullRef":4.0,"noshow":5.4,"gPts":{"cost":17.5,"ed":0.0,"a1c":19.2,"net":24.7,"acc":8.9},"nPts":{"cost":17.5,"ed":0.0,"a1c":19.2,"net":6.0,"acc":8.9},"gTot":70.2,"nTot":51.6,"gRank":4,"nRank":6,"gPay":521383,"nPay":446175},
+{"code":"WMN-SBR","name":"Sunberry Women's","full":"Sunberry Women's Health","region":"South","members":2333,"mm":20339,"risk":0.443,"pmpm":815,"ae":1.272,"ed":210.6,"adm":85.0,"dmDen":643,"a1c":43.7,"refs":1870,"ehrOon":17.2,"trueOon":22.8,"confirm":77.0,"nullRef":3.9,"noshow":5.2,"gPts":{"cost":21.9,"ed":7.2,"a1c":0.0,"net":21.4,"acc":10.0},"nPts":{"cost":21.9,"ed":7.2,"a1c":0.0,"net":3.8,"acc":10.0},"gTot":60.5,"nTot":42.9,"gRank":5,"nRank":8,"gPay":407926,"nPay":336981},
+{"code":"MULT-WPT","name":"Westport Multispec","full":"Westport Multispecialty Group","region":"West","members":1987,"mm":17114,"risk":0.444,"pmpm":793,"ae":1.221,"ed":171.8,"adm":97.5,"dmDen":537,"a1c":44.5,"refs":1487,"ehrOon":17.6,"trueOon":21.8,"confirm":76.3,"nullRef":3.8,"noshow":6.2,"gPts":{"cost":25.0,"ed":10.0,"a1c":0.0,"net":25.0,"acc":0.2},"nPts":{"cost":25.0,"ed":10.0,"a1c":0.0,"net":0.0,"acc":0.2},"gTot":60.2,"nTot":35.2,"gRank":6,"nRank":11,"gPay":341528,"nPay":232816},
+{"code":"PEDS-SBR","name":"Sunberry Peds","full":"Sunberry Pediatrics","region":"South","members":697,"mm":6000,"risk":0.291,"pmpm":559,"ae":1.23,"ed":132.0,"adm":56.0,"dmDen":125,"a1c":32.8,"refs":537,"ehrOon":14.0,"trueOon":20.1,"confirm":75.6,"nullRef":5.8,"noshow":6.3,"gPts":{"cost":25.0,"ed":10.0,"a1c":0.0,"net":25.0,"acc":0.0},"nPts":{"cost":25.0,"ed":10.0,"a1c":0.0,"net":25.0,"acc":0.0},"gTot":60.0,"nTot":60.0,"gRank":7,"nRank":4,"gPay":119390,"nPay":139119},
+{"code":"CARD-RVB","name":"Riverbend Cardiology","full":"Riverbend Cardiology Institute","region":"Central","members":1615,"mm":14009,"risk":0.45,"pmpm":744,"ae":1.14,"ed":203.0,"adm":92.5,"dmDen":441,"a1c":44.7,"refs":1272,"ehrOon":17.5,"trueOon":21.9,"confirm":77.1,"nullRef":5.0,"noshow":6.3,"gPts":{"cost":25.0,"ed":9.1,"a1c":0.3,"net":24.4,"acc":0.0},"nPts":{"cost":25.0,"ed":9.1,"a1c":0.3,"net":0.1,"acc":0.0},"gTot":58.9,"nTot":34.5,"gRank":8,"nRank":12,"gPay":273470,"nPay":186593},
+{"code":"PRIM-NLK","name":"Northlake Family Med","full":"Northlake Family Medicine","region":"North","members":2900,"mm":25198,"risk":0.461,"pmpm":949,"ae":1.413,"ed":280.5,"adm":86.2,"dmDen":809,"a1c":48.2,"refs":2551,"ehrOon":16.8,"trueOon":21.8,"confirm":76.9,"nullRef":4.1,"noshow":5.7,"gPts":{"cost":0.0,"ed":0.0,"a1c":22.0,"net":24.8,"acc":6.6},"nPts":{"cost":0.0,"ed":0.0,"a1c":22.0,"net":7.8,"acc":6.6},"gTot":53.4,"nTot":36.3,"gRank":9,"nRank":10,"gPay":445942,"nPay":353702},
+{"code":"PRIM-WPT","name":"Westport Internal Med","full":"Westport Internal Medicine","region":"West","members":2383,"mm":20674,"risk":0.475,"pmpm":927,"ae":1.35,"ed":217.1,"adm":97.5,"dmDen":703,"a1c":49.4,"refs":1964,"ehrOon":18.5,"trueOon":23.1,"confirm":76.7,"nullRef":4.0,"noshow":5.5,"gPts":{"cost":6.4,"ed":5.5,"a1c":26.5,"net":0.0,"acc":8.5},"nPts":{"cost":6.4,"ed":5.5,"a1c":26.5,"net":0.0,"acc":8.5},"gTot":46.9,"nTot":46.9,"gRank":10,"nRank":7,"gPay":321831,"nPay":375012},
+{"code":"GI-EGR","name":"Eastgate Digestive","full":"Eastgate Digestive Health","region":"East","members":1216,"mm":10555,"risk":0.456,"pmpm":886,"ae":1.347,"ed":222.8,"adm":85.3,"dmDen":325,"a1c":52.3,"refs":1108,"ehrOon":17.7,"trueOon":23.0,"confirm":77.5,"nullRef":3.8,"noshow":7.1,"gPts":{"cost":8.0,"ed":3.9,"a1c":30.0,"net":0.0,"acc":0.0},"nPts":{"cost":8.0,"ed":3.9,"a1c":30.0,"net":0.0,"acc":0.0},"gTot":41.9,"nTot":41.9,"gRank":11,"nRank":9,"gPay":146726,"nPay":170972},
+{"code":"ORTHO-NR","name":"North Ridge Ortho","full":"North Ridge Orthopedics","region":"North","members":2524,"mm":21888,"risk":0.466,"pmpm":948,"ae":1.4,"ed":256.0,"adm":99.2,"dmDen":555,"a1c":53.0,"refs":4379,"ehrOon":6.9,"trueOon":52.8,"confirm":52.5,"nullRef":4.2,"noshow":5.3,"gPts":{"cost":0.0,"ed":0.0,"a1c":30.0,"net":0.0,"acc":9.7},"nPts":{"cost":0.0,"ed":0.0,"a1c":30.0,"net":25.0,"acc":9.7},"gTot":39.7,"nTot":64.7,"gRank":12,"nRank":3,"gPay":288466,"nPay":547607}];
+
+const TREND=[{"ym":202401,"pmpm":1258,"cf":1,"adj":1258,"scored":true},{"ym":202402,"pmpm":973,"cf":1,"adj":973,"scored":true},{"ym":202403,"pmpm":996,"cf":1,"adj":996,"scored":true},{"ym":202404,"pmpm":988,"cf":1,"adj":988,"scored":true},{"ym":202405,"pmpm":931,"cf":1,"adj":931,"scored":true},{"ym":202406,"pmpm":867,"cf":1,"adj":867,"scored":true},{"ym":202407,"pmpm":930,"cf":1,"adj":930,"scored":true},{"ym":202408,"pmpm":852,"cf":1,"adj":852,"scored":true},{"ym":202409,"pmpm":879,"cf":1,"adj":879,"scored":true},{"ym":202410,"pmpm":970,"cf":1,"adj":970,"scored":true},{"ym":202411,"pmpm":1003,"cf":1,"adj":1003,"scored":true},{"ym":202412,"pmpm":1115,"cf":1,"adj":1115,"scored":true},{"ym":202501,"pmpm":1048,"cf":1,"adj":1048,"scored":true},{"ym":202502,"pmpm":971,"cf":1,"adj":971,"scored":true},{"ym":202503,"pmpm":1035,"cf":1,"adj":1035,"scored":true},{"ym":202504,"pmpm":807,"cf":1,"adj":807,"scored":true},{"ym":202505,"pmpm":823,"cf":1,"adj":823,"scored":true},{"ym":202506,"pmpm":833,"cf":1,"adj":833,"scored":true},{"ym":202507,"pmpm":777,"cf":1,"adj":777,"scored":true},{"ym":202508,"pmpm":777,"cf":1,"adj":777,"scored":true},{"ym":202509,"pmpm":832,"cf":1,"adj":832,"scored":true},{"ym":202510,"pmpm":695,"cf":0.78,"adj":891,"scored":false},{"ym":202511,"pmpm":534,"cf":0.54,"adj":989,"scored":false},{"ym":202512,"pmpm":444,"cf":0.31,"adj":1432,"scored":false}];
+const CLOSURE={bins:["1-5","6-10","11-15","16-20","21-25","26-29","30-31","32-40","41-60","60+"],ortho:[1.1,7.4,7.8,6.0,4.4,23.9,45.2,2.2,1.7,0.4],peers:[4.3,20.2,23.3,17.2,12.3,6.5,2.5,6.9,5.1,1.6]};
+const ONSET=[{"ym":202401,"closed":81.8,"confirmed":78.1,"sysclosed":0},{"ym":202402,"closed":78.2,"confirmed":79.3,"sysclosed":0},{"ym":202403,"closed":81.7,"confirmed":79.8,"sysclosed":0},{"ym":202404,"closed":80.5,"confirmed":81.5,"sysclosed":0},{"ym":202405,"closed":80.1,"confirmed":75.9,"sysclosed":0},{"ym":202406,"closed":82.5,"confirmed":80.5,"sysclosed":0},{"ym":202407,"closed":96.9,"confirmed":56.5,"sysclosed":65.2},{"ym":202408,"closed":96.6,"confirmed":51.8,"sysclosed":66.7},{"ym":202409,"closed":96.6,"confirmed":51.2,"sysclosed":64.4},{"ym":202410,"closed":96.8,"confirmed":52.1,"sysclosed":64.8},{"ym":202411,"closed":96.6,"confirmed":55.8,"sysclosed":65},{"ym":202412,"closed":95.1,"confirmed":54.3,"sysclosed":66.1}];
+const OON=[["ASC-SUMMIT","Summit Point Surgery Center",4695077,"Contract terminated 2024-10-01"],["IMG-OPEN","OpenView MRI",2469487,"Never contracted"],["ASC-LKSD","Lakeside Orthopedic Surgery",1962362,"Never contracted"],["ASC-CRST","Crestview Ambulatory Surgery",1943702,"Never contracted"],["ASC-PINE","Pinehurst Surgical Institute",1926037,"Never contracted"]];
+const DEST=[["ASC-SUMMIT","Summit Point Surgery Center",2010,"PAR","NONPAR"],["ASC-NLK","Northlake Ambulatory Surgery",230,"PAR","PAR"],["HOSP-RVB","Riverbend Medical Center",221,"PAR","PAR"],["GI-EGR","Eastgate Digestive Health",216,"PAR","PAR"],["MULT-WPT","Westport Multispecialty",214,"PAR","PAR"],["ASC-EGR","Eastgate Day Surgery",210,"PAR","PAR"],["ASC-WPT","Westport Surgery Center",207,"PAR","PAR"],["HOSP-NLK","Northlake General Hospital",199,"PAR","PAR"]];
+const STEW=[["Michael Falkner, MD","Orthopedic surgery",33,66.7,63.6,63.6],["Heather Rutherford, MD","Sports medicine",30,66.7,60.0,80.0],["John Salisbury, MD","Sports medicine",30,66.7,66.7,73.3],["Michael Vandenberg, MD","Orthopedic surgery",30,63.3,56.7,76.7],["Lisa Moreland, MD","Orthopedic surgery",33,60.6,57.6,45.5],["Susan Buchanan, MD","Sports medicine",30,60.0,53.3,56.7],["Linda Keating, DO","Sports medicine",30,60.0,53.3,70.0],["Robert Copeland, MD","Orthopedic surgery",41,58.5,51.2,61.0],["Jennifer Falkner, DO","Sports medicine",36,58.3,58.3,50.0],["Jacob Ridley, MD","Orthopedic surgery",30,56.7,50.0,56.7],["Laura Thorne, MD","Spine surgery",32,56.2,50.0,50.0],["Matthew Kellerman, MD","Orthopedic surgery",31,54.8,48.4,45.2]];
+const DOMS=[{k:"cost",lab:"Cost — risk-adj A/E",max:25,v:"ae",fmt:v=>v.toFixed(3),low:true,c:"--s1"},
+            {k:"ed",lab:"Utilization — ED/1000",max:10,v:"ed",fmt:v=>v.toFixed(1),low:true,c:"--s2"},
+            {k:"a1c",lab:"Quality — HbA1c tested",max:30,v:"a1c",fmt:v=>v.toFixed(1)+"%",low:false,c:"--s3"},
+            {k:"net",lab:"Network — true OON",max:25,v:"trueOon",fmt:v=>v.toFixed(1)+"%",low:true,c:"--s4"},
+            {k:"acc",lab:"Access — no-show",max:10,v:"noshow",fmt:v=>v.toFixed(1)+"%",low:true,c:"--s5"}];
+
+let MODE="gov";              /* "gov" = as-of contract join, "naive" = EHR directory */
+let FOCUS="ORTHO-NR";
+const P=g=>MODE==="gov"?g.gPts:g.nPts,
+      RANK=g=>MODE==="gov"?g.gRank:g.nRank, PAY=g=>MODE==="gov"?g.gPay:g.nPay;
+/* Composite is the sum of the five displayed domain points, so every row adds up on screen.
+   Rank and payout come from the unrounded computation; the 0.1-point display drift never reorders. */
+const TOT=g=>Math.round(Object.values(P(g)).reduce((a,b)=>a+b,0)*10)/10;
+const sorted=()=>[...GROUPS].sort((a,b)=>RANK(a)-RANK(b));
+
+/* ---------------- tooltip ---------------- */
+const tip=$("#tip");
+function showTip(html,e){ tip.innerHTML=html; tip.classList.add("on");
+  const r=tip.getBoundingClientRect(); let x=e.clientX+14,y=e.clientY-r.height-12;
+  if(x+r.width>innerWidth-8) x=e.clientX-r.width-14; if(y<8) y=e.clientY+18;
+  tip.style.left=x+"px"; tip.style.top=y+"px"; }
+const hideTip=()=>tip.classList.remove("on");
+function bindTip(el,fn){
+  el.addEventListener("mousemove",e=>showTip(fn(),e));
+  el.addEventListener("mouseleave",hideTip);
+  el.addEventListener("focus",()=>{const b=el.getBoundingClientRect();showTip(fn(),{clientX:b.left+b.width/2,clientY:b.top});});
+  el.addEventListener("blur",hideTip);
+}
+const tRow=(l,v,c)=>'<div class="row"><i>'+(c?'<span class="swatch" style="background:'+c+'"></span>':'')+esc(l)+'</i><span>'+esc(v)+'</span></div>';
+
+/* ---------------- trust header ---------------- */
+function trust(){
+  $("#trustHdr").innerHTML=[
+    ["Roster version","2 · as of 2025-12-15",0],
+    ["Claims paid through","2026-02-28",0],
+    ["Scored window","2025-01 → 2025-09",0],
+    ["Months complete","9 of 9 scored",0],
+    ["Excluded — runout","2025-10 · 11 · 12",1],
+    ["Network definition",MODE==="gov"?"As-of contract join":"EHR directory (do not score)",MODE==="gov"?0:1],
+    ["Cohort","Open panel",0]
+  ].map(([i,b,f])=>'<div class="tcell'+(f?' flag':'')+'"><i>'+i+'</i><b>'+esc(b)+'</b></div>').join("");
+}
+
+/* ---------------- page 1 ---------------- */
+function pool(){
+  const mm=GROUPS.reduce((s,g)=>s+g.mm,0), me=GROUPS.reduce((s,g)=>s+g.members,0);
+  const al=GROUPS.reduce((s,g)=>s+g.pmpm*g.mm,0);
+  $("#poolKpis").innerHTML=[
+    ['Bonus pool',money(POOL),'modelling assumption — needs an owner','hero'],
+    ['Attributed members',me.toLocaleString(),'in the scored window · 25,116 all-time',''],
+    ['Attributed member-months',mm.toLocaleString(),'payer roster, 9 scored months',''],
+    ['Allowed PMPM',money(al/mm),'attributed roster, PY2025 YTD',''],
+    ['Out-of-network allowed',money(12996664),'<b>7.2%</b> of $181.4M total','alarm'],
+    ['Pool at risk of misallocation',money(488705),'<b>11.6%</b> — one join','alarm']
+  ].map(([e,v,d,c])=>'<div class="kpi '+c+'"><p class="eyebrow">'+e+'</p><div class="v">'+v+'</div><div class="d">'+d+'</div></div>').join("");
+
+  /* trend: 24 months, one $ scale, solid where scored and dashed where completion-adjusted */
+  const W=980,H=190,PB=26,PL=46,PR=14,PT=8;
+  const iw=W-PL-PR, ih=H-PT-PB;
+  const vals=TREND.flatMap(d=>[d.pmpm,d.adj||0]);
+  const mx=Math.ceil(Math.max(...vals)/200)*200, mn=0;
+  const X=i=>PL+(iw*i)/(TREND.length-1), Y=v=>PT+ih-((v-mn)/(mx-mn))*ih;
+  const firstUn=TREND.findIndex(d=>!d.scored);
+  const line=(key,upto,from)=>TREND.map((d,i)=>({d,i})).filter(o=>(from===undefined||o.i>=from)&&(upto===undefined||o.i<=upto))
+      .map((o,j)=>(j?"L":"M")+X(o.i).toFixed(1)+" "+Y(o.d[key]).toFixed(1)).join(" ");
+  let g="";
+  for(let v=0;v<=mx;v+=200) g+='<line x1="'+PL+'" y1="'+Y(v)+'" x2="'+(W-PR)+'" y2="'+Y(v)+'" stroke="var(--grid)" stroke-width="1"/>'+
+    '<text x="'+(PL-7)+'" y="'+(Y(v)+3.5)+'" text-anchor="end" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">'+(v?"$"+v:"0")+'</text>';
+  let ax=TREND.map((d,i)=>(d.ym%100===1||d.ym%100===7)?'<text x="'+X(i)+'" y="'+(H-9)+'" text-anchor="middle" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">'+ymLab(d.ym)+'</text>':"").join("");
+  const shade='<rect x="'+X(firstUn-0.5)+'" y="'+PT+'" width="'+(W-PR-X(firstUn-0.5))+'" height="'+ih+'" fill="var(--ink-3)" opacity=".07"/>'+
+    '<line x1="'+X(firstUn-0.5)+'" y1="'+PT+'" x2="'+X(firstUn-0.5)+'" y2="'+(PT+ih)+'" stroke="var(--axis)" stroke-width="1"/>'+
+    '<text x="'+(W-PR-4)+'" y="'+(PT+12)+'" text-anchor="end" font-size="9.5" font-family="var(--ui)" font-weight="600" fill="var(--ink-2)">NOT SCORED</text>'+
+    '<text x="'+(W-PR-4)+'" y="'+(PT+23)+'" text-anchor="end" font-size="9" font-family="var(--ui)" fill="var(--ink-3)">claims runout</text>';
+  const dots=TREND.map((d,i)=>'<g class="tpt" tabindex="0" data-i="'+i+'"><circle cx="'+X(i)+'" cy="'+Y(d.pmpm)+'" r="11" fill="transparent"/>'+
+    '<circle cx="'+X(i)+'" cy="'+Y(d.pmpm)+'" r="'+(d.scored?3:2.5)+'" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/></g>').join("");
+  $("#trendChart").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Allowed PMPM by service month, 2024-01 to 2025-12">'+
+    g+shade+
+    '<path d="'+line("pmpm",firstUn-1)+'" fill="none" stroke="var(--s1)" stroke-width="2"/>'+
+    '<path d="'+line("pmpm",undefined,firstUn-1)+'" fill="none" stroke="var(--s1)" stroke-width="2" stroke-dasharray="1 3" opacity=".7"/>'+
+    '<path d="'+line("adj",undefined,firstUn-1)+'" fill="none" stroke="var(--s2)" stroke-width="2" stroke-dasharray="5 3"/>'+
+    '<line x1="'+PL+'" y1="'+(PT+ih)+'" x2="'+(W-PR)+'" y2="'+(PT+ih)+'" stroke="var(--axis)" stroke-width="1"/>'+
+    ax+dots+'</svg>';
+  $$("#trendChart .tpt").forEach(el=>bindTip(el,()=>{const d=TREND[+el.dataset.i];
+    return '<h5>'+ymLab(d.ym)+'</h5>'+tRow("Allowed PMPM",money(d.pmpm),"var(--s1)")+
+      tRow("Completeness",(d.cf*100).toFixed(0)+"%")+
+      (d.scored?tRow("Status","scored"):tRow("Completion-adjusted",money(d.adj),"var(--s2)")+tRow("Status","not scored"));}));
+
+  $("#benchTbl").innerHTML='<thead><tr><th>Population</th><th>Commercial</th><th>Medicare Adv.</th></tr></thead><tbody>'+
+    [["All 48,000 members","$552","$1,022",0],["<code>vbc_benchmark.benchmark_pmpm</code>","$582","$1,116",0],
+     ["Attributed roster only","$946","$1,422",1],["<code>risk_adjusted_benchmark_pmpm</code>","$266","$1,711",1]]
+    .map(([a,b,c,f])=>'<tr'+(f?' class="hl"':'')+'><td>'+a+'</td><td class="n">'+b+'</td><td class="n">'+c+'</td></tr>').join("")+'</tbody>';
+  $("#rosterTbl").innerHTML='<thead><tr><th>Roster</th><th>Members</th><th>Member-months</th></tr></thead><tbody>'+
+    [["<code>fct_member_month</code>","48,000","1,501,125",0],["<code>vbc_attribution_month</code>","25,116","808,971",1],
+     ["In eligibility, not on roster","22,884","692,154",0],["Shared — site disagrees","—","7.03%",0]]
+    .map(([a,b,c,f])=>'<tr'+(f?' class="hl"':'')+'><td>'+a+'</td><td class="n">'+b+'</td><td class="n">'+c+'</td></tr>').join("")+'</tbody>';
+}
+
+/* ---------------- page 2 ---------------- */
+function score(){
+  const o=GROUPS.find(g=>g.code==="ORTHO-NR");
+  const moved=GROUPS.reduce((s,g)=>s+Math.abs(g.gPay-g.nPay),0)/2;
+  $("#invCallout").innerHTML='<h4>The rank inversion — North Ridge Orthopedics</h4>'+
+    'On the EHR referral pick-list North Ridge posts a <b>'+o.ehrOon+'% out-of-network rate — the best of twelve</b> '+
+    '(peer range 14.0–18.5%). Joining the destination\'s network status <b>as of the date the referral was placed</b> '+
+    'puts the same group at <b>'+o.trueOon+'% — the worst of twelve</b> (peer range 20.1–23.1%). '+
+    'The composite rank moves <b>'+o.nRank+' → '+o.gRank+'</b>, nine places, and <b>'+money(o.nPay-o.gPay)+'</b> leaves the group. '+
+    'Across all twelve, <b>'+money(moved)+'</b> is redistributed — '+(100*moved/POOL).toFixed(1)+'% of the pool. '+
+    '<span class="pill">currently showing: '+(MODE==="gov"?"as-of contract":"EHR directory")+'</span>';
+  const tot=GROUPS.reduce((s,g)=>s+PAY(g),0);
+  $("#scoreKpis").innerHTML=[
+    ['Pool distributed',money(tot),'12 groups · weighted by member-months','hero'],
+    ['Highest composite',sorted()[0].name,TOT(sorted()[0]).toFixed(1)+' of 100 points',''],
+    ['Lowest composite',sorted()[11].name,TOT(sorted()[11]).toFixed(1)+' of 100 points',''],
+    ['North Ridge rank','#'+RANK(o)+' of 12',MODE==="gov"?'as-of contract join':'<b>EHR directory — wrong</b>',MODE==="gov"?'':'alarm'],
+    ['North Ridge payout',money(PAY(o)),MODE==="gov"?money(o.nPay-o.gPay)+' below the naive figure':'<b>overstated by '+money(o.nPay-o.gPay)+'</b>',MODE==="gov"?'':'alarm']
+  ].map(([e,v,d,c])=>'<div class="kpi '+c+'"><p class="eyebrow">'+e+'</p><div class="v">'+v+'</div><div class="d">'+d+'</div></div>').join("");
+
+  $("#domLegend").innerHTML=DOMS.map(d=>'<span><i class="swatch" style="background:var('+d.c+')"></i>'+esc(d.lab.split(" — ")[0])+' ('+d.max+')</span>').join("");
+  const oonHd=MODE==="gov"?"True OON":"EHR OON";
+  $("#scoreTbl").innerHTML='<thead><tr><th>#</th><th>Clinic group</th><th>Member-mo.</th><th>'+oonHd+'</th><th>Domain points</th>'+
+    DOMS.map(d=>'<th title="'+esc(d.lab)+'">'+d.max+'</th>').join("")+'<th>Score</th><th>Payout</th><th>Per mbr</th></tr></thead><tbody>'+
+    sorted().map(g=>{const p=P(g),hl=g.code===FOCUS;
+      const stk=DOMS.map(d=>{const f=p[d.k]/100; return f>0?'<i style="width:'+(f*100)+'%;background:var('+d.c+')" title="'+d.lab+' '+p[d.k]+'"></i>':"";}).join("");
+      return '<tr class="clickable'+(hl?' hl':'')+'" data-code="'+g.code+'"><td class="n">'+RANK(g)+'</td><td>'+esc(g.name)+
+        (g.code==="ORTHO-NR"?' <span class="tag '+(MODE==="gov"?"bad":"warn")+'">'+(MODE==="gov"?"12 of 12":"flattered")+'</span>':"")+'</td>'+
+        '<td class="n">'+g.mm.toLocaleString()+'</td>'+
+        '<td class="n">'+(MODE==="gov"?g.trueOon:g.ehrOon).toFixed(1)+'%</td>'+
+        '<td><span class="stk">'+stk+'</span></td>'+
+        DOMS.map(d=>'<td class="n">'+p[d.k].toFixed(1)+'</td>').join("")+
+        '<td class="n"><b>'+TOT(g).toFixed(1)+'</b></td><td class="n">'+money(PAY(g))+'</td><td class="n">'+money(PAY(g)/g.members)+'</td></tr>';}).join("")+'</tbody>'+
+    '<tfoot><tr><td colspan="12" style="text-align:left;font-size:11px;color:var(--ink-3);border:0;padding-top:8px">'+
+    'The five numbered columns are the domain points behind the bar; the measure values behind them sit on <b>Group Detail</b>, each against its peer distribution.</td></tr></tfoot>';
+  $$("#scoreTbl tr.clickable").forEach(tr=>tr.addEventListener("click",()=>{FOCUS=tr.dataset.code;go("group");}));
+
+  /* diverging payout delta off a zero axis */
+  const mxd=Math.max(...GROUPS.map(g=>Math.abs(g.gPay-g.nPay)));
+  $("#deltaChart").innerHTML=[...GROUPS].sort((a,b)=>(b.gPay-b.nPay)-(a.gPay-a.nPay)).map(g=>{
+    const d=g.gPay-g.nPay, w=Math.abs(d)/mxd*40, pos=d>=0;
+    return '<div class="dvg"><span class="lab">'+esc(g.name)+'</span><div class="dvbar" tabindex="0" data-code="'+g.code+'">'+
+      '<span class="zero" style="left:50%"></span>'+
+      (Math.abs(d)>500?'<i class="'+(pos?"pos":"neg")+'" style="'+(pos?"left:50%":"right:50%")+';width:'+w+'%"></i>':"")+
+      '<span style="'+(pos?"left:calc(50% + "+w+"% + 6px)":"right:calc(50% + "+w+"% + 6px)")+'">'+(pos?"+":"−")+k$(Math.abs(d))+'</span></div></div>';}).join("");
+  $$("#deltaChart .dvbar").forEach(el=>bindTip(el,()=>{const g=GROUPS.find(x=>x.code===el.dataset.code);
+    return '<h5>'+esc(g.full)+'</h5>'+tRow("EHR directory",money(g.nPay))+tRow("As-of contract",money(g.gPay))+
+      tRow("Change",(g.gPay>=g.nPay?"+":"−")+money(Math.abs(g.gPay-g.nPay)),g.gPay>=g.nPay?"var(--gain)":"var(--loss)")+
+      tRow("Rank",g.nRank+" → "+g.gRank);}));
+}
+
+/* ---------------- page 3 ---------------- */
+function group(){
+  const g=GROUPS.find(x=>x.code===FOCUS)||GROUPS[11];
+  $("#ctlGroup").textContent=g.name;
+  $("#page-group .crumb").innerHTML='Scorecard <b>› '+esc(g.full)+'</b> · '+esc(g.region)+' region · '+g.members.toLocaleString()+' attributed members';
+  $("#grpKpis").innerHTML=[
+    ['Composite score',TOT(g).toFixed(1),'rank #'+RANK(g)+' of 12','hero'],
+    ['Modelled payout',money(PAY(g)),money(PAY(g)/g.members)+' per member',''],
+    ['Risk-adj A/E',g.ae.toFixed(3),'peer mean '+(GROUPS.reduce((s,x)=>s+x.ae,0)/12).toFixed(3),''],
+    ['True OON referrals',g.trueOon.toFixed(1)+'%','EHR directory says '+g.ehrOon.toFixed(1)+'%',g.trueOon-g.ehrOon>20?'alarm':''],
+    ['Confirmed-event rate',g.confirm.toFixed(1)+'%','appointment or claim confirms',g.confirm<60?'alarm':''],
+    ['Null referring provider',g.nullRef.toFixed(1)+'%','reported as a bucket, never dropped','']
+  ].map(([e,v,d,c])=>'<div class="kpi '+c+'"><p class="eyebrow">'+e+'</p><div class="v">'+v+'</div><div class="d">'+d+'</div></div>').join("");
+
+  $("#dotPlots").innerHTML=DOMS.map(d=>{
+    const vs=GROUPS.map(x=>x[d.v]), lo=Math.min(...vs), hi=Math.max(...vs), sp=(hi-lo)||1;
+    const pos=v=>4+((v-lo)/sp)*92, mean=vs.reduce((a,b)=>a+b,0)/12;
+    return '<div class="dotrow"><span class="lab">'+esc(d.lab)+'</span><div class="dotband">'+
+      '<span class="ax"></span><span class="mean" style="left:'+pos(mean)+'%"></span>'+
+      GROUPS.filter(x=>x.code!==g.code).map(x=>'<span class="pd" style="left:'+pos(x[d.v])+'%"></span>').join("")+
+      '<span class="me" style="left:'+pos(g[d.v])+'%;background:var(--s2)"></span></div>'+
+      '<span class="val">'+d.fmt(g[d.v])+'</span></div>';}).join("")+
+    '<p class="sup">Scale runs low → high left to right. '+(DOMS.filter(d=>d.low).length)+' of 5 measures are lower-is-better, so left is good on those and right is good on quality.</p>';
+
+  $("#destTbl").innerHTML='<thead><tr><th>Destination</th><th>Refs</th><th>EHR status</th><th>True status<br>as of placed date</th></tr></thead><tbody>'+
+    DEST.map(([c,n,r,e,t])=>'<tr'+(e!==t?' class="hl"':'')+'><td>'+esc(n)+'<br><span class="tag">'+c+'</span></td><td class="n">'+r.toLocaleString()+'</td>'+
+      '<td><span class="tag ok">'+e+'</span></td><td><span class="tag '+(t==="NONPAR"?"bad":"ok")+'">'+t+'</span></td></tr>').join("")+'</tbody>'+
+    '<tfoot><tr><td colspan="4" style="text-align:left;font-size:11px;color:var(--ink-3);border:0;padding-top:8px">'+
+    '2,010 of '+g.refs.toLocaleString()+' referrals route to one contract that terminated 2024-10-01.</td></tr></tfoot>';
+
+  const mx=Math.max(...OON.map(o=>o[2]));
+  $("#oonChart").innerHTML=OON.map(([c,n,v,why])=>'<div class="dotrow" style="grid-template-columns:200px 1fr 92px"><span class="lab">'+esc(n)+'</span>'+
+    '<div style="position:relative;height:16px" tabindex="0" title="'+esc(why)+'"><i style="position:absolute;left:0;top:2px;height:12px;width:'+(v/mx*100)+'%;background:var('+(c==="ASC-SUMMIT"?"--s2":"--s1")+');border-radius:0 4px 4px 0;display:block"></i></div>'+
+    '<span class="val">'+money(v)+'</span></div>').join("")+
+    '<p class="sup"><span class="tag bad">ASC-SUMMIT</span> is the only one of the five that Northlake <b>used to</b> have a contract with — the other four were never contracted, so their volume is a referral-pattern question, not a governance failure.</p>';
+}
+
+/* ---------------- page 4 ---------------- */
+function stew(){
+  const mx=Math.max(...CLOSURE.ortho,...CLOSURE.peers);
+  $("#closureChart").innerHTML='<div class="cols">'+CLOSURE.bins.map((b,i)=>
+    '<div class="colgrp" tabindex="0" data-i="'+i+'">'+(i===6?'<span class="collab">'+CLOSURE.ortho[i]+'%</span>':"")+
+    '<i style="height:'+(CLOSURE.ortho[i]/mx*100)+'%;background:var(--s2)"></i>'+
+    '<i style="height:'+(CLOSURE.peers[i]/mx*100)+'%;background:var(--s1)"></i></div>').join("")+'</div>'+
+    '<div class="colax">'+CLOSURE.bins.map(b=>'<span>'+b+'</span>').join("")+'</div>'+
+    '<p class="sup">Days from referral placed to status <code>CLOSED_COMPLETE</code>. Only the day-30 bar is directly labelled — a number on every column would be unreadable, and the rest are in the tooltip and the plan.</p>';
+  $$("#closureChart .colgrp").forEach(el=>bindTip(el,()=>{const i=+el.dataset.i;
+    return '<h5>Day '+CLOSURE.bins[i]+'</h5>'+tRow("North Ridge",CLOSURE.ortho[i]+"%","var(--s2)")+tRow("All other groups",CLOSURE.peers[i]+"%","var(--s1)");}));
+
+  const W=560,H=176,PL=34,PR=12,PT=8,PB=24, iw=W-PL-PR, ih=H-PT-PB;
+  const X=i=>PL+(iw*i)/(ONSET.length-1), Y=v=>PT+ih-(v/100)*ih;
+  let g="";
+  for(let v=0;v<=100;v+=25) g+='<line x1="'+PL+'" y1="'+Y(v)+'" x2="'+(W-PR)+'" y2="'+Y(v)+'" stroke="var(--grid)" stroke-width="1"/>'+
+    '<text x="'+(PL-6)+'" y="'+(Y(v)+3.5)+'" text-anchor="end" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">'+v+'</text>';
+  const ln=(k,c)=>'<path d="'+ONSET.map((d,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(d[k]).toFixed(1)).join(" ")+'" fill="none" stroke="var('+c+')" stroke-width="2"/>';
+  const rule='<line x1="'+X(5.5)+'" y1="'+PT+'" x2="'+X(5.5)+'" y2="'+(PT+ih)+'" stroke="var(--crit)" stroke-width="1"/>'+
+    '<text x="'+(X(5.5)+5)+'" y="'+Y(22)+'" font-size="9" font-family="var(--ui)" font-weight="600" fill="var(--crit)">RULE ON</text>'+
+    '<text x="'+(X(5.5)+5)+'" y="'+Y(13)+'" font-size="9" font-family="var(--mono)" fill="var(--crit)">2024-07-01</text>';
+  $("#onsetChart").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="North Ridge referral closure, confirmation and system-close rates through 2024">'+
+    g+rule+ln("closed","--s1")+ln("confirmed","--s2")+ln("sysclosed","--s3")+
+    '<line x1="'+PL+'" y1="'+(PT+ih)+'" x2="'+(W-PR)+'" y2="'+(PT+ih)+'" stroke="var(--axis)" stroke-width="1"/>'+
+    ONSET.map((d,i)=>i%3===0?'<text x="'+X(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="9.5" font-family="var(--mono)" fill="var(--ink-3)">'+ymLab(d.ym)+'</text>':"").join("")+
+    ONSET.map((d,i)=>'<g class="opt" tabindex="0" data-i="'+i+'"><rect x="'+(X(i)-11)+'" y="'+PT+'" width="22" height="'+ih+'" fill="transparent"/>'+
+      ['closed','confirmed','sysclosed'].map((k,j)=>'<circle cx="'+X(i)+'" cy="'+Y(d[k])+'" r="3" fill="var(--s'+(j+1)+')" stroke="var(--surface)" stroke-width="2"/>').join("")+'</g>').join("")+
+    '</svg>';
+  $$("#onsetChart .opt").forEach(el=>bindTip(el,()=>{const d=ONSET[+el.dataset.i];
+    return '<h5>'+ymLab(d.ym)+'</h5>'+tRow("Closure rate",d.closed+"%","var(--s1)")+tRow("Confirmed-event rate",d.confirmed+"%","var(--s2)")+tRow("Closed by SYSTEM",d.sysclosed+"%","var(--s3)");}));
+
+  $("#stewTbl").innerHTML='<thead><tr><th>Referring provider</th><th>Specialty</th><th>Refs</th><th>True OON</th><th>Confirmed</th><th>Closed by SYSTEM</th></tr></thead><tbody>'+
+    STEW.map(([n,s,r,o,c,y])=>'<tr><td>'+esc(n)+'</td><td>'+esc(s)+'</td><td class="n">'+r+'</td>'+
+      '<td class="n"><span class="tag bad">'+o.toFixed(1)+'%</span></td><td class="n">'+c.toFixed(1)+'%</td><td class="n">'+y.toFixed(1)+'%</td></tr>').join("")+'</tbody>'+
+    '<tfoot><tr><td colspan="6" style="text-align:left;font-size:11px;color:var(--ink-3);border:0;padding-top:8px">'+
+    'Showing 12 of <b>30</b> providers at n ≥ 30. <b>140 of 170</b> North Ridge referrers fall below the reporting threshold and are counted here rather than hidden. '+
+    'Suppressed volume: 1,083 referrals.</td></tr></tfoot>';
+}
+
+/* ---------------- page 5 ---------------- */
+function ledger(){
+  const st=[["Approved",0,1,2],["In Review",3,4],["Open",5,6,7,8,9,10,11]];
+  const rows=sorted().map((g,i)=>{
+    const s=i<3?"Approved":i<5?"In Review":"Open";
+    const adj=g.code==="SPIN-MRD"?-40000:0;
+    return '<tr'+(g.code===FOCUS?' class="hl"':'')+'><td>'+esc(g.name)+'</td><td class="n">'+money(g.gPay)+'</td>'+
+      '<td class="n">'+money(g.gPay+adj)+'</td><td style="text-align:left;white-space:normal;max-width:24ch;font-size:11px;color:var(--ink-3)">'+
+      (adj?"Cost gate applied — A/E 1.792 above peer p75; see open item 5":"—")+'</td>'+
+      '<td><span class="tag">v2 · 2025-12-15</span></td><td><span class="tag '+(MODE==="gov"?"ok":"bad")+'">'+(MODE==="gov"?"As-of contract":"EHR directory")+'</span></td>'+
+      '<td><span class="tag '+(s==="Approved"?"ok":s==="In Review"?"warn":"")+'">'+s+'</span></td>'+
+      '<td>'+(s==="Open"?"—":"M. Oyelaran")+'</td></tr>';}).join("");
+  $("#ledgerTbl").innerHTML='<thead><tr><th>Clinic group</th><th>Modelled</th><th>Approved</th><th>Adjustment reason</th><th>Roster version</th><th>Network definition used</th><th>Status</th><th>Approved by</th></tr></thead><tbody>'+rows+'</tbody>';
+
+  $("#exclTbl").innerHTML='<thead><tr><th>Group</th><th>Measure</th><th>Reason</th><th>Status</th></tr></thead><tbody>'+
+    [["Sunberry Peds","HbA1c tested","Adult measure, paediatric panel — denominator 125","Approved","ok"],
+     ["Northlake Cancer","ED per 1000","Oncologic ED use is treatment-related","In Review","warn"],
+     ["Meridian Spine","Cost A/E","Interventional pain case mix not in risk model","Open",""]]
+    .map(([g,m,r,s,c])=>'<tr><td>'+esc(g)+'</td><td>'+esc(m)+'</td><td style="text-align:left;white-space:normal;font-size:11px;color:var(--ink-3)">'+esc(r)+'</td><td><span class="tag '+c+'">'+s+'</span></td></tr>').join("")+'</tbody>';
+
+  $("#openItems").innerHTML=[
+    ["Get the data into Sigma","Nothing exists there yet. CSV upload or the unexecuted Snowflake lift in <code>SQL/</code>. Decides whether the as-of join is a Sigma join or the untested <code>f_network_status_asof</code> UDF."],
+    ["Deduplicate on the business key","A9a planted 2,840 duplicate lines in 2024-07; <code>claim_line_key</code> is unique across all of them so a PK test passes. <b>$1,998,144</b> of overstatement rides on this — and do not over-dedupe, because A9b planted legitimate bilateral lines that differ only by modifier."],
+    ["Resolve orphan providers to −1","A12 planted 1,312 lines with no provider row. An inner join silently drops <b>$394,978</b>."],
+    ["Confirm the cost gate","Meridian Spine finishes #3 with the worst A/E of twelve. Defensible; Finance will still challenge it."],
+    ["Confirm measure applicability","Sunberry Peds scores 0 of 30 on adult HbA1c. Exclude or substitute — scoring it as-is is indefensible."],
+    ["Pool size and weights","$4.2M and 25/10/30/25/10 are modelling assumptions. They need a real owner before this is presented as a payout."]
+  ].map(([t,d],i)=>'<div style="padding:8px 0;border-bottom:1px solid var(--rule)"><div style="display:flex;gap:8px"><span class="tag">'+(i+1)+'</span>'+
+    '<div><b style="font-family:var(--ui);font-size:12.5px">'+t+'</b><div style="font-size:11.5px;color:var(--ink-3);line-height:1.55;margin-top:2px">'+d+'</div></div></div></div>').join("");
+}
+
+/* ---------------- dock ---------------- */
+function dock(){
+  const o=GROUPS.find(g=>g.code==="ORTHO-NR");
+  $("#dockBd").innerHTML=
+    '<div class="msg q">Why did North Ridge drop nine places?</div>'+
+    '<div class="msg a">One join. <b>True OON Rate</b> joins the destination facility\'s network status '+
+    '<b>as of <code>placed_date</code></b>; the field it replaced read the EHR pick-list\'s current-state copy. '+
+    'Summit Point Surgery Center terminated <b>2024-10-01</b> and the pick-list still reads <code>PAR</code> — '+
+    'fourteen months stale. 2,010 of North Ridge\'s '+o.refs.toLocaleString()+' PY2025 referrals go there.'+
+    '<div class="lineage"><b>Lineage</b><br>'+
+    '<code>Group Scorecard.True OON Rate</code><br>← <code>referral_scored.destination_network_status_asof</code><br>'+
+    '← <code>network_status_asof</code> ← <code>ref_network_contract</code> (rows 28–29, TIN 304459616)<br>'+
+    '← <code>Source Data/raw_ref/</code> · batch <code>BATCH-BASE</code></div></div>'+
+    '<div class="msg q">Is this number payable?</div>'+
+    '<div class="msg a">Yes, with the stated window. Claims are <b>100% complete</b> through 2025-09 '+
+    '(<code>claims_runout_complete_flag</code>), the roster is <b>version 2 as of 2025-12-15</b>, and '+
+    'Oct–Dec are excluded. Two caveats you should carry into the room: the HbA1c measure is '+
+    'HEDIS-<i>shaped</i>, not HEDIS-compliant, and the <b>$4.2M pool is a modelling assumption</b>, not a contract term.</div>'+
+    '<div class="msg q">What would earn North Ridge the next tier?</div>'+
+    '<div class="msg a">Network is worth <b>25 points</b> and they hold <b>0</b>. The gate sits at the peer '+
+    '75th percentile — <b>22.6%</b> true OON — against their '+o.trueOon+'%. Redirecting the Summit Point volume '+
+    'to in-network ASCs alone clears it. Per <a href="docs/narrative.md">Q8</a>, capacity does not bind at this '+
+    'panel size, so nearly all of it is recapturable.</div>';
+}
+
+/* ---------------- nav / toggles ---------------- */
+function render(){ trust(); pool(); score(); group(); stew(); ledger(); dock(); }
+const PAGES=["pool","score","group","stew","ledger"];
+function go(p,quiet){
+  if(!PAGES.includes(p)) p="pool";
+  $$(".pageview").forEach(s=>s.hidden=s.id!=="page-"+p);
+  $$(".navitem").forEach(b=>b.setAttribute("aria-current",b.dataset.page===p?"page":"false"));
+  if(!quiet){ location.hash=p; window.scrollTo({top:0,behavior:"smooth"}); }
+}
+$$(".navitem").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+addEventListener("hashchange",()=>go(location.hash.slice(1),true));
+function setMode(m){ MODE=m;
+  $("#defGov").setAttribute("aria-pressed",m==="gov");
+  $("#defNaive").setAttribute("aria-pressed",m==="naive");
+  render();
+}
+$("#defGov").addEventListener("click",()=>setMode("gov"));
+$("#defNaive").addEventListener("click",()=>setMode("naive"));
+$("#notesBtn").addEventListener("click",e=>{const on=document.body.classList.toggle("notes");
+  e.currentTarget.setAttribute("aria-pressed",on);});
+$("#themeBtn").addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+  document.documentElement.setAttribute("data-theme",dark?"light":"dark");});
+$("#dockBtn").addEventListener("click",e=>{const d=$("#dock");
+  const on=d.style.display==="none"; d.style.display=on?"":"none";
+  e.currentTarget.setAttribute("aria-pressed",String(on));});
+$("#cohortBtn").addEventListener("click",e=>{
+  const b=e.currentTarget.querySelector("b");
+  b.textContent=b.textContent==="Open panel"?"Held cohort":"Open panel";
+  e.currentTarget.classList.toggle("on");});
+
+render();
+document.body.classList.add("notes"); $("#notesBtn").setAttribute("aria-pressed","true");
+if(location.hash) go(location.hash.slice(1),true);
+})();
+</script>
+</body>
+</html>
