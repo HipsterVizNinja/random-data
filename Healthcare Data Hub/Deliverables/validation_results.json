@@ -927,13 +927,35 @@
   {
     "check_id":"ASO-13",
     "category":"ASO book",
-    "name":"some filings rest on a collapsed identity",
+    "name":"some filings are claimed across two people",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":12,
+    "actual":4,
     "expected":">= 1",
-    "dollars":1336221.3200000001,
+    "dollars":116468.37,
     "detail":"Filings assembled from the resolved-identity large claimant report sum every member id behind one master person. Where the MDM run OVER-matched - twins, a Jr\/Sr pair - that is two different people on one stop-loss claim, and it ties to the resolved identity perfectly, which is why nothing else catches it."
+  },
+  {
+    "check_id":"ASO-13b",
+    "category":"ASO book",
+    "name":"every over-claimed filing rolled up more than one member id",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":4,
+    "expected":"all > 1",
+    "dollars":null,
+    "detail":"A MASTER_PERSON_ID filing that rolled up exactly one member id would be a mislabel rather than an over-claim."
+  },
+  {
+    "check_id":"ASO-13c",
+    "category":"ASO book",
+    "name":"entangled durable keys are reported separately, not as over-claims",
+    "severity":"INFO",
+    "passed":true,
+    "actual":"8 filings",
+    "expected":null,
+    "dollars":1219752.95,
+    "detail":"These filings are correctly scoped to one member whose durable key happens to carry two member ids. Worth routing to review; folding them into the over-claim figure overstates it roughly tenfold."
   },
   {
     "check_id":"ASO-14",

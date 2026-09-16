@@ -3,14 +3,14 @@
 **Dataset:** Healthcare Data Hub (synthetic)  
 **Scale:** demo - 48,000 members  
 **Seed:** 20260911  
-**Generated:** 2026-09-16 14:39  
+**Generated:** 2026-09-16 15:16  
 **Classification:** SYNTHETIC. Wholly fabricated. Not derived from real patient records.
 
 ## Verdict
 
 | | Count |
 |---|---|
-| Hard assertions passed | 53 of 53 |
+| Hard assertions passed | 54 of 54 |
 | Planted defects confirmed present and controlled | 29 of 29 |
 | Failures | **0** |
 
@@ -209,7 +209,9 @@ A note on how to read this. Checks marked EXPECTED are deliberate. This dataset 
 | every other client's rate is clean | PASS | 0.05 | <= 0.5 |  |
 | the stop-loss layer has claimants in it | PASS | 267 | >= 120 |  |
 | late filings are declined and cost the client | CONTROLLED | 19 | >= 5 | $1,481,247.51 |
-| some filings rest on a collapsed identity | CONTROLLED | 12 | >= 1 | $1,336,221.32 |
+| some filings are claimed across two people | CONTROLLED | 4 | >= 1 | $116,468.37 |
+| every over-claimed filing rolled up more than one member id | PASS | 4 | all > 1 |  |
+| entangled durable keys are reported separately, not as over-claims | CONTROLLED | 8 filings | None | $1,219,752.95 |
 | the re-driven extract over-funded a client | CONTROLLED | 163 weeks | >= 1 | $1,142,263.58 |
 | the over-funding is material | CONTROLLED | 1142263.58 | >= 250,000 |  |
 
@@ -225,6 +227,8 @@ A note on how to read this. Checks marked EXPECTED are deliberate. This dataset 
 - **ASO-10** - Isolation matters as much as size. A denominator error spread evenly across the book is a scaling factor nobody has to find; one that lands on a single client is the kind that survives review and decides a renewal.
 - **ASO-12** - A filing past the deadline is declined and the CLIENT, not the carrier, absorbs the claim. No report of recoveries a plan was entitled to will ever show it.
 - **ASO-13** - Filings assembled from the resolved-identity large claimant report sum every member id behind one master person. Where the MDM run OVER-matched - twins, a Jr/Sr pair - that is two different people on one stop-loss claim, and it ties to the resolved identity perfectly, which is why nothing else catches it.
+- **ASO-13b** - A MASTER_PERSON_ID filing that rolled up exactly one member id would be a mislabel rather than an over-claim.
+- **ASO-13c** - These filings are correctly scoped to one member whose durable key happens to carry two member ids. Worth routing to review; folding them into the over-claim figure overstates it roughly tenfold.
 - **ASO-14** - The funding system draws against the adjudication extract as it arrived. A duplicate-row count in a data quality report does not make anyone act. A wire does.
 
 ## Claims runout triangle

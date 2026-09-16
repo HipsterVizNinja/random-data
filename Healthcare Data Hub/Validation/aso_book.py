@@ -172,8 +172,17 @@ def mispricing(contract: pd.DataFrame, settle: pd.DataFrame) -> dict:
 def stop_loss(claimant: pd.DataFrame) -> dict:
     c = claimant
     late = c[c["filing_status"] == "DENIED_LATE_FILING"]
-    collapsed = c[pd.to_numeric(
-        c["member_ids_on_durable_key"], errors="coerce").fillna(1) > 1]
+    ids = pd.to_numeric(c["member_ids_on_durable_key"], errors="coerce").fillna(1)
+    # Two different populations, and conflating them overstates the defect.
+    #
+    #   over_claimed - the filing was ASSEMBLED from the resolved identity, so
+    #     its amount sums two people's claims. This is the money the carrier
+    #     will decline.
+    #   entangled - the durable key behind the filing carries two member ids,
+    #     but the filing itself is correctly scoped to one of them. Worth
+    #     routing to review; NOT an over-claim.
+    over_claimed = c[c["filing_identity_basis"] == "MASTER_PERSON_ID"]
+    entangled = c[(ids > 1) & (c["filing_identity_basis"] == "MEMBER_ID")]
     lasered = c[c["is_lasered"].astype(str).str.lower() == "true"]
     return {
         "filings": int(len(c)),
@@ -185,9 +194,12 @@ def stop_loss(claimant: pd.DataFrame) -> dict:
         "late_filings": int(len(late)),
         "late_filing_dollars_lost": round(
             float(late["reimbursement_entitled_amount"].sum()), 2),
-        "collapsed_identity_filings": int(len(collapsed)),
-        "collapsed_identity_dollars": round(
-            float(collapsed["reimbursement_entitled_amount"].sum()), 2),
+        "over_claimed_filings": int(len(over_claimed)),
+        "over_claimed_dollars": round(
+            float(over_claimed["reimbursement_entitled_amount"].sum()), 2),
+        "entangled_filings": int(len(entangled)),
+        "entangled_dollars": round(
+            float(entangled["reimbursement_entitled_amount"].sum()), 2),
         "lasered_filings": int(len(lasered)),
         "by_status": c.groupby("filing_status").agg(
             n=("aso_stop_loss_claimant_key", "size"),
@@ -328,9 +340,12 @@ def main() -> int:
     print(f"  shortfall                    : ${s['shortfall']:,.2f}")
     print(f"  declined, filed late         : {s['late_filings']} filings, "
           f"${s['late_filing_dollars_lost']:,.2f} the CLIENT absorbs")
-    print(f"  on a collapsed identity      : "
-          f"{s['collapsed_identity_filings']} filings, "
-          f"${s['collapsed_identity_dollars']:,.2f} claimed on two people")
+    print(f"  claimed across two people    : "
+          f"{s['over_claimed_filings']} filings, "
+          f"${s['over_claimed_dollars']:,.2f} assembled from the resolved identity")
+    print(f"  ...on an entangled durable key: "
+          f"{s['entangled_filings']} filings, "
+          f"${s['entangled_dollars']:,.2f} correctly scoped, worth reviewing")
 
     u = out["funding"]
     print(f"\n--- weekly funding ---")

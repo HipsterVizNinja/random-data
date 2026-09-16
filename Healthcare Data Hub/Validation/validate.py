@@ -971,20 +971,42 @@ def check_aso(r: Results, exp, sc, mm, spans):
           actual=len(late),
           expected=f">= {sc.count(a['late_filing_denials_min'])}",
           dollars=round(float(late["reimbursement_entitled_amount"].sum()), 2))
-    collapsed = claimant[
-        pd.to_numeric(claimant["member_ids_on_durable_key"],
-                      errors="coerce").fillna(1) > 1]
+    # The filing was ASSEMBLED from the resolved identity, so its amount sums
+    # two people's claims. That is the over-claim, and it is a strictly
+    # smaller set than "the durable key carries two member ids" - a filing can
+    # be correctly scoped to one member whose identity is entangled, and
+    # counting those overstates the defect by an order of magnitude.
+    over = claimant[claimant["filing_identity_basis"] == "MASTER_PERSON_ID"]
+    ids = pd.to_numeric(claimant["member_ids_on_durable_key"],
+                        errors="coerce").fillna(1)
     r.add("ASO-13", "ASO book",
-          "some filings rest on a collapsed identity",
-          EXPECTED, len(collapsed) >= sc.count(a["overmatch_filings_min"]),
+          "some filings are claimed across two people",
+          EXPECTED, len(over) >= sc.count(a["overmatch_filings_min"]),
           "Filings assembled from the resolved-identity large claimant report "
           "sum every member id behind one master person. Where the MDM run "
           "OVER-matched - twins, a Jr/Sr pair - that is two different people "
           "on one stop-loss claim, and it ties to the resolved identity "
           "perfectly, which is why nothing else catches it.",
-          actual=len(collapsed),
+          actual=len(over),
           expected=f">= {sc.count(a['overmatch_filings_min'])}",
-          dollars=round(float(collapsed["reimbursement_entitled_amount"].sum()), 2))
+          dollars=round(float(over["reimbursement_entitled_amount"].sum()), 2))
+    r.add("ASO-13b", "ASO book",
+          "every over-claimed filing rolled up more than one member id",
+          ERROR, bool(len(over)) and bool(
+              (pd.to_numeric(over["member_ids_rolled_up"],
+                             errors="coerce").fillna(1) > 1).all()),
+          "A MASTER_PERSON_ID filing that rolled up exactly one member id "
+          "would be a mislabel rather than an over-claim.",
+          actual=int(len(over)), expected="all > 1")
+    ent = claimant[(ids > 1) & (claimant["filing_identity_basis"] == "MEMBER_ID")]
+    r.add("ASO-13c", "ASO book",
+          "entangled durable keys are reported separately, not as over-claims",
+          INFO, True,
+          "These filings are correctly scoped to one member whose durable key "
+          "happens to carry two member ids. Worth routing to review; folding "
+          "them into the over-claim figure overstates it roughly tenfold.",
+          actual=f"{len(ent)} filings",
+          dollars=round(float(ent["reimbursement_entitled_amount"].sum()), 2))
 
     # ---- 10. the funding reconciliation. The re-driven extract funded
     # duplicates, and a wire is the version of that defect anybody acts on.

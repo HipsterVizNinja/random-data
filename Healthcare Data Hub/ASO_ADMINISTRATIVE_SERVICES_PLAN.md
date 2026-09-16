@@ -5,7 +5,9 @@ about 24,000 covered lives, and the four numbers a third-party administrator is 
 what the plan cost, what the client was billed, what stop-loss gave back, and whether the
 rate was ever adequate.
 
-Planning document. **Nothing is built in Sigma from this pass.**
+Planning document. **Nothing is built in Sigma from this pass.** Companion wireframe:
+[aso_administrative_services_wireframe.html](aso_administrative_services_wireframe.html)
+— six pages, every figure measured, `?theme=light` and `#page` deep links for review.
 
 > **The dataset was extended to support this.** Healthcare Data Hub had one ASO plan code and
 > no ASO economics. This pass added a sixth source system (`raw_aso`) and nine mart tables,
@@ -180,10 +182,16 @@ Two stop-loss failures worth a page of their own, from
 
 - **19 filings declined for late submission**, $1,481,248 the client absorbs rather than the
   carrier. Invisible in any report that sums what a plan was *entitled* to.
-- **12 filings assembled from a collapsed identity**, $1,336,221 claimed on stop-loss
-  filings whose master person id carries two genuinely different member ids. The filing ties
-  to the resolved identity perfectly. The carrier will not pay it, and nothing on the row
-  looks wrong.
+- **4 filings claimed across two people**, $116,468 assembled from the TPA's
+  resolved-identity report over an MDM over-match. The filing ties to the resolved identity
+  perfectly. The carrier will not pay it, and nothing on the row looks wrong.
+- A further **8 filings, $1,219,753**, sit on a durable key that carries two member ids but
+  are **correctly scoped** to one of them. Those are not over-claims. Folding them into the
+  figure above — which an earlier draft of this plan did — overstates the defect roughly
+  tenfold, and the distinction is exactly the kind a settlement workbook has to get right:
+  `filing_identity_basis` says how the filing was *assembled*,
+  `member_ids_on_durable_key` says what the identity graph *looks like*, and only the first
+  one means money was over-claimed.
 
 ---
 
@@ -398,11 +406,23 @@ different people on one stop-loss filing.
 
 This is the over-match defect the dataset has always carried, arriving somewhere it costs
 money. And it is nastier here than in a cost distribution, because the filing **ties to the
-resolved identity perfectly**. Nothing about the row looks wrong. The only way to find it is
-to notice that the durable key behind the filing carries two member ids, which is why
-`fct_aso_stop_loss_claimant` ships `member_ids_on_durable_key` as a count rather than a flag.
-A count is what the data supports; a flag saying "this is wrong" would be the answer key
-leaking into the mart.
+resolved identity perfectly**. Nothing about the row looks wrong.
+
+Two columns are needed to find it, and they are not the same test:
+
+| Column | Says | Means |
+|---|---|---|
+| `filing_identity_basis` | how the filing was **assembled** | `MASTER_PERSON_ID` = the amount sums every member id behind one master person |
+| `member_ids_on_durable_key` | what the identity graph **looks like** | `> 1` = the MDM run collapsed two member ids onto this durable key |
+
+**Only the first one means money was over-claimed.** A filing on `MEMBER_ID` basis whose
+durable key happens to carry two ids is correctly scoped — the member crossed the deductible
+on their own, and their identity is separately entangled. It belongs in a review queue, not
+in an over-claim total. The measured split is 4 filings against 8, and $116,468 against
+$1,219,753, so conflating them is a tenfold error in the direction of alarm.
+
+`fct_aso_stop_loss_claimant` ships the count rather than a flag because a count is what the
+data supports; a flag saying "this is wrong" would be the answer key leaking into the mart.
 
 ---
 
@@ -725,7 +745,9 @@ rate adequacy — in that order, with dollars on each.
   before agreeing the client had a good year.
 - Never aggregate on `group_id`. If a question names a group id, resolve it to the client and
   say so.
-- For a stop-loss question, check `member_ids_on_durable_key` before quoting an entitlement.
+- For a stop-loss question, check `filing_identity_basis` before quoting an entitlement, and
+  do not treat `member_ids_on_durable_key > 1` as an over-claim on its own — a filing on
+  `MEMBER_ID` basis is correctly scoped even when the durable key is entangled.
 - Decline member-level questions that are not about a filing already under review.
 
 **Acceptance tests.** The agent must independently produce: the $1,015,333 Kellerman figure
@@ -800,7 +822,9 @@ The layer's structural claims are asserted rather than described, in
 | `ASO-10` | Every other client's rate is clean | ERROR |
 | `ASO-11` | The stop-loss layer has claimants in it | ERROR |
 | `ASO-12` | Late filings are declined and cost the client | EXPECTED |
-| `ASO-13` | Some filings rest on a collapsed identity | EXPECTED |
+| `ASO-13` | Some filings are claimed across two people | EXPECTED |
+| `ASO-13b` | Every over-claimed filing rolled up more than one member id | ERROR |
+| `ASO-13c` | Entangled durable keys are reported separately, not as over-claims | INFO |
 | `ASO-14` | The re-driven extract over-funded a client | EXPECTED |
 | `ASO-15` | The over-funding is material | EXPECTED |
 
@@ -998,7 +1022,8 @@ generator and sits at the top of the plausible range. Do not headline it.
 | Shortfall | $8,376,089 |
 | Reimbursed / pending / declined | 181 / 67 / 19 |
 | Declined for late filing | 19 filings, **$1,481,248** the client absorbs |
-| Built on a collapsed identity | 12 filings, **$1,336,221** claimed on two people |
+| Claimed across two people | 4 filings, **$116,468** assembled from the resolved identity |
+| On an entangled durable key | 8 filings, $1,219,753 — correctly scoped, worth reviewing |
 
 Deductibles are $100,000 (small), $150,000 (mid) and $200,000 (large). Five clients are on a
 12/15 paid basis and four on 12/12.
