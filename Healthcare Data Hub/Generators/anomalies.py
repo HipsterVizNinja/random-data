@@ -505,6 +505,14 @@ def _measure_structural(run, tables) -> list[dict]:
                     "master_persons_collapsing_multiple_people": collapsed,
                     "found_by_sex_mismatch_alone": by_sex,
                     "found_only_by_date_of_birth": collapsed - by_sex,
+                    # The cost-tail contamination is the CLAIM this anomaly
+                    # makes, so it is measured here rather than asserted in
+                    # prose. Selecting over-match pairs at random leaves the
+                    # collapsed persons at the 52nd percentile of cost, where
+                    # they contaminate nothing - the description above was
+                    # true of the mechanism and false of the data until the
+                    # pairs were drawn from the heaviest utilizers.
+                    **_overmatch_cost_tail(tables, xp, j),
                 },
                 "detect": (
                     "Within each master_person_id, count distinct sex and "
@@ -685,3 +693,39 @@ def encode_sex_for_source(series: pd.Series, source_system: str) -> pd.Series:
     """Re-encode sex into a given source system's convention (anomaly A11b)."""
     mapping = SEX_ENCODING[source_system]
     return series.map(lambda v: mapping.get(v, mapping[None]))
+
+
+def _overmatch_cost_tail(tables, xp, joined) -> dict:
+    """Where the collapsed identities land in the cost distribution.
+
+    A defect nobody can find in the data is indistinguishable from a defect
+    that is not there, so the answer key reports the figure that makes this
+    one findable.
+    """
+    lines = tables.get("clm_claim_line")
+    if lines is None or xp is None:
+        return {}
+    over = set(joined.groupby("master_person_id").filter(
+        lambda g: g["sex"].nunique() > 1 or g["birth_date"].nunique() > 1
+    )["master_person_id"].unique())
+    # Claims live in the PAYER key space, so the collapse only reaches the
+    # cost distribution through the eligibility slice of the crosswalk. That
+    # slice used to be forced EXACT against the truth column, which is exactly
+    # why this figure was zero.
+    elig = xp[xp["source_system"] == "MERIDIAN_ELIG"]
+    if not len(elig):
+        return {}
+    m = dict(zip(elig["source_patient_id"], elig["master_person_id"]))
+    cur = lines[lines["is_current_version"]] if "is_current_version" in lines \
+        else lines
+    cur = cur.assign(_mp=cur["member_id"].map(m))
+    tot = cur.groupby("_mp")["allowed_amount"].sum().sort_values(ascending=False)
+    if not len(tot):
+        return {}
+    top1 = tot.head(max(1, len(tot) // 100))
+    hits = [k for k in top1.index if k in over]
+    return {
+        "collapsed_persons_in_top_1pct_of_cost": len(hits),
+        "their_allowed_amount": round(float(tot.reindex(hits).sum()), 2),
+        "top_1pct_threshold_allowed": round(float(top1.min()), 2),
+    }

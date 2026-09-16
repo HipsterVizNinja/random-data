@@ -265,10 +265,25 @@ def build_population(run: C.RunConfig) -> dict[str, pd.DataFrame]:
     age_component = np.where(
         members["age_2024"] >= 65, 0.45 + 0.012 * (members["age_2024"] - 65), 0.25
     )
-    members["risk_score"] = np.round(
-        (age_component + hcc_weight) * (0.85 + 0.30 * members["latent_risk"].clip(0, 4)),
-        4,
+    raw_risk = (age_component + hcc_weight) * (
+        0.85 + 0.30 * members["latent_risk"].clip(0, 4)
     )
+
+    # ---- normalize WITHIN line of business to a book mean of 1.0.
+    #
+    # Raw morbidity weights are not risk scores. A contract normalizes its own
+    # population so that 1.0 means "average member of this book", and the two
+    # books normalize separately - a commercial 1.0 and an MA 1.0 describe
+    # very different people and neither is measured against the other. Shipping
+    # the raw weights made the risk-adjusted benchmark meaningless, because it
+    # multiplied a PMPM by a number whose scale had no contractual meaning.
+    #
+    # The spread across members is preserved exactly; only the scale moves.
+    normalized = raw_risk.astype(float).copy()
+    for lob, idx in members.groupby("line_of_business").groups.items():
+        book = raw_risk.loc[idx]
+        normalized.loc[idx] = book * (C.RISK_SCORE_BOOK_MEAN / book.mean())
+    members["risk_score"] = np.round(normalized, 4)
 
     households = pd.DataFrame({
         "household_id": np.arange(1, n_households + 1),

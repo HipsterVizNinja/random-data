@@ -57,6 +57,14 @@ python Build/build_mart_manifest.py         # the ERD + key manifest, as a PDF
 Then point Tableau or Sigma at `Mart/vw_claim_line_enriched.csv.gz` — one row
 per claim line, no bridges, safe to sum.
 
+For the value-based-care questions there is a second entry point. The roster
+ships as six monthly versions with a two-directional restatement history, the
+contract ships with its actual terms (minimum savings rate, shared savings
+split, quality gate, high-cost truncation), and claims completeness is
+*derived* by chain ladder in `fct_claims_lag_triangle` rather than asserted.
+Those four tables are what let a settlement number arrive with an as-of date,
+a denominator and a completeness treatment attached instead of on its own.
+
 For the schema itself, read
 [Deliverables/data-mart-manifest.pdf](Deliverables/data-mart-manifest.pdf):
 five ERDs plus grain, primary key, business key and foreign keys for every

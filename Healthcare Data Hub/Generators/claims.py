@@ -660,38 +660,24 @@ def _adjudicate(run, rng, lines, sk, plans, members) -> pd.DataFrame:
     # A claim is absent from this extract for exactly one reason: it had not
     # adjudicated by the paid-through date. So the claims missing from the most
     # recent service months are precisely the SLOW-adjudicating ones, not a
-    # random sample. Modeling it any other way (thinning at random, or
-    # thinning on top of a lag cut) produces a month that is incomplete in a
-    # way no real extract is, and it double-counts the effect.
+    # random sample.
     #
-    # For the named months the lag distribution is truncated so realized
-    # completeness lands on the designed curve, keeping the fastest-paid
-    # fraction of each month's volume.
+    # This is a straight censor on paid_date and nothing else. An earlier
+    # version ranked each recent month's lines by lag and kept the fastest
+    # N%, which hit a designed completeness curve but produced an extract that
+    # contradicted its own paid dates: December's retained claims stopped dead
+    # at 15 days of lag while a mature month ran past 200, so the stated
+    # paid-through date of record was one no analyst could recover from the
+    # data. Anyone following the answer key's own instruction - "build the lag
+    # triangle" - found the paid-through date was fiction.
+    #
+    # Censoring on the date makes the completeness curve an OUTPUT of the lag
+    # model rather than an input to it. RUNOUT_COMPLETENESS is now a
+    # prediction the build verifies rather than a lever that forces the
+    # result, and the chain ladder in Build/build_mart.py recovers the same
+    # factors from the data alone.
     lines["_svc_ym"] = svc.dt.strftime("%Y-%m")
     keep = (paid_dt <= pd.Timestamp(C.PAID_THROUGH)).to_numpy()
-    for month, target in C.RUNOUT_COMPLETENESS.items():
-        sel = (lines["_svc_ym"] == month).to_numpy()
-        n_month = int(sel.sum())
-        if n_month == 0:
-            continue
-        # Rank that month's lines by how fast they paid; keep the fastest
-        # `target` share of the month's FULL volume.
-        order = np.full(n_month, np.inf)
-        order = lag[sel].astype(float)
-        cutoff_idx = int(round(target * n_month))
-        if cutoff_idx <= 0:
-            keep[sel] = False
-            continue
-        threshold = np.sort(order)[min(cutoff_idx, n_month) - 1]
-        month_keep = order <= threshold
-        # Break ties deterministically so the share is exact rather than
-        # whatever the tie block happens to contain.
-        if month_keep.sum() > cutoff_idx:
-            tie = np.flatnonzero(month_keep & (order == threshold))
-            excess = int(month_keep.sum() - cutoff_idx)
-            month_keep[tie[:excess]] = False
-        idx = np.flatnonzero(sel)
-        keep[idx] = month_keep
     runout_stats = {}
     for month in C.RUNOUT_COMPLETENESS:
         sel = (lines["_svc_ym"] == month).to_numpy()

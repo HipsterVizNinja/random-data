@@ -26,7 +26,7 @@ SOURCE_START = date(2023, 1, 1)
 SOURCE_END = date(2025, 12, 31)
 ANALYSIS_START = date(2024, 1, 1)
 ANALYSIS_END = date(2025, 12, 31)
-PAID_THROUGH = date(2026, 2, 28)
+PAID_THROUGH = date(2026, 1, 2)
 CALENDAR_START = date(2022, 1, 1)
 CALENDAR_END = date(2026, 12, 31)
 
@@ -257,12 +257,92 @@ DEDUCTIBLE_SHARE = {
     7: 0.26, 8: 0.23, 9: 0.20, 10: 0.17, 11: 0.14, 12: 0.11,
 }
 
-# Claims runout: completeness by incurred month offset from PAID_THROUGH.
+# --------------------------------------------------------- risk score scaling
+
+# Risk scores are normalized to a book mean of 1.0 WITHIN line of business,
+# which is how commercial and Medicare Advantage contracts actually normalize:
+# each book is scored against its own population, never against the other.
+#
+# Before this, raw morbidity weights shipped unnormalized - commercial mean
+# 0.388, MA mean 1.303 - and the risk-adjusted benchmark multiplied straight
+# through them. Commercial read as a catastrophic loss and MA as a windfall,
+# both artifacts of the same arithmetic rather than of anything in the data.
+RISK_SCORE_BOOK_MEAN = 1.0
+
+# Year-over-year risk drift. A real ACO book re-scores every year and the
+# movement is one of the things finance and the payer argue about hardest.
+# Flat risk scores give them nothing to argue with.
+RISK_DRIFT_BY_YEAR = {2023: 0.978, 2024: 1.000, 2025: 1.034}
+
+# --------------------------------------------------------- contract economics
+
+# Two risk contracts with Meridian. PY2024 is settled, PY2025 is in flight.
+CONTRACTS = [
+    # id, name, line of business, first year, shared savings %, shared loss %,
+    # minimum savings rate %, quality gate, truncation threshold.
+    #
+    # Thresholds sit at roughly the 99th percentile of member-year allowed for
+    # each book, which is the MSSP rule and which removes 6-10% of spend. An
+    # earlier $100k / $125k pair looked like a rounder contract number and
+    # truncated a QUARTER of all spend, because this population's cost curve
+    # has a heavier tail than those figures assume.
+    ("NLK-MA-001", "Northlake / Meridian Medicare Advantage Shared Risk",
+     "MEDICARE_ADVANTAGE", 2023, 0.55, 0.45, 0.020, 75.0, 250_000.0),
+    ("NLK-COM-001", "Northlake / Meridian Commercial HMO Shared Savings",
+     "COMMERCIAL", 2023, 0.50, 0.40, 0.025, 75.0, 200_000.0),
+]
+
+# Performance years, and whether the settlement is final. A year is settled
+# only once its claims runout is complete.
+PERFORMANCE_YEARS = {2023: "SETTLED", 2024: "SETTLED", 2025: "IN_FLIGHT"}
+CONTRACT_RUNOUT_MONTHS = 3
+# The last service month scored in the in-flight year. October to December
+# 2025 is displayed but never settled, because it is not complete.
+IN_FLIGHT_SCORED_THROUGH = 202509
+
+# Benchmark base PMPM for the ATTRIBUTED cohort, 2023 dollars, by line of
+# business. Calibrated against the attributed roster, NOT the whole book:
+# attribution selects for care-seekers, so the attributed sub-population runs
+# materially richer than the 48,000-member book it is drawn from. A benchmark
+# set on the book figure is unbeatable by construction.
+BENCHMARK_BASE_PMPM = {"COMMERCIAL": 686.5, "MEDICARE_ADVANTAGE": 1118.6}
+BENCHMARK_TREND_PER_YEAR = 0.068
+
+# ------------------------------------------------------ roster version history
+
+# The attribution roster is produced monthly and restated retroactively with a
+# look-back. Every production run is a version an analyst may have quoted from,
+# so all of them ship rather than only the latest.
+ROSTER_VERSIONS = [
+    (1, "2025-07-15"), (2, "2025-08-15"), (3, "2025-09-15"),
+    (4, "2025-10-15"), (5, "2025-11-15"), (6, "2025-12-15"),
+]
+ROSTER_CURRENT_VERSION = 6
+
+# Retro-ADDITIONS as well as retro-terminations. A restatement history that
+# only ever removes members models the convenient direction and nothing else,
+# and the first skeptic in the room is right to say so.
+RETRO_ADD_MEMBERS = 190
+
+# Claims runout: completeness by incurred month, as PRODUCED by the paid-lag
+# model censored at PAID_THROUGH. These are measured outputs of the build that
+# the validation suite asserts, not targets the generator forces. Change
+# PAID_THROUGH and these move; change these alone and validation fails, which
+# is the correct direction for the dependency to run.
 RUNOUT_COMPLETENESS = {
-    "2025-10": 0.78,
-    "2025-11": 0.54,
-    "2025-12": 0.31,
+    # The shoulder months matter as much as the cliff. A month asserted at
+    # 1.00 that the triangle measures at 0.97 reproduces, one month earlier
+    # and one order of magnitude smaller, exactly the defect this curve was
+    # rewritten to remove. These stay above RUNOUT_THRESHOLD, so they are
+    # still scoreable - they just say so honestly.
+    "2025-07": 0.99,
+    "2025-08": 0.99,
+    "2025-09": 0.97,
+    "2025-10": 0.94,
+    "2025-11": 0.81,
+    "2025-12": 0.27,
 }
+RUNOUT_COMPLETENESS_TOLERANCE = 0.04
 RUNOUT_THRESHOLD = 0.95
 
 # Paid-date lag, lognormal in days.

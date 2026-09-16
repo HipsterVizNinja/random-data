@@ -264,10 +264,20 @@ def build_facts(dims: dict, t0) -> dict[str, pd.DataFrame]:
               f"({(E['encounter_type_conformed'] == 'UNKNOWN').mean():.2%} of rows)")
     E = E.merge(ehr_x, on="mrn", how="left")
     E = E.rename(columns={"master_person_id": "member_durable_key"})
-    E = E.merge(
-        dims["dim_member"][["member_key", "member_durable_key"]].dropna(
-            subset=["member_durable_key"]),
-        on="member_durable_key", how="left")
+    # Survivorship: ONE surviving member_key per resolved person.
+    #
+    # The over-match collapses a handful of durable keys onto two member IDs,
+    # so a plain join here fans an encounter out into two rows and quietly
+    # breaks the grain of the fact. That is not what an over-match does in
+    # reality - the encounter still happened once - so the crosswalk resolves
+    # to the surviving record, lowest member_key, exactly as an MDM survivorship
+    # rule would. The defect stays visible where it belongs, in the COST
+    # distribution, without corrupting the encounter count on the way there.
+    survivor = (dims["dim_member"][["member_key", "member_durable_key"]]
+                .dropna(subset=["member_durable_key"])
+                .sort_values("member_key")
+                .drop_duplicates("member_durable_key", keep="first"))
+    E = E.merge(survivor, on="member_durable_key", how="left")
     E["member_resolution_status"] = np.select(
         [E["match_method"] == "UNMATCHED", E["member_key"].notna()],
         ["UNMATCHED_IN_CROSSWALK", "MATCHED"], default="ORPHAN_SOURCE_VALUE")
@@ -301,6 +311,16 @@ def build_facts(dims: dict, t0) -> dict[str, pd.DataFrame]:
         keep_default_na=False, na_values=[""])
     out["fct_eligibility_span"] = read("raw_elig", "elig_eligibility_span")
     out["vbc_attribution_month"] = read("raw_vbc", "vbc_attribution_month")
+
+    # The restatement delta belongs in the mart, not only in the landing zone.
+    # It is the ONLY way to reconstruct an earlier roster version, so leaving
+    # it upstream means every "what did we think in September" question turns
+    # into a source-file archaeology exercise.
+    out["vbc_attribution_restatement"] = read(
+        "raw_vbc", "vbc_attribution_restatement")
+    out["vbc_roster_version"] = read("raw_vbc", "vbc_roster_version")
+    out["vbc_contract_terms"] = read("raw_vbc", "vbc_contract_terms")
+    out["vbc_benchmark"] = read("raw_vbc", "vbc_benchmark")
     out["br_provider_affiliation"] = read("raw_ref", "ref_provider_affiliation")
     log(f"facts: {len(out)} tables", t0)
     return out
@@ -400,15 +420,206 @@ def build_serving(dims: dict, facts: dict, t0) -> dict[str, pd.DataFrame]:
     return {"vw_claim_line_enriched": wide}
 
 
+# ------------------------------------------------- truncation and completeness
+
+# Lag buckets beyond this are lumped into the tail. Paid lag is lognormal
+# around a 23-day median, so development past a year is a handful of rows.
+MAX_LAG_MONTHS = 12
+
+
+def _month_diff(a: pd.Series, b: pd.Series) -> pd.Series:
+    """Whole months between two YYYYMM integer series."""
+    return (a // 100 - b // 100) * 12 + (a % 100 - b % 100)
+
+
+def build_contract_layer(dims: dict, facts: dict, t0) -> dict[str, pd.DataFrame]:
+    """High-cost truncation and the claims development triangle.
+
+    Both of these were previously things an analyst had to re-derive in a
+    workbook formula, which is exactly the fragmentation this project argues
+    against: three analysts write three truncation thresholds and the hub has
+    no opinion. Modeling them here makes them auditable and makes them tie.
+    """
+    out = {}
+    L = facts["fct_claim_line"]
+    terms = facts["vbc_contract_terms"]
+
+    # ---- high-cost truncation, at member x performance year.
+    #
+    # Truncation is an ANNUAL, MEMBER-LEVEL cap: a contract caps what any one
+    # member can contribute to the settlement so that a single catastrophic
+    # case cannot decide a performance year. Applying it per claim line - the
+    # obvious shortcut - caps nothing, because no single line reaches $100k.
+    thresholds = {
+        r.line_of_business: float(r.high_cost_truncation_threshold)
+        for r in terms.drop_duplicates("line_of_business").itertuples()
+    }
+    lob = facts["fct_member_month"][
+        ["member_id", "year_month", "line_of_business"]].copy()
+    lob["performance_year"] = pd.to_numeric(lob["year_month"]) // 100
+    lob = lob.drop_duplicates(["member_id", "performance_year"])[
+        ["member_id", "performance_year", "line_of_business"]]
+
+    cur = L[L["is_current_version"].fillna(False)].copy()
+    cur["performance_year"] = cur["service_year_month"] // 100
+    my = cur.groupby(
+        ["member_id", "member_durable_key", "performance_year"], as_index=False
+    ).agg(claim_lines=("claim_line_key", "size"),
+          allowed_amount=("allowed_amount", "sum"),
+          paid_amount=("paid_amount", "sum"))
+    my = my.merge(lob, on=["member_id", "performance_year"], how="left")
+    my["line_of_business"] = my["line_of_business"].fillna("COMMERCIAL")
+    my["truncation_threshold"] = my["line_of_business"].map(thresholds).astype(float)
+    my["allowed_amount_truncated"] = np.minimum(
+        my["allowed_amount"], my["truncation_threshold"])
+    my["truncation_excess"] = (
+        my["allowed_amount"] - my["allowed_amount_truncated"]).round(2)
+    my["is_truncated"] = my["truncation_excess"] > 0
+    my["allowed_amount"] = my["allowed_amount"].round(2)
+    my["allowed_amount_truncated"] = my["allowed_amount_truncated"].round(2)
+    my["paid_amount"] = my["paid_amount"].round(2)
+    my = my.sort_values(["member_id", "performance_year"]).reset_index(drop=True)
+    my.insert(0, "member_year_cost_key", np.arange(1, len(my) + 1))
+    out["fct_member_year_cost"] = my
+
+    # ---- push the truncation back down to the line, pro rata.
+    #
+    # A member-year table cannot answer "truncated spend by month and site",
+    # which is most of what a settlement workbook wants. Allocating the cap
+    # proportionally across the member's lines for that year is a MODELING
+    # CHOICE and is named as one: it spreads the excess evenly rather than
+    # attributing it to the specific catastrophic claim. It has the property
+    # that matters - the line column sums exactly to the member-year column.
+    ratio = my[["member_id", "performance_year",
+                "allowed_amount", "allowed_amount_truncated"]].copy()
+    ratio["truncation_ratio"] = np.where(
+        ratio["allowed_amount"] > 0,
+        ratio["allowed_amount_truncated"] / ratio["allowed_amount"], 1.0)
+    L["performance_year"] = L["service_year_month"] // 100
+    L = L.merge(ratio[["member_id", "performance_year", "truncation_ratio"]],
+                on=["member_id", "performance_year"], how="left")
+    L["truncation_ratio"] = L["truncation_ratio"].fillna(1.0)
+    L["allowed_amount_truncated"] = (
+        L["allowed_amount"] * L["truncation_ratio"]).round(2)
+    facts["fct_claim_line"] = L.drop(columns=["truncation_ratio"])
+    n_trunc = int(my["is_truncated"].sum())
+    log(f"truncation: {n_trunc:,} member-years capped, "
+        f"${my['truncation_excess'].sum():,.0f} excess removed", t0)
+
+    # ---- the claims development triangle.
+    #
+    # dim_date ships a claims_completeness_factor, but it was ASSERTED by the
+    # generator rather than measured from the data. In a project whose whole
+    # claim is that every figure is measured, a planted constant doing the most
+    # consequential job on the page is the odd one out. This derives the same
+    # factor by chain-ladder from the paid dates actually present, so the
+    # runout control demonstrates its own completeness rather than trusting a
+    # number somebody typed.
+    tri = cur[["service_year_month", "paid_date", "allowed_amount",
+               "paid_amount", "claim_line_key"]].copy()
+    tri["paid_year_month"] = (
+        pd.to_datetime(tri["paid_date"]).dt.strftime("%Y%m").astype(int))
+    tri["lag_months"] = _month_diff(
+        tri["paid_year_month"], tri["service_year_month"]).clip(0, MAX_LAG_MONTHS)
+    grid = tri.groupby(["service_year_month", "lag_months"], as_index=False).agg(
+        claim_lines=("claim_line_key", "size"),
+        allowed_amount=("allowed_amount", "sum"),
+        paid_amount=("paid_amount", "sum"))
+
+    # Dense grid: a lag with no claims is a zero, not a missing row, or the
+    # cumulative development is wrong wherever a month happens to be quiet.
+    months = sorted(grid["service_year_month"].unique())
+    full = pd.MultiIndex.from_product(
+        [months, range(MAX_LAG_MONTHS + 1)],
+        names=["service_year_month", "lag_months"]).to_frame(index=False)
+    grid = full.merge(grid, on=["service_year_month", "lag_months"], how="left")
+    grid[["claim_lines", "allowed_amount", "paid_amount"]] = grid[
+        ["claim_lines", "allowed_amount", "paid_amount"]].fillna(0)
+    grid = grid.sort_values(["service_year_month", "lag_months"])
+    for c in ("claim_lines", "allowed_amount", "paid_amount"):
+        grid[f"cumulative_{c}"] = grid.groupby("service_year_month")[c].cumsum()
+
+    # A cell is observable only if its WHOLE development period had elapsed by
+    # the paid-through date - the end of month (service month + lag), not its
+    # start. This is the part that is easy to get wrong and silently ruinous:
+    # counting a lag period the extract only half covers puts a partial month
+    # of payments next to full ones, and the chain ladder then reads the
+    # missing half as a real slowdown. It is the same error as trending a
+    # measure to its right edge, one level down.
+    paid_through = pd.Timestamp(C.PAID_THROUGH)
+    abs_month = (grid["service_year_month"] // 100) * 12 + (
+        grid["service_year_month"] % 100) - 1 + grid["lag_months"]
+    lag_month_end = pd.to_datetime(pd.DataFrame({
+        "year": abs_month // 12, "month": abs_month % 12 + 1, "day": 1,
+    })) + pd.offsets.MonthEnd(0)
+    grid["is_observable"] = lag_month_end <= paid_through
+
+    grid["completion_factor_derived"] = _chain_ladder(grid)
+    grid = grid.reset_index(drop=True)
+    grid.insert(0, "lag_triangle_key", np.arange(1, len(grid) + 1))
+    out["fct_claims_lag_triangle"] = grid
+
+    # ---- hang the derived factor on dim_date beside the asserted one, so the
+    # two can be compared rather than one silently replacing the other.
+    ult = (grid[grid["is_observable"]]
+           .sort_values(["service_year_month", "lag_months"])
+           .groupby("service_year_month").tail(1)
+           [["service_year_month", "completion_factor_derived"]])
+    d = dims["dim_date"]
+    d = d.merge(ult.rename(columns={"service_year_month": "year_month"}),
+                on="year_month", how="left")
+    # Months outside the claims window get 0.0, matching the convention the
+    # asserted factor already uses. Filling them with 1.0 would state that a
+    # month with no claims in it is fully developed, which reads as "complete"
+    # to every filter on the page.
+    first, last = min(months), max(months)
+    inside = d["year_month"].between(first, last)
+    d["completion_factor_derived"] = np.where(
+        inside, d["completion_factor_derived"].fillna(1.0), 0.0).round(4)
+    dims["dim_date"] = d
+    log(f"lag triangle: {len(grid):,} cells over {len(months)} service months", t0)
+    return out
+
+
+def _chain_ladder(grid: pd.DataFrame) -> np.ndarray:
+    """Completion factor at each lag, by age-to-age development factors.
+
+    The standard actuarial construction, and it is the honest one: age-to-age
+    factors are taken only over service months mature enough to have BOTH
+    development periods observed, then chained backwards from ultimate. A
+    factor computed across immature months measures the immaturity.
+    """
+    obs = grid[grid["is_observable"]]
+    factors = {}
+    for d in range(MAX_LAG_MONTHS):
+        a = obs[obs["lag_months"] == d].set_index("service_year_month")[
+            "cumulative_allowed_amount"]
+        b = obs[obs["lag_months"] == d + 1].set_index("service_year_month")[
+            "cumulative_allowed_amount"]
+        both = a.index.intersection(b.index)
+        denom = float(a.reindex(both).sum())
+        factors[d] = float(b.reindex(both).sum()) / denom if denom > 0 else 1.0
+
+    # Completion at lag d is the reciprocal of everything still to develop.
+    completion = {}
+    for d in range(MAX_LAG_MONTHS + 1):
+        tail = 1.0
+        for k in range(d, MAX_LAG_MONTHS):
+            tail *= max(factors.get(k, 1.0), 1e-9)
+        completion[d] = round(min(1.0 / tail, 1.0), 6)
+    return grid["lag_months"].map(completion).to_numpy()
+
+
 def main() -> int:
     t0 = time.time()
     print("\nBuilding conformed and dimensional layer")
     dims = build_dimensions(t0)
     facts = build_facts(dims, t0)
+    contract = build_contract_layer(dims, facts, t0)
     serve = build_serving(dims, facts, t0)
 
     entries = []
-    for group in (dims, facts, serve):
+    for group in (dims, facts, contract, serve):
         for name, df in group.items():
             entries.append(W.write_table(df, MART / f"{name}.csv.gz", name))
     total = sum(e["rows"] for e in entries)

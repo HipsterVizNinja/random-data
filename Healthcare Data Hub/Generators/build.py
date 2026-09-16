@@ -45,7 +45,7 @@ LANDING = {
                 "ehr_referral_order", "ehr_provider_directory"],
     "raw_pm": ["pm_appointment", "pm_authorization", "pm_referral_workflow_config"],
     "raw_vbc": ["vbc_attribution_month", "vbc_attribution_restatement",
-                "vbc_benchmark"],
+                "vbc_roster_version", "vbc_benchmark", "vbc_contract_terms"],
     "raw_ref": ["ref_date", "ref_diagnosis", "ref_procedure", "ref_service_place",
                 "ref_drg", "ref_claim_status", "ref_service_line",
                 "ref_revenue_code", "ref_facility", "ref_network_contract",
@@ -141,8 +141,13 @@ def build(run: C.RunConfig) -> tuple[dict[str, pd.DataFrame], list[dict]]:
     at = AT.build_attribution(run, members, el["member_month"],
                               cl["ehr_encounter"], cm["clm_claim_line"])
     tables.update(at)
+    n_term = int((at["vbc_attribution_restatement"].new_status
+                  == "RETRO_TERMINATED").sum())
+    n_add = int((at["vbc_attribution_restatement"].new_status
+                 == "ATTRIBUTED").sum())
     log(f"attribution: {len(at['vbc_attribution_month']):,} roster months, "
-        f"{len(at['vbc_attribution_restatement']):,} restatements", t0)
+        f"{n_term:,} retro-terminations and {n_add:,} retro-additions across "
+        f"{len(at['vbc_roster_version'])} roster versions", t0)
 
     # ---- identity resolution
     xw = XW.build_crosswalks(run, members, pv["provider_master"])

@@ -329,6 +329,16 @@ def build_member_months(spans: pd.DataFrame, members: pd.DataFrame) -> pd.DataFr
 
     meta = members[["member_id", "risk_score", "attributed_site_code", "region"]]
     grp = grp.merge(meta, on="member_id", how="left")
+
+    # ---- annual re-scoring. A risk score is a property of a member IN A
+    # PERFORMANCE YEAR, not a fixed attribute: the book is re-run every year
+    # against that year's diagnoses. Carrying one frozen score across three
+    # years means the risk-adjusted benchmark cannot move for any reason, and
+    # "did our population get sicker or did we just code it better" - the
+    # first question any ACO finance team asks - has no answer in the data.
+    year = (grp["year_month"] // 100).astype(int)
+    drift = year.map(C.RISK_DRIFT_BY_YEAR).fillna(1.0).astype(float)
+    grp["risk_score"] = (grp["risk_score"].astype(float) * drift).round(4)
     grp["has_medical"] = True
     grp["has_rx"] = True
     grp = grp.sort_values(["member_id", "year_month"]).reset_index(drop=True)

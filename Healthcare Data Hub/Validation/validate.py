@@ -877,6 +877,191 @@ def render_report(res: Results, runout, path: Path, manifest: dict):
     path.write_text("\n".join(L) + "\n")
 
 
+def check_settlement(r: Results, exp, sc, mart_lines, mm, date_dim):
+    """The settlement layer: risk scaling, roster versions, truncation, triangle.
+
+    Every assertion here guards a number that silently went wrong before it
+    existed. The benchmark that could not be beaten shipped for months because
+    nothing compared it to an actual. The roster baseline was computed and
+    thrown away. The over-match was documented in the answer key and absent
+    from the data. A planted defect nobody can find is indistinguishable from
+    a defect that is not there, and only an assertion tells them apart.
+    """
+    st = exp["settlement"]
+    att = read_mart("vbc_attribution_month")
+    rst = read_mart("vbc_attribution_restatement")
+    vers = read_mart("vbc_roster_version")
+    bench = read_mart("vbc_benchmark")
+    myc = read_mart("fct_member_year_cost")
+    tri = read_mart("fct_claims_lag_triangle")
+    member = read_mart("dim_member", usecols=["member_id", "member_durable_key",
+                                              "sex", "birth_date"])
+
+    # ---- 1. risk scores normalize to 1.0 per book, before annual drift.
+    tol = st["risk_score_book_mean_tolerance"]
+    drift = pd.Series(C.RISK_DRIFT_BY_YEAR)
+    mmv = mm.copy()
+    mmv["_y"] = mmv["year_month"] // 100
+    mmv["_undrift"] = mmv["risk_score"] / mmv["_y"].map(C.RISK_DRIFT_BY_YEAR)
+    for lob, g in mmv.groupby("line_of_business"):
+        mean = float(g["_undrift"].mean())
+        r.add("SET-01", "Settlement", f"risk score book mean = 1.0 ({lob})",
+              ERROR, abs(mean - C.RISK_SCORE_BOOK_MEAN) <= tol,
+              "A risk score is only meaningful against a normalized book. "
+              "Multiplying a benchmark PMPM by a raw morbidity weight produces "
+              "a number with no contractual meaning.",
+              actual=round(mean, 4), expected=f"1.0 +/- {tol}")
+
+    r.band("SET-02", "Settlement", "attributed cohort mean risk > book",
+           round(float(att["risk_score"].mean()), 4),
+           st["attributed_mean_risk"], severity=sc.dist_severity(),
+           detail="Attribution selects for care-seekers, so the attributed "
+                  "sub-population must run richer than the book it is drawn "
+                  "from. At 1.0 the attribution rule has stopped selecting.")
+
+    # ---- 2. restatement runs in both directions, across every version.
+    n_add = int((rst["new_status"] == "ATTRIBUTED").sum())
+    n_term = int((rst["new_status"] == "RETRO_TERMINATED").sum())
+    r.add("SET-03", "Settlement", "restatement includes retro-ADDITIONS",
+          ERROR, n_add >= sc.count(st["retro_additions_min"]),
+          "A restatement history that only ever removes members models the "
+          "convenient direction and nothing else.",
+          actual=n_add, expected=f">= {sc.count(st['retro_additions_min'])}")
+    r.add("SET-04", "Settlement", "restatement includes retro-terminations",
+          ERROR, n_term >= sc.count(st["retro_terminations_min"]),
+          actual=n_term, expected=f">= {sc.count(st['retro_terminations_min'])}")
+    r.add("SET-05", "Settlement", "every roster version ships",
+          ERROR, len(vers) == st["roster_versions"]
+          and int(vers["is_current_version"].astype(str).str.lower()
+                  .eq("true").sum()) == 1,
+          "The baseline roster used to be computed and discarded, leaving the "
+          "as-of control with one position.",
+          actual=len(vers), expected=st["roster_versions"])
+
+    # ---- 3. the roster reconstruction actually moves PMPM.
+    cur = mart_lines[_as_bool(mart_lines["is_current_version"])]
+    spend = (cur.groupby(["member_durable_key", "service_year_month"])
+             ["allowed_amount"].sum())
+    dur = member.set_index("member_id")["member_durable_key"]
+    months = list(range(202501, 202510))
+
+    def pmpm(frame):
+        f = frame[frame["year_month"].isin(months)]
+        keys = list(zip(f["member_id"].map(dur), f["year_month"]))
+        if not keys:
+            return None
+        return float(spend.reindex(keys).fillna(0).sum()) / len(keys)
+
+    now = pmpm(att)
+    base = pmpm(pd.concat([att, rst[rst.new_status == "RETRO_TERMINATED"]],
+                          ignore_index=True))
+    effect = None if not (now and base) else (base - now) / base * 100
+    r.band("SET-06", "Settlement", "roster restatement moves PY2025 PMPM",
+           None if effect is None else round(effect, 2),
+           st["roster_pmpm_effect_pct"], severity=sc.dist_severity(),
+           detail="Reconstructing the baseline roster from the delta. This is "
+                  "the headline: an improvement that is bookkeeping, not care.")
+
+    # ---- 4. truncation ties between the two grains.
+    line_trunc = float(cur["allowed_amount_truncated"].sum())
+    my_trunc = float(myc["allowed_amount_truncated"].sum())
+    r.add("SET-07", "Settlement", "line truncation ties to member-year",
+          ERROR, abs(line_trunc - my_trunc) <= st["truncation_tie_tolerance"],
+          "The pro-rata allocation back down to the line must sum exactly to "
+          "the member-year cap, or the two grains disagree about the same "
+          "contract term.",
+          actual=round(line_trunc, 2), expected=round(my_trunc, 2),
+          dollars=round(abs(line_trunc - my_trunc), 2))
+    share = float(myc["truncation_excess"].sum()) / max(
+        float(myc["allowed_amount"].sum()), 1.0) * 100
+    r.band("SET-08", "Settlement", "truncation removes a 99th-percentile tail",
+           round(share, 2), st["truncated_share_of_spend_pct"],
+           severity=sc.dist_severity(),
+           detail="At a threshold too low for the cost curve this removes a "
+                  "quarter of all spend and stops being a tail treatment.",
+           dollars=round(float(myc["truncation_excess"].sum()), 2))
+
+    # ---- 5. the benchmark is a number a settlement can be computed against.
+    att24 = att[att["year_month"].between(202401, 202412)]
+    keys24 = list(zip(att24["member_id"].map(dur), att24["year_month"]))
+    trunc_spend = (cur.groupby(["member_durable_key", "service_year_month"])
+                   ["allowed_amount_truncated"].sum())
+    for lob, g in att24.groupby("line_of_business"):
+        k = list(zip(g["member_id"].map(dur), g["year_month"]))
+        actual = float(trunc_spend.reindex(k).fillna(0).sum()) / len(k)
+        b = bench[(bench["line_of_business"] == lob)
+                  & bench["year_month"].between(202401, 202412)]
+        rab = float(b["risk_adjusted_benchmark_pmpm"].mean())
+        gap = (rab - actual) / actual * 100
+        r.band("SET-09", "Settlement",
+               f"benchmark is beatable but not free ({lob})", round(gap, 2),
+               st["benchmark_vs_actual_py2024_pct"],
+               severity=sc.dist_severity(),
+               detail=f"Risk-adjusted benchmark ${rab:,.0f} against truncated "
+                      f"attributed actual ${actual:,.0f}, PY2024.")
+
+    # ---- 6. the over-match reaches the claims spine.
+    collapsed = member.groupby("member_durable_key").agg(
+        n=("member_id", "size"), nsex=("sex", "nunique"),
+        ndob=("birth_date", "nunique"))
+    over = collapsed[(collapsed["n"] > 1)]
+    py = cur[cur["service_year_month"].between(202501, 202509)]
+    tot = py.groupby("member_durable_key")["allowed_amount"].sum().sort_values(
+        ascending=False)
+    top1 = set(tot.head(max(1, len(tot) // 100)).index)
+    hits = len(set(over.index) & top1)
+    r.add("SET-10", "Settlement", "over-match contaminates the cost tail",
+          EXPECTED, hits >= st["overmatch_in_top_1pct_min"],
+          "Two people wearing one identity surface as an artificial "
+          "super-utilizer. Collapsing only the EHR key space left the payer "
+          "spine intact, so claims never aggregated onto one person and the "
+          "defect the answer key promises did not exist in the mart.",
+          actual=hits, expected=f">= {st['overmatch_in_top_1pct_min']}",
+          dollars=round(float(tot.reindex(list(set(over.index) & top1))
+                              .fillna(0).sum()), 2))
+
+    # ---- 7. the triangle ties, and recovers the asserted completeness.
+    tri_allowed = float(tri["allowed_amount"].sum())
+    line_allowed = float(cur["allowed_amount"].sum())
+    r.add("SET-11", "Settlement", "lag triangle ties to fct_claim_line",
+          ERROR, abs(tri_allowed - line_allowed)
+          <= exp["settlement"]["lag_triangle_tie_tolerance"],
+          actual=round(tri_allowed, 2), expected=round(line_allowed, 2),
+          dollars=round(abs(tri_allowed - line_allowed), 2))
+
+    dd = date_dim.drop_duplicates("year_month")
+    a7_tol = exp["anomalies"]["A7_runout"]["derived_vs_asserted_tolerance"]
+    # Every month the generator declares as partially developed, which is a
+    # superset of the months that fall below the runout-complete flag.
+    for month in sorted(C.RUNOUT_COMPLETENESS):
+        ym = int(month.replace("-", ""))
+        row = dd[dd["year_month"] == ym]
+        if row.empty:
+            continue
+        asserted = float(row["claims_completeness_factor"].iloc[0])
+        derived = float(row["completion_factor_derived"].iloc[0])
+        r.add("SET-12", "Settlement",
+              f"chain ladder recovers completeness ({month})",
+              ERROR, abs(asserted - derived) <= a7_tol,
+              "The completion factor is DERIVED from the paid dates present, "
+              "not read off a constant. When these diverge, the extract is "
+              "claiming a paid-through date its own data cannot support.",
+              actual=round(derived, 4), expected=f"{asserted} +/- {a7_tol}")
+
+    # And across EVERY service month, not only the named ones. A divergence
+    # that shows up in an unnamed month is the one nobody is looking for.
+    claim_months = sorted(tri["service_year_month"].unique())
+    cmp = dd[dd["year_month"].isin(claim_months)]
+    worst = float((cmp["claims_completeness_factor"]
+                   - cmp["completion_factor_derived"]).abs().max())
+    r.add("SET-13", "Settlement",
+          "asserted and derived completeness agree, every month",
+          ERROR, worst <= a7_tol, actual=round(worst, 4),
+          detail="Checked across all "
+                 f"{len(cmp)} service months carrying claims.",
+          expected=f"<= {a7_tol}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--json-only", action="store_true")
@@ -920,6 +1105,7 @@ def main() -> int:
     check_conformance(res, exp, enc)
     check_question_ladder(res, exp, sc, ref, outcome, mart_lines)
     runout = check_runout(res, exp, sc, mart_lines, date_dim)
+    check_settlement(res, exp, sc, mart_lines, mm, date_dim)
 
     df = res.frame()
     (DELIV / "validation_results.json").write_text(

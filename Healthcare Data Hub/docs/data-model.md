@@ -135,7 +135,11 @@ else is type 1. Type 2 everywhere is where synthetic data projects die.
 | `fct_member_month` | member × year-month with coverage |
 | `fct_eligibility_span` | member × plan × contiguous span |
 | `vbc_attribution_month` | member × month, current roster version |
-| `vbc_attribution_restatement` | only rows whose attribution changed |
+| `vbc_attribution_restatement` | attribution change × the roster version that made it |
+| `vbc_roster_version` | one monthly roster production run |
+| `vbc_contract_terms` | contract × performance year |
+| `fct_member_year_cost` | member × performance year, truncation applied |
+| `fct_claims_lag_triangle` | service month × lag month |
 | `br_provider_affiliation` | provider × facility × effective span |
 
 ### The pieces worth reading
@@ -175,6 +179,50 @@ admissions inflates volume several fold. The correct answer is
 `COUNT(DISTINCT encounter_id)`. About 24% of claims carry no `encounter_id` at
 all, because that care happened outside Northlake — which is exactly why the
 hub is necessary.
+
+**The roster is versioned, and the restatement runs both ways.** The roster is
+produced monthly; `vbc_attribution_month` carries the current version and
+`vbc_attribution_restatement` carries every change stamped with the version
+that made it, wide enough (site, line of business, member-months, risk score)
+that any earlier version reconstructs without touching another table:
+
+```
+roster at version V
+  = current roster
+  − additions applied after V
+  + terminations applied after V
+```
+
+Changes run in both directions — `new_status` is `RETRO_TERMINATED` or
+`ATTRIBUTED`. A restatement history that only ever removes members models the
+convenient direction and nothing else, and the additions are drawn without
+reference to cost so the net effect is honest rather than manufactured.
+
+**Risk scores are normalized to a book mean of 1.0, within line of business.**
+Commercial and Medicare Advantage normalize separately, because that is what a
+contract does: a commercial 1.0 and an MA 1.0 describe very different people
+and neither is scored against the other. `fct_member_month` then applies an
+annual re-scoring factor, so "did the population get sicker or did we code it
+better" is a question the data can answer. Raw morbidity weights were shipping
+before, which made `risk_adjusted_benchmark_pmpm` a number with no contractual
+meaning in either direction.
+
+**High-cost truncation is an annual, member-level cap.** `fct_member_year_cost`
+applies the threshold on `vbc_contract_terms` — roughly the 99th percentile of
+member-year allowed for each book, which is the MSSP rule and removes 6–10% of
+spend. `fct_claim_line.allowed_amount_truncated` is that cap allocated back
+down pro rata so the cap is sliceable by month and site; it sums to the
+member-year figure exactly. Applying a threshold per claim line instead — the
+obvious shortcut — caps nothing, because no single line reaches it.
+
+**Completeness is derived, not asserted.** `fct_claims_lag_triangle` develops
+each service month by paid-lag month, and chain ladder over the mature months
+reproduces `dim_date.claims_completeness_factor` from the paid dates alone. A
+cell counts as observable only where the *whole* development period had
+elapsed by the paid-through date — the end of the lag month, not its start.
+Counting a period the extract only half covers puts a partial month of payments
+beside full ones, and the chain ladder reads the missing half as a real
+slowdown: the same error as trending to the right edge, one level down.
 
 **Reversals and adjustments.** Three columns do the work: `adjudication_seq`,
 `is_current_version`, `net_sign`. A reversal is a full negation of the version

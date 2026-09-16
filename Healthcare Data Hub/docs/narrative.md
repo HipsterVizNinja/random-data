@@ -90,6 +90,21 @@ history so both the original and restated views reproduce. This is the
 supporting reversal, and it puts Finance's credibility on the line rather than
 Network Strategy's.
 
+Three things make the decomposition reproducible rather than assertable. Every
+monthly roster version ships, so "what did we believe in September" is a
+control and not an archaeology exercise. The restatement runs in both
+directions, so the net effect has to be earned against retro-additions rather
+than handed over by a one-sided history. And the completion factors are
+derived from the paid dates by chain ladder, so the runout component is
+measured on the page rather than read off a constant somebody typed.
+
+`vbc_contract_terms` is what turns the answer into money. A minimum savings
+rate, a shared-savings percentage and a high-cost truncation threshold are the
+difference between "PMPM moved $48" and "the cheque moved", and only the
+second one is a finding Marcus acts on. The truncation matters twice: it is
+also the honest defense against the retro-termination finding, and the finding
+has to survive it to be worth reporting.
+
 **Q5, two sources.** *Priya:* are we closing HbA1c gaps? The EHR and the
 claims file disagree, and neither is the superset — some tests were performed
 at an external lab that returned no structured result, others have an in-house

@@ -13,8 +13,8 @@
       "affected_service_month": "2024-07",
       "naive_error": {
         "measure": "paid amount for service month 2024-07",
-        "correct": 17348945.5,
-        "naive": 19347089.95,
+        "correct": 17347289.86,
+        "naive": 19345434.31,
         "overstatement_dollars": 1998144.45,
         "overstatement_pct": 11.52
       },
@@ -30,10 +30,10 @@
       "concentration_site": "UC-NORTHGATE",
       "naive_error": {
         "measure": "paid amount silently dropped by an inner join to the provider dimension",
-        "dropped_dollars": 394977.6,
-        "site_paid_all_lines": 2221274.03,
-        "site_paid_after_inner_join": 2027030.43,
-        "site_understatement_pct": 8.74
+        "dropped_dollars": 462294.91,
+        "site_paid_all_lines": 2245667.77,
+        "site_paid_after_inner_join": 2059439.9,
+        "site_understatement_pct": 8.29
       },
       "detect": "Anti-join every foreign key before using it, and report the orphan count AND the orphan dollars. Never inner join a fact to a dimension without first counting what the join would drop.",
       "control": "Resolve unmatched keys to the -1 Unknown dimension member and carry provider_resolution_status so the defect stays countable."
@@ -88,13 +88,13 @@
       "description": "118 reversals reference an original that adjudicated before this window opened, so there is nothing here to net against. They are retained and flagged.",
       "applied": true,
       "measured": {
-        "correct_paid_all_rows": 604972574.47,
-        "correct_paid_current_version": 604922617.92,
+        "correct_paid_all_rows": 611525380.08,
+        "correct_paid_current_version": 611475423.53,
         "two_formulas_agree": false,
-        "orphan_reversal_dollars": -198512.18,
-        "naive_seq1_overstatement_pct": 0.62,
-        "naive_positive_only_overstatement_pct": 5.58,
-        "naive_drop_all_reversals_error_pct": 0.03
+        "orphan_reversal_dollars": -146028.09,
+        "naive_seq1_overstatement_pct": 0.65,
+        "naive_positive_only_overstatement_pct": 5.8,
+        "naive_drop_all_reversals_error_pct": 0.02
       },
       "detect": "Check that both sanctioned nettings tie. Anti-join reversals to their originals.",
       "control": "Sum every row, or sum WHERE is_current_version. Do NOT add a reversal exclusion: orphan reversals are current and negative on purpose, and excluding them breaks the tie."
@@ -126,10 +126,10 @@
       "applied": true,
       "measured": {
         "match_tier_shares": {
-          "EXACT": 0.8169,
+          "EXACT": 0.817,
           "DETERMINISTIC_NAME_DOB_ZIP": 0.1329,
           "UNMATCHED": 0.0311,
-          "PROBABILISTIC": 0.0191
+          "PROBABILISTIC": 0.019
         },
         "skew": {
           "unmatched_rate_at_site": 0.0557,
@@ -146,9 +146,12 @@
       "description": "Twins and Jr/Sr pairs matched on name, date of birth and address. They surface as artificial super-utilizers at the very top of the cost distribution, contaminating precisely the top-1% figure the demo quotes. Over-matching is the more interesting failure and is almost never demonstrated.",
       "applied": true,
       "measured": {
-        "master_persons_collapsing_multiple_people": 38,
-        "found_by_sex_mismatch_alone": 22,
-        "found_only_by_date_of_birth": 16
+        "master_persons_collapsing_multiple_people": 33,
+        "found_by_sex_mismatch_alone": 18,
+        "found_only_by_date_of_birth": 15,
+        "collapsed_persons_in_top_1pct_of_cost": 7,
+        "their_allowed_amount": 8364357.45,
+        "top_1pct_threshold_allowed": 459227.87
       },
       "detect": "Within each master_person_id, count distinct sex and distinct date of birth. Sex mismatch is the cheapest detector but it only catches mixed-sex pairs; same-sex twins need the date-of-birth check.",
       "control": "Exclude or split PROBABILISTIC matches below a score threshold, and report counts at both thresholds so the sensitivity is visible rather than hidden."
@@ -159,10 +162,10 @@
       "description": "High-cost members are retro-terminated from attribution in exactly the months containing an inpatient stay at a non-affiliated hospital. Their cost leaves the numerator and their member-months leave the denominator, so PMPM improves without any care changing.",
       "applied": true,
       "measured": {
-        "restated_member_months": 1665,
+        "restated_member_months": 784,
         "retro_terminated_members": 167,
         "retro_terminated_member_months": 224,
-        "ordinary_churn_member_months": 1441
+        "ordinary_churn_member_months": 560
       },
       "detect": "Compare roster VERSIONS, not just the current roster. Hold a cohort fixed and re-run the measure.",
       "control": "Report PMPM on a fixed cohort alongside the open-panel figure, and state the as-of date of the roster used."
@@ -189,13 +192,13 @@
       "description": "Bilateral procedures and same-day repeats produce near-identical rows distinguished ONLY by modifier. De-duplicating on 'the obvious business columns' destroys them and UNDERSTATES paid. This runs in the opposite direction to A9a, and the naive fix for one creates the other.",
       "applied": true,
       "measured": {
-        "lines_distinguished_only_by_modifier": 30061,
-        "paid_at_risk_if_wrongly_deduplicated": 25236063.53,
+        "lines_distinguished_only_by_modifier": 30460,
+        "paid_at_risk_if_wrongly_deduplicated": 25517881.28,
         "modifier_mix": {
-          "50": 8858,
-          "RT": 7130,
-          "LT": 7054,
-          "76": 7019
+          "50": 9031,
+          "RT": 7221,
+          "LT": 7113,
+          "76": 7095
         }
       },
       "detect": "Before de-duplicating, check whether the candidate rows differ on modifier. If they do, they are distinct services.",
@@ -277,26 +280,44 @@
     {
       "anomaly_id": "A7",
       "name": "Claims runout on the most recent service months",
-      "description": "Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-02-28 - the slowest-paying, not a random sample. Retention below is measured against each month's own natural volume, which is the only denominator that makes the designed and realized figures comparable.",
+      "description": "Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. Retention below is measured against each month's own natural volume, which is the only denominator that makes the designed and realized figures comparable.",
       "applied": true,
       "measured": {
+        "2025-07": {
+          "natural_lines": 26597,
+          "retained_lines": 26454,
+          "retained_share": 0.9946,
+          "designed_share": 0.99
+        },
+        "2025-08": {
+          "natural_lines": 26691,
+          "retained_lines": 26419,
+          "retained_share": 0.9898,
+          "designed_share": 0.99
+        },
+        "2025-09": {
+          "natural_lines": 28722,
+          "retained_lines": 28065,
+          "retained_share": 0.9771,
+          "designed_share": 0.97
+        },
         "2025-10": {
           "natural_lines": 29903,
-          "retained_lines": 23324,
-          "retained_share": 0.78,
-          "designed_share": 0.78
+          "retained_lines": 28085,
+          "retained_share": 0.9392,
+          "designed_share": 0.94
         },
         "2025-11": {
           "natural_lines": 29413,
-          "retained_lines": 15883,
-          "retained_share": 0.54,
-          "designed_share": 0.54
+          "retained_lines": 23955,
+          "retained_share": 0.8144,
+          "designed_share": 0.81
         },
         "2025-12": {
           "natural_lines": 41207,
-          "retained_lines": 12774,
-          "retained_share": 0.31,
-          "designed_share": 0.31
+          "retained_lines": 10971,
+          "retained_share": 0.2662,
+          "designed_share": 0.27
         }
       },
       "detect": "Build the lag triangle, comparing each month against the SAME calendar month in prior years and de-trending. Comparing against an annual average measures seasonality and calls it completeness - December alone carries a 1.45x elective factor.",

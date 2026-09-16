@@ -19,8 +19,8 @@ The companion document, [data-trust-validation.md](data-trust-validation.md), is
 **Naive error**
 
 - **measure**: paid amount for service month 2024-07
-- **correct**: 17348945.5
-- **naive**: 19347089.95
+- **correct**: 17347289.86
+- **naive**: 19345434.31
 - **overstatement_dollars**: 1998144.45
 - **overstatement_pct**: 11.52
 
@@ -45,10 +45,10 @@ De-duplicate on (claim_number, claim_line_number, adjudication_seq), keeping the
 **Naive error**
 
 - **measure**: paid amount silently dropped by an inner join to the provider dimension
-- **dropped_dollars**: 394977.6
-- **site_paid_all_lines**: 2221274.03
-- **site_paid_after_inner_join**: 2027030.43
-- **site_understatement_pct**: 8.74
+- **dropped_dollars**: 462294.91
+- **site_paid_all_lines**: 2245667.77
+- **site_paid_after_inner_join**: 2059439.9
+- **site_understatement_pct**: 8.29
 
 **Rows affected:** 1,312
 
@@ -135,13 +135,13 @@ Never trust a directory field as a measure; derive it from the contract.
 
 **Measured**
 
-- **correct_paid_all_rows**: 604972574.47
-- **correct_paid_current_version**: 604922617.92
+- **correct_paid_all_rows**: 611525380.08
+- **correct_paid_current_version**: 611475423.53
 - **two_formulas_agree**: False
-- **orphan_reversal_dollars**: -198512.18
-- **naive_seq1_overstatement_pct**: 0.62
-- **naive_positive_only_overstatement_pct**: 5.58
-- **naive_drop_all_reversals_error_pct**: 0.03
+- **orphan_reversal_dollars**: -146028.09
+- **naive_seq1_overstatement_pct**: 0.65
+- **naive_positive_only_overstatement_pct**: 5.8
+- **naive_drop_all_reversals_error_pct**: 0.02
 
 **How to detect it**
 
@@ -181,10 +181,10 @@ A share of EHR records never resolve to a member. The loss skews toward ORTHO-NR
 **Measured**
 
 - **match_tier_shares**
-  - **EXACT**: 0.8169
+  - **EXACT**: 0.817
   - **DETERMINISTIC_NAME_DOB_ZIP**: 0.1329
   - **UNMATCHED**: 0.0311
-  - **PROBABILISTIC**: 0.0191
+  - **PROBABILISTIC**: 0.019
 - **skew**
   - **unmatched_rate_at_site**: 0.0557
   - **unmatched_rate_elsewhere**: 0.0271
@@ -206,9 +206,12 @@ Twins and Jr/Sr pairs matched on name, date of birth and address. They surface a
 
 **Measured**
 
-- **master_persons_collapsing_multiple_people**: 38
-- **found_by_sex_mismatch_alone**: 22
-- **found_only_by_date_of_birth**: 16
+- **master_persons_collapsing_multiple_people**: 33
+- **found_by_sex_mismatch_alone**: 18
+- **found_only_by_date_of_birth**: 15
+- **collapsed_persons_in_top_1pct_of_cost**: 7
+- **their_allowed_amount**: 8364357.45
+- **top_1pct_threshold_allowed**: 459227.87
 
 **How to detect it**
 
@@ -226,10 +229,10 @@ High-cost members are retro-terminated from attribution in exactly the months co
 
 **Measured**
 
-- **restated_member_months**: 1665
+- **restated_member_months**: 784
 - **retro_terminated_members**: 167
 - **retro_terminated_member_months**: 224
-- **ordinary_churn_member_months**: 1441
+- **ordinary_churn_member_months**: 560
 
 **How to detect it**
 
@@ -269,13 +272,13 @@ Bilateral procedures and same-day repeats produce near-identical rows distinguis
 
 **Measured**
 
-- **lines_distinguished_only_by_modifier**: 30061
-- **paid_at_risk_if_wrongly_deduplicated**: 25236063.53
+- **lines_distinguished_only_by_modifier**: 30460
+- **paid_at_risk_if_wrongly_deduplicated**: 25517881.28
 - **modifier_mix**
-  - **50**: 8858
-  - **RT**: 7130
-  - **LT**: 7054
-  - **76**: 7019
+  - **50**: 9031
+  - **RT**: 7221
+  - **LT**: 7113
+  - **76**: 7095
 
 **How to detect it**
 
@@ -368,25 +371,40 @@ One conformed dimension with a documented source-of-truth per attribute.
 
 ## A7 — Claims runout on the most recent service months
 
-Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-02-28 - the slowest-paying, not a random sample. Retention below is measured against each month's own natural volume, which is the only denominator that makes the designed and realized figures comparable.
+Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. Retention below is measured against each month's own natural volume, which is the only denominator that makes the designed and realized figures comparable.
 
 **Measured**
 
+- **2025-07**
+  - **natural_lines**: 26597
+  - **retained_lines**: 26454
+  - **retained_share**: 0.9946
+  - **designed_share**: 0.99
+- **2025-08**
+  - **natural_lines**: 26691
+  - **retained_lines**: 26419
+  - **retained_share**: 0.9898
+  - **designed_share**: 0.99
+- **2025-09**
+  - **natural_lines**: 28722
+  - **retained_lines**: 28065
+  - **retained_share**: 0.9771
+  - **designed_share**: 0.97
 - **2025-10**
   - **natural_lines**: 29903
-  - **retained_lines**: 23324
-  - **retained_share**: 0.78
-  - **designed_share**: 0.78
+  - **retained_lines**: 28085
+  - **retained_share**: 0.9392
+  - **designed_share**: 0.94
 - **2025-11**
   - **natural_lines**: 29413
-  - **retained_lines**: 15883
-  - **retained_share**: 0.54
-  - **designed_share**: 0.54
+  - **retained_lines**: 23955
+  - **retained_share**: 0.8144
+  - **designed_share**: 0.81
 - **2025-12**
   - **natural_lines**: 41207
-  - **retained_lines**: 12774
-  - **retained_share**: 0.31
-  - **designed_share**: 0.31
+  - **retained_lines**: 10971
+  - **retained_share**: 0.2662
+  - **designed_share**: 0.27
 
 **How to detect it**
 

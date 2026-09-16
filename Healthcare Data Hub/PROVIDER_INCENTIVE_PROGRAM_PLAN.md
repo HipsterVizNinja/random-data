@@ -6,6 +6,20 @@ bonus pool across Northlake Health Partners' twelve attributed clinic groups.
 Planning document. **Nothing is built in Sigma from this pass.** Companion wireframe:
 [provider_incentive_program_wireframe.html](provider_incentive_program_wireframe.html).
 
+> **Figures re-measured against the current build.** The dataset was rebuilt after this plan
+> was first written, to add the settlement layer (roster version history, contract terms,
+> high-cost truncation, the claims lag triangle) and to fix two defects in the data itself:
+> risk scores were unnormalized, and the runout was applied as a lag-rank truncation rather
+> than the paid-date censor it claimed to be. [§19](#19-what-the-rebuild-changed) records what
+> moved.
+>
+> The scorecard has been re-run and [§15](#15-reference-figures) now reproduces from
+> `Validation/scorecard.py`, which is committed rather than thrown away. **The finding is
+> unchanged**: ORTHO-NR still inverts nine places, $265,604 still leaves the group, and its true
+> out-of-network rate is still 52.8% against a 20.1–23.1% peer range. It now finishes 11th of
+> twelve on the composite rather than 12th — [§15](#15-reference-figures) explains why, and why
+> that is a point worth making rather than one worth hiding.
+
 Every figure in this plan is measured from the shipped `demo` build (seed 20260911), not
 transcribed from a design. The commands that produced them are in
 [§18 Verification](#18-verification).
@@ -15,7 +29,7 @@ transcribed from a design. The commands that produced them are in
 ## 1. Context
 
 [Healthcare Data Hub](README.md) is a synthetic provider-side value-based-care dataset:
-five source systems, 26 mart tables, twelve planted data-quality defects. Northlake is
+five source systems, 34 mart tables, twelve planted data-quality defects. Northlake is
 financially accountable for a panel whose care it can see about 60% of, under two risk
 contracts with Meridian Health Plan.
 
@@ -23,7 +37,7 @@ The dataset shipped with no front end. This is the first application built on it
 chosen because a provider incentive program is the one artefact in value-based care where a
 data-quality defect converts directly into a wrong cheque. Every other VBC dashboard produces
 a misleading chart. This one produces a misallocated payment, and the misallocation is
-measurable: **$488,705 of a $4.2M pool, 11.6%, moves when you fix one join.**
+measurable: **$500,425 of a $4.2M pool, 11.9%, moves when you fix one join.**
 
 ### Scope decisions, confirmed
 
@@ -32,7 +46,7 @@ measurable: **$488,705 of a $4.2M pool, 11.6%, moves when you fix one join.**
 | **Payee grain** | The **twelve clinic groups**, not individual clinicians. Reasoning in [§4](#4-why-the-payee-is-a-clinic-group-and-not-a-clinician). |
 | **Where logic lives** | A new Sigma **data model**, `Northlake VBC`. The workbook is presentation-only, as in [Store Performance Command Center](../Retail/STORE_PERFORMANCE_COMMAND_CENTER_BUILD.md). |
 | **Performance years** | **PY2024** settled (100% claims-complete) and **PY2025 YTD through September** in flight. October–December 2025 is displayed but never scored. |
-| **Cost target** | **Peer-relative**, not the shipped `vbc_benchmark`. Reasoning in [§5](#5-why-vbc_benchmark-cannot-be-the-cost-target). |
+| **Cost target** | **Peer-relative** against the attributed-population mean. The external benchmark is contract context, not the scorecard's target. Reasoning in [§5](#5-why-cost-scoring-is-peer-relative). |
 | **Attributed population** | `vbc_attribution_month` — the payer's roster — never `fct_member_month`. Reasoning in [§6](#6-the-denominator-trap-two-rosters-that-disagree). |
 
 ---
@@ -69,11 +83,20 @@ moment the destination's network status is joined as of the date the referral wa
 |---|---|---|
 | Out-of-network referral rate | **6.9%** — best of twelve | **52.8%** — worst of twelve |
 | Peer range on the same measure | 14.0–18.5% | 20.1–23.1% |
-| Composite rank | **3 of 12** | **12 of 12** |
-| Bonus earned | $547,607 | $288,466 |
+| Composite rank | **2 of 12** | **11 of 12** |
+| Bonus earned | $559,401 | $293,797 |
 
-**The rank moves nine places and $259,141 leaves the group.** Across all twelve groups
-$488,705 is redistributed — 11.6% of the pool.
+**The rank moves nine places and $265,604 leaves the group.** Across all twelve groups
+$500,425 is redistributed — 11.9% of the pool.
+
+Reproduce both columns with `python Validation/scorecard.py` and
+`python Validation/scorecard.py --ehr-oon`.
+
+On the as-of join ORTHO-NR finishes eleventh rather than twelfth, because Eastgate Digestive
+Health scores 36.8 against its 39.7. The nine-place inversion is unchanged and so is the
+finding: on **network integrity itself** ORTHO-NR is 12 of 12 with a true out-of-network rate
+more than double the worst of its peers. Nothing about the mechanism below depends on where the
+composite lands it.
 
 Three mechanisms, all independently visible in the data:
 
@@ -134,55 +157,89 @@ is labelled a coaching view, not a payment view.
 
 ---
 
-## 5. Why `vbc_benchmark` cannot be the cost target
+## 5. Why cost scoring is peer-relative
 
-The shipped benchmark is calibrated against the **whole book**, not the attributed cohort.
-Measured over PY2024:
+**This section previously argued that `vbc_benchmark` was unusable. That is no longer true, and
+the conclusion survives the reason being removed.**
 
-| Population | Commercial allowed PMPM | MA allowed PMPM |
-|---|---|---|
-| All 48,000 members (`fct_member_month`) | $552 | $1,022 |
-| `vbc_benchmark.benchmark_pmpm` | **$582** | **$1,116** |
-| Attributed roster only (25,116 members) | **$946** | **$1,422** |
+The benchmark *was* calibrated against the whole book rather than the attributed cohort, and it
+multiplied through risk scores that had never been normalized — raw morbidity weights with a
+commercial mean of 0.388 and an MA mean of 1.303. `risk_adjusted_benchmark_pmpm` came out at
+$266 for commercial against an attributed actual of $946. Scored against that, all twelve
+groups failed cost every year and nobody earned.
 
-The benchmark tracks the all-member figure closely and the attributed figure not at all, which
-is correct and expected — attribution selects for care-seekers, so the attributed sub-population
-runs richer than the book it is drawn from.
+Both defects are fixed. Risk scores normalize to a book mean of 1.0 within line of business,
+and the benchmark is calibrated on the attributed roster. Measured over PY2024, truncated:
 
-Two consequences:
+| Line of business | Risk-adjusted benchmark | Attributed actual | Gap |
+|---|---|---|---|
+| Commercial | $726 | $702 | **+2.7%** |
+| Medicare Advantage | $1,149 | $1,110 | **+3.5%** |
 
-1. `risk_adjusted_benchmark_pmpm` is unusable as a cost target. It is a fixed
-   `benchmark_pmpm × mean_risk_score × 1.1765` and averages **$266** for commercial against an
-   attributed actual of $946. Scored against it, all twelve groups fail cost and nobody earns.
-2. The external benchmark still belongs on the page — for the **contract-level** question
-   ("will Northlake earn shared savings?", Marcus's question), which is a different question
-   from the **internal distribution** ("how is the pool split?", Dana's and Priya's).
+That is now a usable cost target: beatable, but not free money.
 
-So: **peer-relative cost scoring**, each group's risk-adjusted A/E against the attributed-
-population mean. This is also how most real provider incentive programs work — a fixed pool
-distributed on relative performance — so the choice is defensible on its merits and not just a
-workaround. Keep the external benchmark visible as contract context on page 1, clearly
+**The scorecard still scores peer-relative, and should.** The reason is no longer "the benchmark
+is broken"; it is that the two questions are different:
+
+- **"Will Northlake earn shared savings?"** is answered against the external benchmark. The
+  contract defines the target, Meridian and Northlake both compute it, and it decides whether
+  money enters the building. That question now has the data it needs —
+  `vbc_contract_terms` carries the minimum savings rate, the shared-savings split, the quality
+  gate and the truncation threshold — and it belongs in a **separate settlement workbook**,
+  not this one.
+- **"How is a fixed pool split twelve ways?"** is this app, and a fixed pool is a
+  zero-sum allocation. The pool does not grow when the benchmark is generous or shrink when it
+  is tight, so scoring against an external target imports irrelevant variance into an internal
+  distribution. Every group could beat the benchmark and the pool would still be $4.2M.
+
+Peer-relative scoring is what most real provider incentive programs use, for exactly that
+reason. The choice is defensible on its merits, which it previously was not — it was a
+workaround wearing a justification.
+
+`Expected Allowed` per member-month stays `benchmark_pmpm(LOB, month) × (member risk_score /
+mean_risk_score(LOB, month))`. The benchmark's *level* cancels out of a peer-relative
+comparison; its *risk and seasonality shape* is what the measure borrows, and that part was
+always sound. Keep the external benchmark visible as contract context on page 1, clearly
 separated from the scorecard.
 
-`Expected Allowed` per member-month is `benchmark_pmpm(LOB, month) × (member risk_score / mean_risk_score(LOB, month))`.
-The benchmark's *level* cancels out of a peer-relative comparison; its *risk and seasonality
-shape* is what the measure is borrowing, and that part is sound.
+### Cost should be scored on truncated allowed
 
----
+`fct_member_year_cost` now applies the contractual high-cost cap — $200,000 commercial,
+$250,000 MA, roughly the 99th percentile of member-year allowed — and
+`fct_claim_line.allowed_amount_truncated` allocates it back to line grain.
+
+**Recommendation: score the cost domain on truncated allowed.** Group denominators here run
+6,000–28,500 member-months. A single $460,000 catastrophic case inside a 6,000 member-month
+panel moves that group's A/E by roughly 0.09, which is most of a scoring tier, and it is
+noise with respect to anything the group did. Truncation is in the contract precisely because
+one case should not decide a payment.
+
+Measured impact, PY2025 YTD: **$116,042 moves, 2.8% of the pool**, and four groups change rank
+by one place. Every A/E falls and the peer distribution tightens. The two groups carrying the
+heaviest catastrophic load — Westport Internal Medicine and Eastgate Family Health — give back
+$54,071 and $29,874 to groups whose cost performance was being flattered by comparison.
+Northlake Family Medicine gains $70,111 and crosses from tenth to ninth: its A/E falls from
+1.134 to 0.993, which is the difference between "above the peer mean" and "below it" and worth
+two scoring tiers.
+
+Nobody's rank moves more than one place, which is the point — truncation is not a thumb on the
+scale, it is the removal of one. The figures in [§15](#15-reference-figures) are on **raw**
+allowed, matching §10's formula as originally written; `Validation/scorecard.py --truncated`
+produces the alternative, and the decision is yours to make before anything is built.
 
 ## 6. The denominator trap: two rosters that disagree
 
 | | Members | Member-months |
 |---|---|---|
 | `fct_member_month` | 48,000 | 1,501,125 |
-| `vbc_attribution_month` | **25,116** | **808,971** |
+| `vbc_attribution_month` | **25,116** | **810,042** |
 
 `fct_member_month.attributed_site_code` is populated for **all 48,000 members** — it is
 Northlake's own belief about attribution. `vbc_attribution_month` is the payer's roster, and it
 is what settlement is computed from. They disagree two ways:
 
-- 692,154 member-months exist in `fct_member_month` and not on the payer's roster.
-- Of the 808,971 they share, the attributed site **disagrees on 7.03%**.
+- 691,083 member-months exist in `fct_member_month` and not on the payer's roster.
+- Of the 810,042 they share, the attributed site **disagrees on 7.03%**.
 
 A program built off `fct_member_month` pays on a population Meridian is not paying Northlake
 for. The data model must make the payer roster the only path to a denominator, and the
@@ -192,17 +249,23 @@ workbook must never expose `fct_member_month.attributed_site_code` as a grouping
 
 ## 7. Runout, and why the scored window stops at September
 
-`dim_date.claims_completeness_factor` is measured from the generator, not estimated:
+`dim_date.claims_completeness_factor` is derived from the paid dates, not asserted:
 
 | Service month | Completeness | Scored? |
 |---|---|---|
-| ≤ 2025-09 | 1.00 | yes |
-| 2025-10 | 0.78 | no |
-| 2025-11 | 0.54 | no |
-| 2025-12 | 0.31 | no |
+| ≤ 2025-06 | 1.00 | yes |
+| 2025-07 | 0.99 | yes |
+| 2025-08 | 0.99 | yes |
+| 2025-09 | 0.97 | yes |
+| 2025-10 | 0.94 | no |
+| 2025-11 | 0.81 | no |
+| 2025-12 | 0.27 | no |
 
-Read PY2025 naively and Northlake's PMPM falls from $1,034 in March to $483 in December — a
-53% "improvement" that is almost entirely artefact. The scored window is therefore
+Every figure in that column is now reproducible from the data by chain ladder over
+`fct_claims_lag_triangle`, rather than read off a constant the generator asserted.
+
+Read PY2025 naively and Northlake's PMPM falls from $1,040 in March to $347 in December — a
+67% "improvement" that is almost entirely artefact. The scored window is therefore
 **January–September 2025**, gated on `claims_runout_complete_flag = TRUE`. October onward
 appears on the trend chart as a dashed accrual estimate with the completion factor applied and
 a label saying it is not scored.
@@ -214,21 +277,31 @@ paying on it pays on a forecast. The factor is for the trend chart and the accru
 
 ## 8. Roster restatement: real, and smaller than it looks
 
-1,665 attributed member-months were retroactively terminated. 224 are the poisoned kind —
-high-cost members dropped in exactly the months containing an inpatient stay at a
-non-affiliated hospital — and every one lands in 2025.
+**594** attributed member-months were retroactively terminated, every one of them in 2025.
+224 are the poisoned kind — high-cost members dropped in exactly the months containing an
+inpatient stay at a non-affiliated hospital, running $62,781 of allowed per member-month
+against $879 for the months that stayed.
 
-Reconstructing the pre-restatement roster and re-running PMPM on identical claims:
+The roster also **adds** members: 190 retro-additions, drawn without reference to cost. Any
+claim that restatement flatters Northlake has to survive them, and it does — but the honest
+figure is the net one, and it is the net one below. A restatement history that only ever
+removed people would be the more dramatic exhibit and the less defensible one.
+
+Reconstructing the pre-restatement roster from `vbc_attribution_restatement` and re-running
+PMPM on identical claims:
 
 | Month | Original roster | Restated roster | Change |
 |---|---|---|---|
-| 2025-03 | $1,033.9 | $1,035.0 | +0.1% |
-| **2025-04** | $905.7 | $807.1 | **−10.9%** |
-| 2025-05 | $919.5 | $822.6 | −10.5% |
-| 2025-07 | $855.5 | $777.0 | −9.2% |
-| 2025-09 | $894.0 | $832.4 | −6.9% |
+| 2025-03 | $1,029.3 | $1,029.3 | +0.0% |
+| **2025-04** | $902.5 | $804.3 | **−10.9%** |
+| 2025-05 | $915.4 | $817.8 | −10.7% |
+| 2025-07 | $849.1 | $770.8 | −9.2% |
+| 2025-09 | $874.0 | $804.9 | −7.9% |
 
 Five to eleven points of monthly PMPM improvement with no change in care.
+
+Across the full scored window the same reconstruction moves PY2025 YTD PMPM from $927.71 to
+$878.68 — **55% of the apparent year-over-year improvement is the roster, not the care.**
 
 **But be straight about the grain.** At full-year, group level the effect washes out: across
 PY2024 every group moves less than a dollar of PMPM, at most 0.54%. It bites on **monthly
@@ -242,7 +315,7 @@ audience.
 ## 9. Data model: `Northlake VBC`
 
 New Sigma data model. Nothing exists in Sigma today — this data is gzipped CSV on local disk,
-so **step zero is getting it in**: either CSV upload (26 mart files, largest 62MB) or the
+so **step zero is getting it in**: either CSV upload (34 mart files, largest 62MB) or the
 Snowflake lift in [SQL/](SQL/), which per [SESSION-HANDOFF.md](SESSION-HANDOFF.md) has never
 been executed and should be expected to need fixes.
 
@@ -427,9 +500,9 @@ A persistent strip, visible on every page, carrying the four facts that decide w
 is payable:
 
 ```
-Roster version 2 · as of 2025-12-15     Paid through 2026-02-28
-Scored window 2025-01 → 2025-09 (9 of 9 months complete)
-Excluded from scoring: 2025-10 (0.78) · 2025-11 (0.54) · 2025-12 (0.31)
+Roster version 6 · as of 2025-12-15     Paid through 2026-01-02
+Scored window 2025-01 → 2025-09 (9 of 9 months ≥ 95% complete)
+Excluded from scoring: 2025-10 (0.94) · 2025-11 (0.81) · 2025-12 (0.27)
 ```
 
 This is the thing Ken buys. A payout figure with no as-of date and no completeness statement is
@@ -533,8 +606,8 @@ build took: ship Ask a Question, keep the prompt below ready to paste.
 
 | Withheld | Reason |
 |---|---|
-| `fct_member_month` and its `attributed_site_code` | Northlake's own belief about attribution, not the payer's. 692,154 member-months that settlement does not recognise, and 7.03% site disagreement on the overlap. [§6](#6-the-denominator-trap-two-rosters-that-disagree). |
-| `vbc_benchmark.risk_adjusted_benchmark_pmpm` | $266 against an attributed actual of $946. Reachable by the agent as contract context on page 1, never as a cost target. [§5](#5-why-vbc_benchmark-cannot-be-the-cost-target). |
+| `fct_member_month` and its `attributed_site_code` | Northlake's own belief about attribution, not the payer's. 691,083 member-months that settlement does not recognise, and 7.03% site disagreement on the overlap. [§6](#6-the-denominator-trap-two-rosters-that-disagree). |
+| `vbc_benchmark.risk_adjusted_benchmark_pmpm` | Now usable — $726 commercial against a truncated attributed actual of $702, PY2024. Reachable by the agent as contract context on page 1; still not the scorecard's target, because a fixed pool is zero-sum. [§5](#5-why-cost-scoring-is-peer-relative). |
 | `vw_claim_line_enriched` and the raw mart tables | 1.02M lines, pre-dedupe, pre-orphan-resolution. An agent that can reach behind the model can reproduce the $1,998,144 duplicate overstatement and the $394,978 orphan drop on its own. [§16](#16-open-items-to-verify-before-any-build). |
 | `src_roster_original` | Reachable only through the cohort-hold tool, so a restated figure is always labelled as one. |
 | Member-grain anything | The agent answers at group and referring-provider grain. No patient-level path. |
@@ -717,26 +790,61 @@ phrases it.
 
 ## 15. Reference figures
 
-PY2025 YTD (2025-01 → 2025-09), governed definitions, $4.2M pool.
+PY2025 YTD (2025-01 → 2025-09), governed definitions, $4.2M pool. Cost on raw allowed.
+
+**Reproduce with `python Validation/scorecard.py`.** These no longer come from an uncommitted
+script — see [§18](#18-verification).
 
 | Group | MM | A/E | ED/1000 | A1c rate | True OON | No-show | Score | Rank | Payout |
 |---|---|---|---|---|---|---|---|---|---|
-| Northlake Cancer Center | 9,598 | 1.250 | 217.5 | 50.2% | 22.9% | 5.8% | 86.4 | 1 | $274,944 |
-| Centerline Primary Care | 28,460 | 1.275 | 232.7 | 49.5% | 20.9% | 5.2% | 84.9 | 2 | $801,282 |
-| Meridian Spine and Pain | 10,336 | 1.792 | 189.2 | 50.5% | 21.8% | 5.0% | 75.0 | 3 | $257,112 |
-| Eastgate Family Health | 22,395 | 1.311 | 249.7 | 47.5% | 21.9% | 5.4% | 70.2 | 4 | $521,383 |
-| Sunberry Women's Health | 20,339 | 1.272 | 210.6 | 43.7% | 22.8% | 5.2% | 60.5 | 5 | $407,926 |
-| Westport Multispecialty | 17,114 | 1.221 | 171.8 | 44.5% | 21.8% | 6.2% | 60.2 | 6 | $341,528 |
-| Sunberry Pediatrics | 6,000 | 1.230 | 132.0 | 32.8% | 20.1% | 6.3% | 60.0 | 7 | $119,390 |
-| Riverbend Cardiology | 14,009 | 1.140 | 203.0 | 44.7% | 21.9% | 6.3% | 58.9 | 8 | $273,470 |
-| Northlake Family Medicine | 25,198 | 1.413 | 280.5 | 48.2% | 21.8% | 5.7% | 53.4 | 9 | $445,942 |
-| Westport Internal Medicine | 20,674 | 1.350 | 217.1 | 49.4% | 23.1% | 5.5% | 46.9 | 10 | $321,831 |
-| Eastgate Digestive Health | 10,555 | 1.347 | 222.8 | 52.3% | 23.0% | 7.1% | 41.9 | 11 | $146,726 |
-| **North Ridge Orthopedics** | 21,888 | 1.400 | 256.0 | 53.0% | **52.8%** | 5.3% | **39.7** | **12** | **$288,466** |
+| Northlake Cancer Center | 9,605 | 1.009 | 218.6 | 49.2% | 22.9% | 5.8% | 80.7 | 1 | $261,712 |
+| Centerline Primary Care | 28,475 | 1.031 | 233.0 | 48.5% | 20.9% | 5.2% | 79.0 | 2 | $759,040 |
+| Meridian Spine and Pain | 10,341 | 1.434 | 193.8 | 51.6% | 21.8% | 5.0% | 75.0 | 3 | $261,787 |
+| Eastgate Family Health | 22,410 | 1.061 | 250.1 | 48.4% | 21.9% | 5.4% | 71.9 | 4 | $543,947 |
+| Riverbend Cardiology Institute | 14,010 | 0.906 | 203.0 | 46.5% | 21.9% | 6.3% | 63.9 | 5 | $302,097 |
+| Sunberry Women's Health | 20,355 | 1.026 | 210.5 | 44.8% | 22.8% | 5.2% | 60.5 | 6 | $415,759 |
+| Westport Multispecialty Group | 17,122 | 0.983 | 175.2 | 44.9% | 21.8% | 6.2% | 60.2 | 7 | $347,732 |
+| Sunberry Pediatrics | 6,003 | 0.981 | 131.9 | 33.9% | 20.1% | 6.3% | 60.0 | 8 | $121,562 |
+| Westport Internal Medicine | 20,685 | 1.086 | 214.1 | 50.8% | 23.1% | 5.5% | 53.3 | 9 | $372,297 |
+| Northlake Family Medicine | 25,208 | 1.134 | 281.3 | 47.2% | 21.8% | 5.7% | 44.9 | 10 | $381,597 |
+| **North Ridge Orthopedics** | 21,905 | 1.132 | 257.5 | 54.0% | **52.8%** | 5.3% | **39.7** | **11** | **$293,797** |
+| Eastgate Digestive Health | 10,561 | 1.092 | 222.7 | 50.4% | 23.0% | 7.1% | 38.9 | 12 | $138,673 |
 
-Leakage, PY2025 YTD: **$12,996,664** out-of-network allowed on $181,378,478 total (7.2%).
-Top destinations: ASC-SUMMIT $4,695,077 · IMG-OPEN $2,469,487 · ASC-LKSD $1,962,362 ·
-ASC-CRST $1,943,702 · ASC-PINE $1,926,037.
+Peer mean cost A/E **1.073**. Leakage, PY2025 YTD: **$12,956,284** out-of-network allowed on
+$180,600,605 attributed total (7.2%). Top destinations: ASC-SUMMIT $4,689,004 ·
+IMG-OPEN $2,462,667 · ASC-LKSD $1,950,534 · ASC-CRST $1,944,762 · ASC-PINE $1,909,317.
+
+### The join that would have written the wrong cheques
+
+Cost joins the roster to claims on **`member_id`**, not `member_durable_key`. Getting this
+wrong is not a rounding error — it inflates attributed spend by **$1,576,432 across eleven of
+the twelve groups.**
+
+The over-match (anomaly A5) collapses 16 people onto a shared durable key while the roster
+still carries both member IDs. Join cost on the durable key and each of those member-months
+receives the same spend twice, so the affected groups' cost A/E rises for a reason that has
+nothing to do with care and everything to do with a crosswalk.
+
+The rule worth carrying out of this: **the durable key is for clinical data, the source key is
+for money.** Resolution exists because the EHR has its own identifiers and there is no other way
+across. Claims already carry the payer's own member ID, exact and needing no resolution — so
+resolving it first only introduces a failure mode that was not there.
+
+It is worth showing on stage. The hub's identity resolution is usually sold as the thing that
+fixes joins; this is the one place where using it makes the answer worse, and a room of data
+leaders will remember the exception longer than the rule.
+
+**ORTHO-NR finishes 11th, not 12th.** Eastgate Digestive Health now scores below it, on a
+composite that is 38.9 against ORTHO-NR's 39.7. This is not a softening of the finding — see
+[§3](#3-the-finding-the-app-exists-to-surface). ORTHO-NR's composite did not move at all; EGR-DIG's
+fell, because risk-score normalization changed the *shape* of the peer cost distribution and
+EGR-DIG's A/E improved least against it. On the measure the finding is actually about,
+**ORTHO-NR is still 12 of 12 by a factor of more than two**: 52.8% true out-of-network against
+a peer range of 20.1–23.1%.
+
+That a governance finding and a scorecard rank are not the same thing is worth saying out loud
+in the room. A composite is five measures in a trench coat, and a group can be rescued from last
+place by being mediocre at four things while being catastrophic at one.
 
 ---
 
@@ -803,14 +911,24 @@ Every figure above was measured on the shipping `demo` build. To reproduce:
 ```sh
 python Generators/build.py --scale demo --verify   # confirm the data is byte-identical
 python Build/build_mart.py
-python Validation/validate.py                      # 25 hard assertions
+python Validation/validate.py                      # 44 hard assertions, 23 planted defects
 python Build/verify_keys.py                        # every PK, BK and FK
+python Validation/scorecard.py                     # §15, exactly as printed
+python Validation/scorecard.py --ehr-oon           # the §3 counterfactual
+python Validation/scorecard.py --truncated         # cost on truncated allowed
 ```
 
-The scorecard, payout and rank-inversion figures come from two analysis scripts written for
-this plan. Before the build, these should move into `Validation/` as assertions so that a
-change in the data that would move a payout shows up as a test failure rather than a surprise
-in a meeting.
+The scorecard, payout and rank-inversion figures used to come from two analysis scripts written
+for this plan and never committed. This section said they should move into `Validation/` as
+assertions so that a change in the data that would move a payout showed up as a test failure
+rather than a surprise in a meeting. They did not, the dataset was rebuilt, and every figure in
+§15 went stale with nothing to catch it — which is the failure this section predicted, arriving
+on schedule.
+
+`Validation/scorecard.py` is now the reference implementation of [§10](#10-measures-build-ready):
+the five measures, the three-tier gate, member-month weighting and the pool. It is what the
+Sigma workbook has to reproduce. Wiring its output into `validate.py` as a band assertion
+is the remaining step, and it is worth doing before any payout is modelled in front of anyone.
 
 The single most useful check available: run the whole scorecard against the clean twin.
 
@@ -821,3 +939,87 @@ python Generators/build.py --scale demo --no-anomalies
 ORTHO-NR's rank inversion should vanish entirely. **The delta is the lesson**, and it is also
 the regression test — if the governed scorecard still shows a nine-place inversion against
 clean data, the measure is wrong, not the data.
+
+---
+
+## 19. What the rebuild changed
+
+The dataset was rebuilt after this plan was written. Three of the changes were additive, two
+were fixes to defects in the data itself, and one of those moves numbers in this document.
+
+### Additive — the settlement layer
+
+`vbc_roster_version` (6 monthly roster versions), `vbc_contract_terms` (minimum savings rate,
+shared savings and loss rates, quality gate, high-cost truncation threshold),
+`fct_member_year_cost` (annual member-level truncation) and `fct_claims_lag_triangle`
+(chain-ladder development) are new. `vbc_attribution_restatement`, `vbc_benchmark` and
+`vbc_contract_terms` now land in the mart rather than only in the landing zone. Nothing in this
+plan depended on their absence.
+
+The restatement history now runs in **both** directions — 594 retro-terminations and 190
+retro-additions — so [§6](#6-the-denominator-trap-two-rosters-that-disagree)'s argument is
+stronger than when it was written: the denominator trap survives a reviewer pointing out that
+only the convenient direction was modeled.
+
+### Fixed — risk scores were not normalized
+
+Risk scores shipped as raw morbidity weights (commercial mean 0.388, MA mean 1.303). That is
+the root cause of the problem [§5](#5-why-cost-scoring-is-peer-relative) documents
+and works around. They now normalize to a book mean of 1.0 **within** line of business, and
+`vbc_benchmark` is recalibrated against the attributed cohort, so the risk-adjusted benchmark
+lands 2.7% (commercial) and 3.5% (MA) above PY2024 truncated actual.
+
+[§5](#5-why-cost-scoring-is-peer-relative) has been rewritten. Peer-relative scoring is still
+the right call, but now on its merits — a fixed pool is a zero-sum allocation and importing an
+external target's variance into it makes no sense — rather than because the benchmark was
+broken.
+
+**The scorecard was re-run** and [§15](#15-reference-figures) replaced. Peer-relative scoring
+absorbs a uniform rescaling, so cost A/E fell roughly 20% across the board (peer mean 1.33 →
+1.073) without reordering much. The rescaling was not perfectly uniform, though, and that is
+where the one real change came from: per-group ratios ranged 0.797–0.828, enough to swap the
+bottom two. **ORTHO-NR moves 12th → 11th and Eastgate Digestive Health takes last place.**
+ORTHO-NR's composite is unchanged at 39.7; EGR-DIG's fell from 41.9 to 38.9.
+
+The rank inversion is intact at nine places, 2 → 11, and the redistribution grew slightly:
+$500,425, 11.9% of the pool, against $488,705 and 11.6% before.
+
+### Fixed — the runout contradicted its own paid dates
+
+Runout was applied by ranking each recent month's lines by lag and keeping the fastest N%, not
+by censoring on the paid-through date as its own code comment claimed. December's retained
+claims stopped dead at 15 days of lag while a mature month ran past 200, so the stated
+paid-through date of 2026-02-28 was not recoverable from the data — and anyone following the
+answer key's own instruction to "build the lag triangle" would have found that out.
+
+It is now a straight paid-date censor with `PAID_THROUGH` at **2026-01-02**. The completeness
+curve is an output of the lag model rather than an input to it, and chain ladder over
+`fct_claims_lag_triangle` reproduces it from the paid dates alone. The curve moved from
+0.78 / 0.54 / 0.31 to **0.94 / 0.81 / 0.27**, and the shoulder months are now stated honestly
+(2025-09 is 0.97, not 1.00) instead of being rounded up to complete.
+
+**The scored window is unchanged**: 2025-01 → 2025-09, every month at or above the 95%
+threshold. PY2025 YTD dollar figures shift by roughly 2-3% because September is now 97%
+complete rather than notionally 100%.
+
+### Fixed — cost was joining on the wrong key
+
+The scorecard's cost measure joined the roster to claims on `member_durable_key`. The
+over-match collapses 16 people onto a shared durable key while the roster still carries both
+member IDs, so that join paid the same spend to both and inflated attributed cost by
+**$1,576,432 across eleven of the twelve groups**. It now joins on `member_id`. See
+[§15](#15-reference-figures) — it is a better stage moment than it is a bug.
+
+### Added — a committed scorecard
+
+`Validation/scorecard.py` implements §10 and prints §15. The figures in this document are now
+reproducible by anyone with the repo, which they were not before. See
+[§18](#18-verification).
+
+### Unaffected — the headline
+
+A1 (auto-close), A2 (apparent versus true leakage) and A4 (non-random match loss) reproduce
+**byte-for-byte**. ORTHO-NR still posts 6.45% apparent out-of-network against 53.97% true, and
+still ranks 1 of 12 on the EHR pick-list and 12 of 12 on the as-of contract join. Everything in
+[§3](#3-the-finding-the-app-exists-to-surface) that derives from referrals and network status
+stands as written, and the dollar figures attached to it have been re-measured.

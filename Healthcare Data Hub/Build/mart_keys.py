@@ -31,6 +31,11 @@ GROUPS = {
     ],
     "Membership and contract": [
         "fct_eligibility_span", "fct_member_month", "vbc_attribution_month",
+        "vbc_attribution_restatement", "vbc_roster_version",
+        "vbc_benchmark", "vbc_contract_terms",
+    ],
+    "Settlement and completeness": [
+        "fct_member_year_cost", "fct_claims_lag_triangle",
     ],
     "Bridges and crosswalks": [
         "br_provider_affiliation", "xwalk_patient", "xwalk_provider",
@@ -281,6 +286,74 @@ KEYS: dict[str, dict] = {
                 ("attributed_site_code", "dim_facility", "site_code", None)],
         "note": "Restated retroactively. Compare roster VERSIONS, not just the "
                 "current roster, or a denominator change reads as performance.",
+    },
+    "vbc_attribution_restatement": {
+        "grain": "one member x month whose attribution status changed, "
+                 "x the roster version that changed it",
+        "pk": "restatement_key",
+        "business": ["member_id", "year_month", "as_of_version"],
+        "fks": [("member_id", "dim_member", "member_id", None),
+                ("as_of_version", "vbc_roster_version", "as_of_version", None),
+                ("attributed_site_code", "dim_facility", "site_code", None)],
+        "note": "The delta, not a full versioned history. Roster at version V "
+                "= current roster, minus additions applied after V, plus "
+                "terminations applied after V. Carries member_months and "
+                "risk_score so that reconstruction needs no other table. "
+                "Changes run in BOTH directions - new_status is "
+                "RETRO_TERMINATED or ATTRIBUTED.",
+    },
+    "vbc_roster_version": {
+        "grain": "one monthly roster production run",
+        "pk": "roster_version_key",
+        "business": ["as_of_version"],
+        "fks": [],
+        "note": "Six rows. Exists so an as-of control has something to bind "
+                "to and so 'which version is current' is stated in the data "
+                "rather than left to a MAX().",
+    },
+    "vbc_benchmark": {
+        "grain": "one month x line of business",
+        "pk": "benchmark_key",
+        "business": ["year_month", "line_of_business"],
+        "fks": [("year_month", "dim_date", "year_month", None)],
+        "note": "Calibrated against the ATTRIBUTED cohort, not the whole "
+                "book, and risk-adjusted through a score normalized to a book "
+                "mean of 1.0 within line of business.",
+    },
+    "vbc_contract_terms": {
+        "grain": "one contract x performance year",
+        "pk": "contract_term_key",
+        "business": ["contract_id", "performance_year"],
+        "fks": [],
+        "note": "Minimum savings rate, shared savings and loss rates, quality "
+                "gate, and the high-cost truncation threshold. Without these a "
+                "workbook can show PMPM moved and cannot show the cheque moved.",
+    },
+    # ------------------------------------------- settlement and completeness
+    "fct_member_year_cost": {
+        "grain": "one member x performance year",
+        "pk": "member_year_cost_key",
+        "business": ["member_id", "performance_year"],
+        "fks": [("member_id", "dim_member", "member_id", None),
+                ("member_durable_key", "dim_master_person", "master_person_id",
+                 None)],
+        "note": "High-cost truncation is an ANNUAL, MEMBER-LEVEL cap. Applying "
+                "it per claim line caps nothing, because no single line "
+                "reaches the threshold. fct_claim_line.allowed_amount_truncated "
+                "is this cap allocated back down pro rata and sums to it "
+                "exactly.",
+    },
+    "fct_claims_lag_triangle": {
+        "grain": "one service month x lag month (0-12, tail lumped at 12)",
+        "pk": "lag_triangle_key",
+        "business": ["service_year_month", "lag_months"],
+        "fks": [("service_year_month", "dim_date", "year_month", None)],
+        "note": "Dense: a lag with no claims is a zero row, not a missing one. "
+                "is_observable is true only where the WHOLE development period "
+                "had elapsed by the paid-through date - the end of the lag "
+                "month, not its start. completion_factor_derived is chain "
+                "ladder over observable cells and reproduces "
+                "dim_date.claims_completeness_factor from the data alone.",
     },
     # ------------------------------------------------ bridges / crosswalks
     "br_provider_affiliation": {

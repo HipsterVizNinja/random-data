@@ -70,8 +70,17 @@ anomalies:
     retro_terminated_members_min: 120
     pmpm_improvement_pp: [2.0, 8.0]
   A7_runout:
+    # Months that fall BELOW the runout-complete flag threshold. Not the same
+    # set as months whose completeness factor is under 1.00 - 2025-07 to
+    # 2025-09 are partially developed but still comfortably scoreable, and
+    # conflating the two makes the flag assert something it does not mean.
     incomplete_months: ["2025-10", "2025-11", "2025-12"]
     completeness_tolerance: 0.10
+    # The chain ladder in the mart must recover the asserted completeness from
+    # the paid dates alone. If these diverge, the extract is claiming a
+    # paid-through date its own data cannot support - which is exactly the
+    # defect the lag-rank truncation used to hide.
+    derived_vs_asserted_tolerance: 0.06
   A8_overlap:
     overlap_member_share: [0.030, 0.040]
     acquired_group_overstatement_pct: [6.0, 16.0]
@@ -113,3 +122,34 @@ question_ladder:
   # exceeds the leaked volume, so capacity is not the binding constraint and
   # claiming otherwise would mean fabricating one.
   recapturable_share: [0.25, 1.00]
+
+# ------------------------------------------------------- settlement layer
+# These are hard assertions, not planted defects. Each one guards a number
+# that silently went wrong before: the benchmark that could not be beaten,
+# the roster version that was computed and never written, the over-match that
+# the answer key promised and the data did not contain.
+settlement:
+  # Risk scores normalize to a book mean of 1.0 WITHIN line of business.
+  risk_score_book_mean_tolerance: 0.02
+  # The attributed cohort is sicker than the book it is drawn from. If this
+  # ever came out at 1.0 the attribution rule would have stopped selecting.
+  attributed_mean_risk: [1.05, 1.35]
+  # Risk-adjusted benchmark against TRUNCATED attributed actual, PY2024.
+  # A benchmark outside this band is either unbeatable or free money.
+  benchmark_vs_actual_py2024_pct: [1.0, 7.0]
+  # Restatement must run in both directions.
+  retro_additions_min: 150
+  retro_terminations_min: 400
+  roster_versions: 6
+  # Reconstructing the baseline roster from the delta must change PMPM by a
+  # material and bounded amount. This is the headline of the settlement story.
+  roster_pmpm_effect_pct: [2.0, 9.0]
+  # High-cost truncation at roughly the 99th percentile of member-year cost.
+  truncated_share_of_spend_pct: [4.0, 12.0]
+  # Each of 1.1M lines is rounded to the penny before summing, so the two
+  # grains can drift a couple of dollars on $783M. That is rounding, not a
+  # modeling disagreement; a $1 tolerance was asserting float exactness.
+  truncation_tie_tolerance: 25.00
+  # The over-match has to reach the claims spine, or it contaminates nothing.
+  overmatch_in_top_1pct_min: 1
+  lag_triangle_tie_tolerance: 1.00

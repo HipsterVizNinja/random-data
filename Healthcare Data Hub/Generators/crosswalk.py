@@ -91,12 +91,36 @@ def _build_patient_crosswalk(run, rng, members: pd.DataFrame) -> pd.DataFrame:
     # Candidates are two members of the same household with close dates of
     # birth, which is what makes the twin and Jr/Sr framing plausible.
     over_pairs = _pick_over_match_pairs(run, rng, members)
+    spine_master = members["true_master_person_id"].to_numpy().copy()
+    spine_method = np.full(n, "EXACT", dtype=object)
+    spine_score = np.ones(n)
+    collapsed_on_spine = []
     for a_idx, b_idx in over_pairs:
         if master_id[a_idx] is None or master_id[b_idx] is None:
             continue
         master_id[b_idx] = master_id[a_idx]
         method[b_idx] = "PROBABILISTIC"
         score[b_idx] = round(float(rng.uniform(0.82, 0.89)), 3)
+
+        # ---- the collapse has to reach the PAYER key space too, or it is
+        # invisible where it matters.
+        #
+        # Previously the eligibility spine was forced EXACT against the truth
+        # column, on the reasoning that the payer key space "always resolves".
+        # That is true of the key space and false of the ENTITY resolution
+        # running on top of it: an MDM process that decides two member IDs are
+        # one person applies that decision to every source it governs, the
+        # payer file included. Leaving the spine untouched meant the two
+        # records kept separate durable keys, so claims never aggregated onto
+        # one person and the artificial super-utilizer the answer key promises
+        # did not exist anywhere in the mart.
+        #
+        # Collapsing here is what puts the defect in the cost distribution,
+        # which is the only place a demo audience will meet it.
+        spine_master[b_idx] = spine_master[a_idx]
+        spine_method[b_idx] = "PROBABILISTIC"
+        spine_score[b_idx] = score[b_idx]
+        collapsed_on_spine.append(b_idx)
 
     rows = []
     # One row per (source_system, source_patient_id). Three key spaces.
@@ -105,12 +129,12 @@ def _build_patient_crosswalk(run, rng, members: pd.DataFrame) -> pd.DataFrame:
         ("CARELINE_EHR", "mrn"),
         ("NORTHLAKE_VBC", "attribution_person_id"),
     ):
-        # The payer key space always resolves - it IS the spine. The EHR and
-        # attribution spaces are where matching actually happens.
+        # The payer key space never fails to match - it IS the spine, and a
+        # member ID always resolves to somebody. What it can still get wrong
+        # is WHICH somebody: the over-match collapse above applies here too,
+        # so a handful of these rows point two members at one person.
         if source == "MERIDIAN_ELIG":
-            m_id = members["true_master_person_id"].to_numpy()
-            meth = np.full(n, "EXACT", dtype=object)
-            sc = np.ones(n)
+            m_id, meth, sc = spine_master, spine_method, spine_score
         else:
             m_id, meth, sc = master_id, method, score
         rows.append(pd.DataFrame({
@@ -129,13 +153,31 @@ def _build_patient_crosswalk(run, rng, members: pd.DataFrame) -> pd.DataFrame:
 
 
 def _pick_over_match_pairs(run, rng, members: pd.DataFrame):
-    """Same household, close date of birth, same surname: twins and Jr/Sr."""
+    """Same household, close date of birth, same surname: twins and Jr/Sr.
+
+    Candidates are ranked by the pair's combined latent risk and the heaviest
+    utilizers are taken, for a reason that is mechanical rather than
+    convenient: **a person with more encounters has more identity records, and
+    therefore more chances to collide.** Over-matching is not uniformly
+    distributed across a population; it concentrates exactly where the record
+    count is highest, which is the same place the cost is.
+
+    That concentration is the entire point of the defect. Collapsing two
+    average household members produces a person of roughly average cost - in
+    this population, the 52nd percentile - who contaminates nothing and whom
+    nobody would ever find. The documented failure, an artificial
+    super-utilizer at the top of the cost distribution corrupting the top-1%
+    figure the demo quotes, only exists if the collision lands among heavy
+    utilizers. Selecting at random left the answer key describing a defect the
+    data did not contain.
+    """
     want = run.n(OVER_MATCH_PAIRS)
     df = members.reset_index(drop=True)
     df["_row"] = np.arange(len(df))
-    pairs = []
+    risk = df["latent_risk"].to_numpy()
+    candidates = []
     for _, g in df.groupby("household_id"):
-        if len(g) < 2 or len(pairs) >= want:
+        if len(g) < 2:
             continue
         g = g.sort_values("age_2024")
         ages = g["age_2024"].to_numpy()
@@ -144,11 +186,11 @@ def _pick_over_match_pairs(run, rng, members: pd.DataFrame):
             # Twins share an age; a Jr/Sr pair is a generation apart but shares
             # a first name, so both are plausible probabilistic collisions.
             if abs(int(ages[i]) - int(ages[i + 1])) <= 1:
-                pairs.append((int(rows[i]), int(rows[i + 1])))
+                a, b = int(rows[i]), int(rows[i + 1])
+                candidates.append((risk[a] + risk[b], a, b))
                 break
-        if len(pairs) >= want:
-            break
-    return pairs[:want]
+    candidates.sort(key=lambda t: -t[0])
+    return [(a, b) for _, a, b in candidates[:want]]
 
 
 def _build_provider_crosswalk(run, rng, providers: pd.DataFrame) -> pd.DataFrame:
