@@ -323,7 +323,7 @@
       "fks": []
     },
     "fct_claim_header": {
-      "rows": 388259,
+      "rows": 388406,
       "columns": 39,
       "sentinel_rows": 0,
       "grain": "one claim x one adjudication version",
@@ -359,8 +359,8 @@
           "column": "encounter_id",
           "references": "fct_encounter.encounter_id",
           "note": "NULLABLE by design: ~24% of claims have no Northlake encounter",
-          "nulls": 116613,
-          "null_pct": 30.03,
+          "nulls": 115245,
+          "null_pct": 29.67,
           "float_coerced": false,
           "orphans": 0,
           "orphan_pct": 0.0,
@@ -381,8 +381,8 @@
           "column": "drg_code",
           "references": "dim_drg.drg_code",
           "note": "inpatient facility claims only",
-          "nulls": 379217,
-          "null_pct": 97.67,
+          "nulls": 379286,
+          "null_pct": 97.65,
           "float_coerced": true,
           "orphans": 0,
           "orphan_pct": 0.0,
@@ -402,7 +402,7 @@
       ]
     },
     "fct_claim_line": {
-      "rows": 1147133,
+      "rows": 1150972,
       "columns": 55,
       "sentinel_rows": 0,
       "grain": "one claim x one line x one adjudication version",
@@ -494,8 +494,8 @@
           "column": "encounter_id",
           "references": "fct_encounter.encounter_id",
           "note": "nullable",
-          "nulls": 310282,
-          "null_pct": 27.05,
+          "nulls": 305953,
+          "null_pct": 26.58,
           "float_coerced": false,
           "orphans": 0,
           "orphan_pct": 0.0,
@@ -505,8 +505,8 @@
           "column": "referral_id",
           "references": "fct_referral.referral_id",
           "note": "populated on referral episodes and consults only",
-          "nulls": 836851,
-          "null_pct": 72.95,
+          "nulls": 845019,
+          "null_pct": 73.42,
           "float_coerced": false,
           "orphans": 0,
           "orphan_pct": 0.0,
@@ -548,7 +548,7 @@
       ]
     },
     "br_claim_diagnosis": {
-      "rows": 1250448,
+      "rows": 1250837,
       "columns": 5,
       "sentinel_rows": 0,
       "grain": "one claim header x one diagnosis position (1-12)",
@@ -591,7 +591,7 @@
       ]
     },
     "fct_encounter": {
-      "rows": 566577,
+      "rows": 565587,
       "columns": 24,
       "sentinel_rows": 0,
       "grain": "one EHR encounter",
@@ -625,8 +625,8 @@
           "column": "member_durable_key",
           "references": "dim_master_person.master_person_id",
           "note": null,
-          "nulls": 17421,
-          "null_pct": 3.07,
+          "nulls": 17058,
+          "null_pct": 3.02,
           "float_coerced": false,
           "orphans": 0,
           "orphan_pct": 0.0,
@@ -668,7 +668,7 @@
       ]
     },
     "br_encounter_diagnosis": {
-      "rows": 1840469,
+      "rows": 1837184,
       "columns": 5,
       "sentinel_rows": 0,
       "grain": "one encounter x one diagnosis x position",
@@ -711,7 +711,7 @@
       ]
     },
     "fct_lab_result": {
-      "rows": 309540,
+      "rows": 308516,
       "columns": 12,
       "sentinel_rows": 0,
       "grain": "one resulted lab component per encounter",
@@ -743,7 +743,7 @@
       ]
     },
     "fct_referral": {
-      "rows": 94544,
+      "rows": 93987,
       "columns": 17,
       "sentinel_rows": 0,
       "grain": "one referral order",
@@ -766,8 +766,8 @@
           "column": "member_durable_key",
           "references": "dim_master_person.master_person_id",
           "note": null,
-          "nulls": 3025,
-          "null_pct": 3.2,
+          "nulls": 3022,
+          "null_pct": 3.22,
           "float_coerced": false,
           "orphans": 0,
           "orphan_pct": 0.0,
@@ -799,7 +799,7 @@
           "column": "referring_provider_master_id",
           "references": "dim_provider.provider_master_id",
           "note": "nullable: ~4% carry no referring provider",
-          "nulls": 3782,
+          "nulls": 3759,
           "null_pct": 4.0,
           "float_coerced": false,
           "orphans": 0,
@@ -820,7 +820,7 @@
       ]
     },
     "fct_referral_outcome": {
-      "rows": 94544,
+      "rows": 93987,
       "columns": 13,
       "sentinel_rows": 0,
       "grain": "one referral, evaluated against confirming events",
@@ -851,7 +851,7 @@
       ]
     },
     "fct_eligibility_span": {
-      "rows": 133054,
+      "rows": 132841,
       "columns": 14,
       "sentinel_rows": 0,
       "grain": "one member x plan x contiguous coverage span",
@@ -898,7 +898,7 @@
       ]
     },
     "fct_member_month": {
-      "rows": 1501125,
+      "rows": 1497875,
       "columns": 16,
       "sentinel_rows": 0,
       "grain": "one member x one year-month with any coverage",
@@ -954,7 +954,7 @@
       ]
     },
     "vbc_attribution_month": {
-      "rows": 810042,
+      "rows": 811726,
       "columns": 12,
       "sentinel_rows": 0,
       "grain": "one member x one month, current roster version",
@@ -999,7 +999,7 @@
       ]
     },
     "vbc_attribution_restatement": {
-      "rows": 784,
+      "rows": 804,
       "columns": 14,
       "sentinel_rows": 0,
       "grain": "one member x month whose attribution status changed, x the roster version that changed it",
@@ -1132,8 +1132,347 @@
       },
       "fks": []
     },
+    "dim_employer_group": {
+      "rows": 20,
+      "columns": 14,
+      "sentinel_rows": 2,
+      "grain": "one employer group",
+      "note": "Carries BOTH group_id and client_id. The group is the enrollment feed's unit; the client is the ASO contract's. Kellerman holds two group ids and one contract, so a book rolled up by group_id reports it as two clients and gets the fee, the denominator and the stop-loss accumulation wrong for both.",
+      "pk": {
+        "column": "employer_group_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "group_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": []
+    },
+    "aso_client_contract": {
+      "rows": 27,
+      "columns": 20,
+      "sentinel_rows": 0,
+      "grain": "one self-funded client x contract year",
+      "note": "expected_claims_pmpm is the rate AS SET, over the enrollment feed's own denominator. expected_claims_pmpm_on_true_denominator is the same arithmetic over the member-month union. The gap between the two columns is the mispricing, and it is a subtraction rather than an argument.",
+      "pk": {
+        "column": "aso_client_contract_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "contract_year"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": "many groups to one client",
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "aso_fee_schedule": {
+      "rows": 162,
+      "columns": 10,
+      "sentinel_rows": 0,
+      "grain": "one client x contract year x fee component",
+      "note": "fee_basis is the load-bearing column. ADMIN is PEPM - billed on CONTRACTS - and everything else is PMPM or flat. The average contract covers about 2.1 lives, so an admin fee joined to member-months reads roughly twice its true size. Long rather than wide so the basis travels on the row.",
+      "pk": {
+        "column": "aso_fee_schedule_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "contract_year",
+          "fee_code"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "aso_stop_loss_policy": {
+      "rows": 27,
+      "columns": 21,
+      "sentinel_rows": 0,
+      "grain": "one client x policy year",
+      "note": "The policy year starts in the client's renewal month, which for two of nine clients is not January. isl_contract_basis decides whether runout is covered: a 12/12 client loses cover on a December claim that adjudicates in February.",
+      "pk": {
+        "column": "aso_stop_loss_policy_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "policy_year"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "lasered_member_id",
+          "references": "dim_member.member_id",
+          "note": "null except where a member is carved out",
+          "nulls": 23,
+          "null_pct": 85.19,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "aso_budget_rate": {
+      "rows": 108,
+      "columns": 10,
+      "sentinel_rows": 0,
+      "grain": "one client x contract year x coverage tier",
+      "note": "budget_rate_pepm is per CONTRACT, so it must be weighted by contract-months from fct_aso_contract_month. The employee-only rate is solved so the tiered rates raise the contract's expected claims against the projected mix.",
+      "pk": {
+        "column": "aso_budget_rate_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "contract_year",
+          "coverage_tier"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_aso_contract_month": {
+      "rows": 2376,
+      "columns": 10,
+      "sentinel_rows": 0,
+      "grain": "one client x month x coverage tier",
+      "note": "The PEPM denominator. A contract-month is credited only where the SUBSCRIBER was covered; a dependent enrolled in a month the subscriber was not is a data problem, not a contract, and counting it inflates every fee.",
+      "pk": {
+        "column": "aso_contract_month_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "year_month",
+          "coverage_tier"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_aso_settlement_month": {
+      "rows": 324,
+      "columns": 54,
+      "sentinel_rows": 0,
+      "grain": "one client x month",
+      "note": "The serving fact for the ASO app. Carries both denominators, every fee on the denominator its basis names, ISL recovery RECEIVED rather than entitled, and the completion factor. fee_admin_amount_on_member_months is the same fee on the wrong denominator, shipped so the error is measurable.",
+      "pk": {
+        "column": "aso_settlement_month_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "year_month"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "year_month",
+          "references": "dim_date.year_month",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_aso_stop_loss_claimant": {
+      "rows": 267,
+      "columns": 31,
+      "sentinel_rows": 0,
+      "grain": "one stop-loss filing: client x member x policy year",
+      "note": "member_ids_on_durable_key is the whole table. A filing whose durable key carries two member ids was assembled from the resolved-identity report over an MDM OVER-match: two real people on one stop-loss claim. The filing ties to the resolved identity perfectly, which is why nothing else catches it.",
+      "pk": {
+        "column": "aso_stop_loss_claimant_key",
+        "duplicates": 0,
+        "nulls": 0,
+        "status": "UNIQUE"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "policy_year",
+          "member_id"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "member_key",
+          "references": "dim_member.member_key",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "member_durable_key",
+          "references": "dim_master_person.master_person_id",
+          "note": "the resolved person behind the filing",
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        },
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
+    "fct_aso_funding_week": {
+      "rows": 1413,
+      "columns": 19,
+      "sentinel_rows": 0,
+      "grain": "one client x funding week",
+      "note": "claims_funded_amount is what the funding system drew off the adjudication extract as landed; reconciled_paid_amount is the same week from the de-duplicated mart. overfunded_amount is real money that moved on a real Wednesday for claim lines that do not exist.",
+      "pk": {
+        "column": null,
+        "status": "none - bridge keyed on its business key"
+      },
+      "business": {
+        "columns": [
+          "client_id",
+          "funding_week_end"
+        ],
+        "duplicates": 0,
+        "status": "UNIQUE"
+      },
+      "fks": [
+        {
+          "column": "client_id",
+          "references": "dim_employer_group.client_id",
+          "note": null,
+          "nulls": 0,
+          "null_pct": 0.0,
+          "float_coerced": false,
+          "orphans": 0,
+          "orphan_pct": 0.0,
+          "status": "OK"
+        }
+      ]
+    },
     "fct_member_year_cost": {
-      "rows": 53501,
+      "rows": 53859,
       "columns": 13,
       "sentinel_rows": 0,
       "grain": "one member x performance year",
@@ -1326,7 +1665,7 @@
       ]
     },
     "vw_claim_line_enriched": {
-      "rows": 1147133,
+      "rows": 1150972,
       "columns": 48,
       "sentinel_rows": 0,
       "grain": "one claim line (denormalized)",

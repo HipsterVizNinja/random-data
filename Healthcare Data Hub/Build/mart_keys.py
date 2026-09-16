@@ -37,6 +37,12 @@ GROUPS = {
     "Settlement and completeness": [
         "fct_member_year_cost", "fct_claims_lag_triangle",
     ],
+    "ASO administration": [
+        "dim_employer_group", "aso_client_contract", "aso_fee_schedule",
+        "aso_stop_loss_policy", "aso_budget_rate", "fct_aso_contract_month",
+        "fct_aso_settlement_month", "fct_aso_stop_loss_claimant",
+        "fct_aso_funding_week",
+    ],
     "Bridges and crosswalks": [
         "br_provider_affiliation", "xwalk_patient", "xwalk_provider",
     ],
@@ -328,6 +334,112 @@ KEYS: dict[str, dict] = {
         "note": "Minimum savings rate, shared savings and loss rates, quality "
                 "gate, and the high-cost truncation threshold. Without these a "
                 "workbook can show PMPM moved and cannot show the cheque moved.",
+    },
+    # ------------------------------------------------------- ASO administration
+    "dim_employer_group": {
+        "grain": "one employer group",
+        "pk": "employer_group_key",
+        "business": ["group_id"],
+        "fks": [],
+        "note": "Carries BOTH group_id and client_id. The group is the "
+                "enrollment feed's unit; the client is the ASO contract's. "
+                "Kellerman holds two group ids and one contract, so a book "
+                "rolled up by group_id reports it as two clients and gets the "
+                "fee, the denominator and the stop-loss accumulation wrong "
+                "for both.",
+    },
+    "aso_client_contract": {
+        "grain": "one self-funded client x contract year",
+        "pk": "aso_client_contract_key",
+        "business": ["client_id", "contract_year"],
+        "fks": [("client_id", "dim_employer_group", "client_id",
+                 "many groups to one client")],
+        "note": "expected_claims_pmpm is the rate AS SET, over the enrollment "
+                "feed's own denominator. expected_claims_pmpm_on_true_"
+                "denominator is the same arithmetic over the member-month "
+                "union. The gap between the two columns is the mispricing, "
+                "and it is a subtraction rather than an argument.",
+    },
+    "aso_fee_schedule": {
+        "grain": "one client x contract year x fee component",
+        "pk": "aso_fee_schedule_key",
+        "business": ["client_id", "contract_year", "fee_code"],
+        "fks": [("client_id", "dim_employer_group", "client_id", None)],
+        "note": "fee_basis is the load-bearing column. ADMIN is PEPM - billed "
+                "on CONTRACTS - and everything else is PMPM or flat. The "
+                "average contract covers about 2.1 lives, so an admin fee "
+                "joined to member-months reads roughly twice its true size. "
+                "Long rather than wide so the basis travels on the row.",
+    },
+    "aso_stop_loss_policy": {
+        "grain": "one client x policy year",
+        "pk": "aso_stop_loss_policy_key",
+        "business": ["client_id", "policy_year"],
+        "fks": [("client_id", "dim_employer_group", "client_id", None),
+                ("lasered_member_id", "dim_member", "member_id",
+                 "null except where a member is carved out")],
+        "note": "The policy year starts in the client's renewal month, which "
+                "for two of nine clients is not January. isl_contract_basis "
+                "decides whether runout is covered: a 12/12 client loses "
+                "cover on a December claim that adjudicates in February.",
+    },
+    "aso_budget_rate": {
+        "grain": "one client x contract year x coverage tier",
+        "pk": "aso_budget_rate_key",
+        "business": ["client_id", "contract_year", "coverage_tier"],
+        "fks": [("client_id", "dim_employer_group", "client_id", None)],
+        "note": "budget_rate_pepm is per CONTRACT, so it must be weighted by "
+                "contract-months from fct_aso_contract_month. The employee-"
+                "only rate is solved so the tiered rates raise the contract's "
+                "expected claims against the projected mix.",
+    },
+    "fct_aso_contract_month": {
+        "grain": "one client x month x coverage tier",
+        "pk": "aso_contract_month_key",
+        "business": ["client_id", "year_month", "coverage_tier"],
+        "fks": [("client_id", "dim_employer_group", "client_id", None)],
+        "note": "The PEPM denominator. A contract-month is credited only "
+                "where the SUBSCRIBER was covered; a dependent enrolled in a "
+                "month the subscriber was not is a data problem, not a "
+                "contract, and counting it inflates every fee.",
+    },
+    "fct_aso_settlement_month": {
+        "grain": "one client x month",
+        "pk": "aso_settlement_month_key",
+        "business": ["client_id", "year_month"],
+        "fks": [("client_id", "dim_employer_group", "client_id", None),
+                ("year_month", "dim_date", "year_month", None)],
+        "note": "The serving fact for the ASO app. Carries both denominators, "
+                "every fee on the denominator its basis names, ISL recovery "
+                "RECEIVED rather than entitled, and the completion factor. "
+                "fee_admin_amount_on_member_months is the same fee on the "
+                "wrong denominator, shipped so the error is measurable.",
+    },
+    "fct_aso_stop_loss_claimant": {
+        "grain": "one stop-loss filing: client x member x policy year",
+        "pk": "aso_stop_loss_claimant_key",
+        "business": ["client_id", "policy_year", "member_id"],
+        "fks": [("member_key", "dim_member", "member_key", None),
+                ("member_durable_key", "dim_master_person",
+                 "master_person_id", "the resolved person behind the filing"),
+                ("client_id", "dim_employer_group", "client_id", None)],
+        "note": "member_ids_on_durable_key is the whole table. A filing whose "
+                "durable key carries two member ids was assembled from the "
+                "resolved-identity report over an MDM OVER-match: two real "
+                "people on one stop-loss claim. The filing ties to the "
+                "resolved identity perfectly, which is why nothing else "
+                "catches it.",
+    },
+    "fct_aso_funding_week": {
+        "grain": "one client x funding week",
+        "pk": None,
+        "business": ["client_id", "funding_week_end"],
+        "fks": [("client_id", "dim_employer_group", "client_id", None)],
+        "note": "claims_funded_amount is what the funding system drew off the "
+                "adjudication extract as landed; reconciled_paid_amount is "
+                "the same week from the de-duplicated mart. overfunded_amount "
+                "is real money that moved on a real Wednesday for claim lines "
+                "that do not exist.",
     },
     # ------------------------------------------- settlement and completeness
     "fct_member_year_cost": {

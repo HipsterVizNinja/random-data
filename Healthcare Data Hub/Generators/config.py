@@ -198,8 +198,18 @@ ENCOUNTER_DISPERSION = 0.45       # negative binomial k; counts are overdisperse
 # Medicare members are admitted and use the emergency department far more
 # than a risk-and-age curve alone produces. These lift the 65+ cohort onto its
 # own benchmark band without disturbing the commercial book.
-ELDERLY_ADMIT_MULTIPLIER = 1.26
-ELDERLY_ED_MULTIPLIER = 1.95
+# Retuned from 1.26 in the same pass and for the same reason as the ED
+# multiplier below: admissions per 1000 came out at 264.1 against a stated
+# band of 200-260. Both dials move the 65+ cohort only, so the commercial
+# figures barely notice - 59.0 admissions per 1000 against a 55-70 band.
+ELDERLY_ADMIT_MULTIPLIER = 1.17
+# Retuned from 1.95 when employer group and plan election moved to HOUSEHOLD
+# grain for the ASO layer. That change shifted which members hold coverage in
+# which months, the clinical generator reads member-months as its input, and
+# the Medicare ED rate came out at 554.7 per 1000 against a stated band of
+# 400-520. The band is the target and this multiplier is the dial the band
+# comment already names, so the dial moved rather than the band.
+ELDERLY_ED_MULTIPLIER = 1.70
 
 # Admission risk multipliers for the conditions that actually drive inpatient
 # utilization.
@@ -354,3 +364,80 @@ FEDERAL_HOLIDAYS_MD = [
 ]
 
 ZIPF_EXPONENT = 1.1
+
+# ------------------------------------------------------- ASO contract economics
+
+# The self-funded book. An ASO client buys administration, network access and
+# stop-loss cover; it does NOT buy insurance for the claims themselves, which
+# it funds dollar for dollar out of its own account. Everything below is a
+# CONTRACT TERM, so it is declared here. The budget RATE is the exception and
+# is derived from prior experience in aso.py, because that is how a renewal is
+# actually priced - and deriving it is what makes the denominator defect in
+# that pricing measurable instead of asserted.
+
+# Administration fee, per EMPLOYEE per month. Not per member. The fee is billed
+# on contracts, and the average contract here covers about 2.1 lives, so
+# billing a PEPM fee against member-months overstates fee revenue by roughly
+# that factor. It is the most common arithmetic error in ASO reporting and the
+# mart carries both denominators so the error is demonstrable rather than
+# hypothetical.
+ASO_ADMIN_FEE_PEPM = {"LARGE": 38.50, "MID": 46.75, "SMALL": 55.25}
+
+# Network access and care management are genuinely per MEMBER per month: both
+# services are consumed by every covered life, not by every contract.
+ASO_NETWORK_ACCESS_FEE_PMPM = {"LARGE": 4.25, "MID": 5.50, "SMALL": 6.75}
+ASO_CARE_MGMT_FEE_PMPM = {"LARGE": 3.10, "MID": 3.85, "SMALL": 4.60}
+ASO_COBRA_ADMIN_FEE_MONTHLY = 275.00
+
+# No PBM administration fee is modeled. Pharmacy is out of scope for this
+# dataset, so a PBM fee would be revenue with no claims behind it and nothing
+# in the mart would reconcile against it. The omission is deliberate and is
+# named in the ASO plan rather than papered over with a plausible number.
+
+# Specific (individual) stop-loss. The deductible rises with group size
+# because a larger group can absorb more of its own volatility, and the
+# premium moves inversely to the deductible.
+ASO_ISL_DEDUCTIBLE = {"LARGE": 200_000.0, "MID": 150_000.0, "SMALL": 100_000.0}
+ASO_ISL_PREMIUM_PMPM = {200_000.0: 12.90, 150_000.0: 16.75, 100_000.0: 22.50}
+
+# Aggregate stop-loss attaches at 125% of expected claims, so the corridor the
+# client carries on its own before aggregate cover responds is 25%.
+ASO_ASL_ATTACHMENT_FACTOR = 1.25
+ASO_ASL_PREMIUM_PMPM = {"LARGE": 2.40, "MID": 2.95, "SMALL": 3.60}
+
+# Filing deadline for a specific stop-loss claim, in days after the policy
+# year ends. A filing past this date is denied and the CLIENT, not the
+# carrier, absorbs the claim. This is a real and frequently realized
+# operational loss, and it is invisible in any report that sums only the
+# recoveries a plan was entitled to.
+ASO_ISL_FILING_DEADLINE_DAYS = 90
+
+# Tier rate factors, relative to an employee-only rate of 1.00.
+ASO_TIER_FACTORS = {"EE": 1.00, "EE_SPOUSE": 2.10, "EE_CHILD": 1.85,
+                    "FAMILY": 2.95}
+
+# Renewal pricing. Trend is the assumed medical cost increase applied to prior
+# experience; margin is the cushion the rate carries above expected claims.
+ASO_RENEWAL_TREND = 0.072
+ASO_RATE_MARGIN = 0.020
+
+# The first contract year has no prior experience inside the source window, so
+# its expected-claims PMPM is seeded from the commercial book with a sector
+# load. The loads are ordered the way an underwriter would order them - a
+# health system's own employees run hot, a young technology workforce runs
+# cool - rather than drawn at random.
+ASO_SEED_EXPECTED_PMPM = 505.00
+ASO_SECTOR_LOAD = {
+    "MANUFACTURING": 1.04, "PUBLIC_EDUCATION": 1.02, "PUBLIC_SECTOR": 1.08,
+    "TRANSPORTATION": 1.06, "TECHNOLOGY": 0.92, "FINANCIAL_SERVICES": 0.95,
+    "HEALTHCARE": 1.11, "UTILITIES": 1.01,
+}
+
+# Funding. The TPA draws from the client's bank account weekly against claims
+# that have ALREADY adjudicated, so a funding request is downstream of the
+# paid date and carries whatever the adjudication extract carried - including,
+# on one week in July 2024, a re-driven extract's duplicates.
+ASO_FUNDING_DAY_OF_WEEK = 2          # Wednesday
+ASO_WIRE_LAG_DAYS = (1, 3)
+ASO_SHORT_FUND_RATE = 0.018
+ASO_LATE_WIRE_RATE = 0.035

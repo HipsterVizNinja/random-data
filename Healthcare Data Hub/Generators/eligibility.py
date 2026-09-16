@@ -31,37 +31,163 @@ ACQUISITION_DATE = date(2024, 4, 1)
 
 OVERLAP_RATE = 0.035
 
+# Employer groups, now carrying the two attributes an ASO book cannot be built
+# without: WHICH CLIENT the group belongs to, and HOW THAT CLIENT IS FUNDED.
+#
+# Funding is a property of the CLIENT, never of the member. Before this, every
+# group had members on both the fully-insured and the self-funded plan at the
+# same time, which meant "show me my self-funded book" returned a slice of
+# every client instead of a set of clients. Self-funding correlates with size
+# and with sector - public employers and health systems self-fund at almost any
+# size, retail and hospitality mostly do not - and that is what this list
+# encodes.
+#
+# client_id is the grain the ASO contract is written at, and it is NOT the
+# group id. Kellerman is one client under two group ids either side of its
+# acquisition; a book rolled up by group_id reports it as two clients and gets
+# both of them wrong.
 EMPLOYER_GROUPS = [
-    ("NLK-MFG-01", "Brightwater Manufacturing", 0.086),
-    ("NLK-RET-01", "Crossroads Retail Group", 0.078),
-    ("NLK-EDU-01", "Northlake Public Schools", 0.072),
-    ("NLK-MUN-01", "City of Northlake", 0.058),
-    ("NLK-LOG-01", "Fairmont Logistics", 0.054),
-    ("NLK-TECH-01", "Sableworks Technology", 0.048),
-    ("NLK-FIN-01", "Harbor Trust Financial", 0.044),
-    ("NLK-FOOD-01", "Prairie Foods Cooperative", 0.042),
-    ("NLK-HLTH-01", "Northlake Health Partners Employees", 0.040),
-    ("NLK-CON-01", "Redstone Construction", 0.036),
-    (ACQUIRED_GROUP_OLD, "Kellerman Industries", 0.034),
-    ("NLK-UTIL-01", "Cornerstone Utilities", 0.030),
-    ("NLK-HOSP-01", "Lakeview Hospitality", 0.028),
-    ("NLK-PRINT-01", "Meridian Print and Packaging", 0.024),
-    ("NLK-AG-01", "Greenfield Agricultural", 0.022),
-    ("IND-MARKET", "Individual marketplace", 0.064),
-    ("MA-INDIVIDUAL", "Medicare Advantage individual enrollment", 0.240),
+    # group_id, group_name, weight, client_id, sector, funding_type
+    ("NLK-MFG-01", "Brightwater Manufacturing", 0.086, "CL-MFG",
+     "MANUFACTURING", "ASO"),
+    ("NLK-RET-01", "Crossroads Retail Group", 0.078, "CL-RET",
+     "RETAIL", "FULLY_INSURED"),
+    ("NLK-EDU-01", "Northlake Public Schools", 0.072, "CL-EDU",
+     "PUBLIC_EDUCATION", "ASO"),
+    ("NLK-MUN-01", "City of Northlake", 0.058, "CL-MUN",
+     "PUBLIC_SECTOR", "ASO"),
+    ("NLK-LOG-01", "Fairmont Logistics", 0.054, "CL-LOG",
+     "TRANSPORTATION", "ASO"),
+    ("NLK-TECH-01", "Sableworks Technology", 0.048, "CL-TECH",
+     "TECHNOLOGY", "ASO"),
+    ("NLK-FIN-01", "Harbor Trust Financial", 0.044, "CL-FIN",
+     "FINANCIAL_SERVICES", "ASO"),
+    ("NLK-FOOD-01", "Prairie Foods Cooperative", 0.042, "CL-FOOD",
+     "FOOD_PRODUCTION", "FULLY_INSURED"),
+    ("NLK-HLTH-01", "Northlake Health Partners Employees", 0.040, "CL-HLTH",
+     "HEALTHCARE", "ASO"),
+    ("NLK-CON-01", "Redstone Construction", 0.036, "CL-CON",
+     "CONSTRUCTION", "FULLY_INSURED"),
+    (ACQUIRED_GROUP_OLD, "Kellerman Industries", 0.034, "CL-KELL",
+     "MANUFACTURING", "ASO"),
+    ("NLK-UTIL-01", "Cornerstone Utilities", 0.030, "CL-UTIL",
+     "UTILITIES", "ASO"),
+    ("NLK-HOSP-01", "Lakeview Hospitality", 0.028, "CL-HOSP",
+     "HOSPITALITY", "FULLY_INSURED"),
+    ("NLK-PRINT-01", "Meridian Print and Packaging", 0.024, "CL-PRINT",
+     "MANUFACTURING", "FULLY_INSURED"),
+    ("NLK-AG-01", "Greenfield Agricultural", 0.022, "CL-AG",
+     "AGRICULTURE", "FULLY_INSURED"),
+    # Neither of these can be self-funded. An individual has no plan sponsor to
+    # bear the risk, so the funding type is not a choice here - it is a fact.
+    ("IND-MARKET", "Individual marketplace", 0.064, "CL-IND",
+     "INDIVIDUAL", "FULLY_INSURED"),
+    ("MA-INDIVIDUAL", "Medicare Advantage individual enrollment", 0.240,
+     "CL-MAIND", "INDIVIDUAL", "FULLY_INSURED"),
 ]
+
+# Client-level attributes that belong to the enrollment system's view of the
+# client rather than to the ASO contract: who broke the account, when they
+# joined, and the month the contract re-prices. The renewal month is the one
+# that bites. Coverage spans break at CALENDAR year boundaries because plan
+# design is priced by calendar benefit year, but two of these clients renew
+# off-cycle, so their contract year and their benefit year are different
+# windows. Any measure that blends them is wrong for those two clients only,
+# which is the hardest kind of wrong to notice.
+CLIENT_PROFILE = {
+    "CL-MFG":   {"renewal_month": 1,  "client_since": "2016-01-01", "broker": "Ashfield Benefit Advisors"},
+    "CL-RET":   {"renewal_month": 1,  "client_since": "2019-01-01", "broker": "Ashfield Benefit Advisors"},
+    "CL-EDU":   {"renewal_month": 7,  "client_since": "2012-07-01", "broker": "Cardinal Risk Partners"},
+    "CL-MUN":   {"renewal_month": 10, "client_since": "2014-10-01", "broker": "Cardinal Risk Partners"},
+    "CL-LOG":   {"renewal_month": 1,  "client_since": "2018-01-01", "broker": "Ashfield Benefit Advisors"},
+    "CL-TECH":  {"renewal_month": 1,  "client_since": "2021-01-01", "broker": "Wexler Group"},
+    "CL-FIN":   {"renewal_month": 1,  "client_since": "2017-01-01", "broker": "Wexler Group"},
+    "CL-FOOD":  {"renewal_month": 1,  "client_since": "2020-01-01", "broker": "Cardinal Risk Partners"},
+    "CL-HLTH":  {"renewal_month": 1,  "client_since": "2011-01-01", "broker": "direct"},
+    "CL-CON":   {"renewal_month": 1,  "client_since": "2022-01-01", "broker": "Wexler Group"},
+    "CL-KELL":  {"renewal_month": 1,  "client_since": "2015-01-01", "broker": "Ashfield Benefit Advisors"},
+    "CL-UTIL":  {"renewal_month": 1,  "client_since": "2013-01-01", "broker": "Cardinal Risk Partners"},
+    "CL-HOSP":  {"renewal_month": 1,  "client_since": "2021-01-01", "broker": "Wexler Group"},
+    "CL-PRINT": {"renewal_month": 1,  "client_since": "2019-01-01", "broker": "Ashfield Benefit Advisors"},
+    "CL-AG":    {"renewal_month": 1,  "client_since": "2020-01-01", "broker": "Cardinal Risk Partners"},
+    "CL-IND":   {"renewal_month": 1,  "client_since": "2014-01-01", "broker": "n/a"},
+    "CL-MAIND": {"renewal_month": 1,  "client_since": "2013-01-01", "broker": "n/a"},
+}
+
+CLIENT_NAME = {
+    "CL-MFG": "Brightwater Manufacturing",
+    "CL-RET": "Crossroads Retail Group",
+    "CL-EDU": "Northlake Public Schools",
+    "CL-MUN": "City of Northlake",
+    "CL-LOG": "Fairmont Logistics",
+    "CL-TECH": "Sableworks Technology",
+    "CL-FIN": "Harbor Trust Financial",
+    "CL-FOOD": "Prairie Foods Cooperative",
+    "CL-HLTH": "Northlake Health Partners Employees",
+    "CL-CON": "Redstone Construction",
+    "CL-KELL": "Kellerman Industries",
+    "CL-UTIL": "Cornerstone Utilities",
+    "CL-HOSP": "Lakeview Hospitality",
+    "CL-PRINT": "Meridian Print and Packaging",
+    "CL-AG": "Greenfield Agricultural",
+    "CL-IND": "Individual marketplace",
+    "CL-MAIND": "Medicare Advantage individual enrollment",
+}
+
+FUNDING_BY_GROUP = {g: f for g, _, _, _, _, f in EMPLOYER_GROUPS}
+FUNDING_BY_GROUP[ACQUIRED_GROUP_NEW] = "ASO"
+CLIENT_BY_GROUP = {g: c for g, _, _, c, _, _ in EMPLOYER_GROUPS}
+CLIENT_BY_GROUP[ACQUIRED_GROUP_NEW] = "CL-KELL"
+SECTOR_BY_GROUP = {g: s for g, _, _, _, s, _ in EMPLOYER_GROUPS}
+SECTOR_BY_GROUP[ACQUIRED_GROUP_NEW] = "MANUFACTURING"
+
+SELF_FUNDED_CLIENTS = sorted(
+    {c for _, _, _, c, _, f in EMPLOYER_GROUPS if f == "ASO"}
+)
+
+
+def _size_tier(weight: float) -> str:
+    """Enrollment size band. The ASO fee curve is priced off this."""
+    if weight >= 0.070:
+        return "LARGE"
+    if weight >= 0.040:
+        return "MID"
+    return "SMALL"
 
 
 def build_employer_groups() -> pd.DataFrame:
-    rows = [
-        {"group_id": g, "group_name": n, "enrollment_weight": w,
-         "is_acquired": g == ACQUIRED_GROUP_OLD}
-        for g, n, w in EMPLOYER_GROUPS
-    ]
+    rows = []
+    for g, n, w, client, sector, funding in EMPLOYER_GROUPS:
+        prof = CLIENT_PROFILE[client]
+        rows.append({
+            "group_id": g,
+            "group_name": n,
+            "client_id": client,
+            "client_name": CLIENT_NAME[client],
+            "enrollment_weight": w,
+            "funding_type": funding,
+            "sector": sector,
+            "size_tier": _size_tier(w),
+            "renewal_month": prof["renewal_month"],
+            "client_since_date": prof["client_since"],
+            "broker_name": prof["broker"],
+            "is_acquired": g == ACQUIRED_GROUP_OLD,
+        })
+    prof = CLIENT_PROFILE["CL-KELL"]
     rows.append({
         "group_id": ACQUIRED_GROUP_NEW,
         "group_name": "Kellerman Industries (post-acquisition)",
+        "client_id": "CL-KELL",
+        "client_name": CLIENT_NAME["CL-KELL"],
+        # Zero, because enrollment is drawn against the OLD id and migrated at
+        # the acquisition date. A weight here would double-count the client.
         "enrollment_weight": 0.0,
+        "funding_type": "ASO",
+        "sector": "MANUFACTURING",
+        "size_tier": _size_tier(0.034),
+        "renewal_month": prof["renewal_month"],
+        "client_since_date": prof["client_since"],
+        "broker_name": prof["broker"],
         "is_acquired": True,
     })
     return pd.DataFrame(rows)
@@ -73,30 +199,68 @@ def build_eligibility(
     rng = run.rng("eligibility")
     n = len(members)
 
-    # ---- assign an employer group, respecting line of business
-    comm_groups = [(g, w) for g, _, w in EMPLOYER_GROUPS if g != "MA-INDIVIDUAL"]
+    # ---- assign an employer group, ONCE PER HOUSEHOLD
+    #
+    # Per household, not per member, and the difference is not cosmetic. An
+    # employer group enrolls an EMPLOYEE; the spouse and children come with
+    # the contract. Drawing the group per member - which this did until the
+    # ASO layer was built on top of it - puts a subscriber in one employer's
+    # plan and their child in another's, which cannot happen and which breaks
+    # every household-grain measure downstream:
+    #
+    #   - a contract-month, the PEPM denominator, has no coherent group
+    #   - one family's claims split across two employers' settlements
+    #   - coverage tier is uncountable, because the family is not in one place
+    #
+    # It was invisible while every measure was at member grain. It surfaced
+    # the moment something needed to count CONTRACTS: of the 33 over-matched
+    # identity pairs, all 33 share a subscriber and only 2 shared a group.
+    #
+    # Medicare Advantage members are not on an employer plan at all, so they
+    # route to individual enrollment regardless of the household draw.
+    comm_groups = [
+        (g, w) for g, _, w, _, _, _ in EMPLOYER_GROUPS if g != "MA-INDIVIDUAL"
+    ]
     cg_ids = [g for g, _ in comm_groups]
     cg_w = np.array([w for _, w in comm_groups]); cg_w = cg_w / cg_w.sum()
+    subscriber = members["subscriber_id"].to_numpy()
+    households, hh_index = np.unique(subscriber, return_inverse=True)
+    n_hh = len(households)
+    # The weight now governs the share of CONTRACTS rather than the share of
+    # lives, which is how a book of business is actually sized. Member counts
+    # still land in proportion, because family size is drawn independently of
+    # the group.
+    hh_group = rng.choice(cg_ids, size=n_hh, p=cg_w)
     group_id = np.where(
         members["line_of_business"].to_numpy() == "MEDICARE_ADVANTAGE",
         "MA-INDIVIDUAL",
-        rng.choice(cg_ids, size=n, p=cg_w),
+        hh_group[hh_index],
     )
 
-    # ---- plan choice per line of business
-    plan_lookup: dict[tuple[str, int], list[str]] = {}
-    for _, pl in plans.iterrows():
-        plan_lookup.setdefault((pl["line_of_business"], pl["benefit_year"]), []).append(
-            pl["plan_code"]
-        )
-
-    # A member keeps the same product family across years unless they switch.
-    comm_products = ["MHMO", "MHMO-HD", "MHMO-ASO"]
+    # ---- plan choice, constrained by how the GROUP is funded
+    #
+    # A member cannot elect a self-funded plan from a fully-insured sponsor,
+    # and vice versa: the plan is the sponsor's, not the member's. The draw is
+    # therefore made within the group's funding type rather than across all
+    # three commercial products. The insured pair keeps its original 52/27
+    # split, renormalized to the two products that remain available.
+    #
+    # Self-funded sponsors here offer ONE plan design. That is a scope
+    # decision, not an oversight: adjudication in this dataset splits member
+    # liability by a benefit-year reset curve rather than by an accumulator
+    # against a real deductible, so a second self-funded plan design would be
+    # a label with no economics behind it. Named in the ASO plan document.
+    # The election is the SUBSCRIBER's and it covers the whole family, so the
+    # insured product is drawn per household too. A family split across a
+    # standard and a high-deductible plan is not an election anybody can make.
+    funding = np.array([FUNDING_BY_GROUP[g] for g in group_id])
     ma_products = ["MMA-HMO", "MMA-DSNP"]
+    insured_products = ["MHMO", "MHMO-HD"]
+    hh_insured = rng.choice(insured_products, size=n_hh, p=[0.658, 0.342])
     base_product = np.where(
         members["line_of_business"].to_numpy() == "MEDICARE_ADVANTAGE",
         rng.choice(ma_products, size=n, p=[0.86, 0.14]),
-        rng.choice(comm_products, size=n, p=[0.52, 0.27, 0.21]),
+        np.where(funding == "ASO", "MHMO-ASO", hh_insured[hh_index]),
     )
 
     # ---- enrollment and disenrollment. Most members span the full window.

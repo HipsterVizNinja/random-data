@@ -45,6 +45,12 @@ SORT_KEYS = {
     "vbc_attribution_month": ["member_id", "year_month"],
     "vbc_attribution_restatement": ["member_id", "year_month"],
     "vbc_benchmark": ["year_month", "line_of_business"],
+    "aso_client_contract": ["client_id", "contract_year"],
+    "aso_fee_schedule": ["client_id", "contract_year", "fee_code"],
+    "aso_stop_loss_policy": ["client_id", "policy_year"],
+    "aso_budget_rate": ["client_id", "contract_year", "coverage_tier"],
+    "aso_funding_request": ["client_id", "funding_week_end"],
+    "aso_stop_loss_filing": ["client_id", "policy_year", "member_id"],
 }
 
 

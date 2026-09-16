@@ -153,3 +153,56 @@ settlement:
   # The over-match has to reach the claims spine, or it contaminates nothing.
   overmatch_in_top_1pct_min: 1
   lag_triangle_tie_tolerance: 1.00
+
+# ---------------------------------------------------------------- the ASO book
+# The self-funded book. These split cleanly into two kinds, and the split is
+# the point: the structural facts are ERRORs because a client is either
+# self-funded or it is not, and the two planted defects assert as EXPECTED
+# with a magnitude, because they are there on purpose.
+aso:
+  self_funded_clients: 9
+  # A client's funding type is a property of the CLIENT. Every member-month of
+  # a self-funded client sits on an ASO plan, and no other client's does.
+  # Before the ASO layer, 17 of 18 groups carried both at once.
+  funding_purity: true
+  # A household cannot span employer groups. One employer enrolls the
+  # employee and the family comes with the contract.
+  households_spanning_groups_max: 0
+  # Contract-months are subscribers; member-months are lives. The first can
+  # never exceed the second.
+  contract_months_le_member_months: true
+  # Fees in the settlement fact must tie to the schedule times the
+  # denominator the basis names, to the penny plus rounding.
+  fee_tie_tolerance: 50.00
+  # The monthly ISL allocation must sum back to the filings it came from.
+  isl_allocation_tie_tolerance: 25.00
+  # The net plan cost identity: paid - received + fees.
+  net_cost_identity_tolerance: 5.00
+
+  # ---- planted defect: the PEPM/PMPM denominator swap.
+  # The average contract covers about 2.1 lives, so an administration fee
+  # billed against member-months reads roughly that much too high. Asserted as
+  # a RATIO rather than a dollar figure so it does not drift with the book.
+  admin_fee_overstatement_factor: [1.90, 2.40]
+
+  # ---- planted defect: the renewal priced off a double-counted denominator.
+  # One client was loaded under two group ids through an acquisition, so its
+  # spans overlap and the enrollment extract yields a denominator materially
+  # too large. Its 2025 rate was set over that denominator. The isolation
+  # matters as much as the size: every other client must be clean, or the
+  # defect is just noise.
+  rate_miss_client: CL-KELL
+  rate_miss_pct: [8.0, 18.0]
+  rate_miss_pct_other_clients_max: 0.5
+
+  # ---- stop-loss
+  stop_loss_filings_min: 120
+  late_filing_denials_min: 5
+  # Filings assembled from the resolved-identity report over an MDM
+  # over-match: two genuinely distinct people on one stop-loss claim.
+  overmatch_filings_min: 1
+
+  # ---- the funding reconciliation. The re-driven extract funded duplicates,
+  # so at least one week drew real money for claim lines that do not exist.
+  overfunded_weeks_min: 1
+  overfunded_dollars_min: 250000

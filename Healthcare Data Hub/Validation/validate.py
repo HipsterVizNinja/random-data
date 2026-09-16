@@ -714,12 +714,25 @@ def check_runout(r: Results, exp, sc, lines, date_dim):
     it to an annual mean measures seasonality and calls it completeness. The
     correct comparison is the SAME calendar month in prior years, de-trended.
 
-    What is asserted is what actually matters and what is robust: each of the
-    last three service months is MATERIALLY incomplete, and completeness
-    declines monotonically toward the edge of the window. The exact percentage
-    is reported rather than asserted, because a single month's observed ratio
-    also carries that month's own volume variance - asserting it to a tight
-    band would be testing noise.
+    What is asserted is that each of the last three service months reads as
+    incomplete as the DESIGNED curve says it should, within the tolerance the
+    expectations file states, and that completeness declines monotonically
+    toward the edge of the window.
+
+    This used to assert a flat `ratio < 0.90` for all three months, which
+    contradicted the design it was checking. RUNOUT_COMPLETENESS puts October
+    2025 at 94% complete, so a correctly built October reads about 94% of its
+    de-trended prior year and fails a 90% threshold by construction - it only
+    ever passed on that month's own volume noise, and the moment a population
+    constant moved it stopped passing. The same flat threshold was meanwhile
+    trivially satisfied by December at 27%.
+
+    Asserting the observed ratio against the designed completeness is both
+    consistent and strictly stronger: it catches a curve that has drifted in
+    EITHER direction, which is the failure mode that matters here, and it is
+    what the config comment above RUNOUT_COMPLETENESS already claims the suite
+    does. The tolerance is wide (10pp) because a single month's ratio carries
+    that month's own volume variance on top of its completeness.
     """
     a7 = exp["anomalies"]["A7_runout"]
     trend = 0.068
@@ -740,15 +753,20 @@ def check_runout(r: Results, exp, sc, lines, date_dim):
         expected = C.RUNOUT_COMPLETENESS.get(m)
         rows.append((m, ratio, expected, baseline))
         observed.append(ratio)
+        tol = a7["completeness_tolerance"]
         r.add(f"RUNOUT-{m}", "Completeness",
-              f"Service month {m} is materially incomplete",
-              EXPECTED, ratio < 0.90,
+              f"Service month {m} is incomplete, as designed",
+              EXPECTED,
+              expected is not None and abs(ratio - expected) <= tol,
               detail=("Claims absent from this extract are exactly the ones "
                       "that had not adjudicated by the paid-through date of "
                       f"{C.PAID_THROUGH} - the slowest-paying, not a random "
-                      f"sample. Designed completeness {expected:.0%}."),
+                      "sample. The observed ratio is asserted against the "
+                      "designed completeness rather than a flat threshold, "
+                      "which the designed curve contradicts for October."),
               actual=f"{ratio:.1%} of the de-trended prior-year month",
-              expected="< 90%")
+              expected=f"{expected:.0%} +/- {tol:.0%}"
+                       if expected is not None else "designed value missing")
 
     monotonic = all(observed[i] >= observed[i + 1] for i in range(len(observed) - 1))
     r.add("RUNOUT-TREND", "Completeness",
@@ -777,6 +795,215 @@ def check_runout(r: Results, exp, sc, lines, date_dim):
 
 
 # ----------------------------------------------------------------- rendering
+
+def check_aso(r: Results, exp, sc, mm, spans):
+    """The self-funded book: structure, denominators, stop-loss, and the cash.
+
+    Two kinds of assertion, deliberately mixed in one section because the
+    contrast is the argument. The structural ones are ERRORs - a client is
+    self-funded or it is not, a household sits in one employer's plan or the
+    data is broken, contract-months cannot exceed lives. The two planted
+    defects assert as EXPECTED with a magnitude, because a planted defect
+    nobody can find is indistinguishable from one that is not there.
+    """
+    a = exp["aso"]
+    grp = read_mart("dim_employer_group")
+    grp = grp[grp["group_id"].notna() & (grp["group_id"] != "UNKNOWN")]
+    contract = read_mart("aso_client_contract")
+    settle = read_mart("fct_aso_settlement_month")
+    cmonth = read_mart("fct_aso_contract_month")
+    claimant = read_mart("fct_aso_stop_loss_claimant")
+    funding = read_mart("fct_aso_funding_week")
+    fees = read_mart("aso_fee_schedule")
+
+    g2c = dict(zip(grp["group_id"], grp["client_id"]))
+    aso_clients = set(grp[grp["funding_type"] == "ASO"]["client_id"])
+
+    # ---- 1. funding is a property of the CLIENT.
+    r.add("ASO-01", "ASO book", "the self-funded book is a set of CLIENTS",
+          ERROR, len(aso_clients) == a["self_funded_clients"],
+          "Before this layer, 17 of 18 groups carried members on the "
+          "fully-insured AND the self-funded plan at the same time, so "
+          "'show me my self-funded book' returned a slice of every client "
+          "instead of a set of clients.",
+          actual=len(aso_clients), expected=a["self_funded_clients"])
+
+    m = mm.copy()
+    m["client_id"] = m["group_id"].map(g2c)
+    m["_is_aso_plan"] = m["plan_code"].str.contains("ASO", na=False)
+    leak_in = m[m["client_id"].isin(aso_clients) & ~m["_is_aso_plan"]]
+    leak_out = m[~m["client_id"].isin(aso_clients) & m["_is_aso_plan"]]
+    r.add("ASO-02", "ASO book", "no member-month crosses the funding boundary",
+          ERROR, len(leak_in) == 0 and len(leak_out) == 0,
+          "A member cannot elect a self-funded plan from a fully-insured "
+          "sponsor: the plan belongs to the sponsor, not the member.",
+          actual=f"{len(leak_in):,} in, {len(leak_out):,} out", expected="0, 0")
+
+    # ---- 2. a household sits in ONE employer's plan.
+    #
+    # Tested at CLIENT grain and with individual enrollment excluded, because
+    # two kinds of household legitimately straddle two group ids and neither
+    # is the defect: an acquired client holds two group ids either side of the
+    # acquisition, and a member who turns 65 leaves the employer plan for
+    # individual Medicare Advantage while their family stays. What cannot
+    # happen is one family on two different EMPLOYERS' plans.
+    sp = spans.copy()
+    sp["client_id"] = sp["group_id"].map(g2c)
+    employer = sp[~sp["group_id"].isin(["MA-INDIVIDUAL", "IND-MARKET"])]
+    hh = employer.groupby("subscriber_id")["client_id"].nunique()
+    n_split = int((hh > 1).sum())
+    r.add("ASO-03", "ASO book", "no household spans two employers' plans",
+          ERROR, n_split <= a["households_spanning_groups_max"],
+          "The employer enrolls the EMPLOYEE and the family comes with the "
+          "contract. Drawing the group per member put a subscriber in one "
+          "employer's plan and their child in another's, which made a "
+          "contract-month - the PEPM denominator - uncountable. Of the 33 "
+          "over-matched identity pairs, all 33 shared a subscriber and only "
+          "2 shared a group.",
+          actual=n_split, expected=f"<= {a['households_spanning_groups_max']}")
+
+    # ---- 3. contract-months are subscribers, so they cannot exceed lives.
+    cm = cmonth.groupby(["client_id", "year_month"], as_index=False).agg(
+        subscriber_months=("subscriber_months", "sum"))
+    cmp_ = cm.merge(settle[["client_id", "year_month", "member_months"]],
+                    on=["client_id", "year_month"], how="inner")
+    bad = cmp_[cmp_["subscriber_months"] > cmp_["member_months"] + 0.01]
+    r.add("ASO-04", "ASO book", "contract-months never exceed member-months",
+          ERROR, len(bad) == 0,
+          "A contract-month is credited only where the SUBSCRIBER was "
+          "covered. Counting a dependent enrolled in a month the subscriber "
+          "was not inflates every per-employee fee in the book.",
+          actual=f"{len(bad):,} client-months", expected=0)
+
+    # ---- 4. the PEPM/PMPM denominator swap, as a ratio.
+    right = float(settle["fee_admin_amount"].sum())
+    wrong = float(settle["fee_admin_amount_on_member_months"].sum())
+    ratio = wrong / right if right > 0 else None
+    r.band("ASO-05", "ASO book",
+           "admin fee on member-months overstates by the family factor",
+           None if ratio is None else round(ratio, 3),
+           a["admin_fee_overstatement_factor"], severity=EXPECTED,
+           detail="The administration fee is PER EMPLOYEE per month. The "
+                  "average contract here covers about 2.1 lives, so the same "
+                  "fee billed against member-months reads roughly twice its "
+                  "true size. Both columns ship so the error is a subtraction "
+                  "rather than an argument.",
+           dollars=round(wrong - right, 2))
+
+    # ---- 5. fees tie to the schedule times the denominator the basis names.
+    fee_total = float(settle["total_fee_amount"].sum())
+    parts = [c for c in settle.columns
+             if c.startswith("fee_") and c.endswith("_amount")
+             and c != "fee_admin_amount_on_member_months"]
+    tie = abs(float(settle[parts].sum().sum()) - fee_total)
+    r.add("ASO-06", "ASO book", "fee components tie to the fee total",
+          ERROR, tie <= a["fee_tie_tolerance"],
+          "Six fee components on three different denominators. If they do "
+          "not sum to the total the app quotes, the app is quoting a number "
+          "no schedule supports.",
+          actual=round(tie, 2), expected=f"<= {a['fee_tie_tolerance']}",
+          dollars=round(tie, 2))
+
+    # ---- 6. the net plan cost identity.
+    ident = float((
+        settle["net_plan_cost_amount"]
+        - (settle["paid_claims_amount"]
+           - settle["isl_reimbursement_received_amount"]
+           + settle["total_fee_amount"])
+    ).abs().sum())
+    r.add("ASO-07", "ASO book", "net plan cost = paid - recovered + fees",
+          ERROR, ident <= a["net_cost_identity_tolerance"],
+          "Recovery RECEIVED rather than entitled, on purpose: a filing "
+          "declined for late submission is money the client did not get, and "
+          "a settlement built on entitlement quietly hands it back.",
+          actual=round(ident, 2),
+          expected=f"<= {a['net_cost_identity_tolerance']}")
+
+    # ---- 7. the monthly ISL allocation sums back to the filings.
+    filed = float(claimant["reimbursement_received_amount"].sum())
+    spread = float(settle["isl_reimbursement_received_amount"].sum())
+    r.add("ASO-08", "ASO book", "monthly ISL allocation ties to the filings",
+          ERROR, abs(filed - spread) <= a["isl_allocation_tie_tolerance"],
+          "The recovery is a policy-year event spread evenly across the "
+          "policy year's months. Even spreading is a modeling choice and is "
+          "named as one; summing to the filing exactly is not optional.",
+          actual=round(spread, 2), expected=round(filed, 2),
+          dollars=round(abs(filed - spread), 2))
+
+    # ---- 8. the renewal mispricing: material, and isolated to one client.
+    ct = contract[contract["rate_basis"] == "PRIOR_YEAR_PAID_EXPERIENCE"].copy()
+    ct["_miss"] = (
+        100 * (1 - ct["expected_claims_pmpm"]
+               / ct["expected_claims_pmpm_on_true_denominator"]))
+    target = ct[(ct["client_id"] == a["rate_miss_client"])
+                & (ct["contract_year"] == 2025)]["_miss"]
+    r.band("ASO-09", "ASO book",
+           f"{a['rate_miss_client']} 2025 rate set below truth",
+           None if target.empty else round(float(target.iloc[0]), 2),
+           a["rate_miss_pct"], severity=EXPECTED,
+           detail="The client was loaded under two group ids through an "
+                  "acquisition, so its spans overlap and the enrollment "
+                  "extract yields a denominator materially too large. The "
+                  "renewal was priced over that denominator. The deficit that "
+                  "follows looks like claims experience and is arithmetic.")
+    others = ct[ct["client_id"] != a["rate_miss_client"]]["_miss"].abs()
+    worst = float(others.max()) if len(others) else 0.0
+    r.add("ASO-10", "ASO book", "every other client's rate is clean",
+          ERROR, worst <= a["rate_miss_pct_other_clients_max"],
+          "Isolation matters as much as size. A denominator error spread "
+          "evenly across the book is a scaling factor nobody has to find; "
+          "one that lands on a single client is the kind that survives "
+          "review and decides a renewal.",
+          actual=round(worst, 3),
+          expected=f"<= {a['rate_miss_pct_other_clients_max']}")
+
+    # ---- 9. stop-loss: the filings, the denials, the collapsed identities.
+    r.add("ASO-11", "ASO book", "the stop-loss layer has claimants in it",
+          ERROR, len(claimant) >= sc.count(a["stop_loss_filings_min"]),
+          actual=len(claimant),
+          expected=f">= {sc.count(a['stop_loss_filings_min'])}")
+    late = claimant[claimant["filing_status"] == "DENIED_LATE_FILING"]
+    r.add("ASO-12", "ASO book", "late filings are declined and cost the client",
+          EXPECTED, len(late) >= sc.count(a["late_filing_denials_min"]),
+          "A filing past the deadline is declined and the CLIENT, not the "
+          "carrier, absorbs the claim. No report of recoveries a plan was "
+          "entitled to will ever show it.",
+          actual=len(late),
+          expected=f">= {sc.count(a['late_filing_denials_min'])}",
+          dollars=round(float(late["reimbursement_entitled_amount"].sum()), 2))
+    collapsed = claimant[
+        pd.to_numeric(claimant["member_ids_on_durable_key"],
+                      errors="coerce").fillna(1) > 1]
+    r.add("ASO-13", "ASO book",
+          "some filings rest on a collapsed identity",
+          EXPECTED, len(collapsed) >= sc.count(a["overmatch_filings_min"]),
+          "Filings assembled from the resolved-identity large claimant report "
+          "sum every member id behind one master person. Where the MDM run "
+          "OVER-matched - twins, a Jr/Sr pair - that is two different people "
+          "on one stop-loss claim, and it ties to the resolved identity "
+          "perfectly, which is why nothing else catches it.",
+          actual=len(collapsed),
+          expected=f">= {sc.count(a['overmatch_filings_min'])}",
+          dollars=round(float(collapsed["reimbursement_entitled_amount"].sum()), 2))
+
+    # ---- 10. the funding reconciliation. The re-driven extract funded
+    # duplicates, and a wire is the version of that defect anybody acts on.
+    over = funding[funding["overfunded_amount"] > 1.0]
+    r.add("ASO-14", "ASO book", "the re-driven extract over-funded a client",
+          EXPECTED, len(over) >= sc.count(a["overfunded_weeks_min"]),
+          "The funding system draws against the adjudication extract as it "
+          "arrived. A duplicate-row count in a data quality report does not "
+          "make anyone act. A wire does.",
+          actual=f"{len(over)} weeks",
+          expected=f">= {sc.count(a['overfunded_weeks_min'])}",
+          dollars=round(float(over["overfunded_amount"].sum()), 2))
+    r.add("ASO-15", "ASO book", "the over-funding is material",
+          EXPECTED,
+          float(over["overfunded_amount"].sum())
+          >= sc.count(a["overfunded_dollars_min"]),
+          actual=round(float(over["overfunded_amount"].sum()), 2),
+          expected=f">= {sc.count(a['overfunded_dollars_min']):,}")
+
 
 def _esc(v) -> str:
     """Escape pipes so a cell cannot break the markdown table it sits in."""
@@ -1106,6 +1333,7 @@ def main() -> int:
     check_question_ladder(res, exp, sc, ref, outcome, mart_lines)
     runout = check_runout(res, exp, sc, mart_lines, date_dim)
     check_settlement(res, exp, sc, mart_lines, mm, date_dim)
+    check_aso(res, exp, sc, mm, spans)
 
     df = res.frame()
     (DELIV / "validation_results.json").write_text(
