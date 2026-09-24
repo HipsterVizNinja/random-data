@@ -71,9 +71,9 @@
     "name":"Claim lines with a servicing provider absent from credentialing",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":1182,
+    "actual":1188,
     "expected":"> 0",
-    "dollars":461876.25,
+    "dollars":467289.02,
     "detail":"An inner join to the provider dimension would silently delete these lines and the dollars on them."
   },
   {
@@ -93,7 +93,7 @@
     "name":"Claims with no Northlake encounter (care delivered elsewhere)",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":0.3003,
+    "actual":0.2967,
     "expected":"0.15 to 0.32",
     "dollars":null,
     "detail":"By design. Northlake cannot see care it did not deliver, which is precisely why the hub is necessary."
@@ -104,7 +104,7 @@
     "name":"EHR encounters whose patient never resolved to a member",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":17421,
+    "actual":17058,
     "expected":"> 0",
     "dollars":null,
     "detail":"The EHR-to-claims join is a three-hop through the crosswalk and it loses this share. The loss is NOT random."
@@ -140,7 +140,7 @@
     "actual":0,
     "expected":0,
     "dollars":null,
-    "detail":"388,259 claim-versions compared."
+    "detail":"388,406 claim-versions compared."
   },
   {
     "check_id":"RECON-004",
@@ -148,8 +148,8 @@
     "name":"Both sanctioned nettings agree: all rows vs is_current_version",
     "severity":"ERROR",
     "passed":true,
-    "actual":609477279.0800000429,
-    "expected":609477279.0800000429,
+    "actual":611216073.2400000095,
+    "expected":611216073.2400000095,
     "dollars":null,
     "detail":"Note there is NO reversal exclusion in the second formula. Orphan reversals are current and negative on purpose, so excluding them breaks the tie."
   },
@@ -159,7 +159,7 @@
     "name":"Naive span-sum overstates member-months versus the de-duplicated union",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":"0.70% over",
+    "actual":"0.69% over",
     "expected":"> 0%",
     "dollars":null,
     "detail":"Summing span lengths double counts every overlap. The correct denominator is the gaps-and-islands union."
@@ -170,7 +170,7 @@
     "name":"Allowed PMPM, COMMERCIAL",
     "severity":"ERROR",
     "passed":true,
-    "actual":550.54,
+    "actual":555.61,
     "expected":"480.0 to 620.0",
     "dollars":null,
     "detail":null
@@ -181,7 +181,7 @@
     "name":"Admissions per 1000, COMMERCIAL",
     "severity":"ERROR",
     "passed":true,
-    "actual":57.5,
+    "actual":59.4,
     "expected":"55.0 to 70.0",
     "dollars":null,
     "detail":null
@@ -192,7 +192,7 @@
     "name":"ED visits per 1000, COMMERCIAL",
     "severity":"ERROR",
     "passed":true,
-    "actual":174.2,
+    "actual":178.6,
     "expected":"150.0 to 190.0",
     "dollars":null,
     "detail":null
@@ -203,7 +203,7 @@
     "name":"Allowed PMPM, MEDICARE_ADVANTAGE",
     "severity":"ERROR",
     "passed":true,
-    "actual":1041.5,
+    "actual":1004.6,
     "expected":"900.0 to 1150.0",
     "dollars":null,
     "detail":null
@@ -214,7 +214,7 @@
     "name":"Admissions per 1000, MEDICARE_ADVANTAGE",
     "severity":"ERROR",
     "passed":true,
-    "actual":257.6,
+    "actual":240.8,
     "expected":"200.0 to 260.0",
     "dollars":null,
     "detail":null
@@ -225,7 +225,7 @@
     "name":"ED visits per 1000, MEDICARE_ADVANTAGE",
     "severity":"ERROR",
     "passed":true,
-    "actual":463.9,
+    "actual":496.1,
     "expected":"400.0 to 520.0",
     "dollars":null,
     "detail":null
@@ -236,7 +236,7 @@
     "name":"Top 1% of members share of allowed",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.251,
+    "actual":0.2494,
     "expected":"0.22 to 0.3",
     "dollars":null,
     "detail":"The single most recognizable realism check a payer audience applies."
@@ -247,7 +247,7 @@
     "name":"Top 5% of members share of allowed",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.5687,
+    "actual":0.5677,
     "expected":"0.5 to 0.62",
     "dollars":null,
     "detail":null
@@ -258,7 +258,7 @@
     "name":"Average length of stay, days",
     "severity":"ERROR",
     "passed":true,
-    "actual":4.25,
+    "actual":4.28,
     "expected":"3.9 to 4.6",
     "dollars":null,
     "detail":null
@@ -394,7 +394,7 @@
     "name":"Share of ambulatory volume landing as UNKNOWN",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":0.0337,
+    "actual":0.0347,
     "expected":"0.02 to 0.05",
     "dollars":null,
     "detail":null
@@ -416,7 +416,7 @@
     "name":"Share of ORTHO-NR closures landing at day 30 after the rule",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":0.6454,
+    "actual":0.632,
     "expected":"0.55 to 0.72",
     "dollars":null,
     "detail":"A spike at a round number is a workflow rule, not clinical behavior."
@@ -427,7 +427,7 @@
     "name":"Same measure at every other site",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":0.0315,
+    "actual":0.0329,
     "expected":"0.0 to 0.08",
     "dollars":null,
     "detail":null
@@ -438,7 +438,7 @@
     "name":"Referral confirmation rate is materially worse at ORTHO-NR",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":"0.653 vs 0.766 elsewhere",
+    "actual":"0.656 vs 0.762 elsewhere",
     "expected":"site materially lower",
     "dollars":null,
     "detail":"Confirmation is measured against a real event - a claim or a completed appointment - not against the status field."
@@ -460,9 +460,9 @@
     "name":"Excess cost of ORTHO-NR leaked episodes over the in-network equivalent",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":733060.03,
+    "actual":871576.34,
     "expected":">= 400,000",
-    "dollars":733060.03,
+    "dollars":871576.34,
     "detail":"The joined answer. Episodes that went out of network, priced against what the same care would have cost in network, attributed to the referring site. This is the figure the narrative quotes - NOT total out-of-network allowed, which sweeps in every outside claim in the book and answers nobody's question."
   },
   {
@@ -471,7 +471,7 @@
     "name":"ORTHO-NR share of system-wide referral leakage excess",
     "severity":"INFO",
     "passed":true,
-    "actual":"22.6%",
+    "actual":"26.8%",
     "expected":"reported for context",
     "dollars":null,
     "detail":"One clinic group of twelve, and it carries this share of the excess. That concentration is the argument."
@@ -482,9 +482,9 @@
     "name":"Excess cost routed to Summit Point after its contract terminated",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":1169732.6399999999,
+    "actual":1284775.8400000001,
     "expected":">= 400,000",
-    "dollars":1169732.6399999999,
+    "dollars":1284775.8400000001,
     "detail":"Its contract ended 2024-10-01. The EHR referral directory still reads PAR, 14 months stale. A governance failure with a price tag, and nobody made a bad clinical decision."
   },
   {
@@ -504,7 +504,7 @@
     "name":"Why the remainder is not recapturable",
     "severity":"INFO",
     "passed":true,
-    "actual":"geography 0.0%, capacity 0.0%; 716 leaked episodes vs 2,368 in-network case headroom",
+    "actual":"geography 0.0%, capacity 0.0%; 711 leaked episodes vs 2,323 in-network case headroom",
     "expected":"reported for context",
     "dollars":null,
     "detail":"Named so the number can be defended rather than asserted."
@@ -512,35 +512,35 @@
   {
     "check_id":"RUNOUT-2025-10",
     "category":"Completeness",
-    "name":"Service month 2025-10 is materially incomplete",
+    "name":"Service month 2025-10 is incomplete, as designed",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":"88.9% of the de-trended prior-year month",
-    "expected":"< 90%",
+    "actual":"93.6% of the de-trended prior-year month",
+    "expected":"94% +\/- 10%",
     "dollars":null,
-    "detail":"Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. Designed completeness 94%."
+    "detail":"Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. The observed ratio is asserted against the designed completeness rather than a flat threshold, which the designed curve contradicts for October."
   },
   {
     "check_id":"RUNOUT-2025-11",
     "category":"Completeness",
-    "name":"Service month 2025-11 is materially incomplete",
+    "name":"Service month 2025-11 is incomplete, as designed",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":"76.5% of the de-trended prior-year month",
-    "expected":"< 90%",
+    "actual":"76.9% of the de-trended prior-year month",
+    "expected":"81% +\/- 10%",
     "dollars":null,
-    "detail":"Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. Designed completeness 81%."
+    "detail":"Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. The observed ratio is asserted against the designed completeness rather than a flat threshold, which the designed curve contradicts for October."
   },
   {
     "check_id":"RUNOUT-2025-12",
     "category":"Completeness",
-    "name":"Service month 2025-12 is materially incomplete",
+    "name":"Service month 2025-12 is incomplete, as designed",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":"32.2% of the de-trended prior-year month",
-    "expected":"< 90%",
+    "actual":"33.4% of the de-trended prior-year month",
+    "expected":"27% +\/- 10%",
     "dollars":null,
-    "detail":"Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. Designed completeness 27%."
+    "detail":"Claims absent from this extract are exactly the ones that had not adjudicated by the paid-through date of 2026-01-02 - the slowest-paying, not a random sample. The observed ratio is asserted against the designed completeness rather than a flat threshold, which the designed curve contradicts for October."
   },
   {
     "check_id":"RUNOUT-TREND",
@@ -548,7 +548,7 @@
     "name":"Completeness declines monotonically toward the edge of the window",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":"89% > 77% > 32%",
+    "actual":"94% > 77% > 33%",
     "expected":"monotonically decreasing",
     "dollars":null,
     "detail":"The signature of runout. A real utilization drop would not get progressively steeper the closer you get to the extract date."
@@ -578,7 +578,7 @@
     "name":"risk score book mean = 1.0 (COMMERCIAL)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.9996,
+    "actual":0.9991,
     "expected":"1.0 +\/- 0.02",
     "dollars":null,
     "detail":"A risk score is only meaningful against a normalized book. Multiplying a benchmark PMPM by a raw morbidity weight produces a number with no contractual meaning."
@@ -589,7 +589,7 @@
     "name":"risk score book mean = 1.0 (MEDICARE_ADVANTAGE)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.996,
+    "actual":1.0013,
     "expected":"1.0 +\/- 0.02",
     "dollars":null,
     "detail":"A risk score is only meaningful against a normalized book. Multiplying a benchmark PMPM by a raw morbidity weight produces a number with no contractual meaning."
@@ -600,7 +600,7 @@
     "name":"attributed cohort mean risk > book",
     "severity":"ERROR",
     "passed":true,
-    "actual":1.1796,
+    "actual":1.1763,
     "expected":"1.05 to 1.35",
     "dollars":null,
     "detail":"Attribution selects for care-seekers, so the attributed sub-population must run richer than the book it is drawn from. At 1.0 the attribution rule has stopped selecting."
@@ -622,7 +622,7 @@
     "name":"restatement includes retro-terminations",
     "severity":"ERROR",
     "passed":true,
-    "actual":594,
+    "actual":614,
     "expected":">= 400",
     "dollars":null,
     "detail":null
@@ -644,7 +644,7 @@
     "name":"roster restatement moves PY2025 PMPM",
     "severity":"ERROR",
     "passed":true,
-    "actual":5.26,
+    "actual":5.77,
     "expected":"2.0 to 9.0",
     "dollars":null,
     "detail":"Reconstructing the baseline roster from the delta. This is the headline: an improvement that is bookkeeping, not care."
@@ -655,9 +655,9 @@
     "name":"line truncation ties to member-year",
     "severity":"ERROR",
     "passed":true,
-    "actual":783143783.2100000381,
-    "expected":783143780.8899999857,
-    "dollars":2.32,
+    "actual":786513287.0,
+    "expected":786513286.5700000525,
+    "dollars":0.43,
     "detail":"The pro-rata allocation back down to the line must sum exactly to the member-year cap, or the two grains disagree about the same contract term."
   },
   {
@@ -666,9 +666,9 @@
     "name":"truncation removes a 99th-percentile tail",
     "severity":"ERROR",
     "passed":true,
-    "actual":9.46,
+    "actual":9.3,
     "expected":"4.0 to 12.0",
-    "dollars":81830938.5799999982,
+    "dollars":80675444.6800000072,
     "detail":"At a threshold too low for the cost curve this removes a quarter of all spend and stops being a tail treatment."
   },
   {
@@ -677,10 +677,10 @@
     "name":"benchmark is beatable but not free (COMMERCIAL)",
     "severity":"ERROR",
     "passed":true,
-    "actual":2.65,
+    "actual":3.27,
     "expected":"1.0 to 7.0",
     "dollars":null,
-    "detail":"Risk-adjusted benchmark $863 against truncated attributed actual $841, PY2024."
+    "detail":"Risk-adjusted benchmark $860 against truncated attributed actual $832, PY2024."
   },
   {
     "check_id":"SET-09",
@@ -688,10 +688,10 @@
     "name":"benchmark is beatable but not free (MEDICARE_ADVANTAGE)",
     "severity":"ERROR",
     "passed":true,
-    "actual":3.5,
+    "actual":2.03,
     "expected":"1.0 to 7.0",
     "dollars":null,
-    "detail":"Risk-adjusted benchmark $1,351 against truncated attributed actual $1,305, PY2024."
+    "detail":"Risk-adjusted benchmark $1,352 against truncated attributed actual $1,325, PY2024."
   },
   {
     "check_id":"SET-10",
@@ -699,9 +699,9 @@
     "name":"over-match contaminates the cost tail",
     "severity":"EXPECTED",
     "passed":true,
-    "actual":5,
+    "actual":8,
     "expected":">= 1",
-    "dollars":1706836.8100000001,
+    "dollars":2036225.53,
     "detail":"Two people wearing one identity surface as an artificial super-utilizer. Collapsing only the EHR key space left the payer spine intact, so claims never aggregated onto one person and the defect the answer key promises did not exist in the mart."
   },
   {
@@ -710,8 +710,8 @@
     "name":"lag triangle ties to fct_claim_line",
     "severity":"ERROR",
     "passed":true,
-    "actual":864974719.4700000286,
-    "expected":864974719.4700000286,
+    "actual":867188731.25,
+    "expected":867188731.25,
     "dollars":0.0,
     "detail":null
   },
@@ -721,7 +721,7 @@
     "name":"chain ladder recovers completeness (2025-07)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.9939,
+    "actual":0.9946,
     "expected":"0.99 +\/- 0.06",
     "dollars":null,
     "detail":"The completion factor is DERIVED from the paid dates present, not read off a constant. When these diverge, the extract is claiming a paid-through date its own data cannot support."
@@ -732,7 +732,7 @@
     "name":"chain ladder recovers completeness (2025-08)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.9876,
+    "actual":0.9888,
     "expected":"0.99 +\/- 0.06",
     "dollars":null,
     "detail":"The completion factor is DERIVED from the paid dates present, not read off a constant. When these diverge, the extract is claiming a paid-through date its own data cannot support."
@@ -743,7 +743,7 @@
     "name":"chain ladder recovers completeness (2025-09)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.9731,
+    "actual":0.9748,
     "expected":"0.97 +\/- 0.06",
     "dollars":null,
     "detail":"The completion factor is DERIVED from the paid dates present, not read off a constant. When these diverge, the extract is claiming a paid-through date its own data cannot support."
@@ -754,7 +754,7 @@
     "name":"chain ladder recovers completeness (2025-10)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.9316,
+    "actual":0.9353,
     "expected":"0.94 +\/- 0.06",
     "dollars":null,
     "detail":"The completion factor is DERIVED from the paid dates present, not read off a constant. When these diverge, the extract is claiming a paid-through date its own data cannot support."
@@ -765,7 +765,7 @@
     "name":"chain ladder recovers completeness (2025-11)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.7943,
+    "actual":0.795,
     "expected":"0.81 +\/- 0.06",
     "dollars":null,
     "detail":"The completion factor is DERIVED from the paid dates present, not read off a constant. When these diverge, the extract is claiming a paid-through date its own data cannot support."
@@ -776,7 +776,7 @@
     "name":"chain ladder recovers completeness (2025-12)",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.2927,
+    "actual":0.2949,
     "expected":"0.27 +\/- 0.06",
     "dollars":null,
     "detail":"The completion factor is DERIVED from the paid dates present, not read off a constant. When these diverge, the extract is claiming a paid-through date its own data cannot support."
@@ -787,9 +787,196 @@
     "name":"asserted and derived completeness agree, every month",
     "severity":"ERROR",
     "passed":true,
-    "actual":0.0227,
+    "actual":0.0249,
     "expected":"<= 0.06",
     "dollars":null,
     "detail":"Checked across all 36 service months carrying claims."
+  },
+  {
+    "check_id":"ASO-01",
+    "category":"ASO book",
+    "name":"the self-funded book is a set of CLIENTS",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":9,
+    "expected":9,
+    "dollars":null,
+    "detail":"Before this layer, 17 of 18 groups carried members on the fully-insured AND the self-funded plan at the same time, so 'show me my self-funded book' returned a slice of every client instead of a set of clients."
+  },
+  {
+    "check_id":"ASO-02",
+    "category":"ASO book",
+    "name":"no member-month crosses the funding boundary",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":"0 in, 0 out",
+    "expected":"0, 0",
+    "dollars":null,
+    "detail":"A member cannot elect a self-funded plan from a fully-insured sponsor: the plan belongs to the sponsor, not the member."
+  },
+  {
+    "check_id":"ASO-03",
+    "category":"ASO book",
+    "name":"no household spans two employers' plans",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":0,
+    "expected":"<= 0",
+    "dollars":null,
+    "detail":"The employer enrolls the EMPLOYEE and the family comes with the contract. Drawing the group per member put a subscriber in one employer's plan and their child in another's, which made a contract-month - the PEPM denominator - uncountable. Of the 33 over-matched identity pairs, all 33 shared a subscriber and only 2 shared a group."
+  },
+  {
+    "check_id":"ASO-04",
+    "category":"ASO book",
+    "name":"contract-months never exceed member-months",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":"0 client-months",
+    "expected":0,
+    "dollars":null,
+    "detail":"A contract-month is credited only where the SUBSCRIBER was covered. Counting a dependent enrolled in a month the subscriber was not inflates every per-employee fee in the book."
+  },
+  {
+    "check_id":"ASO-05",
+    "category":"ASO book",
+    "name":"admin fee on member-months overstates by the family factor",
+    "severity":"EXPECTED",
+    "passed":true,
+    "actual":2.224,
+    "expected":"1.9 to 2.4",
+    "dollars":20720874.4600000009,
+    "detail":"The administration fee is PER EMPLOYEE per month. The average contract here covers about 2.1 lives, so the same fee billed against member-months reads roughly twice its true size. Both columns ship so the error is a subtraction rather than an argument."
+  },
+  {
+    "check_id":"ASO-06",
+    "category":"ASO book",
+    "name":"fee components tie to the fee total",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":0.0,
+    "expected":"<= 50.0",
+    "dollars":0.0,
+    "detail":"Six fee components on three different denominators. If they do not sum to the total the app quotes, the app is quoting a number no schedule supports."
+  },
+  {
+    "check_id":"ASO-07",
+    "category":"ASO book",
+    "name":"net plan cost = paid - recovered + fees",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":0.0,
+    "expected":"<= 5.0",
+    "dollars":null,
+    "detail":"Recovery RECEIVED rather than entitled, on purpose: a filing declined for late submission is money the client did not get, and a settlement built on entitlement quietly hands it back."
+  },
+  {
+    "check_id":"ASO-08",
+    "category":"ASO book",
+    "name":"monthly ISL allocation ties to the filings",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":16592372.7599999998,
+    "expected":16592372.6500000004,
+    "dollars":0.11,
+    "detail":"The recovery is a policy-year event spread evenly across the policy year's months. Even spreading is a modeling choice and is named as one; summing to the filing exactly is not optional."
+  },
+  {
+    "check_id":"ASO-09",
+    "category":"ASO book",
+    "name":"CL-KELL 2025 rate set below truth",
+    "severity":"EXPECTED",
+    "passed":true,
+    "actual":11.62,
+    "expected":"8.0 to 18.0",
+    "dollars":null,
+    "detail":"The client was loaded under two group ids through an acquisition, so its spans overlap and the enrollment extract yields a denominator materially too large. The renewal was priced over that denominator. The deficit that follows looks like claims experience and is arithmetic."
+  },
+  {
+    "check_id":"ASO-10",
+    "category":"ASO book",
+    "name":"every other client's rate is clean",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":0.05,
+    "expected":"<= 0.5",
+    "dollars":null,
+    "detail":"Isolation matters as much as size. A denominator error spread evenly across the book is a scaling factor nobody has to find; one that lands on a single client is the kind that survives review and decides a renewal."
+  },
+  {
+    "check_id":"ASO-11",
+    "category":"ASO book",
+    "name":"the stop-loss layer has claimants in it",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":267,
+    "expected":">= 120",
+    "dollars":null,
+    "detail":null
+  },
+  {
+    "check_id":"ASO-12",
+    "category":"ASO book",
+    "name":"late filings are declined and cost the client",
+    "severity":"EXPECTED",
+    "passed":true,
+    "actual":19,
+    "expected":">= 5",
+    "dollars":1481247.51,
+    "detail":"A filing past the deadline is declined and the CLIENT, not the carrier, absorbs the claim. No report of recoveries a plan was entitled to will ever show it."
+  },
+  {
+    "check_id":"ASO-13",
+    "category":"ASO book",
+    "name":"some filings are claimed across two people",
+    "severity":"EXPECTED",
+    "passed":true,
+    "actual":4,
+    "expected":">= 1",
+    "dollars":116468.37,
+    "detail":"Filings assembled from the resolved-identity large claimant report sum every member id behind one master person. Where the MDM run OVER-matched - twins, a Jr\/Sr pair - that is two different people on one stop-loss claim, and it ties to the resolved identity perfectly, which is why nothing else catches it."
+  },
+  {
+    "check_id":"ASO-13b",
+    "category":"ASO book",
+    "name":"every over-claimed filing rolled up more than one member id",
+    "severity":"ERROR",
+    "passed":true,
+    "actual":4,
+    "expected":"all > 1",
+    "dollars":null,
+    "detail":"A MASTER_PERSON_ID filing that rolled up exactly one member id would be a mislabel rather than an over-claim."
+  },
+  {
+    "check_id":"ASO-13c",
+    "category":"ASO book",
+    "name":"entangled durable keys are reported separately, not as over-claims",
+    "severity":"INFO",
+    "passed":true,
+    "actual":"8 filings",
+    "expected":null,
+    "dollars":1219752.95,
+    "detail":"These filings are correctly scoped to one member whose durable key happens to carry two member ids. Worth routing to review; folding them into the over-claim figure overstates it roughly tenfold."
+  },
+  {
+    "check_id":"ASO-14",
+    "category":"ASO book",
+    "name":"the re-driven extract over-funded a client",
+    "severity":"EXPECTED",
+    "passed":true,
+    "actual":"163 weeks",
+    "expected":">= 1",
+    "dollars":1142263.5800000001,
+    "detail":"The funding system draws against the adjudication extract as it arrived. A duplicate-row count in a data quality report does not make anyone act. A wire does."
+  },
+  {
+    "check_id":"ASO-15",
+    "category":"ASO book",
+    "name":"the over-funding is material",
+    "severity":"EXPECTED",
+    "passed":true,
+    "actual":1142263.5800000001,
+    "expected":">= 250,000",
+    "dollars":null,
+    "detail":null
   }
 ]

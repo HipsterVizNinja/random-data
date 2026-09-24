@@ -19,10 +19,10 @@ The companion document, [data-trust-validation.md](data-trust-validation.md), is
 **Naive error**
 
 - **measure**: paid amount for service month 2024-07
-- **correct**: 17347289.86
-- **naive**: 19345434.31
-- **overstatement_dollars**: 1998144.45
-- **overstatement_pct**: 11.52
+- **correct**: 16792047.1
+- **naive**: 18793898.54
+- **overstatement_dollars**: 2001851.44
+- **overstatement_pct**: 11.92
 
 **Rows added:** 2,840
 
@@ -45,10 +45,10 @@ De-duplicate on (claim_number, claim_line_number, adjudication_seq), keeping the
 **Naive error**
 
 - **measure**: paid amount silently dropped by an inner join to the provider dimension
-- **dropped_dollars**: 462294.91
-- **site_paid_all_lines**: 2245667.77
-- **site_paid_after_inner_join**: 2059439.9
-- **site_understatement_pct**: 8.29
+- **dropped_dollars**: 471439.01
+- **site_paid_all_lines**: 3114940.15
+- **site_paid_after_inner_join**: 2909564.78
+- **site_understatement_pct**: 6.59
 
 **Rows affected:** 1,312
 
@@ -66,9 +66,9 @@ Resolve unmatched keys to the -1 Unknown dimension member and carry provider_res
 
 ## A12b — Null referring provider on referral orders
 
-3,782 referral orders (4.0%) have no referring provider recorded. Grouping leakage by referring provider silently excludes them.
+3,759 referral orders (4.0%) have no referring provider recorded. Grouping leakage by referring provider silently excludes them.
 
-**Rows affected:** 3,782
+**Rows affected:** 3,759
 
 **How to detect it**
 
@@ -86,14 +86,14 @@ A scheduling rule effective 2024-07-01 auto-closes ORTHO-NR referrals at day 30 
 
 **Measured**
 
-- **day30_closure_share_post_rule**: 0.6454
-- **day30_closure_share_pre_rule**: 0.0312
-- **day30_closure_share_other_sites**: 0.0315
-- **system_actor_share_at_site**: 0.6316
-- **confirmation_rate_at_site**: 0.3788
-- **confirmation_rate_other_sites**: 0.7224
-- **open_rate_at_site**: 0.0412
-- **open_rate_other_sites**: 0.1889
+- **day30_closure_share_post_rule**: 0.632
+- **day30_closure_share_pre_rule**: 0.0301
+- **day30_closure_share_other_sites**: 0.0329
+- **system_actor_share_at_site**: 0.6199
+- **confirmation_rate_at_site**: 0.3878
+- **confirmation_rate_other_sites**: 0.7194
+- **open_rate_at_site**: 0.0467
+- **open_rate_other_sites**: 0.1896
 
 **How to detect it**
 
@@ -111,10 +111,10 @@ ORTHO-NR sends most of its out-of-network volume to Summit Point, which still re
 
 **Measured**
 
-- **apparent_oon_rate_at_site**: 0.0645
-- **true_oon_rate_at_site**: 0.5397
-- **apparent_oon_rate_other_sites**: 0.1693
-- **true_oon_rate_other_sites**: 0.218
+- **apparent_oon_rate_at_site**: 0.0625
+- **true_oon_rate_at_site**: 0.5333
+- **apparent_oon_rate_other_sites**: 0.1723
+- **true_oon_rate_other_sites**: 0.2206
 - **rank_by_apparent_oon_best_is_1**: 1
 - **rank_by_true_oon_best_is_1**: 12
 - **sites_ranked**: 12
@@ -135,13 +135,13 @@ Never trust a directory field as a measure; derive it from the contract.
 
 **Measured**
 
-- **correct_paid_all_rows**: 611525380.08
-- **correct_paid_current_version**: 611475423.53
+- **correct_paid_all_rows**: 613283518.08
+- **correct_paid_current_version**: 613217924.68
 - **two_formulas_agree**: False
-- **orphan_reversal_dollars**: -146028.09
-- **naive_seq1_overstatement_pct**: 0.65
-- **naive_positive_only_overstatement_pct**: 5.8
-- **naive_drop_all_reversals_error_pct**: 0.02
+- **orphan_reversal_dollars**: -167825.5
+- **naive_seq1_overstatement_pct**: 0.61
+- **naive_positive_only_overstatement_pct**: 5.36
+- **naive_drop_all_reversals_error_pct**: 0.03
 
 **How to detect it**
 
@@ -162,7 +162,7 @@ The directory is maintained separately from the contract and nobody updates it. 
 - **sites_where_directory_disagrees_with_contract**: 1
 - **detail**
   - {'site_code': 'ASC-SUMMIT', 'referral_network_status': 'PAR', 'network_status': 'NONPAR', 'last_maintained_date': '2024-08-15'}
-- **referrals_sent_to_those_sites**: 9743
+- **referrals_sent_to_those_sites**: 9678
 
 **How to detect it**
 
@@ -186,9 +186,9 @@ A share of EHR records never resolve to a member. The loss skews toward ORTHO-NR
   - **UNMATCHED**: 0.0311
   - **PROBABILISTIC**: 0.019
 - **skew**
-  - **unmatched_rate_at_site**: 0.0557
-  - **unmatched_rate_elsewhere**: 0.0271
-  - **skew_factor**: 2.05
+  - **unmatched_rate_at_site**: 0.0568
+  - **unmatched_rate_elsewhere**: 0.0288
+  - **skew_factor**: 1.97
 
 **How to detect it**
 
@@ -209,9 +209,9 @@ Twins and Jr/Sr pairs matched on name, date of birth and address. They surface a
 - **master_persons_collapsing_multiple_people**: 33
 - **found_by_sex_mismatch_alone**: 18
 - **found_only_by_date_of_birth**: 15
-- **collapsed_persons_in_top_1pct_of_cost**: 7
-- **their_allowed_amount**: 8364357.45
-- **top_1pct_threshold_allowed**: 459227.87
+- **collapsed_persons_in_top_1pct_of_cost**: 11
+- **their_allowed_amount**: 9763317.11
+- **top_1pct_threshold_allowed**: 474181.13
 
 **How to detect it**
 
@@ -229,10 +229,10 @@ High-cost members are retro-terminated from attribution in exactly the months co
 
 **Measured**
 
-- **restated_member_months**: 784
-- **retro_terminated_members**: 167
-- **retro_terminated_member_months**: 224
-- **ordinary_churn_member_months**: 560
+- **restated_member_months**: 804
+- **retro_terminated_members**: 176
+- **retro_terminated_member_months**: 234
+- **ordinary_churn_member_months**: 570
 
 **How to detect it**
 
@@ -272,13 +272,13 @@ Bilateral procedures and same-day repeats produce near-identical rows distinguis
 
 **Measured**
 
-- **lines_distinguished_only_by_modifier**: 30460
-- **paid_at_risk_if_wrongly_deduplicated**: 25517881.28
+- **lines_distinguished_only_by_modifier**: 30681
+- **paid_at_risk_if_wrongly_deduplicated**: 25283948.99
 - **modifier_mix**
-  - **50**: 9031
-  - **RT**: 7221
-  - **LT**: 7113
-  - **76**: 7095
+  - **50**: 9133
+  - **RT**: 7195
+  - **76**: 7191
+  - **LT**: 7162
 
 **How to detect it**
 
@@ -297,14 +297,14 @@ Most sites emit OFFICE, four emit OFFICE VISIT, and one emits AMB - which has no
 **Measured**
 
 - **value_counts**
-  - **OFFICE**: 316337
-  - **OFFICE VISIT**: 164214
-  - **URGENT**: 36880
-  - **ED**: 23782
-  - **AMB**: 16755
-  - **INPATIENT**: 8609
+  - **OFFICE**: 313222
+  - **OFFICE VISIT**: 164767
+  - **URGENT**: 37253
+  - **ED**: 24488
+  - **AMB**: 17161
+  - **INPATIENT**: 8696
 - **unmapped_value**: AMB
-- **unmapped_share_of_ambulatory**: 0.0337
+- **unmapped_share_of_ambulatory**: 0.0347
 
 **How to detect it**
 
@@ -376,34 +376,34 @@ Claims absent from this extract are exactly the ones that had not adjudicated by
 **Measured**
 
 - **2025-07**
-  - **natural_lines**: 26597
-  - **retained_lines**: 26454
-  - **retained_share**: 0.9946
+  - **natural_lines**: 26551
+  - **retained_lines**: 26431
+  - **retained_share**: 0.9955
   - **designed_share**: 0.99
 - **2025-08**
-  - **natural_lines**: 26691
-  - **retained_lines**: 26419
-  - **retained_share**: 0.9898
+  - **natural_lines**: 27475
+  - **retained_lines**: 27182
+  - **retained_share**: 0.9893
   - **designed_share**: 0.99
 - **2025-09**
-  - **natural_lines**: 28722
-  - **retained_lines**: 28065
-  - **retained_share**: 0.9771
+  - **natural_lines**: 28584
+  - **retained_lines**: 27889
+  - **retained_share**: 0.9757
   - **designed_share**: 0.97
 - **2025-10**
-  - **natural_lines**: 29903
-  - **retained_lines**: 28085
-  - **retained_share**: 0.9392
+  - **natural_lines**: 30575
+  - **retained_lines**: 28658
+  - **retained_share**: 0.9373
   - **designed_share**: 0.94
 - **2025-11**
-  - **natural_lines**: 29413
-  - **retained_lines**: 23955
-  - **retained_share**: 0.8144
+  - **natural_lines**: 29517
+  - **retained_lines**: 24155
+  - **retained_share**: 0.8183
   - **designed_share**: 0.81
 - **2025-12**
-  - **natural_lines**: 41207
-  - **retained_lines**: 10971
-  - **retained_share**: 0.2662
+  - **natural_lines**: 41573
+  - **retained_lines**: 11148
+  - **retained_share**: 0.2682
   - **designed_share**: 0.27
 
 **How to detect it**

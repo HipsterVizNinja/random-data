@@ -610,16 +610,452 @@ def _chain_ladder(grid: pd.DataFrame) -> np.ndarray:
     return grid["lag_months"].map(completion).to_numpy()
 
 
+# ------------------------------------------------------------------ ASO layer
+
+# Fee components whose denominator is CONTRACTS rather than lives. Keeping
+# this as a set rather than a string comparison buried in an expression is
+# deliberate: the PEPM/PMPM distinction is the single most consequential
+# arithmetic decision in the ASO layer and it should be visible.
+PEPM_FEE_CODES = {"ADMIN"}
+FLAT_FEE_CODES = {"COBRA_ADMIN"}
+
+
+def build_aso_layer(dims: dict, facts: dict, t0) -> dict[str, pd.DataFrame]:
+    """The self-funded book: the client dimension, the contract, and the money.
+
+    Everything here is at CLIENT grain, not group grain, and that distinction
+    is the first thing this layer exists to enforce. An ASO contract is
+    written with a client; the enrollment feed carries group ids; and one
+    client in this book holds two group ids either side of an acquisition. A
+    settlement rolled up by group_id reports that client as two clients and
+    gets the fee, the denominator and the stop-loss accumulation wrong for
+    both of them.
+    """
+    out = {}
+
+    # ---- dim_employer_group. The group is the enrollment system's unit and
+    # the client is the contract's, so both live on the row and the app can
+    # join either way without re-deriving the mapping.
+    grp = read("raw_elig", "elig_employer_group")
+    grp = numeric(grp, ["enrollment_weight", "renewal_month"])
+    grp = boolean(grp, ["is_acquired"])
+    grp = grp.sort_values("group_id").reset_index(drop=True)
+    grp.insert(0, "employer_group_key", np.arange(1, len(grp) + 1))
+    out["dim_employer_group"] = _with_unknown_rows(
+        grp, "employer_group_key", {"group_id": "UNKNOWN"})
+
+    group_to_client = dict(zip(grp["group_id"], grp["client_id"]))
+    aso_clients = set(grp[grp["funding_type"] == "ASO"]["client_id"])
+
+    # ---- the contract layer, passed through and typed
+    contract = numeric(read("raw_aso", "aso_client_contract"),
+                       ["contract_year", "renewal_month",
+                        "trend_assumption_pct", "margin_pct",
+                        "expected_claims_pmpm",
+                        "expected_claims_pmpm_on_true_denominator",
+                        "prior_year_naive_member_months",
+                        "prior_year_true_member_months"])
+    out["aso_client_contract"] = contract
+    fees = numeric(read("raw_aso", "aso_fee_schedule"),
+                   ["contract_year", "fee_amount"])
+    fees = boolean(fees, ["is_pass_through"])
+    out["aso_fee_schedule"] = fees
+    policy = numeric(read("raw_aso", "aso_stop_loss_policy"),
+                     ["policy_year", "isl_deductible", "isl_coinsurance_pct",
+                      "asl_attachment_factor", "asl_attachment_pmpm",
+                      "asl_corridor_pct", "laser_deductible"])
+    policy = boolean(policy, ["has_aggregate_stop_loss",
+                              "asl_monthly_accommodation", "has_lasered_member"])
+    out["aso_stop_loss_policy"] = policy
+    rates = numeric(read("raw_aso", "aso_budget_rate"),
+                    ["contract_year", "tier_factor", "budget_rate_pepm",
+                     "projected_contract_months"])
+    out["aso_budget_rate"] = rates
+
+    # ---- both denominators, at client x month.
+    #
+    # The correct one comes from fct_member_month, which is the only sanctioned
+    # PMPM denominator in this mart. The naive one re-derives what the
+    # enrollment extract yields when spans are SUMMED rather than unioned, and
+    # it is here because the renewal rate in aso_client_contract was set over
+    # it. A layer that shipped only the right answer could assert the rate was
+    # mispriced; shipping both lets the app subtract.
+    mm = facts["fct_member_month"].copy()
+    mm["year_month"] = pd.to_numeric(mm["year_month"])
+    mm["member_months"] = pd.to_numeric(mm["member_months"])
+    mm["client_id"] = mm["group_id"].map(group_to_client)
+    spans = facts["fct_eligibility_span"]
+
+    sys.path.insert(0, str(ROOT / "Generators"))
+    import aso as ASO  # noqa: E402  - the naive denominator is defined once
+    naive = ASO.naive_member_months(spans)
+    naive["client_id"] = naive["group_id"].map(group_to_client)
+    naive_mm = naive.groupby(["client_id", "year_month"], as_index=False).agg(
+        naive_member_months=("naive_member_months", "sum"))
+
+    members = dims["dim_member"][["member_id", "subscriber_id", "person_code"]]
+    members = members[members["member_id"].notna()]
+    tiers = ASO.coverage_tier_months(mm, members)
+    tiers["client_id"] = tiers["group_id"].map(group_to_client)
+    tier_mm = tiers.groupby(
+        ["client_id", "year_month", "coverage_tier"], as_index=False).agg(
+        subscriber_months=("subscriber_months", "sum"))
+    out["fct_aso_contract_month"] = _contract_month(tier_mm, rates)
+
+    denom = (
+        mm.groupby(["client_id", "year_month"], as_index=False)
+        .agg(member_months=("member_months", "sum"),
+             members=("member_id", "nunique"))
+        .merge(naive_mm, on=["client_id", "year_month"], how="outer")
+        .merge(
+            tier_mm.groupby(["client_id", "year_month"], as_index=False)
+            .agg(subscriber_months=("subscriber_months", "sum")),
+            on=["client_id", "year_month"], how="left")
+    )
+    denom = denom[denom["client_id"].notna()]
+
+    # ---- claims at client x month, on an as-of join to the covering client
+    L = facts["fct_claim_line"]
+    asof = mm[["member_id", "year_month", "client_id"]].rename(
+        columns={"year_month": "service_year_month"})
+    cl = L.merge(asof, on=["member_id", "service_year_month"], how="left")
+    cl["client_id"] = cl["client_id"].fillna("UNATTRIBUTED")
+    claims = cl.groupby(
+        ["client_id", "service_year_month"], as_index=False).agg(
+        claim_lines=("claim_line_key", "size"),
+        billed_amount=("billed_amount", "sum"),
+        allowed_amount=("allowed_amount", "sum"),
+        paid_claims_amount=("paid_amount", "sum"),
+        deductible_amount=("deductible_amount", "sum"),
+        copay_amount=("copay_amount", "sum"),
+        coinsurance_amount=("coinsurance_amount", "sum"),
+        cob_amount=("cob_amount", "sum"),
+        contractual_writeoff_amount=("contractual_writeoff_amount", "sum"),
+    ).rename(columns={"service_year_month": "year_month"})
+
+    out["fct_aso_settlement_month"] = _settlement_month(
+        denom, claims, contract, fees, policy, dims["dim_date"], aso_clients)
+    out["fct_aso_stop_loss_claimant"] = _stop_loss_claimant(
+        dims, policy, group_to_client)
+    out["fct_aso_funding_week"] = _funding_week(cl, aso_clients)
+    log(f"aso layer: {len(out)} tables, "
+        f"{len(out['fct_aso_settlement_month']):,} client-months", t0)
+    return out
+
+
+def _contract_month(tier_mm: pd.DataFrame, rates: pd.DataFrame) -> pd.DataFrame:
+    """Client x month x coverage tier: contract-months and the budget they carry.
+
+    This is the PEPM denominator, and it is a table rather than a column
+    because the tier is what the rate card is priced on. Summing
+    budget_rate_pepm across tiers without weighting by contract-months is the
+    other half of the fee arithmetic this layer is built to make hard to get
+    wrong.
+    """
+    t = tier_mm.copy()
+    t["contract_year"] = t["year_month"] // 100
+    r = rates[["client_id", "contract_year", "coverage_tier", "tier_factor",
+               "budget_rate_pepm"]]
+    t = t.merge(r, on=["client_id", "contract_year", "coverage_tier"], how="left")
+    t["budget_amount"] = (
+        t["subscriber_months"] * t["budget_rate_pepm"]).round(2)
+    t["subscriber_months"] = t["subscriber_months"].round(4)
+    t = t.sort_values(["client_id", "year_month", "coverage_tier"])
+    t = t.reset_index(drop=True)
+    t.insert(0, "aso_contract_month_key", np.arange(1, len(t) + 1))
+    return t
+
+
+def _settlement_month(denom, claims, contract, fees, policy, date_dim,
+                      aso_clients) -> pd.DataFrame:
+    """Client x month. The table the app sits on.
+
+    Every fee is billed on the denominator its own basis names. PEPM
+    components multiply CONTRACT-months, PMPM components multiply
+    MEMBER-months, and the flat components are charged once a month. That is
+    the whole trick, and it is done here once so no workbook has to do it
+    fifteen times and get it right fourteen.
+
+    Net plan cost is stated the way a plan sponsor experiences it:
+
+        paid claims
+      - specific stop-loss reimbursement actually received
+      + administration, network, care management and stop-loss premium
+
+    Reimbursement RECEIVED rather than entitled, on purpose. A filing that
+    was declined for late submission is money the client did not get, and a
+    settlement built on entitlement quietly hands it back.
+    """
+    d = denom.copy()
+    d = d[d["client_id"].isin(aso_clients)]
+    df = d.merge(claims, on=["client_id", "year_month"], how="left")
+    money = ["claim_lines", "billed_amount", "allowed_amount",
+             "paid_claims_amount", "deductible_amount", "copay_amount",
+             "coinsurance_amount", "cob_amount", "contractual_writeoff_amount"]
+    df[money] = df[money].fillna(0.0)
+    df["contract_year"] = df["year_month"] // 100
+
+    # ---- fees, each on its own denominator.
+    #
+    # The effective date matters and is not decoration: two clients re-price
+    # in July and October, so a fee joined on contract_year alone bills their
+    # new rate from January. The join is therefore on the latest schedule row
+    # effective on or before the month.
+    f = fees.copy()
+    f["eff_ym"] = (pd.to_datetime(f["effective_date"])
+                   .dt.strftime("%Y%m").astype(int))
+    pieces = []
+    for code in sorted(f["fee_code"].unique()):
+        sub = f[f["fee_code"] == code][["client_id", "eff_ym", "fee_basis",
+                                        "fee_amount"]]
+        m = df[["client_id", "year_month"]].merge(sub, on="client_id", how="left")
+        m = m[m["eff_ym"] <= m["year_month"]]
+        m = (m.sort_values(["client_id", "year_month", "eff_ym"])
+             .groupby(["client_id", "year_month"], as_index=False).tail(1))
+        m = m.rename(columns={"fee_amount": f"rate_{code}",
+                              "fee_basis": f"basis_{code}"})
+        pieces.append(m[["client_id", "year_month", f"rate_{code}",
+                         f"basis_{code}"]])
+    for pc in pieces:
+        df = df.merge(pc, on=["client_id", "year_month"], how="left")
+
+    fee_cols = []
+    for code in sorted(f["fee_code"].unique()):
+        rate = df[f"rate_{code}"].fillna(0.0)
+        if code in PEPM_FEE_CODES:
+            amt = rate * df["subscriber_months"].fillna(0.0)
+        elif code in FLAT_FEE_CODES:
+            amt = rate * (df["member_months"].fillna(0.0) > 0).astype(float)
+        else:
+            amt = rate * df["member_months"].fillna(0.0)
+        df[f"fee_{code.lower()}_amount"] = amt.round(2)
+        fee_cols.append(f"fee_{code.lower()}_amount")
+    df["total_fee_amount"] = df[fee_cols].sum(axis=1).round(2)
+
+    # The same admin fee billed on the WRONG denominator. Shipped as a column
+    # rather than left to a workbook, because the point of the ASO layer is
+    # that the error is measurable, not that it is avoidable.
+    df["fee_admin_amount_on_member_months"] = (
+        df["rate_ADMIN"].fillna(0.0) * df["member_months"].fillna(0.0)).round(2)
+
+    # ---- stop-loss recoveries, by the month the claim was serviced
+    recov = _isl_by_month(policy)
+    df = df.merge(recov, on=["client_id", "year_month"], how="left")
+    for c in ("isl_reimbursement_entitled_amount",
+              "isl_reimbursement_received_amount", "isl_filings"):
+        df[c] = df[c].fillna(0.0)
+
+    # ---- budget and expected claims
+    ct = contract[["client_id", "contract_year", "expected_claims_pmpm",
+                   "expected_claims_pmpm_on_true_denominator", "rate_basis"]]
+    df = df.merge(ct, on=["client_id", "contract_year"], how="left")
+    df["expected_claims_amount"] = (
+        df["expected_claims_pmpm"] * df["member_months"]).round(2)
+    df["expected_claims_amount_repriced"] = (
+        df["expected_claims_pmpm_on_true_denominator"]
+        * df["member_months"]).round(2)
+
+    df["member_liability_amount"] = (
+        df["deductible_amount"] + df["copay_amount"]
+        + df["coinsurance_amount"]).round(2)
+    df["network_savings_amount"] = df["contractual_writeoff_amount"].round(2)
+    df["net_plan_cost_amount"] = (
+        df["paid_claims_amount"] - df["isl_reimbursement_received_amount"]
+        + df["total_fee_amount"]).round(2)
+    df["claims_variance_amount"] = (
+        df["paid_claims_amount"] - df["expected_claims_amount"]).round(2)
+    df["paid_claims_pmpm"] = np.where(
+        df["member_months"] > 0,
+        (df["paid_claims_amount"] / df["member_months"]).round(2), np.nan)
+    df["paid_claims_pmpm_naive_denominator"] = np.where(
+        df["naive_member_months"] > 0,
+        (df["paid_claims_amount"] / df["naive_member_months"]).round(2), np.nan)
+    df["net_plan_cost_pmpm"] = np.where(
+        df["member_months"] > 0,
+        (df["net_plan_cost_amount"] / df["member_months"]).round(2), np.nan)
+    df["admin_load_pct"] = np.where(
+        df["paid_claims_amount"] > 0,
+        (100 * df["total_fee_amount"] / df["paid_claims_amount"]).round(2),
+        np.nan)
+
+    # ---- completeness. Same guardrail the VBC layer uses, same reason: a
+    # paid-basis month at the right edge of the window is not a low month, it
+    # is an incomplete one, and a client shown a favourable December will ask
+    # why it reversed in March.
+    dd = date_dim[["year_month", "completion_factor_derived",
+                   "claims_runout_complete_flag"]].drop_duplicates("year_month")
+    dd["year_month"] = pd.to_numeric(dd["year_month"])
+    df = df.merge(dd, on="year_month", how="left")
+    cf = pd.to_numeric(df["completion_factor_derived"], errors="coerce")
+    df["incurred_estimate_amount"] = np.where(
+        cf > 0, (df["paid_claims_amount"] / cf).round(2),
+        df["paid_claims_amount"])
+    df["ibnr_estimate_amount"] = (
+        df["incurred_estimate_amount"] - df["paid_claims_amount"]).round(2)
+
+    for c in ("member_months", "naive_member_months", "subscriber_months"):
+        df[c] = df[c].round(4)
+    df["member_month_overstatement"] = (
+        df["naive_member_months"] - df["member_months"]).round(4)
+    df["funding_type"] = "ASO"
+    df = df.drop(columns=[c for c in df.columns if c.startswith("basis_")])
+    df = df.sort_values(["client_id", "year_month"]).reset_index(drop=True)
+    df.insert(0, "aso_settlement_month_key", np.arange(1, len(df) + 1))
+    return df
+
+
+def _isl_by_month(policy: pd.DataFrame) -> pd.DataFrame:
+    """Specific stop-loss recoveries spread to the months that caused them.
+
+    A filing is a POLICY-YEAR event and the settlement fact is monthly, so the
+    recovery has to be allocated. It is spread evenly across the policy year's
+    months, and that is a modeling choice rather than a truth: the honest
+    attribution would follow the catastrophic claim to its own month, which
+    the filing table does not carry. The property that matters holds - the
+    monthly column sums to the filing exactly - and the filing table is there
+    for anyone who needs the real timing.
+    """
+    fil = pd.read_csv(RAW / "raw_aso" / "aso_stop_loss_filing.csv.gz",
+                      dtype=str, keep_default_na=False, na_values=[""])
+    fil = numeric(fil, ["policy_year", "reimbursement_entitled_amount",
+                        "reimbursement_received_amount"])
+    pol = policy[["client_id", "policy_year", "policy_year_start_date",
+                  "policy_year_end_date"]]
+    fil = fil.merge(pol, on=["client_id", "policy_year"], how="left")
+    rows = []
+    for r in fil.itertuples():
+        months = pd.period_range(r.policy_year_start_date,
+                                 r.policy_year_end_date, freq="M")
+        n = len(months)
+        if not n:
+            continue
+        for pr in months:
+            rows.append({
+                "client_id": r.client_id,
+                "year_month": int(pr.strftime("%Y%m")),
+                "isl_reimbursement_entitled_amount":
+                    r.reimbursement_entitled_amount / n,
+                "isl_reimbursement_received_amount":
+                    r.reimbursement_received_amount / n,
+                "isl_filings": 1.0 / n,
+            })
+    if not rows:
+        return pd.DataFrame(columns=[
+            "client_id", "year_month", "isl_reimbursement_entitled_amount",
+            "isl_reimbursement_received_amount", "isl_filings"])
+    agg = pd.DataFrame(rows).groupby(
+        ["client_id", "year_month"], as_index=False).sum()
+    for c in ("isl_reimbursement_entitled_amount",
+              "isl_reimbursement_received_amount"):
+        agg[c] = agg[c].round(2)
+    agg["isl_filings"] = agg["isl_filings"].round(4)
+    return agg
+
+
+def _stop_loss_claimant(dims, policy, group_to_client) -> pd.DataFrame:
+    """Client x member x policy year, with the durable key on every row.
+
+    The durable key is the point. A filing built on the resolved identity
+    sums every member id behind one master person, and where the master data
+    management run over-matched - twins, a Jr/Sr pair - that is two people on
+    one stop-loss claim. Nothing in the filing announces it. Carrying
+    member_durable_key beside member_id is what makes the collapse countable:
+    a durable key with two member ids on a filing is the defect, and it is
+    one join away rather than a source-file archaeology exercise.
+    """
+    fil = pd.read_csv(RAW / "raw_aso" / "aso_stop_loss_filing.csv.gz",
+                      dtype=str, keep_default_na=False, na_values=[""])
+    fil = numeric(fil, ["policy_year", "member_ids_rolled_up",
+                        "isl_deductible", "effective_isl_deductible",
+                        "isl_coinsurance_pct", "policy_year_paid_amount",
+                        "covered_paid_amount", "amount_over_deductible",
+                        "reimbursement_entitled_amount",
+                        "reimbursement_received_amount"])
+    fil = boolean(fil, ["is_lasered"])
+
+    mem = dims["dim_member"][["member_key", "member_id", "member_durable_key",
+                             "line_of_business", "risk_score"]]
+    fil = fil.merge(mem, on="member_id", how="left")
+    fil["member_key"] = fil["member_key"].fillna(UNKNOWN_KEY)
+    fil["member_resolution_status"] = np.where(
+        fil["member_durable_key"].notna(), "MATCHED", "ORPHAN_SOURCE_VALUE")
+
+    # How many member ids the mart itself sees behind this durable key. Not a
+    # flag saying "this is wrong" - a count, which is what the data supports.
+    behind = (mem[mem["member_durable_key"].notna()]
+              .groupby("member_durable_key", as_index=False)
+              .agg(member_ids_on_durable_key=("member_id", "nunique")))
+    fil = fil.merge(behind, on="member_durable_key", how="left")
+    fil["member_ids_on_durable_key"] = (
+        fil["member_ids_on_durable_key"].fillna(1).astype(int))
+
+    fil["reimbursement_shortfall_amount"] = (
+        fil["reimbursement_entitled_amount"]
+        - fil["reimbursement_received_amount"]).round(2)
+    fil["days_to_file"] = (
+        pd.to_datetime(fil["filed_date"])
+        - pd.to_datetime(fil["filing_deadline_date"])).dt.days
+    fil["is_late_filing"] = fil["days_to_file"] > 0
+    fil = fil.sort_values(["client_id", "policy_year", "member_id"])
+    fil = fil.reset_index(drop=True)
+    fil.insert(0, "aso_stop_loss_claimant_key", np.arange(1, len(fil) + 1))
+    return fil
+
+
+def _funding_week(cl: pd.DataFrame, aso_clients) -> pd.DataFrame:
+    """Client x funding week: what was drawn, against what the mart holds.
+
+    The request came off the adjudication extract as landed. This recomputes
+    the same week from the DE-DUPLICATED mart and puts the two side by side.
+    Where an extract was re-driven the client was funded for claim lines that
+    do not exist, and the variance is the amount of real money that moved for
+    no reason. A duplicate-row count in a data quality report does not make
+    anyone act. A wire does.
+    """
+    req = pd.read_csv(RAW / "raw_aso" / "aso_funding_request.csv.gz",
+                      dtype=str, keep_default_na=False, na_values=[""])
+    req = numeric(req, ["claims_funded_amount", "claim_lines_funded",
+                        "requested_amount", "wire_amount", "variance_amount",
+                        "days_to_wire"])
+
+    d = cl[cl["client_id"].isin(aso_clients)][
+        ["client_id", "paid_date", "paid_amount", "claim_line_key"]].copy()
+    d["paid"] = pd.to_datetime(d["paid_date"])
+    offset = (d["paid"].dt.weekday - C.ASO_FUNDING_DAY_OF_WEEK) % 7
+    d["funding_week_end"] = (
+        d["paid"] + pd.to_timedelta(6 - offset, unit="D")).dt.date.astype(str)
+    recon = d.groupby(["client_id", "funding_week_end"], as_index=False).agg(
+        reconciled_paid_amount=("paid_amount", "sum"),
+        reconciled_claim_lines=("claim_line_key", "size"))
+    recon["reconciled_paid_amount"] = recon["reconciled_paid_amount"].round(2)
+
+    out = req.merge(recon, on=["client_id", "funding_week_end"], how="left")
+    out[["reconciled_paid_amount", "reconciled_claim_lines"]] = out[
+        ["reconciled_paid_amount", "reconciled_claim_lines"]].fillna(0.0)
+    out["overfunded_amount"] = (
+        out["claims_funded_amount"] - out["reconciled_paid_amount"]).round(2)
+    out["overfunded_claim_lines"] = (
+        out["claim_lines_funded"] - out["reconciled_claim_lines"]).astype(int)
+    out["funding_week_year_month"] = (
+        pd.to_datetime(out["funding_week_end"]).dt.strftime("%Y%m").astype(int))
+    out = out.sort_values(["client_id", "funding_week_end"])
+    out = out.reset_index(drop=True)
+    return out
+
+
 def main() -> int:
     t0 = time.time()
     print("\nBuilding conformed and dimensional layer")
     dims = build_dimensions(t0)
     facts = build_facts(dims, t0)
     contract = build_contract_layer(dims, facts, t0)
+    # The ASO layer runs after the contract layer because it consumes the
+    # derived completion factor that layer hangs on dim_date.
+    aso = build_aso_layer(dims, facts, t0)
     serve = build_serving(dims, facts, t0)
 
     entries = []
-    for group in (dims, facts, contract, serve):
+    for group in (dims, facts, contract, aso, serve):
         for name, df in group.items():
             entries.append(W.write_table(df, MART / f"{name}.csv.gz", name))
     total = sum(e["rows"] for e in entries)

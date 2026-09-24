@@ -31,6 +31,13 @@ hospitals, twelve ambulatory clinic groups, roughly 48,000 attributed lives
 under two risk contracts with **Meridian Health Plan** (one Medicare
 Advantage, one commercial HMO).
 
+Meridian also administers seventeen employer groups, nine of them
+**self-funded** - about 61% of the commercial book. Those nine buy
+administration, network access and stop-loss cover from Meridian and fund
+their claims dollar for dollar out of their own accounts, which is a different
+business with a different scoreboard: fees, funding, stop-loss recoveries and
+actual-versus-expected against a rate somebody set a year ago.
+
 Northlake is financially accountable for a patient panel whose care it can see
 about 60% of. The EHR knows every referral placed and nothing about whether it
 landed. The payer file knows every dollar but arrives 90 days late under a
@@ -64,6 +71,22 @@ split, quality gate, high-cost truncation), and claims completeness is
 *derived* by chain ladder in `fct_claims_lag_triangle` rather than asserted.
 Those four tables are what let a settlement number arrive with an as-of date,
 a denominator and a completeness treatment attached instead of on its own.
+
+For the **administrative-services (ASO)** questions there is a third entry
+point: `Mart/fct_aso_settlement_month.csv.gz`, one row per self-funded client
+per month, carrying both denominators, every fee on the denominator its own
+basis names, stop-loss recovery *received* rather than entitled, and the
+completion factor. Beside it sit the contract (`aso_client_contract`), the fee
+schedule (`aso_fee_schedule`), the stop-loss policy (`aso_stop_loss_policy`),
+the rate card (`aso_budget_rate`), the claimants (`fct_aso_stop_loss_claimant`)
+and the weekly cash (`fct_aso_funding_week`).
+
+Three things in that layer are awkward on purpose, each the way a real ASO
+book is awkward: the administration fee is per *employee* per month while the
+network fee is per *member* per month and the two denominators differ by about
+2.1x; one client's renewal was priced over a denominator its own enrollment
+feed double counted; and two clients' stop-loss policy years do not line up
+with the benefit year the rest of the mart aggregates on.
 
 For the schema itself, read
 [Deliverables/data-mart-manifest.pdf](Deliverables/data-mart-manifest.pdf):
@@ -107,6 +130,7 @@ surnames, twins, Jr/Sr pairs — which it cannot produce.
 
 ```
 Generators/     source-system generators, one module per system
+                (aso.py is the ASO administration and finance system)
 Build/          build_mart.py - the conformed and dimensional layer
 Source Data/    the five landed source systems, gzipped CSV
 Mart/           conformed dimensions, facts, and the wide serving view

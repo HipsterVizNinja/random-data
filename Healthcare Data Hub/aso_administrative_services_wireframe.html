@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Administrative Services Only</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#EDEFF2; --surface:#FFFFFF; --panel:#F5F7F9; --sunken:#E5E9ED;
+  --rule:#D6DCE3; --rule-strong:#B7C1CC;
+  --ink:#0D1319; --ink-2:#55616D; --ink-3:#7D8996;
+  --accent:#12557F; --accent-ink:#FFFFFF; --accent-soft:#DDEAF3;
+  /* data series - validated reference palette, light steps */
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+  --gain:#2a78d6; --loss:#e34948; --mid:#f0efec;
+  --good:#0ca30c; --warn:#fab219; --crit:#d03b3b;
+  --grid:#E1E5EA; --axis:#C3CAD2;
+  --shadow:0 1px 2px rgba(13,19,25,.05), 0 10px 28px -16px rgba(13,19,25,.28);
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --ui:"Archivo","IBM Plex Sans",-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0A0E12; --surface:#141A18; --panel:#181F23; --sunken:#0F1417;
+    --rule:#262F36; --rule-strong:#3A4750;
+    --ink:#E7EDF2; --ink-2:#9AA6B2; --ink-3:#78848F;
+    --accent:#59A8DA; --accent-ink:#06202E; --accent-soft:#16303F;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+    --gain:#3987e5; --loss:#e66767; --mid:#383835;
+    --grid:#232B31; --axis:#38434B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0A0E12; --surface:#141A18; --panel:#181F23; --sunken:#0F1417;
+  --rule:#262F36; --rule-strong:#3A4750;
+  --ink:#E7EDF2; --ink-2:#9AA6B2; --ink-3:#78848F;
+  --accent:#59A8DA; --accent-ink:#06202E; --accent-soft:#16303F;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+  --gain:#3987e5; --loss:#e66767; --mid:#383835;
+  --grid:#232B31; --axis:#38434B;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -16px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--ui);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-.01em}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0}
+
+/* ---------- chrome ---------- */
+.app{display:grid;grid-template-columns:216px minmax(0,1fr) 340px;grid-template-rows:auto auto auto 1fr;min-height:100vh;
+     grid-template-areas:"brand topbar topbar" "rail ctrl ctrl" "rail trust trust" "rail main dock"}
+.brand{grid-area:brand;display:flex;align-items:center;gap:9px;padding:14px 16px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);background:var(--surface)}
+.mark{width:22px;height:22px;flex:none;border-radius:4px;background:var(--accent);position:relative}
+.mark::before{content:"";position:absolute;left:5px;top:10px;width:12px;height:2px;background:var(--accent-ink)}
+.mark::after{content:"";position:absolute;left:10px;top:5px;width:2px;height:12px;background:var(--accent-ink)}
+.brand b{font-family:var(--ui);font-size:12.5px;font-weight:700;letter-spacing:-.01em;line-height:1.15;display:block}
+.brand span span{font-size:10px;color:var(--ink-3);letter-spacing:.04em}
+.topbar{grid-area:topbar;display:flex;align-items:center;gap:12px;padding:10px 18px;background:var(--surface);border-bottom:1px solid var(--rule)}
+.viewer{display:flex;align-items:center;gap:9px;margin-right:auto;min-width:0}
+.avatar{width:26px;height:26px;flex:none;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-family:var(--ui);font-size:10.5px;font-weight:700}
+.viewer-txt b{font-family:var(--ui);font-size:12.5px;font-weight:600;display:block;line-height:1.25}
+.viewer-txt span{font-size:10.5px;color:var(--ink-3)}
+.rls{font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-soft);padding:1px 5px;border-radius:3px;white-space:nowrap}
+.tbtn{display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--rule);border-radius:5px;font-family:var(--ui);font-size:11.5px;font-weight:500;color:var(--ink-2);white-space:nowrap}
+.tbtn:hover{border-color:var(--rule-strong);color:var(--ink)}
+.tbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.dot-sm{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
+.tbtn[aria-pressed="true"] .dot-sm{opacity:1}
+.rail{grid-area:rail;background:var(--surface);border-right:1px solid var(--rule);padding:14px 10px;display:flex;flex-direction:column;gap:2px;position:sticky;top:0;align-self:start;max-height:100vh;overflow-y:auto}
+.rail .eyebrow{padding:0 8px 7px}
+.navitem{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:7px 9px;border-radius:6px;font-family:var(--ui);font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.navitem:hover{background:var(--panel);color:var(--ink)}
+.navitem[aria-current="page"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.navnum{font-family:var(--mono);font-size:10px;color:var(--ink-3);width:14px;flex:none}
+.navitem[aria-current="page"] .navnum{color:var(--accent)}
+.railfoot{margin-top:auto;padding:11px 9px 0;border-top:1px solid var(--rule);font-size:10.5px;color:var(--ink-3);line-height:1.5}
+.railfoot code{font-family:var(--mono);font-size:9.5px;color:var(--ink-2);display:inline-block;margin:2px 4px 0 0;background:var(--sunken);padding:1px 4px;border-radius:3px}
+.ctrl{grid-area:ctrl;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:9px 18px;background:var(--panel);border-bottom:1px solid var(--rule)}
+.ctrl-lab{font-family:var(--ui);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ctl{display:flex;align-items:center;gap:7px;padding:4px 9px;background:var(--surface);border:1px solid var(--rule);border-radius:5px;font-size:12px;white-space:nowrap}
+.ctl em{font-style:normal;font-size:10px;color:var(--ink-3);font-family:var(--ui);letter-spacing:.03em;text-transform:uppercase}
+.ctl b{font-weight:500;font-family:var(--mono);font-size:11.5px}
+.ctl::after{content:"";width:0;height:0;border:3.5px solid transparent;border-top-color:var(--ink-3);margin-top:3px}
+.ctl:hover{border-color:var(--rule-strong)}
+.ctl.on{border-color:var(--accent);background:var(--accent-soft)}
+.ctl.on b,.ctl.on em{color:var(--accent)}
+
+/* the definition toggle - the demo beat */
+.deftog{display:flex;align-items:stretch;border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;margin-left:auto;background:var(--surface)}
+.deftog>span{display:flex;align-items:center;padding:0 9px;font-family:var(--ui);font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);background:var(--sunken);border-right:1px solid var(--rule)}
+.deftog button{padding:5px 11px;font-family:var(--ui);font-size:11.5px;font-weight:500;color:var(--ink-2)}
+.deftog button+button{border-left:1px solid var(--rule)}
+.deftog button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+
+/* trust header */
+.trust{grid-area:trust;display:flex;flex-wrap:wrap;gap:0;padding:0;background:var(--surface);border-bottom:1px solid var(--rule);font-size:11px}
+.tcell{padding:7px 14px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:1px;min-width:0}
+.tcell i{font-style:normal;font-family:var(--ui);font-size:9px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.tcell b{font-family:var(--mono);font-size:11.5px;font-weight:500;white-space:nowrap}
+.tcell.flag b{color:var(--crit)}
+.main{grid-area:main;padding:18px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.dock{grid-area:dock;background:var(--surface);border-left:1px solid var(--rule);display:flex;flex-direction:column;position:sticky;top:0;align-self:start;height:100vh;min-height:0}
+
+/* ---------- panels ---------- */
+.panel{background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.panel-hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 14px 10px}
+.panel-hd h3{font-size:13.5px}
+.panel-hd .sub{font-size:11.5px;color:var(--ink-3);margin-right:auto}
+.panel-bd{padding:0 14px 14px}
+.page-hd{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.crumb{font-size:11.5px;color:var(--ink-3);margin:0 0 3px}
+.crumb b{color:var(--ink-2);font-weight:500}
+.page-hd h2{font-size:19px}
+.page-hd p{margin:4px 0 0;font-size:12.5px;color:var(--ink-2);max-width:66ch}
+.note,.note-top{font-size:11px;line-height:1.55;color:var(--ink-3);margin:0;padding:9px 14px;border-top:1px solid var(--rule);background:var(--panel)}
+.note b{color:var(--ink-2);font-weight:600}
+.note-top{border:1px solid var(--rule);border-left:2px solid var(--accent);border-radius:6px;padding:9px 12px;background:var(--panel)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:10.5px;color:var(--ink-2)}
+.legend span{display:flex;align-items:center;gap:5px}
+.swatch{width:9px;height:9px;border-radius:2px;flex:none}
+
+/* kpis */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:11px 13px}
+.kpi .eyebrow{margin-bottom:5px}
+.kpi .v{font-family:var(--ui);font-size:23px;font-weight:600;letter-spacing:-.02em;line-height:1.1;font-variant-numeric:proportional-nums}
+.kpi .d{font-size:11px;color:var(--ink-3);margin-top:3px}
+.kpi .d b{font-weight:600}
+.kpi.hero{border-color:var(--accent);background:var(--accent-soft)}
+.kpi.hero .v{color:var(--accent);font-size:26px}
+.kpi.alarm{border-left:2px solid var(--crit)}
+
+/* tables */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:6px 8px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule)}
+th{font-family:var(--ui);font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:right;position:sticky;top:0;background:var(--surface);z-index:1}
+th:first-child,td:first-child{text-align:left}
+#scoreTbl th:nth-child(2),#scoreTbl td:nth-child(2){text-align:left}
+#scoreTbl th,#scoreTbl td{padding:6px 5px}
+#scoreTbl td:nth-child(2){max-width:180px;overflow:hidden;text-overflow:ellipsis}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums}
+tbody tr:hover{background:var(--panel)}
+tbody tr.hl{background:var(--accent-soft)}
+tbody tr.hl td{font-weight:600}
+tr.clickable{cursor:pointer}
+.tag{font-family:var(--mono);font-size:9.5px;padding:1px 5px;border-radius:3px;background:var(--sunken);color:var(--ink-2)}
+.tag.bad{background:color-mix(in srgb,var(--crit) 16%,transparent);color:var(--crit)}
+.tag.ok{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.tag.warn{background:color-mix(in srgb,var(--warn) 22%,transparent);color:var(--ink-2)}
+.mv{display:inline-flex;align-items:center;gap:3px;font-family:var(--mono);font-size:11px}
+.mv.up{color:var(--good)} .mv.dn{color:var(--crit)}
+
+/* stacked domain bar */
+.stk{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--sunken);min-width:92px}
+.stk i{display:block;height:100%;box-shadow:2px 0 0 var(--surface)}
+.stk i:last-child{box-shadow:none}
+
+/* dot plot */
+.dotrow{display:grid;grid-template-columns:132px 1fr 62px;align-items:center;gap:10px;padding:5px 0}
+.dotrow>.lab{font-size:11.5px;color:var(--ink-2)}
+.dotband{position:relative;height:22px;border-radius:4px;background:var(--panel)}
+.dotband .ax{position:absolute;inset:auto 0 50% 0;height:1px;background:var(--grid)}
+.dotband .pd{position:absolute;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--ink-3);opacity:.45}
+.dotband .me{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;box-shadow:0 0 0 2px var(--surface)}
+.dotband .mean{position:absolute;top:3px;bottom:3px;width:1px;background:var(--axis)}
+.dotrow>.val{font-family:var(--mono);font-size:11.5px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* diverging bars */
+.dvg{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:center;padding:3px 0}
+.dvg>.lab{font-size:11.5px;color:var(--ink-2);text-align:right}
+.dvbar{position:relative;height:18px}
+.dvbar .zero{position:absolute;top:0;bottom:0;width:1px;background:var(--axis)}
+.dvbar i{position:absolute;top:3px;height:12px;border-radius:0}
+.dvbar i.pos{border-radius:0 4px 4px 0;background:var(--gain)}
+.dvbar i.neg{border-radius:4px 0 0 4px;background:var(--loss)}
+.dvbar span:not(.zero){position:absolute;top:1px;font-family:var(--mono);font-size:10.5px;color:var(--ink-2);line-height:16px;white-space:nowrap}
+
+/* grouped column chart */
+.cols{display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:14px}
+.colgrp{flex:1;display:flex;align-items:flex-end;justify-content:center;gap:2px;height:100%;position:relative}
+.colgrp i{width:11px;border-radius:4px 4px 0 0;display:block}
+.colax{display:flex;gap:6px;margin-top:5px}
+.colax span{flex:1;text-align:center;font-family:var(--mono);font-size:9.5px;color:var(--ink-3)}
+.collab{position:absolute;top:-13px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-2)}
+
+.chart{position:relative}
+svg{display:block;width:100%;overflow:visible}
+.tip{position:fixed;z-index:60;pointer-events:none;opacity:0;transition:opacity .08s;background:var(--surface);border:1px solid var(--rule-strong);border-radius:6px;box-shadow:var(--shadow);padding:8px 10px;font-size:11.5px;min-width:150px}
+.tip.on{opacity:1}
+.tip h5{font-family:var(--ui);font-size:11.5px;font-weight:600;margin:0 0 5px}
+.tip .row{display:flex;justify-content:space-between;gap:14px;padding:1px 0}
+.tip .row i{font-style:normal;color:var(--ink-3);display:flex;align-items:center;gap:5px}
+.tip .row span{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* dock */
+.dock-hd{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:8px}
+.dock-hd h4{font-size:12.5px;margin-right:auto}
+.dock-bd{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:11px;min-height:0}
+.msg{font-size:12px;line-height:1.55}
+.msg.q{background:var(--accent-soft);color:var(--accent);padding:7px 10px;border-radius:8px 8px 2px 8px;align-self:flex-end;max-width:88%;font-weight:500}
+.msg.a{background:var(--panel);border:1px solid var(--rule);padding:9px 11px;border-radius:8px 8px 8px 2px}
+.msg.a b{font-weight:600}
+.msg.a code{font-family:var(--mono);font-size:10.5px;background:var(--sunken);padding:1px 4px;border-radius:3px}
+.lineage{margin-top:7px;padding-top:7px;border-top:1px dashed var(--rule-strong);font-size:10.5px;color:var(--ink-3);line-height:1.6}
+.lineage code{font-family:var(--mono);font-size:9.5px;overflow-wrap:anywhere}
+.msg.a code{overflow-wrap:anywhere}
+.dock-ft{padding:11px 14px;border-top:1px solid var(--rule)}
+.ask{width:100%;padding:7px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--panel);font-size:12px;color:var(--ink-3)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.chip{font-size:10.5px;padding:3px 8px;border:1px solid var(--rule);border-radius:20px;color:var(--ink-2)}
+.chip:hover{border-color:var(--accent);color:var(--accent)}
+
+/* build notes */
+body.notes .note,body.notes .note-top{display:block}
+.note,.note-top{display:none}
+.callout{border:1px solid var(--rule);border-left:2px solid var(--crit);border-radius:6px;background:var(--panel);padding:11px 13px;font-size:12px;line-height:1.6;color:var(--ink-2)}
+.callout b{color:var(--ink);font-weight:600}
+.callout h4{font-size:12.5px;margin-bottom:5px;color:var(--ink)}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;padding:1px 6px;border-radius:3px;background:var(--sunken);color:var(--ink-2);margin-right:4px}
+.sup{font-size:11px;color:var(--ink-3);padding:7px 0 0}
+@media (max-width:1240px){
+  .app{grid-template-columns:216px minmax(0,1fr);grid-template-areas:"brand topbar" "rail ctrl" "rail trust" "rail main";}
+  .dock{display:none}
+}
+@media (max-width:760px){
+  .app{grid-template-columns:minmax(0,1fr);grid-template-areas:"brand" "topbar" "ctrl" "trust" "rail" "main"}
+  .rail{position:static;max-height:none;flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--rule)}
+  .rail .eyebrow,.railfoot{display:none}
+  .main{padding:14px}
+  .deftog{margin-left:0;width:100%}
+}
+/* ---------- ASO additions ---------- */
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.wide{grid-column:1/-1}
+.stack{display:flex;flex-direction:column;gap:16px}
+.note-ok{border-left-color:var(--good)}
+.note-warn{border-left-color:var(--warn)}
+.basis{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.04em;padding:1px 5px;border-radius:3px;white-space:nowrap}
+.basis.pepm{background:var(--accent-soft);color:var(--accent)}
+.basis.pmpm{background:var(--sunken);color:var(--ink-2)}
+.basis.flat{background:var(--sunken);color:var(--ink-3)}
+.stat{display:flex;align-items:baseline;gap:7px}
+.stat b{font-family:var(--ui);font-size:15px;font-weight:600}
+.stat em{font-style:normal;font-size:10.5px;color:var(--ink-3)}
+.defn{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:11.5px}
+.defn dt{color:var(--ink-3)}
+.defn dd{margin:0;font-family:var(--mono);font-size:11px}
+.flag{display:inline-flex;align-items:center;gap:4px;font-family:var(--ui);font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border-radius:3px}
+.flag.crit{background:color-mix(in srgb,var(--crit) 14%,transparent);color:var(--crit)}
+.flag.warn{background:color-mix(in srgb,var(--warn) 20%,transparent);color:#8a6100}
+.flag.good{background:color-mix(in srgb,var(--good) 14%,transparent);color:var(--good)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .flag.warn{color:var(--warn)}}
+:root[data-theme="dark"] .flag.warn{color:var(--warn)}
+.unscored{fill:var(--sunken)}
+.axlab{font-family:var(--ui);font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;fill:var(--ink-3)}
+.tickl{font-family:var(--mono);font-size:9.5px;fill:var(--ink-3)}
+.dlab{font-family:var(--mono);font-size:10px;font-weight:600;fill:var(--ink-2)}
+.hint{font-size:11px;color:var(--ink-3);line-height:1.55;margin:0}
+.hint code{font-family:var(--mono);font-size:10.5px;background:var(--sunken);padding:1px 4px;border-radius:3px}
+.tablink{font-family:var(--ui);font-size:11px;font-weight:600;color:var(--accent)}
+.clientsel{display:flex;flex-wrap:wrap;gap:5px}
+.clientsel button{font-family:var(--ui);font-size:11px;font-weight:500;padding:4px 9px;border:1px solid var(--rule);border-radius:20px;color:var(--ink-2)}
+.clientsel button:hover{border-color:var(--rule-strong);color:var(--ink)}
+.clientsel button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+@media (max-width:1180px){
+  .app{grid-template-columns:minmax(0,1fr);
+       grid-template-areas:"brand" "topbar" "rail" "ctrl" "trust" "main" "dock"}
+  .rail{position:static;max-height:none;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--rule)}
+  .dock{position:static;height:auto;border-left:0;border-top:1px solid var(--rule)}
+  .railfoot{display:none}
+}
+/* Phone. The skeleton above is a three-column analyst layout, so at this width
+   the job is to stop anything forcing a min-width wider than the screen. Only
+   the trust strip and the tables are allowed to scroll sideways, each inside
+   its own container, so the page body never does. */
+@media (max-width:640px){
+  .app,.main,.pageview,.panel,.panel-bd,.kpi,.chart{min-width:0}
+  .main{padding:14px 16px;gap:14px}
+  .topbar{flex-wrap:wrap;padding:10px 16px}
+  .viewer{margin-right:0;flex:1 1 100%}
+  .viewer-txt{min-width:0}
+  .viewer-txt span{white-space:normal}
+  .ctrl{padding:9px 16px}
+  .trust{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+  .tcell{flex:0 0 auto}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:8px}
+  .kpi .v{font-size:20px}
+  .kpi.hero .v{font-size:22px}
+  .grid2,.grid3{grid-template-columns:minmax(0,1fr)}
+  .page-hd h2{font-size:19px}
+  .panel-hd{padding:11px 12px 9px}
+  .panel-bd{padding:0 12px 12px}
+  .clientsel button{font-size:10.5px;padding:3px 8px}
+  .deftog{flex:1 1 100%}
+  /* svg keeps its aspect ratio from the viewBox and scales to the panel */
+  svg{max-width:100%;height:auto}
+}
+</style>
+</head>
+<body data-palette="#2a78d6,#eb6834,#1baf7a,#eda100,#e87ba4">
+<div class="app">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <span><b>ASO Book</b><span>Meridian Health Plan · Sigma</span></span>
+  </div>
+
+  <header class="topbar">
+    <div class="viewer">
+      <span class="avatar">DR</span>
+      <span class="viewer-txt">
+        <b>Dana Reyes</b>
+        <span>VP, Administrative Services &nbsp;·&nbsp; book owner</span>
+      </span>
+      <span class="rls">RLS: all 9 clients</span>
+    </div>
+    <button class="tbtn" id="notesBtn" aria-pressed="false"><span class="dot-sm"></span>Build notes</button>
+    <button class="tbtn" id="themeBtn">Theme</button>
+    <button class="tbtn" id="dockBtn" aria-pressed="true"><span class="dot-sm"></span>Assistant</button>
+  </header>
+
+  <nav class="rail" aria-label="Workbook pages">
+    <p class="eyebrow">Workbook pages</p>
+    <button class="navitem" data-page="book" aria-current="page"><span class="navnum">01</span>Book of Business</button>
+    <button class="navitem" data-page="client"><span class="navnum">02</span>Client Detail</button>
+    <button class="navitem" data-page="rate"><span class="navnum">03</span>Rate Adequacy</button>
+    <button class="navitem" data-page="sl"><span class="navnum">04</span>Stop-Loss</button>
+    <button class="navitem" data-page="cash"><span class="navnum">05</span>Funding &amp; Cash</button>
+    <button class="navitem" data-page="recon"><span class="navnum">06</span>Enrollment Recon</button>
+    <div class="railfoot">
+      Wireframe · CY2024 complete<br>
+      Model <code>Meridian ASO</code><br>
+      <code>fct_aso_settlement_month</code> <code>fct_aso_contract_month</code> <code>aso_client_contract</code> <code>fct_aso_stop_loss_claimant</code> <code>fct_aso_funding_week</code>
+    </div>
+  </nav>
+
+  <div class="ctrl">
+    <span class="ctrl-lab">Controls</span>
+    <button class="ctl on" id="ctlYear"><em>Contract year</em><b>CY2024</b></button>
+    <button class="ctl"><em>Window</em><b id="ctlWin">2024-01 → 2024-12</b></button>
+    <button class="ctl"><em>Funding</em><b>ASO only</b></button>
+    <button class="ctl"><em>Client</em><b id="ctlClient">All (9)</b></button>
+    <button class="ctl"><em>Sector</em><b>All</b></button>
+    <div class="deftog" role="group" aria-label="Fee denominator">
+      <span>Admin fee denominator</span>
+      <button id="denMm" aria-pressed="false">Member-months</button>
+      <button id="denCm" aria-pressed="true">Contract-months</button>
+    </div>
+  </div>
+
+  <div class="trust" id="trustHdr"></div>
+
+  <main class="main">
+
+    <!-- 01 BOOK OF BUSINESS -->
+    <section class="pageview" id="page-book">
+      <div class="page-hd"><div>
+        <p class="crumb">Meridian Health Plan <b>· administrative services · nine self-funded clients</b></p>
+        <h2>Book of business</h2>
+      </div></div>
+      <p class="hint">Self-funded clients pay Meridian to administer a plan it does not insure, and fund
+        every claim dollar themselves. Aggregation is on <code>client_id</code>, never
+        <code>group_id</code> — one client holds two group ids either side of an acquisition.</p>
+      <div class="kpis" id="bookKpis"></div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Net plan cost and rate adequacy by client</h3>
+          <span class="sub">CY2024 complete · sorted by net plan cost · click a row for client detail</span></div>
+        <div class="panel-bd tbl-wrap"><table id="bookTbl"></table></div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Cost against budget</h3>
+            <span class="sub">Paid PMPM vs claims variance · area ∝ member-months</span></div>
+          <div class="panel-bd"><div class="chart" id="scatterChart"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Fee load by client</h3>
+            <span class="sub">Administration, network, care management and stop-loss premium, as % of paid claims</span></div>
+          <div class="panel-bd"><div class="chart" id="loadChart"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 CLIENT DETAIL -->
+    <section class="pageview" id="page-client" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Client detail <b>· parameterised · <span id="clientCrumb"></span></b></p>
+        <h2 id="clientName">—</h2>
+      </div></div>
+      <div class="clientsel" id="clientSel"></div>
+      <div class="kpis" id="clientKpis"></div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Cost waterfall</h3>
+          <span class="sub" id="wfSub">CY2024 · billed through to net plan cost</span>
+          <div class="legend"><span><i class="swatch" style="background:var(--gain)"></i>reduces plan cost</span><span><i class="swatch" style="background:var(--loss)"></i>adds plan cost</span><span><i class="swatch" style="background:var(--rule-strong)"></i>subtotal</span></div>
+        </div>
+        <div class="panel-bd"><div class="chart" id="wfChart"></div></div>
+      </div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Paid claims PMPM against the rate the client budgeted</h3>
+          <span class="sub">One axis. Completion is its own panel below, because two y-scales on one plot invents a correlation.</span>
+          <div class="legend" id="trendLegend"></div>
+        </div>
+        <div class="panel-bd"><div class="chart" id="trendChart"></div>
+          <div class="chart" id="cfChart"></div>
+          <p class="hint" style="margin-top:8px">Months after September 2025 are shaded: they are displayed and never scored.
+            <code>claims_runout_complete_flag</code> is the guardrail.</p>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Enrollment by coverage tier</h3>
+            <span class="sub">Contract-months — the PEPM denominator</span>
+            <div class="legend" id="tierLegend"></div></div>
+          <div class="panel-bd"><div class="chart" id="tierChart"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Fee schedule</h3>
+            <span class="sub">CY2025 · <code>fee_basis</code> is a visible column on purpose</span></div>
+          <div class="panel-bd tbl-wrap"><table id="feeTbl"></table></div>
+          <p class="eyebrow" style="padding:10px 14px 4px">Tier rate card, CY2025</p>
+          <div id="rateCard" style="display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 10px"></div>
+          <p class="hint" style="padding:0 14px 12px">PEPM multiplies
+            <span id="feeCt"></span> contract-months. PMPM multiplies
+            <span id="feeMm"></span> member-months. The two differ by the family factor.</p>
+        </div>
+      </div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Stop-loss terms</h3><span class="sub">Policy year, deductible, coinsurance, contract basis, aggregate attachment</span></div>
+        <div class="panel-bd" id="slTerms"></div>
+      </div>
+    </section>
+
+    <!-- 03 RATE ADEQUACY -->
+    <section class="pageview" id="page-rate" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Rate adequacy <b>· CY2025 renewal · the finding page</b></p>
+        <h2>The renewal priced over a double-counted denominator</h2>
+      </div></div>
+      <div class="callout" id="rateCallout"></div>
+      <div class="kpis" id="rateKpis"></div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Expected claims PMPM: as set against repriced</h3>
+          <span class="sub">CY2025 · one hue, two shades · eight clients are a dot, one is a line</span>
+          <div class="legend"><span><i class="swatch" style="background:var(--s1);opacity:.42"></i>as set, over the enrollment feed's denominator</span><span><i class="swatch" style="background:var(--s1)"></i>repriced, over the coverage union</span></div>
+        </div>
+        <div class="panel-bd"><div class="chart" id="dumbbell"></div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Denominator overstatement by month</h3>
+            <span class="sub">Enrollment feed span-sum against the coverage union, CY2024</span>
+            <div class="legend" id="overLegend"></div></div>
+          <div class="panel-bd"><div class="chart" id="overChart"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Budget never collected</h3>
+            <span class="sub">Scored window 2025-01 → 2025-09</span></div>
+          <div class="panel-bd"><div class="chart" id="shortChart"></div></div>
+        </div>
+      </div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Renewal recommendation</h3>
+          <span class="sub">Current rate, trended actual, and the rate the reconciliation supports ·
+            <em>denominator</em> means the rate itself was mispriced; <em>trend</em> means claims outran an adequate rate</span></div>
+        <div class="panel-bd tbl-wrap"><table id="renewTbl"></table></div>
+      </div>
+    </section>
+
+    <!-- 04 STOP-LOSS -->
+    <section class="pageview" id="page-sl" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Specific stop-loss <b>· all three policy years · Ridgeline Reinsurance</b></p>
+        <h2>Recoveries entitled, received, and lost</h2>
+      </div></div>
+      <div class="kpis" id="slKpis"></div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Entitled through to received</h3>
+            <span class="sub">Where the recovery goes missing</span></div>
+          <div class="panel-bd"><div class="chart" id="slWf"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Claimants against their deductible</h3>
+            <span class="sub">Covered paid claims ÷ the deductible that applied · 1.0 is the attachment</span>
+            <div class="legend" id="slScatLegend"></div></div>
+          <div class="panel-bd"><div class="chart" id="slScatter"></div>
+            <p class="hint" style="margin-top:8px">A client whose claimants cluster just above 1.0 is buying the wrong deductible.</p></div>
+        </div>
+      </div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Filings</h3>
+          <span class="sub">Top 40 by entitlement, plus every over-claimed filing and every late denial · a policy year shown as <code>2024 · Jul–Jun</code> does not line up with the calendar year</span>
+          <div class="legend"><span><i class="swatch" style="background:var(--crit)"></i>claimed across two people</span><span><i class="swatch" style="background:var(--warn)"></i>entangled durable key, correctly scoped</span></div></div>
+        <div class="panel-bd tbl-wrap"><table id="slTbl"></table></div>
+      </div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Policy terms</h3><span class="sub">CY2024 · the off-cycle policy years are labelled as ranges</span></div>
+        <div class="panel-bd tbl-wrap"><table id="polTbl"></table></div>
+      </div>
+    </section>
+
+    <!-- 05 FUNDING & CASH -->
+    <section class="pageview" id="page-cash" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Weekly funding <b>· 1,413 draws · Wednesday-dated</b></p>
+        <h2>Funding and cash</h2>
+      </div></div>
+      <div class="callout" id="cashCallout"></div>
+      <div class="kpis" id="cashKpis"></div>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Over-funded dollars, by funding week</h3>
+          <span class="sub">CY2024 · drawn off the extract as landed, minus the same week recomputed from the de-duplicated mart</span>
+          <div class="legend" id="cashLegend"></div>
+        </div>
+        <div class="panel-bd"><div class="chart" id="cashChart"></div>
+          <p class="hint" style="margin-top:8px">Plotting drawn and reconciled as two lines was the
+            obvious chart and the wrong one: $1.1M against a $316M book is 0.36%, so two
+            near-identical lines would say nothing happened. The <em>difference</em> is the
+            finding, so the difference is what is plotted.</p>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Over-draw as a share of the week's request</h3>
+            <span class="sub">The same weeks, normalised · a different measure, so a different chart</span></div>
+          <div class="panel-bd"><div class="chart" id="overMonthChart"></div></div>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Worst weeks</h3>
+            <span class="sub">The line count is what makes it a data problem rather than a timing difference</span></div>
+          <div class="panel-bd tbl-wrap"><table id="worstTbl"></table></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ENROLLMENT RECON -->
+    <section class="pageview" id="page-recon" hidden>
+      <div class="page-hd"><div>
+        <p class="crumb">Enrollment reconciliation <b>· the only page that aggregates on <code>group_id</code></b></p>
+        <h2>Two group ids, one client</h2>
+      </div></div>
+      <p class="hint">Every other page in this workbook aggregates on <code>client_id</code>. This one does not,
+        because its entire purpose is to show the two Kellerman group ids side by side through the
+        acquisition window — and to show where the enrollment feed double counts.</p>
+      <div class="panel wide">
+        <div class="panel-hd"><h3>Kellerman Industries across its acquisition</h3>
+          <span class="sub">Member-months by group id as the <b>enrollment feed</b> yields them — spans summed, not unioned · the dashed line is the truth</span>
+          <div class="legend" id="kellLegend"></div></div>
+        <div class="panel-bd"><div class="chart" id="kellChart"></div>
+          <p class="hint" style="margin-top:8px"><code>NLK-KELL-01</code> opens in April 2024 and
+            <code>KELL-4471</code> never closes, so both ids carry the same members for the rest
+            of the window. Summed, the feed yields <b>72,152</b> member-months against a true
+            <b>65,317</b> — <b>10.5%</b> too many across the three years, and
+            <b>13.14%</b> in CY2024 alone, which is the year the CY2025 rate was priced from.</p>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-hd"><h3>Both denominators by client</h3>
+            <span class="sub">CY2024 · enrollment feed span-sum against the coverage union</span></div>
+          <div class="panel-bd tbl-wrap"><table id="denTbl"></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-hd"><h3>Overlap reasons</h3>
+            <span class="sub"><code>fct_eligibility_span.overlap_reason</code>, counted</span></div>
+          <div class="panel-bd tbl-wrap"><table id="ovTbl"></table></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="dock" id="dock">
+    <div class="dock-hd">
+      <h4>Renewal Defence</h4>
+      <span class="pill">agent</span>
+    </div>
+    <div class="dock-bd" id="dockBd"></div>
+    <div class="dock-ft">
+      <div class="ask">Ask about a client, a rate, or a recovery…</div>
+      <div class="chips" id="dockChips"></div>
+    </div>
+  </aside>
+</div>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+<script>
+(function(){
+"use strict";
+const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>[...(r||document).querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const money=v=>(v<0?"−$":"$")+Math.round(Math.abs(v)).toLocaleString("en-US");
+const m$=v=>(v<0?"−$":"$")+(Math.abs(v)/1e6).toFixed(1)+"M";
+const k$=v=>(v<0?"−$":"$")+(Math.abs(v)/1e3).toFixed(0)+"K";
+/* Pick the scale from the magnitude, so a KPI never reads "$1417K". */
+const big=v=>Math.abs(v)>=1e6?m$(v):Math.abs(v)>=1e4?k$(v):money(v);
+const pct=(v,d)=>(v>0?"+":"")+v.toFixed(d===undefined?1:d)+"%";
+const num=v=>Math.round(v).toLocaleString("en-US");
+const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const ymLab=y=>MON[(y%100)-1]+" "+String(y/100|0).slice(2);
+const ymShort=y=>MON[(y%100)-1];
+
+/* ================= measured data =================
+   Every figure below is measured from the shipping `demo` build (seed 20260911)
+   by Validation/aso_book.py. Nothing here is invented.
+   See ASO_ADMINISTRATIVE_SERVICES_PLAN.md §19. */
+const D = {"clients":[{"id":"CL-EDU","name":"Northlake Public Schools","short":"Northlake Public Schools","sector":"Public Education","tier":"LARGE","renewal":7,"broker":"Cardinal Risk Partners","groups":1,"mm":43304.9,"contracts":19488.0,"lpc":2.222,"paid":16340786.77,"paidPmpm":377.34,"allowed":23295684.68,"billed":68653567.25,"savings":45357882.57,"memLiab":6876709.01,"fees":1756737.16,"feePepm":90.14,"load":10.75,"isl":1102111.98,"net":16995411.95,"netPmpm":392.46,"expected":17331922.32,"var":-991135.55,"varPct":-5.72,"overstate":0.045,"rateSet":414.86,"rateTrue":415.05,"rateMiss":0.046,"priorNaive":43324.3,"priorTrue":43304.9,"islDed":200000,"coins":1.0,"basis":"PAID_12_15","attach":500.29,"laser":false,"policyLabel":"2024-07-01..2025-06-30","mmYtd":33429.5,"paidYtd":12178303.38,"paidPmpmYtd":364.3,"expectedYtd":13868578.84,"shortfall":6351.61},{"id":"CL-FIN","name":"Harbor Trust Financial","short":"Harbor Trust Financial","sector":"Financial Services","tier":"MID","renewal":1,"broker":"Wexler Group","groups":1,"mm":25879.8,"contracts":12028.7,"lpc":2.151,"paid":10027968.34,"paidPmpm":387.48,"allowed":14163333.92,"billed":41669725.05,"savings":27506391.13,"memLiab":4078068.23,"fees":1350620.72,"feePepm":112.28,"load":13.47,"isl":900496.92,"net":10478092.14,"netPmpm":404.88,"expected":9125729.0,"var":902239.34,"varPct":9.89,"overstate":0.023,"rateSet":425.24,"rateTrue":425.33,"rateMiss":0.021,"priorNaive":25885.6,"priorTrue":25879.8,"islDed":150000,"coins":1.0,"basis":"PAID_12_15","attach":440.77,"laser":false,"policyLabel":"2024-01-01..2024-12-31","mmYtd":19864.4,"paidYtd":7254510.79,"paidPmpmYtd":365.2,"expectedYtd":8447149.23,"shortfall":1787.8},{"id":"CL-HLTH","name":"Northlake Health Partners Employees","short":"Northlake Health Partners","sector":"Healthcare","tier":"MID","renewal":1,"broker":"direct","groups":1,"mm":25190.0,"contracts":11173.6,"lpc":2.254,"paid":8434326.2,"paidPmpm":334.83,"allowed":12075357.49,"billed":35416837.69,"savings":23341480.2,"memLiab":3600112.28,"fees":1289092.29,"feePepm":115.37,"load":15.28,"isl":561460.44,"net":9161958.05,"netPmpm":363.71,"expected":9575490.71,"var":-1141164.51,"varPct":-11.92,"overstate":0.032,"rateSet":369.38,"rateTrue":369.49,"rateMiss":0.03,"priorNaive":25198.1,"priorTrue":25190.0,"islDed":150000,"coins":1.0,"basis":"PAID_12_15","attach":475.16,"laser":false,"policyLabel":"2024-01-01..2024-12-31","mmYtd":19405.2,"paidYtd":7139823.25,"paidPmpmYtd":367.93,"expectedYtd":7167884.57,"shortfall":2134.57},{"id":"CL-KELL","name":"Kellerman Industries","short":"Kellerman Industries","sector":"Manufacturing","tier":"SMALL","renewal":1,"broker":"Ashfield Benefit Advisors","groups":2,"mm":22089.2,"contracts":9984.1,"lpc":2.212,"paid":10162707.61,"paidPmpm":460.08,"allowed":14483369.2,"billed":42519140.98,"savings":28035771.78,"memLiab":4279483.69,"fees":1417104.37,"feePepm":141.94,"load":13.94,"isl":2163321.0,"net":9416490.98,"netPmpm":426.29,"expected":9722774.26,"var":439933.35,"varPct":4.52,"overstate":13.142,"rateSet":456.82,"rateTrue":516.86,"rateMiss":11.616,"priorNaive":24992.2,"priorTrue":22089.2,"islDed":100000,"coins":1.0,"basis":"PAID_12_12","attach":550.2,"laser":false,"policyLabel":"2024-01-01..2024-12-31","mmYtd":16910.9,"paidYtd":6635127.45,"paidPmpmYtd":392.36,"expectedYtd":7725255.46,"shortfall":1015332.82},{"id":"CL-LOG","name":"Fairmont Logistics","short":"Fairmont Logistics","sector":"Transportation","tier":"MID","renewal":1,"broker":"Ashfield Benefit Advisors","groups":1,"mm":34662.7,"contracts":15210.1,"lpc":2.279,"paid":15371077.15,"paidPmpm":443.45,"allowed":22037365.81,"billed":65815597.1,"savings":43778231.29,"memLiab":6409080.27,"fees":1764661.78,"feePepm":116.02,"load":11.48,"isl":2320943.76,"net":14814795.17,"netPmpm":427.4,"expected":14013802.01,"var":1357275.14,"varPct":9.69,"overstate":0.05,"rateSet":487.53,"rateTrue":487.77,"rateMiss":0.049,"priorNaive":34680.1,"priorTrue":34662.8,"islDed":150000,"coins":1.0,"basis":"PAID_12_12","attach":505.36,"laser":true,"policyLabel":"2024-01-01..2024-12-31","mmYtd":26680.3,"paidYtd":9748025.83,"paidPmpmYtd":365.36,"expectedYtd":13007429.4,"shortfall":6403.26},{"id":"CL-MFG","name":"Brightwater Manufacturing","short":"Brightwater Manufacturing","sector":"Manufacturing","tier":"LARGE","renewal":1,"broker":"Ashfield Benefit Advisors","groups":1,"mm":53370.7,"contracts":23632.9,"lpc":2.258,"paid":20348473.37,"paidPmpm":381.27,"allowed":28832578.23,"billed":85132718.21,"savings":56300139.98,"memLiab":8372789.83,"fees":2175973.88,"feePepm":92.07,"load":10.69,"isl":906837.48,"net":21617609.77,"netPmpm":405.05,"expected":21912924.6,"var":-1564451.23,"varPct":-7.14,"overstate":0.05,"rateSet":422.73,"rateTrue":422.94,"rateMiss":0.05,"priorNaive":53397.2,"priorTrue":53370.7,"islDed":200000,"coins":1.0,"basis":"PAID_12_15","attach":513.23,"laser":false,"policyLabel":"2024-01-01..2024-12-31","mmYtd":40944.8,"paidYtd":14039170.25,"paidPmpmYtd":342.88,"expectedYtd":17308584.4,"shortfall":8598.4},{"id":"CL-MUN","name":"City of Northlake","short":"City of Northlake","sector":"Public Sector","tier":"MID","renewal":10,"broker":"Cardinal Risk Partners","groups":1,"mm":35623.6,"contracts":16254.9,"lpc":2.192,"paid":13987119.55,"paidPmpm":392.64,"allowed":19817572.34,"billed":57995334.98,"savings":38177762.64,"memLiab":5752184.34,"fees":1809613.58,"feePepm":111.33,"load":12.94,"isl":466329.27,"net":15330403.86,"netPmpm":430.34,"expected":14797322.87,"var":-810203.32,"varPct":-5.48,"overstate":0.043,"rateSet":431.5,"rateTrue":431.68,"rateMiss":0.042,"priorNaive":35638.9,"priorTrue":35623.6,"islDed":150000,"coins":1.0,"basis":"PAID_12_12","attach":519.23,"laser":false,"policyLabel":"2024-10-01..2025-09-30","mmYtd":27386.4,"paidYtd":9819848.25,"paidPmpmYtd":358.57,"expectedYtd":11817228.16,"shortfall":4929.55},{"id":"CL-TECH","name":"Sableworks Technology","short":"Sableworks Technology","sector":"Technology","tier":"MID","renewal":1,"broker":"Wexler Group","groups":1,"mm":29747.5,"contracts":13379.5,"lpc":2.223,"paid":10778002.13,"paidPmpm":362.32,"allowed":15587121.95,"billed":46037912.96,"savings":30450791.01,"memLiab":4753502.59,"fees":1530543.56,"feePepm":114.39,"load":14.2,"isl":854329.92,"net":11454215.77,"netPmpm":385.05,"expected":12107533.76,"var":-1329531.63,"varPct":-10.98,"overstate":0.024,"rateSet":401.25,"rateTrue":401.34,"rateMiss":0.022,"priorNaive":29754.7,"priorTrue":29747.5,"islDed":150000,"coins":0.9,"basis":"PAID_12_15","attach":508.76,"laser":false,"policyLabel":"2024-01-01..2024-12-31","mmYtd":22851.5,"paidYtd":9296740.74,"paidPmpmYtd":406.83,"expectedYtd":9169165.04,"shortfall":2056.64},{"id":"CL-UTIL","name":"Cornerstone Utilities","short":"Cornerstone Utilities","sector":"Utilities","tier":"SMALL","renewal":1,"broker":"Cardinal Risk Partners","groups":1,"mm":17762.6,"contracts":8157.8,"lpc":2.177,"paid":6768509.43,"paidPmpm":381.05,"allowed":9507297.31,"billed":27919281.46,"savings":18411984.15,"memLiab":2710229.01,"fees":1147523.19,"feePepm":140.67,"load":16.95,"isl":784218.36,"net":7131814.26,"netPmpm":401.51,"expected":6238938.43,"var":529571.0,"varPct":8.49,"overstate":0.036,"rateSet":419.32,"rateTrue":419.47,"rateMiss":0.036,"priorNaive":17769.0,"priorTrue":17762.6,"islDed":100000,"coins":1.0,"basis":"PAID_12_12","attach":439.05,"laser":true,"policyLabel":"2024-01-01..2024-12-31","mmYtd":13845.4,"paidYtd":4983798.97,"paidPmpmYtd":359.96,"expectedYtd":5805652.84,"shortfall":2076.81}],"monthly":[{"c":"CL-EDU","ym":202301,"mm":3347.6,"nmm":3347.6,"sm":1505.5,"paid":982732.27,"exp":1885457.77,"fees":0.0,"net":982732.27,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202302,"mm":3376.0,"nmm":3376.0,"sm":1511.8,"paid":1139538.88,"exp":1901444.32,"fees":0.0,"net":1139538.88,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202303,"mm":3392.6,"nmm":3393.1,"sm":1518.2,"paid":1230171.53,"exp":1910839.5,"fees":0.0,"net":1230171.53,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202304,"mm":3414.9,"nmm":3415.9,"sm":1533.0,"paid":1156351.95,"exp":1923392.88,"fees":0.0,"net":1156351.95,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202305,"mm":3433.2,"nmm":3434.2,"sm":1542.8,"paid":1369123.97,"exp":1933695.88,"fees":0.0,"net":1369123.97,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202306,"mm":3459.9,"nmm":3460.9,"sm":1550.8,"paid":1058046.45,"exp":1948738.23,"fees":0.0,"net":1058046.45,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202307,"mm":3480.4,"nmm":3480.8,"sm":1557.5,"paid":1462811.76,"exp":1960276.51,"fees":139068.39,"net":1500032.84,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202308,"mm":3489.5,"nmm":3490.5,"sm":1553.9,"paid":1153850.74,"exp":1965363.77,"fees":139135.1,"net":1191138.53,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202309,"mm":3504.8,"nmm":3506.1,"sm":1560.6,"paid":1289936.15,"exp":1974008.5,"fees":139740.54,"net":1327829.38,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202310,"mm":3515.6,"nmm":3517.3,"sm":1565.8,"paid":1568797.96,"exp":1980080.46,"fees":140186.45,"net":1607137.1,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202311,"mm":3519.8,"nmm":3521.5,"sm":1564.5,"paid":1429664.27,"exp":1982475.71,"fees":140231.18,"net":1468048.14,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202312,"mm":3532.0,"nmm":3533.4,"sm":1567.8,"paid":1341018.09,"exp":1989328.36,"fees":140634.1,"net":1379804.88,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202401,"mm":3551.6,"nmm":3551.8,"sm":1582.5,"paid":1621089.42,"exp":1421474.96,"fees":141645.39,"net":1660887.5,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202402,"mm":3563.7,"nmm":3564.7,"sm":1594.4,"paid":1376191.39,"exp":1426309.34,"fees":142378.29,"net":1416722.37,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202403,"mm":3572.5,"nmm":3573.0,"sm":1607.3,"paid":1165884.35,"exp":1429841.05,"fees":143072.65,"net":1207109.69,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202404,"mm":3576.4,"nmm":3577.1,"sm":1610.0,"paid":1247275.55,"exp":1431369.24,"fees":143264.71,"net":1288692.95,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202405,"mm":3576.6,"nmm":3578.6,"sm":1612.7,"paid":1301193.11,"exp":1431454.77,"fees":143375.11,"net":1342720.91,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202406,"mm":3593.8,"nmm":3595.7,"sm":1618.5,"paid":1088187.1,"exp":1438346.53,"fees":143986.82,"net":1130326.61,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202407,"mm":3614.3,"nmm":3616.4,"sm":1625.5,"paid":1071784.68,"exp":1446534.6,"fees":148397.74,"net":1138344.4,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202408,"mm":3628.2,"nmm":3630.1,"sm":1636.0,"paid":1445893.37,"exp":1452111.88,"fees":149139.06,"net":1513194.41,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202409,"mm":3638.7,"nmm":3640.7,"sm":1644.0,"paid":1268928.17,"exp":1456303.53,"fees":149696.84,"net":1336786.99,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202410,"mm":3655.6,"nmm":3657.2,"sm":1649.2,"paid":1432643.48,"exp":1463098.76,"fees":150296.23,"net":1501101.69,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202411,"mm":3663.8,"nmm":3666.6,"sm":1650.7,"paid":1558487.97,"exp":1466362.75,"fees":150543.82,"net":1627193.77,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202412,"mm":3669.7,"nmm":3672.4,"sm":1657.3,"paid":1763228.18,"exp":1468714.91,"fees":150940.5,"net":1832330.66,"cf":1.0,"sc":true},{"c":"CL-EDU","ym":202501,"mm":3680.5,"nmm":3682.5,"sm":1660.9,"paid":1507379.91,"exp":1526872.28,"fees":151334.69,"net":1576876.58,"cf":0.9998,"sc":true},{"c":"CL-EDU","ym":202502,"mm":3683.4,"nmm":3685.2,"sm":1663.4,"paid":1393818.35,"exp":1528092.42,"fees":151502.68,"net":1463483.01,"cf":0.9997,"sc":true},{"c":"CL-EDU","ym":202503,"mm":3689.5,"nmm":3690.5,"sm":1665.1,"paid":1147007.46,"exp":1530632.77,"fees":151712.04,"net":1216881.48,"cf":0.9994,"sc":true},{"c":"CL-EDU","ym":202504,"mm":3702.3,"nmm":3703.0,"sm":1670.3,"paid":1545192.21,"exp":1535949.91,"fees":152215.18,"net":1615569.37,"cf":0.9991,"sc":true},{"c":"CL-EDU","ym":202505,"mm":3712.5,"nmm":3713.1,"sm":1677.3,"paid":1432321.83,"exp":1540174.51,"fees":152727.6,"net":1503211.41,"cf":0.9985,"sc":true},{"c":"CL-EDU","ym":202506,"mm":3723.9,"nmm":3725.7,"sm":1681.4,"paid":1201827.59,"exp":1544897.2,"fees":153151.66,"net":1273141.23,"cf":0.9971,"sc":true},{"c":"CL-EDU","ym":202507,"mm":3729.9,"nmm":3732.2,"sm":1685.2,"paid":1257077.4,"exp":1547387.68,"fees":157282.27,"net":1414359.67,"cf":0.9946,"sc":true},{"c":"CL-EDU","ym":202508,"mm":3749.2,"nmm":3751.7,"sm":1696.7,"paid":1287874.82,"exp":1555403.65,"fees":158205.65,"net":1446080.47,"cf":0.9888,"sc":true},{"c":"CL-EDU","ym":202509,"mm":3758.3,"nmm":3776.3,"sm":1697.9,"paid":1405803.81,"exp":1559168.42,"fees":158471.19,"net":1564275.0,"cf":0.9748,"sc":true},{"c":"CL-EDU","ym":202510,"mm":3751.1,"nmm":3806.5,"sm":1693.5,"paid":1557040.61,"exp":1556193.34,"fees":158121.77,"net":1715162.38,"cf":0.9353,"sc":false},{"c":"CL-EDU","ym":202511,"mm":3730.9,"nmm":3819.6,"sm":1684.1,"paid":988937.65,"exp":1547815.11,"fees":157261.24,"net":1146198.89,"cf":0.795,"sc":false},{"c":"CL-EDU","ym":202512,"mm":3699.5,"nmm":3799.3,"sm":1676.1,"paid":497574.32,"exp":1534781.33,"fees":156188.08,"net":653762.4,"cf":0.2949,"sc":false},{"c":"CL-FIN","ym":202301,"mm":1992.4,"nmm":1992.4,"sm":920.3,"paid":425122.42,"exp":1045183.37,"fees":101176.85,"net":473351.55,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202302,"mm":2007.7,"nmm":2007.7,"sm":926.4,"paid":439502.47,"exp":1053206.87,"fees":101907.98,"net":488462.73,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202303,"mm":2026.0,"nmm":2026.0,"sm":934.4,"paid":728202.84,"exp":1062782.03,"fees":102811.94,"net":778067.06,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202304,"mm":2041.6,"nmm":2041.6,"sm":944.6,"paid":603933.42,"exp":1071000.05,"fees":103744.5,"net":654730.2,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202305,"mm":2058.2,"nmm":2058.7,"sm":953.8,"paid":609151.76,"exp":1079687.2,"fees":104654.46,"net":660858.5,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202306,"mm":2076.8,"nmm":2077.8,"sm":961.7,"paid":728422.9,"exp":1089447.8,"fees":105563.96,"net":781039.14,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202307,"mm":2084.6,"nmm":2085.6,"sm":963.2,"paid":524322.59,"exp":1093546.24,"fees":105863.82,"net":577238.69,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202308,"mm":2090.7,"nmm":2091.7,"sm":967.7,"paid":660637.01,"exp":1096761.33,"fees":106251.48,"net":713940.77,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202309,"mm":2095.9,"nmm":2096.6,"sm":969.1,"paid":936998.41,"exp":1099467.27,"fees":106466.33,"net":990517.02,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202310,"mm":2100.4,"nmm":2101.4,"sm":976.5,"paid":894861.1,"exp":1101837.96,"fees":106944.31,"net":948857.69,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202311,"mm":2102.8,"nmm":2103.8,"sm":981.6,"paid":654231.42,"exp":1103069.46,"fees":107251.74,"net":708535.44,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202312,"mm":2111.0,"nmm":2112.0,"sm":984.8,"paid":790878.61,"exp":1107371.28,"fees":107639.8,"net":845570.69,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202401,"mm":2122.8,"nmm":2122.9,"sm":988.9,"paid":696369.19,"exp":748555.49,"fees":110898.21,"net":732225.99,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202402,"mm":2131.7,"nmm":2131.7,"sm":986.6,"paid":891266.65,"exp":751676.39,"fees":111049.06,"net":927274.3,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202403,"mm":2134.6,"nmm":2134.6,"sm":984.9,"paid":1123418.18,"exp":752707.2,"fees":111055.56,"net":1159432.33,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202404,"mm":2136.8,"nmm":2137.0,"sm":984.8,"paid":640135.31,"exp":753466.74,"fees":111117.92,"net":676211.82,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202405,"mm":2144.4,"nmm":2145.4,"sm":994.0,"paid":953081.76,"exp":756153.81,"fees":111782.65,"net":989823.0,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202406,"mm":2156.3,"nmm":2158.3,"sm":1004.5,"paid":865603.35,"exp":760366.25,"fees":112643.22,"net":903205.16,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202407,"mm":2165.7,"nmm":2167.7,"sm":1009.9,"paid":630742.97,"exp":763683.94,"fees":113183.92,"net":668885.48,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202408,"mm":2168.0,"nmm":2168.6,"sm":1011.9,"paid":791051.3,"exp":764491.55,"fees":113346.45,"net":829356.34,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202409,"mm":2169.3,"nmm":2169.3,"sm":1014.4,"paid":642451.38,"exp":764950.27,"fees":113503.28,"net":680913.25,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202410,"mm":2177.9,"nmm":2177.9,"sm":1012.6,"paid":834094.95,"exp":767960.94,"fees":113671.92,"net":872725.46,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202411,"mm":2185.4,"nmm":2185.4,"sm":1018.2,"paid":772202.34,"exp":770627.49,"fees":114168.05,"net":811328.98,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202412,"mm":2186.7,"nmm":2186.7,"sm":1018.1,"paid":1187550.96,"exp":771088.93,"fees":114200.48,"net":1226710.03,"cf":1.0,"sc":true},{"c":"CL-FIN","ym":202501,"mm":2193.2,"nmm":2193.2,"sm":1021.8,"paid":1053201.56,"exp":932647.38,"fees":117458.2,"net":1170659.76,"cf":0.9998,"sc":true},{"c":"CL-FIN","ym":202502,"mm":2198.2,"nmm":2198.2,"sm":1022.9,"paid":625681.93,"exp":934768.65,"fees":117665.46,"net":743347.39,"cf":0.9997,"sc":true},{"c":"CL-FIN","ym":202503,"mm":2199.2,"nmm":2199.2,"sm":1021.3,"paid":647231.63,"exp":935185.04,"fees":117615.03,"net":764846.66,"cf":0.9994,"sc":true},{"c":"CL-FIN","ym":202504,"mm":2202.5,"nmm":2202.5,"sm":1025.9,"paid":873432.29,"exp":936576.9,"fees":117943.07,"net":991375.36,"cf":0.9991,"sc":true},{"c":"CL-FIN","ym":202505,"mm":2208.1,"nmm":2208.1,"sm":1024.8,"paid":659862.87,"exp":938957.35,"fees":118060.23,"net":777923.1,"cf":0.9985,"sc":true},{"c":"CL-FIN","ym":202506,"mm":2206.8,"nmm":2206.8,"sm":1024.8,"paid":904023.51,"exp":938433.79,"fees":118020.69,"net":1022044.2,"cf":0.9971,"sc":true},{"c":"CL-FIN","ym":202507,"mm":2215.7,"nmm":2215.7,"sm":1026.8,"paid":583185.4,"exp":942222.13,"fees":118391.33,"net":701576.73,"cf":0.9946,"sc":true},{"c":"CL-FIN","ym":202508,"mm":2215.4,"nmm":2215.9,"sm":1030.4,"paid":922100.15,"exp":942057.39,"fees":118558.61,"net":1040658.76,"cf":0.9888,"sc":true},{"c":"CL-FIN","ym":202509,"mm":2225.3,"nmm":2234.7,"sm":1037.4,"paid":985791.45,"exp":946300.6,"fees":119207.91,"net":1104999.36,"cf":0.9748,"sc":true},{"c":"CL-FIN","ym":202510,"mm":2218.0,"nmm":2246.2,"sm":1033.7,"paid":1272341.22,"exp":943168.67,"fees":118798.5,"net":1391139.72,"cf":0.9353,"sc":false},{"c":"CL-FIN","ym":202511,"mm":2208.1,"nmm":2256.6,"sm":1025.0,"paid":820032.35,"exp":938958.33,"fees":118069.82,"net":938102.17,"cf":0.795,"sc":false},{"c":"CL-FIN","ym":202512,"mm":2198.0,"nmm":2255.9,"sm":1019.5,"paid":248164.06,"exp":934677.52,"fees":117491.41,"net":365655.47,"cf":0.2949,"sc":false},{"c":"CL-HLTH","ym":202301,"mm":1917.7,"nmm":1917.7,"sm":854.9,"paid":587166.24,"exp":1175421.93,"fees":95951.19,"net":627557.85,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202302,"mm":1927.6,"nmm":1927.6,"sm":861.0,"paid":641872.33,"exp":1181488.28,"fees":96523.74,"net":682836.49,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202303,"mm":1939.6,"nmm":1939.6,"sm":866.3,"paid":649065.76,"exp":1188827.14,"fees":97117.38,"net":690623.56,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202304,"mm":1955.8,"nmm":1955.8,"sm":872.0,"paid":598782.97,"exp":1198747.96,"fees":97856.02,"net":641079.41,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202305,"mm":1972.0,"nmm":1972.0,"sm":877.4,"paid":803321.57,"exp":1208698.02,"fees":98579.45,"net":846341.44,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202306,"mm":1989.7,"nmm":1989.7,"sm":886.3,"paid":659045.78,"exp":1219546.88,"fees":99511.88,"net":702998.08,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202307,"mm":2008.1,"nmm":2008.1,"sm":896.7,"paid":613110.9,"exp":1230842.51,"fees":100530.82,"net":658082.14,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202308,"mm":2019.4,"nmm":2019.4,"sm":901.5,"paid":862339.05,"exp":1237742.87,"fees":101084.07,"net":907863.54,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202309,"mm":2024.0,"nmm":2024.0,"sm":903.3,"paid":501091.78,"exp":1240570.26,"fees":101299.92,"net":546832.12,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202310,"mm":2032.6,"nmm":2032.6,"sm":906.5,"paid":863496.6,"exp":1245849.42,"fees":101699.02,"net":909636.04,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202311,"mm":2045.0,"nmm":2045.0,"sm":911.5,"paid":852131.4,"exp":1253441.97,"fees":102293.32,"net":898865.14,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202312,"mm":2054.3,"nmm":2054.7,"sm":913.5,"paid":672588.89,"exp":1259155.95,"fees":102659.94,"net":719689.25,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202401,"mm":2065.3,"nmm":2066.3,"sm":915.5,"paid":678054.53,"exp":785078.8,"fees":105668.51,"net":736934.67,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202402,"mm":2073.2,"nmm":2075.0,"sm":919.8,"paid":593566.04,"exp":788074.95,"fees":106105.03,"net":652882.7,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202403,"mm":2082.2,"nmm":2083.7,"sm":918.6,"paid":690755.06,"exp":791491.94,"fees":106316.27,"net":750282.96,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202404,"mm":2082.5,"nmm":2083.5,"sm":922.0,"paid":507746.76,"exp":791633.38,"fees":106491.24,"net":567449.63,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202405,"mm":2091.4,"nmm":2091.9,"sm":927.5,"paid":764081.44,"exp":794999.02,"fees":107017.74,"net":824310.81,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202406,"mm":2100.3,"nmm":2100.3,"sm":930.7,"paid":452035.73,"exp":798399.66,"fees":107436.71,"net":512684.07,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202407,"mm":2101.7,"nmm":2101.7,"sm":930.0,"paid":716035.23,"exp":798935.19,"fees":107448.25,"net":776695.11,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202408,"mm":2109.2,"nmm":2109.2,"sm":934.3,"paid":556855.38,"exp":801780.0,"fees":107873.67,"net":617940.68,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202409,"mm":2111.4,"nmm":2111.5,"sm":940.0,"paid":712747.67,"exp":802593.79,"fees":108212.63,"net":774171.93,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202410,"mm":2119.3,"nmm":2120.3,"sm":945.3,"paid":1131113.22,"exp":805618.1,"fees":108701.57,"net":1193026.42,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202411,"mm":2125.7,"nmm":2126.7,"sm":943.8,"paid":876901.64,"exp":808054.96,"fees":108821.01,"net":938934.28,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202412,"mm":2127.8,"nmm":2127.9,"sm":946.2,"paid":754433.5,"exp":808830.92,"fees":108999.66,"net":816644.79,"cf":1.0,"sc":true},{"c":"CL-HLTH","ym":202501,"mm":2131.2,"nmm":2131.2,"sm":950.4,"paid":977944.34,"exp":787232.22,"fees":112058.96,"net":1090003.3,"cf":0.9998,"sc":true},{"c":"CL-HLTH","ym":202502,"mm":2136.8,"nmm":2136.8,"sm":952.7,"paid":776701.22,"exp":789285.75,"fees":112343.21,"net":889044.43,"cf":0.9997,"sc":true},{"c":"CL-HLTH","ym":202503,"mm":2145.9,"nmm":2145.9,"sm":952.1,"paid":813299.47,"exp":792641.9,"fees":112590.11,"net":925889.58,"cf":0.9994,"sc":true},{"c":"CL-HLTH","ym":202504,"mm":2153.7,"nmm":2153.7,"sm":953.7,"paid":852759.59,"exp":795521.37,"fees":112903.65,"net":965663.24,"cf":0.9991,"sc":true},{"c":"CL-HLTH","ym":202505,"mm":2155.9,"nmm":2156.5,"sm":957.0,"paid":1017584.39,"exp":796335.59,"fees":113133.16,"net":1130717.55,"cf":0.9985,"sc":true},{"c":"CL-HLTH","ym":202506,"mm":2157.5,"nmm":2158.3,"sm":962.5,"paid":636237.76,"exp":796949.69,"fees":113454.13,"net":749691.89,"cf":0.9971,"sc":true},{"c":"CL-HLTH","ym":202507,"mm":2166.4,"nmm":2166.4,"sm":964.5,"paid":704490.1,"exp":800232.0,"fees":113824.55,"net":818314.65,"cf":0.9946,"sc":true},{"c":"CL-HLTH","ym":202508,"mm":2179.8,"nmm":2179.8,"sm":973.0,"paid":521800.2,"exp":805188.75,"fees":114652.73,"net":636452.93,"cf":0.9888,"sc":true},{"c":"CL-HLTH","ym":202509,"mm":2178.0,"nmm":2189.8,"sm":970.6,"paid":839006.18,"exp":804497.3,"fees":114476.0,"net":953482.18,"cf":0.9748,"sc":true},{"c":"CL-HLTH","ym":202510,"mm":2169.5,"nmm":2200.8,"sm":965.9,"paid":665261.18,"exp":801363.96,"fees":113987.87,"net":779249.05,"cf":0.9353,"sc":false},{"c":"CL-HLTH","ym":202511,"mm":2160.9,"nmm":2221.8,"sm":962.5,"paid":603790.07,"exp":798193.21,"fees":113558.55,"net":717348.62,"cf":0.795,"sc":false},{"c":"CL-HLTH","ym":202512,"mm":2150.3,"nmm":2223.0,"sm":958.0,"paid":363374.82,"exp":794262.23,"fees":113012.52,"net":476387.34,"cf":0.2949,"sc":false},{"c":"CL-KELL","ym":202301,"mm":1669.2,"nmm":1669.2,"sm":761.8,"paid":491672.45,"exp":958549.32,"fees":104873.11,"net":537775.19,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202302,"mm":1682.6,"nmm":1682.6,"sm":765.0,"paid":476645.59,"exp":966270.78,"fees":105554.89,"net":523430.11,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202303,"mm":1691.5,"nmm":1691.5,"sm":768.5,"paid":716363.35,"exp":971386.95,"fees":106079.23,"net":763672.21,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202304,"mm":1701.2,"nmm":1701.2,"sm":773.1,"paid":576547.21,"exp":976967.25,"fees":106701.79,"net":624478.63,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202305,"mm":1710.7,"nmm":1710.7,"sm":780.2,"paid":484031.1,"exp":982390.6,"fees":107445.56,"net":532706.29,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202306,"mm":1723.6,"nmm":1723.6,"sm":785.0,"paid":836095.36,"exp":989792.59,"fees":108193.82,"net":885518.81,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202307,"mm":1736.2,"nmm":1736.2,"sm":787.1,"paid":762212.68,"exp":997025.46,"fees":108783.12,"net":812225.43,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202308,"mm":1741.9,"nmm":1741.9,"sm":792.5,"paid":891746.19,"exp":1000322.81,"fees":109295.8,"net":942271.62,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202309,"mm":1751.5,"nmm":1751.5,"sm":795.3,"paid":658316.77,"exp":1005834.02,"fees":109810.84,"net":709357.24,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202310,"mm":1757.5,"nmm":1757.5,"sm":795.6,"paid":756846.78,"exp":1009288.83,"fees":110053.37,"net":808129.78,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202311,"mm":1766.5,"nmm":1766.5,"sm":798.2,"paid":646421.29,"exp":1014447.96,"fees":110532.83,"net":698183.75,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202312,"mm":1772.7,"nmm":1772.7,"sm":798.3,"paid":1037919.59,"exp":1018014.0,"fees":110770.29,"net":1089919.51,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202401,"mm":1778.9,"nmm":1778.9,"sm":800.2,"paid":872106.94,"exp":783016.12,"fees":113914.17,"net":805744.36,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202402,"mm":1786.5,"nmm":1786.5,"sm":805.1,"paid":1008890.56,"exp":786353.41,"fees":114487.2,"net":943101.01,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202403,"mm":1794.6,"nmm":1794.6,"sm":811.2,"paid":804842.52,"exp":789930.86,"fees":115142.29,"net":739708.06,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202404,"mm":1839.7,"nmm":2157.6,"sm":831.1,"paid":801557.92,"exp":809776.97,"fees":117999.3,"net":739280.47,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202405,"mm":1843.6,"nmm":2162.6,"sm":835.1,"paid":684530.35,"exp":811470.48,"fees":118373.48,"net":622627.08,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202406,"mm":1846.5,"nmm":2167.0,"sm":838.2,"paid":746403.36,"exp":812740.69,"fees":118663.77,"net":684790.38,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202407,"mm":1850.7,"nmm":2172.5,"sm":840.0,"paid":914847.37,"exp":814622.47,"fees":118926.19,"net":853496.81,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202408,"mm":1858.2,"nmm":2180.4,"sm":842.5,"paid":1020285.71,"exp":817916.62,"fees":119356.09,"net":959365.05,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202409,"mm":1873.1,"nmm":2197.9,"sm":848.1,"paid":857916.41,"exp":824448.95,"fees":120242.18,"net":797881.84,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202410,"mm":1872.0,"nmm":2197.2,"sm":845.3,"paid":791705.8,"exp":823965.3,"fees":120040.91,"net":731469.96,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202411,"mm":1872.4,"nmm":2198.2,"sm":842.9,"paid":743712.57,"exp":824140.97,"fees":119924.55,"net":683360.37,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202412,"mm":1872.9,"nmm":2198.7,"sm":844.5,"paid":915908.1,"exp":824391.42,"fees":120034.24,"net":855665.59,"cf":1.0,"sc":true},{"c":"CL-KELL","ym":202501,"mm":1871.8,"nmm":2198.8,"sm":842.1,"paid":1152532.59,"exp":855093.45,"fees":122848.32,"net":1275380.91,"cf":0.9998,"sc":true},{"c":"CL-KELL","ym":202502,"mm":1875.1,"nmm":2204.1,"sm":845.3,"paid":689585.64,"exp":856602.78,"fees":123163.72,"net":812749.36,"cf":0.9997,"sc":true},{"c":"CL-KELL","ym":202503,"mm":1874.4,"nmm":2205.7,"sm":848.9,"paid":706758.51,"exp":856272.22,"fees":123345.11,"net":830103.62,"cf":0.9994,"sc":true},{"c":"CL-KELL","ym":202504,"mm":1876.9,"nmm":2207.2,"sm":846.8,"paid":607274.41,"exp":857390.25,"fees":123317.42,"net":730591.83,"cf":0.9991,"sc":true},{"c":"CL-KELL","ym":202505,"mm":1874.0,"nmm":2203.7,"sm":841.7,"paid":925934.48,"exp":856080.63,"fees":122907.14,"net":1048841.62,"cf":0.9985,"sc":true},{"c":"CL-KELL","ym":202506,"mm":1876.8,"nmm":2204.7,"sm":840.9,"paid":662277.54,"exp":857375.03,"fees":122971.56,"net":785249.1,"cf":0.9971,"sc":true},{"c":"CL-KELL","ym":202507,"mm":1886.2,"nmm":2213.0,"sm":842.3,"paid":399670.49,"exp":861650.91,"fees":123420.67,"net":523091.16,"cf":0.9946,"sc":true},{"c":"CL-KELL","ym":202508,"mm":1887.6,"nmm":2214.5,"sm":842.3,"paid":780456.68,"exp":862314.03,"fees":123481.54,"net":903938.22,"cf":0.9888,"sc":true},{"c":"CL-KELL","ym":202509,"mm":1888.0,"nmm":2214.4,"sm":840.3,"paid":710637.11,"exp":862476.16,"fees":123376.11,"net":834013.22,"cf":0.9748,"sc":true},{"c":"CL-KELL","ym":202510,"mm":1882.6,"nmm":2209.8,"sm":837.8,"paid":660353.81,"exp":860029.98,"fees":123022.54,"net":783376.35,"cf":0.9353,"sc":false},{"c":"CL-KELL","ym":202511,"mm":1870.4,"nmm":2195.3,"sm":832.9,"paid":656910.19,"exp":854420.92,"fees":122254.46,"net":779164.65,"cf":0.795,"sc":false},{"c":"CL-KELL","ym":202512,"mm":1858.7,"nmm":2182.7,"sm":825.2,"paid":308680.43,"exp":849081.1,"fees":121348.85,"net":430029.28,"cf":0.2949,"sc":false},{"c":"CL-LOG","ym":202301,"mm":2694.6,"nmm":2694.6,"sm":1173.6,"paid":885404.18,"exp":1577210.82,"fees":133421.42,"net":953055.78,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202302,"mm":2712.2,"nmm":2712.2,"sm":1186.0,"paid":968254.78,"exp":1587492.32,"fees":134510.96,"net":1036995.92,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202303,"mm":2726.5,"nmm":2726.5,"sm":1193.5,"paid":1177572.81,"exp":1595846.77,"fees":135272.29,"net":1247075.28,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202304,"mm":2742.6,"nmm":2742.6,"sm":1202.6,"paid":931205.68,"exp":1605279.14,"fees":136168.11,"net":1001603.97,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202305,"mm":2759.9,"nmm":2759.9,"sm":1209.5,"paid":1010529.85,"exp":1615426.6,"fees":136993.56,"net":1081753.59,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202306,"mm":2783.8,"nmm":2783.8,"sm":1221.8,"paid":815661.2,"exp":1629413.76,"fees":138261.98,"net":888153.36,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202307,"mm":2796.1,"nmm":2797.0,"sm":1229.3,"paid":896114.91,"exp":1636592.53,"fees":138970.0,"net":969315.09,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202308,"mm":2804.7,"nmm":2806.5,"sm":1231.9,"paid":979226.05,"exp":1641671.53,"fees":139342.73,"net":1052798.96,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202309,"mm":2814.2,"nmm":2816.7,"sm":1232.8,"paid":1161219.57,"exp":1647227.09,"fees":139660.32,"net":1235110.07,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202310,"mm":2821.4,"nmm":2822.2,"sm":1239.0,"paid":1167227.33,"exp":1651414.18,"fees":140161.05,"net":1241618.56,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202311,"mm":2825.6,"nmm":2825.6,"sm":1240.8,"paid":1120082.5,"exp":1653899.74,"fees":140367.05,"net":1194679.73,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202312,"mm":2832.4,"nmm":2832.4,"sm":1240.0,"paid":1207402.39,"exp":1657852.88,"fees":140525.85,"net":1282158.42,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202401,"mm":2838.9,"nmm":2839.9,"sm":1244.4,"paid":1495597.85,"exp":1147753.15,"fees":144467.35,"net":1446653.22,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202402,"mm":2838.9,"nmm":2839.9,"sm":1243.9,"paid":1059157.29,"exp":1147723.44,"fees":144444.84,"net":1010190.15,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202403,"mm":2853.2,"nmm":2854.5,"sm":1251.2,"paid":2133804.6,"exp":1153530.7,"fees":145219.15,"net":2085611.77,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202404,"mm":2868.6,"nmm":2870.8,"sm":1260.8,"paid":1933288.32,"exp":1159732.99,"fees":146136.41,"net":1886012.75,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202405,"mm":2873.7,"nmm":2875.7,"sm":1259.0,"paid":940064.09,"exp":1161825.11,"fees":146205.83,"net":892857.94,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202406,"mm":2886.3,"nmm":2887.7,"sm":1267.8,"paid":1006902.12,"exp":1166915.65,"fees":147002.59,"net":960492.73,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202407,"mm":2901.5,"nmm":2903.1,"sm":1280.6,"paid":1015286.14,"exp":1173053.98,"fees":148067.31,"net":969941.47,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202408,"mm":2912.8,"nmm":2914.3,"sm":1283.1,"paid":813460.94,"exp":1177618.54,"fees":148525.7,"net":768574.66,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202409,"mm":2919.7,"nmm":2921.2,"sm":1279.7,"paid":1137712.83,"exp":1180419.06,"fees":148567.62,"net":1092868.47,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202410,"mm":2917.1,"nmm":2919.9,"sm":1276.7,"paid":1355623.6,"exp":1179366.0,"fees":148348.27,"net":1310559.89,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202411,"mm":2922.8,"nmm":2924.0,"sm":1278.2,"paid":1224111.75,"exp":1181658.89,"fees":148587.05,"net":1179286.82,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202412,"mm":2929.1,"nmm":2929.3,"sm":1284.8,"paid":1256067.62,"exp":1184204.5,"fees":149089.66,"net":1211745.3,"cf":1.0,"sc":true},{"c":"CL-LOG","ym":202501,"mm":2938.1,"nmm":2938.1,"sm":1283.5,"paid":1239100.57,"exp":1432394.54,"fees":153058.52,"net":1392159.09,"cf":0.9998,"sc":true},{"c":"CL-LOG","ym":202502,"mm":2942.0,"nmm":2944.3,"sm":1284.6,"paid":1229098.64,"exp":1434313.21,"fees":153233.89,"net":1382332.53,"cf":0.9997,"sc":true},{"c":"CL-LOG","ym":202503,"mm":2948.3,"nmm":2952.6,"sm":1290.3,"paid":961315.76,"exp":1437379.92,"fees":153706.79,"net":1115022.55,"cf":0.9994,"sc":true},{"c":"CL-LOG","ym":202504,"mm":2958.1,"nmm":2962.3,"sm":1294.4,"paid":1114727.99,"exp":1442162.59,"fees":154206.65,"net":1268934.64,"cf":0.9991,"sc":true},{"c":"CL-LOG","ym":202505,"mm":2965.9,"nmm":2968.8,"sm":1299.5,"paid":1129508.71,"exp":1445982.68,"fees":154698.86,"net":1284207.57,"cf":0.9985,"sc":true},{"c":"CL-LOG","ym":202506,"mm":2974.6,"nmm":2975.0,"sm":1306.0,"paid":961317.37,"exp":1450223.02,"fees":155281.43,"net":1116598.8,"cf":0.9971,"sc":true},{"c":"CL-LOG","ym":202507,"mm":2983.5,"nmm":2983.5,"sm":1307.9,"paid":950625.6,"exp":1454569.4,"fees":155647.12,"net":1106272.72,"cf":0.9946,"sc":true},{"c":"CL-LOG","ym":202508,"mm":2985.2,"nmm":2985.4,"sm":1309.1,"paid":867065.36,"exp":1455387.09,"fees":155756.98,"net":1022822.34,"cf":0.9888,"sc":true},{"c":"CL-LOG","ym":202509,"mm":2984.5,"nmm":2998.3,"sm":1308.9,"paid":1295265.83,"exp":1455016.95,"fees":155725.78,"net":1450991.61,"cf":0.9748,"sc":true},{"c":"CL-LOG","ym":202510,"mm":2974.2,"nmm":3014.0,"sm":1304.2,"paid":1055111.87,"exp":1449992.86,"fees":155176.66,"net":1210288.53,"cf":0.9353,"sc":false},{"c":"CL-LOG","ym":202511,"mm":2957.6,"nmm":3030.5,"sm":1299.8,"paid":827116.2,"exp":1441902.49,"fees":154457.36,"net":981573.56,"cf":0.795,"sc":false},{"c":"CL-LOG","ym":202512,"mm":2938.4,"nmm":3024.7,"sm":1291.4,"paid":543792.68,"exp":1432551.77,"fees":153455.16,"net":697247.84,"cf":0.2949,"sc":false},{"c":"CL-MFG","ym":202301,"mm":4123.6,"nmm":4123.6,"sm":1841.7,"paid":1479634.53,"exp":2368085.79,"fees":164580.14,"net":1564049.21,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202302,"mm":4159.3,"nmm":4159.3,"sm":1854.4,"paid":1694522.85,"exp":2388553.11,"fees":165878.34,"net":1780235.73,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202303,"mm":4191.4,"nmm":4191.4,"sm":1871.5,"paid":1402230.77,"exp":2406969.32,"fees":167262.56,"net":1489327.87,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202304,"mm":4226.3,"nmm":4226.3,"sm":1889.3,"paid":1309307.26,"exp":2427017.95,"fees":168739.27,"net":1397881.07,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202305,"mm":4261.2,"nmm":4261.2,"sm":1902.0,"paid":1505431.35,"exp":2447075.71,"fees":170016.79,"net":1595282.68,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202306,"mm":4297.5,"nmm":4297.8,"sm":1914.1,"paid":1425814.19,"exp":2467925.38,"fees":171304.94,"net":1516953.67,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202307,"mm":4313.1,"nmm":4314.1,"sm":1921.2,"paid":1387641.97,"exp":2476900.48,"fees":171934.56,"net":1479411.07,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202308,"mm":4326.0,"nmm":4327.1,"sm":1928.0,"paid":2215327.88,"exp":2484310.45,"fees":172486.38,"net":2307648.8,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202309,"mm":4340.1,"nmm":4342.1,"sm":1939.4,"paid":1677428.52,"exp":2492408.41,"fees":173244.64,"net":1770507.7,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202310,"mm":4355.8,"nmm":4357.3,"sm":1934.3,"paid":1604232.52,"exp":2501390.45,"fees":173402.23,"net":1697469.29,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202311,"mm":4361.5,"nmm":4361.6,"sm":1938.6,"paid":1693061.19,"exp":2504678.72,"fees":173697.8,"net":1786593.53,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202312,"mm":4368.1,"nmm":4368.6,"sm":1938.8,"paid":1879511.98,"exp":2508466.95,"fees":173856.44,"net":1973202.96,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202401,"mm":4387.2,"nmm":4387.7,"sm":1942.6,"paid":1789872.76,"exp":1801293.99,"fees":178870.1,"net":1893173.07,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202402,"mm":4399.5,"nmm":4400.4,"sm":1948.7,"paid":1331954.2,"exp":1806339.65,"fees":179398.07,"net":1435782.48,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202403,"mm":4412.4,"nmm":4413.7,"sm":1952.7,"paid":1859969.72,"exp":1811651.03,"fees":179855.87,"net":1964255.8,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202404,"mm":4424.3,"nmm":4427.4,"sm":1957.7,"paid":1614429.62,"exp":1816542.97,"fees":180329.63,"net":1719189.46,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202405,"mm":4438.3,"nmm":4442.2,"sm":1959.5,"paid":1284828.42,"exp":1822286.45,"fees":180723.72,"net":1389982.35,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202406,"mm":4445.2,"nmm":4449.1,"sm":1960.1,"paid":1172940.78,"exp":1825110.22,"fees":180907.76,"net":1278278.75,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202407,"mm":4451.5,"nmm":4455.5,"sm":1970.7,"paid":1847194.65,"exp":1827703.4,"fees":181473.28,"net":1953098.14,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202408,"mm":4459.5,"nmm":4461.9,"sm":1974.4,"paid":1726949.36,"exp":1831001.3,"fees":181805.02,"net":1833184.59,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202409,"mm":4475.2,"nmm":4476.2,"sm":1982.9,"paid":1920380.39,"exp":1837414.03,"fees":182506.44,"net":2027317.04,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202410,"mm":4484.8,"nmm":4485.8,"sm":1994.8,"paid":1676023.55,"exp":1841371.81,"fees":183197.71,"net":1783651.47,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202411,"mm":4490.7,"nmm":4492.4,"sm":1994.6,"paid":1641656.11,"exp":1843791.69,"fees":183326.44,"net":1749412.76,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202412,"mm":4502.0,"nmm":4505.0,"sm":1994.4,"paid":2482273.81,"exp":1848418.06,"fees":183579.84,"net":2590283.86,"cf":1.0,"sc":true},{"c":"CL-MFG","ym":202501,"mm":4505.5,"nmm":4506.8,"sm":1988.8,"paid":1750666.5,"exp":1904589.64,"fees":188032.25,"net":1938698.75,"cf":0.9998,"sc":true},{"c":"CL-MFG","ym":202502,"mm":4514.5,"nmm":4514.7,"sm":1995.2,"paid":1673268.1,"exp":1908414.5,"fees":188505.64,"net":1861773.74,"cf":0.9997,"sc":true},{"c":"CL-MFG","ym":202503,"mm":4521.3,"nmm":4522.1,"sm":1999.6,"paid":1552690.4,"exp":1911271.56,"fees":188843.23,"net":1741533.63,"cf":0.9994,"sc":true},{"c":"CL-MFG","ym":202504,"mm":4529.8,"nmm":4530.8,"sm":2006.5,"paid":1613628.9,"exp":1914882.4,"fees":189327.91,"net":1802956.81,"cf":0.9991,"sc":true},{"c":"CL-MFG","ym":202505,"mm":4537.8,"nmm":4539.8,"sm":2008.3,"paid":1830490.08,"exp":1918253.2,"fees":189587.55,"net":2020077.63,"cf":0.9985,"sc":true},{"c":"CL-MFG","ym":202506,"mm":4560.6,"nmm":4563.3,"sm":2030.3,"paid":1595491.97,"exp":1927888.32,"fees":191023.41,"net":1786515.38,"cf":0.9971,"sc":true},{"c":"CL-MFG","ym":202507,"mm":4578.7,"nmm":4581.7,"sm":2027.7,"paid":1276892.27,"exp":1935557.87,"fees":191350.54,"net":1468242.81,"cf":0.9946,"sc":true},{"c":"CL-MFG","ym":202508,"mm":4593.6,"nmm":4596.0,"sm":2037.9,"paid":1355032.93,"exp":1941844.24,"fees":192117.04,"net":1547149.97,"cf":0.9888,"sc":true},{"c":"CL-MFG","ym":202509,"mm":4603.1,"nmm":4619.3,"sm":2040.7,"paid":1391009.1,"exp":1945882.67,"fees":192455.02,"net":1583464.12,"cf":0.9748,"sc":true},{"c":"CL-MFG","ym":202510,"mm":4593.9,"nmm":4658.9,"sm":2032.7,"paid":1548364.22,"exp":1941967.13,"fees":191911.23,"net":1740275.45,"cf":0.9353,"sc":false},{"c":"CL-MFG","ym":202511,"mm":4573.0,"nmm":4685.8,"sm":2020.9,"paid":1523855.27,"exp":1933130.17,"fees":190938.33,"net":1714793.6,"cf":0.795,"sc":false},{"c":"CL-MFG","ym":202512,"mm":4543.9,"nmm":4676.0,"sm":2014.6,"paid":818184.89,"exp":1920844.28,"fees":189989.32,"net":1008174.21,"cf":0.2949,"sc":false},{"c":"CL-MUN","ym":202301,"mm":2731.5,"nmm":2731.5,"sm":1242.3,"paid":1158431.36,"exp":1628967.12,"fees":0.0,"net":1158431.36,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202302,"mm":2753.6,"nmm":2753.6,"sm":1252.6,"paid":1533212.75,"exp":1642119.9,"fees":0.0,"net":1533212.75,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202303,"mm":2774.0,"nmm":2774.0,"sm":1261.1,"paid":967718.48,"exp":1654321.78,"fees":0.0,"net":967718.48,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202304,"mm":2799.9,"nmm":2799.9,"sm":1271.0,"paid":1117939.57,"exp":1669748.3,"fees":0.0,"net":1117939.57,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202305,"mm":2820.6,"nmm":2820.6,"sm":1282.2,"paid":920975.37,"exp":1682119.91,"fees":0.0,"net":920975.37,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202306,"mm":2833.7,"nmm":2833.7,"sm":1291.3,"paid":1078250.3,"exp":1689925.19,"fees":0.0,"net":1078250.3,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202307,"mm":2844.1,"nmm":2845.0,"sm":1306.8,"paid":754514.68,"exp":1696105.57,"fees":0.0,"net":754514.68,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202308,"mm":2859.7,"nmm":2860.0,"sm":1308.7,"paid":982393.58,"exp":1705397.15,"fees":0.0,"net":982393.58,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202309,"mm":2875.0,"nmm":2875.2,"sm":1320.0,"paid":984526.23,"exp":1714554.92,"fees":0.0,"net":984526.23,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202310,"mm":2884.2,"nmm":2885.2,"sm":1320.7,"paid":1234773.18,"exp":1720017.75,"fees":145802.5,"net":1344329.95,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202311,"mm":2890.6,"nmm":2890.8,"sm":1318.3,"paid":1003840.08,"exp":1723858.13,"fees":145876.86,"net":1113471.21,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202312,"mm":2899.4,"nmm":2899.4,"sm":1321.2,"paid":1167604.93,"exp":1729059.23,"fees":146268.57,"net":1277627.77,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202401,"mm":2908.5,"nmm":2908.5,"sm":1327.6,"paid":1314456.93,"exp":1208139.42,"fees":146834.8,"net":1425046.0,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202402,"mm":2916.3,"nmm":2917.1,"sm":1328.8,"paid":985371.4,"exp":1211377.01,"fees":147113.29,"net":1096238.96,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202403,"mm":2926.4,"nmm":2928.0,"sm":1328.4,"paid":930160.02,"exp":1215562.59,"fees":147387.13,"net":1041301.42,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202404,"mm":2941.7,"nmm":2943.6,"sm":1333.6,"paid":949133.38,"exp":1221923.22,"fees":148078.73,"net":1060966.38,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202405,"mm":2957.7,"nmm":2959.0,"sm":1345.9,"paid":932273.05,"exp":1228573.5,"fees":149115.93,"net":1045143.25,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202406,"mm":2963.3,"nmm":2965.3,"sm":1346.8,"paid":1335970.51,"exp":1230881.72,"fees":149320.81,"net":1449045.59,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202407,"mm":2972.5,"nmm":2974.5,"sm":1355.0,"paid":1029393.51,"exp":1234737.2,"fees":149973.79,"net":1143121.57,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202408,"mm":2984.5,"nmm":2987.1,"sm":1361.1,"paid":1398437.53,"exp":1239721.63,"fees":150607.4,"net":1512799.2,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202409,"mm":2998.1,"nmm":3000.0,"sm":1374.0,"paid":987237.76,"exp":1245350.82,"fees":151602.76,"net":1102594.79,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202410,"mm":3007.1,"nmm":3008.1,"sm":1378.4,"paid":1013724.2,"exp":1249101.29,"fees":155900.33,"net":1122918.63,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202411,"mm":3018.3,"nmm":3018.5,"sm":1386.9,"paid":1552638.28,"exp":1253741.62,"fees":156642.64,"net":1662575.02,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202412,"mm":3029.1,"nmm":3029.1,"sm":1388.5,"paid":1558322.98,"exp":1258212.85,"fees":157035.97,"net":1668653.05,"cf":1.0,"sc":true},{"c":"CL-MUN","ym":202501,"mm":3036.0,"nmm":3036.0,"sm":1393.0,"paid":1035402.08,"exp":1310020.02,"fees":157457.98,"net":1146154.16,"cf":0.9998,"sc":true},{"c":"CL-MUN","ym":202502,"mm":3036.6,"nmm":3036.6,"sm":1392.2,"paid":1108336.36,"exp":1310311.33,"fees":157441.98,"net":1219072.44,"cf":0.9997,"sc":true},{"c":"CL-MUN","ym":202503,"mm":3040.1,"nmm":3040.1,"sm":1390.3,"paid":1127869.64,"exp":1311815.62,"fees":157455.13,"net":1238618.87,"cf":0.9994,"sc":true},{"c":"CL-MUN","ym":202504,"mm":3040.5,"nmm":3040.5,"sm":1394.4,"paid":1230692.97,"exp":1311990.21,"fees":157661.02,"net":1341648.09,"cf":0.9991,"sc":true},{"c":"CL-MUN","ym":202505,"mm":3044.5,"nmm":3044.5,"sm":1393.7,"paid":959460.78,"exp":1313722.68,"fees":157749.1,"net":1070503.98,"cf":0.9985,"sc":true},{"c":"CL-MUN","ym":202506,"mm":3047.6,"nmm":3047.6,"sm":1396.2,"paid":1269103.26,"exp":1315053.73,"fees":157960.31,"net":1380357.67,"cf":0.9971,"sc":true},{"c":"CL-MUN","ym":202507,"mm":3052.4,"nmm":3052.4,"sm":1396.3,"paid":1206780.06,"exp":1317105.03,"fees":158107.75,"net":1318181.91,"cf":0.9946,"sc":true},{"c":"CL-MUN","ym":202508,"mm":3045.5,"nmm":3045.5,"sm":1390.7,"paid":941174.37,"exp":1314126.22,"fees":157631.61,"net":1052100.08,"cf":0.9888,"sc":true},{"c":"CL-MUN","ym":202509,"mm":3043.1,"nmm":3052.0,"sm":1384.3,"paid":941028.73,"exp":1313083.32,"fees":157252.36,"net":1051575.19,"cf":0.9748,"sc":true},{"c":"CL-MUN","ym":202510,"mm":3038.6,"nmm":3072.3,"sm":1380.3,"paid":933923.25,"exp":1311175.4,"fees":160884.75,"net":1094808.0,"cf":0.9353,"sc":false},{"c":"CL-MUN","ym":202511,"mm":3018.3,"nmm":3086.0,"sm":1372.9,"paid":1089887.01,"exp":1302382.12,"fees":159902.66,"net":1249789.67,"cf":0.795,"sc":false},{"c":"CL-MUN","ym":202512,"mm":2995.1,"nmm":3082.5,"sm":1363.6,"paid":563313.09,"exp":1292398.16,"fees":158738.26,"net":722051.35,"cf":0.2949,"sc":false},{"c":"CL-TECH","ym":202301,"mm":2296.9,"nmm":2296.9,"sm":1025.7,"paid":808587.17,"exp":1166833.39,"fees":114951.03,"net":871151.53,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202302,"mm":2314.5,"nmm":2314.5,"sm":1033.6,"paid":749655.49,"exp":1175771.01,"fees":115829.65,"net":813098.47,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202303,"mm":2330.5,"nmm":2330.5,"sm":1045.1,"paid":896994.14,"exp":1183925.48,"fees":116834.77,"net":961442.24,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202304,"mm":2352.5,"nmm":2352.5,"sm":1051.1,"paid":757851.73,"exp":1195076.61,"fees":117754.65,"net":823219.71,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202305,"mm":2370.9,"nmm":2370.9,"sm":1058.1,"paid":660498.46,"exp":1204426.18,"fees":118613.32,"net":726725.11,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202306,"mm":2385.4,"nmm":2385.8,"sm":1063.7,"paid":747241.46,"exp":1211790.09,"fees":119297.88,"net":814152.67,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202307,"mm":2402.3,"nmm":2403.0,"sm":1070.1,"paid":809160.43,"exp":1220404.01,"fees":120089.51,"net":876863.27,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202308,"mm":2412.6,"nmm":2412.6,"sm":1078.0,"paid":885485.81,"exp":1225631.48,"fees":120757.91,"net":953857.05,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202309,"mm":2420.4,"nmm":2420.4,"sm":1080.5,"paid":980164.53,"exp":1229604.42,"fees":121101.97,"net":1048879.83,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202310,"mm":2425.2,"nmm":2425.2,"sm":1082.6,"paid":1115929.28,"exp":1232006.19,"fees":121339.6,"net":1184882.21,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202311,"mm":2432.0,"nmm":2432.4,"sm":1091.8,"paid":1072542.75,"exp":1235480.27,"fees":121966.25,"net":1142122.33,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202312,"mm":2437.0,"nmm":2438.0,"sm":1095.7,"paid":1155214.79,"exp":1238020.42,"fees":122294.28,"net":1225122.4,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202401,"mm":2442.5,"nmm":2443.5,"sm":1102.3,"paid":1132759.6,"exp":994115.29,"fees":125853.42,"net":1187418.86,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202402,"mm":2454.0,"nmm":2454.7,"sm":1105.2,"paid":840902.69,"exp":998788.46,"fees":126333.59,"net":896042.12,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202403,"mm":2459.5,"nmm":2460.5,"sm":1108.7,"paid":919242.33,"exp":1001060.79,"fees":126667.75,"net":974715.92,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202404,"mm":2462.6,"nmm":2463.1,"sm":1110.0,"paid":785135.01,"exp":1002302.79,"fees":126822.05,"net":840762.9,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202405,"mm":2467.2,"nmm":2467.7,"sm":1111.3,"paid":1053947.51,"exp":1004185.57,"fees":127020.05,"net":1109773.4,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202406,"mm":2473.4,"nmm":2474.0,"sm":1110.3,"paid":790210.24,"exp":1006685.02,"fees":127155.48,"net":846171.56,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202407,"mm":2482.1,"nmm":2482.6,"sm":1112.9,"paid":935547.89,"exp":1010238.22,"fees":127538.68,"net":991892.41,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202408,"mm":2484.4,"nmm":2485.4,"sm":1112.1,"paid":774333.07,"exp":1011157.25,"fees":127567.26,"net":830706.17,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202409,"mm":2492.9,"nmm":2493.4,"sm":1124.6,"paid":811541.03,"exp":1014648.9,"fees":128421.98,"net":868768.85,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202410,"mm":2501.9,"nmm":2501.9,"sm":1123.8,"paid":979099.97,"exp":1018286.68,"fees":128653.24,"net":1036559.05,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202411,"mm":2508.9,"nmm":2508.9,"sm":1128.3,"paid":687872.32,"exp":1021161.02,"fees":129075.79,"net":745753.95,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202412,"mm":2518.1,"nmm":2519.1,"sm":1130.0,"paid":1067410.47,"exp":1024903.77,"fees":129434.27,"net":1125650.58,"cf":1.0,"sc":true},{"c":"CL-TECH","ym":202501,"mm":2517.3,"nmm":2518.3,"sm":1131.3,"paid":870637.23,"exp":1010062.77,"fees":132735.1,"net":1003372.33,"cf":0.9998,"sc":true},{"c":"CL-TECH","ym":202502,"mm":2521.6,"nmm":2522.6,"sm":1134.2,"paid":1094026.94,"exp":1011809.25,"fees":133010.08,"net":1227037.02,"cf":0.9997,"sc":true},{"c":"CL-TECH","ym":202503,"mm":2525.8,"nmm":2526.7,"sm":1134.0,"paid":815169.98,"exp":1013492.66,"fees":133127.65,"net":948297.63,"cf":0.9994,"sc":true},{"c":"CL-TECH","ym":202504,"mm":2530.0,"nmm":2530.0,"sm":1135.0,"paid":1022448.22,"exp":1015175.86,"fees":133306.48,"net":1155754.7,"cf":0.9991,"sc":true},{"c":"CL-TECH","ym":202505,"mm":2538.3,"nmm":2538.3,"sm":1132.5,"paid":985555.8,"exp":1018501.94,"fees":133437.44,"net":1118993.24,"cf":0.9985,"sc":true},{"c":"CL-TECH","ym":202506,"mm":2542.7,"nmm":2542.7,"sm":1136.1,"paid":982161.55,"exp":1020258.37,"fees":133745.62,"net":1115907.17,"cf":0.9971,"sc":true},{"c":"CL-TECH","ym":202507,"mm":2554.3,"nmm":2554.3,"sm":1136.5,"paid":1417614.13,"exp":1024908.94,"fees":134116.74,"net":1551730.87,"cf":0.9946,"sc":true},{"c":"CL-TECH","ym":202508,"mm":2557.5,"nmm":2557.5,"sm":1139.4,"paid":1213101.6,"exp":1026190.33,"fees":134356.9,"net":1347458.5,"cf":0.9888,"sc":true},{"c":"CL-TECH","ym":202509,"mm":2563.9,"nmm":2575.6,"sm":1142.9,"paid":896025.29,"exp":1028764.92,"fees":134727.01,"net":1030752.3,"cf":0.9748,"sc":true},{"c":"CL-TECH","ym":202510,"mm":2556.6,"nmm":2592.9,"sm":1136.7,"paid":1424648.42,"exp":1025827.97,"fees":134199.35,"net":1558847.77,"cf":0.9353,"sc":false},{"c":"CL-TECH","ym":202511,"mm":2541.5,"nmm":2601.4,"sm":1128.3,"paid":641758.02,"exp":1019776.88,"fees":133325.68,"net":775083.7,"cf":0.795,"sc":false},{"c":"CL-TECH","ym":202512,"mm":2521.2,"nmm":2592.8,"sm":1120.6,"paid":389259.57,"exp":1011615.89,"fees":132328.59,"net":521588.16,"cf":0.2949,"sc":false},{"c":"CL-UTIL","ym":202301,"mm":1358.0,"nmm":1358.0,"sm":627.6,"paid":368398.36,"exp":757388.14,"fees":85808.92,"net":411380.12,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202302,"mm":1364.2,"nmm":1364.2,"sm":630.8,"paid":355682.78,"exp":760855.87,"fees":86219.05,"net":399074.67,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202303,"mm":1374.9,"nmm":1374.9,"sm":636.9,"paid":480065.42,"exp":766815.22,"fees":86957.02,"net":524195.28,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202304,"mm":1387.9,"nmm":1387.9,"sm":646.3,"paid":468390.19,"exp":774027.14,"fees":87958.68,"net":513521.71,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202305,"mm":1403.5,"nmm":1403.5,"sm":651.9,"paid":449817.81,"exp":782718.94,"fees":88851.92,"net":495842.57,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202306,"mm":1412.9,"nmm":1412.9,"sm":655.7,"paid":385043.96,"exp":787969.89,"fees":89416.13,"net":431632.93,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202307,"mm":1419.2,"nmm":1419.2,"sm":660.5,"paid":478157.85,"exp":791516.48,"fees":89916.74,"net":525247.43,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202308,"mm":1424.3,"nmm":1424.3,"sm":662.3,"paid":437795.91,"exp":794358.96,"fees":90207.42,"net":485176.17,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202309,"mm":1425.5,"nmm":1425.5,"sm":663.5,"paid":453202.6,"exp":795034.12,"fees":90317.76,"net":500693.2,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202310,"mm":1428.5,"nmm":1428.5,"sm":667.4,"paid":467545.62,"exp":796697.66,"fees":90646.06,"net":515364.52,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202311,"mm":1433.6,"nmm":1433.6,"sm":671.0,"paid":425724.59,"exp":799532.94,"fees":91036.07,"net":473933.5,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202312,"mm":1442.3,"nmm":1442.3,"sm":672.5,"paid":650819.61,"exp":804397.63,"fees":91446.48,"net":699438.93,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202401,"mm":1451.0,"nmm":1451.0,"sm":675.0,"paid":607061.6,"exp":509660.59,"fees":94235.39,"net":635945.46,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202402,"mm":1456.9,"nmm":1456.9,"sm":678.4,"paid":662591.09,"exp":511720.43,"fees":94654.08,"net":691893.64,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202403,"mm":1458.1,"nmm":1458.1,"sm":677.8,"paid":515540.41,"exp":512153.23,"fees":94666.87,"net":544855.75,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202404,"mm":1461.5,"nmm":1461.5,"sm":677.3,"paid":573486.3,"exp":513337.26,"fees":94767.69,"net":602902.46,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202405,"mm":1470.4,"nmm":1470.8,"sm":676.9,"paid":484776.99,"exp":516458.84,"fees":95084.61,"net":514510.07,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202406,"mm":1476.5,"nmm":1477.8,"sm":676.7,"paid":644030.96,"exp":518594.16,"fees":95308.43,"net":673987.86,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202407,"mm":1482.4,"nmm":1484.2,"sm":678.4,"paid":472112.28,"exp":520673.68,"fees":95631.27,"net":502392.02,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202408,"mm":1492.4,"nmm":1493.2,"sm":678.0,"paid":454453.7,"exp":524197.35,"fees":95992.75,"net":485094.92,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202409,"mm":1496.4,"nmm":1496.4,"sm":680.2,"paid":532216.17,"exp":525583.87,"fees":96270.82,"net":563135.46,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202410,"mm":1499.0,"nmm":1499.1,"sm":682.5,"paid":621428.63,"exp":526508.8,"fees":96501.25,"net":652578.35,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202411,"mm":1507.7,"nmm":1508.7,"sm":685.6,"paid":545317.09,"exp":529564.55,"fees":97008.1,"net":576973.66,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202412,"mm":1510.3,"nmm":1511.3,"sm":690.7,"paid":655494.21,"exp":530485.67,"fees":97401.93,"net":687544.61,"cf":1.0,"sc":true},{"c":"CL-UTIL","ym":202501,"mm":1516.8,"nmm":1517.8,"sm":692.5,"paid":793282.32,"exp":636027.3,"fees":100186.03,"net":893468.35,"cf":0.9998,"sc":true},{"c":"CL-UTIL","ym":202502,"mm":1515.6,"nmm":1516.4,"sm":691.6,"paid":697557.52,"exp":635509.4,"fees":100088.38,"net":797645.9,"cf":0.9997,"sc":true},{"c":"CL-UTIL","ym":202503,"mm":1521.9,"nmm":1522.7,"sm":696.0,"paid":495893.39,"exp":638150.95,"fees":100593.25,"net":596486.64,"cf":0.9994,"sc":true},{"c":"CL-UTIL","ym":202504,"mm":1533.9,"nmm":1535.9,"sm":701.0,"paid":609359.92,"exp":643194.95,"fees":101355.07,"net":710714.99,"cf":0.9991,"sc":true},{"c":"CL-UTIL","ym":202505,"mm":1541.4,"nmm":1542.1,"sm":709.1,"paid":405968.79,"exp":646320.85,"fees":102118.58,"net":508087.37,"cf":0.9985,"sc":true},{"c":"CL-UTIL","ym":202506,"mm":1551.2,"nmm":1551.2,"sm":712.5,"paid":438701.79,"exp":650435.18,"fees":102702.31,"net":541404.1,"cf":0.9971,"sc":true},{"c":"CL-UTIL","ym":202507,"mm":1554.6,"nmm":1554.6,"sm":712.5,"paid":426725.44,"exp":651866.82,"fees":102833.86,"net":529559.3,"cf":0.9946,"sc":true},{"c":"CL-UTIL","ym":202508,"mm":1554.5,"nmm":1554.5,"sm":711.0,"paid":647759.69,"exp":651853.24,"fees":102748.28,"net":750507.97,"cf":0.9888,"sc":true},{"c":"CL-UTIL","ym":202509,"mm":1555.6,"nmm":1562.5,"sm":708.7,"paid":468550.11,"exp":652294.15,"fees":102658.03,"net":571208.14,"cf":0.9748,"sc":true},{"c":"CL-UTIL","ym":202510,"mm":1554.6,"nmm":1574.9,"sm":705.1,"paid":549550.31,"exp":651893.78,"fees":102411.16,"net":651961.47,"cf":0.9353,"sc":false},{"c":"CL-UTIL","ym":202511,"mm":1547.6,"nmm":1580.0,"sm":701.6,"paid":449570.97,"exp":648925.63,"fees":101925.75,"net":551496.72,"cf":0.795,"sc":false},{"c":"CL-UTIL","ym":202512,"mm":1536.4,"nmm":1571.5,"sm":695.1,"paid":248198.57,"exp":644251.38,"fees":101111.41,"net":349309.98,"cf":0.2949,"sc":false}],"fees":[{"c":"CL-EDU","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":40.46,"eff":"2025-07-01"},{"c":"CL-EDU","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":2.52,"eff":"2025-07-01"},{"c":"CL-EDU","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":3.26,"eff":"2025-07-01"},{"c":"CL-EDU","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-07-01"},{"c":"CL-EDU","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":13.56,"eff":"2025-07-01"},{"c":"CL-EDU","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":4.47,"eff":"2025-07-01"},{"c":"CL-FIN","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":49.14,"eff":"2025-01-01"},{"c":"CL-FIN","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.1,"eff":"2025-01-01"},{"c":"CL-FIN","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.05,"eff":"2025-01-01"},{"c":"CL-FIN","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-FIN","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":17.6,"eff":"2025-01-01"},{"c":"CL-FIN","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":5.78,"eff":"2025-01-01"},{"c":"CL-HLTH","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":49.14,"eff":"2025-01-01"},{"c":"CL-HLTH","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.1,"eff":"2025-01-01"},{"c":"CL-HLTH","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.05,"eff":"2025-01-01"},{"c":"CL-HLTH","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-HLTH","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":17.6,"eff":"2025-01-01"},{"c":"CL-HLTH","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":5.78,"eff":"2025-01-01"},{"c":"CL-KELL","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":58.07,"eff":"2025-01-01"},{"c":"CL-KELL","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.78,"eff":"2025-01-01"},{"c":"CL-KELL","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.83,"eff":"2025-01-01"},{"c":"CL-KELL","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-KELL","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":23.65,"eff":"2025-01-01"},{"c":"CL-KELL","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":7.09,"eff":"2025-01-01"},{"c":"CL-LOG","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":49.14,"eff":"2025-01-01"},{"c":"CL-LOG","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.1,"eff":"2025-01-01"},{"c":"CL-LOG","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.05,"eff":"2025-01-01"},{"c":"CL-LOG","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-LOG","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":17.6,"eff":"2025-01-01"},{"c":"CL-LOG","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":5.78,"eff":"2025-01-01"},{"c":"CL-MFG","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":40.46,"eff":"2025-01-01"},{"c":"CL-MFG","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":2.52,"eff":"2025-01-01"},{"c":"CL-MFG","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":3.26,"eff":"2025-01-01"},{"c":"CL-MFG","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-MFG","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":13.56,"eff":"2025-01-01"},{"c":"CL-MFG","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":4.47,"eff":"2025-01-01"},{"c":"CL-MUN","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":49.14,"eff":"2025-10-01"},{"c":"CL-MUN","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.1,"eff":"2025-10-01"},{"c":"CL-MUN","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.05,"eff":"2025-10-01"},{"c":"CL-MUN","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-10-01"},{"c":"CL-MUN","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":17.6,"eff":"2025-10-01"},{"c":"CL-MUN","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":5.78,"eff":"2025-10-01"},{"c":"CL-TECH","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":49.14,"eff":"2025-01-01"},{"c":"CL-TECH","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.1,"eff":"2025-01-01"},{"c":"CL-TECH","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.05,"eff":"2025-01-01"},{"c":"CL-TECH","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-TECH","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":17.6,"eff":"2025-01-01"},{"c":"CL-TECH","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":5.78,"eff":"2025-01-01"},{"c":"CL-UTIL","code":"ADMIN","name":"Plan administration","basis":"PEPM","amt":58.07,"eff":"2025-01-01"},{"c":"CL-UTIL","code":"ASL_PREMIUM","name":"Aggregate stop-loss premium","basis":"PMPM","amt":3.78,"eff":"2025-01-01"},{"c":"CL-UTIL","code":"CARE_MGMT","name":"Care management and utilization review","basis":"PMPM","amt":4.83,"eff":"2025-01-01"},{"c":"CL-UTIL","code":"COBRA_ADMIN","name":"COBRA administration","basis":"FLAT_MONTHLY","amt":289.03,"eff":"2025-01-01"},{"c":"CL-UTIL","code":"ISL_PREMIUM","name":"Specific stop-loss premium","basis":"PMPM","amt":23.65,"eff":"2025-01-01"},{"c":"CL-UTIL","code":"NETWORK_ACCESS","name":"Network access","basis":"PMPM","amt":7.09,"eff":"2025-01-01"}],"tiers":[{"c":"CL-AG","tier":"EE","sm":2779.0,"budget":0.0},{"c":"CL-AG","tier":"EE_CHILD","sm":506.0,"budget":0.0},{"c":"CL-AG","tier":"EE_SPOUSE","sm":1337.0,"budget":0.0},{"c":"CL-AG","tier":"FAMILY","sm":1585.0,"budget":0.0},{"c":"CL-CON","tier":"EE","sm":4321.9,"budget":0.0},{"c":"CL-CON","tier":"EE_CHILD","sm":803.0,"budget":0.0},{"c":"CL-CON","tier":"EE_SPOUSE","sm":2168.0,"budget":0.0},{"c":"CL-CON","tier":"FAMILY","sm":2424.0,"budget":0.0},{"c":"CL-EDU","tier":"EE","sm":8676.4,"budget":3676376.32},{"c":"CL-EDU","tier":"EE_CHILD","sm":1281.0,"budget":1004163.09},{"c":"CL-EDU","tier":"EE_SPOUSE","sm":4619.6,"budget":4110586.66},{"c":"CL-EDU","tier":"FAMILY","sm":4911.0,"budget":6138651.78},{"c":"CL-FIN","tier":"EE","sm":5205.7,"budget":1942106.55},{"c":"CL-FIN","tier":"EE_CHILD","sm":843.0,"budget":581813.31},{"c":"CL-FIN","tier":"EE_SPOUSE","sm":2969.0,"budget":2326033.36},{"c":"CL-FIN","tier":"FAMILY","sm":3011.0,"budget":3313725.94},{"c":"CL-FOOD","tier":"EE","sm":5315.8,"budget":0.0},{"c":"CL-FOOD","tier":"EE_CHILD","sm":817.0,"budget":0.0},{"c":"CL-FOOD","tier":"EE_SPOUSE","sm":2519.0,"budget":0.0},{"c":"CL-FOOD","tier":"FAMILY","sm":3234.0,"budget":0.0},{"c":"CL-HLTH","tier":"EE","sm":4684.6,"budget":1887604.29},{"c":"CL-HLTH","tier":"EE_CHILD","sm":727.0,"budget":541934.88},{"c":"CL-HLTH","tier":"EE_SPOUSE","sm":2791.0,"budget":2361688.38},{"c":"CL-HLTH","tier":"FAMILY","sm":2971.0,"budget":3531568.28},{"c":"CL-HOSP","tier":"EE","sm":3106.9,"budget":0.0},{"c":"CL-HOSP","tier":"EE_CHILD","sm":446.0,"budget":0.0},{"c":"CL-HOSP","tier":"EE_SPOUSE","sm":1640.0,"budget":0.0},{"c":"CL-HOSP","tier":"FAMILY","sm":2174.0,"budget":0.0},{"c":"CL-IND","tier":"EE","sm":7799.7,"budget":0.0},{"c":"CL-IND","tier":"EE_CHILD","sm":1287.0,"budget":0.0},{"c":"CL-IND","tier":"EE_SPOUSE","sm":4224.0,"budget":0.0},{"c":"CL-IND","tier":"FAMILY","sm":4711.0,"budget":0.0},{"c":"CL-KELL","tier":"EE","sm":4527.1,"budget":2116396.24},{"c":"CL-KELL","tier":"EE_CHILD","sm":544.0,"budget":470494.72},{"c":"CL-KELL","tier":"EE_SPOUSE","sm":2218.0,"budget":2177543.68},{"c":"CL-KELL","tier":"FAMILY","sm":2695.0,"budget":3716755.35},{"c":"CL-LOG","tier":"EE","sm":6690.4,"budget":2877357.49},{"c":"CL-LOG","tier":"EE_CHILD","sm":1122.0,"budget":892696.86},{"c":"CL-LOG","tier":"EE_SPOUSE","sm":3345.7,"budget":3021668.95},{"c":"CL-LOG","tier":"FAMILY","sm":4052.0,"budget":5140812.92},{"c":"CL-MAIND","tier":"EE","sm":16978.0,"budget":0.0},{"c":"CL-MAIND","tier":"EE_SPOUSE","sm":746.0,"budget":0.0},{"c":"CL-MFG","tier":"EE","sm":10399.9,"budget":4540593.84},{"c":"CL-MFG","tier":"EE_CHILD","sm":1558.0,"budget":1258412.18},{"c":"CL-MFG","tier":"EE_SPOUSE","sm":5278.0,"budget":4839187.08},{"c":"CL-MFG","tier":"FAMILY","sm":6397.0,"budget":8239208.06},{"c":"CL-MUN","tier":"EE","sm":7379.9,"budget":3255937.33},{"c":"CL-MUN","tier":"EE_CHILD","sm":1004.0,"budget":819464.8},{"c":"CL-MUN","tier":"EE_SPOUSE","sm":3573.0,"budget":3310348.77},{"c":"CL-MUN","tier":"FAMILY","sm":4298.0,"budget":5593847.0},{"c":"CL-PRINT","tier":"EE","sm":2840.4,"budget":0.0},{"c":"CL-PRINT","tier":"EE_CHILD","sm":559.0,"budget":0.0},{"c":"CL-PRINT","tier":"EE_SPOUSE","sm":1568.5,"budget":0.0},{"c":"CL-PRINT","tier":"FAMILY","sm":1612.0,"budget":0.0},{"c":"CL-RET","tier":"EE","sm":9371.9,"budget":0.0},{"c":"CL-RET","tier":"EE_CHILD","sm":1342.0,"budget":0.0},{"c":"CL-RET","tier":"EE_SPOUSE","sm":5054.9,"budget":0.0},{"c":"CL-RET","tier":"FAMILY","sm":5973.0,"budget":0.0},{"c":"CL-TECH","tier":"EE","sm":5921.0,"budget":2565852.14},{"c":"CL-TECH","tier":"EE_CHILD","sm":869.0,"budget":696677.3},{"c":"CL-TECH","tier":"EE_SPOUSE","sm":2903.5,"budget":2642331.44},{"c":"CL-TECH","tier":"FAMILY","sm":3686.0,"budget":4712145.54},{"c":"CL-UTIL","tier":"EE","sm":3629.8,"budget":1350019.16},{"c":"CL-UTIL","tier":"EE_CHILD","sm":522.0,"budget":359172.54},{"c":"CL-UTIL","tier":"EE_SPOUSE","sm":1933.0,"budget":1509769.65},{"c":"CL-UTIL","tier":"FAMILY","sm":2073.0,"budget":2274474.87}],"tierRates":[{"c":"CL-EDU","tier":"EE","factor":1.0,"pepm":438.86},{"c":"CL-EDU","tier":"EE_CHILD","factor":1.85,"pepm":811.88},{"c":"CL-EDU","tier":"EE_SPOUSE","factor":2.1,"pepm":921.6},{"c":"CL-EDU","tier":"FAMILY","factor":2.95,"pepm":1294.63},{"c":"CL-FIN","tier":"EE","factor":1.0,"pepm":450.26},{"c":"CL-FIN","tier":"EE_CHILD","factor":1.85,"pepm":832.98},{"c":"CL-FIN","tier":"EE_SPOUSE","factor":2.1,"pepm":945.54},{"c":"CL-FIN","tier":"FAMILY","factor":2.95,"pepm":1328.26},{"c":"CL-HLTH","tier":"EE","factor":1.0,"pepm":391.84},{"c":"CL-HLTH","tier":"EE_CHILD","factor":1.85,"pepm":724.9},{"c":"CL-HLTH","tier":"EE_SPOUSE","factor":2.1,"pepm":822.86},{"c":"CL-HLTH","tier":"FAMILY","factor":2.95,"pepm":1155.92},{"c":"CL-KELL","tier":"EE","factor":1.0,"pepm":486.47},{"c":"CL-KELL","tier":"EE_CHILD","factor":1.85,"pepm":899.97},{"c":"CL-KELL","tier":"EE_SPOUSE","factor":2.1,"pepm":1021.59},{"c":"CL-KELL","tier":"FAMILY","factor":2.95,"pepm":1435.09},{"c":"CL-LOG","tier":"EE","factor":1.0,"pepm":519.29},{"c":"CL-LOG","tier":"EE_CHILD","factor":1.85,"pepm":960.69},{"c":"CL-LOG","tier":"EE_SPOUSE","factor":2.1,"pepm":1090.52},{"c":"CL-LOG","tier":"FAMILY","factor":2.95,"pepm":1531.92},{"c":"CL-MFG","tier":"EE","factor":1.0,"pepm":450.21},{"c":"CL-MFG","tier":"EE_CHILD","factor":1.85,"pepm":832.89},{"c":"CL-MFG","tier":"EE_SPOUSE","factor":2.1,"pepm":945.44},{"c":"CL-MFG","tier":"FAMILY","factor":2.95,"pepm":1328.13},{"c":"CL-MUN","tier":"EE","factor":1.0,"pepm":457.86},{"c":"CL-MUN","tier":"EE_CHILD","factor":1.85,"pepm":847.05},{"c":"CL-MUN","tier":"EE_SPOUSE","factor":2.1,"pepm":961.51},{"c":"CL-MUN","tier":"FAMILY","factor":2.95,"pepm":1350.7},{"c":"CL-TECH","tier":"EE","factor":1.0,"pepm":426.81},{"c":"CL-TECH","tier":"EE_CHILD","factor":1.85,"pepm":789.6},{"c":"CL-TECH","tier":"EE_SPOUSE","factor":2.1,"pepm":896.3},{"c":"CL-TECH","tier":"FAMILY","factor":2.95,"pepm":1259.09},{"c":"CL-UTIL","tier":"EE","factor":1.0,"pepm":444.66},{"c":"CL-UTIL","tier":"EE_CHILD","factor":1.85,"pepm":822.62},{"c":"CL-UTIL","tier":"EE_SPOUSE","factor":2.1,"pepm":933.78},{"c":"CL-UTIL","tier":"FAMILY","factor":2.95,"pepm":1311.74}],"claimants":[{"c":"CL-LOG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000033812","basis":"MEMBER_ID","ids":1,"paid":904947.17,"ded":150000.0,"laser":false,"ent":754947.17,"rec":754947.17,"st":"REIMBURSED","late":false},{"c":"CL-MFG","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000016603","basis":"MEMBER_ID","ids":1,"paid":950733.39,"ded":200000.0,"laser":false,"ent":750733.39,"rec":750733.39,"st":"REIMBURSED","late":false},{"c":"CL-LOG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000044624","basis":"MEMBER_ID","ids":1,"paid":806350.85,"ded":150000.0,"laser":false,"ent":656350.85,"rec":656350.85,"st":"REIMBURSED","late":false},{"c":"CL-KELL","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000022924","basis":"MEMBER_ID","ids":1,"paid":621259.82,"ded":100000.0,"laser":false,"ent":521259.82,"rec":521259.82,"st":"REIMBURSED","late":false},{"c":"CL-FIN","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000013218","basis":"MEMBER_ID","ids":1,"paid":647385.43,"ded":150000.0,"laser":false,"ent":497385.43,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-TECH","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000012851","basis":"MEMBER_ID","ids":1,"paid":691698.75,"ded":150000.0,"laser":false,"ent":487528.88,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-EDU","py":2024,"pyl":"2024-07-01..2025-06-30","mid":"MHP000010201","basis":"MEMBER_ID","ids":2,"paid":547350.01,"ded":200000.0,"laser":false,"ent":347350.01,"rec":347350.01,"st":"REIMBURSED","late":false},{"c":"CL-HLTH","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000024396","basis":"MEMBER_ID","ids":1,"paid":484388.72,"ded":150000.0,"laser":false,"ent":334388.72,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-EDU","py":2023,"pyl":"2023-07-01..2024-06-30","mid":"MHP000010201","basis":"MEMBER_ID","ids":2,"paid":509809.63,"ded":200000.0,"laser":false,"ent":309809.63,"rec":309809.63,"st":"REIMBURSED","late":false},{"c":"CL-TECH","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000005811","basis":"MEMBER_ID","ids":1,"paid":482923.39,"ded":150000.0,"laser":false,"ent":299631.05,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MFG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000018377","basis":"MEMBER_ID","ids":2,"paid":498143.95,"ded":200000.0,"laser":false,"ent":298143.95,"rec":298143.95,"st":"REIMBURSED","late":false},{"c":"CL-LOG","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000011617","basis":"MEMBER_ID","ids":1,"paid":437247.73,"ded":150000.0,"laser":false,"ent":287247.73,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-TECH","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000019170","basis":"MEMBER_ID","ids":1,"paid":439533.81,"ded":150000.0,"laser":false,"ent":260580.43,"rec":260580.43,"st":"REIMBURSED","late":false},{"c":"CL-KELL","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000014907","basis":"MEMBER_ID","ids":1,"paid":356318.34,"ded":100000.0,"laser":false,"ent":256318.34,"rec":256318.34,"st":"REIMBURSED","late":false},{"c":"CL-FIN","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000013218","basis":"MEMBER_ID","ids":1,"paid":402882.94,"ded":150000.0,"laser":false,"ent":252882.94,"rec":252882.94,"st":"REIMBURSED","late":false},{"c":"CL-UTIL","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000007900","basis":"MEMBER_ID","ids":1,"paid":351899.6,"ded":100000.0,"laser":false,"ent":251899.6,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-MFG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000047553","basis":"MEMBER_ID","ids":1,"paid":440528.81,"ded":200000.0,"laser":false,"ent":240528.81,"rec":240528.81,"st":"REIMBURSED","late":false},{"c":"CL-KELL","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000026635","basis":"MEMBER_ID","ids":1,"paid":336627.27,"ded":100000.0,"laser":false,"ent":236627.27,"rec":236627.27,"st":"REIMBURSED","late":false},{"c":"CL-UTIL","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000003067","basis":"MEMBER_ID","ids":1,"paid":327509.58,"ded":100000.0,"laser":false,"ent":227509.58,"rec":227509.58,"st":"REIMBURSED","late":false},{"c":"CL-TECH","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000007115","basis":"MEMBER_ID","ids":1,"paid":398349.0,"ded":150000.0,"laser":false,"ent":223514.1,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-LOG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000011617","basis":"MEMBER_ID","ids":1,"paid":373245.34,"ded":150000.0,"laser":false,"ent":223245.34,"rec":223245.34,"st":"REIMBURSED","late":false},{"c":"CL-EDU","py":2024,"pyl":"2024-07-01..2025-06-30","mid":"MHP000002639","basis":"MEMBER_ID","ids":1,"paid":419451.62,"ded":200000.0,"laser":false,"ent":219451.62,"rec":219451.62,"st":"REIMBURSED","late":false},{"c":"CL-FIN","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000011069","basis":"MEMBER_ID","ids":1,"paid":368063.6,"ded":150000.0,"laser":false,"ent":218063.6,"rec":218063.6,"st":"REIMBURSED","late":false},{"c":"CL-FIN","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000047839","basis":"MEMBER_ID","ids":1,"paid":364280.56,"ded":150000.0,"laser":false,"ent":214280.56,"rec":214280.56,"st":"REIMBURSED","late":false},{"c":"CL-FIN","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000012029","basis":"MEMBER_ID","ids":1,"paid":363124.54,"ded":150000.0,"laser":false,"ent":213124.54,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-KELL","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000021355","basis":"MEMBER_ID","ids":1,"paid":312669.24,"ded":100000.0,"laser":false,"ent":212669.24,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-LOG","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000002373","basis":"MEMBER_ID","ids":1,"paid":358133.25,"ded":150000.0,"laser":false,"ent":208133.25,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-KELL","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000017606","basis":"MEMBER_ID","ids":1,"paid":306355.56,"ded":100000.0,"laser":false,"ent":206355.56,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-TECH","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000005811","basis":"MEMBER_ID","ids":1,"paid":376735.64,"ded":150000.0,"laser":false,"ent":204062.08,"rec":204062.08,"st":"REIMBURSED","late":false},{"c":"CL-LOG","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000008017","basis":"MEMBER_ID","ids":1,"paid":351538.36,"ded":150000.0,"laser":false,"ent":201538.36,"rec":201538.36,"st":"REIMBURSED","late":false},{"c":"CL-HLTH","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000041304","basis":"MEMBER_ID","ids":1,"paid":350328.85,"ded":150000.0,"laser":false,"ent":200328.85,"rec":200328.85,"st":"REIMBURSED","late":false},{"c":"CL-KELL","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000014907","basis":"MEMBER_ID","ids":1,"paid":298884.38,"ded":100000.0,"laser":false,"ent":198884.38,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MUN","py":2024,"pyl":"2024-10-01..2025-09-30","mid":"MHP000031445","basis":"MEMBER_ID","ids":1,"paid":341716.65,"ded":150000.0,"laser":false,"ent":191716.65,"rec":191716.65,"st":"REIMBURSED","late":false},{"c":"CL-EDU","py":2023,"pyl":"2023-07-01..2024-06-30","mid":"MHP000002639","basis":"MEMBER_ID","ids":1,"paid":387785.97,"ded":200000.0,"laser":false,"ent":187785.97,"rec":187785.97,"st":"REIMBURSED","late":false},{"c":"CL-TECH","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000012851","basis":"MEMBER_ID","ids":1,"paid":357005.65,"ded":150000.0,"laser":false,"ent":186305.09,"rec":186305.09,"st":"REIMBURSED","late":false},{"c":"CL-UTIL","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000007900","basis":"MEMBER_ID","ids":1,"paid":284971.8,"ded":100000.0,"laser":false,"ent":184971.8,"rec":184971.8,"st":"REIMBURSED","late":false},{"c":"CL-EDU","py":2023,"pyl":"2023-07-01..2024-06-30","mid":"MHP000002528","basis":"MEMBER_ID","ids":1,"paid":381570.1,"ded":200000.0,"laser":false,"ent":181570.1,"rec":181570.1,"st":"REIMBURSED","late":false},{"c":"CL-MFG","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000038391","basis":"MEMBER_ID","ids":1,"paid":380351.05,"ded":200000.0,"laser":false,"ent":180351.05,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-HLTH","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000037704","basis":"MEMBER_ID","ids":1,"paid":328535.3,"ded":150000.0,"laser":false,"ent":178535.3,"rec":178535.3,"st":"REIMBURSED","late":false},{"c":"CL-HLTH","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000045874","basis":"MEMBER_ID","ids":1,"paid":324996.71,"ded":150000.0,"laser":false,"ent":174996.71,"rec":174996.71,"st":"REIMBURSED","late":false},{"c":"CL-KELL","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000017606","basis":"MEMBER_ID","ids":1,"paid":244425.06,"ded":100000.0,"laser":false,"ent":144425.06,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-KELL","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000042679","basis":"MEMBER_ID","ids":1,"paid":216411.38,"ded":100000.0,"laser":false,"ent":116411.38,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-LOG","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000002373","basis":"MEMBER_ID","ids":1,"paid":266269.1,"ded":150000.0,"laser":false,"ent":116269.1,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-LOG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000012577","basis":"MEMBER_ID","ids":1,"paid":233076.75,"ded":150000.0,"laser":false,"ent":83076.75,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MFG","py":2024,"pyl":"2024-01-01..2024-12-31","mid":"MHP000023832","basis":"MEMBER_ID","ids":1,"paid":281066.93,"ded":200000.0,"laser":false,"ent":81066.93,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MUN","py":2024,"pyl":"2024-10-01..2025-09-30","mid":"MHP000031794","basis":"MEMBER_ID","ids":1,"paid":224638.6,"ded":150000.0,"laser":false,"ent":74638.6,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-TECH","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000007115","basis":"MEMBER_ID","ids":1,"paid":231602.84,"ded":150000.0,"laser":false,"ent":73442.56,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-FIN","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000047839","basis":"MEMBER_ID","ids":1,"paid":219733.15,"ded":150000.0,"laser":false,"ent":69733.15,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MFG","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000018376","basis":"MASTER_PERSON_ID","ids":2,"paid":264825.52,"ded":200000.0,"laser":false,"ent":64825.52,"rec":0.0,"st":"PENDING","late":false},{"c":"CL-KELL","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000029619","basis":"MEMBER_ID","ids":1,"paid":152227.32,"ded":100000.0,"laser":false,"ent":52227.32,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-TECH","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000034244","basis":"MEMBER_ID","ids":1,"paid":203918.24,"ded":150000.0,"laser":false,"ent":48526.42,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-KELL","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000032165","basis":"MEMBER_ID","ids":1,"paid":141454.67,"ded":100000.0,"laser":false,"ent":41454.67,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-LOG","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000019275","basis":"MEMBER_ID","ids":1,"paid":177252.26,"ded":150000.0,"laser":false,"ent":27252.26,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MFG","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000046468","basis":"MASTER_PERSON_ID","ids":2,"paid":226825.93,"ded":200000.0,"laser":false,"ent":26825.93,"rec":26825.93,"st":"REIMBURSED","late":false},{"c":"CL-UTIL","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000020163","basis":"MEMBER_ID","ids":1,"paid":124385.15,"ded":100000.0,"laser":false,"ent":24385.15,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MUN","py":2024,"pyl":"2024-10-01..2025-09-30","mid":"MHP000001271","basis":"MEMBER_ID","ids":1,"paid":163450.71,"ded":150000.0,"laser":false,"ent":13450.71,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-MUN","py":2024,"pyl":"2024-10-01..2025-09-30","mid":"MHP000038717","basis":"MASTER_PERSON_ID","ids":2,"paid":163449.79,"ded":150000.0,"laser":false,"ent":13449.79,"rec":13449.79,"st":"REIMBURSED","late":false},{"c":"CL-TECH","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000033674","basis":"MASTER_PERSON_ID","ids":2,"paid":162630.14,"ded":150000.0,"laser":false,"ent":11367.13,"rec":11367.13,"st":"REIMBURSED","late":false},{"c":"CL-LOG","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000041782","basis":"MEMBER_ID","ids":1,"paid":156743.85,"ded":150000.0,"laser":false,"ent":6743.85,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-KELL","py":2023,"pyl":"2023-01-01..2023-12-31","mid":"MHP000033823","basis":"MEMBER_ID","ids":1,"paid":104958.85,"ded":100000.0,"laser":false,"ent":4958.85,"rec":0.0,"st":"DENIED_LATE_FILING","late":true},{"c":"CL-KELL","py":2025,"pyl":"2025-01-01..2025-12-31","mid":"MHP000004088","basis":"MEMBER_ID","ids":1,"paid":104669.32,"ded":100000.0,"laser":false,"ent":4669.32,"rec":0.0,"st":"DENIED_LATE_FILING","late":true}],"slSummary":{"filings":267,"entitled":24968461.99,"received":16592372.65,"shortfall":8376089.34,"byStatus":[{"filing_status":"DENIED_LATE_FILING","n":19,"ent":1481247.51},{"filing_status":"PENDING","n":67,"ent":6894841.83},{"filing_status":"REIMBURSED","n":181,"ent":16592372.65}],"lateN":19,"lateAmt":1481247.51,"overClaimedN":4,"overClaimedAmt":116468.37,"entangledN":8,"entangledAmt":1219752.95},"claimantDist":[{"c":"CL-EDU","paid":381570.1,"ded":200000.0},{"c":"CL-EDU","paid":387785.97,"ded":200000.0},{"c":"CL-EDU","paid":509809.63,"ded":200000.0},{"c":"CL-EDU","paid":234182.94,"ded":200000.0},{"c":"CL-EDU","paid":220795.66,"ded":200000.0},{"c":"CL-EDU","paid":373273.39,"ded":200000.0},{"c":"CL-EDU","paid":333038.07,"ded":200000.0},{"c":"CL-EDU","paid":226827.95,"ded":200000.0},{"c":"CL-EDU","paid":354883.96,"ded":200000.0},{"c":"CL-EDU","paid":281332.87,"ded":200000.0},{"c":"CL-EDU","paid":419451.62,"ded":200000.0},{"c":"CL-EDU","paid":547350.01,"ded":200000.0},{"c":"CL-EDU","paid":222732.25,"ded":200000.0},{"c":"CL-EDU","paid":275062.67,"ded":200000.0},{"c":"CL-EDU","paid":233611.92,"ded":200000.0},{"c":"CL-EDU","paid":320870.11,"ded":200000.0},{"c":"CL-EDU","paid":244705.77,"ded":200000.0},{"c":"CL-EDU","paid":208636.62,"ded":200000.0},{"c":"CL-EDU","paid":228302.36,"ded":200000.0},{"c":"CL-EDU","paid":214945.32,"ded":200000.0},{"c":"CL-EDU","paid":324231.96,"ded":200000.0},{"c":"CL-EDU","paid":253682.92,"ded":200000.0},{"c":"CL-FIN","paid":261589.92,"ded":150000.0},{"c":"CL-FIN","paid":368063.6,"ded":150000.0},{"c":"CL-FIN","paid":222860.13,"ded":150000.0},{"c":"CL-FIN","paid":168578.43,"ded":150000.0},{"c":"CL-FIN","paid":364280.56,"ded":150000.0},{"c":"CL-FIN","paid":194090.92,"ded":150000.0},{"c":"CL-FIN","paid":168494.04,"ded":150000.0},{"c":"CL-FIN","paid":311277.32,"ded":150000.0},{"c":"CL-FIN","paid":402882.94,"ded":150000.0},{"c":"CL-FIN","paid":252333.8,"ded":150000.0},{"c":"CL-FIN","paid":162402.95,"ded":150000.0},{"c":"CL-FIN","paid":183893.32,"ded":150000.0},{"c":"CL-FIN","paid":178550.52,"ded":150000.0},{"c":"CL-FIN","paid":154050.5,"ded":150000.0},{"c":"CL-FIN","paid":224928.64,"ded":150000.0},{"c":"CL-FIN","paid":317591.93,"ded":150000.0},{"c":"CL-FIN","paid":267822.9,"ded":150000.0},{"c":"CL-FIN","paid":363124.54,"ded":150000.0},{"c":"CL-FIN","paid":647385.43,"ded":150000.0},{"c":"CL-FIN","paid":164369.04,"ded":150000.0},{"c":"CL-FIN","paid":182707.41,"ded":150000.0},{"c":"CL-FIN","paid":174636.46,"ded":150000.0},{"c":"CL-FIN","paid":200394.99,"ded":150000.0},{"c":"CL-FIN","paid":168400.79,"ded":150000.0},{"c":"CL-FIN","paid":219733.15,"ded":150000.0},{"c":"CL-HLTH","paid":176186.42,"ded":150000.0},{"c":"CL-HLTH","paid":281044.33,"ded":150000.0},{"c":"CL-HLTH","paid":252793.33,"ded":150000.0},{"c":"CL-HLTH","paid":162414.67,"ded":150000.0},{"c":"CL-HLTH","paid":328535.3,"ded":150000.0},{"c":"CL-HLTH","paid":350328.85,"ded":150000.0},{"c":"CL-HLTH","paid":165412.03,"ded":150000.0},{"c":"CL-HLTH","paid":294820.58,"ded":150000.0},{"c":"CL-HLTH","paid":173072.66,"ded":150000.0},{"c":"CL-HLTH","paid":200856.62,"ded":150000.0},{"c":"CL-HLTH","paid":280633.67,"ded":150000.0},{"c":"CL-HLTH","paid":173939.12,"ded":150000.0},{"c":"CL-HLTH","paid":324996.71,"ded":150000.0},{"c":"CL-HLTH","paid":163141.08,"ded":150000.0},{"c":"CL-HLTH","paid":484388.72,"ded":150000.0},{"c":"CL-HLTH","paid":304419.38,"ded":150000.0},{"c":"CL-HLTH","paid":206167.05,"ded":150000.0},{"c":"CL-HLTH","paid":247551.26,"ded":150000.0},{"c":"CL-HLTH","paid":175841.23,"ded":150000.0},{"c":"CL-KELL","paid":131053.56,"ded":100000.0},{"c":"CL-KELL","paid":107555.12,"ded":100000.0},{"c":"CL-KELL","paid":219835.0,"ded":100000.0},{"c":"CL-KELL","paid":298884.38,"ded":100000.0},{"c":"CL-KELL","paid":135455.09,"ded":100000.0},{"c":"CL-KELL","paid":163553.63,"ded":100000.0},{"c":"CL-KELL","paid":140356.23,"ded":100000.0},{"c":"CL-KELL","paid":189982.14,"ded":100000.0},{"c":"CL-KELL","paid":142546.42,"ded":100000.0},{"c":"CL-KELL","paid":114634.1,"ded":100000.0},{"c":"CL-KELL","paid":152227.32,"ded":100000.0},{"c":"CL-KELL","paid":151149.74,"ded":100000.0},{"c":"CL-KELL","paid":141454.67,"ded":100000.0},{"c":"CL-KELL","paid":104958.85,"ded":100000.0},{"c":"CL-KELL","paid":141557.29,"ded":100000.0},{"c":"CL-KELL","paid":134167.25,"ded":100000.0},{"c":"CL-KELL","paid":233398.89,"ded":100000.0},{"c":"CL-KELL","paid":229892.28,"ded":100000.0},{"c":"CL-KELL","paid":101182.0,"ded":100000.0},{"c":"CL-KELL","paid":356318.34,"ded":100000.0},{"c":"CL-KELL","paid":223918.83,"ded":100000.0},{"c":"CL-KELL","paid":244425.06,"ded":100000.0},{"c":"CL-KELL","paid":149777.11,"ded":100000.0},{"c":"CL-KELL","paid":101145.11,"ded":100000.0},{"c":"CL-KELL","paid":621259.82,"ded":100000.0},{"c":"CL-KELL","paid":262143.7,"ded":100000.0},{"c":"CL-KELL","paid":150553.53,"ded":100000.0},{"c":"CL-KELL","paid":123549.96,"ded":100000.0},{"c":"CL-KELL","paid":336627.27,"ded":100000.0},{"c":"CL-KELL","paid":177687.74,"ded":100000.0},{"c":"CL-KELL","paid":261556.57,"ded":100000.0},{"c":"CL-KELL","paid":177983.95,"ded":100000.0},{"c":"CL-KELL","paid":123390.66,"ded":100000.0},{"c":"CL-KELL","paid":177498.0,"ded":100000.0},{"c":"CL-KELL","paid":222437.33,"ded":100000.0},{"c":"CL-KELL","paid":118781.35,"ded":100000.0},{"c":"CL-KELL","paid":216411.38,"ded":100000.0},{"c":"CL-KELL","paid":147617.47,"ded":100000.0},{"c":"CL-KELL","paid":134835.2,"ded":100000.0},{"c":"CL-KELL","paid":104669.32,"ded":100000.0},{"c":"CL-KELL","paid":189783.58,"ded":100000.0},{"c":"CL-KELL","paid":125141.33,"ded":100000.0},{"c":"CL-KELL","paid":121829.88,"ded":100000.0},{"c":"CL-KELL","paid":264682.54,"ded":100000.0},{"c":"CL-KELL","paid":202792.09,"ded":100000.0},{"c":"CL-KELL","paid":306355.56,"ded":100000.0},{"c":"CL-KELL","paid":102551.03,"ded":100000.0},{"c":"CL-KELL","paid":312669.24,"ded":100000.0},{"c":"CL-KELL","paid":123283.32,"ded":100000.0},{"c":"CL-KELL","paid":158278.85,"ded":100000.0},{"c":"CL-KELL","paid":261156.29,"ded":100000.0},{"c":"CL-KELL","paid":102206.73,"ded":100000.0},{"c":"CL-KELL","paid":173939.28,"ded":100000.0},{"c":"CL-KELL","paid":127106.34,"ded":100000.0},{"c":"CL-KELL","paid":211916.18,"ded":100000.0},{"c":"CL-KELL","paid":132425.93,"ded":100000.0},{"c":"CL-KELL","paid":134711.91,"ded":100000.0},{"c":"CL-LOG","paid":266269.1,"ded":150000.0},{"c":"CL-LOG","paid":182170.96,"ded":150000.0},{"c":"CL-LOG","paid":351538.36,"ded":150000.0},{"c":"CL-LOG","paid":292555.31,"ded":150000.0},{"c":"CL-LOG","paid":225296.07,"ded":150000.0},{"c":"CL-LOG","paid":220277.18,"ded":150000.0},{"c":"CL-LOG","paid":246501.37,"ded":150000.0},{"c":"CL-LOG","paid":198804.61,"ded":150000.0},{"c":"CL-LOG","paid":173941.18,"ded":150000.0},{"c":"CL-LOG","paid":217048.66,"ded":150000.0},{"c":"CL-LOG","paid":169820.03,"ded":150000.0},{"c":"CL-LOG","paid":161284.16,"ded":150000.0},{"c":"CL-LOG","paid":259769.58,"ded":150000.0},{"c":"CL-LOG","paid":185335.7,"ded":150000.0},{"c":"CL-LOG","paid":252958.68,"ded":150000.0},{"c":"CL-LOG","paid":304776.38,"ded":150000.0},{"c":"CL-LOG","paid":373245.34,"ded":150000.0},{"c":"CL-LOG","paid":238986.09,"ded":150000.0},{"c":"CL-LOG","paid":233076.75,"ded":150000.0},{"c":"CL-LOG","paid":167600.7,"ded":150000.0},{"c":"CL-LOG","paid":175448.3,"ded":150000.0},{"c":"CL-LOG","paid":167554.09,"ded":150000.0},{"c":"CL-LOG","paid":177670.34,"ded":150000.0},{"c":"CL-LOG","paid":904947.17,"ded":150000.0},{"c":"CL-LOG","paid":165741.75,"ded":150000.0},{"c":"CL-LOG","paid":155940.8,"ded":150000.0},{"c":"CL-LOG","paid":806350.85,"ded":150000.0},{"c":"CL-LOG","paid":195231.98,"ded":150000.0},{"c":"CL-LOG","paid":159675.34,"ded":150000.0},{"c":"CL-LOG","paid":179710.69,"ded":150000.0},{"c":"CL-LOG","paid":358133.25,"ded":150000.0},{"c":"CL-LOG","paid":186414.84,"ded":150000.0},{"c":"CL-LOG","paid":437247.73,"ded":150000.0},{"c":"CL-LOG","paid":260705.27,"ded":150000.0},{"c":"CL-LOG","paid":156474.58,"ded":150000.0},{"c":"CL-LOG","paid":177252.26,"ded":150000.0},{"c":"CL-LOG","paid":209295.6,"ded":150000.0},{"c":"CL-LOG","paid":275353.7,"ded":150000.0},{"c":"CL-LOG","paid":156743.85,"ded":150000.0},{"c":"CL-LOG","paid":153488.05,"ded":150000.0},{"c":"CL-LOG","paid":204055.18,"ded":150000.0},{"c":"CL-MFG","paid":950733.39,"ded":200000.0},{"c":"CL-MFG","paid":251604.66,"ded":200000.0},{"c":"CL-MFG","paid":218864.62,"ded":200000.0},{"c":"CL-MFG","paid":231030.23,"ded":200000.0},{"c":"CL-MFG","paid":220495.49,"ded":200000.0},{"c":"CL-MFG","paid":262431.22,"ded":200000.0},{"c":"CL-MFG","paid":226825.93,"ded":200000.0},{"c":"CL-MFG","paid":356234.92,"ded":200000.0},{"c":"CL-MFG","paid":498143.95,"ded":200000.0},{"c":"CL-MFG","paid":231346.18,"ded":200000.0},{"c":"CL-MFG","paid":266261.99,"ded":200000.0},{"c":"CL-MFG","paid":281066.93,"ded":200000.0},{"c":"CL-MFG","paid":274117.05,"ded":200000.0},{"c":"CL-MFG","paid":223148.73,"ded":200000.0},{"c":"CL-MFG","paid":217055.83,"ded":200000.0},{"c":"CL-MFG","paid":440528.81,"ded":200000.0},{"c":"CL-MFG","paid":264825.52,"ded":200000.0},{"c":"CL-MFG","paid":256792.55,"ded":200000.0},{"c":"CL-MFG","paid":231911.27,"ded":200000.0},{"c":"CL-MFG","paid":380351.05,"ded":200000.0},{"c":"CL-MFG","paid":207507.54,"ded":200000.0},{"c":"CL-MFG","paid":320495.67,"ded":200000.0},{"c":"CL-MUN","paid":204146.87,"ded":150000.0},{"c":"CL-MUN","paid":166379.19,"ded":150000.0},{"c":"CL-MUN","paid":229969.23,"ded":150000.0},{"c":"CL-MUN","paid":251725.82,"ded":150000.0},{"c":"CL-MUN","paid":245499.39,"ded":150000.0},{"c":"CL-MUN","paid":153313.35,"ded":150000.0},{"c":"CL-MUN","paid":170918.61,"ded":150000.0},{"c":"CL-MUN","paid":165512.2,"ded":150000.0},{"c":"CL-MUN","paid":197484.12,"ded":150000.0},{"c":"CL-MUN","paid":163526.64,"ded":150000.0},{"c":"CL-MUN","paid":163450.71,"ded":150000.0},{"c":"CL-MUN","paid":170588.59,"ded":150000.0},{"c":"CL-MUN","paid":233563.86,"ded":150000.0},{"c":"CL-MUN","paid":230289.26,"ded":150000.0},{"c":"CL-MUN","paid":154293.93,"ded":150000.0},{"c":"CL-MUN","paid":341716.65,"ded":150000.0},{"c":"CL-MUN","paid":224638.6,"ded":150000.0},{"c":"CL-MUN","paid":191605.21,"ded":150000.0},{"c":"CL-MUN","paid":176477.0,"ded":150000.0},{"c":"CL-MUN","paid":163449.79,"ded":150000.0},{"c":"CL-MUN","paid":234959.89,"ded":150000.0},{"c":"CL-MUN","paid":153409.94,"ded":150000.0},{"c":"CL-TECH","paid":253210.51,"ded":150000.0},{"c":"CL-TECH","paid":376735.64,"ded":150000.0},{"c":"CL-TECH","paid":231602.84,"ded":150000.0},{"c":"CL-TECH","paid":315249.61,"ded":150000.0},{"c":"CL-TECH","paid":185972.95,"ded":150000.0},{"c":"CL-TECH","paid":213002.13,"ded":150000.0},{"c":"CL-TECH","paid":163971.96,"ded":150000.0},{"c":"CL-TECH","paid":193326.52,"ded":150000.0},{"c":"CL-TECH","paid":162630.14,"ded":150000.0},{"c":"CL-TECH","paid":184389.49,"ded":150000.0},{"c":"CL-TECH","paid":236656.73,"ded":150000.0},{"c":"CL-TECH","paid":324351.68,"ded":150000.0},{"c":"CL-TECH","paid":174720.07,"ded":150000.0},{"c":"CL-TECH","paid":225169.49,"ded":150000.0},{"c":"CL-TECH","paid":357005.65,"ded":150000.0},{"c":"CL-TECH","paid":439533.81,"ded":150000.0},{"c":"CL-TECH","paid":196214.9,"ded":150000.0},{"c":"CL-TECH","paid":178381.0,"ded":150000.0},{"c":"CL-TECH","paid":161993.72,"ded":150000.0},{"c":"CL-TECH","paid":155228.35,"ded":150000.0},{"c":"CL-TECH","paid":337723.17,"ded":150000.0},{"c":"CL-TECH","paid":211900.1,"ded":150000.0},{"c":"CL-TECH","paid":482923.39,"ded":150000.0},{"c":"CL-TECH","paid":398349.0,"ded":150000.0},{"c":"CL-TECH","paid":177359.32,"ded":150000.0},{"c":"CL-TECH","paid":691698.75,"ded":150000.0},{"c":"CL-TECH","paid":230221.75,"ded":150000.0},{"c":"CL-TECH","paid":285274.92,"ded":150000.0},{"c":"CL-TECH","paid":336161.28,"ded":150000.0},{"c":"CL-TECH","paid":203918.24,"ded":150000.0},{"c":"CL-TECH","paid":179529.77,"ded":150000.0},{"c":"CL-TECH","paid":297248.1,"ded":150000.0},{"c":"CL-UTIL","paid":327509.58,"ded":100000.0},{"c":"CL-UTIL","paid":204076.17,"ded":100000.0},{"c":"CL-UTIL","paid":217874.87,"ded":100000.0},{"c":"CL-UTIL","paid":153445.4,"ded":100000.0},{"c":"CL-UTIL","paid":103826.18,"ded":100000.0},{"c":"CL-UTIL","paid":107193.69,"ded":100000.0},{"c":"CL-UTIL","paid":376646.9,"ded":100000.0},{"c":"CL-UTIL","paid":166186.42,"ded":100000.0},{"c":"CL-UTIL","paid":284971.8,"ded":100000.0},{"c":"CL-UTIL","paid":151305.34,"ded":100000.0},{"c":"CL-UTIL","paid":210247.99,"ded":100000.0},{"c":"CL-UTIL","paid":111511.46,"ded":100000.0},{"c":"CL-UTIL","paid":143329.21,"ded":100000.0},{"c":"CL-UTIL","paid":159882.15,"ded":100000.0},{"c":"CL-UTIL","paid":150937.58,"ded":100000.0},{"c":"CL-UTIL","paid":122481.58,"ded":100000.0},{"c":"CL-UTIL","paid":135926.91,"ded":100000.0},{"c":"CL-UTIL","paid":102116.79,"ded":100000.0},{"c":"CL-UTIL","paid":118674.18,"ded":100000.0},{"c":"CL-UTIL","paid":381804.08,"ded":100000.0},{"c":"CL-UTIL","paid":169396.73,"ded":100000.0},{"c":"CL-UTIL","paid":351899.6,"ded":100000.0},{"c":"CL-UTIL","paid":239815.75,"ded":100000.0},{"c":"CL-UTIL","paid":161891.6,"ded":100000.0},{"c":"CL-UTIL","paid":124385.15,"ded":100000.0},{"c":"CL-UTIL","paid":192692.06,"ded":100000.0},{"c":"CL-UTIL","paid":194226.04,"ded":100000.0}],"funding":{"weeks":1413,"drawn":316080916.2,"recon":314938652.62,"overWeeks":163,"overAmt":1142263.58,"overLines":1361,"underWeeks":0,"byStatus":{"FUNDED":1343,"FUNDED_LATE":49,"SHORT_FUNDED":21},"byMonth":[{"ym":202407,"amt":394229.43},{"ym":202408,"amt":584273.08},{"ym":202409,"amt":121388.22},{"ym":202410,"amt":30896.66},{"ym":202411,"amt":5202.98},{"ym":202412,"amt":2177.97},{"ym":202501,"amt":672.86},{"ym":202502,"amt":80.94},{"ym":202503,"amt":3341.44}],"worst":[{"c":"CL-KELL","wk":"2024-07-30","drew":608055.98,"owed":371700.48,"over":236355.5,"lines":17},{"c":"CL-MFG","wk":"2024-08-20","drew":481551.48,"owed":394349.18,"over":87202.3,"lines":25},{"c":"CL-TECH","wk":"2024-08-13","drew":319195.52,"owed":239868.31,"over":79327.21,"lines":19},{"c":"CL-MFG","wk":"2024-08-06","drew":475230.31,"owed":396481.61,"over":78748.7,"lines":32},{"c":"CL-MFG","wk":"2024-08-27","drew":375306.49,"owed":339263.95,"over":36042.54,"lines":18},{"c":"CL-HLTH","wk":"2024-08-20","drew":200913.0,"owed":171115.85,"over":29797.15,"lines":15},{"c":"CL-LOG","wk":"2024-08-06","drew":213009.22,"owed":186075.0,"over":26934.22,"lines":25},{"c":"CL-MFG","wk":"2024-09-03","drew":433245.66,"owed":410837.51,"over":22408.15,"lines":18},{"c":"CL-MFG","wk":"2024-08-13","drew":380270.26,"owed":359456.6,"over":20813.66,"lines":33},{"c":"CL-LOG","wk":"2024-08-13","drew":351646.41,"owed":331773.78,"over":19872.63,"lines":22}]},"fundingWeekly":[{"wk":"2024-01-02","drew":2334058.53,"owed":2334058.53},{"wk":"2024-01-09","drew":2275401.77,"owed":2275401.77},{"wk":"2024-01-16","drew":2240060.95,"owed":2240060.95},{"wk":"2024-01-23","drew":2301794.23,"owed":2301794.23},{"wk":"2024-01-30","drew":2132174.47,"owed":2132174.47},{"wk":"2024-02-06","drew":2370725.7,"owed":2370725.7},{"wk":"2024-02-13","drew":2198688.79,"owed":2198688.79},{"wk":"2024-02-20","drew":2106950.65,"owed":2106950.65},{"wk":"2024-02-27","drew":2157561.6,"owed":2157561.6},{"wk":"2024-03-05","drew":2199160.75,"owed":2199160.75},{"wk":"2024-03-12","drew":2232936.06,"owed":2232936.06},{"wk":"2024-03-19","drew":1842584.46,"owed":1842584.46},{"wk":"2024-03-26","drew":2290885.91,"owed":2290885.91},{"wk":"2024-04-02","drew":2212129.12,"owed":2212129.12},{"wk":"2024-04-09","drew":2090484.61,"owed":2090484.61},{"wk":"2024-04-16","drew":2044982.7,"owed":2044982.7},{"wk":"2024-04-23","drew":2379798.88,"owed":2379798.88},{"wk":"2024-04-30","drew":2076458.19,"owed":2076458.19},{"wk":"2024-05-07","drew":1924857.07,"owed":1924857.07},{"wk":"2024-05-14","drew":1807539.25,"owed":1807539.25},{"wk":"2024-05-21","drew":2857318.34,"owed":2857318.34},{"wk":"2024-05-28","drew":1996615.17,"owed":1996615.17},{"wk":"2024-06-04","drew":2114554.84,"owed":2114554.84},{"wk":"2024-06-11","drew":1827553.59,"owed":1827553.59},{"wk":"2024-06-18","drew":2210763.43,"owed":2210763.43},{"wk":"2024-06-25","drew":1791838.02,"owed":1791838.02},{"wk":"2024-07-02","drew":1751903.89,"owed":1751903.89},{"wk":"2024-07-09","drew":1941670.93,"owed":1937933.7},{"wk":"2024-07-16","drew":2179040.99,"owed":2158331.53},{"wk":"2024-07-23","drew":2089901.73,"owed":2027531.77},{"wk":"2024-07-30","drew":2341075.65,"owed":2033662.87},{"wk":"2024-08-06","drew":1947501.97,"owed":1794116.2},{"wk":"2024-08-13","drew":2154029.18,"owed":1988262.26},{"wk":"2024-08-20","drew":2143966.95,"owed":1946238.74},{"wk":"2024-08-27","drew":1905505.05,"owed":1838112.87},{"wk":"2024-09-03","drew":2163035.87,"owed":2105198.85},{"wk":"2024-09-10","drew":2268723.29,"owed":2240029.17},{"wk":"2024-09-17","drew":2155067.76,"owed":2132084.27},{"wk":"2024-09-24","drew":2185613.56,"owed":2173739.97},{"wk":"2024-10-01","drew":1712373.78,"owed":1703149.82},{"wk":"2024-10-08","drew":1759761.85,"owed":1751055.82},{"wk":"2024-10-15","drew":2300621.89,"owed":2295127.21},{"wk":"2024-10-22","drew":2469513.14,"owed":2463721.52},{"wk":"2024-10-29","drew":1800021.02,"owed":1798340.65},{"wk":"2024-11-05","drew":2242744.21,"owed":2240901.52},{"wk":"2024-11-12","drew":2093149.63,"owed":2091261.22},{"wk":"2024-11-19","drew":1972779.38,"owed":1971479.06},{"wk":"2024-11-26","drew":2080892.86,"owed":2080721.3},{"wk":"2024-12-03","drew":2455986.34,"owed":2455482.33},{"wk":"2024-12-10","drew":2378540.46,"owed":2378333.56},{"wk":"2024-12-17","drew":2332577.25,"owed":2332411.97},{"wk":"2024-12-24","drew":2210635.27,"owed":2210633.05},{"wk":"2024-12-31","drew":2830120.38,"owed":2828820.82}],"kellGroups":[{"gid":"KELL-4471","ym":202301,"mm":1669.2},{"gid":"KELL-4471","ym":202302,"mm":1682.6},{"gid":"KELL-4471","ym":202303,"mm":1691.5},{"gid":"KELL-4471","ym":202304,"mm":1701.2},{"gid":"KELL-4471","ym":202305,"mm":1710.7},{"gid":"KELL-4471","ym":202306,"mm":1723.6},{"gid":"KELL-4471","ym":202307,"mm":1736.2},{"gid":"KELL-4471","ym":202308,"mm":1741.9},{"gid":"KELL-4471","ym":202309,"mm":1751.5},{"gid":"KELL-4471","ym":202310,"mm":1757.5},{"gid":"KELL-4471","ym":202311,"mm":1766.5},{"gid":"KELL-4471","ym":202312,"mm":1772.7},{"gid":"KELL-4471","ym":202401,"mm":20.3},{"gid":"KELL-4471","ym":202402,"mm":10.9},{"gid":"KELL-4471","ym":202403,"mm":3.5},{"gid":"KELL-4471","ym":202404,"mm":36.0},{"gid":"KELL-4471","ym":202405,"mm":34.0},{"gid":"KELL-4471","ym":202406,"mm":32.0},{"gid":"KELL-4471","ym":202407,"mm":30.0},{"gid":"KELL-4471","ym":202408,"mm":28.0},{"gid":"KELL-4471","ym":202409,"mm":25.0},{"gid":"KELL-4471","ym":202410,"mm":23.0},{"gid":"KELL-4471","ym":202411,"mm":22.0},{"gid":"KELL-4471","ym":202412,"mm":20.0},{"gid":"KELL-4471","ym":202501,"mm":17.0},{"gid":"KELL-4471","ym":202502,"mm":13.0},{"gid":"KELL-4471","ym":202503,"mm":11.0},{"gid":"KELL-4471","ym":202504,"mm":11.0},{"gid":"KELL-4471","ym":202505,"mm":9.0},{"gid":"KELL-4471","ym":202506,"mm":7.0},{"gid":"KELL-4471","ym":202507,"mm":3.0},{"gid":"KELL-4471","ym":202508,"mm":2.0},{"gid":"NLK-KELL-01","ym":202401,"mm":1758.7},{"gid":"NLK-KELL-01","ym":202402,"mm":1775.7},{"gid":"NLK-KELL-01","ym":202403,"mm":1791.2},{"gid":"NLK-KELL-01","ym":202404,"mm":1803.7},{"gid":"NLK-KELL-01","ym":202405,"mm":1809.6},{"gid":"NLK-KELL-01","ym":202406,"mm":1814.5},{"gid":"NLK-KELL-01","ym":202407,"mm":1820.7},{"gid":"NLK-KELL-01","ym":202408,"mm":1830.2},{"gid":"NLK-KELL-01","ym":202409,"mm":1848.1},{"gid":"NLK-KELL-01","ym":202410,"mm":1849.0},{"gid":"NLK-KELL-01","ym":202411,"mm":1850.4},{"gid":"NLK-KELL-01","ym":202412,"mm":1852.9},{"gid":"NLK-KELL-01","ym":202501,"mm":1854.8},{"gid":"NLK-KELL-01","ym":202502,"mm":1862.1},{"gid":"NLK-KELL-01","ym":202503,"mm":1863.4},{"gid":"NLK-KELL-01","ym":202504,"mm":1865.9},{"gid":"NLK-KELL-01","ym":202505,"mm":1865.0},{"gid":"NLK-KELL-01","ym":202506,"mm":1869.8},{"gid":"NLK-KELL-01","ym":202507,"mm":1883.2},{"gid":"NLK-KELL-01","ym":202508,"mm":1885.6},{"gid":"NLK-KELL-01","ym":202509,"mm":1888.0},{"gid":"NLK-KELL-01","ym":202510,"mm":1882.6},{"gid":"NLK-KELL-01","ym":202511,"mm":1870.4},{"gid":"NLK-KELL-01","ym":202512,"mm":1858.7}],"overlaps":[{"gid":"IND-MARKET","reason":"COBRA overlapping active coverage","n":76},{"gid":"KELL-4471","reason":"Prior group span never terminated at acquisition","n":370},{"gid":"MA-INDIVIDUAL","reason":"COBRA overlapping active coverage","n":86},{"gid":"NLK-AG-01","reason":"COBRA overlapping active coverage","n":38},{"gid":"NLK-CON-01","reason":"COBRA overlapping active coverage","n":65},{"gid":"NLK-EDU-01","reason":"COBRA overlapping active coverage","n":120},{"gid":"NLK-FIN-01","reason":"COBRA overlapping active coverage","n":65},{"gid":"NLK-FOOD-01","reason":"COBRA overlapping active coverage","n":66},{"gid":"NLK-HLTH-01","reason":"COBRA overlapping active coverage","n":78},{"gid":"NLK-HOSP-01","reason":"COBRA overlapping active coverage","n":44},{"gid":"NLK-LOG-01","reason":"COBRA overlapping active coverage","n":104},{"gid":"NLK-MFG-01","reason":"COBRA overlapping active coverage","n":153},{"gid":"NLK-MUN-01","reason":"COBRA overlapping active coverage","n":98},{"gid":"NLK-PRINT-01","reason":"COBRA overlapping active coverage","n":46},{"gid":"NLK-RET-01","reason":"COBRA overlapping active coverage","n":152},{"gid":"NLK-TECH-01","reason":"COBRA overlapping active coverage","n":78},{"gid":"NLK-UTIL-01","reason":"COBRA overlapping active coverage","n":41}],"book":{"clients":9,"groups":10,"mm24":287631.0,"sm24":129309.6,"lives24":23969,"contracts24":10776,"billed24":471160115.68,"savings24":311360434.75,"allowed24":159799680.93,"memLiab24":46832159.25,"cob24":748551.13,"paid24":112218970.55,"isl24":10060049.13,"fees24":14241870.53,"net24":116400791.95,"ibnr24":0.0,"discount24":66.08,"adminRight24":5967404.36,"adminWrong24":13263245.23,"lpc24":2.2244,"paidYtd":81095348.91,"mmYtd":221318.4,"netYtd":91400881.93},"kellSpans":[{"ym":202301,"a":1669.2,"b":0.0,"union":1669.2},{"ym":202302,"a":1682.6,"b":0.0,"union":1682.6},{"ym":202303,"a":1691.5,"b":0.0,"union":1691.5},{"ym":202304,"a":1701.2,"b":0.0,"union":1701.2},{"ym":202305,"a":1710.7,"b":0.0,"union":1710.7},{"ym":202306,"a":1723.6,"b":0.0,"union":1723.6},{"ym":202307,"a":1736.2,"b":0.0,"union":1736.2},{"ym":202308,"a":1741.9,"b":0.0,"union":1741.9},{"ym":202309,"a":1751.5,"b":0.0,"union":1751.5},{"ym":202310,"a":1757.5,"b":0.0,"union":1757.5},{"ym":202311,"a":1766.5,"b":0.0,"union":1766.5},{"ym":202312,"a":1772.7,"b":0.0,"union":1772.7},{"ym":202401,"a":20.3,"b":1758.7,"union":1778.9},{"ym":202402,"a":10.9,"b":1775.7,"union":1786.5},{"ym":202403,"a":3.5,"b":1791.2,"union":1794.6},{"ym":202404,"a":354.2,"b":1803.4,"union":1839.7},{"ym":202405,"a":354.0,"b":1808.6,"union":1843.6},{"ym":202406,"a":353.9,"b":1813.1,"union":1846.5},{"ym":202407,"a":352.7,"b":1819.9,"union":1850.7},{"ym":202408,"a":351.6,"b":1828.8,"union":1858.2},{"ym":202409,"a":351.0,"b":1846.9,"union":1873.1},{"ym":202410,"a":349.2,"b":1848.0,"union":1872.0},{"ym":202411,"a":348.0,"b":1850.2,"union":1872.4},{"ym":202412,"a":347.2,"b":1851.5,"union":1872.9},{"ym":202501,"a":345.0,"b":1853.9,"union":1871.8},{"ym":202502,"a":344.0,"b":1860.1,"union":1875.1},{"ym":202503,"a":344.0,"b":1861.8,"union":1874.4},{"ym":202504,"a":341.3,"b":1865.9,"union":1876.9},{"ym":202505,"a":339.6,"b":1864.0,"union":1874.0},{"ym":202506,"a":335.5,"b":1869.2,"union":1876.8},{"ym":202507,"a":331.5,"b":1881.5,"union":1886.2},{"ym":202508,"a":328.8,"b":1885.6,"union":1887.6},{"ym":202509,"a":328.0,"b":1886.4,"union":1888.0},{"ym":202510,"a":327.2,"b":1882.6,"union":1882.6},{"ym":202511,"a":325.0,"b":1870.4,"union":1870.4},{"ym":202512,"a":324.0,"b":1858.7,"union":1858.7}]};
+const CLIENTS=D.clients, BOOK=D.book, MONTHLY=D.monthly, SL=D.slSummary, FUND=D.funding;
+/* SL.overClaimedN / entangledN come from the payload and are counted over ALL
+   267 filings. They are deliberately NOT derived from D.claimants, which is a
+   selected subset: the four over-claimed filings carry small entitlements, so
+   anything computed off a top-N list reports the defect as zero. */
+const byId=Object.fromEntries(CLIENTS.map(c=>[c.id,c]));
+const PY24=[202401,202412], YTD=[202501,202509];
+const TIERS=["EE","EE_SPOUSE","EE_CHILD","FAMILY"];
+const TIERLAB={EE:"Employee only",EE_SPOUSE:"Employee + spouse",EE_CHILD:"Employee + child(ren)",FAMILY:"Family"};
+/* Categorical hues in FIXED order, never cycled. Four tiers -> four slots. */
+const SER=["--s1","--s2","--s3","--s4","--s5"];
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+let PAGE="book", FOCUS="CL-KELL", DEN="cm";
+const mo=(c,w)=>MONTHLY.filter(m=>m.c===c&&m.ym>=w[0]&&m.ym<=w[1]);
+const bookMo=w=>{const g={};MONTHLY.filter(m=>m.ym>=w[0]&&m.ym<=w[1]).forEach(m=>{
+  const t=g[m.ym]||(g[m.ym]={ym:m.ym,mm:0,nmm:0,sm:0,paid:0,exp:0,fees:0,net:0,cf:m.cf,sc:m.sc});
+  t.mm+=m.mm;t.nmm+=m.nmm;t.sm+=m.sm;t.paid+=m.paid;t.exp+=m.exp;t.fees+=m.fees;t.net+=m.net;});
+  return Object.values(g).sort((a,b)=>a.ym-b.ym);};
+
+/* ---------------- tooltip ---------------- */
+const tip=$("#tip");
+function showTip(html,e){ tip.innerHTML=html; tip.classList.add("on");
+  const r=tip.getBoundingClientRect(); let x=e.clientX+14,y=e.clientY-r.height-12;
+  if(x+r.width>innerWidth-8) x=e.clientX-r.width-14; if(y<8) y=e.clientY+18;
+  tip.style.left=x+"px"; tip.style.top=y+"px"; }
+function hideTip(){ tip.classList.remove("on"); }
+function tipRow(lab,val,color){ return `<div class="row"><i>${color?`<span class="swatch" style="background:${color}"></span>`:""}${esc(lab)}</i><span>${esc(val)}</span></div>`; }
+function bindTip(el,html){ el.addEventListener("mousemove",e=>showTip(html,e));
+  el.addEventListener("mouseleave",hideTip); el.setAttribute("tabindex","0");
+  el.addEventListener("focus",e=>{const r=el.getBoundingClientRect();
+    showTip(html,{clientX:r.left+r.width/2,clientY:r.top});});
+  el.addEventListener("blur",hideTip); }
+
+/* ---------------- svg helpers ---------------- */
+const NS="http://www.w3.org/2000/svg";
+function svg(w,h){ const s=document.createElementNS(NS,"svg");
+  s.setAttribute("viewBox",`0 0 ${w} ${h}`); s.setAttribute("role","img"); return s; }
+function el(tag,attrs,parent){ const n=document.createElementNS(NS,tag);
+  for(const k in attrs) n.setAttribute(k,attrs[k]); if(parent) parent.appendChild(n); return n; }
+function txt(parent,x,y,s,cls,anchor){ const t=el("text",{x,y,class:cls||"tickl"},parent);
+  if(anchor) t.setAttribute("text-anchor",anchor); t.textContent=s; return t; }
+/* Recessive gridlines, drawn before any mark. */
+function grid(g,x0,x1,ys){ ys.forEach(y=>el("line",{x1:x0,x2:x1,y1:y,y2:y,
+  stroke:"var(--grid)","stroke-width":1},g)); }
+function niceMax(v){ const p=Math.pow(10,Math.floor(Math.log10(v||1)));
+  const n=v/p; return (n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p; }
+function legend(host,items){ if(!host) return;
+  host.innerHTML=items.map(i=>`<span><i class="swatch" style="background:${i.c}"></i>${esc(i.lab)}</span>`).join(""); }
+
+/* Rounded top ends on bars, 4px, anchored to the baseline. */
+function barPath(x,y,w,h,r){ r=Math.min(r===undefined?4:r,w/2,h);
+  if(h<=0) return `M${x} ${y}h${w}`;
+  return `M${x} ${y+h}V${y+r}a${r} ${r} 0 0 1 ${r} ${-r}h${w-2*r}a${r} ${r} 0 0 1 ${r} ${r}V${y+h}Z`; }
+
+/* ================= trust header ================= */
+function renderTrust(){
+  const cells=[
+    ["Scored through","2025-09"],
+    ["CY2024 claims","100% complete · IBNR "+money(BOOK.ibnr24)],
+    ["Book","9 clients · 10 group ids"],
+    ["Average lives","num:"+BOOK.lives24+" on "+num(BOOK.contracts24)+" contracts"],
+    ["PMPM denominator","fct_member_month (union)"],
+    ["Fee denominators","ADMIN = PEPM · rest = PMPM"],
+    ["Aggregation key","client_id, never group_id"],
+  ];
+  $("#trustHdr").innerHTML=cells.map(([i,b])=>
+    `<div class="tcell"><i>${esc(i)}</i><b>${esc(b.startsWith("num:")?num(+b.slice(4).split(" ")[0])+b.slice(4).replace(/^[\d.]+/,""):b)}</b></div>`).join("");
+}
+
+/* ================= 01 BOOK ================= */
+function renderBookKpis(){
+  const b=BOOK, wrongDelta=b.adminWrong24-b.adminRight24;
+  const kpis=[
+    {e:"Net plan cost",v:m$(b.net24),d:`CY2024 · ${money(b.net24/b.mm24)} PMPM`},
+    {e:"Paid claims",v:m$(b.paid24),d:`${money(b.paid24/b.mm24)} PMPM on ${num(b.mm24)} member-months`},
+    {e:"Fees",v:m$(b.fees24),d:`${money(b.fees24/b.sm24)} PEPM · ${(100*b.fees24/b.paid24).toFixed(1)}% of claims`},
+    {e:"Stop-loss received",v:m$(b.isl24),d:`${SL.filings} filings, ${money(SL.shortfall)} shortfall`},
+    {e:"Lives per contract",v:b.lpc24.toFixed(3),d:`the PEPM/PMPM factor`,hero:true},
+    {e:"Admin fee if billed on lives",v:m$(b.adminWrong24),d:`${money(wrongDelta)} over the contract`,alarm:true},
+  ];
+  $("#bookKpis").innerHTML=kpis.map(k=>
+    `<div class="kpi${k.hero?" hero":""}${k.alarm?" alarm":""}"><p class="eyebrow">${esc(k.e)}</p>
+     <div class="v num">${esc(k.v)}</div><div class="d">${k.d}</div></div>`).join("");
+}
+
+function rateFlag(c){
+  const m=Math.abs(c.rateMiss);
+  if(m>=5) return `<span class="flag crit">✕ ${m.toFixed(1)}% low</span>`;
+  if(m>=1) return `<span class="flag warn">! ${m.toFixed(1)}% low</span>`;
+  return `<span class="flag good">✓ within ${m.toFixed(2)}%</span>`;
+}
+function renderBookTbl(){
+  const rows=[...CLIENTS].sort((a,b)=>b.net-a.net);
+  /* Sector and the absolute paid figure move to client detail. Rate adequacy is
+     the column this page exists for, so it must not be the one that scrolls off. */
+  const head=["Client","Lives (mm)","Contracts","Lives/ct","Net plan cost","Net PMPM",
+              "Paid PMPM","Fee PEPM","Load %","Var %","CY2025 rate adequacy"];
+  let h="<thead><tr>"+head.map(x=>`<th>${esc(x)}</th>`).join("")+"</tr></thead><tbody>";
+  rows.forEach(c=>{
+    h+=`<tr data-client="${c.id}"${c.id===FOCUS?' class="hl"':''}>
+      <td>${esc(c.short)}</td>
+      <td class="n">${num(c.mm)}</td><td class="n">${num(c.contracts)}</td>
+      <td class="n">${c.lpc.toFixed(3)}</td><td class="n">${money(c.net)}</td>
+      <td class="n">${money(c.netPmpm)}</td><td class="n">${money(c.paidPmpm)}</td>
+      <td class="n">${money(c.feePepm)}</td><td class="n">${c.load.toFixed(1)}</td>
+      <td class="n" style="color:${c.varPct>0?"var(--loss)":"var(--gain)"}">${pct(c.varPct)}</td>
+      <td style="text-align:left">${rateFlag(c)}</td></tr>`;
+  });
+  const t=$("#bookTbl"); t.innerHTML=h+"</tbody>";
+  $$("#bookTbl tr[data-client]").forEach(tr=>{ tr.style.cursor="pointer";
+    tr.addEventListener("click",()=>{ FOCUS=tr.dataset.client; go("client"); }); });
+}
+
+/* Scatter: magnitude + one flagged entity. Single hue keeps identity in the
+   labels rather than in nine cycled colours. */
+function renderScatter(){
+  const host=$("#scatterChart"); host.innerHTML="";
+  const W=560,H=330,L=54,R=22,T=34,B=48;
+  const s=svg(W,H); s.setAttribute("aria-label","Paid claims PMPM against claims variance by client");
+  const xs=CLIENTS.map(c=>c.paidPmpm), ys=CLIENTS.map(c=>c.varPct);
+  /* pad the domain by the largest bubble radius so no mark is clipped */
+  const x0=Math.floor((Math.min(...xs)-28)/25)*25, x1=Math.ceil((Math.max(...xs)+28)/25)*25;
+  const yA=Math.max(Math.abs(Math.min(...ys)),Math.abs(Math.max(...ys)))*1.32;
+  const X=v=>L+(v-x0)/(x1-x0)*(W-L-R), Y=v=>T+(yA-v)/(2*yA)*(H-T-B);
+  const g=el("g",{},s);
+  const yt=[-yA,-yA/2,0,yA/2,yA];
+  grid(g,L,W-R,yt.map(Y));
+  yt.forEach(v=>txt(g,L-8,Y(v)+3,(v>0?"+":"")+v.toFixed(0)+"%",null,"end"));
+  el("line",{x1:L,x2:W-R,y1:Y(0),y2:Y(0),stroke:"var(--axis)","stroke-width":1.5,"stroke-dasharray":"4 3"},g);
+  txt(g,W-R,Y(0)-7,"on budget",null,"end").setAttribute("class","dlab");
+  for(let v=Math.ceil(x0/25)*25;v<=x1;v+=25) txt(g,X(v),H-B+18,"$"+v,null,"middle");
+  txt(g,L,H-8,"PAID CLAIMS PMPM →","axlab");
+  txt(g,L-46,14,"VARIANCE TO BUDGET","axlab");
+  txt(g,W-R,14,"over budget ↑","axlab","end");
+  const rMax=Math.max(...CLIENTS.map(c=>c.mm));
+  CLIENTS.forEach(c=>{
+    const r=9+Math.sqrt(c.mm/rMax)*13, flagged=Math.abs(c.rateMiss)>=5;
+    const col=flagged?"var(--crit)":"var(--s1)";
+    /* 2px surface ring so overlapping marks stay separable */
+    /* 2px surface ring first, then the mark on top, so overlaps stay separable */
+    el("circle",{cx:X(c.paidPmpm),cy:Y(c.varPct),r:r+1.5,fill:"none",
+      stroke:"var(--surface)","stroke-width":2},g);
+    const n=el("circle",{cx:X(c.paidPmpm),cy:Y(c.varPct),r,fill:col,
+      "fill-opacity":flagged?.5:.34,stroke:col,"stroke-width":2},g);
+    bindTip(n,`<h5>${esc(c.short)}</h5>`+tipRow("Paid PMPM",money(c.paidPmpm))+
+      tipRow("Variance",pct(c.varPct))+tipRow("Member-months",num(c.mm))+
+      tipRow("Rate adequacy",c.rateMiss.toFixed(2)+"% below truth"));
+    /* Selective direct labels: the two extremes and the flagged client, placed
+       away from the mark's own side so the text never sits on the bubble. */
+    if(flagged||c.varPct===Math.max(...ys)||c.varPct===Math.min(...ys)){
+      const up=c.varPct>=0;
+      txt(g,X(c.paidPmpm),Y(c.varPct)+(up?-r-7:r+14),c.short.split(" ")[0],"dlab","middle");
+    }
+  });
+  host.appendChild(s);
+}
+
+function renderLoad(){
+  const host=$("#loadChart"); host.innerHTML="";
+  const rows=[...CLIENTS].sort((a,b)=>b.load-a.load);
+  const W=560,H=Math.max(200,rows.length*27+46),L=140,R=56,T=10;
+  const s=svg(W,H); s.setAttribute("aria-label","Total fees as a percentage of paid claims, by client");
+  const g=el("g",{},s), mx=niceMax(Math.max(...rows.map(r=>r.load)));
+  const X=v=>L+v/mx*(W-L-R);
+  for(let v=0;v<=mx;v+=5){ el("line",{x1:X(v),x2:X(v),y1:T,y2:H-30,stroke:"var(--grid)","stroke-width":1},g);
+    txt(g,X(v),H-14,v+"%",null,"middle"); }
+  rows.forEach((c,i)=>{
+    const y=T+i*27, h=15;
+    txt(g,L-10,y+h-3,c.short,null,"end").setAttribute("class","tickl");
+    /* horizontal bar, 4px rounded at the data end, square against the baseline */
+    const p=el("path",{d:`M${L} ${y}h${Math.max(X(c.load)-L-4,1)}a4 4 0 0 1 4 4v${h-8}a4 4 0 0 1 -4 4H${L}Z`,
+      fill:"var(--s1)","fill-opacity":.82},g);
+    bindTip(p,`<h5>${esc(c.short)}</h5>`+tipRow("Total fees",money(c.fees))+
+      tipRow("Paid claims",money(c.paid))+tipRow("Load",c.load.toFixed(2)+"%")+
+      tipRow("Fee PEPM",money(c.feePepm)));
+    txt(g,X(c.load)+7,y+h-3,c.load.toFixed(1)+"%","dlab");
+  });
+  host.appendChild(s);
+}
+
+/* ================= 02 CLIENT DETAIL ================= */
+function renderClientSel(){
+  $("#clientSel").innerHTML=CLIENTS.map(c=>
+    `<button data-c="${c.id}" aria-pressed="${c.id===FOCUS}">${esc(c.short)}</button>`).join("");
+  $$("#clientSel button").forEach(b=>b.addEventListener("click",()=>{FOCUS=b.dataset.c;renderClient();}));
+}
+function renderClientKpis(){
+  const c=byId[FOCUS];
+  const kpis=[
+    {e:"Net plan cost",v:big(c.net),d:`CY2024 · ${money(c.netPmpm)} PMPM`},
+    {e:"Paid claims",v:big(c.paid),d:`${money(c.paidPmpm)} PMPM`},
+    {e:"Fees",v:big(c.fees),d:`${money(c.feePepm)} PEPM · load ${c.load.toFixed(1)}%`},
+    {e:"Stop-loss received",v:big(c.isl),d:`deductible ${money(c.islDed)} · ${c.basis.replace("PAID_","").replace("_","/")}`},
+    {e:"Variance to budget",v:pct(c.varPct),d:`${money(c.var)} against ${money(c.expected)} expected`},
+    {e:"Lives per contract",v:c.lpc.toFixed(3),d:`${num(c.mm)} lives ÷ ${num(c.contracts)} contracts`},
+  ];
+  $("#clientKpis").innerHTML=kpis.map(k=>
+    `<div class="kpi"><p class="eyebrow">${esc(k.e)}</p><div class="v num">${esc(k.v)}</div>
+     <div class="d">${k.d}</div></div>`).join("");
+}
+
+/* Waterfall. Diverging by job: reduces cost / adds cost, with neutral subtotals. */
+function renderWaterfall(){
+  const c=byId[FOCUS], host=$("#wfChart"); host.innerHTML="";
+  const steps=[
+    {lab:"Billed",v:c.billed,kind:"sub"},
+    {lab:"Network savings",v:-c.savings,kind:"down"},
+    {lab:"Allowed",kind:"sub"},
+    {lab:"Member liability",v:-c.memLiab,kind:"down"},
+    {lab:"Paid claims",kind:"sub"},
+    {lab:"Stop-loss received",v:-c.isl,kind:"down"},
+    {lab:"Fees",v:c.fees,kind:"up"},
+    {lab:"Net plan cost",kind:"sub"},
+  ];
+  /* Subtotals are computed, never asserted, so the chart cannot drift from the table. */
+  let run=0; const bars=[];
+  steps.forEach(s=>{
+    if(s.kind==="sub"){
+      run = s.lab==="Billed" ? c.billed
+          : s.lab==="Allowed" ? c.billed-c.savings
+          : s.lab==="Paid claims" ? c.paid
+          : c.net;
+      bars.push({...s,from:0,to:run,val:run});
+    } else { bars.push({...s,from:run,to:run+s.v,val:s.v}); run+=s.v; }
+  });
+  const W=880,H=336,L=52,R=10,T=20,B=56;
+  const mx=niceMax(Math.max(...bars.map(b=>Math.max(b.from,b.to))));
+  const s=svg(W,H); s.setAttribute("aria-label","Cost waterfall from billed charges to net plan cost");
+  const g=el("g",{},s);
+  const Y=v=>T+(1-v/mx)*(H-T-B), bw=(W-L-R)/bars.length;
+  const yt=[0,mx*.25,mx*.5,mx*.75,mx];
+  grid(g,L,W-R,yt.map(Y));
+  yt.forEach(v=>txt(g,L-8,Y(v)+3,"$"+(v/1e6).toFixed(0)+"M",null,"end"));
+  bars.forEach((b,i)=>{
+    const x=L+i*bw+bw*.17, w=bw*.66;
+    const top=Math.min(Y(b.from),Y(b.to)), h=Math.max(Math.abs(Y(b.to)-Y(b.from)),2);
+    const col=b.kind==="sub"?"var(--rule-strong)":b.kind==="down"?"var(--gain)":"var(--loss)";
+    const p=el("path",{d:barPath(x,top,w,h,4),fill:col,"fill-opacity":b.kind==="sub"?.55:.9},g);
+    bindTip(p,`<h5>${esc(b.lab)}</h5>`+
+      tipRow(b.kind==="sub"?"Subtotal":"Change",money(b.val),col)+
+      (b.kind==="sub"?"":tipRow("Running total",money(b.to))));
+    /* connector to the next bar */
+    if(i<bars.length-1) el("line",{x1:x+w,x2:L+(i+1)*bw+bw*.17,y1:Y(b.to),y2:Y(b.to),
+      stroke:"var(--axis)","stroke-width":1,"stroke-dasharray":"3 2"},g);
+    txt(g,x+w/2,top-6,b.kind==="sub"?m$(b.to):m$(b.val),"dlab","middle");
+    const words=b.lab.split(" ");
+    txt(g,x+w/2,H-B+16,words[0],null,"middle");
+    if(words[1]) txt(g,x+w/2,H-B+27,words.slice(1).join(" "),null,"middle");
+  });
+  host.appendChild(s);
+  $("#wfSub").textContent=`CY2024 · network discount ${(100*(1-c.allowed/c.billed)).toFixed(1)}% off billed`;
+}
+
+/* Two series, ONE axis. Completion factor lives in its own panel below. */
+function renderTrend(){
+  const c=byId[FOCUS], host=$("#trendChart"); host.innerHTML="";
+  const rows=mo(c.id,[202401,202512]);
+  const W=880,H=250,L=56,R=70,T=16,B=34;
+  const s=svg(W,H); s.setAttribute("aria-label","Paid claims PMPM and budgeted expected PMPM by month");
+  const g=el("g",{},s);
+  const pm=rows.map(r=>r.paid/r.mm), ex=rows.map(r=>r.exp/r.mm);
+  const mx=niceMax(Math.max(...pm,...ex)*1.08);
+  const X=i=>L+i/(rows.length-1)*(W-L-R), Y=v=>T+(1-v/mx)*(H-T-B);
+  const yt=[0,mx*.25,mx*.5,mx*.75,mx];
+  grid(g,L,W-R,yt.map(Y));
+  yt.forEach(v=>txt(g,L-8,Y(v)+3,"$"+Math.round(v),null,"end"));
+  /* unscored shading, drawn under the marks */
+  const first=rows.findIndex(r=>!r.sc);
+  if(first>-1){ el("rect",{x:X(first)-((W-L-R)/(rows.length-1))/2,y:T,
+    width:W-R-X(first)+((W-L-R)/(rows.length-1))/2,height:H-T-B,
+    fill:"var(--sunken)","fill-opacity":.75},g);
+    txt(g,W-R-4,T+12,"not scored","dlab","end"); }
+  const line=(vals,col,dash)=>{ const d=vals.map((v,i)=>(i?"L":"M")+X(i)+" "+Y(v)).join(" ");
+    el("path",{d,fill:"none",stroke:col,"stroke-width":2,"stroke-linejoin":"round",
+      ...(dash?{"stroke-dasharray":dash}:{})},g); };
+  line(ex,"var(--s4)","5 4"); line(pm,"var(--s1)");
+  rows.forEach((r,i)=>{
+    const n=el("circle",{cx:X(i),cy:Y(pm[i]),r:4.5,fill:"var(--s1)",
+      stroke:"var(--surface)","stroke-width":2},g);
+    const hit=el("rect",{x:X(i)-11,y:T,width:22,height:H-T-B,fill:"transparent"},g);
+    bindTip(hit,`<h5>${ymLab(r.ym)}${r.sc?"":" · not scored"}</h5>`+
+      tipRow("Paid PMPM",money(pm[i]),cssv("--s1"))+
+      tipRow("Budgeted PMPM",money(ex[i]),cssv("--s4"))+
+      tipRow("Member-months",num(r.mm))+
+      tipRow("Completion",(r.cf*100).toFixed(1)+"%"));
+  });
+  txt(g,X(rows.length-1)+8,Y(pm[pm.length-1])+3,"paid","dlab");
+  txt(g,X(rows.length-1)+8,Y(ex[ex.length-1])+3,"budget","dlab");
+  rows.forEach((r,i)=>{ if((r.ym%100)===1||(r.ym%100)===7) txt(g,X(i),H-B+18,ymLab(r.ym),null,"middle"); });
+  host.appendChild(s);
+  legend($("#trendLegend"),[{c:cssv("--s1"),lab:"paid claims PMPM"},
+    {c:cssv("--s4"),lab:"expected claims PMPM, as budgeted"},
+    {c:cssv("--sunken"),lab:"displayed, never scored"}]);
+}
+function renderCf(){
+  const c=byId[FOCUS], host=$("#cfChart"); host.innerHTML="";
+  const rows=mo(c.id,[202401,202512]);
+  const W=880,H=104,L=56,R=70,T=24,B=20;
+  const s=svg(W,H); s.setAttribute("aria-label","Claims completion factor by service month");
+  const g=el("g",{},s);
+  const X=i=>L+i/(rows.length-1)*(W-L-R), Y=v=>T+(1-v)*(H-T-B);
+  grid(g,L,W-R,[Y(0),Y(.5),Y(1)]);
+  [0,.5,1].forEach(v=>txt(g,L-8,Y(v)+3,(v*100).toFixed(0)+"%",null,"end"));
+  txt(g,L,10,"CLAIMS COMPLETION FACTOR","axlab");
+  const bw=(W-L-R)/rows.length*.62;
+  rows.forEach((r,i)=>{
+    const h=Math.max((1-0)*(H-T-B)*r.cf,1);
+    const p=el("path",{d:barPath(X(i)-bw/2,Y(r.cf),bw,h,2),
+      fill:r.sc?"var(--s3)":"var(--warn)","fill-opacity":.85},g);
+    bindTip(p,`<h5>${ymLab(r.ym)}</h5>`+tipRow("Completion factor",(r.cf*100).toFixed(1)+"%")+
+      tipRow("Scored",r.sc?"yes":"no"));
+  });
+  host.appendChild(s);
+}
+
+function renderTier(){
+  const c=byId[FOCUS], host=$("#tierChart"); host.innerHTML="";
+  const rows=D.tiers.filter(t=>t.c===c.id);
+  const tot=rows.reduce((a,b)=>a+b.sm,0);
+  const W=520,H=216,L=46,R=10,T=16,B=44;
+  const s=svg(W,H); s.setAttribute("aria-label","Contract-months by coverage tier");
+  const g=el("g",{},s);
+  const mx=niceMax(Math.max(...rows.map(r=>r.sm)));
+  const Y=v=>T+(1-v/mx)*(H-T-B), bw=(W-L-R)/TIERS.length;
+  grid(g,L,W-R,[0,mx*.5,mx].map(Y));
+  [0,mx*.5,mx].forEach(v=>txt(g,L-8,Y(v)+3,num(v),null,"end"));
+  TIERS.forEach((t,i)=>{
+    const r=rows.find(x=>x.tier===t)||{sm:0,budget:0};
+    const x=L+i*bw+bw*.16, w=bw*.68;
+    /* 2px surface gap between adjacent fills */
+    const p=el("path",{d:barPath(x+1,Y(r.sm),w-2,(H-T-B)-(Y(r.sm)-T),4),
+      fill:`var(${SER[i]})`,"fill-opacity":.88},g);
+    bindTip(p,`<h5>${esc(TIERLAB[t])}</h5>`+tipRow("Contract-months",num(r.sm),cssv(SER[i]))+
+      tipRow("Share",(100*r.sm/tot).toFixed(1)+"%")+tipRow("Budget raised",money(r.budget)));
+    txt(g,x+w/2,Y(r.sm)-6,num(r.sm),"dlab","middle");
+    txt(g,x+w/2,H-B+16,t.replace("EE_","EE+").replace("EE","EE"),null,"middle");
+    txt(g,x+w/2,H-B+27,(100*r.sm/tot).toFixed(0)+"%",null,"middle");
+  });
+  host.appendChild(s);
+  legend($("#tierLegend"),TIERS.map((t,i)=>({c:cssv(SER[i]),lab:TIERLAB[t]})));
+}
+
+function renderFeeTbl(){
+  const c=byId[FOCUS], rows=D.fees.filter(f=>f.c===c.id);
+  const order={ADMIN:0,NETWORK_ACCESS:1,CARE_MGMT:2,ISL_PREMIUM:3,ASL_PREMIUM:4,COBRA_ADMIN:5};
+  rows.sort((a,b)=>order[a.code]-order[b.code]);
+  const tr=D.tierRates.filter(t=>t.c===c.id);
+  let h="<thead><tr><th>Component</th><th>Basis</th><th>Rate</th><th>CY2024</th></tr></thead><tbody>";
+  rows.forEach(f=>{
+    const cls=f.basis==="PEPM"?"pepm":f.basis==="PMPM"?"pmpm":"flat";
+    /* Each component priced on the denominator its own basis names. */
+    const chg=f.basis==="PEPM"?f.amt*c.contracts:f.basis==="PMPM"?f.amt*c.mm:f.amt*12;
+    h+=`<tr><td>${esc(f.name)}</td><td style="text-align:left"><span class="basis ${cls}">${esc(f.basis)}</span></td>
+        <td class="n">${money(f.amt)}</td><td class="n">${big(chg)}</td></tr>`;
+  });
+  $("#feeTbl").innerHTML=h+"</tbody>";
+  /* The tier rate card is its own row of chips rather than a spanning table
+     cell, which truncated at this panel width. */
+  $("#rateCard").innerHTML=tr.sort((a,b)=>a.factor-b.factor).map(t=>
+    `<span class="basis pepm">${esc(t.tier.replace("EE_","EE+"))} ${money(t.pepm)}</span>`).join("");
+  $("#feeCt").textContent=num(c.contracts); $("#feeMm").textContent=num(c.mm);
+}
+
+function renderSlTerms(){
+  const c=byId[FOCUS];
+  $("#slTerms").innerHTML=`<div class="grid3">
+    <dl class="defn"><dt>Policy year</dt><dd>${esc(c.policyLabel)}</dd>
+      <dt>Renewal month</dt><dd>${MON[c.renewal-1]}</dd>
+      <dt>Broker</dt><dd>${esc(c.broker)}</dd></dl>
+    <dl class="defn"><dt>Specific deductible</dt><dd>${money(c.islDed)}</dd>
+      <dt>Coinsurance above</dt><dd>${(c.coins*100).toFixed(0)}%</dd>
+      <dt>Contract basis</dt><dd>${esc(c.basis.replace("PAID_","").replace("_","/"))}</dd></dl>
+    <dl class="defn"><dt>Aggregate attachment</dt><dd>${money(c.attach)} PMPM</dd>
+      <dt>Corridor</dt><dd>25%</dd>
+      <dt>Lasered member</dt><dd>${c.laser?"yes — carved out at 2.5×":"none"}</dd></dl>
+  </div>
+  ${c.renewal!==1?`<p class="hint" style="margin-top:10px"><span class="flag warn">! off-cycle</span>
+    This client's stop-loss policy year runs ${esc(c.policyLabel)}, not the calendar year.
+    A member-level recovery aggregated by calendar year is wrong for this client and right
+    for the other seven.</p>`:""}
+  ${c.basis==="PAID_12_12"?`<p class="hint" style="margin-top:8px"><span class="flag warn">! 12/12</span>
+    Cover lapses when the policy year closes, so a December admission that adjudicates in
+    February is uncovered by contract. Paid lag runs a 23-day median.</p>`:""}`;
+}
+
+function renderClient(){
+  const c=byId[FOCUS];
+  $("#clientName").textContent=c.name;
+  $("#clientCrumb").textContent=`${c.sector} · ${c.tier.toLowerCase()} · ${c.groups} group id${c.groups>1?"s":""}`;
+  $$("#clientSel button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.c===FOCUS));
+  $("#ctlClient").textContent=c.short;
+  renderClientKpis(); renderWaterfall(); renderTrend(); renderCf();
+  renderTier(); renderFeeTbl(); renderSlTerms();
+}
+
+/* ================= 03 RATE ADEQUACY ================= */
+function renderRate(){
+  const k=CLIENTS.reduce((a,b)=>Math.abs(b.rateMiss)>Math.abs(a.rateMiss)?b:a);
+  const others=CLIENTS.filter(c=>c.id!==k.id).map(c=>Math.abs(c.rateMiss));
+  $("#rateCallout").innerHTML=
+    `<b>${esc(k.name)}</b> was acquired in April 2024. Its members moved from
+     <code>KELL-4471</code> to <code>NLK-KELL-01</code> and the old group's spans were never
+     terminated, so the enrollment extract carries the same members twice for the rest of the
+     year. <code>fct_member_month</code> is immune — it unions coverage before counting. The
+     rate-setting analyst is not: they sum spans, and read
+     <b>${num(k.priorNaive)}</b> member-months against a true <b>${num(k.priorTrue)}</b>,
+     <b>+${(100*(k.priorNaive/k.priorTrue-1)).toFixed(2)}%</b>. The CY2025 rate was priced over
+     that denominator at <b>${money(k.rateSet)}</b> PMPM instead of <b>${money(k.rateTrue)}</b>
+     — <b>${Math.abs(k.rateMiss).toFixed(2)}% below</b> what its own experience supported, so the
+     plan collected <b>${money(k.shortfall)}</b> less than adequate across the scored window.
+     Every other client sits within <b>${Math.max(...others).toFixed(3)}%</b>.`;
+  const kpis=[
+    {e:"Budget never collected",v:money(k.shortfall),d:`${esc(k.short)} · 2025-01 → 2025-09`,alarm:true},
+    {e:"Rate as set",v:money(k.rateSet)+" PMPM",d:`over ${num(k.priorNaive)} member-months`},
+    {e:"Rate repriced",v:money(k.rateTrue)+" PMPM",d:`over ${num(k.priorTrue)} member-months`,hero:true},
+    {e:"Denominator overstated",v:(100*(k.priorNaive/k.priorTrue-1)).toFixed(2)+"%",d:"CY2024, this client only"},
+    {e:"Worst other client",v:Math.max(...others).toFixed(3)+"%",d:"8 of 9 are clean — the isolation is the point"},
+    {e:"Variance as reported",v:money(k.paidYtd-k.expectedYtd),d:"the client looks like it had a good year"},
+  ];
+  $("#rateKpis").innerHTML=kpis.map(x=>
+    `<div class="kpi${x.hero?" hero":""}${x.alarm?" alarm":""}"><p class="eyebrow">${esc(x.e)}</p>
+     <div class="v num">${esc(x.v)}</div><div class="d">${x.d}</div></div>`).join("");
+  renderDumbbell(); renderOver(); renderShort(); renderRenewTbl(k);
+}
+
+/* Before -> after per item = dumbbell, ONE hue in two shades. */
+function renderDumbbell(){
+  const host=$("#dumbbell"); host.innerHTML="";
+  const rows=[...CLIENTS].sort((a,b)=>Math.abs(b.rateMiss)-Math.abs(a.rateMiss));
+  const W=880,H=rows.length*34+52,L=150,R=90,T=16;
+  const s=svg(W,H); s.setAttribute("aria-label","Expected claims PMPM as set against repriced, by client");
+  const g=el("g",{},s);
+  const lo=Math.floor(Math.min(...rows.map(r=>Math.min(r.rateSet,r.rateTrue)))/25)*25-10;
+  const hi=Math.ceil(Math.max(...rows.map(r=>Math.max(r.rateSet,r.rateTrue)))/25)*25+10;
+  const X=v=>L+(v-lo)/(hi-lo)*(W-L-R);
+  for(let v=Math.ceil(lo/25)*25;v<=hi;v+=25){
+    el("line",{x1:X(v),x2:X(v),y1:T,y2:H-30,stroke:"var(--grid)","stroke-width":1},g);
+    txt(g,X(v),H-14,"$"+v,null,"middle"); }
+  txt(g,L,H-2,"EXPECTED CLAIMS PMPM →","axlab");
+  rows.forEach((c,i)=>{
+    const y=T+i*34+13, big=Math.abs(c.rateMiss)>=1;
+    txt(g,L-12,y+4,c.short,null,"end").setAttribute("class","tickl");
+    if(big){
+      el("line",{x1:X(c.rateSet),x2:X(c.rateTrue),y1:y,y2:y,stroke:"var(--s1)",
+        "stroke-width":3,"stroke-linecap":"round","stroke-opacity":.32},g);
+      el("path",{d:`M${X(c.rateTrue)-5} ${y-5}l5 5l-5 5`,fill:"none",stroke:"var(--s1)",
+        "stroke-width":2,"stroke-linecap":"round"},g);
+    }
+    const a=el("circle",{cx:X(c.rateSet),cy:y,r:6,fill:"var(--s1)","fill-opacity":.42,
+      stroke:"var(--s1)","stroke-width":2,"stroke-opacity":.5},g);
+    const b=el("circle",{cx:X(c.rateTrue),cy:y,r:6,fill:"var(--s1)",
+      stroke:"var(--surface)","stroke-width":2},g);
+    const t=`<h5>${esc(c.name)}</h5>`+
+      tipRow("As set",money(c.rateSet)+" PMPM")+
+      tipRow("Repriced",money(c.rateTrue)+" PMPM")+
+      tipRow("Miss",c.rateMiss.toFixed(3)+"%")+
+      tipRow("Prior-year denominator",num(c.priorNaive)+" vs "+num(c.priorTrue));
+    bindTip(a,t); bindTip(b,t);
+    if(big) txt(g,X(c.rateTrue)+12,y+4,"−"+Math.abs(c.rateMiss).toFixed(2)+"%","dlab");
+    else txt(g,X(c.rateTrue)+12,y+4,"clean","dlab").setAttribute("fill","var(--ink-3)");
+  });
+  host.appendChild(s);
+}
+
+function renderOver(){
+  const host=$("#overChart"); host.innerHTML="";
+  const k=CLIENTS.reduce((a,b)=>Math.abs(b.rateMiss)>Math.abs(a.rateMiss)?b:a);
+  const kr=mo(k.id,PY24), months=kr.map(r=>r.ym);
+  /* peers collapsed to one band: nine cycled hues would be identity theatre */
+  const peer=months.map(ym=>{
+    const rs=MONTHLY.filter(m=>m.ym===ym&&m.c!==k.id);
+    const mm=rs.reduce((a,b)=>a+b.mm,0), nmm=rs.reduce((a,b)=>a+b.nmm,0);
+    return 100*(nmm/mm-1);
+  });
+  const kv=kr.map(r=>100*(r.nmm/r.mm-1));
+  const W=520,H=230,L=48,R=54,T=16,B=32;
+  const s=svg(W,H); s.setAttribute("aria-label","Denominator overstatement percent by month");
+  const g=el("g",{},s);
+  const mx=niceMax(Math.max(...kv,...peer,1)*1.15);
+  const X=i=>L+i/(months.length-1)*(W-L-R), Y=v=>T+(1-v/mx)*(H-T-B);
+  const yt=[0,mx*.5,mx];
+  grid(g,L,W-R,yt.map(Y));
+  yt.forEach(v=>txt(g,L-8,Y(v)+3,v.toFixed(0)+"%",null,"end"));
+  const path=(vals,col,dash)=>el("path",{d:vals.map((v,i)=>(i?"L":"M")+X(i)+" "+Y(v)).join(" "),
+    fill:"none",stroke:col,"stroke-width":2,"stroke-linejoin":"round",
+    ...(dash?{"stroke-dasharray":dash}:{})},g);
+  path(peer,"var(--ink-3)","4 3"); path(kv,"var(--crit)");
+  months.forEach((ym,i)=>{
+    const hit=el("rect",{x:X(i)-9,y:T,width:18,height:H-T-B,fill:"transparent"},g);
+    bindTip(hit,`<h5>${ymLab(ym)}</h5>`+
+      tipRow(k.short,kv[i].toFixed(2)+"%",cssv("--crit"))+
+      tipRow("All other clients",peer[i].toFixed(3)+"%",cssv("--ink-3")));
+    if((ym%100)%3===1) txt(g,X(i),H-B+18,ymShort(ym),null,"middle");
+  });
+  el("circle",{cx:X(months.length-1),cy:Y(kv[kv.length-1]),r:4.5,fill:"var(--crit)",
+    stroke:"var(--surface)","stroke-width":2},g);
+  txt(g,X(months.length-1)+8,Y(kv[kv.length-1])+3,k.short.split(" ")[0],"dlab");
+  txt(g,X(months.length-1)+8,Y(peer[peer.length-1])+3,"others","dlab").setAttribute("fill","var(--ink-3)");
+  host.appendChild(s);
+  legend($("#overLegend"),[{c:cssv("--crit"),lab:k.short+" — spans double counted from April"},
+    {c:cssv("--ink-3"),lab:"every other client"}]);
+}
+
+function renderShort(){
+  const host=$("#shortChart"); host.innerHTML="";
+  const rows=[...CLIENTS].sort((a,b)=>b.shortfall-a.shortfall);
+  const W=520,H=rows.length*24+40,L=140,R=74,T=10;
+  const s=svg(W,H); s.setAttribute("aria-label","Budget never collected, by client");
+  const g=el("g",{},s);
+  const mx=niceMax(Math.max(...rows.map(r=>r.shortfall)));
+  const X=v=>L+v/mx*(W-L-R);
+  [0,mx*.5,mx].forEach(v=>{ el("line",{x1:X(v),x2:X(v),y1:T,y2:H-26,stroke:"var(--grid)","stroke-width":1},g);
+    txt(g,X(v),H-10,k$(v),null,"middle"); });
+  rows.forEach((c,i)=>{
+    const y=T+i*24, h=13, w=Math.max(X(c.shortfall)-L,1.5);
+    txt(g,L-10,y+h-2,c.short,null,"end").setAttribute("class","tickl");
+    const big=c.shortfall>50000;
+    const p=el("path",{d:`M${L} ${y}h${Math.max(w-4,1)}a4 4 0 0 1 4 4v${h-8}a4 4 0 0 1 -4 4H${L}Z`,
+      fill:big?"var(--crit)":"var(--s1)","fill-opacity":big?.9:.5},g);
+    bindTip(p,`<h5>${esc(c.short)}</h5>`+tipRow("Budget never collected",money(c.shortfall))+
+      tipRow("Rate miss",c.rateMiss.toFixed(3)+"%")+
+      tipRow("Member-months scored",num(c.mmYtd)));
+    txt(g,X(c.shortfall)+7,y+h-2,c.shortfall>5000?money(c.shortfall):"—","dlab");
+  });
+  host.appendChild(s);
+}
+
+function renderRenewTbl(k){
+  const head=["Client","Rate as set","Repriced","Miss %","Trended","Supported",
+              "Never collected","Recommendation"];
+  let h="<thead><tr>"+head.map(x=>`<th>${esc(x)}</th>`).join("")+"</tr></thead><tbody>";
+  [...CLIENTS].sort((a,b)=>b.shortfall-a.shortfall).forEach(c=>{
+    /* trended actual = scored-window PMPM carried forward one year at the contract's own trend */
+    const trended=c.paidPmpmYtd*1.072*1.02;
+    const rec=Math.max(c.rateTrue,trended);
+    const move=100*(rec/c.rateSet-1);
+    h+=`<tr${c.id===k.id?' class="hl"':''}>
+      <td>${esc(c.short)}</td><td class="n">${money(c.rateSet)}</td>
+      <td class="n">${money(c.rateTrue)}</td>
+      <td class="n" style="color:${Math.abs(c.rateMiss)>=1?"var(--crit)":"var(--ink-3)"}">${c.rateMiss.toFixed(3)}</td>
+      <td class="n">${money(trended)}</td><td class="n">${money(rec)}</td>
+      <td class="n">${c.shortfall>5000?money(c.shortfall):"—"}</td>
+      <td style="text-align:left">${move>5
+        ? `<span class="flag crit">✕ +${move.toFixed(1)}% · ${Math.abs(c.rateMiss)>=1?"denominator":"trend"}</span>`
+        : move>1 ? `<span class="flag warn">! +${move.toFixed(1)}% · trend</span>`
+        : `<span class="flag good">✓ hold</span>`}</td></tr>`;
+  });
+  $("#renewTbl").innerHTML=h+"</tbody>";
+}
+
+/* ================= 04 STOP-LOSS ================= */
+/* Status colours are RESERVED and ship with an icon + label, never colour alone. */
+const ST={REIMBURSED:{c:"--good",i:"✓",lab:"paid"},
+          PENDING:{c:"--warn",i:"◷",lab:"pending"},
+          DENIED_LATE_FILING:{c:"--crit",i:"✕",lab:"late"}};
+function renderSl(){
+  const kpis=[
+    {e:"Filings",v:num(SL.filings),d:`across ${CLIENTS.length} clients, three policy years`},
+    {e:"Entitled",v:m$(SL.entitled),d:"what the contracts owed"},
+    {e:"Received",v:m$(SL.received),d:"what the plans actually got",hero:true},
+    {e:"Shortfall",v:m$(SL.shortfall),d:`${(100*SL.shortfall/SL.entitled).toFixed(1)}% never recovered`,alarm:true},
+    {e:"Declined, filed late",v:money(SL.lateAmt),d:`${SL.lateN} filings the client absorbs`,alarm:true},
+    {e:"Claimed across two people",v:money(SL.overClaimedAmt),d:`${SL.overClaimedN} filings assembled from the resolved identity`,alarm:true},
+    {e:"On an entangled durable key",v:money(SL.entangledAmt),d:`${SL.entangledN} filings, correctly scoped — review, not over-claim`},
+  ];
+  $("#slKpis").innerHTML=kpis.map(x=>
+    `<div class="kpi${x.hero?" hero":""}${x.alarm?" alarm":""}"><p class="eyebrow">${esc(x.e)}</p>
+     <div class="v num">${esc(x.v)}</div><div class="d">${x.d}</div></div>`).join("");
+  renderSlWf(); renderSlScatter(); renderSlTbl(); renderPolTbl();
+}
+function renderSlWf(){
+  const host=$("#slWf"); host.innerHTML="";
+  const pend=SL.byStatus.find(s=>s.filing_status==="PENDING")||{ent:0};
+  const steps=[
+    {lab:"Entitled",v:SL.entitled,kind:"sub"},
+    {lab:"Filed late",v:-SL.lateAmt,kind:"down",st:"DENIED_LATE_FILING"},
+    {lab:"Still pending",v:-pend.ent,kind:"down",st:"PENDING"},
+    {lab:"Received",kind:"sub"},
+  ];
+  let run=0; const bars=[];
+  steps.forEach(s=>{ if(s.kind==="sub"){ run=s.lab==="Entitled"?SL.entitled:SL.received;
+      bars.push({...s,from:0,to:run,val:run}); }
+    else { bars.push({...s,from:run,to:run+s.v,val:s.v}); run+=s.v; } });
+  const W=520,H=256,L=50,R=10,T=20,B=46;
+  const mx=niceMax(SL.entitled);
+  const s=svg(W,H); s.setAttribute("aria-label","Stop-loss entitled through to received");
+  const g=el("g",{},s);
+  const Y=v=>T+(1-v/mx)*(H-T-B), bw=(W-L-R)/bars.length;
+  grid(g,L,W-R,[0,mx*.5,mx].map(Y));
+  [0,mx*.5,mx].forEach(v=>txt(g,L-8,Y(v)+3,m$(v),null,"end"));
+  bars.forEach((b,i)=>{
+    const x=L+i*bw+bw*.2, w=bw*.6;
+    const top=Math.min(Y(b.from),Y(b.to)), h=Math.max(Math.abs(Y(b.to)-Y(b.from)),2);
+    const col=b.kind==="sub"?"var(--rule-strong)":`var(${ST[b.st].c})`;
+    const p=el("path",{d:barPath(x,top,w,h,4),fill:col,"fill-opacity":b.kind==="sub"?.55:.85},g);
+    bindTip(p,`<h5>${esc(b.lab)}</h5>`+tipRow(b.kind==="sub"?"Subtotal":"Removed",money(Math.abs(b.val)),col));
+    if(i<bars.length-1) el("line",{x1:x+w,x2:L+(i+1)*bw+bw*.2,y1:Y(b.to),y2:Y(b.to),
+      stroke:"var(--axis)","stroke-width":1,"stroke-dasharray":"3 2"},g);
+    txt(g,x+w/2,top-6,m$(Math.abs(b.kind==="sub"?b.to:b.val)),"dlab","middle");
+    txt(g,x+w/2,H-B+16,b.lab.split(" ")[0],null,"middle");
+    if(b.lab.split(" ")[1]) txt(g,x+w/2,H-B+27,b.lab.split(" ").slice(1).join(" "),null,"middle");
+  });
+  host.appendChild(s);
+}
+function renderSlScatter(){
+  const host=$("#slScatter"); host.innerHTML="";
+  const rows=D.claimantDist.map(r=>({...r,ratio:r.paid/r.ded}));
+  const W=560,H=250,L=146,R=16,T=16,B=44;
+  const s=svg(W,H); s.setAttribute("aria-label","Claimant covered paid claims as a multiple of their deductible");
+  const g=el("g",{},s);
+  const mx=Math.min(niceMax(Math.max(...rows.map(r=>r.ratio))),5);
+  const cl=CLIENTS.map(c=>c.id);
+  const X=v=>L+Math.min(v,mx)/mx*(W-L-R), Y=i=>T+(i+.5)/cl.length*(H-T-B);
+  cl.forEach((c,i)=>{ el("line",{x1:L,x2:W-R,y1:Y(i),y2:Y(i),stroke:"var(--grid)","stroke-width":1},g);
+    txt(g,L-8,Y(i)+3,byId[c].short,null,"end").setAttribute("class","tickl"); });
+  /* the attachment line is the reference, not a series */
+  el("line",{x1:X(1),x2:X(1),y1:T,y2:H-B,stroke:"var(--axis)","stroke-width":1.5,"stroke-dasharray":"4 3"},g);
+  txt(g,X(1),T-2,"deductible","dlab","middle");
+  for(let v=1;v<=mx;v++) txt(g,X(v),H-B+18,v+"×",null,"middle");
+  txt(g,L,H-6,"COVERED PAID ÷ DEDUCTIBLE →","axlab");
+  rows.forEach(r=>{
+    const i=cl.indexOf(r.c); if(i<0) return;
+    const jit=((r.paid*7)%11-5)/5*5;
+    const n=el("circle",{cx:X(r.ratio),cy:Y(i)+jit,r:4.5,fill:"var(--s1)","fill-opacity":.42,
+      stroke:"var(--s1)","stroke-width":1.5},g);
+    bindTip(n,`<h5>${esc(byId[r.c].short)}</h5>`+tipRow("Covered paid",money(r.paid))+
+      tipRow("Deductible",money(r.ded))+tipRow("Multiple",r.ratio.toFixed(2)+"×"));
+  });
+  host.appendChild(s);
+  legend($("#slScatLegend"),[{c:cssv("--s1"),lab:"one filing"},{c:cssv("--axis"),lab:"the deductible (1.0×)"}]);
+}
+/* "2024-07-01..2025-06-30" -> "2024 · Jul–Jun", which fits and still says
+   plainly that the policy year is not the calendar year. */
+function pyShort(lab){
+  const m=/^(\d{4})-(\d{2})-\d{2}\.\.(\d{4})-(\d{2})/.exec(lab||"");
+  if(!m) return lab;
+  return m[2]==="01" ? m[1] : `${m[1]} · ${MON[+m[2]-1]}–${MON[+m[4]-1]}`;
+}
+function renderSlTbl(){
+  const head=["Client","Policy year","Member","Assembled from","Covered paid",
+              "Deductible","Entitled","Received","Status"];
+  let h="<thead><tr>"+head.map(x=>`<th>${esc(x)}</th>`).join("")+"</tr></thead><tbody>";
+  D.claimants.forEach(r=>{
+    const st=ST[r.st]||{c:"--ink-3",i:"·",lab:r.st};
+    /* Only a MASTER_PERSON_ID filing is an over-claim. An entangled durable
+       key on a MEMBER_ID filing is correctly scoped and shades amber. */
+    const over=r.basis==="MASTER_PERSON_ID";
+    h+=`<tr${over?' style="background:color-mix(in srgb,var(--crit) 8%,transparent)"'
+        :r.ids>1?' style="background:color-mix(in srgb,var(--warn) 7%,transparent)"':''}>
+      <td>${esc(byId[r.c].short)}</td>
+      <td class="n" style="text-align:left">${esc(pyShort(r.pyl))}</td>
+      <td class="n">${esc(r.mid)}${r.ids>1?` <span class="flag ${over?"crit":"warn"}">${over?"✕":"!"} ${r.ids} ids</span>`:""}</td>
+      <td style="text-align:left"><span class="basis ${over?"pepm":"pmpm"}">${esc(r.basis.replace("_ID",""))}</span></td>
+      <td class="n">${money(r.paid)}</td>
+      <td class="n">${money(r.ded)}${r.laser?' <span class="flag warn">! laser</span>':''}</td>
+      <td class="n">${money(r.ent)}</td><td class="n">${money(r.rec)}</td>
+      <td style="text-align:left"><span class="flag ${st.c==="--good"?"good":st.c==="--warn"?"warn":"crit"}">${st.i} ${esc(st.lab)}</span></td></tr>`;
+  });
+  $("#slTbl").innerHTML=h+"</tbody>";
+}
+function renderPolTbl(){
+  const head=["Client","Policy year","Deductible","Coinsurance","Contract basis",
+              "Aggregate attachment","Laser","Hazard"];
+  let h="<thead><tr>"+head.map(x=>`<th>${esc(x)}</th>`).join("")+"</tr></thead><tbody>";
+  CLIENTS.forEach(c=>{
+    const haz=[];
+    if(c.renewal!==1) haz.push(`<span class="flag warn">! off-cycle policy year</span>`);
+    if(c.basis==="PAID_12_12") haz.push(`<span class="flag warn">! runout uncovered</span>`);
+    if(c.coins<1) haz.push(`<span class="flag warn">! ${(100-c.coins*100).toFixed(0)}% retained</span>`);
+    h+=`<tr><td>${esc(c.short)}</td><td class="n" style="text-align:left">${esc(c.policyLabel)}</td>
+      <td class="n">${money(c.islDed)}</td><td class="n">${(c.coins*100).toFixed(0)}%</td>
+      <td class="n">${esc(c.basis.replace("PAID_","").replace("_","/"))}</td>
+      <td class="n">${money(c.attach)} PMPM</td><td class="n">${c.laser?"yes":"—"}</td>
+      <td style="text-align:left">${haz.join(" ")||'<span class="flag good">✓ none</span>'}</td></tr>`;
+  });
+  $("#polTbl").innerHTML=h+"</tbody>";
+}
+
+/* ================= 05 FUNDING ================= */
+function renderCash(){
+  $("#cashCallout").innerHTML=
+    `An adjudication feed was re-driven on <b>14 July 2024</b>, loading 2,840 claim lines twice
+     (anomaly A9a). In the mart that is a de-duplication step and a footnote. In a self-funded
+     book it is a <b>wire</b>: the funding system draws weekly against the extract <em>as it
+     landed</em>, so <b>${money(FUND.overAmt)}</b> left client accounts across
+     <b>${FUND.overWeeks} weeks</b> for <b>${num(FUND.overLines)}</b> claim lines that do not
+     exist. <b>${FUND.underWeeks} weeks under-funded</b> — a timing difference goes both ways
+     and a duplicate does not. The smear across four months is why nobody caught it.`;
+  const kpis=[
+    {e:"Drawn",v:m$(FUND.drawn),d:`${num(FUND.weeks)} weekly draws, 2023–2025`},
+    {e:"Reconciled",v:m$(FUND.recon),d:"the same weeks from the de-duplicated mart"},
+    {e:"Over-funded",v:money(FUND.overAmt),d:`${FUND.overWeeks} weeks · ${num(FUND.overLines)} phantom lines`,alarm:true},
+    {e:"Under-funded",v:FUND.underWeeks,d:"the error runs one way only",hero:true},
+    {e:"Short funded",v:num(FUND.byStatus.SHORT_FUNDED||0),d:"client wired less than requested"},
+    {e:"Wired late",v:num(FUND.byStatus.FUNDED_LATE||0),d:"beyond the 1–3 business day window"},
+  ];
+  $("#cashKpis").innerHTML=kpis.map(x=>
+    `<div class="kpi${x.hero?" hero":""}${x.alarm?" alarm":""}"><p class="eyebrow">${esc(x.e)}</p>
+     <div class="v num">${esc(x.v)}</div><div class="d">${x.d}</div></div>`).join("");
+  renderCashChart(); renderOverMonth(); renderWorstTbl();
+}
+function renderCashChart(){
+  const host=$("#cashChart"); host.innerHTML="";
+  const rows=D.fundingWeekly.map(r=>({...r,over:r.drew-r.owed}));
+  const W=880,H=250,L=62,R=16,T=20,B=40;
+  const s=svg(W,H); s.setAttribute("aria-label","Over-funded dollars by funding week");
+  const g=el("g",{},s);
+  const mx=niceMax(Math.max(...rows.map(r=>r.over)));
+  const X=i=>L+(i+.5)/rows.length*(W-L-R), Y=v=>T+(1-v/mx)*(H-T-B);
+  const yt=[0,mx*.25,mx*.5,mx*.75,mx];
+  grid(g,L,W-R,yt.map(Y));
+  yt.forEach(v=>txt(g,L-8,Y(v)+3,k$(v),null,"end"));
+  txt(g,L,12,"OVER-FUNDED PER WEEK","axlab");
+  const bw=(W-L-R)/rows.length*.7;
+  rows.forEach((r,i)=>{
+    const h=Math.max((H-T-B)-(Y(Math.max(r.over,0))-T),0);
+    const material=r.over>1;
+    if(material){
+      const p=el("path",{d:barPath(X(i)-bw/2,Y(r.over),bw,h,2),
+        fill:"var(--crit)","fill-opacity":.88},g);
+      bindTip(p,`<h5>Week ending ${esc(r.wk)}</h5>`+
+        tipRow("Drawn",money(r.drew))+tipRow("Reconciled",money(r.owed))+
+        tipRow("Over-funded",money(r.over),cssv("--crit"))+
+        tipRow("Share of the draw",(100*r.over/r.drew).toFixed(2)+"%"));
+    } else {
+      /* a week with nothing to report still gets a hit target, so hovering
+         along the baseline confirms a zero rather than finding no mark */
+      const hit=el("rect",{x:X(i)-bw/2,y:H-B-6,width:bw,height:6,fill:"transparent"},g);
+      bindTip(hit,`<h5>Week ending ${esc(r.wk)}</h5>`+
+        tipRow("Drawn",money(r.drew))+tipRow("Over-funded","none"));
+    }
+    if(i%5===0) txt(g,X(i),H-B+18,r.wk.slice(5),null,"middle");
+  });
+  host.appendChild(s);
+  legend($("#cashLegend"),[{c:cssv("--crit"),lab:"over-funded — money that should not have moved"}]);
+}
+function renderOverMonth(){
+  const host=$("#overMonthChart"); host.innerHTML="";
+  const rows=D.fundingWeekly.map(r=>({...r,share:100*(r.drew-r.owed)/r.drew}))
+    .filter(r=>r.share>0.01);
+  const W=520,H=230,L=48,R=14,T=20,B=40;
+  const s=svg(W,H); s.setAttribute("aria-label","Over-draw as a percentage of the week's funding request");
+  const g=el("g",{},s);
+  const mx=niceMax(Math.max(...rows.map(r=>r.share)));
+  const X=i=>L+(i+.5)/rows.length*(W-L-R), Y=v=>T+(1-v/mx)*(H-T-B);
+  grid(g,L,W-R,[0,mx*.5,mx].map(Y));
+  [0,mx*.5,mx].forEach(v=>txt(g,L-8,Y(v)+3,v.toFixed(0)+"%",null,"end"));
+  txt(g,L,12,"OVER-DRAW % OF REQUEST","axlab");
+  const bw=(W-L-R)/rows.length*.72;
+  rows.forEach((r,i)=>{
+    const h=(H-T-B)-(Y(r.share)-T);
+    const p=el("path",{d:barPath(X(i)-bw/2,Y(r.share),bw,h,2),
+      fill:"var(--crit)","fill-opacity":.85},g);
+    bindTip(p,`<h5>Week ending ${esc(r.wk)}</h5>`+
+      tipRow("Over-draw",r.share.toFixed(2)+"% of the request",cssv("--crit"))+
+      tipRow("Dollars",money(r.drew-r.owed))+tipRow("Requested",money(r.drew)));
+    if(i%3===0) txt(g,X(i),H-B+18,r.wk.slice(5,10),null,"middle");
+  });
+  host.appendChild(s);
+}
+function renderWorstTbl(){
+  let h="<thead><tr><th>Client</th><th>Week ending</th>"+
+        "<th>Over-funded</th><th>% of draw</th><th>Lines</th></tr></thead><tbody>";
+  FUND.worst.forEach(w=>{
+    h+=`<tr><td>${esc(byId[w.c].short)}</td><td class="n" style="text-align:left">${esc(w.wk)}</td>
+      <td class="n" style="color:var(--crit);font-weight:600">${money(w.over)}</td>
+      <td class="n">${(100*w.over/w.drew).toFixed(1)}</td>
+      <td class="n">${num(w.lines)}</td></tr>`;
+  });
+  $("#worstTbl").innerHTML=h+"</tbody>";
+}
+
+/* ================= 06 ENROLLMENT RECON ================= */
+function renderRecon(){
+  renderKell(); renderDenTbl(); renderOvTbl();
+}
+function renderKell(){
+  const host=$("#kellChart"); host.innerHTML="";
+  /* The SPAN-SUM by group id, not fct_member_month. fct_member_month unions a
+     member's coverage before counting, so the double count is already gone by
+     the time it is written - plotting it here would show a tidy handover and
+     prove nothing. The span-sum is what the enrollment extract yields and what
+     the rate-setting analyst had. The union total is overlaid as the truth
+     line, so the gap between the stack and the line IS the double count. */
+  const rows=D.kellSpans;
+  const months=rows.map(r=>r.ym);
+  const W=880,H=286,L=58,R=92,T=30,B=40;
+  const s=svg(W,H); s.setAttribute("aria-label","Kellerman member-months by group id from the enrollment feed, against the coverage union");
+  const g=el("g",{},s);
+  const mx=niceMax(Math.max(...rows.map(r=>r.a+r.b))*1.05);
+  const X=i=>L+i/(months.length-1)*(W-L-R), Y=v=>T+(1-v/mx)*(H-T-B);
+  const yt=[0,mx*.25,mx*.5,mx*.75,mx];
+  grid(g,L,W-R,yt.map(Y));
+  yt.forEach(v=>txt(g,L-8,Y(v)+3,num(v),null,"end"));
+  txt(g,L,14,"MEMBER-MONTHS","axlab");
+  /* acquisition marker */
+  const ai=months.indexOf(202404);
+  if(ai>-1){ el("line",{x1:X(ai),x2:X(ai),y1:T,y2:H-B,stroke:"var(--axis)","stroke-width":1.5,
+    "stroke-dasharray":"4 3"},g);
+    txt(g,X(ai)+5,T+11,"acquisition 2024-04","dlab"); }
+  /* stacked areas, 2px surface gap between the fills */
+  const keys=["a","b"];
+  let base=months.map(()=>0);
+  keys.forEach((k,gi)=>{
+    const tops=rows.map((r,i)=>base[i]+r[k]);
+    const d=rows.map((r,i)=>(i?"L":"M")+X(i)+" "+Y(tops[i])).join(" ")+" "+
+      rows.slice().reverse().map((r,j)=>"L"+X(months.length-1-j)+" "+Y(base[months.length-1-j])).join(" ")+"Z";
+    el("path",{d,fill:`var(${SER[gi]})`,"fill-opacity":.68,
+      stroke:"var(--surface)","stroke-width":2},g);
+    base=tops;
+  });
+  /* the truth line, on the same axis and the same measure */
+  el("path",{d:rows.map((r,i)=>(i?"L":"M")+X(i)+" "+Y(r.union)).join(" "),
+    fill:"none",stroke:"var(--ink)","stroke-width":2,"stroke-dasharray":"5 3"},g);
+  const li=months.length-1;
+  txt(g,X(li)+8,Y(rows[li].union)+3,"coverage union","dlab");
+  txt(g,X(li)+8,Y(rows[li].a+rows[li].b)-8,"feed span-sum","dlab");
+  rows.forEach((r,i)=>{
+    const over=r.a+r.b-r.union;
+    const hit=el("rect",{x:X(i)-9,y:T,width:18,height:H-T-B,fill:"transparent"},g);
+    bindTip(hit,`<h5>${ymLab(r.ym)}</h5>`+
+      tipRow("KELL-4471",num(r.a),cssv(SER[0]))+
+      tipRow("NLK-KELL-01",num(r.b),cssv(SER[1]))+
+      tipRow("Feed span-sum",num(r.a+r.b))+
+      tipRow("Coverage union",num(r.union))+
+      (over>1?`<div class="row"><i style="color:var(--crit)">double counted</i><span>${num(over)}</span></div>`:""));
+    if((r.ym%100)%3===1) txt(g,X(i),H-B+18,ymLab(r.ym),null,"middle");
+  });
+  host.appendChild(s);
+  legend($("#kellLegend"),[{c:cssv(SER[0]),lab:"KELL-4471 — pre-acquisition, never terminated"},
+    {c:cssv(SER[1]),lab:"NLK-KELL-01 — opened April 2024"},
+    {c:cssv("--ink"),lab:"coverage union — the only sanctioned denominator"},
+    {c:cssv("--axis"),lab:"acquisition date"}]);
+}
+function renderDenTbl(){
+  let h="<thead><tr><th>Client</th><th>Ids</th><th>Union</th>"+
+        "<th>Span-sum</th><th>Over %</th><th>Effect</th></tr></thead><tbody>";
+  [...CLIENTS].sort((a,b)=>b.overstate-a.overstate).forEach(c=>{
+    const naive=c.mm*(1+c.overstate/100);
+    const bad=c.overstate>1;
+    h+=`<tr${bad?' class="hl"':''}><td>${esc(c.short)}</td><td class="n">${c.groups}</td>
+      <td class="n">${num(c.mm)}</td><td class="n">${num(naive)}</td>
+      <td class="n" style="color:${bad?"var(--crit)":"var(--ink-3)"}">${c.overstate.toFixed(3)}%</td>
+      <td style="text-align:left">${bad
+        ?`<span class="flag crit">✕ rate ${Math.abs(c.rateMiss).toFixed(1)}% low</span>`
+        :`<span class="flag good">✓ ok</span>`}</td></tr>`;
+  });
+  $("#denTbl").innerHTML=h+"</tbody>";
+}
+function renderOvTbl(){
+  const rows=[...D.overlaps].sort((a,b)=>b.n-a.n);
+  let h="<thead><tr><th>Group id</th><th>Reason</th><th>Spans</th></tr></thead><tbody>";
+  rows.forEach(r=>{
+    h+=`<tr><td class="n">${esc(r.gid)}</td>
+      <td style="text-align:left;white-space:normal;max-width:300px">${esc(r.reason)}</td>
+      <td class="n">${num(r.n)}</td></tr>`;
+  });
+  $("#ovTbl").innerHTML=h+"</tbody>";
+}
+
+/* ================= dock ================= */
+const DOCK=[
+  {q:"Why is Kellerman's renewal going up when it came in under budget?"},
+  {a:`Because the budget was never adequate. Kellerman's CY2025 rate was set at
+      <b>$456.82 PMPM</b> over <b>24,992</b> prior-year member-months taken from the enrollment
+      feed. The coverage union for that year is <b>22,089</b> — the feed double counts, because
+      the <code>KELL-4471</code> spans were never terminated at the April 2024 acquisition.
+      Repriced over the correct denominator the rate is <b>$516.86</b>, so the plan collected
+      <b>$1,015,333</b> less than adequate across 2025-01 → 2025-09.<br><br>
+      The favourable variance is real and it is against that inadequate rate. Actual came in at
+      <b>$392.36 PMPM</b>. Against a sound rate the position is <b>−$2,105,461</b>.`},
+  {q:"What is the admin fee for the book this year?"},
+  {a:`<b>$5,967,404</b> for CY2024, on <b>${num(BOOK.sm24)}</b>
+      <b>contract-months</b>. The administration fee is
+      <b>PEPM</b> — per employee per month — so the denominator is contracts, not lives.
+      Billed against the book's <b>${num(BOOK.mm24)}</b> member-months the same schedule reads
+      <b>$13,263,245</b>, which is <b>2.223×</b> too high. The average contract here covers
+      <b>${BOOK.lpc24.toFixed(3)}</b> lives.`},
+  {q:"Should we file the Fitzgerald stop-loss claim?"},
+  {a:`Check the identity first. That filing carries
+      <code>filing_identity_basis = MASTER_PERSON_ID</code> and
+      <code>member_ids_on_durable_key = 2</code>, which means it was assembled from the
+      resolved-identity large-claimant report over an MDM <b>over-match</b> — two genuinely
+      different people on one master person id. The amount ties to the resolved identity
+      perfectly, which is why nothing else flags it.<br><br>
+      Across the book that is <b>${SL.overClaimedN} filings</b> and
+      <b>${money(SL.overClaimedAmt)}</b> actually claimed across two people. Route those to
+      <code>filing_review</code> before the carrier declines them.<br><br>
+      A further <b>${SL.entangledN} filings</b> (<b>${money(SL.entangledAmt)}</b>) sit on a
+      durable key that carries two member ids but are <b>correctly scoped</b> to one of them.
+      Those are a review queue, not an over-claim — <code>filing_identity_basis</code> is the
+      test, not <code>member_ids_on_durable_key</code> on its own.`},
+];
+function renderDock(){
+  $("#dockBd").innerHTML=DOCK.map(m=>m.q
+    ?`<div class="msg q">${esc(m.q)}</div>`:`<div class="msg a">${m.a}</div>`).join("");
+  $("#dockChips").innerHTML=["Net plan cost PMPM by client","Which clients ran over expected",
+    "Admin fee PEPM by size tier","Member-month overstatement by client"]
+    .map(c=>`<span class="chip">${esc(c)}</span>`).join("");
+}
+
+/* ================= notes overlay ================= */
+const NOTES=[
+  ["#bookTbl","Rows aggregate on client_id. Kellerman's two group ids are already collapsed."],
+  ["#dumbbell","One hue, two shades — a dumbbell is before/after on one item, not two categories."],
+  ["#cfChart","Completion is its own panel sharing the x-axis. A second y-scale on the chart above would invent a correlation."],
+  ["#slScatter","Status colours are reserved and always ship with an icon and a label."],
+  ["#slTbl","filing_identity_basis is the over-claim test. An entangled durable key on a MEMBER_ID filing is correctly scoped."],
+  ["#kellChart","The only chart in the workbook keyed on group_id, and the page says so."],
+];
+let NOTESON=false;
+function toggleNotes(){
+  NOTESON=!NOTESON;
+  $("#notesBtn").setAttribute("aria-pressed",NOTESON);
+  $$(".buildnote").forEach(n=>n.remove());
+  if(!NOTESON) return;
+  NOTES.forEach(([sel,text])=>{ const t=$(sel); if(!t||!t.offsetParent) return;
+    const d=document.createElement("p"); d.className="hint buildnote";
+    d.style.cssText="margin:8px 0 0;padding:7px 9px;border-left:2px solid var(--accent);background:var(--accent-soft);border-radius:0 4px 4px 0";
+    d.innerHTML="<b>Build note.</b> "+esc(text); t.parentNode.appendChild(d); });
+}
+
+/* ================= navigation ================= */
+const RENDER={book:()=>{renderBookKpis();renderBookTbl();renderScatter();renderLoad();},
+  client:renderClient, rate:renderRate, sl:renderSl, cash:renderCash, recon:renderRecon};
+function go(p){
+  PAGE=p;
+  $$(".pageview").forEach(s=>s.hidden = s.id!=="page-"+p);
+  $$(".navitem").forEach(b=>b.setAttribute("aria-current",b.dataset.page===p?"page":"false"));
+  RENDER[p]();
+  if(NOTESON){NOTESON=false;toggleNotes();}
+  window.scrollTo({top:0,behavior:"instant"});
+}
+
+/* ================= boot ================= */
+function boot(){
+  renderTrust(); renderClientSel(); renderDock();
+  $$(".navitem").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+  $("#notesBtn").addEventListener("click",toggleNotes);
+  $("#dockBtn").addEventListener("click",()=>{
+    const on=$("#dockBtn").getAttribute("aria-pressed")==="true";
+    $("#dockBtn").setAttribute("aria-pressed",!on);
+    $("#dock").hidden=on;
+    document.querySelector(".app").style.gridTemplateColumns=on?"216px minmax(0,1fr)":"";
+  });
+  $("#themeBtn").addEventListener("click",()=>{
+    const cur=document.documentElement.getAttribute("data-theme");
+    const dark=cur?cur==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+    document.documentElement.setAttribute("data-theme",dark?"light":"dark");
+    RENDER[PAGE]();
+  });
+  /* The denominator toggle is the page's own argument, so it re-renders live. */
+  const setDen=d=>{ DEN=d;
+    $("#denCm").setAttribute("aria-pressed",d==="cm");
+    $("#denMm").setAttribute("aria-pressed",d==="mm");
+    const k=$$("#bookKpis .kpi").pop();
+    if(k) k.querySelector(".v").textContent = d==="cm"?m$(BOOK.adminWrong24):m$(BOOK.adminRight24);
+    if(k) k.querySelector(".eyebrow").textContent = d==="cm"
+      ?"Admin fee if billed on lives":"Admin fee, correctly on contracts";
+    if(k) k.classList.toggle("alarm",d==="cm");
+  };
+  $("#denCm").addEventListener("click",()=>setDen("cm"));
+  $("#denMm").addEventListener("click",()=>setDen("mm"));
+  /* ?theme=light|dark forces a theme, for review and screenshots. */
+  const qt=new URLSearchParams(location.search).get("theme");
+  if(qt==="light"||qt==="dark") document.documentElement.setAttribute("data-theme",qt);
+  /* Deep link, so a page can be opened directly: …wireframe.html#rate */
+  const want=(location.hash||"").replace("#","");
+  go(RENDER[want]?want:"book");
+  addEventListener("hashchange",()=>{const w=location.hash.replace("#","");if(RENDER[w])go(w);});
+}
+if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",boot); else boot();
+})();
+</script>
+</body>
+</html>

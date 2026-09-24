@@ -23,6 +23,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import anomalies as AN
+import aso as ASO
 import attribution as AT
 import claims as CM
 import clinical as CL
@@ -46,6 +47,9 @@ LANDING = {
     "raw_pm": ["pm_appointment", "pm_authorization", "pm_referral_workflow_config"],
     "raw_vbc": ["vbc_attribution_month", "vbc_attribution_restatement",
                 "vbc_roster_version", "vbc_benchmark", "vbc_contract_terms"],
+    "raw_aso": ["aso_client_contract", "aso_fee_schedule",
+                "aso_stop_loss_policy", "aso_budget_rate",
+                "aso_funding_request", "aso_stop_loss_filing"],
     "raw_ref": ["ref_date", "ref_diagnosis", "ref_procedure", "ref_service_place",
                 "ref_drg", "ref_claim_status", "ref_service_line",
                 "ref_revenue_code", "ref_facility", "ref_network_contract",
@@ -173,10 +177,23 @@ def build(run: C.RunConfig) -> tuple[dict[str, pd.DataFrame], list[dict]]:
     tables["ehr_patient"] = enc_pat
     LANDING["raw_ehr"].append("ehr_patient")
 
-    # ---- anomalies last, so a clean dataset exists first
+    # ---- anomalies before the ASO layer, so a clean dataset exists first
     tables, manifest = AN.apply_anomalies(run, tables, runout_stats)
     applied = sum(1 for m in manifest if m.get("applied"))
     log(f"anomalies: {applied} records in manifest", t0)
+
+    # ---- the ASO administration and finance system.
+    #
+    # LAST, and after the anomaly stage, because the funding system draws
+    # against the adjudication extract AS IT ARRIVED. Building weekly funding
+    # from a clean claim feed would silently repair the re-driven extract and
+    # remove the only consequence of that defect anybody outside the data team
+    # ever feels - a client over-funded by real money on a real Wednesday.
+    aso = ASO.build_aso(run, tables, members)
+    tables.update(aso)
+    log(f"aso: {len(aso['aso_client_contract'])} client-years, "
+        f"{len(aso['aso_funding_request']):,} funding weeks, "
+        f"{len(aso['aso_stop_loss_filing']):,} stop-loss filings", t0)
 
     return tables, manifest
 

@@ -37,6 +37,7 @@ Each one earns its place by contributing something no other source can.
 | `raw_elig` | Meridian enrollment | Denominators. No rate, no PMPM, no per-1000 without it |
 | `raw_pm` | PracticeOne scheduling | Whether care was actually scheduled and attended — the second confirmation path — and the workflow rule that explains the aha |
 | `raw_vbc` | Northlake attribution feed | Who counts against the contract, and the retroactive restatement history |
+| `raw_aso` | Meridian administrative services | What the plan sponsor PAYS to have its plan run, what it gets back from stop-loss, and whether last Wednesday's wire cleared |
 | `raw_ref` | Terminology and MDM | Code sets and the type-2 network contract |
 
 ## Three identity spaces, deliberately
@@ -90,6 +91,7 @@ against a `_current` view and gets a right answer in five minutes.
 | `dim_network_contract` | **type 2** | participation by TIN and effective window. The as-of join lives here |
 | `dim_facility` | one site of care | 4 hospitals, 12 clinic groups, 8 urgent care, 10 ASCs, 2 SNFs, plus diagnostic and therapy sites |
 | `dim_coverage_plan` | payer × product × plan × benefit year | MA and commercial HMO only |
+| `dim_employer_group` | one employer group | Carries `client_id` as well as `group_id`. Funding type is a property of the CLIENT |
 | `dim_service_line` | one service line | crosswalked from three sources, deliberately imperfect |
 | `dim_diagnosis` | one ICD-10-CM code | CCSR category, chronic flag, HCC, sex and age restrictions |
 | `dim_procedure` | one code, **all systems** | `code_system` as discriminator |
@@ -141,6 +143,14 @@ else is type 1. Type 2 everywhere is where synthetic data projects die.
 | `fct_member_year_cost` | member × performance year, truncation applied |
 | `fct_claims_lag_triangle` | service month × lag month |
 | `br_provider_affiliation` | provider × facility × effective span |
+| `aso_client_contract` | self-funded client × contract year |
+| `aso_fee_schedule` | client × contract year × fee component |
+| `aso_stop_loss_policy` | client × policy year |
+| `aso_budget_rate` | client × contract year × coverage tier |
+| `fct_aso_contract_month` | client × month × coverage tier |
+| `fct_aso_settlement_month` | client × month |
+| `fct_aso_stop_loss_claimant` | one stop-loss filing: client × member × policy year |
+| `fct_aso_funding_week` | client × funding week |
 
 ### The pieces worth reading
 
@@ -179,6 +189,56 @@ admissions inflates volume several fold. The correct answer is
 `COUNT(DISTINCT encounter_id)`. About 24% of claims carry no `encounter_id` at
 all, because that care happened outside Northlake — which is exactly why the
 hub is necessary.
+
+**Funding type is a property of the client, and the client is not the group.**
+An employer is self-funded or it is not; a member cannot elect a self-funded
+plan from a fully-insured sponsor, because the plan belongs to the sponsor.
+Nine of seventeen clients are self-funded, carrying about 61% of the
+commercial book, which is close to the national share of covered workers in
+self-funded plans. The ASO contract is written at **client** grain and the
+enrollment feed carries **group** ids, and those are not the same thing: one
+client holds two group ids either side of an acquisition. A book rolled up by
+`group_id` reports it as two clients and gets the fee, the denominator and the
+stop-loss accumulation wrong for both. `dim_employer_group` carries both keys
+so the app can join either way without re-deriving the mapping.
+
+**Two denominators, and the ASO layer ships both.** `fct_member_month` is
+still the only sanctioned PMPM denominator. But the renewal rate in
+`aso_client_contract` was *set* over the enrollment feed's own denominator -
+spans summed rather than unioned - because that is the number a rate-setting
+analyst has in front of them. `expected_claims_pmpm` is the rate as set;
+`expected_claims_pmpm_on_true_denominator` is the same arithmetic over the
+member-month union. Shipping both on one row turns "your denominator is wrong"
+from an assertion into a subtraction, and it isolates: the acquired client's
+2025 rate reads about 12% below truth and every other client is inside 0.05%.
+
+**PEPM is not PMPM.** The administration fee is billed per EMPLOYEE per month
+and the network and care-management fees per MEMBER per month. The average
+contract covers about 2.1 lives, so an admin fee joined to member-months reads
+roughly twice its true size. `aso_fee_schedule` ships long rather than wide so
+`fee_basis` travels on the row, `fct_aso_contract_month` supplies the contract
+denominator, and `fct_aso_settlement_month` carries
+`fee_admin_amount_on_member_months` beside the correct figure so the error is
+measurable rather than hypothetical.
+
+**Stop-loss accumulates over the policy year, which is not always the benefit
+year.** Coverage spans break at calendar-year boundaries because plan design
+is priced that way, but two of nine clients renew in July and October, so
+their stop-loss policy year is a different window. `isl_contract_basis`
+decides whether runout is covered at all: a 12/12 client loses cover on a
+December claim that adjudicates in February. And `fct_aso_stop_loss_claimant`
+carries `member_ids_on_durable_key`, because some filings were assembled from
+the TPA's resolved-identity large-claimant report - and where the MDM run
+over-matched, that is two genuinely distinct people on one stop-loss claim.
+The filing ties to the resolved identity perfectly, which is exactly why
+nothing else catches it.
+
+**A wire is the version of a data-quality defect that people act on.** The
+funding system draws weekly against the adjudication extract *as it landed*,
+so the week whose extract was re-driven funded its duplicates.
+`fct_aso_funding_week` puts the request beside the same week recomputed from
+the de-duplicated mart. A duplicate-row count in a QA report does not make
+anyone act. Money leaving a client's account on a Wednesday does.
 
 **The roster is versioned, and the restatement runs both ways.** The roster is
 produced monthly; `vbc_attribution_month` carries the current version and
