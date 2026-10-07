@@ -7,3 +7,6 @@
 
 # Third-party tool cloned locally, not part of this data repo
 tableau-public-mcp/
+
+# Local API credentials
+*.env
