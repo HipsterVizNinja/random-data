@@ -13,8 +13,8 @@ def get_weekly_dates(start_date, end_date):
     return dates
 
 # Define date range (Saturdays)
-start_date = datetime(2025, 9, 6)
-end_date = datetime(2025, 12, 27)
+start_date = datetime(2026, 1, 3)
+end_date = datetime(2026, 10, 3)
 chart_dates = get_weekly_dates(start_date, end_date)
 
 # Initialize DataFrame storage
