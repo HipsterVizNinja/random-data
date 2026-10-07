@@ -15,6 +15,10 @@ Run:
 
 Uses the Authorization Code + PKCE flow, so no client secret is needed. A browser
 window opens for you to log in; the script catches the redirect on 127.0.0.1:8888.
+
+Audio features (danceability, energy, tempo, ...) come from ReccoBeats because
+Spotify's own endpoint is closed to new apps. audio_features_match says whether a
+song matched by track_id or isrc; it's blank when ReccoBeats has no data for it.
 """
 import argparse
 import base64
@@ -38,11 +42,20 @@ REDIRECT_URI = 'http://127.0.0.1:8888/callback'
 SCOPE = 'user-library-read'
 ENV_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'spotify.env')
 
+# Spotify's /audio-features returns 403 for apps created after 2024-11-27, so audio
+# features come from ReccoBeats (free, no key), which accepts Spotify track IDs.
+RECCOBEATS_URL = 'https://api.reccobeats.com/v1/audio-features'
+RECCOBEATS_BATCH = 40  # API max ids per request
+AUDIO_FEATURES = [
+    'danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness',
+    'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo',
+]
+
 COLUMNS = [
     'added_at', 'track_name', 'artists', 'album', 'album_artists', 'release_date',
     'album_type', 'disc_number', 'track_number', 'duration_ms', 'explicit', 'isrc',
     'is_local', 'track_id', 'artist_ids', 'album_id', 'spotify_url',
-]
+] + AUDIO_FEATURES + ['audio_features_match']
 
 
 def get_auth_code(client_id, code_challenge, state):
@@ -121,6 +134,50 @@ def get_liked_songs(token):
     return items
 
 
+def fetch_reccobeats(ids):
+    """Query ReccoBeats audio features in batches; ids may be Spotify track IDs or ISRCs."""
+    results = []
+    for start in range(0, len(ids), RECCOBEATS_BATCH):
+        batch = ids[start:start + RECCOBEATS_BATCH]
+        while True:
+            response = requests.get(RECCOBEATS_URL, params={'ids': ','.join(batch)})
+            if response.status_code != 429:
+                break
+            time.sleep(int(response.headers.get('Retry-After', 5)))
+        response.raise_for_status()
+        results.extend(response.json()['content'])
+    return results
+
+
+def add_audio_features(rows):
+    """Match by Spotify track ID first, then by ISRC, since Spotify often lists the same
+    recording under several track IDs (album, single, compilation) and ReccoBeats may
+    only know one of them. Songs found by neither are left blank."""
+    by_track = {}
+    for f in fetch_reccobeats([r['track_id'] for r in rows if r['track_id']]):
+        # ReccoBeats' own id is a UUID; the Spotify track ID is the end of href
+        by_track[f['href'].rstrip('/').split('/')[-1]] = f
+
+    missing_isrcs = [r['isrc'] for r in rows if r['track_id'] not in by_track and r['isrc']]
+    by_isrc = {}
+    for f in fetch_reccobeats(list(dict.fromkeys(missing_isrcs))):
+        by_isrc.setdefault(f['isrc'], f)  # several releases can share an ISRC; keep the first
+
+    for row in rows:
+        if row['track_id'] in by_track:
+            f, source = by_track[row['track_id']], 'track_id'
+        elif row['isrc'] in by_isrc:
+            f, source = by_isrc[row['isrc']], 'isrc'
+        else:
+            f, source = {}, None
+        row.update({name: f.get(name) for name in AUDIO_FEATURES})
+        row['audio_features_match'] = source
+
+    found = sum(1 for r in rows if r['audio_features_match'])
+    print(f'Audio features: {found} of {len(rows)} songs '
+          f'({len(by_track)} by track ID, {found - len(by_track)} by ISRC)')
+
+
 def to_row(item):
     track = item['track']
     album = track.get('album') or {}
@@ -170,6 +227,7 @@ def main():
 
     token = get_access_token(client_id)
     rows = [to_row(item) for item in get_liked_songs(token) if item.get('track')]
+    add_audio_features(rows)
 
     with open(args.output, 'w', newline='', encoding='utf-8') as f:
         writer = csv.DictWriter(f, fieldnames=COLUMNS)
